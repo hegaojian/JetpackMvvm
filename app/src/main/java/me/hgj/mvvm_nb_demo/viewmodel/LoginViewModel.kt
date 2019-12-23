@@ -26,8 +26,8 @@ class LoginViewModel:BaseViewModel() {
     fun login(){
         launchRequest({loginRpository.login(username.get(),password.get())}//请求体
             ,loginResult,//请求的返回结果，请求成功与否都会改变该值，在Activity或fragment中监听回调结果，具体可看loginActivity中的回调
-            true,//是否显示等待框，，默认false不显示
-            "正在登录中...")//等待框内容，默认可不填，默认：请求网络中...
+            true,//是否显示等待框，，默认false不显示 可以不填
+            "正在登录中...")//等待框内容，默认：请求网络中...  可以不填
 
     }
 

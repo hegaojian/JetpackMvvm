@@ -15,8 +15,7 @@ import me.hgj.mvvm_nb_demo.viewmodel.LoginViewModel
  * 时间　: 2019/12/23
  * 描述　:
  */
-class LoginActivity:BaseActivity<LoginViewModel, ActivityLoginBinding>() {
-
+class LoginActivity: BaseActivity<LoginViewModel, ActivityLoginBinding>() {
     override fun layoutId() = R.layout.activity_login
 
     override fun initView() {
@@ -47,7 +46,7 @@ class LoginActivity:BaseActivity<LoginViewModel, ActivityLoginBinding>() {
         //登录
         fun login() {
             when {
-                mViewModel.username.get().isEmpty() -> showMessage("请填写账号")
+                mViewModel.username.get().isEmpty() -> showMessage("请填写账户名")
                 mViewModel.password.get().isEmpty() -> showMessage("请填写密码")
                 else -> mViewModel.login()
             }
