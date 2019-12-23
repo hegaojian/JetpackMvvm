@@ -13,7 +13,7 @@
 ```
 dependencies {
   ...
-  implementation 'me.hegj:mvvmnb:1.0.1'
+  implementation 'me.hegj:mvvmnb:1.0.2'
 }
 
 ```
