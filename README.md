@@ -17,7 +17,7 @@ dependencies {
 }
 
 ```
-# 2.快速开始-登录演示
+# 2.快速开始
 - 2.1 编写自己的基类继承BaseVmActivity(不使用databind)或BaseVmDbActivity(使用databind),同时实现继承类的方法
 ```
 abstract class BaseActivity<VM : BaseViewModel> : BaseVmActivity<VM>() {
