@@ -4,11 +4,12 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "me.hgj.mvvm_nb_demo"
+        applicationId "me.hgj.mvvmnb_demo"
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
@@ -45,6 +46,5 @@ dependencies {
     implementation 'me.jessyan:autosize:1.1.2'
     //util
     implementation 'com.blankj:utilcodex:1.26.0'
-
     implementation project(path: ':mvvmnb')
 }

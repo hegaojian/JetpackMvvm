@@ -25,19 +25,17 @@ fun <VM> getVmClazz(obj: Any): VM {
  * @param onLoading 加载中
  * @param onSuccess 成功回调
  * @param onError 失败回调
- * @param loadingMessage 加载框的提示内容，默认 请求网络中...
  *
  */
 fun <T> BaseVmDbActivity<*, *>.parseState(
     viewState: ViewState<T>,
     onSuccess: (T) -> Unit,
     onError: ((AppException) -> Unit)? = null,
-    onLoading: (() -> Unit)? = null,
-    loadingMessage:String = "请求网络中..."
+    onLoading: (() -> Unit)? = null
 ) {
     when (viewState) {
         is ViewState.Loading -> {
-            showLoading(loadingMessage)
+            showLoading(viewState.loadingMessage)
             onLoading?.run { this }
         }
         is ViewState.Success -> {
@@ -56,19 +54,17 @@ fun <T> BaseVmDbActivity<*, *>.parseState(
  * @param onLoading 加载中
  * @param onSuccess 成功回调
  * @param onError 失败回调
- * @param loadingMessage 加载框的提示内容，默认 请求网络中...
  *
  */
 fun <T> BaseVmActivity<*>.parseState(
     viewState: ViewState<T>,
     onSuccess: (T) -> Unit,
     onError: ((AppException) -> Unit)? = null,
-    onLoading: (() -> Unit)? = null,
-    loadingMessage:String = "请求网络中..."
+    onLoading: (() -> Unit)? = null
 ) {
     when (viewState) {
         is ViewState.Loading -> {
-            showLoading(loadingMessage)
+            showLoading(viewState.loadingMessage)
             onLoading?.run { this }
         }
         is ViewState.Success -> {
@@ -95,12 +91,11 @@ fun <T> BaseVmFragment<*>.parseState(
     viewState: ViewState<T>,
     onSuccess: (T) -> Unit,
     onError: ((AppException) -> Unit)? = null,
-    onLoading: (() -> Unit)? = null,
-    loadingMessage:String = "请求网络中..."
+    onLoading: (() -> Unit)? = null
 ) {
     when (viewState) {
         is ViewState.Loading -> {
-            showLoading(loadingMessage)
+            showLoading(viewState.loadingMessage)
             onLoading?.run { this }
         }
         is ViewState.Success -> {
@@ -119,19 +114,17 @@ fun <T> BaseVmFragment<*>.parseState(
  * @param onLoading 加载中
  * @param onSuccess 成功回调
  * @param onError 失败回调
- * @param loadingMessage 加载框的提示内容，默认 请求网络中...
  *
  */
 fun <T> BaseVmDbFragment<*, *>.parseState(
     viewState: ViewState<T>,
     onSuccess: (T) -> Unit,
     onError: ((AppException) -> Unit)? = null,
-    onLoading: (() -> Unit)? = null,
-    loadingMessage:String = "请求网络中..."
+    onLoading: (() -> Unit)? = null
 ) {
     when (viewState) {
         is ViewState.Loading -> {
-            showLoading(loadingMessage)
+            showLoading(viewState.loadingMessage)
             onLoading?.run { this }
         }
         is ViewState.Success -> {
@@ -154,11 +147,12 @@ fun <T> BaseVmDbFragment<*, *>.parseState(
 fun <T> BaseViewModel.launchRequest(
     request: suspend () -> BaseResponse<T>,
     viewState: MutableLiveData<ViewState<T>>,
-    showLoading: Boolean = false
+    showLoading: Boolean = false,
+    loadingMessage: String
 ) {
     viewModelScope.launch {
         runCatching {
-            if (showLoading) viewState.value = ViewState.onAppLoading()
+            if (showLoading) viewState.value = ViewState.onAppLoading(loadingMessage)
             withContext(Dispatchers.IO) { request() }
         }.onSuccess {
             viewState.paresResult(it)

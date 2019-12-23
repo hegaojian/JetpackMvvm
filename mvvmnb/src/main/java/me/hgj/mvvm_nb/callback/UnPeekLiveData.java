@@ -27,10 +27,10 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
+ * 作者　: hegaojian
+ * 时间　: 2019/12/17
  * 仅分发 owner observe 后 才新拿到的数据
  * 可避免共享作用域 VM 下 liveData 被 observe 时旧数据倒灌的情况
- * <p>
- * Create by KunMinX at 19/9/23
  */
 public class UnPeekLiveData<T> extends MutableLiveData<T> {
 

@@ -9,8 +9,9 @@ import retrofit2.HttpException
 import java.net.ConnectException
 
 /**
- *   @auther : Aleyn
- *   time   : 2019/08/12
+ * 作者　: hegaojian
+ * 时间　: 2019/12/17
+ * 描述　: 根据异常返回相关的错误信息工具类
  */
 object ExceptionHandle {
 

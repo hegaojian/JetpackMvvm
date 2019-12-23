@@ -24,7 +24,7 @@ abstract class BaseVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : AppC
 
     abstract fun initView()
 
-    abstract fun showLoading(message:String="请求网络中...")
+    abstract fun showLoading(message:String = "请求网络中...")
 
     abstract fun dismissLoading()
 

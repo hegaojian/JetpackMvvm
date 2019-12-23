@@ -1,8 +1,9 @@
 package me.hgj.mvvm_nb.network
 
 /**
- *   @auther : Aleyn
- *   time   : 2019/08/12
+ * 作者　: hegaojian
+ * 时间　: 2019/12/17
+ * 描述　: 错误枚举类
  */
 enum class ERROR(private val code: Int, private val err: String) {
 

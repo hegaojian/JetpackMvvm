@@ -28,6 +28,9 @@ open class BaseApp : Application(), ViewModelStoreOwner {
         Logger.addLogAdapter(AndroidLogAdapter())
     }
 
+    /**
+     * 获取一个全局的ViewModel
+     */
     fun getAppViewModelProvider(): ViewModelProvider {
         return ViewModelProvider(this, this.getAppFactory())
     }

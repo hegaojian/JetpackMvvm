@@ -18,11 +18,11 @@
             android:layout_height="48dp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
-            android:indeterminateTint="#D81B60"
+            android:indeterminateTint="@color/colorAccent"
             android:indeterminateTintMode="src_atop" />
 
         <TextView
-            android:id="@+id/tvTip"
+            android:id="@+id/loading_tips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
