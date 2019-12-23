@@ -35,6 +35,9 @@
   
   3.数据驱动免去了 因为调用视图对象 而存在的大量样板代码  
   
+  4.题外话，很多人不喜欢用dataBinding,甚至都没用过它，我在一个群里做过一个投票调查，28人投票中，只有7人觉得好用，12人没用过表示有机会可以用用，
+  9人明确表示不喜欢用，我之前也没用过，最近试着去用了一下，刚开始确实很难受，一度想放弃，但是坚持了一段时间，其实蛮好用的，你可以用他做一些简单的视图绑定，其实会很爽，我在这个项目中我加了兼容处理，**不想用dataBinding的继承BaseVmActivity，想用dataBinding的继承BaseVmDbActivity**
+  
 - **Kotlin:**
 
   **谷歌亲儿子语言**，从java转到kotlin的你绝对会要说：**真香**
@@ -45,7 +48,7 @@
 
 # 1.如何使用
 
-- 1.1 启用dataBindingg 如果你需要用到dataBinding,请在主工程的build中加入，不用可以忽略这一步：
+- 1.1 启用dataBinding 如果你需要用到dataBinding,请在主工程的build中加入，不用可以忽略这一步：
 ```
   dataBinding{
         enabled = true
@@ -93,7 +96,7 @@ abstract class BaseActivity<VM : BaseViewModel> : BaseVmActivity<VM>() {
 
 }
 ```
-- 2.2 LoginActivity继承基类
+- 2.2 LoginActivity继承基类传入相关泛型
 ```
 class LoginActivity:BaseActivity<LoginViewModel>() {
 
