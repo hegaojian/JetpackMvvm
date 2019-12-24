@@ -1,5 +1,5 @@
 # MVVM-Nb
-**基于MVVM模式与谷歌官方推荐的JetPack,封装Kotlin+LiveData+ViewModel+Lifecycle+dataBinding的开发框架，封装BaseVmActivity,BaseVmFragment,BaseViewModel等,帮你简化各种操作，让你快速上手使用**  
+**基于MVVM模式与谷歌官方推荐的JetPack,封装Kotlin+LiveData+ViewModel+Lifecycle+dataBinding的开发框架，封装BaseVmActivity,BaseVmFragment,BaseViewModel，BaseNetworkApi等,帮你简化各种操作，让你快速上手使用**  
 
 ## 框架技术  
 
