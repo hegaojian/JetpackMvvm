@@ -43,13 +43,12 @@ dependencies {
     api "com.orhanobut:logger:2.2.0"
 }
 
-
 publish {
     userOrg = 'hegaojian'//bintray网站中的用户名，网站链接：https://bintray.com/
     repoName = 'cxk'//仓库名字 这个可以随便起,比如我觉得我比较菜，所以我取了个蔡徐坤
     groupId = 'me.hegj'//路径名等于“me.hegj.mvvmnb:1.0.0”中的   me.hegj，你也可以写com.xxx
     artifactId = 'mvvmnb'//项目名等于“me.hegj.mvvmnb:1.0.0”中的  mvvmnb
-    publishVersion = '1.0.2'//版本号 等于“me.hegj.mvvmnb:1.0.0”中的 1.0.0
+    publishVersion = '1.0.3'//版本号 等于“me.hegj.mvvmnb:1.0.0”中的 1.0.0
     desc = 'An Android MVVM framework,MVVM is nb'//说明，不重要的东西，随便写
     website = 'https://github.com/hegaojian/MVVM-Nb'//项目主页，可以直接用GitHub地址
     licences = ['Apache-2.0']//协议

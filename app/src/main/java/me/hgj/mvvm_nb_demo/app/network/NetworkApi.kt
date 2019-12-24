@@ -3,45 +3,47 @@ package me.hgj.mvvm_nb_demo.app.network
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
-import com.google.gson.GsonBuilder
+import me.hgj.mvvm_nb.network.BaseNetworkApi
 import me.hgj.mvvm_nb.network.interceptor.LogInterceptor
 import me.hgj.mvvm_nb_demo.App
 import me.hgj.mvvm_nb_demo.BuildConfig
-import me.hgj.mvvm_nb_demo.api.NetApiService
+import me.hgj.mvvm_nb_demo.app.NetApiService
 import okhttp3.Cache
 import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
-import java.util.concurrent.TimeUnit
 
 /**
  * 作者　: hegaojian
  * 时间　: 2019/12/23
- * 描述　: 网络请求构建器
+ * 描述　: 自己项目中的网络请求构建器，继承BasenetworkApi 并实现setHttpClientBuilder方法，
+ * 在可以可以添加拦截器，可以对Builder做任意操作
  */
-object NetworkApi {
-    fun getApi(baseUrl: String = NetApiService.SERVER_URL): NetApiService {
-        return Retrofit.Builder().baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-            .client(getOkHttpClient()).build().create(NetApiService::class.java)
+object NetworkApi:BaseNetworkApi(){
+
+    //封装NetApiService变量 方便直接快速调用
+    val service:NetApiService by lazy {
+        getApi(NetApiService::class.java,NetApiService.SERVER_URL)
+    }
+
+    //Cookies自动持久化
+    private val cookieJar: PersistentCookieJar by lazy {
+        PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(App.CONTEXT))
+    }
+
+    //缓存信息配置
+    private val cache: Cache by lazy {
+        //设置缓存路径
+        val httpCacheDirectory = File(App.CONTEXT.cacheDir, "http_response")
+        Cache(httpCacheDirectory, 10 * 1024 * 1024)
     }
 
     /**
-     * 配置http
+     * 实现重写父类的setHttpClientBuilder方法，
+     * 在这里可以添加拦截器，可以对Builder做任意操作
      */
-    private fun getOkHttpClient(): OkHttpClient {
-        val cookieJar by lazy {
-            PersistentCookieJar(
-                SetCookieCache(), SharedPrefsCookiePersistor(
-                    App.CONTEXT
-                )
-            )
-        }
-        //设置缓存路径
-        val httpCacheDirectory = File(App.CONTEXT.cacheDir, "responses")
-        val cache = Cache(httpCacheDirectory, 10 * 1024 * 1024)
-        return OkHttpClient.Builder().apply {
+    override fun setHttpClientBuilder(builder: OkHttpClient.Builder) {
+        builder.apply {
+            //设置缓存配置
             cache(cache)
             //添加Cookies自动持久化
             cookieJar(cookieJar)
@@ -49,11 +51,6 @@ object NetworkApi {
             addInterceptor(CacheInterceptor())
             //如果是debug模式，添加日志拦截器，打印网络请求日志
             if (BuildConfig.DEBUG) addInterceptor(LogInterceptor())
-            //读取超时时间 5秒
-            writeTimeout(5, TimeUnit.SECONDS)
-            readTimeout(5, TimeUnit.SECONDS)
-            //连接超时时间 10秒
-            connectTimeout(10, TimeUnit.SECONDS)
         }.build()
     }
 

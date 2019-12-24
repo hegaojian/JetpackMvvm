@@ -10,9 +10,8 @@ import me.hgj.mvvm_nb_demo.data.UserInfo
  * 描述　: 登录的数据仓库
  */
 class LoginRepository {
-
     suspend fun login(username: String, password: String): ApiResponse<UserInfo> {
-        return NetworkApi.getApi().login(username, password)
+        return NetworkApi.service.login(username, password)
     }
 
 }

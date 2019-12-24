@@ -1,4 +1,4 @@
-package me.hgj.mvvm_nb_demo.api
+package me.hgj.mvvm_nb_demo.app
 
 import me.hgj.mvvm_nb_demo.data.UserInfo
 import me.hgj.mvvm_nb_demo.data.ApiResponse
@@ -16,6 +16,7 @@ interface NetApiService {
     companion object{
         const val SERVER_URL = "https://wanandroid.com/"
     }
+
     /**
      * 登录
      */
