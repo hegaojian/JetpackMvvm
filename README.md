@@ -58,45 +58,13 @@
 ```
 dependencies {
   ...
-  implementation 'me.hegj:mvvmnb:1.0.2'
+  implementation 'me.hegj:mvvmnb:1.0.3'
 }
 
 ```
-# 2.快速开始
-- 2.1 编写自己的基类继承BaseVmActivity(不使用databind)或BaseVmDbActivity(使用databind),同时实现继承类的方法
-```
-abstract class BaseActivity<VM : BaseViewModel> : BaseVmActivity<VM>() {
+# 2.登录示例  
 
-    /**
-     * 打开等待框
-     */
-    override fun showLoading(message: String) {
-       
-    }
-    /**
-     * 关闭等待框
-     */
-    override fun dismissLoading() {
-     
-    }
-
-    /**
-     * 显示消息弹窗
-     */
-    override fun showMessage(message: String) {
-       
-    }
-
-    /**
-     * 吐司
-     */
-    override fun showToast(message: String) {
-       
-    }
-
-}
-```
-- 2.2 LoginActivity继承基类传入相关泛型
+- 2.1 LoginActivity继承基类传入相关泛型
 ```
 class LoginActivity:BaseActivity<LoginViewModel>() {
 
@@ -122,7 +90,7 @@ class LoginActivity:BaseActivity<LoginViewModel>() {
     }
 }
 ```
-- 2.3 创建LoginViewModel继承BaseViewModel
+- 2.2 创建LoginViewModel继承BaseViewModel
 ```
 class LoginViewModel:BaseViewModel() {
 
