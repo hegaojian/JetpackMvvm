@@ -1,11 +1,16 @@
 package me.hgj.mvvm_nb.ext
 
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.hgj.mvvm_nb.*
+import me.hgj.mvvm_nb.ext.util.paresException
+import me.hgj.mvvm_nb.ext.util.paresResult
 import me.hgj.mvvm_nb.network.AppException
 import me.hgj.mvvm_nb.network.BaseResponse
 import me.hgj.mvvm_nb.state.ViewState
@@ -19,6 +24,9 @@ fun <VM> getVmClazz(obj: Any): VM {
     return (obj.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as VM
 }
 
+fun <VM : BaseViewModel> AppCompatActivity.getViewmodel():VM{
+    return ViewModelProvider(this).get(getVmClazz(this) as Class<VM>)
+}
 /**
  * 显示页面状态，这里有个技巧，成功回调在第一个，其后两个带默认值的回调可省
  * @param viewState 接口返回值
@@ -139,7 +147,7 @@ fun <T> BaseVmDbFragment<*, *>.parseState(
 }
 /**
  *
- * net request
+ * net request 会校验请求结果数据是否是成功
  * @param request request method
  * @param viewState request result
  * @param showLoading 配置是否显示等待框
@@ -148,7 +156,32 @@ fun <T> BaseViewModel.launchRequest(
     request: suspend () -> BaseResponse<T>,
     viewState: MutableLiveData<ViewState<T>>,
     showLoading: Boolean = false,
-    loadingMessage: String
+    loadingMessage: String="请求网络中..."
+) {
+    viewModelScope.launch {
+        runCatching {
+            if (showLoading) viewState.value = ViewState.onAppLoading(loadingMessage)
+            withContext(Dispatchers.IO) { request() }
+        }.onSuccess {
+            viewState.paresResult(it)
+        }.onFailure {
+            Log.i("throwable",it.message)
+            viewState.paresException(it)
+        }
+    }
+}
+
+/**
+ * net request 不校验请求结果数据是否是成功
+ * @param request request method
+ * @param viewState request result
+ * @param showLoading 配置是否显示等待框
+ */
+fun <T> BaseViewModel.launchRequestNoCheck(
+    request: suspend () -> T,
+    viewState: MutableLiveData<ViewState<T>>,
+    showLoading: Boolean = false,
+    loadingMessage: String="请求网络中..."
 ) {
     viewModelScope.launch {
         runCatching {

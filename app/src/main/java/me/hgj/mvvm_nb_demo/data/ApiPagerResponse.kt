@@ -1,5 +1,7 @@
 package me.hgj.mvvm_nb_demo.data
 
+import java.io.Serializable
+
 /**
  *  分页数据的基类
  */
@@ -11,7 +13,7 @@ data class ApiPagerResponse<T>(
     var pageCount: Int,
     var size: Int,
     var total: Int
-) {
+) :Serializable{
     /**
      * 数据是否为空
      */
@@ -20,9 +22,9 @@ data class ApiPagerResponse<T>(
         return (datas as List<*>).size==0
     }
     /**
-     * 是否为第一页
+     * 是否为刷新
      */
-    fun isFirst(): Boolean {
+    fun isRefresh(): Boolean {
         //wanandroid 第一页该字段都为0
         return offset==0
     }

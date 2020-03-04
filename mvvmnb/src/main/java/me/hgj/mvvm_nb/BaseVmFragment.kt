@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
@@ -39,8 +37,9 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onVisible()
         mViewModel = createViewModel()
+        initView()
+        onVisible()
         registorDefUIChange()
         createObserver()
         initData()
@@ -52,6 +51,11 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
     private fun createViewModel(): VM {
         return ViewModelProvider(this).get(getVmClazz(this) as Class<VM>)
     }
+
+    /**
+     * 初始化view
+     */
+    abstract fun initView()
 
     /**
      * 懒加载
@@ -88,9 +92,6 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
 
     abstract fun dismissLoading()
 
-    abstract fun showToast(message:String)
-
-    abstract fun showMessage(message: String)
 
     /**
      * 注册 UI 事件
@@ -101,12 +102,6 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
         })
         mViewModel.defUI.dismissDialog.observe(viewLifecycleOwner, Observer {
             dismissLoading()
-        })
-        mViewModel.defUI.toastMessage.observe(viewLifecycleOwner, Observer {
-            showToast(it)
-        })
-        mViewModel.defUI.showMessage.observe(viewLifecycleOwner, Observer {
-            showMessage(it)
         })
     }
 }

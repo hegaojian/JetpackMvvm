@@ -43,8 +43,9 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Frag
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onVisible()
         mViewModel = createViewModel()
+        initView()
+        onVisible()
         registorDefUIChange()
         createObserver()
         initData()
@@ -56,6 +57,11 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Frag
     private fun createViewModel(): VM {
         return ViewModelProvider(this).get(getVmClazz(this) as Class<VM>)
     }
+
+    /**
+     * 初始化view
+     */
+    abstract fun initView()
 
     /**
      * 懒加载
@@ -87,14 +93,10 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Frag
      */
     open fun initData() {}
 
-
     abstract fun showLoading(message:String = "请求网络中...")
 
     abstract fun dismissLoading()
 
-    abstract fun showToast(message:String)
-
-    abstract fun showMessage(message: String)
 
     /**
      * 注册 UI 事件
@@ -105,12 +107,6 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Frag
         })
         mViewModel.defUI.dismissDialog.observe(viewLifecycleOwner, Observer {
             dismissLoading()
-        })
-        mViewModel.defUI.toastMessage.observe(viewLifecycleOwner, Observer {
-            showToast(it)
-        })
-        mViewModel.defUI.showMessage.observe(viewLifecycleOwner, Observer {
-            showMessage(it)
         })
     }
 }

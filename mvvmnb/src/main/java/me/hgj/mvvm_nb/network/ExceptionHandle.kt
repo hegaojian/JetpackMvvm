@@ -20,42 +20,42 @@ object ExceptionHandle {
         e?.let {
             when (it) {
                 is HttpException -> {
-                    ex = AppException(ERROR.NETWORD_ERROR)
+                    ex = AppException(Error.NETWORD_ERROR)
                     return ex
                 }
                 is JsonParseException, is JSONException, is ParseException, is MalformedJsonException -> {
-                    ex = AppException(ERROR.PARSE_ERROR)
+                    ex = AppException(Error.PARSE_ERROR)
                     return ex
                 }
                 is ConnectException -> {
-                    ex = AppException(ERROR.NETWORD_ERROR)
+                    ex = AppException(Error.NETWORD_ERROR)
                     return ex
                 }
                 is javax.net.ssl.SSLException -> {
-                    ex = AppException(ERROR.SSL_ERROR)
+                    ex = AppException(Error.SSL_ERROR)
                     return ex
                 }
                 is ConnectTimeoutException -> {
-                    ex = AppException(ERROR.TIMEOUT_ERROR)
+                    ex = AppException(Error.TIMEOUT_ERROR)
                     return ex
                 }
                 is java.net.SocketTimeoutException -> {
-                    ex = AppException(ERROR.TIMEOUT_ERROR)
+                    ex = AppException(Error.TIMEOUT_ERROR)
                     return ex
                 }
                 is java.net.UnknownHostException -> {
-                    ex = AppException(ERROR.TIMEOUT_ERROR)
+                    ex = AppException(Error.TIMEOUT_ERROR)
                     return ex
                 }
                 is AppException -> return it
 
                 else -> {
-                    ex = AppException(ERROR.UNKNOWN)
+                    ex = AppException(Error.UNKNOWN)
                     return ex
                 }
             }
         }
-        ex = AppException(ERROR.UNKNOWN)
+        ex = AppException(Error.UNKNOWN)
         return ex
     }
 }

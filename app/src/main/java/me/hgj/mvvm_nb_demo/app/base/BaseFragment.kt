@@ -1,5 +1,7 @@
 package me.hgj.mvvm_nb_demo.app.base
 
+import android.graphics.PorterDuff
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.databinding.ViewDataBinding
 import com.afollestad.materialdialogs.MaterialDialog
@@ -11,7 +13,8 @@ import me.hgj.mvvm_nb.BaseViewModel
 import me.hgj.mvvm_nb.BaseVmDbFragment
 import me.hgj.mvvm_nb_demo.R
 import me.hgj.mvvm_nb_demo.app.ext.getAppViewModel
-import me.hgj.mvvm_nb_demo.viewmodel.AppViewModel
+import me.hgj.mvvm_nb_demo.app.AppViewModel
+import me.hgj.mvvm_nb_demo.app.util.SettingUtil
 
 /**
  * 作者　: hegaojian
@@ -24,15 +27,15 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
 
     private var dialog: MaterialDialog? = null
 
-    //是否第一次加载
-    private var isFirst: Boolean = true
-
     val appViewModel: AppViewModel by lazy { getAppViewModel() }
 
     /**
      * 当前Fragment绑定的视图布局
      */
     abstract override fun layoutId(): Int
+
+
+    abstract override fun initView()
 
     /**
      * 懒加载
@@ -62,11 +65,15 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
                     .cancelable(true)
                     .cancelOnTouchOutside(false)
                     .cornerRadius(8f)
-                    .customView(R.layout.custom_progress_dialog_view)
+                    .customView(R.layout.layout_custom_progress_dialog_view)
                     .lifecycleOwner(this)
             }
             dialog?.getCustomView()?.run {
                 this.findViewById<TextView>(R.id.loading_tips).text = message
+                appViewModel.appColor.value?.let {
+                    this.findViewById<ProgressBar>(R.id.progressBar).indeterminateTintList =
+                        SettingUtil.getOneColorStateList(it)
+                }
             }
         }
         dialog?.show()
@@ -79,26 +86,4 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
         dialog?.dismiss()
     }
 
-    /**
-     * 消息弹窗
-     */
-    override fun showMessage(message: String) {
-        activity?.let {
-            MaterialDialog(it)
-                .cancelable(false)
-                .lifecycleOwner(this)
-                .show {
-                    title(text = "温馨提示")
-                    message(text = message)
-                    positiveButton(text = "确定")
-                }
-        }
-    }
-
-    /**
-     * 吐司
-     */
-    override fun showToast(message: String) {
-        ToastUtils.showShort(message)
-    }
 }

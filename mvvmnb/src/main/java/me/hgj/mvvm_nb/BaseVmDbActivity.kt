@@ -30,8 +30,6 @@ abstract class BaseVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : AppC
 
     abstract fun showToast(message:String)
 
-    abstract fun showMessage(message:String)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         createViewDataBinding()
@@ -73,12 +71,6 @@ abstract class BaseVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : AppC
         })
         mViewModel.defUI.dismissDialog.observe(this, Observer {
             dismissLoading()
-        })
-        mViewModel.defUI.toastMessage.observe(this, Observer {
-            showToast(it)
-        })
-        mViewModel.defUI.showMessage.observe(this, Observer {
-            showMessage(it)
         })
     }
 }

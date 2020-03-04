@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">MVVM-Nb</string>
+    <string name="app_name">鸡你太美</string>
+    <string name="bottomname1">首页</string>
+    <string name="bottomname2">项目</string>
+    <string name="bottomname3">广场</string>
+    <string name="bottomname4">公众号</string>
+    <string name="bottomname5">我的</string>
 </resources>

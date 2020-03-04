@@ -16,7 +16,7 @@ import java.io.File
  * 作者　: hegaojian
  * 时间　: 2019/12/23
  * 描述　: 自己项目中的网络请求构建器，继承BasenetworkApi 并实现setHttpClientBuilder方法，
- * 在可以可以添加拦截器，可以对Builder做任意操作
+ * 在这里可以添加拦截器，可以对Builder做任意操作
  */
 object NetworkApi:BaseNetworkApi(){
 
@@ -25,8 +25,8 @@ object NetworkApi:BaseNetworkApi(){
         getApi(NetApiService::class.java,NetApiService.SERVER_URL)
     }
 
-    //Cookies自动持久化
-    private val cookieJar: PersistentCookieJar by lazy {
+    //Cookies自动持久化 调用 clear 可清空Cookies
+     val cookieJar: PersistentCookieJar by lazy {
         PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(App.CONTEXT))
     }
 
@@ -41,7 +41,7 @@ object NetworkApi:BaseNetworkApi(){
      * 实现重写父类的setHttpClientBuilder方法，
      * 在这里可以添加拦截器，可以对Builder做任意操作
      */
-    override fun setHttpClientBuilder(builder: OkHttpClient.Builder) {
+    override fun setHttpClientBuilder(builder: OkHttpClient.Builder):OkHttpClient.Builder{
         builder.apply {
             //设置缓存配置
             cache(cache)
@@ -49,9 +49,8 @@ object NetworkApi:BaseNetworkApi(){
             cookieJar(cookieJar)
             //添加缓存拦截器
             addInterceptor(CacheInterceptor())
-            //如果是debug模式，添加日志拦截器，打印网络请求日志
-            if (BuildConfig.DEBUG) addInterceptor(LogInterceptor())
-        }.build()
+        }
+        return builder
     }
 
 }

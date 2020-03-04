@@ -18,7 +18,7 @@ class LogInterceptor : Interceptor {
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
-        val UTF8 = Charset.forName("UTF-8")
+        val utf8 = Charset.forName("UTF-8")
         // 打印请求报文
         val request = chain.request()
         val requestBody = request.body()
@@ -26,10 +26,10 @@ class LogInterceptor : Interceptor {
         if (requestBody != null) {
             val buffer = Buffer()
             requestBody.writeTo(buffer)
-            var charset: Charset? = UTF8
+            var charset: Charset? = utf8
             val contentType = requestBody.contentType()
             if (contentType != null) {
-                charset = contentType.charset(UTF8)
+                charset = contentType.charset(utf8)
             }
             charset?.let {
                 reqBody = buffer.readString(it)
@@ -49,11 +49,11 @@ class LogInterceptor : Interceptor {
             source.request(java.lang.Long.MAX_VALUE)
             val buffer = source.buffer()
 
-            var charset: Charset? = UTF8
+            var charset: Charset? = utf8
             val contentType = responseBody.contentType()
             if (contentType != null) {
                 try {
-                    charset = contentType.charset(UTF8)
+                    charset = contentType.charset(utf8)
                 } catch (e: UnsupportedCharsetException) {
                     e.printStackTrace()
                 }
@@ -67,10 +67,6 @@ class LogInterceptor : Interceptor {
         ))
 
         return response
-    }
-
-    companion object {
-        private val TAG = LogInterceptor::class.java.simpleName
     }
 
 }

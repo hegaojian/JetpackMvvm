@@ -14,7 +14,7 @@ class AppException : Exception {
         errCode = errCodeInput
     }
 
-    constructor(error: ERROR) {
+    constructor(error: Error) {
         errCode = error.getKey()
         errorMsg = error.getValue()
     }

@@ -2,8 +2,6 @@ package me.hgj.mvvm_nb
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import me.hgj.mvvm_nb.ext.getVmClazz
@@ -24,10 +22,6 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
     abstract fun showLoading(message:String = "请求网络中...")
 
     abstract fun dismissLoading()
-
-    abstract fun showToast(message:String)
-
-    abstract fun showMessage(message:String)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,12 +56,6 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
         })
         mViewModel.defUI.dismissDialog.observe(this, Observer {
             dismissLoading()
-        })
-        mViewModel.defUI.toastMessage.observe(this, Observer {
-            showToast(it)
-        })
-        mViewModel.defUI.showMessage.observe(this, Observer {
-            showMessage(it)
         })
     }
 }

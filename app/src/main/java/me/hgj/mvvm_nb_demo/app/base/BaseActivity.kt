@@ -1,5 +1,7 @@
 package me.hgj.mvvm_nb_demo.app.base
 
+import android.graphics.PorterDuff
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.databinding.ViewDataBinding
 import com.afollestad.materialdialogs.MaterialDialog
@@ -11,7 +13,8 @@ import me.hgj.mvvm_nb.BaseViewModel
 import me.hgj.mvvm_nb.BaseVmDbActivity
 import me.hgj.mvvm_nb_demo.R
 import me.hgj.mvvm_nb_demo.app.ext.getAppViewModel
-import me.hgj.mvvm_nb_demo.viewmodel.AppViewModel
+import me.hgj.mvvm_nb_demo.app.AppViewModel
+import me.hgj.mvvm_nb_demo.app.util.SettingUtil
 
 /**
  * 作者　: hegaojian
@@ -35,11 +38,15 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
                 MaterialDialog(it)
                     .cancelable(true)
                     .cancelOnTouchOutside(false)
-                    .customView(R.layout.custom_progress_dialog_view)
+                    .customView(R.layout.layout_custom_progress_dialog_view)
                     .lifecycleOwner(this)
             }
             dialog?.getCustomView()?.run {
                 this.findViewById<TextView>(R.id.loading_tips).text = message
+                appViewModel.appColor.value?.let {
+                    this.findViewById<ProgressBar>(R.id.progressBar).indeterminateTintList =
+                        SettingUtil.getOneColorStateList(it)
+                }
             }
         }
         dialog?.show()
@@ -51,21 +58,6 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
     override fun dismissLoading() {
         dialog?.dismiss()
     }
-
-    /**
-     * 显示消息弹窗
-     */
-    override fun showMessage(message: String) {
-        MaterialDialog(this)
-            .cancelable(false)
-            .lifecycleOwner(this)
-            .show {
-                title(text = "温馨提示")
-                message(text = message)
-                positiveButton(text = "确定")
-            }
-    }
-
     /**
      * 吐司
      */

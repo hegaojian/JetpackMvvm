@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/item_project_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:text="有何高见"
+            android:background="@drawable/item_imgselector"
+            android:textColor="@color/colorBlack666"
+            android:textSize="13dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_project_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/title_lable_shap"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:text="置顶"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_project_author"
+            app:layout_constraintStart_toEndOf="@+id/item_project_author"
+            app:layout_constraintTop_toTopOf="@+id/item_project_author" />
+
+        <TextView
+            android:id="@+id/item_project_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/title_lable_shap"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:text="新"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_project_author"
+            app:layout_constraintStart_toEndOf="@+id/item_project_top"
+            app:layout_constraintTop_toTopOf="@+id/item_project_author" />
+
+        <TextView
+            android:id="@+id/item_project_type1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/title_lable_shap1"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:text="问答"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_project_author"
+            app:layout_constraintStart_toEndOf="@+id/item_project_new"
+            app:layout_constraintTop_toTopOf="@+id/item_project_author" />
+        
+        <TextView
+            android:id="@+id/item_project_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="1小时前"
+            android:textColor="@color/colorBlack666"
+            android:textSize="13dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_project_author"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_project_author" />
+
+        <ImageView
+            android:id="@+id/item_project_imageview"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:scaleType="centerCrop"
+            android:background="@color/windowBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_project_author"
+            tools:srcCompat="@drawable/default_project_img" />
+
+        <TextView
+            android:id="@+id/item_project_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="一款适用经典蓝牙的快速开发框架"
+            android:textColor="@color/colorBlack333"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_project_imageview"
+            app:layout_constraintTop_toTopOf="@+id/item_project_imageview" />
+
+        <TextView
+            android:id="@+id/item_project_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:ellipsize="end"
+            android:includeFontPadding="true"
+            android:lineSpacingMultiplier="1.3"
+            android:maxLines="3"
+            android:text="本框架只适用于支持蓝牙3.0协议的设备进行数据连接传输，也就是通常说的经典蓝牙，通常手机与手机之间的连接都属于经典蓝牙模式范畴，而一般连接外设耳机等设备，大多 属于BLE蓝牙（低功耗蓝牙），这两种蓝牙除了名字有相同之外，通信方式、原理、协议完全不一样。"
+            android:textColor="@color/colorBlack666"
+            android:textSize="13dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_project_imageview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_project_imageview"
+            app:layout_constraintTop_toBottomOf="@+id/item_project_title" />
+
+        <TextView
+            android:id="@+id/item_project_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:text="分类·项目"
+            android:textColor="@color/colorBlack666"
+            android:textSize="13dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_project_imageview" />
+
+        <me.hgj.mvvm_nb_demo.app.weight.customview.CollectView
+            android:id="@+id/item_project_collect"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_project_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_project_type" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

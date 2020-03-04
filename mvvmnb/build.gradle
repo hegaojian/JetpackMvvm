@@ -6,7 +6,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0.2"
@@ -29,12 +29,12 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     //kotlin
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
     // liveData
-    api "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-rc03"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     // viewModel
-    api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-rc03"
-    api "androidx.lifecycle:lifecycle-extensions:2.2.0-rc03"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    api "androidx.lifecycle:lifecycle-extensions:2.2.0"
     //retrofit
     api "com.squareup.retrofit2:retrofit:2.6.2"
     api "com.squareup.retrofit2:converter-gson:2.6.2"
@@ -46,10 +46,10 @@ dependencies {
 publish {
     userOrg = 'hegaojian'//bintray网站中的用户名，网站链接：https://bintray.com/
     repoName = 'cxk'//仓库名字 这个可以随便起,比如我觉得我比较菜，所以我取了个蔡徐坤
-    groupId = 'me.hegj'//路径名等于“me.hegj.mvvmnb:1.0.0”中的   me.hegj，你也可以写com.xxx
-    artifactId = 'mvvmnb'//项目名等于“me.hegj.mvvmnb:1.0.0”中的  mvvmnb
-    publishVersion = '1.0.3'//版本号 等于“me.hegj.mvvmnb:1.0.0”中的 1.0.0
-    desc = 'An Android MVVM framework,MVVM is nb'//说明，不重要的东西，随便写
-    website = 'https://github.com/hegaojian/MVVM-Nb'//项目主页，可以直接用GitHub地址
+    groupId = 'me.hegj'//路径 名等于“me.hegj.mvvmnb:1.0.0”中的   me.hegj，你也可以写com.xxx
+    artifactId = 'mvvmnb'//项目名 等于“me.hegj.mvvmnb:1.0.0”中的  mvvmnb
+    publishVersion = '1.0.4'//版本号 等于“me.hegj.mvvmnb:1.0.0”中的 1.0.0
+    desc = 'An Android MVVM-Jetpack framework,MVVMjetpacknb is nb'//说明，不重要的东西，随便写
+    website = 'https://github.com/hegaojian/MVVM-Nb'//项目主页，用GitHub地址
     licences = ['Apache-2.0']//协议
 }

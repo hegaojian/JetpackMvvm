@@ -1,10 +1,18 @@
 package me.hgj.mvvm_nb_demo.app.bindadapter
 
+import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
+import me.hgj.mvvm_nb.ext.view.textString
 
 /**
  * 作者　: hegaojian
@@ -13,15 +21,56 @@ import androidx.databinding.BindingAdapter
  */
 object CustomBindAdapter {
 
-    @BindingAdapter("android:checkChange")
+    @BindingAdapter(value = ["checkChange"])
     @JvmStatic
-    fun checkboxChange(view: CheckBox, listener: CompoundButton.OnCheckedChangeListener) {
+    fun checkChange(view: CheckBox, listener: CompoundButton.OnCheckedChangeListener) {
         view.setOnCheckedChangeListener(listener)
     }
 
-    @BindingAdapter("android:afterchange")
+    @BindingAdapter(value = ["showPwd"])
     @JvmStatic
-    fun afterchange(view: EditText, textWatcher:TextWatcher) {
-        view.addTextChangedListener(textWatcher)
+    fun showPwd(view: EditText, boolean: Boolean) {
+        if (boolean) {
+            view.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+        } else {
+            view.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        }
+        view.setSelection(view.textString().length)
+    }
+
+    @BindingAdapter(value = ["imageUrl"])
+    @JvmStatic
+    fun imageUrl(view: ImageView, url: String) {
+        Glide.with(view)
+            .load(url)
+            .transition(DrawableTransitionOptions.withCrossFade(500))
+            .into(view)
+    }
+
+    @BindingAdapter(value = ["circleImageUrl"])
+    @JvmStatic
+    fun circleImageUrl(view: ImageView, url: String) {
+        Glide.with(view)
+            .load(url)
+            .apply(RequestOptions.bitmapTransform(CircleCrop()))
+            .transition(DrawableTransitionOptions.withCrossFade(500))
+            .into(view)
+    }
+
+    @BindingAdapter(value = ["afterTextChanged"])
+    @JvmStatic
+    fun EditText.afterTextChanged(action: (String) -> Unit) {
+        addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                action(s.toString())
+            }
+        })
     }
 }
