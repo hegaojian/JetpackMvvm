@@ -1,4 +1,4 @@
-# MVVM-Nb
+# JetPackMvvm
 **基于MVVM模式与谷歌官方推荐的JetPack,封装Kotlin+LiveData+ViewModel+Lifecycle+dataBinding的开发框架,帮你简化各种操作，让你快速上手使用**  
 
 ## 框架技术  
@@ -44,7 +44,7 @@
   
 - **Kotlin协程:**  
 
-  **一个线程框架**，吹爆666，谁用谁知道，以同步方式写异步逻辑
+  **一个线程框架**，用起来很爽，以同步方式写异步逻辑
 
 # 1.如何使用
 
@@ -58,7 +58,7 @@
 ```
 dependencies {
   ...
-  implementation 'me.hegj:mvvmnb:1.0.3'
+  implementation 'me.hegj:mvvmnb:1.0.5'
 }
 
 ```
