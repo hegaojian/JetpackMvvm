@@ -1,3 +1,12 @@
+[![Platform][1]][2] [![GitHub license][3]][4]  [![GitHub license][5]][6] 
+
+[1]:https://img.shields.io/badge/platform-Android-blue.svg  
+[2]:https://github.com/hegaojian/JetpackMvvm
+[3]:https://img.shields.io/github/release/hegaojian/JetpackMvvm.svg
+[4]:https://github.com/hegaojian/JetpackMvvm/releases/latest
+[5]:https://img.shields.io/badge/license-Apache%202-blue.svg
+[6]:https://github.com/hegaojian/JetpackMvvm/blob/master/LICENSE
+
 # JetPackMvvm
 - **基于MVVM模式集成谷歌官方推荐的JetPack组件库：LiveData、ViewModel、Lifecycle组件**
 - **使用kotlin语言，添加大量拓展函数，简化代码**
@@ -11,9 +20,11 @@
  
 #### APK下载：
 
-- [firm下载](http://d.6short.com/v9q7)
+- [Github下载]（https://github.com/hegaojian/JetpackMvvm/releases/download/1.0.0/app-release.apk）
 
-- 扫码下载
+- [firm下载(推荐)](http://d.6short.com/v9q7)
+
+- 扫码下载(推荐)
 
 ![](https://upload-images.jianshu.io/upload_images/9305757-4999111e26d5e93a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
   
