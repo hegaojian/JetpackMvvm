@@ -26,7 +26,7 @@
             android:visibility="invisible"
             app:elevation="5dp"
             app:fabSize="mini"
-            app:layout_behavior="me.hgj.mvvm_nb_demo.app.weight.recyclerview.FatScrollAwareFABBehavior" />
+            app:layout_behavior="me.hgj.jetpackmvvm.demo.app.weight.recyclerview.FatScrollAwareFABBehavior" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

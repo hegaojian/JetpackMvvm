@@ -41,7 +41,7 @@
             android:paddingTop="8dp"
             android:paddingRight="12dp"
             android:paddingBottom="8dp"
-            android:text="立即打开"
+            android:text="立即进入"
             android:textColor="@color/white"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"

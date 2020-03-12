@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="vm"
+            type="me.hgj.jetpackmvvm.demo.ui.me.MeViewModel" />
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -16,8 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <include layout="@layout/include_toolbar" />
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
@@ -34,6 +36,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/colorPrimary"
+                        android:paddingTop="?attr/actionBarSize"
                         android:paddingBottom="?attr/actionBarSize">
 
                         <ImageView
@@ -42,6 +45,7 @@
                             android:layout_height="72dp"
                             android:layout_marginStart="16dp"
                             android:src="@drawable/ic_account"
+                            bind:circleImageUrl="@{vm.imageUrl}"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -52,7 +56,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginEnd="16dp"
-                            android:text="请先登录~"
+                            android:text="@{vm.name}"
+                            tools:text = "我是菜虚鲲"
                             android:textColor="@color/white"
                             android:textSize="16dp"
                             android:textStyle="bold"
@@ -68,9 +73,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="12dp"
-                            android:text="id : --　排名 : --"
+                            android:text="@{vm.info}"
                             android:textColor="@color/white"
                             android:textSize="12dp"
+                            tools:text="id：--　排名：--"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView"
                             app:layout_constraintStart_toEndOf="@+id/imageView"
                             app:layout_constraintTop_toBottomOf="@+id/me_name" />
@@ -95,7 +101,7 @@
                                 android:id="@+id/me_integralLinear"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
-                                android:background="@drawable/item_selector"
+                                android:background="?attr/selectableItemBackground"
                                 android:gravity="center_vertical"
                                 android:paddingLeft="16dp"
                                 android:paddingRight="16dp"
@@ -129,7 +135,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="8dp"
-                                    android:text="0"
+                                    android:text="@{vm.integral}"
+                                    tools:text="0"
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="15dp"
                                     android:textStyle="bold" />
@@ -144,7 +151,7 @@
                                 android:id="@+id/me_collect"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
-                                android:background="@drawable/item_selector"
+                                android:background="?attr/selectableItemBackground"
                                 android:gravity="center_vertical"
                                 android:paddingLeft="16dp"
                                 android:paddingRight="16dp"
@@ -175,7 +182,7 @@
                                 android:id="@+id/me_article"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
-                                android:background="@drawable/item_selector"
+                                android:background="?attr/selectableItemBackground"
                                 android:gravity="center_vertical"
                                 android:paddingLeft="16dp"
                                 android:paddingRight="16dp"
@@ -206,7 +213,7 @@
                                 android:id="@+id/me_todo"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
-                                android:background="@drawable/item_selector"
+                                android:background="?attr/selectableItemBackground"
                                 android:gravity="center_vertical"
                                 android:paddingLeft="16dp"
                                 android:paddingRight="16dp"
@@ -222,7 +229,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="待办清单"
+                                    android:text="TODO"
                                     android:textStyle="bold"
                                     android:textColor="@color/colorBlack333"
                                     android:textSize="14dp" />
@@ -243,7 +250,7 @@
                                 android:id="@+id/me_about"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
-                                android:background="@drawable/item_selector"
+                                android:background="?attr/selectableItemBackground"
                                 android:paddingLeft="16dp"
                                 android:paddingRight="16dp"
                                 android:gravity="center_vertical"
@@ -274,8 +281,7 @@
                                 android:id="@+id/me_join"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
-                                android:background="@drawable/item_selector"
-
+                                android:background="?attr/selectableItemBackground"
                                 android:paddingLeft="16dp"
                                 android:paddingRight="16dp"
                                 android:gravity="center_vertical"
@@ -306,7 +312,7 @@
                                 android:id="@+id/me_setting"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
-                                android:background="@drawable/item_selector"
+                                android:background="?attr/selectableItemBackground"
                                 android:gravity="center_vertical"
                                 android:orientation="horizontal"
                                 android:paddingLeft="16dp"

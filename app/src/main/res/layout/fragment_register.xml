@@ -7,7 +7,7 @@
 
         <variable
             name="viewmodel"
-            type="me.hgj.mvvm_nb_demo.ui.login.LoginRegisterViewModel" />
+            type="me.hgj.jetpackmvvm.demo.ui.login.LoginRegisterViewModel" />
         <variable
             name="view"
             type="android.view.View" />

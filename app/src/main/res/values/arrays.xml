@@ -1,0 +1,10 @@
+<resources>
+    <string-array name="setting_modes">
+        <item>无</item>
+        <item>渐显</item>
+        <item>缩放</item>
+        <item>从下到上</item>
+        <item>从左到右</item>
+        <item>从右到左</item>
+    </string-array>
+</resources>

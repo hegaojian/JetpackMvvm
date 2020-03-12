@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="me.hgj.jetpackmvvm" >
+
+    <application>
+        <provider
+            android:authorities="${applicationId}.KtxInstaller"
+            android:name="me.hgj.jetpackmvvm.Ktx"
+            android:exported="false"/>
+    </application>
+</manifest>

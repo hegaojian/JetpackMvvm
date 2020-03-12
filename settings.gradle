@@ -1,2 +1,2 @@
-include ':app', ':mvvmnb'
-rootProject.name='MVVM-Nb'
+include ':app', ':JetpackMvvm'
+rootProject.name='JetpackMvvmDemo'

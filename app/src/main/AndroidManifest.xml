@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="me.hgj.mvvm_nb_demo">
+    package="me.hgj.jetpackmvvm.demo">
 
     <application
         android:name=".App"
@@ -24,9 +24,6 @@
         <activity
             android:name=".ui.MainActivity"
             android:launchMode="singleTask" />
-       <!-- <activity
-            android:name=".ui.search.SearchActivity"
-            android:launchMode="singleTask" />-->
         <!-- Arms 配置 -->
         <meta-data
             android:name="design_width_in_dp"
@@ -42,4 +39,5 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 </manifest>

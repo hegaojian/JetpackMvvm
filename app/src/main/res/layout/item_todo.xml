@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_todo_cardview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="8dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/item_todo_tag"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_tag"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_todo_title"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:maxLength="10"
+            android:text="今天晚上一起来开黑啊"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/item_todo_date"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toEndOf="@+id/item_todo_tag"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/item_todo_setting"
+            android:layout_width="36dp"
+            android:layout_height="50dp"
+            android:background="@drawable/item_imgselector"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:src="@drawable/ic_more"
+            app:layout_constraintBottom_toBottomOf="@+id/item_todo_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_todo_title" />
+
+        <TextView
+            android:id="@+id/item_todo_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2019-09-04"
+            android:textColor="@color/colorBlack666"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_todo_title"
+            app:layout_constraintEnd_toStartOf="@+id/item_todo_setting"
+            app:layout_constraintTop_toTopOf="@+id/item_todo_title" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@color/backgrounGrey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_todo_title" />
+
+        <TextView
+            android:id="@+id/item_todo_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="12dp"
+            android:lineSpacingMultiplier="1.2"
+            android:minLines="3"
+            android:text="来一起玩毒奶粉啊，超星空NMSL"
+            android:textColor="@color/colorBlack666"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/item_todo_date"
+            app:layout_constraintStart_toStartOf="@+id/item_todo_title"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <ImageView
+            android:id="@+id/item_todo_status"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_todo_setting"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_done" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

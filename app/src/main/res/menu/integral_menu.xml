@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/integral_guize"
+        android:checked="false"
+        android:title="积分规则"
+        android:icon="@drawable/ic_guize"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/integral_history"
+        android:checked="false"
+        android:title="积分获取记录"
+        android:icon="@drawable/ic_history"
+        app:showAsAction="always" />
+
+</menu>

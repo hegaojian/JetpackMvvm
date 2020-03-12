@@ -9,10 +9,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        
         <fragment
             android:id="@+id/host_fragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:name="me.hgj.jetpackmvvm.navigation.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="true"

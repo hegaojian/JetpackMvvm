@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="me.hgj.jetpackmvvm.demo.ui.share.AriticleViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_toolbar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadeScrollbars="true"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="标题"
+                    android:textColor="@color/texttipColor"
+                    android:textSize="10dp" />
+
+                <EditText
+                    android:id="@+id/share_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/edit_shap"
+                    android:hint="文章标题"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:text="@={vm.shareTitle}"
+                    android:maxLength="10"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="链接"
+                    android:textColor="@color/texttipColor"
+                    android:textSize="10dp" />
+
+                <EditText
+                    android:id="@+id/share_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/edit_shap"
+                    android:gravity="top|left"
+                    android:hint="文章链接"
+                    android:text="@={vm.shareUrl}"
+                    android:maxLength="100"
+                    android:minLines="4"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="分享人"
+                    android:textColor="@color/texttipColor"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/share_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/edit_shap"
+                    android:hint="@{vm.shareName}"
+                    tools:hint="有何高见"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+
+                <TextView
+                    android:id="@+id/share_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/button_shap"
+                    android:gravity="center"
+                    android:text="分享"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

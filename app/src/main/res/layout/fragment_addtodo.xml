@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="me.hgj.jetpackmvvm.demo.ui.todo.TodoViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_toolbar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadeScrollbars="true"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="标题"
+                    android:textColor="@color/texttipColor"
+                    android:textSize="10dp" />
+
+                <EditText
+                    android:id="@+id/add_todo_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/edit_shap"
+                    android:hint="标题"
+                    android:text="@={vm.todoTitle}"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLength="10"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="内容"
+                    android:textColor="@color/texttipColor"
+                    android:textSize="10dp" />
+
+                <EditText
+                    android:id="@+id/add_todo_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/edit_shap"
+                    android:gravity="top|left"
+                    android:hint="内容描述"
+                    android:text="@={vm.todoContent}"
+                    android:maxLength="100"
+                    android:minLines="4"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="预定完成时间"
+                    android:textColor="@color/texttipColor"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/add_todo_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/edit_shap"
+                    android:hint="选择预定完成时间"
+                    android:text="@{vm.todoTime}"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="优先级"
+                    android:textColor="@color/texttipColor"
+                    android:textSize="10dp" />
+
+                <LinearLayout
+                    android:id="@+id/add_todo_proxlinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/edit_shap"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/add_todo_prox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="12dp"
+                        android:text="@{vm.todoLeve}"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
+
+                    <me.hgj.jetpackmvvm.demo.app.weight.preference.MyColorCircleView
+                        android:id="@+id/add_todo_colorview"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        bind:colorCircleViewColor="@{vm.todoColor}"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="12dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/add_todo_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/button_shap"
+                    android:gravity="center"
+                    android:text="提交"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

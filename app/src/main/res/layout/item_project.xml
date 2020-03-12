@@ -159,7 +159,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_project_imageview" />
 
-        <me.hgj.mvvm_nb_demo.app.weight.customview.CollectView
+        <me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView
             android:id="@+id/item_project_collect"
             android:layout_width="24dp"
             android:layout_height="24dp"
