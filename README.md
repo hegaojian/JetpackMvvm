@@ -3,6 +3,18 @@
 - **使用kotlin语言，添加大量拓展函数，简化代码**
 - **加入Retorfit网络请求,协程，帮你简化各种操作，让你快速请求网络**  
 
+# 演示Demo
+ 已用该库重构了我之前的玩安卓项目，使用单Activity+Fragment架构编写，优化了很多代码，对比之前的mvp项目，开发效率，舒适度要提高了不少，想看之前具体的界面效果可以去 [https://github.com/hegaojian/WanAndroid](https://github.com/hegaojian/WanAndroid) 这里我就不放相关的图片了
+ 
+已重构的玩安卓项目APK下载：
+
+- [firm下载](http://d.6short.com/v9q7)
+
+- 扫码下载
+
+![](https://upload-images.jianshu.io/upload_images/9305757-a2015fd2da99136c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+  
+  
 # 1.如何使用
 
 - 1.1 启用dataBinding 如果你需要用到dataBinding,请在主工程的build中加入，不用可以忽略这一步：
