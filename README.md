@@ -12,7 +12,7 @@
 
 - 扫码下载
 
-![](https://upload-images.jianshu.io/upload_images/9305757-a2015fd2da99136c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://upload-images.jianshu.io/upload_images/9305757-4999111e26d5e93a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
   
   
 # 1.如何使用
