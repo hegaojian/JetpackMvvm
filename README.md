@@ -57,21 +57,21 @@
 ```
 dependencies {
   ...
-  implementation 'me.hegj:JetpackMvvm:1.0.5'
+  implementation 'me.hegj:JetpackMvvm:1.0.0'
 }
 
 ```
 # 2.登录示例  
 
-- 2.1 LoginActivity继承基类传入相关泛型
+- 2.1 LoginFragment继承基类传入相关泛型
 ```
-class LoginActivity:BaseActivity<LoginViewModel>() {
+class LoginActivity:BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>() {
 
-    override fun layoutId() = R.layout.activity_login
+    override fun layoutId() = R.layout.fragment_login
 
     override fun initView() {
         login_sub.setOnClickListener {
-            mViewModel.login(login_username.toTextString(),login_password.toTextString())
+            mViewModel.login()
         }
     }
 
@@ -92,13 +92,18 @@ class LoginActivity:BaseActivity<LoginViewModel>() {
 - 2.2 创建LoginViewModel继承BaseViewModel
 ```
 class LoginViewModel:BaseViewModel() {
-
+    
+     //用户名
+    var username = StringObservableField()
+     //密码
+    var password = StringObservableField()
+    
     private val loginRpository:LoginRepository by lazy{ LoginRepository() }
 
     var loginResult = MutableLiveData<ViewState<UserInfo>>()
 
-    fun login(username:String,password:String){
-        launchRequest({loginRpository.login(username,password)},loginResult)
+    fun login(){
+        launchRequest({loginRpository.login(username.get(),password.get())},loginResult)
     }
 }
 ```
