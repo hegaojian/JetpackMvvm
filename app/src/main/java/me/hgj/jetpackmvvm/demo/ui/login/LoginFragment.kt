@@ -13,8 +13,7 @@ import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBinding
 import me.hgj.jetpackmvvm.ext.parseState
-import me.hgj.jetpackmvvm.ext.view.clickNoRepeat
-import me.hgj.jetpackmvvm.ext.view.visible
+import me.hgj.jetpackmvvm.ext.util.setOnclickNoRepeat
 
 /**
  * 作者　: hegaojian
@@ -38,27 +37,6 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
             login_goregister.setTextColor(it)
             toolbar.setBackgroundColor(it)
         }
-
-        login_clear.setOnClickListener { mViewModel.username.set("") }
-        login_key.setOnCheckedChangeListener { buttonView, isChecked ->
-            mViewModel.isShowPwd.set(
-                isChecked
-            )
-        }
-        login_key.visible()
-        login_sub.clickNoRepeat {
-            when {
-                mViewModel.username.get().isEmpty() -> showMessage("请填写账号")
-                mViewModel.password.get().isEmpty() -> showMessage("请填写密码")
-                else -> mViewModel.loginReq()
-            }
-        }
-
-        login_goregister.clickNoRepeat {
-            hideSoftKeyboard(activity)
-            Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_registerFrgment)
-
-        }
     }
 
     override fun createObserver() {
@@ -78,6 +56,36 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
 
     override fun lazyLoadData() {
 
+    }
+
+    /**
+     * 设置点击事件
+     */
+    override fun viewOnClick() {
+        setOnclickNoRepeat(listOf(login_clear, login_sub, login_goregister)) {
+            when (it.id) {
+                R.id.login_clear -> {
+                    mViewModel.username.set("")
+                }
+                R.id.login_sub -> {
+                    when {
+                        mViewModel.username.get().isEmpty() -> showMessage("请填写账号")
+                        mViewModel.password.get().isEmpty() -> showMessage("请填写密码")
+                        else -> mViewModel.loginReq()
+                    }
+                }
+                R.id.login_goregister -> {
+                    hideSoftKeyboard(activity)
+                    Navigation.findNavController(it)
+                        .navigate(R.id.action_loginFragment_to_registerFrgment)
+                }
+            }
+        }
+        login_key.setOnCheckedChangeListener { buttonView, isChecked ->
+            mViewModel.isShowPwd.set(
+                isChecked
+            )
+        }
     }
 
 }

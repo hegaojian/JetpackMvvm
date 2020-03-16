@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.demo.app.ext
 
+import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +15,9 @@ import me.hgj.jetpackmvvm.demo.App
 import me.hgj.jetpackmvvm.demo.app.AppViewModel
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.ui.MessageViewmodel
+import java.io.BufferedReader
+import java.io.FileReader
+import java.io.IOException
 
 
 fun AppCompatActivity.getAppViewModel(): AppViewModel {
@@ -106,5 +110,33 @@ fun Fragment.showMessage(
                 getActionButton(WhichButton.NEGATIVE).updateTextColor(SettingUtil.getColor(it))
             }
     }
+}
+
+/**
+ * 获取进程号对应的进程名
+ *
+ * @param pid 进程号
+ * @return 进程名
+ */
+fun getProcessName(pid: Int): String? {
+    var reader: BufferedReader? = null
+    try {
+        reader = BufferedReader(FileReader("/proc/$pid/cmdline"))
+        var processName = reader.readLine()
+        if (!TextUtils.isEmpty(processName)) {
+            processName = processName.trim { it <= ' ' }
+        }
+        return processName
+    } catch (throwable: Throwable) {
+        throwable.printStackTrace()
+    } finally {
+        try {
+            reader?.close()
+        } catch (exception: IOException) {
+            exception.printStackTrace()
+        }
+
+    }
+    return null
 }
 

@@ -18,6 +18,7 @@ import com.afollestad.materialdialogs.color.colorChooser
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.blankj.utilcode.util.AppUtils
+import com.tencent.bugly.beta.Beta
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.AppViewModel
 import me.hgj.jetpackmvvm.demo.app.ext.getAppViewModel
@@ -169,10 +170,10 @@ class SettingFragment : PreferenceFragmentCompat(),
             false
         }
 
-        /*   findPreference<Preference>("version")?.setOnPreferenceClickListener {
+         findPreference<Preference>("version")?.setOnPreferenceClickListener {
                Beta.checkUpgrade(true, false)
                false
-           }*/
+           }
         findPreference<Preference>("copyRight")?.setOnPreferenceClickListener {
             activity?.let {
                 showMessage(it.getString(R.string.copyright_tip))

@@ -22,12 +22,13 @@
     <string name="setting_mode">列表动画</string>
     <string name="setting_modetip">无</string>
     <string name="copyright">版权声明</string>
-    <string name="copyright_tip">本App使用的Api均为 玩安卓网站 提供，仅供于大家学习交流，二次开发请注明出处</string>
+    <string name="copyright_tip">本App使用的Api均为 玩安卓网站 提供，仅供于大家学习交流</string>
     <string name="copyright_summary">仅作个人及非商业用途</string>
     <string name="auther">作者</string>
     <string name="auther_name">一个练习时长两年半的安卓开发者→_→</string>
     <string name="project_address">项目源码</string>
-    <string name="github_url">https://github.com/hegaojian/WanAndroid</string>
+    <string name="github_url">https://github.com/hegaojian/JetpackMvvm</string>
     <string name="open_project">开源项目</string>
     <string name="open_project_tips">项目中用到的开源库</string>
+    <string name="error_occurred">发生了意外错误。\n请拿已复制好的错误日志去啪啪啪的打作者的脸</string>
 </resources>

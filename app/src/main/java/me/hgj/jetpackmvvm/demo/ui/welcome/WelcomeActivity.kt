@@ -1,6 +1,7 @@
 package me.hgj.jetpackmvvm.demo.ui.welcome
 
 import android.content.Intent
+import android.view.View
 import com.blankj.utilcode.util.ConvertUtils
 import com.zhpan.bannerview.BannerViewPager
 import kotlinx.android.synthetic.main.activity_welcome.*
@@ -21,6 +22,7 @@ import me.hgj.jetpackmvvm.ext.view.visible
  * 时间　: 2020/2/22
  * 描述　:
  */
+@Suppress("DEPRECATED_IDENTITY_EQUALS")
 class WelcomeActivity : BaseActivity<BaseViewModel, ActivityWelcomeBinding>() {
 
     var resList = arrayOf("唱", "跳", "r a p")
@@ -30,6 +32,11 @@ class WelcomeActivity : BaseActivity<BaseViewModel, ActivityWelcomeBinding>() {
     override fun layoutId() = R.layout.activity_welcome
 
     override fun initView() {
+        //防止出现按Home键回到桌面时，再次点击重新进入该界面bug
+        if (intent.flags and Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT !== 0) {
+            finish()
+            return
+        }
         welcome_baseview.setBackgroundColor(SettingUtil.getColor(this))
         mViewPager = findViewById(R.id.banner_view)
         if (CacheUtil.isFirst()) {
@@ -64,6 +71,7 @@ class WelcomeActivity : BaseActivity<BaseViewModel, ActivityWelcomeBinding>() {
     override fun createObserver() {
 
     }
+
 
 
 }

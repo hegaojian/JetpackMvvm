@@ -69,7 +69,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
                     android:text="@{String.valueOf(vm.rank.coinCount)}"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16dp"
@@ -77,6 +76,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/integral_mename"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/integral_mename" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

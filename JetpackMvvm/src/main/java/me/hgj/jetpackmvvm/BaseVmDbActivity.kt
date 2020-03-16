@@ -24,6 +24,23 @@ abstract class BaseVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : AppC
 
     abstract fun initView()
 
+    /**
+     * 绑定该视图的点击事件 需要给view设置普通的点击事件时可在activity中重写使用 例子
+     *   override fun viewOnClick() {
+            setOnclick(listOf(viewId1,viewId2)) {
+                when (it.id) {
+                    R.id.viewId1 -> {
+
+                                }
+                    R.id.viewId2 -> {
+
+                                 }
+                            }
+                    }
+            }
+     */
+    open fun viewOnClick(){}
+
     abstract fun showLoading(message:String = "请求网络中...")
 
     abstract fun dismissLoading()
@@ -37,6 +54,7 @@ abstract class BaseVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : AppC
         registorDefUIChange()
         initView()
         createObserver()
+        viewOnClick()
     }
 
     /**

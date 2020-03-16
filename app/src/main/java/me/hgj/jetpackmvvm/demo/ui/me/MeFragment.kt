@@ -38,6 +38,9 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
         me_swipe.init {
             mViewModel.getIntegral()
         }
+
+        me_linear.clickNoRepeatLogin {}
+
         me_integralLinear.clickNoRepeatLogin {
             Navigation.findNavController(it).navigate(R.id.action_mainfragment_to_integralFragment,
                 Bundle().apply {

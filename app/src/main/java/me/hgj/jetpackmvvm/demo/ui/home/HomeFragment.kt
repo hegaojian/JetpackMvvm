@@ -29,6 +29,7 @@ import me.hgj.jetpackmvvm.demo.data.bean.BannerResponse
 import me.hgj.jetpackmvvm.demo.data.bean.CollectBus
 import me.hgj.jetpackmvvm.demo.databinding.FragmentHomeBinding
 import me.hgj.jetpackmvvm.ext.parseState
+import java.lang.NullPointerException
 
 /**
  * 作者　: hegaojian
@@ -91,12 +92,13 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                         } else {
                             mViewModel.collect(item.id)
                         }
+
                     } else {
                         v.isChecked = true
                         Navigation.findNavController(v)
                             .navigate(R.id.action_mainFragment_to_loginFragment)
                     }
-                }
+                }//老
             })
             setOnItemClickListener { adapter, view, position ->
                 Navigation.findNavController(view)

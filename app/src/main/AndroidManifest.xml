@@ -11,9 +11,10 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning,LockedOrientationActivity">
         <activity
             android:name=".ui.welcome.WelcomeActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/FullscreenThemse">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +24,17 @@
         </activity>
         <activity
             android:name=".ui.MainActivity"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.welcome.ErrorActivity"
+            android:label="错误界面"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent" />
         <!-- Arms 配置 -->
         <meta-data
             android:name="design_width_in_dp"

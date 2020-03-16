@@ -1,6 +1,7 @@
 package me.hgj.jetpackmvvm.demo.app.base
 
 import android.content.res.Resources
+import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.databinding.ViewDataBinding
@@ -33,10 +34,12 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
     abstract override fun layoutId(): Int
 
     abstract override fun initView()
+
     /**
      * 创建观察者
      */
     abstract override fun createObserver()
+
 
     /**
      * 打开等待框

@@ -48,6 +48,7 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Frag
         onVisible()
         registorDefUIChange()
         initData()
+        viewOnClick()
     }
 
     /**
@@ -71,6 +72,23 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Frag
      * 创建观察者
      */
     abstract fun createObserver()
+
+    /**
+     * 绑定该视图的点击事件 需要给view设置普通的点击事件时可在fragment中重写使用 例子
+     *   override fun viewOnClick() {
+    setOnclick(listOf(viewId1,viewId2)) {
+    when (it.id) {
+    R.id.viewId1 -> {
+
+    }
+    R.id.viewId2 -> {
+
+    }
+    }
+    }
+    }
+     */
+    open fun viewOnClick(){}
 
     override fun onResume() {
         super.onResume()

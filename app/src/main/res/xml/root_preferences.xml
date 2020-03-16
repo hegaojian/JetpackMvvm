@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <me.hgj.jetpackmvvm.demo.app.weight.preference.PreferenceCategory
         android:key="base"
@@ -50,6 +51,7 @@
         <Preference
             android:key="open"
             android:summary="@string/open_project_tips"
+            app:isPreferenceVisible="false"
             android:title="@string/open_project" />
         <Preference
             android:key="copyRight"

@@ -12,8 +12,8 @@ android {
         applicationId "me.hgj.jetpackmvvm.demo"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0.0"
+        versionCode 2
+        versionName "1.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     dataBinding{
@@ -66,8 +66,8 @@ dependencies {
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
     implementation 'com.github.goweii:RevealLayout:1.1.1'
     implementation 'com.tencent:mmkv:1.0.22'
-//    implementation project(path: ':JetpackMvvm')
-    implementation 'me.hegj:JetpackMvvm:1.0.0'
+    implementation project(path: ':JetpackMvvm')
+//    implementation 'me.hegj:JetpackMvvm:1.0.0'
     implementation 'com.github.zhpanvip:BannerViewPager:2.6.6'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
@@ -77,5 +77,9 @@ dependencies {
     implementation 'com.google.android:flexbox:2.0.1'
     implementation 'com.just.agentweb:agentweb:4.0.3-beta'
     implementation 'androidx.preference:preference:1.1.0'
+    implementation 'cat.ereza:customactivityoncrash:2.2.0'
+    //Bugly
+    implementation'com.tencent.bugly:crashreport_upgrade:1.4.1'
+    implementation'com.tencent.bugly:nativecrashreport:3.7.1'
 
 }

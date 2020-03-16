@@ -5,6 +5,7 @@ import android.content.Context
 import android.provider.Settings
 import android.text.TextUtils
 import android.view.View
+import me.hgj.jetpackmvvm.ext.view.clickNoRepeat
 
 /**
  * 获取屏幕宽度
@@ -85,5 +86,32 @@ fun Context.checkAccessibilityServiceEnabled(serviceName: String): Boolean {
         }
         result
     }, { false })
+}
+
+/**
+ * 设置点击事件
+ * @param views 需要设置点击事件的view集合
+ * @param onClick 点击触发的方法
+ */
+fun setOnclick(views: List<View>, onClick: (View) -> Unit) {
+    views.forEach {
+        it.setOnClickListener { view ->
+            onClick.invoke(view)
+        }
+    }
+}
+
+/**
+ * 设置防止重复点击事件
+ * @param views 需要设置点击事件的view集合
+ * @param onClick 点击触发的方法
+ */
+fun setOnclickNoRepeat(views: List<View>, onClick: (View) -> Unit) {
+    views.forEach {
+        it.clickNoRepeat{view ->
+            onClick.invoke(view)
+        }
+
+    }
 }
 
