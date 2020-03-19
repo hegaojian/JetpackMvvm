@@ -20,7 +20,7 @@
  
 #### APK下载：
 
-- [Github下载](https://github.com/hegaojian/JetpackMvvm/releases/download/1.0.0/app-release.apk)
+- [Github下载](https://github.com/hegaojian/JetpackMvvm/releases/download/1.0.1/app-release.apk)
 
 - [firm下载(推荐)](http://d.6short.com/v9q7)
 
