@@ -93,9 +93,9 @@ fun Context.checkAccessibilityServiceEnabled(serviceName: String): Boolean {
  * @param views 需要设置点击事件的view集合
  * @param onClick 点击触发的方法
  */
-fun setOnclick(views: List<View>, onClick: (View) -> Unit) {
+fun setOnclick(views: List<View?>, onClick: (View) -> Unit) {
     views.forEach {
-        it.setOnClickListener { view ->
+        it?.setOnClickListener { view ->
             onClick.invoke(view)
         }
     }
@@ -106,9 +106,9 @@ fun setOnclick(views: List<View>, onClick: (View) -> Unit) {
  * @param views 需要设置点击事件的view集合
  * @param onClick 点击触发的方法
  */
-fun setOnclickNoRepeat(views: List<View>, onClick: (View) -> Unit) {
+fun setOnclickNoRepeat(views: List<View?>, onClick: (View) -> Unit) {
     views.forEach {
-        it.clickNoRepeat{view ->
+        it?.clickNoRepeat{view ->
             onClick.invoke(view)
         }
 
