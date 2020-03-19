@@ -23,9 +23,9 @@ class PublicNumberFragment : BaseFragment<PublicNumberViewModel, FragmentViewpag
     //界面状态管理者
     private lateinit var loadsir: LoadService<Any>
     //fragment集合
-    var fragments: ArrayList<Fragment> = arrayListOf()
+    private var fragments: ArrayList<Fragment> = arrayListOf()
     //标题集合
-    var mDataList: ArrayList<ClassifyResponse> = arrayListOf()
+    private var mDataList: ArrayList<ClassifyResponse> = arrayListOf()
 
     override fun layoutId() = R.layout.fragment_viewpager
 

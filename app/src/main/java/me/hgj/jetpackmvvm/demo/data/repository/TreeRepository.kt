@@ -13,18 +13,33 @@ import me.hgj.jetpackmvvm.demo.data.bean.SystemResponse
  */
 class TreeRepository {
 
+    /**
+     * 获取广场数据
+     */
     suspend fun getPlazaData(pageNo:Int):ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>>{
         return NetworkApi.service.getSquareData(pageNo)
     }
-
+    /**
+     * 获取每日一问数据
+     */
+    suspend fun getAskData(pageNo:Int):ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>>{
+        return NetworkApi.service.getAskData(pageNo)
+    }
+    /**
+     * 获取体系数据
+     */
     suspend fun getSystemData():ApiResponse<ArrayList<SystemResponse>>{
         return NetworkApi.service.getSystemData()
     }
-
+    /**
+     * 获取导航数据
+     */
     suspend fun getNavigationData():ApiResponse<ArrayList<NavigationResponse>>{
         return NetworkApi.service.getNavigationData()
     }
-
+    /**
+     * 获取体系子数据
+     */
     suspend fun getSystemChildData(pageNo:Int,cid:Int):ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>>{
         return NetworkApi.service.getSystemChildData(pageNo,cid)
     }

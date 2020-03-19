@@ -18,6 +18,8 @@ class TreeViewModel : CollectViewModel() {
     private var pageNo = 0
     //广场数据
     var plazaDataState: MutableLiveData<ListDataUiState<AriticleResponse>> = MutableLiveData()
+    //每日一问数据
+    var askDataState: MutableLiveData<ListDataUiState<AriticleResponse>> = MutableLiveData()
     //体系子栏目列表数据
     var systemChildDataState: MutableLiveData<ListDataUiState<AriticleResponse>> = MutableLiveData()
     //体系数据
@@ -60,6 +62,39 @@ class TreeViewModel : CollectViewModel() {
                     listData = arrayListOf<AriticleResponse>()
                 )
             plazaDataState.postValue(listDataUiState)
+        })
+    }
+
+    /**
+     * 获取每日一问数据
+     */
+    fun getAskData(isRefresh: Boolean) {
+        if (isRefresh) {
+            pageNo = 1 //每日一问的页码从1开始
+        }
+        launchRequestVM({ repository.getAskData(pageNo) }, {
+            //请求成功
+            pageNo++
+            val listDataUiState =
+                ListDataUiState(
+                    isSuccess = true,
+                    isRefresh = isRefresh,
+                    isEmpty = it.isEmpty(),
+                    hasMore = it.hasMore(),
+                    isFirstEmpty = isRefresh && it.isEmpty(),
+                    listData = it.datas
+                )
+            askDataState.postValue(listDataUiState)
+        }, {
+            //请求失败
+            val listDataUiState =
+                ListDataUiState(
+                    isSuccess = false,
+                    errMessage = it.errorMsg,
+                    isRefresh = isRefresh,
+                    listData = arrayListOf<AriticleResponse>()
+                )
+            askDataState.postValue(listDataUiState)
         })
     }
 

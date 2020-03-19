@@ -32,7 +32,7 @@ class CollectView @JvmOverloads constructor(context: Context, attrs: AttributeSe
         when (event.action) {
             MotionEvent.ACTION_UP ->{
                 //震动一下
-                VibrateUtils.vibrate(50)
+                VibrateUtils.vibrate(40)
                 onCollectViewClickListener?.onClick(this)
             }
         }

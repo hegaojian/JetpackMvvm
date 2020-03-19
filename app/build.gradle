@@ -67,7 +67,7 @@ dependencies {
     implementation 'com.github.goweii:RevealLayout:1.1.1'
     implementation 'com.tencent:mmkv:1.0.22'
     implementation project(path: ':JetpackMvvm')
-//    implementation 'me.hegj:JetpackMvvm:1.0.0'
+//    implementation 'me.hegj:JetpackMvvm:1.0.1'
     implementation 'com.github.zhpanvip:BannerViewPager:2.6.6'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'

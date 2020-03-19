@@ -101,6 +101,13 @@ interface NetApiService {
     suspend fun getSquareData(@Path("page") page: Int): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>>
 
     /**
+     * 每日一问列表数据
+     */
+    @GET("wenda/list/{page}/json")
+    suspend fun getAskData(@Path("page") page: Int): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>>
+
+
+    /**
      * 获取体系数据
      */
     @GET("tree/json")
