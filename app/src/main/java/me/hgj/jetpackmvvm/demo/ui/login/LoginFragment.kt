@@ -59,10 +59,10 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
     }
 
     /**
-     * 设置点击事件
+     * 设置点击事件 ,根据黄油刀的风格来仿写的
      */
-    override fun viewOnClick() {
-        setOnclickNoRepeat(listOf(login_clear, login_sub, login_goregister)) {
+    override fun onViewClicked() {
+        setOnclickNoRepeat(login_clear, login_sub, login_goregister) {
             when (it.id) {
                 R.id.login_clear -> {
                     mViewModel.username.set("")

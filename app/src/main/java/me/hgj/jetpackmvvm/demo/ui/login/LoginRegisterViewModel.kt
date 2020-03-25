@@ -4,10 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.BaseViewModel
 import me.hgj.jetpackmvvm.databind.BooleanObservableField
 import me.hgj.jetpackmvvm.databind.StringObservableField
-import me.hgj.jetpackmvvm.ext.launchRequest
-import me.hgj.jetpackmvvm.state.ViewState
 import me.hgj.jetpackmvvm.demo.data.bean.UserInfo
 import me.hgj.jetpackmvvm.demo.data.repository.LoginRepository
+import me.hgj.jetpackmvvm.ext.launchRequest
+import me.hgj.jetpackmvvm.state.ViewState
 
 /**
  * 作者　: hegaojian
@@ -56,13 +56,13 @@ class LoginRegisterViewModel : BaseViewModel() {
          },{
              //请求失败
          },isShowDialog = true,loadingMessage = "正在登录中...")
-
-         //如果想自己拿到请求code执行不同的业务逻辑，不用框架帮你处理请求结果是否成功，可以这样：
-         launchResultVMNoCheck({loginRpository.login(username.get(),password.get())},{
-             //请求成功
-         },{
-             //请求失败
-         },isShowDialog = true,loadingMessage = "正在登录中...")*/
+*/
+        //如果想自己拿到请求code执行不同的业务逻辑，不用框架帮你处理请求结果是否成功，可以这样：
+       /* launchResultVMNoCheck({ loginRpository.login1(username.get(), password.get()) }, {
+            //请求成功
+        }, {
+            //请求失败
+        }, isShowDialog = true, loadingMessage = "正在登录中...")*/
 
     }
 

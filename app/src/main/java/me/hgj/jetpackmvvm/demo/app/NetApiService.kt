@@ -22,6 +22,12 @@ interface NetApiService {
     @FormUrlEncoded
     @POST("user/login")
     suspend fun login(@Field("username") username: String, @Field("password") pwd: String): ApiResponse<UserInfo>
+    /**
+     * 登录
+     */
+    @FormUrlEncoded
+    @POST("user/login")
+    suspend fun login1(@Field("username") username: String, @Field("password") pwd: String): UserInfo
 
     /**
      * 注册

@@ -169,7 +169,7 @@ fun Toolbar.initClose(
     onback: (toolbar: Toolbar) -> Unit
 ): Toolbar {
     setBackgroundColor(SettingUtil.getColor(context))
-    title = titleStr
+    title = Html.fromHtml(titleStr)
     setNavigationIcon(backimg)
     setNavigationOnClickListener { onback.invoke(this) }
     return this
@@ -180,7 +180,7 @@ fun Toolbar.initClose(
  * 列如下面的BottomNavigationViewEx他的顶级父控件为FragmentLayout，如果先 is Fragmentlayout判断在 is BottomNavigationViewEx上面
  * 那么就会直接去执行 is FragmentLayout的代码块 跳过 is BottomNavigationViewEx的代码块了
  */
-fun setUiTheme(color: Int, anylist: List<Any>) {
+fun setUiTheme(color: Int, vararg anylist: Any) {
     anylist.forEach {
         when (it) {
             is LoadService<*> -> SettingUtil.setLoadingColor(color, it as LoadService<Any>)

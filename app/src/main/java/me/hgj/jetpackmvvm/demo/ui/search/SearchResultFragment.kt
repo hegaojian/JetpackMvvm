@@ -25,6 +25,7 @@ import me.hgj.jetpackmvvm.demo.data.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.bean.CollectBus
 import me.hgj.jetpackmvvm.demo.databinding.FragmentListBinding
 import me.hgj.jetpackmvvm.ext.parseState
+import me.hgj.jetpackmvvm.navigation.NavHostFragment
 
 /**
  * 作者　: hegaojian
@@ -92,7 +93,7 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
                 }
             })
             setOnItemClickListener { adapter, view, position ->
-                Navigation.findNavController(view)
+                NavHostFragment.findNavController(this@SearchResultFragment)
                     .navigate(R.id.action_searchResultFragment_to_webFragment, Bundle().apply {
                         putSerializable("ariticleData", articleAdapter.data[position])
                     })

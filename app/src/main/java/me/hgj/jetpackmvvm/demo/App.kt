@@ -1,7 +1,6 @@
 package me.hgj.jetpackmvvm.demo
 
 import android.content.Context
-import android.view.View
 import cat.ereza.customactivityoncrash.config.CaocConfig
 import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.LoadSir
@@ -30,6 +29,7 @@ class App : BaseApp() {
     override fun onCreate() {
         super.onCreate()
         CONTEXT = applicationContext
+
         MMKV.initialize(this.filesDir.absolutePath + "/mmkv")
         //界面加载管理 初始化
         LoadSir.beginBuilder()

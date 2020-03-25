@@ -3,9 +3,9 @@ package me.hgj.jetpackmvvm.demo.app.network
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
-import me.hgj.jetpackmvvm.network.BaseNetworkApi
 import me.hgj.jetpackmvvm.demo.App
 import me.hgj.jetpackmvvm.demo.app.NetApiService
+import me.hgj.jetpackmvvm.network.BaseNetworkApi
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import java.io.File
