@@ -89,6 +89,7 @@ fun View.clickNoRepeat(interval: Long = 300, action: (view: View) -> Unit) {
     }
 }
 
+
 fun Any?.notNull(notNullAction:() ->Unit,nullAction1:() ->Unit){
     if(this!=null){
         notNullAction.invoke()

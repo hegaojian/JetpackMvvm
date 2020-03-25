@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.ext
 
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
@@ -9,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import me.hgj.jetpackmvvm.*
+import me.hgj.jetpackmvvm.ext.util.loge
 import me.hgj.jetpackmvvm.ext.util.paresException
 import me.hgj.jetpackmvvm.ext.util.paresResult
 import me.hgj.jetpackmvvm.network.AppException
@@ -165,7 +165,7 @@ fun <T> BaseViewModel.launchRequest(
         }.onSuccess {
             viewState.paresResult(it)
         }.onFailure {
-            Log.i("throwable",it.message)
+            it.message?.loge("networkError")
             viewState.paresException(it)
         }
     }
@@ -190,6 +190,7 @@ fun <T> BaseViewModel.launchRequestNoCheck(
         }.onSuccess {
             viewState.paresResult(it)
         }.onFailure {
+            it.message?.loge("networkError")
             viewState.paresException(it)
         }
     }

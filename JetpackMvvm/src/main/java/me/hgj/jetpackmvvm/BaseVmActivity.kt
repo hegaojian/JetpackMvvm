@@ -25,7 +25,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
 
     /**
      * 绑定该视图的点击事件 需要给view设置普通的点击事件时可在activity中重写使用 例子
-     *   override fun viewOnClick() {
+     *   override fun onViewClicked() {
     setOnclick(listOf(viewId1,viewId2)) {
     when (it.id) {
     R.id.viewId1 -> {
@@ -38,7 +38,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
     }
     }
      */
-    open fun viewOnClick(){}
+    open fun onViewClicked(){}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +47,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
         registorDefUIChange()
         initView()
         createObserver()
-        viewOnClick()
+        onViewClicked()
     }
 
     /**

@@ -90,10 +90,10 @@ fun Context.checkAccessibilityServiceEnabled(serviceName: String): Boolean {
 
 /**
  * 设置点击事件
- * @param views 需要设置点击事件的view集合
+ * @param views 需要设置点击事件的view
  * @param onClick 点击触发的方法
  */
-fun setOnclick(views: List<View?>, onClick: (View) -> Unit) {
+fun setOnclick(vararg views: View?, onClick: (View) -> Unit) {
     views.forEach {
         it?.setOnClickListener { view ->
             onClick.invoke(view)
@@ -104,14 +104,24 @@ fun setOnclick(views: List<View?>, onClick: (View) -> Unit) {
 /**
  * 设置防止重复点击事件
  * @param views 需要设置点击事件的view集合
+ * @param interval 时间间隔 默认0.3秒
  * @param onClick 点击触发的方法
  */
-fun setOnclickNoRepeat(views: List<View?>, onClick: (View) -> Unit) {
+fun setOnclickNoRepeat(vararg views: View?, interval: Long = 300, onClick: (View) -> Unit) {
     views.forEach {
-        it?.clickNoRepeat{view ->
+        it?.clickNoRepeat(interval = interval) { view ->
             onClick.invoke(view)
         }
-
     }
+}
+
+var noRepeatMethodLastClickTime = 0L
+fun noRepeatMethod(interval: Long = 300,action: () -> Unit){
+    val currentTime = System.currentTimeMillis()
+    if (noRepeatMethodLastClickTime != 0L && (currentTime - noRepeatMethodLastClickTime < interval)) {
+        return
+    }
+    noRepeatMethodLastClickTime = currentTime
+    action.invoke()
 }
 

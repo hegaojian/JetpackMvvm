@@ -3,6 +3,7 @@ package me.hgj.jetpackmvvm
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
+import me.hgj.jetpackmvvm.ext.util.loge
 import me.hgj.jetpackmvvm.network.AppException
 import me.hgj.jetpackmvvm.network.BaseResponse
 import me.hgj.jetpackmvvm.network.ExceptionHandle
@@ -94,6 +95,7 @@ open class BaseViewModel : ViewModel() {
             try {
                 success(block())
             } catch (e: Throwable) {
+                e.message?.loge("networkError")
                 error(ExceptionHandle.handleException(e))
             } finally {
                 complete()
@@ -118,6 +120,7 @@ open class BaseViewModel : ViewModel() {
             try {
                 success(block())
             } catch (e: Throwable) {
+                e.message?.loge("networkError")
                 error(ExceptionHandle.handleException(e))
             } finally {
                 complete()
@@ -134,7 +137,7 @@ open class BaseViewModel : ViewModel() {
     ) {
         coroutineScope {
             if (response.isSucces()) success(response.data)
-            else throw AppException(response.errorCode, response.errorMsg)
+            else throw AppException(response.errorCode, response.errorMsg,"")
         }
     }
 

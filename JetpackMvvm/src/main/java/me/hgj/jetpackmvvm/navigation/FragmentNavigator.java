@@ -42,7 +42,10 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
 import me.hgj.jetpackmvvm.R;
+import me.hgj.jetpackmvvm.ext.util.CommonExtKt;
 
 /**
  * Navigator that navigates through {@link FragmentTransaction fragment transactions}. Every
@@ -101,6 +104,14 @@ public class FragmentNavigator extends Navigator<FragmentNavigator.Destination> 
                 FragmentManager.POP_BACK_STACK_INCLUSIVE);
         mBackStack.removeLast();
         return true;
+    }
+
+    public void removeFragment(Class<? extends Fragment> tClass){
+        for (Fragment fragment : mFragmentManager.getFragments()) {
+            if(fragment.getClass().getSimpleName().equals(tClass.getSimpleName())){
+                mFragmentManager.popBackStack();
+            }
+        }
     }
 
     @NonNull

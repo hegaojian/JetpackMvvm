@@ -42,7 +42,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
         onVisible()
         registorDefUIChange()
         initData()
-        viewOnClick()
+        onViewClicked()
     }
 
     /**
@@ -69,7 +69,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
 
     /**
      * 绑定该视图的点击事件 需要给view设置普通的点击事件时可在fragment中重写使用 例子
-     *   override fun viewOnClick() {
+     *   override fun onViewClicked() {
     setOnclick(listOf(viewId1,viewId2)) {
     when (it.id) {
     R.id.viewId1 -> {
@@ -82,7 +82,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
     }
     }
      */
-    open fun viewOnClick(){}
+    open fun onViewClicked(){}
 
     override fun onResume() {
         super.onResume()
