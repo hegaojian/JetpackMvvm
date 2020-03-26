@@ -99,7 +99,7 @@ class LoginRepository {
 
     //登录 自带协程
     suspend fun login(username: String, password: String): ApiResponse<UserInfo> {
-        return NetworkApi.service.login(username, password)
+        return NetworkApi().service.login(username, password)
     }
     
 ```
