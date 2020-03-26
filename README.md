@@ -42,7 +42,7 @@
 ```
 dependencies {
   ...
-  implementation 'me.hegj:JetpackMvvm:1.0.2'
+  implementation 'me.hegj:JetpackMvvm:1.0.5'
 }
 
 ```
