@@ -11,12 +11,12 @@ import me.hgj.jetpackmvvm.demo.data.bean.ShareResponse
  */
 class AriticleRepository {
     suspend fun addAriticle(title:String,content:String): ApiResponse<Any?> {
-        return NetworkApi.service.addAriticle(title,content)
+        return NetworkApi().service.addAriticle(title,content)
     }
     suspend fun getShareAriticle(pageNo:Int): ApiResponse<ShareResponse> {
-        return NetworkApi.service.getShareData(pageNo)
+        return NetworkApi().service.getShareData(pageNo)
     }
     suspend fun delShareAriticle(id:Int): ApiResponse<Any?> {
-        return NetworkApi.service.deleteShareData(id)
+        return NetworkApi().service.deleteShareData(id)
     }
 }

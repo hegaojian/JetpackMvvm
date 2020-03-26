@@ -61,7 +61,7 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
                 Navigation.findNavController(it).navigateUp()
             }
         }
-        appViewModel.appColor.value?.let { setUiTheme(it, listOf(search_text1,search_text2)) }
+        appViewModel.appColor.value?.let { setUiTheme(it, search_text1,search_text2) }
 
         //初始化搜搜历史Recyclerview
         search_historyRv.init(LinearLayoutManager(context), historyAdapter, false)

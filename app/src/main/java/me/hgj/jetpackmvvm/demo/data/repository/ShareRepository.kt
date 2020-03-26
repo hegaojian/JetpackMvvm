@@ -12,6 +12,6 @@ import me.hgj.jetpackmvvm.demo.data.bean.ShareResponse
 class ShareRepository  {
 
     suspend fun getLookinfoById(id:Int, pageNo:Int): ApiResponse<ShareResponse> {
-        return NetworkApi.service.getShareByidData(pageNo,id)
+        return NetworkApi().service.getShareByidData(pageNo,id)
     }
 }

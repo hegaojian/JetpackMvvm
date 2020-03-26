@@ -16,7 +16,7 @@ import me.hgj.jetpackmvvm.demo.data.bean.BannerResponse
 class HomeRepository {
     //获取首页文章数据
     suspend fun getHomeData(pageNo: Int):ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>> {
-        val data = NetworkApi.service.getAritrilList(pageNo)
+        val data = NetworkApi().service.getAritrilList(pageNo)
         if (CacheUtil.isNeedTop() && pageNo==0) {
             //如果App配置打开了首页请求置顶文章，且是第一页
             val topData = getTopData()
@@ -27,12 +27,12 @@ class HomeRepository {
 
     //获取置顶文章数据
     private  suspend fun getTopData(): ApiResponse<ArrayList<AriticleResponse>> {
-        return NetworkApi.service.getTopAritrilList()
+        return NetworkApi().service.getTopAritrilList()
     }
 
     //获取轮播图数据
     suspend fun getBannData(): ApiResponse<ArrayList<BannerResponse>> {
-        return NetworkApi.service.getBanner()
+        return NetworkApi().service.getBanner()
     }
 
 

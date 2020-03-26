@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navation"
     app:startDestination="@id/mainfragment">
 
     <fragment
         android:id="@+id/mainfragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.MainFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_main">
+        android:label="HomeFragment">
 
         <action
             android:id="@+id/action_mainFragment_to_loginFragment"
@@ -93,8 +91,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.login.LoginFragment"
-        android:label="LoginFragment"
-        tools:layout="@layout/fragment_login">
+        android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment_to_registerFrgment"
             app:destination="@id/registerFrgment"
@@ -106,8 +103,7 @@
     <fragment
         android:id="@+id/registerFrgment"
         android:name="me.hgj.jetpackmvvm.demo.ui.login.RegisterFrgment"
-        android:label="RegisterFrgment"
-        tools:layout="@layout/fragment_register">
+        android:label="RegisterFrgment">
 
         <action
             android:id="@+id/action_registerFrgment_to_mainFragment"
@@ -128,8 +124,7 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.search.SearchFragment"
-        android:label="SearchFragment"
-        tools:layout="@layout/fragment_search">
+        android:label="SearchFragment">
         <action
             android:id="@+id/action_searchFragment_to_searchResultFragment"
             app:destination="@id/searchResultFragment"
@@ -141,8 +136,7 @@
     <fragment
         android:id="@+id/searchResultFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.search.SearchResultFragment"
-        android:label="SearchResultFragment"
-        tools:layout="@layout/fragment_home">
+        android:label="SearchResultFragment">
         <action
             android:id="@+id/action_searchResultFragment_to_webFragment"
             app:destination="@id/webFragment"
@@ -168,8 +162,7 @@
     <fragment
         android:id="@+id/webFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.web.WebFragment"
-        android:label="WebFragment"
-        tools:layout="@layout/fragment_web">
+        android:label="WebFragment">
         <action
             android:id="@+id/action_webFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -182,8 +175,7 @@
         android:id="@+id/systemArrFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.tree.SystemArrFragment"
         android:label="SystemArrFragment"
-        app:destination="@id/loginFragment"
-        tools:layout="@layout/fragment_system">
+        app:destination="@id/loginFragment">
         <action
             android:id="@+id/action_systemArrFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -209,8 +201,7 @@
     <fragment
         android:id="@+id/lookInfoFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.lookinfo.LookInfoFragment"
-        android:label="LookInfoFragment"
-        tools:layout="@layout/fragment_lookinfo">
+        android:label="LookInfoFragment">
         <action
             android:id="@+id/action_lookInfoFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -241,8 +232,7 @@
     <fragment
         android:id="@+id/integralFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.integral.IntegralFragment"
-        android:label="IntegralFragment"
-        tools:layout="@layout/include_list">
+        android:label="IntegralFragment">
         <action
             android:id="@+id/action_integralFragment_to_webFragment"
             app:destination="@id/webFragment"
@@ -261,13 +251,11 @@
     <fragment
         android:id="@+id/integralHistoryFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.integral.IntegralHistoryFragment"
-        android:label="IntegralHistoryFragment"
-        tools:layout="@layout/fragment_list" />
+        android:label="IntegralHistoryFragment" />
     <fragment
         android:id="@+id/collectFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.collect.CollectFragment"
-        android:label="CollectFragment"
-        tools:layout="@layout/fragment_collect">
+        android:label="CollectFragment">
         <action
             android:id="@+id/action_collectFragment_to_webFragment"
             app:destination="@id/webFragment"
@@ -279,13 +267,11 @@
     <fragment
         android:id="@+id/addAriticleFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.share.AddAriticleFragment"
-        android:label="AddAriticleFragment"
-        tools:layout="@layout/fragment_share_ariticle" />
+        android:label="AddAriticleFragment"/>
     <fragment
         android:id="@+id/ariticleFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.share.AriticleFragment"
-        android:label="AriticleFragment"
-        tools:layout="@layout/fragment_list">
+        android:label="AriticleFragment">
         <action
             android:id="@+id/action_ariticleFragment_to_addAriticleFragment"
             app:destination="@id/addAriticleFragment"
@@ -304,8 +290,7 @@
     <fragment
         android:id="@+id/todoListFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.todo.TodoListFragment"
-        android:label="TodoListFragment"
-        tools:layout="@layout/fragment_list">
+        android:label="TodoListFragment">
         <action
             android:id="@+id/action_todoListFragment_to_addTodoFragment"
             app:destination="@id/addTodoFragment"
@@ -317,7 +302,6 @@
     <fragment
         android:id="@+id/addTodoFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.todo.AddTodoFragment"
-        android:label="AddTodoFragment"
-        tools:layout="@layout/fragment_addtodo" />
+        android:label="AddTodoFragment"/>
 
 </navigation>

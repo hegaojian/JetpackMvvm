@@ -4,8 +4,6 @@ import android.app.Application
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
-import com.orhanobut.logger.AndroidLogAdapter
-import com.orhanobut.logger.Logger
 
 /**
  * 作者　: hegaojian
@@ -25,7 +23,6 @@ open class BaseApp : Application(), ViewModelStoreOwner {
     override fun onCreate() {
         super.onCreate()
         mAppViewModelStore = ViewModelStore()
-        Logger.addLogAdapter(AndroidLogAdapter())
     }
 
     /**

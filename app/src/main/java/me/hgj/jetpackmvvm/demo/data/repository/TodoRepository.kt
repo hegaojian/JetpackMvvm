@@ -13,16 +13,16 @@ import me.hgj.jetpackmvvm.demo.data.bean.TodoResponse
 class TodoRepository {
 
     suspend fun getTodoListData(pageNo: Int): ApiResponse<ApiPagerResponse<ArrayList<TodoResponse>>> {
-        return NetworkApi.service.getTodoData(pageNo)
+        return NetworkApi().service.getTodoData(pageNo)
     }
 
     suspend fun delTodotData(id: Int): ApiResponse<Any?> {
-        return NetworkApi.service.deleteTodo(id)
+        return NetworkApi().service.deleteTodo(id)
     }
 
     suspend fun doneTodotData(id: Int): ApiResponse<Any?> {
         //1完成
-        return NetworkApi.service.doneTodo(id, 1)
+        return NetworkApi().service.doneTodo(id, 1)
     }
 
     suspend fun addTodotData(
@@ -32,7 +32,7 @@ class TodoRepository {
         type: Int,
         priority: Int
     ): ApiResponse<Any?> {
-        return NetworkApi.service.addTodo(title, content,date,type,priority)
+        return NetworkApi().service.addTodo(title, content,date,type,priority)
     }
     suspend fun updateTodotData(
         title: String,
@@ -42,6 +42,6 @@ class TodoRepository {
         priority: Int,
         id: Int
     ): ApiResponse<Any?> {
-        return NetworkApi.service.updateTodo(title, content,date,type,priority,id)
+        return NetworkApi().service.updateTodo(title, content,date,type,priority,id)
     }
 }

@@ -32,7 +32,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
     override fun initView() {
         mDatabind.vm = mViewModel
-        appViewModel.appColor.value?.let { setUiTheme(it, listOf(me_linear, me_integral)) }
+        appViewModel.appColor.value?.let { setUiTheme(it, me_linear, me_integral) }
         appViewModel.userinfo.value?.let { mViewModel.name.set(if (it.nickname.isEmpty()) it.username else it.nickname) }
 
         me_swipe.init {
@@ -83,14 +83,14 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
             parseState(data, {
                 rank = it
                 mViewModel.info.set("id：${it.userId}　排名：${it.rank}")
-                mViewModel.integral.set(it.coinCount.toString())
+                mViewModel.integral.set(it.coinCount)
             }, {
                 ToastUtils.showShort(it.errorMsg)
             })
         })
         appViewModel.run {
             appColor.observe(viewLifecycleOwner, Observer {
-                setUiTheme(it, listOf(me_linear,me_swipe,me_integral))
+                setUiTheme(it, me_linear,me_swipe,me_integral)
             })
             userinfo.observe(viewLifecycleOwner, Observer {
                 it.notNull({
@@ -99,7 +99,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
                 }, {
                     mViewModel.name.set("请先登录~")
                     mViewModel.info.set("id：--　排名：--")
-                    mViewModel.integral.set("0")
+                    mViewModel.integral.set(0)
                 })
             })
         }

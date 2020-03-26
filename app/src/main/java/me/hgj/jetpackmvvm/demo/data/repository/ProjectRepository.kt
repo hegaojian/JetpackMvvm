@@ -16,7 +16,7 @@ class ProjectRepository {
 
     //获取项目标题数据
     suspend fun getBannData(): ApiResponse<ArrayList<ClassifyResponse>> {
-        return NetworkApi.service.getProjecTitle()
+        return NetworkApi().service.getProjecTitle()
     }
 
     //获取项目标题数据
@@ -26,9 +26,9 @@ class ProjectRepository {
         isNew: Boolean = false
     ): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>> {
         return if (isNew) {
-            NetworkApi.service.getProjecNewData(pageNo)
+             NetworkApi().service.getProjecNewData(pageNo)
         } else {
-            NetworkApi.service.getProjecDataByType(pageNo, cid)
+             NetworkApi().service.getProjecDataByType(pageNo, cid)
         }
     }
 

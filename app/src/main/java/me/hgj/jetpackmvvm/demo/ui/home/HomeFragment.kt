@@ -232,7 +232,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
             })
             //监听全局的主题颜色改变
             appColor.observe(viewLifecycleOwner, Observer {
-                setUiTheme(it, listOf(toolbar, floatbtn, swipeRefresh, loadsir, footView))
+                setUiTheme(it, toolbar, floatbtn, swipeRefresh, loadsir, footView)
             })
             //监听全局的列表动画改编
             appAnimation.observe(viewLifecycleOwner, Observer {

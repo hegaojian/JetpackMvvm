@@ -81,7 +81,7 @@ class SettingFragment : PreferenceFragmentCompat(),
                 negativeButtonText = "取消",
                 positiveAction = {
                     //清空cookie
-                    NetworkApi.cookieJar.clear()
+                     NetworkApi().cookieJar.clear()
                     appViewModel.userinfo.postValue(null)
                     CacheUtil.setUser(null)
                     view?.let {

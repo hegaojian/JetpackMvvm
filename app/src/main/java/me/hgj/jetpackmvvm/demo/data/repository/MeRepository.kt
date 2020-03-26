@@ -10,6 +10,6 @@ import me.hgj.jetpackmvvm.demo.data.bean.IntegralResponse
  */
 class MeRepository {
     suspend fun getIntegral(): ApiResponse<IntegralResponse> {
-        return NetworkApi.service.getIntegral()
+        return NetworkApi().service.getIntegral()
     }
 }

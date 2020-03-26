@@ -70,7 +70,7 @@ class PublicNumberFragment : BaseFragment<PublicNumberViewModel, FragmentViewpag
             })
         })
         appViewModel.appColor.observe(viewLifecycleOwner, Observer {
-            setUiTheme(it, listOf(viewpager_linear,loadsir))
+            setUiTheme(it, viewpager_linear,loadsir)
         })
     }
 }

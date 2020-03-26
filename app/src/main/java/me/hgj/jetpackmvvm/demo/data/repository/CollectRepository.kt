@@ -17,40 +17,40 @@ class CollectRepository {
      * 收藏文章
      */
     suspend fun collect(id: Int): ApiResponse<Any?> {
-        return NetworkApi.service.collect(id)
+        return NetworkApi().service.collect(id)
     }
 
     /**
      * 收藏网址
      */
     suspend fun collectUrl(name: String, link: String): ApiResponse<CollectUrlResponse> {
-        return NetworkApi.service.collectUrl(name, link)
+        return NetworkApi().service.collectUrl(name, link)
     }
 
     /**
      * 取消收藏文章
      */
     suspend fun uncollect(id: Int): ApiResponse<Any?> {
-        return NetworkApi.service.uncollect(id)
+        return NetworkApi().service.uncollect(id)
     }
 
     /**
      * 取消收藏网址
      */
     suspend fun uncollectUrl(id: Int): ApiResponse<Any?> {
-        return NetworkApi.service.deletetool(id)
+        return NetworkApi().service.deletetool(id)
     }
 
     /**
      * 收藏的文章数据
      */
     suspend fun collectAriticleData(pageNo: Int): ApiResponse<ApiPagerResponse<ArrayList<CollectResponse>>>{
-        return NetworkApi.service.getCollectData(pageNo)
+        return NetworkApi().service.getCollectData(pageNo)
     }
     /**
      * 收藏的网址数据
      */
     suspend fun collectUrlData(): ApiResponse<ArrayList<CollectUrlResponse>>{
-        return NetworkApi.service.getCollectUrlData()
+        return NetworkApi().service.getCollectUrlData()
     }
 }

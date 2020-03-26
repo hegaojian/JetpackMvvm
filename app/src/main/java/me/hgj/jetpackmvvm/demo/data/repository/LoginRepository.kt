@@ -14,12 +14,12 @@ class LoginRepository {
 
     //登录
     suspend fun login(username: String, password: String): ApiResponse<UserInfo> {
-        return NetworkApi.service.login(username, password)
+        return NetworkApi().service.login(username, password)
     }
 
     //注册并登陆
     suspend fun register(username: String, password: String): ApiResponse<UserInfo> {
-        val registerData =  NetworkApi.service.register(username, password,password)
+        val registerData =  NetworkApi().service.register(username, password,password)
         //判断注册结果 注册成功，调用登录接口
         if(registerData.isSucces()){
             return login(username,password)

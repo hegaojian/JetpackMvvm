@@ -135,7 +135,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="8dp"
-                                    android:text="@{vm.integral}"
+                                    android:text="@{String.valueOf(vm.integral)}"
                                     tools:text="0"
                                     android:textColor="@color/colorPrimary"
                                     android:textSize="15dp"
@@ -161,7 +161,7 @@
                                     android:layout_width="24dp"
                                     android:layout_height="24dp"
                                     android:src="@drawable/collect"
-                                    android:layout_marginRight="16dp" />
+                                    android:layout_marginEnd="16dp" />
 
                                 <TextView
                                     android:layout_width="match_parent"

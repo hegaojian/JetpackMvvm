@@ -13,6 +13,7 @@ import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBinding
 import me.hgj.jetpackmvvm.ext.parseState
+import me.hgj.jetpackmvvm.ext.util.dp2px
 import me.hgj.jetpackmvvm.ext.util.setOnclickNoRepeat
 
 /**
@@ -65,6 +66,7 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
         setOnclickNoRepeat(login_clear, login_sub, login_goregister) {
             when (it.id) {
                 R.id.login_clear -> {
+
                     mViewModel.username.set("")
                 }
                 R.id.login_sub -> {

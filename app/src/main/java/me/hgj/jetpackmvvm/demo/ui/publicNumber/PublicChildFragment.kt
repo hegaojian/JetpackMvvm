@@ -187,7 +187,7 @@ class PublicChildFragment : BaseFragment<PublicNumberViewModel, IncludeListBindi
             })
             //监听全局的主题颜色改变
             appColor.observe(viewLifecycleOwner, Observer {
-                setUiTheme(it, listOf(floatbtn, swipeRefresh, loadsir, footView))
+                setUiTheme(it, floatbtn, swipeRefresh, loadsir, footView)
             })
             //监听全局的列表动画改编
             appAnimation.observe(viewLifecycleOwner, Observer {

@@ -76,7 +76,7 @@ class MainFragment : BaseFragment<BaseViewModel, FragmentMainBinding>() {
 
     override fun createObserver() {
         appViewModel.appColor.observe(viewLifecycleOwner, Observer {
-            setUiTheme(it, listOf(main_bottom))
+            setUiTheme(it, main_bottom)
         })
     }
 }

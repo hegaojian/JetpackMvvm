@@ -16,7 +16,7 @@ class PublicRepository {
 
     //获取公众号标题数据
     suspend fun getTitleData(): ApiResponse<ArrayList<ClassifyResponse>> {
-        return NetworkApi.service.getPublicTitle()
+        return NetworkApi().service.getPublicTitle()
     }
 
     //根据公众号标题获取数据
@@ -24,7 +24,7 @@ class PublicRepository {
         pageNo: Int,
         cid: Int = 0
     ): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>> {
-        return NetworkApi.service.getPublicData(pageNo, cid)
+        return NetworkApi().service.getPublicData(pageNo, cid)
     }
 
 

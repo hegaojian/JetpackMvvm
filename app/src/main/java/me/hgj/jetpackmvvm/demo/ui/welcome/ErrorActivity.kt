@@ -4,6 +4,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import cat.ereza.customactivityoncrash.CustomActivityOnCrash
 import kotlinx.android.synthetic.main.activity_error.*
@@ -12,6 +13,8 @@ import me.hgj.jetpackmvvm.BaseViewModel
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseActivity
 import me.hgj.jetpackmvvm.demo.app.ext.init
+import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
+import me.hgj.jetpackmvvm.demo.app.util.StatusBarUtil
 import me.hgj.jetpackmvvm.demo.databinding.ActivityErrorBinding
 
 
@@ -20,12 +23,14 @@ import me.hgj.jetpackmvvm.demo.databinding.ActivityErrorBinding
  * 时间　: 2020/3/12
  * 描述　:
  */
-class ErrorActivity :BaseActivity<BaseViewModel,ActivityErrorBinding>() {
+class ErrorActivity : BaseActivity<BaseViewModel, ActivityErrorBinding>() {
 
     override fun layoutId() = R.layout.activity_error
 
     override fun initView() {
         toolbar.init("发生错误")
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(SettingUtil.getColor(this)))
+        StatusBarUtil.setColor(this, SettingUtil.getColor(this), 0)
         val config = CustomActivityOnCrash.getConfigFromIntent(intent)
         error_restart.setOnClickListener {
             config?.run {
@@ -36,7 +41,10 @@ class ErrorActivity :BaseActivity<BaseViewModel,ActivityErrorBinding>() {
             //获取剪贴板管理器：
             val cm = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             // 创建普通字符型ClipData0
-            val mClipData = ClipData.newPlainText("errorLog", CustomActivityOnCrash.getStackTraceFromIntent(intent))
+            val mClipData = ClipData.newPlainText(
+                "errorLog",
+                CustomActivityOnCrash.getStackTraceFromIntent(intent)
+            )
             // 将ClipData内容放到系统剪贴板里。
             cm.setPrimaryClip(mClipData)
             showToast("已复制错误日志")

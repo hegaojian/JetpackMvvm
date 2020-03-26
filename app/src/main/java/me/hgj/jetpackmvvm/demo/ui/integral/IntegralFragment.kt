@@ -105,7 +105,7 @@ class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding
         appViewModel.appColor.value?.let {
             setUiTheme(
                 it,
-                listOf(integral_merank, integral_mename, integral_mecount)
+                integral_merank, integral_mename, integral_mecount
             )
         }
     }

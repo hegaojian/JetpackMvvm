@@ -15,11 +15,11 @@ import me.hgj.jetpackmvvm.demo.data.bean.SearchResponse
 class SearchRepository {
 
     suspend fun getHotData(): ApiResponse<ArrayList<SearchResponse>> {
-        return NetworkApi.service.getSearchData()
+        return NetworkApi().service.getSearchData()
     }
 
     suspend fun getSearchResultData(pageNo:Int,searchKey:String): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>> {
-        return NetworkApi.service.getSearchDataByKey(pageNo,searchKey)
+        return NetworkApi().service.getSearchDataByKey(pageNo,searchKey)
     }
 
     fun getHistoryData(): ArrayList<String> {

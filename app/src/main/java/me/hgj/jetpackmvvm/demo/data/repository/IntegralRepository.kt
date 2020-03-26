@@ -14,10 +14,10 @@ import me.hgj.jetpackmvvm.demo.data.bean.IntegralResponse
 class IntegralRepository {
 
     suspend  fun getIntegralData(pageNo:Int):ApiResponse<ApiPagerResponse<ArrayList<IntegralResponse>>>{
-       return  NetworkApi.service.getIntegralRank(pageNo)
+       return   NetworkApi().service.getIntegralRank(pageNo)
     }
 
     suspend  fun getIntegralHistoryData(pageNo:Int):ApiResponse<ApiPagerResponse<ArrayList<IntegralHistoryResponse>>>{
-        return  NetworkApi.service.getIntegralHistory(pageNo)
+        return   NetworkApi().service.getIntegralHistory(pageNo)
     }
 }
