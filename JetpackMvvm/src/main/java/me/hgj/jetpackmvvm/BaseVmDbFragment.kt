@@ -38,6 +38,7 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Frag
         savedInstanceState: Bundle?
     ): View? {
         mDatabind = DataBindingUtil.inflate(inflater, layoutId(), container, false)
+        mDatabind.lifecycleOwner = this
         return mDatabind.root
     }
 
