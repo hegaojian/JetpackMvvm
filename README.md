@@ -32,6 +32,7 @@
 ## 1.如何集成
 
 - **1.1 在project的build.grade中添加**
+
 ```
 repositories {
   ...
@@ -48,15 +49,14 @@ dependencies {
   ...
   implementation 'me.hegj:JetpackMvvm:1.0.6'
 }
-
 ```
+
 - **1.3 在app的build.grade文件中，android 模块下开启DataBinding(如果你不想用DataBinding,请忽略)**
 
 ```
 dataBinding{
     enabled = true
 }
-
 ```
 
 ## 2.登录示例（可以看demo，预先创建你的基类，并实现相关的方法）
