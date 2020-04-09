@@ -8,7 +8,7 @@
 [6]:https://github.com/hegaojian/JetpackMvvm/blob/master/LICENSE
 
 # JetPackMvvm
-- **基于MVVM模式集成谷歌官方推荐的JetPack组件库：LiveData、ViewModel、Lifecycle组件**
+- **基于MVVM模式集成谷歌官方推荐的JetPack组件库：LiveData、ViewModel、Lifecycle、Navigation组件**
 - **使用kotlin语言，添加大量拓展函数，简化代码**
 - **加入Retorfit网络请求,协程，帮你简化各种操作，让你快速请求网络**  
 
@@ -29,23 +29,36 @@
 ![](https://upload-images.jianshu.io/upload_images/9305757-4999111e26d5e93a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
   
   
-## 1.如何使用
+## 1.如何集成
 
-- 1.1 启用dataBinding 如果你需要用到dataBinding,请在主工程的build中加入，不用可以忽略这一步：
-**不想用dataBinding的继承BaseVmActivity，想用dataBinding的继承BaseVmDbActivity**
+- **1.1 在project的build.grade中添加**
+
 ```
-  dataBinding{
-        enabled = true
-  }
+repositories {
+  ...
+   maven {
+      url 'https://jitpack.io'
+   }
+}
 ```
-- 1.2 依赖
+
+- **1.2 在app的build.grade中添加依赖**
+
 ```
 dependencies {
   ...
-  implementation 'me.hegj:JetpackMvvm:1.0.5'
+  implementation 'me.hegj:JetpackMvvm:1.0.7'
 }
+```
+
+- **1.3 在app的build.grade文件中，android 模块下开启DataBinding(如果你不想用DataBinding,请忽略这一步)**
 
 ```
+dataBinding{
+    enabled = true
+}
+```
+
 ## 2.登录示例（可以看demo，预先创建你的基类，并实现相关的方法）
 
 - 2.1 LoginFragment继承基类传入相关泛型
