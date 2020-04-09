@@ -11,12 +11,14 @@ import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.clickNoRepeatLogin
 import me.hgj.jetpackmvvm.demo.app.ext.init
+import me.hgj.jetpackmvvm.demo.app.ext.joinQQGroup
 import me.hgj.jetpackmvvm.demo.app.ext.setUiTheme
 import me.hgj.jetpackmvvm.demo.data.bean.BannerResponse
 import me.hgj.jetpackmvvm.demo.data.bean.IntegralResponse
 import me.hgj.jetpackmvvm.demo.databinding.FragmentMeBinding
 import me.hgj.jetpackmvvm.ext.parseState
 import me.hgj.jetpackmvvm.ext.util.notNull
+import me.hgj.jetpackmvvm.ext.util.setOnclickNoRepeat
 import me.hgj.jetpackmvvm.ext.view.clickNoRepeat
 
 /**
@@ -34,39 +36,8 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
         mDatabind.vm = mViewModel
         appViewModel.appColor.value?.let { setUiTheme(it, me_linear, me_integral) }
         appViewModel.userinfo.value?.let { mViewModel.name.set(if (it.nickname.isEmpty()) it.username else it.nickname) }
-
         me_swipe.init {
             mViewModel.getIntegral()
-        }
-
-        me_linear.clickNoRepeatLogin {}
-
-        me_integralLinear.clickNoRepeatLogin {
-            Navigation.findNavController(it).navigate(R.id.action_mainfragment_to_integralFragment,
-                Bundle().apply {
-                    putSerializable("rank",rank)
-                }
-            )
-        }
-        me_collect.clickNoRepeatLogin {
-            Navigation.findNavController(it).navigate(R.id.action_mainfragment_to_collectFragment)
-        }
-        me_article.clickNoRepeatLogin {
-            Navigation.findNavController(it).navigate(R.id.action_mainfragment_to_ariticleFragment)
-        }
-        me_todo.clickNoRepeatLogin {
-            Navigation.findNavController(it).navigate(R.id.action_mainfragment_to_todoListFragment)
-        }
-        me_about.clickNoRepeat {
-            Navigation.findNavController(it).navigate(R.id.action_mainfragment_to_webFragment,Bundle().apply {
-                putSerializable("bannerdata",BannerResponse(title = "玩Android网站",url = "https://www.wanandroid.com/"))
-            })
-        }
-        me_join.clickNoRepeat {
-            joinQQGroup("9n4i5sHt4189d4DvbotKiCHy-5jZtD4D")
-        }
-        me_setting.clickNoRepeat {
-            Navigation.findNavController(it).navigate(R.id.action_mainfragment_to_settingFragment)
         }
     }
 
@@ -78,9 +49,9 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
     }
 
     override fun createObserver() {
-        mViewModel.meData.observe(viewLifecycleOwner, Observer { data ->
+        mViewModel.meData.observe(viewLifecycleOwner, Observer { resultState ->
             me_swipe.isRefreshing = false
-            parseState(data, {
+            parseState(resultState, {
                 rank = it
                 mViewModel.info.set("id：${it.userId}　排名：${it.rank}")
                 mViewModel.integral.set(it.coinCount)
@@ -94,6 +65,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
             })
             userinfo.observe(viewLifecycleOwner, Observer {
                 it.notNull({
+                    me_swipe.isRefreshing = true
                     mViewModel.name.set(if (it.nickname.isEmpty()) it.username else it.nickname)
                     mViewModel.getIntegral()
                 }, {
@@ -105,20 +77,44 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
         }
     }
 
-    /**
-     * 加入qq聊天群
-     */
-    fun joinQQGroup(key: String): Boolean {
-        val intent = Intent()
-        intent.data = Uri.parse("mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D$key")
-        // 此Flag可根据具体产品需要自定义，如设置，则在加群界面按返回，返回手Q主界面，不设置，按返回会返回到呼起产品界面    //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        return try {
-            startActivity(intent)
-            true
-        } catch (e: Exception) {
-            // 未安装手Q或安装的版本不支持
-            ToastUtils.showShort("未安装手机QQ或安装的版本不支持")
-            false
+    override fun onViewClicked() {
+        setOnclickNoRepeat(me_about,me_join,me_setting){
+            when(it.id){
+                R.id.me_about ->{
+                    Navigation.findNavController(it).navigate(R.id.action_mainfragment_to_webFragment,Bundle().apply {
+                        putSerializable("bannerdata",BannerResponse(title = "玩Android网站",url = "https://www.wanandroid.com/"))
+                    })
+                }
+                R.id.me_join ->{
+                    joinQQGroup("9n4i5sHt4189d4DvbotKiCHy-5jZtD4D")
+                }
+                R.id.me_setting ->{
+                    Navigation.findNavController(it).navigate(R.id.action_mainfragment_to_settingFragment)
+                }
+            }
+        }
+        clickNoRepeatLogin(me_linear,me_integralLinear,me_collect,me_article,me_todo){
+            when(it.id){
+                R.id.me_linear ->{
+
+                }
+                R.id.me_integralLinear ->{
+                    Navigation.findNavController(it).navigate(R.id.action_mainfragment_to_integralFragment,
+                        Bundle().apply {
+                            putSerializable("rank",rank)
+                        }
+                    )
+                }
+                R.id.me_collect ->{
+                    Navigation.findNavController(it).navigate(R.id.action_mainfragment_to_collectFragment)
+                }
+                R.id.me_article ->{
+                    Navigation.findNavController(it).navigate(R.id.action_mainfragment_to_ariticleFragment)
+                }
+                R.id.me_todo ->{
+                    Navigation.findNavController(it).navigate(R.id.action_mainfragment_to_todoListFragment)
+                }
+            }
         }
     }
 }

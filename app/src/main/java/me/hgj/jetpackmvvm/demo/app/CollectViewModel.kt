@@ -7,6 +7,7 @@ import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.data.bean.CollectResponse
 import me.hgj.jetpackmvvm.demo.data.bean.CollectUrlResponse
 import me.hgj.jetpackmvvm.demo.data.repository.CollectRepository
+import me.hgj.jetpackmvvm.ext.request
 
 /**
  * 作者　: hegaojian
@@ -32,7 +33,7 @@ open class CollectViewModel : BaseViewModel() {
      * 不然会出错
      */
     fun collect(id: Int) {
-        launchRequestVM({ collectRepositiory.collect(id) }, {
+        request({ collectRepositiory.collect(id) }, {
             val uiState = CollectUiState(isSuccess = true, collect = true, id = id)
             collectUiState.postValue(uiState)
         }, {
@@ -48,7 +49,7 @@ open class CollectViewModel : BaseViewModel() {
      * 不然会出错
      */
     fun uncollect(id: Int) {
-        launchRequestVM({ collectRepositiory.uncollect(id) }, {
+        request({ collectRepositiory.uncollect(id) }, {
             val uiState = CollectUiState(isSuccess = true, collect = false, id = id)
             collectUiState.postValue(uiState)
         }, {
@@ -64,12 +65,11 @@ open class CollectViewModel : BaseViewModel() {
      * 不然会出错
      */
     fun collectUrl(name: String,link:String) {
-        launchRequestVM({ collectRepositiory.collectUrl(name,link) }, {
+        request({ collectRepositiory.collectUrl(name,link) }, {
             val uiState = CollectUiState(isSuccess = true, collect = true, id = it.id)
             collectUrlUiState.postValue(uiState)
         }, {
-            val uiState =
-                CollectUiState(isSuccess = false, collect = false, errorMsg = it.errorMsg, id = 0)
+            val uiState =  CollectUiState(isSuccess = false, collect = false, errorMsg = it.errorMsg, id = 0)
             collectUrlUiState.postValue(uiState)
         })
     }
@@ -80,7 +80,7 @@ open class CollectViewModel : BaseViewModel() {
      * 不然会出错
      */
     fun uncollectUrl(id: Int) {
-        launchRequestVM({ collectRepositiory.uncollectUrl(id) }, {
+        request({ collectRepositiory.uncollectUrl(id) }, {
             val uiState = CollectUiState(isSuccess = true, collect = false, id = id)
             collectUrlUiState.postValue(uiState)
         }, {
@@ -94,7 +94,7 @@ open class CollectViewModel : BaseViewModel() {
         if (isRefresh) {
             pageNo = 0
         }
-        launchRequestVM({ collectRepositiory.collectAriticleData(pageNo) }, {
+        request({ collectRepositiory.collectAriticleData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -121,7 +121,7 @@ open class CollectViewModel : BaseViewModel() {
     }
 
     fun getCollectUrlData(){
-        launchRequestVM({ collectRepositiory.collectUrlData() }, {
+        request({ collectRepositiory.collectUrlData() }, {
             //请求成功
             val listDataUiState =
                 ListDataUiState(

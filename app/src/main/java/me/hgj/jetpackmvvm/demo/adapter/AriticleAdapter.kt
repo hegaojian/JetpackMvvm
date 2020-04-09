@@ -112,7 +112,7 @@ class AriticleAdapter(data: MutableList<AriticleResponse>?) :
                         helper.setGone(R.id.item_project_new, true)
                     }
                     helper.getView<CollectView>(R.id.item_project_collect).isChecked = collect
-                    Glide.with(context).load(envelopePic)
+                    Glide.with(context.applicationContext).load(envelopePic)
                         .transition(DrawableTransitionOptions.withCrossFade(500))
                         .into(helper.getView(R.id.item_project_imageview))
                 }

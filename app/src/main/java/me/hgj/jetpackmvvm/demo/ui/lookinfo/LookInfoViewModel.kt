@@ -6,6 +6,7 @@ import me.hgj.jetpackmvvm.demo.app.CollectViewModel
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.data.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.repository.ShareRepository
+import me.hgj.jetpackmvvm.ext.request
 
 /**
  * 作者　: hegaojian
@@ -31,7 +32,7 @@ class LookInfoViewModel : CollectViewModel() {
         if (isRefresh) {
             pageNo = 1
         }
-        launchRequestVM({ repository.getLookinfoById(id, pageNo) }, {
+        request({ repository.getLookinfoById(id, pageNo) }, {
             //请求成功
             pageNo++
             name.set(it.coinInfo.username)

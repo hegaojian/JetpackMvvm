@@ -168,8 +168,8 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                 }
             })
             //监听轮播图请求的数据变化
-            bannerData.observe(viewLifecycleOwner, Observer { viewState ->
-                parseState(viewState, {data ->
+            bannerData.observe(viewLifecycleOwner, Observer { resultState ->
+                parseState(resultState, {data ->
                     //请求轮播图数据成功，添加轮播图到headview ，如果等于0说明没有添加过头部，添加一个
                     if (recyclerView.headerCount == 0) {
                         val headview =

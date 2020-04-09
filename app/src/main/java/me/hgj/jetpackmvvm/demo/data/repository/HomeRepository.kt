@@ -1,5 +1,8 @@
 package me.hgj.jetpackmvvm.demo.data.repository
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.withContext
 import me.hgj.jetpackmvvm.demo.app.network.NetworkApi
 import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.data.ApiPagerResponse
@@ -15,18 +18,23 @@ import me.hgj.jetpackmvvm.demo.data.bean.BannerResponse
  */
 class HomeRepository {
     //获取首页文章数据
-    suspend fun getHomeData(pageNo: Int):ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>> {
-        val data = NetworkApi().service.getAritrilList(pageNo)
-        if (CacheUtil.isNeedTop() && pageNo==0) {
+    suspend fun getHomeData(pageNo: Int): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>> {
+        //同时异步请求2个接口，请求完成后合并数据
+        return withContext(Dispatchers.IO) {
+            val data = async { NetworkApi().service.getAritrilList(pageNo) }
             //如果App配置打开了首页请求置顶文章，且是第一页
-            val topData = getTopData()
-            data.data.datas.addAll(0, topData.data)
+            if (CacheUtil.isNeedTop() && pageNo == 0) {
+                val topData = async { getTopData() }
+                data.await().data.datas.addAll(0, topData.await().data)
+                data.await()
+            } else {
+                data.await()
+            }
         }
-        return data
     }
 
     //获取置顶文章数据
-    private  suspend fun getTopData(): ApiResponse<ArrayList<AriticleResponse>> {
+    private suspend fun getTopData(): ApiResponse<ArrayList<AriticleResponse>> {
         return NetworkApi().service.getTopAritrilList()
     }
 
@@ -34,12 +42,6 @@ class HomeRepository {
     suspend fun getBannData(): ApiResponse<ArrayList<BannerResponse>> {
         return NetworkApi().service.getBanner()
     }
-
-
-
-
-
-
 
 
 }

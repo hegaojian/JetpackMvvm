@@ -3,8 +3,8 @@ package me.hgj.jetpackmvvm.demo.ui.share
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.BaseViewModel
 import me.hgj.jetpackmvvm.databind.StringObservableField
-import me.hgj.jetpackmvvm.ext.launchRequest
-import me.hgj.jetpackmvvm.state.ViewState
+import me.hgj.jetpackmvvm.ext.request
+import me.hgj.jetpackmvvm.state.ResultState
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.UpdateUiState
 import me.hgj.jetpackmvvm.demo.data.bean.AriticleResponse
@@ -18,7 +18,7 @@ import me.hgj.jetpackmvvm.demo.data.repository.AriticleRepository
 class AriticleViewModel :BaseViewModel() {
     var pageNo  = 0
 
-    var addData = MutableLiveData<ViewState<Any?>>()
+    var addData = MutableLiveData<ResultState<Any?>>()
 
     //分享文章标题
     var shareTitle = StringObservableField()
@@ -36,14 +36,14 @@ class AriticleViewModel :BaseViewModel() {
     private val repository: AriticleRepository by lazy { AriticleRepository() }
 
     fun addAriticle(){
-        launchRequest({repository.addAriticle(shareTitle.get(),shareUrl.get())},addData,true,"正在分享文章中...")
+        request({repository.addAriticle(shareTitle.get(),shareUrl.get())},addData,true,"正在分享文章中...")
     }
 
     fun getShareData(isRefresh:Boolean){
         if(isRefresh){
             pageNo = 0
         }
-        launchRequestVM({ repository.getShareAriticle(pageNo) }, {
+        request({ repository.getShareAriticle(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -70,7 +70,7 @@ class AriticleViewModel :BaseViewModel() {
     }
 
     fun deleteShareData(id: Int,position:Int){
-        launchRequestVM({repository.delShareAriticle(id)},{
+        request({repository.delShareAriticle(id)},{
             val updateUiState = UpdateUiState<Int>(isSuccess = true,data = position)
             delDataState.postValue(updateUiState)
         },{

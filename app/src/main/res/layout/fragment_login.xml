@@ -49,7 +49,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/login_username"
+                        android:id="@+id/loginUsername"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -65,7 +65,7 @@
                         android:textSize="15dp" />
 
                     <ImageView
-                        android:id="@+id/login_clear"
+                        android:id="@+id/loginClear"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginRight="6dp"
@@ -82,7 +82,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/login_pwd"
+                        android:id="@+id/loginPwd"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -98,7 +98,7 @@
                         bind:showPwd="@{viewmodel.isShowPwd}" />
 
                     <CheckBox
-                        android:id="@+id/login_key"
+                        android:id="@+id/loginKey"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginRight="6dp"
@@ -108,7 +108,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/login_sub"
+                    android:id="@+id/loginSub"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="30dp"
@@ -120,7 +120,7 @@
                     android:textSize="16dp" />
 
                 <TextView
-                    android:id="@+id/login_goregister"
+                    android:id="@+id/loginGoregister"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"

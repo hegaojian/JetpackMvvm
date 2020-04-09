@@ -5,19 +5,33 @@ import me.hgj.jetpackmvvm.network.BaseResponse
 /**
  * 作者　: hegaojian
  * 时间　: 2019/12/23
- * 描述　:服务器返回数据的基类 根据自己项目的数据来改变字段,
- * 必须继承 BaseResponse 并传入相关的构造数据，同时要实现isSucces方法，根据自己项目的业务判断请求是否成功，如果你不想这么判断
- * 可以直接 return true  具体想自己拿到请求结果执行不同的业务逻辑，不用框架帮你处理请求结果是否成功，可以参考
- * LoginRegisterViewModel中的请求
- *
+ * 描述　:服务器返回数据的基类
+ * 如果你的项目中有基类，那美滋滋，可以继承BaseResponse，请求时框架可以帮你自动脱壳，自动判断是否请求成功，怎么做：
+ * 1.继承 BaseResponse
+ * 2.重写isSucces 方法，编写你的业务需求，根据自己的条件判断数据是否请求成功
+ * 3.重写 getResponseCode、getResponseData、getResponseMsg方法，传入你的 code data msg
  */
-open class ApiResponse<T>(data: T, errorCode: Int, errorMsg: String): BaseResponse<T>(data,errorCode,errorMsg){
+class ApiResponse<T>(var errorCode: Int, var errorMsg: String, var data: T) : BaseResponse<T>() {
 
-    /**
-     * 请求结果是否是正确的
-     */
     override fun isSucces(): Boolean {
-        // 这里是示例，wanandroid 网站返回的 请求码为0就代表请求成功，请你根据自己的需求来改变
+        // 这里是示例，wanandroid 网站返回的 错误码为 0 就代表请求成功，请你根据自己的业务需求来改变
         return errorCode == 0
     }
+
+    override fun getResponseCode(): Int {
+        //返回你的code
+        return errorCode
+    }
+
+    override fun getResponseData(): T {
+        //返回你的 data
+        return data
+    }
+
+    override fun getResponseMsg(): String {
+        //返回你的 错误消息
+        return errorMsg
+    }
+
+
 }

@@ -9,6 +9,7 @@ import me.hgj.jetpackmvvm.demo.app.network.stateCallback.UpdateUiState
 import me.hgj.jetpackmvvm.demo.data.bean.TodoResponse
 import me.hgj.jetpackmvvm.demo.data.enums.TodoType
 import me.hgj.jetpackmvvm.demo.data.repository.TodoRepository
+import me.hgj.jetpackmvvm.ext.request
 
 /**
  * 作者　: hegaojian
@@ -44,7 +45,7 @@ class TodoViewModel : BaseViewModel() {
         if (isRefresh) {
             pageNo = 1
         }
-        launchRequestVM({ repository.getTodoListData(pageNo) }, {
+        request({ repository.getTodoListData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -71,7 +72,7 @@ class TodoViewModel : BaseViewModel() {
     }
 
     fun delTodo(id: Int, position: Int) {
-        launchRequestVM({ repository.delTodotData(id) }, {
+        request({ repository.delTodotData(id) }, {
             val uistate = UpdateUiState(isSuccess = true, data = position)
             delDataState.postValue(uistate)
         }, {
@@ -80,7 +81,7 @@ class TodoViewModel : BaseViewModel() {
         }, isShowDialog = true)
     }
     fun doneTodo(id: Int, position: Int) {
-        launchRequestVM({ repository.doneTodotData(id) }, {
+        request({ repository.doneTodotData(id) }, {
             val uistate = UpdateUiState(isSuccess = true, data = position)
             doneDataState.postValue(uistate)
         }, {
@@ -89,7 +90,7 @@ class TodoViewModel : BaseViewModel() {
         }, isShowDialog = true)
     }
     fun addTodo() {
-        launchRequestVM({
+        request({
             repository.addTodotData(
                 todoTitle.get(),
                 todoContent.get(),
@@ -107,7 +108,7 @@ class TodoViewModel : BaseViewModel() {
     }
 
     fun updateTodo(id:Int) {
-        launchRequestVM({
+        request({
             repository.updateTodotData(
                 todoTitle.get(),
                 todoContent.get(),

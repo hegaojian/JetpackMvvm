@@ -22,7 +22,7 @@ class HomeBannerViewHolder : ViewHolder<BannerResponse> {
     override fun onBind(itemView: View, data: BannerResponse?, position: Int, size: Int) {
         val img = itemView.findViewById<ImageView>(R.id.bannerhome_img)
         data?.let {
-            Glide.with(itemView.context)
+            Glide.with(img.context.applicationContext)
                 .load(it.imagePath)
                 .transition(DrawableTransitionOptions.withCrossFade(500))
                 .into(img)

@@ -48,8 +48,9 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
 
     override fun initView() {
         arguments?.let { arguments -> arguments.getString("searchKey")?.let { searchKey = it } }
+
         toolbar.initClose(searchKey) {
-            Navigation.findNavController(toolbar).navigateUp()
+            Navigation.findNavController(it).navigateUp()
         }
         //状态页配置
         loadsir = LoadServiceInit(swipeRefresh) {
@@ -120,8 +121,8 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
     }
 
     override fun createObserver() {
-        mViewModel.seachResultData.observe(viewLifecycleOwner, Observer { viewState ->
-            parseState(viewState, {
+        mViewModel.seachResultData.observe(viewLifecycleOwner, Observer { resultState ->
+            parseState(resultState, {
                 swipeRefresh.isRefreshing = false
                 //请求成功，页码+1
                 mViewModel.pageNo++

@@ -4,10 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.BaseViewModel
 import me.hgj.jetpackmvvm.databind.IntObservableField
 import me.hgj.jetpackmvvm.databind.StringObservableField
-import me.hgj.jetpackmvvm.ext.launchRequest
-import me.hgj.jetpackmvvm.state.ViewState
 import me.hgj.jetpackmvvm.demo.data.bean.IntegralResponse
 import me.hgj.jetpackmvvm.demo.data.repository.MeRepository
+import me.hgj.jetpackmvvm.ext.request
+import me.hgj.jetpackmvvm.state.ResultState
 
 /**
  * 作者　: hegaojian
@@ -26,9 +26,9 @@ class MeViewModel : BaseViewModel() {
 
     var imageUrl = StringObservableField("https://upload.jianshu.io/users/upload_avatars/9305757/93322613-ff1a-445c-80f9-57f088f7c1b1.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/300/format/webp")
 
-    var meData = MutableLiveData<ViewState<IntegralResponse>>()
+    var meData = MutableLiveData<ResultState<IntegralResponse>>()
 
     fun getIntegral() {
-        launchRequest({ repository.getIntegral() }, meData)
+        request({ repository.getIntegral() }, meData)
     }
 }

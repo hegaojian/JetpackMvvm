@@ -99,7 +99,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="这是一个根据MVVMNb框架开发玩Android的一个APP"
+            android:text="这是一个根据JetpackMvvm框架开发玩Android的一个APP"
             android:textColor="@color/colorBlack333"
             android:textSize="14dp"
             android:textStyle="bold"

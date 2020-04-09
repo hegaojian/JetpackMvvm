@@ -7,6 +7,7 @@ import me.hgj.jetpackmvvm.demo.data.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.bean.NavigationResponse
 import me.hgj.jetpackmvvm.demo.data.bean.SystemResponse
 import me.hgj.jetpackmvvm.demo.data.repository.TreeRepository
+import me.hgj.jetpackmvvm.ext.request
 
 /**
  * 作者　: hegaojian
@@ -39,7 +40,7 @@ class TreeViewModel : CollectViewModel() {
         if (isRefresh) {
             pageNo = 0
         }
-        launchRequestVM({ repository.getPlazaData(pageNo) }, {
+        request({ repository.getPlazaData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -72,7 +73,7 @@ class TreeViewModel : CollectViewModel() {
         if (isRefresh) {
             pageNo = 1 //每日一问的页码从1开始
         }
-        launchRequestVM({ repository.getAskData(pageNo) }, {
+        request({ repository.getAskData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -102,7 +103,7 @@ class TreeViewModel : CollectViewModel() {
      * 获取体系数据
      */
     fun getSystemData() {
-        launchRequestVM({ repository.getSystemData() }, {
+        request({ repository.getSystemData() }, {
             //请求成功
             val dataUiState =
                 ListDataUiState(
@@ -126,7 +127,7 @@ class TreeViewModel : CollectViewModel() {
      * 获取导航数据
      */
     fun getNavigationData() {
-        launchRequestVM({ repository.getNavigationData() }, {
+        request({ repository.getNavigationData() }, {
             //请求成功
             val dataUiState =
                 ListDataUiState(
@@ -153,7 +154,7 @@ class TreeViewModel : CollectViewModel() {
         if (isRefresh) {
             pageNo = 0
         }
-        launchRequestVM({ repository.getSystemChildData(pageNo,cid) }, {
+        request({ repository.getSystemChildData(pageNo,cid) }, {
             //请求成功
             pageNo++
             val listDataUiState =

@@ -80,7 +80,7 @@ fun LoadServiceInit(view: View, callback: () -> Unit): LoadService<Any> {
         callback.invoke()
     }
     loadsir.showCallback(LoadingCallback::class.java)
-    SettingUtil.setLoadingColor(SettingUtil.getColor(view.context), loadsir)
+    SettingUtil.setLoadingColor(SettingUtil.getColor(view.context.applicationContext), loadsir)
     return loadsir
 
 }
@@ -99,9 +99,9 @@ fun RecyclerView.init(
 }
 
 fun SwipeRecyclerView.initFooter(loadmoreListener: SwipeRecyclerView.LoadMoreListener): DefineLoadMoreView {
-    val footerView = DefineLoadMoreView(context)
+    val footerView = DefineLoadMoreView(context.applicationContext)
     //给尾部设置颜色
-    footerView.setLoadViewColor(SettingUtil.getOneColorStateList(context))
+    footerView.setLoadViewColor(SettingUtil.getOneColorStateList(context.applicationContext))
     //设置尾部点击回调
     footerView.setmLoadMoreListener(SwipeRecyclerView.LoadMoreListener {
         footerView.onLoading()
@@ -128,7 +128,7 @@ fun RecyclerView.initFloatBtn(floatbtn: FloatingActionButton) {
             }
         }
     })
-    floatbtn.backgroundTintList = SettingUtil.getOneColorStateList(context)
+    floatbtn.backgroundTintList = SettingUtil.getOneColorStateList(context.applicationContext)
     floatbtn.setOnClickListener {
         val layoutManager = layoutManager as LinearLayoutManager
         //如果当前recyclerview 最后一个视图位置的索引大于等于40，则迅速返回顶部，否则带有滚动动画效果返回到顶部
@@ -147,7 +147,7 @@ fun SwipeRefreshLayout.init(onRefreshListener: () -> Unit) {
             onRefreshListener.invoke()
         }
         //设置主题颜色
-        setColorSchemeColors(SettingUtil.getColor(context))
+        setColorSchemeColors(SettingUtil.getColor(context.applicationContext))
     }
 }
 
@@ -155,7 +155,7 @@ fun SwipeRefreshLayout.init(onRefreshListener: () -> Unit) {
  * 初始化普通的toolbar 只设置标题
  */
 fun Toolbar.init(titleStr: String = ""): Toolbar {
-    setBackgroundColor(SettingUtil.getColor(context))
+    setBackgroundColor(SettingUtil.getColor(context.applicationContext))
     title = titleStr
     return this
 }
@@ -165,13 +165,13 @@ fun Toolbar.init(titleStr: String = ""): Toolbar {
  */
 fun Toolbar.initClose(
     titleStr: String = "",
-    backimg: Int = R.drawable.ic_back,
-    onback: (toolbar: Toolbar) -> Unit
+    backImg: Int = R.drawable.ic_back,
+    onBack: (toolbar: Toolbar) -> Unit
 ): Toolbar {
-    setBackgroundColor(SettingUtil.getColor(context))
+    setBackgroundColor(SettingUtil.getColor(context.applicationContext))
     title = Html.fromHtml(titleStr)
-    setNavigationIcon(backimg)
-    setNavigationOnClickListener { onback.invoke(this) }
+    setNavigationIcon(backImg)
+    setNavigationOnClickListener { onBack.invoke(this) }
     return this
 }
 
@@ -218,7 +218,7 @@ fun MagicIndicator.bindViewPager2(
     mStringList: ArrayList<String> = arrayListOf(),
     action: (index: Int) -> Unit = {}
 ) {
-    val commonNavigator = CommonNavigator(context)
+    val commonNavigator = CommonNavigator(context.applicationContext)
     commonNavigator.adapter = object : CommonNavigatorAdapter() {
         override fun getCount(): Int {
             return if (mDataList.size != 0) {
@@ -229,7 +229,7 @@ fun MagicIndicator.bindViewPager2(
         }
 
         override fun getTitleView(context: Context, index: Int): IPagerTitleView {
-            return ScaleTransitionPagerTitleView(context).apply {
+            return ScaleTransitionPagerTitleView(context.applicationContext).apply {
                 text = if (mDataList.size != 0) {
                     Html.fromHtml(mDataList[index].name)
                 } else {
@@ -249,10 +249,10 @@ fun MagicIndicator.bindViewPager2(
             return LinePagerIndicator(context).apply {
                 mode = LinePagerIndicator.MODE_EXACTLY
                 //线条的宽高度
-                lineHeight = UIUtil.dip2px(context, 3.0).toFloat()
-                lineWidth = UIUtil.dip2px(context, 30.0).toFloat()
+                lineHeight = UIUtil.dip2px(context.applicationContext, 3.0).toFloat()
+                lineWidth = UIUtil.dip2px(context.applicationContext, 30.0).toFloat()
                 //线条的圆角
-                roundRadius = UIUtil.dip2px(context, 6.0).toFloat()
+                roundRadius = UIUtil.dip2px(context.applicationContext, 6.0).toFloat()
                 startInterpolator = AccelerateInterpolator()
                 endInterpolator = DecelerateInterpolator(2.0f)
                 //线条的颜色
@@ -334,6 +334,29 @@ fun View.clickNoRepeatLogin(interval: Long = 500, action: (view: View) -> Unit) 
             action(it)
         }else{
             Navigation.findNavController(it).navigate(R.id.action_mainFragment_to_loginFragment)
+        }
+    }
+}
+
+/**
+ * 防止重复点击事件 默认0.5秒内不可重复点击 跳转前做登录校验
+ * @param view 触发的view集合
+ * @param interval 时间间隔 默认0.5秒
+ * @param action 执行方法
+ */
+fun clickNoRepeatLogin(vararg view: View?,interval: Long = 500, action: (view: View) -> Unit) {
+    view.forEach {
+        it?.setOnClickListener {
+            val currentTime = System.currentTimeMillis()
+            if (lastloginClickTime != 0L && (currentTime - lastloginClickTime < interval)) {
+                return@setOnClickListener
+            }
+            lastloginClickTime = currentTime
+            if(CacheUtil.isLogin()){
+                action(it)
+            }else{
+                Navigation.findNavController(it).navigate(R.id.action_mainFragment_to_loginFragment)
+            }
         }
     }
 }

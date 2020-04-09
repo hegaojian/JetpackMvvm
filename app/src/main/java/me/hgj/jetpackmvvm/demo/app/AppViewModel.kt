@@ -28,8 +28,6 @@ class AppViewModel : BaseViewModel() {
     //全局收藏，在任意一个地方收藏或取消收藏，监听该值的界面都会收到消息
     var collect = UnPeekLiveData<CollectBus>()
 
-    var refreshUi = UnPeekLiveData<String>()
-
     init {
         //默认值保存的账户信息，没有登陆过则为null
         userinfo.value = CacheUtil.getUser()

@@ -141,8 +141,10 @@ class WebFragment : BaseFragment<CollectViewModel, FragmentWebBinding>() {
                 appViewModel.collect.postValue(CollectBus(it.id,it.collect))
                 collect = it.collect
                 //刷新一下menu
+
                 activity?.window?.invalidatePanelMenu(Window.FEATURE_OPTIONS_PANEL)
                 activity?.invalidateOptionsMenu()
+
             } else {
                 showMessage(it.errorMsg)
             }

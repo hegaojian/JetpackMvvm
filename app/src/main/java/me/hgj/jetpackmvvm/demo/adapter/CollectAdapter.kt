@@ -76,7 +76,7 @@ class CollectAdapter(data: ArrayList<CollectResponse>) :
                     helper.setGone(R.id.item_project_type1, true)
                     helper.setGone(R.id.item_project_new, true)
                     helper.getView<CollectView>(R.id.item_project_collect).isChecked = true
-                    Glide.with(context).load(envelopePic)
+                    Glide.with(context.applicationContext).load(envelopePic)
                         .transition(DrawableTransitionOptions.withCrossFade(500))
                         .into(helper.getView(R.id.item_project_imageview))
                 }

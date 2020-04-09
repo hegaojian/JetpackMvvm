@@ -7,6 +7,7 @@ import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.data.bean.IntegralHistoryResponse
 import me.hgj.jetpackmvvm.demo.data.bean.IntegralResponse
 import me.hgj.jetpackmvvm.demo.data.repository.IntegralRepository
+import me.hgj.jetpackmvvm.ext.request
 
 /**
  * 作者　: hegaojian
@@ -29,7 +30,7 @@ class IntegralViewModel :BaseViewModel() {
         if(isRefresh){
             pageNo = 1
         }
-        launchRequestVM({repository.getIntegralData(pageNo)},{
+        request({repository.getIntegralData(pageNo)},{
             //请求成功
             pageNo++
             val listDataUiState =
@@ -59,7 +60,7 @@ class IntegralViewModel :BaseViewModel() {
         if(isRefresh){
             pageNo = 1
         }
-        launchRequestVM({repository.getIntegralHistoryData(pageNo)},{
+        request({repository.getIntegralHistoryData(pageNo)},{
             //请求成功
             pageNo++
             val listDataUiState =

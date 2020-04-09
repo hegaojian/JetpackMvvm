@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.tencent.mmkv.MMKV
 import me.hgj.jetpackmvvm.demo.data.bean.UserInfo
+import me.hgj.jetpackmvvm.ext.util.logd
 
 object CacheUtil {
     /**

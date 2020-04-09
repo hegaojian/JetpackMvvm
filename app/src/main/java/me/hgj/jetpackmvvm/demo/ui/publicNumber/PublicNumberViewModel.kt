@@ -1,13 +1,13 @@
 package me.hgj.jetpackmvvm.demo.ui.publicNumber
 
 import androidx.lifecycle.MutableLiveData
-import me.hgj.jetpackmvvm.state.ViewState
+import me.hgj.jetpackmvvm.state.ResultState
 import me.hgj.jetpackmvvm.demo.app.CollectViewModel
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.data.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.bean.ClassifyResponse
 import me.hgj.jetpackmvvm.demo.data.repository.PublicRepository
-import me.hgj.jetpackmvvm.ext.launchRequest
+import me.hgj.jetpackmvvm.ext.request
 
 /**
  * 作者　: hegaojian
@@ -18,21 +18,21 @@ class PublicNumberViewModel : CollectViewModel() {
 
     var pageNo = 1
 
-    var titleData: MutableLiveData<ViewState<ArrayList<ClassifyResponse>>> = MutableLiveData()
+    var titleData: MutableLiveData<ResultState<ArrayList<ClassifyResponse>>> = MutableLiveData()
 
     var publicDataState: MutableLiveData<ListDataUiState<AriticleResponse>> = MutableLiveData()
 
     private val repository:PublicRepository by lazy { PublicRepository() }
 
     fun getPublicTitleData() {
-        launchRequest({ repository.getTitleData() }, titleData)
+        request({ repository.getTitleData() }, titleData)
     }
 
     fun getPublicData(isRefresh: Boolean, cid: Int) {
         if (isRefresh) {
             pageNo = 1
         }
-        launchRequestVM({ repository.getPublicData(pageNo, cid) },{
+        request({ repository.getPublicData(pageNo, cid) },{
             //请求成功
             pageNo++
             val listDataUiState =

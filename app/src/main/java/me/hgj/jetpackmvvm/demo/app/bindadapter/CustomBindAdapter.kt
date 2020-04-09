@@ -42,7 +42,7 @@ object CustomBindAdapter {
     @BindingAdapter(value = ["imageUrl"])
     @JvmStatic
     fun imageUrl(view: ImageView, url: String) {
-        Glide.with(view)
+        Glide.with(view.context.applicationContext)
             .load(url)
             .transition(DrawableTransitionOptions.withCrossFade(500))
             .into(view)
@@ -51,7 +51,7 @@ object CustomBindAdapter {
     @BindingAdapter(value = ["circleImageUrl"])
     @JvmStatic
     fun circleImageUrl(view: ImageView, url: String) {
-        Glide.with(view)
+        Glide.with(view.context.applicationContext)
             .load(url)
             .apply(RequestOptions.bitmapTransform(CircleCrop()))
             .transition(DrawableTransitionOptions.withCrossFade(500))

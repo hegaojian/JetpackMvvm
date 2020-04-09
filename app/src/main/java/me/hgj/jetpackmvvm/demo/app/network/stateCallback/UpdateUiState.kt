@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.demo.app.network.stateCallback
 
-
 /**
  * 作者　: hegaojian
  * 时间　: 2020/3/11

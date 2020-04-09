@@ -25,7 +25,7 @@ import me.hgj.jetpackmvvm.ext.view.visible
 @Suppress("DEPRECATED_IDENTITY_EQUALS")
 class WelcomeActivity : BaseActivity<BaseViewModel, ActivityWelcomeBinding>() {
 
-    var resList = arrayOf("唱", "跳", "r a p")
+    private var resList = arrayOf("唱", "跳", "r a p")
 
     private lateinit var mViewPager: BannerViewPager<String, WelcomeBannerViewHolder>
 
@@ -54,17 +54,21 @@ class WelcomeActivity : BaseActivity<BaseViewModel, ActivityWelcomeBinding>() {
                 }
             mViewPager.create(resList.toList())
         } else {
-            //不是第一次打开App 0.2秒后自动跳转到主页
+            //不是第一次打开App 0.3秒后自动跳转到主页
             welcome_image.visible()
             mViewPager.postDelayed({
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
-            }, 200)
+                //带点渐变动画
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            }, 300)
         }
         button2.setOnClickListener {
             CacheUtil.setFirst(false)
             startActivity(Intent(this, MainActivity::class.java))
             finish()
+            //带点渐变动画
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
     }
 

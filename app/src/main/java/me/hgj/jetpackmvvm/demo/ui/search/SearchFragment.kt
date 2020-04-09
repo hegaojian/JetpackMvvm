@@ -142,7 +142,9 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
             historyData.observe(viewLifecycleOwner, Observer {
                 historyAdapter.data = it
                 historyAdapter.notifyDataSetChanged()
+
                 CacheUtil.setSearchHistoryData(it.toJson())
+
             })
         }
     }

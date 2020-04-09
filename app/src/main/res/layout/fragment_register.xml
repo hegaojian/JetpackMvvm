@@ -49,7 +49,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/register_username"
+                        android:id="@+id/registerUsername"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -65,7 +65,7 @@
                         android:textSize="15dp" />
 
                     <ImageView
-                        android:id="@+id/register_clear"
+                        android:id="@+id/registerClear"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginRight="6dp"
@@ -82,7 +82,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/register_pwd"
+                        android:id="@+id/registerPwd"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -98,7 +98,7 @@
                         android:textSize="15dp" />
 
                     <CheckBox
-                        android:id="@+id/register_key"
+                        android:id="@+id/registerKey"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginRight="6dp"
@@ -116,7 +116,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/register_pwd1"
+                        android:id="@+id/registerPwd1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -132,7 +132,7 @@
                         android:textSize="15dp" />
 
                     <CheckBox
-                        android:id="@+id/register_key1"
+                        android:id="@+id/registerKey1"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginRight="6dp"
@@ -142,7 +142,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/register_sub"
+                    android:id="@+id/registerSub"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="30dp"

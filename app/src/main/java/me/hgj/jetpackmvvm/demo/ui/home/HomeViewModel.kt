@@ -6,8 +6,8 @@ import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.data.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.bean.BannerResponse
 import me.hgj.jetpackmvvm.demo.data.repository.HomeRepository
-import me.hgj.jetpackmvvm.ext.launchRequest
-import me.hgj.jetpackmvvm.state.ViewState
+import me.hgj.jetpackmvvm.ext.request
+import me.hgj.jetpackmvvm.state.ResultState
 
 /**
  * 作者　: hegaojian
@@ -23,7 +23,7 @@ class HomeViewModel : CollectViewModel() {
     //首页文章列表数据
     var homeDataState: MutableLiveData<ListDataUiState<AriticleResponse>> = MutableLiveData()
     //首页轮播图数据
-    var bannerData: MutableLiveData<ViewState<ArrayList<BannerResponse>>> = MutableLiveData()
+    var bannerData: MutableLiveData<ResultState<ArrayList<BannerResponse>>> = MutableLiveData()
     //主页的请求数据仓库
     private val homeRepository: HomeRepository by lazy { HomeRepository() }
 
@@ -35,7 +35,7 @@ class HomeViewModel : CollectViewModel() {
         if (isRefresh) {
             pageNo = 0
         }
-        launchRequestVM({ homeRepository.getHomeData(pageNo) }, {
+        request({ homeRepository.getHomeData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -65,6 +65,6 @@ class HomeViewModel : CollectViewModel() {
      * 获取轮播图数据
      */
     fun getBannerData() {
-        launchRequest({ homeRepository.getBannData() }, bannerData)
+        request({ homeRepository.getBannData() }, bannerData)
     }
 }
