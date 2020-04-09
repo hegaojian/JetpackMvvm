@@ -82,12 +82,12 @@ abstract class BaseVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : AppC
      * 注册 UI 事件
      */
     private fun registorDefUIChange() {
-        mViewModel.defUI.showDialog.observe(this, Observer {
+        mViewModel.uiChange.showDialog.observe(this, Observer {
             showLoading(if(it.isEmpty()) {
                 "请求网络中..."
             } else it)
         })
-        mViewModel.defUI.dismissDialog.observe(this, Observer {
+        mViewModel.uiChange.dismissDialog.observe(this, Observer {
             dismissLoading()
         })
     }

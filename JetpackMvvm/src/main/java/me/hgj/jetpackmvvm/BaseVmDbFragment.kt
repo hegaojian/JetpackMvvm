@@ -121,10 +121,10 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Frag
      * 注册 UI 事件
      */
     private fun registorDefUIChange() {
-        mViewModel.defUI.showDialog.observe(viewLifecycleOwner, Observer {
+        mViewModel.uiChange.showDialog.observe(viewLifecycleOwner, Observer {
             showLoading()
         })
-        mViewModel.defUI.dismissDialog.observe(viewLifecycleOwner, Observer {
+        mViewModel.uiChange.dismissDialog.observe(viewLifecycleOwner, Observer {
             dismissLoading()
         })
     }

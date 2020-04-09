@@ -3,7 +3,7 @@ package me.hgj.jetpackmvvm.ext.util
 import android.util.Log
 import me.hgj.jetpackmvvm.BuildConfig
 
-const val TAG = "mvvmnb"
+const val TAG = "JetpackMvvm"
 
 var showLog = BuildConfig.DEBUG
 

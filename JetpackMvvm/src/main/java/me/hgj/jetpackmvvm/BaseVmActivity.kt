@@ -44,7 +44,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(layoutId())
         mViewModel = createViewModel()
-        registorDefUIChange()
+        registerUiChange()
         initView()
         createObserver()
         onViewClicked()
@@ -66,13 +66,15 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
     /**
      * 注册 UI 事件
      */
-    private fun registorDefUIChange() {
-        mViewModel.defUI.showDialog.observe(this, Observer {
+    private fun registerUiChange() {
+        //显示弹窗
+        mViewModel.uiChange.showDialog.observe(this, Observer {
             showLoading(if(it.isEmpty()) {
                 "请求网络中..."
             } else it)
         })
-        mViewModel.defUI.dismissDialog.observe(this, Observer {
+        //关闭弹窗
+        mViewModel.uiChange.dismissDialog.observe(this, Observer {
             dismissLoading()
         })
     }

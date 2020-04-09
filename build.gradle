@@ -7,7 +7,9 @@ buildscript {
         maven {
             url 'https://jitpack.io'
         }
-
+        maven {
+            url 'https://dl.bintray.com/novoda-oss/snapshots/'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.1'

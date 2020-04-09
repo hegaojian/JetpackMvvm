@@ -22,7 +22,6 @@ class Ktx : ContentProvider() {
         var background = false
     }
 
-
     override fun onCreate(): Boolean {
         val application = context!!.applicationContext as Application
         install(application)

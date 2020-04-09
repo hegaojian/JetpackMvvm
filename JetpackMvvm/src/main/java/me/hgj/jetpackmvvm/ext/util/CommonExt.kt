@@ -61,7 +61,7 @@ fun View.px2dp(px: Int): Int {
 /**
  * 复制文本到粘贴板
  */
-fun Context.copyToClipboard(text: String, label: String = "mvvmnb") {
+fun Context.copyToClipboard(text: String, label: String = "JetpackMvvm") {
     val clipData = ClipData.newPlainText(label, text)
     clipboardManager?.setPrimaryClip(clipData)
 }
@@ -104,10 +104,10 @@ fun setOnclick(vararg views: View?, onClick: (View) -> Unit) {
 /**
  * 设置防止重复点击事件
  * @param views 需要设置点击事件的view集合
- * @param interval 时间间隔 默认0.3秒
+ * @param interval 时间间隔 默认0.5秒
  * @param onClick 点击触发的方法
  */
-fun setOnclickNoRepeat(vararg views: View?, interval: Long = 300, onClick: (View) -> Unit) {
+fun setOnclickNoRepeat(vararg views: View?, interval: Long = 500, onClick: (View) -> Unit) {
     views.forEach {
         it?.clickNoRepeat(interval = interval) { view ->
             onClick.invoke(view)
@@ -115,13 +115,4 @@ fun setOnclickNoRepeat(vararg views: View?, interval: Long = 300, onClick: (View
     }
 }
 
-var noRepeatMethodLastClickTime = 0L
-fun noRepeatMethod(interval: Long = 300,action: () -> Unit){
-    val currentTime = System.currentTimeMillis()
-    if (noRepeatMethodLastClickTime != 0L && (currentTime - noRepeatMethodLastClickTime < interval)) {
-        return
-    }
-    noRepeatMethodLastClickTime = currentTime
-    action.invoke()
-}
 
