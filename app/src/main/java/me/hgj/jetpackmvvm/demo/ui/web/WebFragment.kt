@@ -2,7 +2,11 @@ package me.hgj.jetpackmvvm.demo.ui.web
 
 import android.content.Intent
 import android.net.Uri
-import android.view.*
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.Window
 import android.widget.LinearLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +16,6 @@ import androidx.navigation.Navigation
 import com.just.agentweb.AgentWeb
 import kotlinx.android.synthetic.main.fragment_web.*
 import kotlinx.android.synthetic.main.include_toolbar.*
-import me.hgj.jetpackmvvm.navigation.NavHostFragment
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.CollectViewModel
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
@@ -23,6 +26,7 @@ import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.data.bean.*
 import me.hgj.jetpackmvvm.demo.data.enums.CollectType
 import me.hgj.jetpackmvvm.demo.databinding.FragmentWebBinding
+import me.hgj.jetpackmvvm.navigation.NavHostFragment
 
 
 /**
@@ -43,11 +47,11 @@ class WebFragment : BaseFragment<CollectViewModel, FragmentWebBinding>() {
     //需要收藏的类型 具体参数说明请看 CollectType 枚举类
     private var collectType = 0
 
-    private  var mAgentWeb: AgentWeb? = null
+    private var mAgentWeb: AgentWeb? = null
 
     override fun layoutId() = R.layout.fragment_web
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         arguments?.run {
             //点击文章进来的
@@ -89,10 +93,7 @@ class WebFragment : BaseFragment<CollectViewModel, FragmentWebBinding>() {
         }
         toolbar.run {
             //设置menu 关键代码
-            val appCompatActivity = activity as AppCompatActivity?
-            appCompatActivity?.let {
-                it.setSupportActionBar(this)
-            }
+            (activity as? AppCompatActivity)?.setSupportActionBar(this)
             initClose(showTitle) {
                 hideSoftKeyboard(activity)
                 Navigation.findNavController(it).navigateUp()
@@ -113,9 +114,9 @@ class WebFragment : BaseFragment<CollectViewModel, FragmentWebBinding>() {
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     mAgentWeb?.let {
-                        if(it.webCreator.webView.canGoBack()){
+                        if (it.webCreator.webView.canGoBack()) {
                             it.webCreator.webView.goBack()
-                        }else{
+                        } else {
                             NavHostFragment.findNavController(this@WebFragment).navigateUp()
                         }
                     }
@@ -128,7 +129,7 @@ class WebFragment : BaseFragment<CollectViewModel, FragmentWebBinding>() {
         mViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 collect = it.collect
-                appViewModel.collect.postValue( CollectBus(it.id,it.collect))
+                appViewModel.collect.postValue(CollectBus(it.id, it.collect))
                 //刷新一下menu
                 activity?.window?.invalidatePanelMenu(Window.FEATURE_OPTIONS_PANEL)
                 activity?.invalidateOptionsMenu()
@@ -138,13 +139,11 @@ class WebFragment : BaseFragment<CollectViewModel, FragmentWebBinding>() {
         })
         mViewModel.collectUrlUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
-                appViewModel.collect.postValue(CollectBus(it.id,it.collect))
+                appViewModel.collect.postValue(CollectBus(it.id, it.collect))
                 collect = it.collect
                 //刷新一下menu
-
                 activity?.window?.invalidatePanelMenu(Window.FEATURE_OPTIONS_PANEL)
                 activity?.invalidateOptionsMenu()
-
             } else {
                 showMessage(it.errorMsg)
             }
@@ -203,7 +202,7 @@ class WebFragment : BaseFragment<CollectViewModel, FragmentWebBinding>() {
                     } else {
                         if (collectType == CollectType.Url.type) {
                             //收藏网址
-                            mViewModel.collectUrl(showTitle,url)
+                            mViewModel.collectUrl(showTitle, url)
                         } else {
                             //收藏文章
                             mViewModel.collect(ariticleId)
@@ -235,8 +234,8 @@ class WebFragment : BaseFragment<CollectViewModel, FragmentWebBinding>() {
 
     override fun onDestroy() {
         mAgentWeb?.webLifeCycle?.onDestroy()
+        (activity as? AppCompatActivity)?.setSupportActionBar(null)
         super.onDestroy()
     }
-
 
 }

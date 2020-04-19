@@ -1,6 +1,7 @@
 package me.hgj.jetpackmvvm.demo.ui
 
 import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.tencent.bugly.beta.Beta
@@ -14,7 +15,7 @@ class MainActivity : BaseActivity<MessageViewmodel, ActivityMainBinding>() {
 
     override fun layoutId() = R.layout.activity_main
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?) {
         supportActionBar?.setBackgroundDrawable(ColorDrawable(SettingUtil.getColor(this)))
         StatusBarUtil.setColor(this, SettingUtil.getColor(this), 0)
 
@@ -35,6 +36,5 @@ class MainActivity : BaseActivity<MessageViewmodel, ActivityMainBinding>() {
     override fun onSupportNavigateUp(): Boolean {
         return Navigation.findNavController(this, R.id.main_navation).navigateUp()
     }
-
 
 }

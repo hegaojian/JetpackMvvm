@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.demo.app.base
 
+import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.databinding.ViewDataBinding
@@ -33,7 +34,7 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
     abstract override fun layoutId(): Int
 
 
-    abstract override fun initView()
+    abstract override fun initView(savedInstanceState: Bundle?)
 
     /**
      * 懒加载 只有当前fragment视图显示时才会触发该方法

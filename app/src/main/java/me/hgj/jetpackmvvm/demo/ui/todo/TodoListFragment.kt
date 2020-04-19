@@ -42,7 +42,7 @@ class TodoListFragment : BaseFragment<TodoViewModel, FragmentListBinding>() {
 
     override fun layoutId() = R.layout.fragment_list
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         toolbar.run {
             initClose("TODO") {
                 Navigation.findNavController(it).navigateUp()
@@ -82,14 +82,14 @@ class TodoListFragment : BaseFragment<TodoViewModel, FragmentListBinding>() {
             mViewModel.getTodoData(true)
         }
         articleAdapter.run {
-            setOnItemClickListener { adapter, view, position ->
+            setNbOnItemClickListener { adapter, view, position ->
                 Navigation.findNavController(view).navigate(R.id.action_todoListFragment_to_addTodoFragment,
                     Bundle().apply{
                         putSerializable("todo",articleAdapter.data[position])
                     })
             }
             addChildClickViewIds(R.id.item_todo_setting)
-            setOnItemChildClickListener { adapter, view, position ->
+            setNbOnItemChildClickListener { adapter, view, position ->
                 when (view.id) {
                     R.id.item_todo_setting -> {
                         val items =  if(articleAdapter.data[position].isDone()){

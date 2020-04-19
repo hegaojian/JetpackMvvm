@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.demo.ui
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -42,7 +43,7 @@ class MainFragment : BaseFragment<BaseViewModel, FragmentMainBinding>() {
 
     override fun layoutId() = R.layout.fragment_main
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         //初始化viewpager2
         main_viewpager.init(this,fragments,false).run {
             offscreenPageLimit = fragments.size

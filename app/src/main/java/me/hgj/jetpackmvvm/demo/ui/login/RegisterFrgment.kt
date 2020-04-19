@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.demo.ui.login
 
+import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_register.*
@@ -25,7 +26,7 @@ class RegisterFrgment : BaseFragment<LoginRegisterViewModel, FragmentRegisterBin
 
     override fun layoutId() = R.layout.fragment_register
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         mDatabind.viewmodel = mViewModel
         toolbar.initClose("注册") {
             hideSoftKeyboard(activity)

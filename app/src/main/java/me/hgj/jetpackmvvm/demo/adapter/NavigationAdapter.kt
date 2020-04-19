@@ -10,6 +10,7 @@ import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.ext.setAdapterAnimion
+import me.hgj.jetpackmvvm.demo.app.ext.setNbOnItemClickListener
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.data.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.bean.NavigationResponse
@@ -34,7 +35,7 @@ class NavigationAdapter(data: ArrayList<NavigationResponse>) : BaseQuickAdapter<
             layoutManager = foxayoutManager
             setHasFixedSize(true)
             adapter = NavigationChildAdapter(item.articles).apply {
-                setOnItemClickListener { adapter, view, position ->
+                setNbOnItemClickListener { adapter, view, position ->
                     navigationClickInterFace.onNavigationClickListener(item.articles[position],view)
                 }
             }

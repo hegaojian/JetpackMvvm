@@ -42,7 +42,7 @@ class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding
 
     override fun layoutId() = R.layout.fragment_integral
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         mDatabind.vm = mViewModel
         rank = arguments?.getSerializable("rank") as? IntegralResponse
         rank.notNull({

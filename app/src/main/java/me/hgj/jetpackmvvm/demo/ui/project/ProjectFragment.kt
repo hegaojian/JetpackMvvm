@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.demo.ui.project
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.kingja.loadsir.core.LoadService
@@ -29,7 +30,7 @@ class ProjectFragment : BaseFragment<ProjectViewModel, FragmentViewpagerBinding>
 
     override fun layoutId() = R.layout.fragment_viewpager
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         //状态页配置
         loadsir = LoadServiceInit(view_pager) {
             //点击重试时触发的操作

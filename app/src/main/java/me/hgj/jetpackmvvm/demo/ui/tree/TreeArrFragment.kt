@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.demo.ui.tree
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
@@ -31,7 +32,7 @@ class TreeArrFragment : BaseFragment<TreeViewModel, FragmentViewpagerBinding>() 
 
     override fun layoutId() = R.layout.fragment_viewpager
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         //初始化时设置顶部主题颜色
         appViewModel.appColor.value?.let { viewpager_linear.setBackgroundColor(it) }
         include_viewpager_toolbar.run {

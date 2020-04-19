@@ -32,8 +32,8 @@
 
         <TextView
             android:id="@+id/button2"
-            drawable_radius="@{6}"
-            drawable_solidColor="@{0xFFCF584F}"
+            drawable_radius="@{8}"
+            drawable_solidColor="@{@color/accent}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="72dp"

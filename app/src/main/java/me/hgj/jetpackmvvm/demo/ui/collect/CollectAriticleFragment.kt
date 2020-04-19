@@ -39,7 +39,7 @@ class CollectAriticleFragment : BaseFragment<CollectViewModel, IncludeListBindin
 
     override fun layoutId() = R.layout.include_list
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         //状态页配置
         loadsir = LoadServiceInit(swipeRefresh) {
             //点击重试时触发的操作
@@ -72,7 +72,7 @@ class CollectAriticleFragment : BaseFragment<CollectViewModel, IncludeListBindin
                     }
                 }
             })
-            setOnItemClickListener { _, view, position ->
+            setNbOnItemClickListener { _, view, position ->
                 Navigation.findNavController(view)
                     .navigate(R.id.action_collectFragment_to_webFragment, Bundle().apply {
                         putSerializable("collect", articleAdapter.data[position])

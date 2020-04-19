@@ -1,12 +1,12 @@
 package me.hgj.jetpackmvvm.demo.app.bindadapter;
-
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 
 /**
- * Created by linjiang on 2018/9/6.
+ * 作者　: hegaojian
+ * 时间　: 2020/4/10
+ * 描述　:
  */
-
 public class ProxyDrawable extends StateListDrawable {
 
     private Drawable originDrawable;

@@ -17,7 +17,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
 
     abstract fun layoutId(): Int
 
-    abstract fun initView()
+    abstract fun initView(savedInstanceState: Bundle?)
 
     abstract fun showLoading(message:String = "请求网络中...")
 
@@ -45,7 +45,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
         setContentView(layoutId())
         mViewModel = createViewModel()
         registerUiChange()
-        initView()
+        initView(savedInstanceState)
         createObserver()
         onViewClicked()
     }

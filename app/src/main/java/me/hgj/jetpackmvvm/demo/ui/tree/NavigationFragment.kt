@@ -33,7 +33,7 @@ class NavigationFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
 
     private val navigationAdapter: NavigationAdapter by lazy { NavigationAdapter(arrayListOf()) }
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         //状态页配置
         loadsir = LoadServiceInit(swipeRefresh) {
             //点击重试时触发的操作

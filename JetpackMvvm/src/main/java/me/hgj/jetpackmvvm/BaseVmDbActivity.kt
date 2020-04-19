@@ -22,7 +22,7 @@ abstract class BaseVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : AppC
 
     abstract fun layoutId(): Int
 
-    abstract fun initView()
+    abstract fun initView(savedInstanceState: Bundle?)
 
     /**
      * 绑定该视图的点击事件 需要给view设置普通的点击事件时可在activity中重写使用 例子
@@ -45,14 +45,12 @@ abstract class BaseVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : AppC
 
     abstract fun dismissLoading()
 
-    abstract fun showToast(message:String)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         createViewDataBinding()
         mViewModel = createViewModel()
         registorDefUIChange()
-        initView()
+        initView(savedInstanceState)
         createObserver()
         onViewClicked()
     }

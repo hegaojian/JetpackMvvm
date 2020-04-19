@@ -38,7 +38,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = createViewModel()
-        initView()
+        initView(savedInstanceState)
         onVisible()
         registorDefUIChange()
         initData()
@@ -55,7 +55,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
     /**
      * 初始化view
      */
-    abstract fun initView()
+    abstract fun initView(savedInstanceState: Bundle?)
 
     /**
      * 懒加载

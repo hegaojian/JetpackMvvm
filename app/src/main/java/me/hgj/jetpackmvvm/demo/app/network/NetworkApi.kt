@@ -9,6 +9,7 @@ import me.hgj.jetpackmvvm.demo.app.NetApiService
 import me.hgj.jetpackmvvm.network.BaseNetworkApi
 import me.hgj.jetpackmvvm.network.CoroutineCallAdapterFactory
 import me.hgj.jetpackmvvm.network.interceptor.CacheInterceptor
+import me.hgj.jetpackmvvm.network.interceptor.HeadInterceptor
 import me.hgj.jetpackmvvm.network.interceptor.logging.LogInterceptor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -40,7 +41,7 @@ class NetworkApi : BaseNetworkApi() {
             //添加Cookies自动持久化
             cookieJar(cookieJar)
             //添加公共heads 注意要设置在日志拦截器之前，不然Log中会不显示head信息
-//            addInterceptor(HeadInterceptor())
+            addInterceptor(HeadInterceptor(mapOf()))
             //添加缓存拦截器 可传入缓存天数，不传默认7天
             addInterceptor(CacheInterceptor())
             // 日志拦截器

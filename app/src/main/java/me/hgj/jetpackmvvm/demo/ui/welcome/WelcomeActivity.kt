@@ -1,6 +1,7 @@
 package me.hgj.jetpackmvvm.demo.ui.welcome
 
 import android.content.Intent
+import android.os.Bundle
 import android.view.View
 import com.blankj.utilcode.util.ConvertUtils
 import com.zhpan.bannerview.BannerViewPager
@@ -31,7 +32,7 @@ class WelcomeActivity : BaseActivity<BaseViewModel, ActivityWelcomeBinding>() {
 
     override fun layoutId() = R.layout.activity_welcome
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         //防止出现按Home键回到桌面时，再次点击重新进入该界面bug
         if (intent.flags and Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT !== 0) {
             finish()

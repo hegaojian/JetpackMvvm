@@ -10,6 +10,7 @@ import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.ext.setAdapterAnimion
+import me.hgj.jetpackmvvm.demo.app.ext.setNbOnItemClickListener
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.data.bean.SystemResponse
 
@@ -36,7 +37,7 @@ class SystemAdapter(data: ArrayList<SystemResponse>) :
             layoutManager = foxayoutManager
             setHasFixedSize(true)
             adapter = SystemChildAdapter(item.children).apply {
-                setOnItemClickListener { _, view, position ->
+                setNbOnItemClickListener { _, view, position ->
                     systemClickInterFace.onSystemClickListener(item, position, view)
                 }
             }

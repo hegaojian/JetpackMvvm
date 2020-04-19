@@ -29,7 +29,6 @@ import me.hgj.jetpackmvvm.demo.data.bean.BannerResponse
 import me.hgj.jetpackmvvm.demo.data.bean.CollectBus
 import me.hgj.jetpackmvvm.demo.databinding.FragmentHomeBinding
 import me.hgj.jetpackmvvm.ext.parseState
-import java.lang.NullPointerException
 
 /**
  * 作者　: hegaojian
@@ -46,7 +45,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
     override fun layoutId() = R.layout.fragment_home
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         //状态页配置
         loadsir = LoadServiceInit(swipeRefresh) {
             //点击重试时触发的操作
@@ -98,9 +97,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                         Navigation.findNavController(v)
                             .navigate(R.id.action_mainFragment_to_loginFragment)
                     }
-                }//老
+                }
             })
-            setOnItemClickListener { adapter, view, position ->
+            setNbOnItemClickListener { adapter, view, position ->
                 Navigation.findNavController(view)
                     .navigate(R.id.action_mainfragment_to_webFragment, Bundle().apply {
                         putSerializable("ariticleData",articleAdapter.data[position-recyclerView.headerCount])
@@ -108,7 +107,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
             }
             addChildClickViewIds(R.id.item_home_author)
             addChildClickViewIds(R.id.item_project_author)
-            setOnItemChildClickListener { adapter, view, position ->
+            setNbOnItemChildClickListener{ adapter, view, position ->
                 when(view.id){
                     R.id.item_home_author,R.id.item_project_author ->{
                         Navigation.findNavController(view).navigate(R.id.action_mainfragment_to_lookInfoFragment,Bundle().apply {

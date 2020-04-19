@@ -47,7 +47,7 @@ class ProjectChildFragment : BaseFragment<ProjectViewModel, IncludeListBinding>(
 
     override fun layoutId() = R.layout.include_list
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         arguments?.let {
             isNew = it.getBoolean("isNew")
             cid = it.getInt("cid")
@@ -94,7 +94,7 @@ class ProjectChildFragment : BaseFragment<ProjectViewModel, IncludeListBinding>(
                     }
                 }
             })
-            setOnItemClickListener { adapter, view, position ->
+            setNbOnItemClickListener { adapter, view, position ->
                 Navigation.findNavController(view)
                     .navigate(R.id.action_mainfragment_to_webFragment, Bundle().apply {
                         putSerializable("ariticleData",articleAdapter.data[position])
@@ -102,7 +102,7 @@ class ProjectChildFragment : BaseFragment<ProjectViewModel, IncludeListBinding>(
             }
             addChildClickViewIds(R.id.item_home_author)
             addChildClickViewIds(R.id.item_project_author)
-            setOnItemChildClickListener { adapter, view, position ->
+            setNbOnItemChildClickListener { adapter, view, position ->
                 when(view.id){
                     R.id.item_home_author,R.id.item_project_author ->{
                         Navigation.findNavController(view).navigate(R.id.action_mainfragment_to_lookInfoFragment,Bundle().apply {

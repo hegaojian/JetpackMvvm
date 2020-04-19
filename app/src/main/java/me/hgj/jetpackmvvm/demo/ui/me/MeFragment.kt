@@ -32,7 +32,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
     override fun layoutId() = R.layout.fragment_me
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         mDatabind.vm = mViewModel
         appViewModel.appColor.value?.let { setUiTheme(it, me_linear, me_integral) }
         appViewModel.userinfo.value?.let { mViewModel.name.set(if (it.nickname.isEmpty()) it.username else it.nickname) }

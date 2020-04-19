@@ -43,7 +43,7 @@ class LookInfoFragment : BaseFragment<LookInfoViewModel, FragmentLookinfoBinding
 
     override fun layoutId() = R.layout.fragment_lookinfo
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         arguments?.let {
             shareId = it.getInt("id")
         }
@@ -86,7 +86,7 @@ class LookInfoFragment : BaseFragment<LookInfoViewModel, FragmentLookinfoBinding
                     }
                 }
             })
-            setOnItemClickListener { adapter, view, position ->
+            setNbOnItemClickListener { adapter, view, position ->
                 Navigation.findNavController(view)
                     .navigate(R.id.action_lookInfoFragment_to_webFragment, Bundle().apply {
                         putSerializable(

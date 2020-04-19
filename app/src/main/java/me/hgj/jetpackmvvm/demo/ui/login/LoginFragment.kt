@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.demo.ui.login
 
+import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -14,6 +15,7 @@ import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBinding
 import me.hgj.jetpackmvvm.ext.parseState
 import me.hgj.jetpackmvvm.ext.util.setOnclickNoRepeat
+import me.hgj.jetpackmvvm.ext.view.clickNoRepeat
 
 /**
  * 作者　: hegaojian
@@ -24,9 +26,8 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
 
     override fun layoutId() = R.layout.fragment_login
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?) {
         mDatabind.viewmodel = mViewModel
-
         toolbar.initClose("登录") {
             Navigation.findNavController(it).navigateUp()
         }
@@ -54,7 +55,7 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
         })
     }
 
-    override fun lazyLoadData() { }
+    override fun lazyLoadData() {}
     /**
      * 设置点击事件 ,根据黄油刀的风格来仿写
      */
@@ -78,11 +79,5 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
                 }
             }
         }
-        loginKey.setOnCheckedChangeListener { buttonView, isChecked ->
-            mViewModel.isShowPwd.set(
-                isChecked
-            )
-        }
     }
-
 }

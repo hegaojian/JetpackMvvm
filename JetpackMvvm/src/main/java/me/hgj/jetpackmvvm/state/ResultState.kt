@@ -1,7 +1,5 @@
 package me.hgj.jetpackmvvm.state
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import me.hgj.jetpackmvvm.ext.util.logd
 import me.hgj.jetpackmvvm.network.AppException
 import me.hgj.jetpackmvvm.network.BaseResponse
 import me.hgj.jetpackmvvm.network.ExceptionHandle

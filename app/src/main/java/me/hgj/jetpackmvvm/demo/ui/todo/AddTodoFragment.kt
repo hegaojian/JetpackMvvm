@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.demo.ui.todo
 
+import android.os.Bundle
 import android.text.TextUtils
 import androidx.navigation.Navigation
 import com.afollestad.materialdialogs.MaterialDialog
@@ -35,7 +36,7 @@ class AddTodoFragment:BaseFragment<TodoViewModel,FragmentAddtodoBinding>() {
 
     override fun layoutId() = R.layout.fragment_addtodo
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         mDatabind.vm = mViewModel
         arguments?.let {
             todoResponse = it.getSerializable("todo") as TodoResponse

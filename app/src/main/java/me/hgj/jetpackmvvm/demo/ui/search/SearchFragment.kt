@@ -22,10 +22,7 @@ import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.adapter.SearcHistoryAdapter
 import me.hgj.jetpackmvvm.demo.adapter.SearcHotAdapter
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
-import me.hgj.jetpackmvvm.demo.app.ext.hideSoftKeyboard
-import me.hgj.jetpackmvvm.demo.app.ext.init
-import me.hgj.jetpackmvvm.demo.app.ext.initClose
-import me.hgj.jetpackmvvm.demo.app.ext.setUiTheme
+import me.hgj.jetpackmvvm.demo.app.ext.*
 import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.databinding.FragmentSearchBinding
@@ -47,21 +44,17 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
 
     override fun layoutId() = R.layout.fragment_search
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
-
         toolbar.run {
             //设置menu 关键代码
-            val appCompatActivity = activity as AppCompatActivity?
-            appCompatActivity?.let {
-                it.setSupportActionBar(this)
-            }
-            initClose() {
+            (activity as? AppCompatActivity)?.setSupportActionBar(this)
+            initClose {
                 hideSoftKeyboard(activity)
                 Navigation.findNavController(it).navigateUp()
             }
         }
-        appViewModel.appColor.value?.let { setUiTheme(it, search_text1,search_text2) }
+        appViewModel.appColor.value?.let { setUiTheme(it, search_text1, search_text2) }
 
         //初始化搜搜历史Recyclerview
         search_historyRv.init(LinearLayoutManager(context), historyAdapter, false)
@@ -74,17 +67,18 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
         search_hotRv.init(layoutManager, hotAdapter, false)
 
         historyAdapter.run {
-            setOnItemClickListener { adapter, view, position ->
+            setNbOnItemClickListener { adapter, view, position ->
                 val queryStr = historyAdapter.data[position]
                 updateKey(queryStr)
-                Navigation.findNavController(search_historyRv).navigate(R.id.action_searchFragment_to_searchResultFragment,
-                    Bundle().apply {
-                        putString("searchKey",queryStr)
-                    }
-                )
+                Navigation.findNavController(search_historyRv)
+                    .navigate(R.id.action_searchFragment_to_searchResultFragment,
+                        Bundle().apply {
+                            putString("searchKey", queryStr)
+                        }
+                    )
             }
             addChildClickViewIds(R.id.item_history_del)
-            setOnItemChildClickListener { adapter, view, position ->
+            setNbOnItemChildClickListener { adapter, view, position ->
                 when (view.id) {
                     R.id.item_history_del -> {
                         mViewModel.historyData.value?.let {
@@ -97,14 +91,15 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
         }
 
         hotAdapter.run {
-            setOnItemClickListener { adapter, view, position ->
+            setNbOnItemClickListener { adapter, view, position ->
                 val queryStr = hotAdapter.data[position].name
                 updateKey(queryStr)
-                Navigation.findNavController(search_hotRv).navigate(R.id.action_searchFragment_to_searchResultFragment,
-                    Bundle().apply {
-                        putString("searchKey",queryStr)
-                    }
-                )
+                Navigation.findNavController(search_hotRv)
+                    .navigate(R.id.action_searchFragment_to_searchResultFragment,
+                        Bundle().apply {
+                            putString("searchKey", queryStr)
+                        }
+                    )
             }
         }
 
@@ -121,8 +116,16 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
                             //清空
                             mViewModel.historyData.postValue(arrayListOf())
                         }
-                        getActionButton(WhichButton.POSITIVE).updateTextColor(SettingUtil.getColor(it))
-                        getActionButton(WhichButton.NEGATIVE).updateTextColor(SettingUtil.getColor(it))
+                        getActionButton(WhichButton.POSITIVE).updateTextColor(
+                            SettingUtil.getColor(
+                                it
+                            )
+                        )
+                        getActionButton(WhichButton.NEGATIVE).updateTextColor(
+                            SettingUtil.getColor(
+                                it
+                            )
+                        )
                     }
             }
 
@@ -169,11 +172,12 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
                     //当点击搜索时 输入法的搜索，和右边的搜索都会触发
                     query?.let { queryStr ->
                         updateKey(queryStr)
-                        Navigation.findNavController(search_hotRv).navigate(R.id.action_searchFragment_to_searchResultFragment,
-                            Bundle().apply {
-                                putString("searchKey",queryStr)
-                            }
-                        )
+                        Navigation.findNavController(search_hotRv)
+                            .navigate(R.id.action_searchFragment_to_searchResultFragment,
+                                Bundle().apply {
+                                    putString("searchKey", queryStr)
+                                }
+                            )
                     }
                     return false
                 }
@@ -210,6 +214,11 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
             it.add(0, keyStr)
             mViewModel.historyData.postValue(it)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        (activity as? AppCompatActivity)?.setSupportActionBar(null)
     }
 
 }

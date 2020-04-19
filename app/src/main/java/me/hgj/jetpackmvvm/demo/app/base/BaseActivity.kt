@@ -1,6 +1,7 @@
 package me.hgj.jetpackmvvm.demo.app.base
 
 import android.content.res.Resources
+import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -33,7 +34,7 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
 
     abstract override fun layoutId(): Int
 
-    abstract override fun initView()
+    abstract override fun initView(savedInstanceState: Bundle?)
 
     /**
      * 创建观察者
@@ -69,12 +70,6 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
      */
     override fun dismissLoading() {
         dialog?.dismiss()
-    }
-    /**
-     * 吐司
-     */
-    override fun showToast(message: String) {
-        ToastUtils.showShort(message)
     }
 
     /**

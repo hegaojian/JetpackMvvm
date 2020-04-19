@@ -33,7 +33,7 @@ class SystemFragment:BaseFragment<TreeViewModel,IncludeListBinding>(){
 
     private val systemAdapter : SystemAdapter by lazy { SystemAdapter(arrayListOf())}
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         //状态页配置
         loadsir = LoadServiceInit(swipeRefresh) {
             //点击重试时触发的操作
@@ -51,7 +51,7 @@ class SystemFragment:BaseFragment<TreeViewModel,IncludeListBinding>(){
             mViewModel.getSystemData()
         }
         systemAdapter.run {
-            setOnItemClickListener { _, view, position ->
+            setNbOnItemClickListener { _, view, position ->
                 Navigation.findNavController(view).navigate(R.id.action_mainfragment_to_systemArrFragment,
                     Bundle().apply {
                         putSerializable("data",systemAdapter.data[position])

@@ -39,7 +39,7 @@ class PlazaFragment :BaseFragment<TreeViewModel,IncludeListBinding>(){
 
     override fun layoutId() = R.layout.include_list
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         //状态页配置
         loadsir = LoadServiceInit(swipeRefresh) {
             //点击重试时触发的操作
@@ -77,7 +77,7 @@ class PlazaFragment :BaseFragment<TreeViewModel,IncludeListBinding>(){
                     }
                 }
             })
-            setOnItemClickListener { _, view, position ->
+            setNbOnItemClickListener { _, view, position ->
                 Navigation.findNavController(view)
                     .navigate(R.id.action_mainfragment_to_webFragment, Bundle().apply {
                         putSerializable("ariticleData",articleAdapter.data[position])
@@ -85,7 +85,7 @@ class PlazaFragment :BaseFragment<TreeViewModel,IncludeListBinding>(){
             }
             addChildClickViewIds(R.id.item_home_author)
             addChildClickViewIds(R.id.item_project_author)
-            setOnItemChildClickListener { adapter, view, position ->
+            setNbOnItemChildClickListener { adapter, view, position ->
                 when(view.id){
                     R.id.item_home_author,R.id.item_project_author ->{
                         Navigation.findNavController(view).navigate(R.id.action_mainfragment_to_lookInfoFragment,Bundle().apply {

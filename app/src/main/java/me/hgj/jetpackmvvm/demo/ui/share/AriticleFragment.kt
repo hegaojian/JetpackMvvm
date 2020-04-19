@@ -36,7 +36,7 @@ class AriticleFragment : BaseFragment<AriticleViewModel, FragmentListBinding>() 
 
     override fun layoutId() = R.layout.fragment_list
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         toolbar.run {
             initClose("我分享的文章") {
                 Navigation.findNavController(toolbar).navigateUp()
@@ -76,14 +76,14 @@ class AriticleFragment : BaseFragment<AriticleViewModel, FragmentListBinding>() 
         }
 
         articleAdapter.run {
-            setOnItemClickListener { adapter, view, position ->
+            setNbOnItemClickListener { adapter, view, position ->
                 Navigation.findNavController(view)
                     .navigate(R.id.action_ariticleFragment_to_webFragment, Bundle().apply {
                         putSerializable("ariticleData", articleAdapter.data[position])
                     })
             }
             addChildClickViewIds(R.id.item_share_del)
-            setOnItemChildClickListener { adapter, view, position ->
+            setNbOnItemChildClickListener { adapter, view, position ->
                 when (view.id) {
                     R.id.item_share_del-> {
                         showMessage("确定删除该文章吗？",positiveButtonText = "删除",positiveAction = {

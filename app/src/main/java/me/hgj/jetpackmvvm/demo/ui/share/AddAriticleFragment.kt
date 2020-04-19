@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.demo.ui.share
 
+import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.afollestad.materialdialogs.MaterialDialog
@@ -31,7 +32,7 @@ class AddAriticleFragment:BaseFragment<AriticleViewModel,FragmentShareAriticleBi
 
     override fun layoutId() = R.layout.fragment_share_ariticle
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
 
         mDatabind.vm = mViewModel
 

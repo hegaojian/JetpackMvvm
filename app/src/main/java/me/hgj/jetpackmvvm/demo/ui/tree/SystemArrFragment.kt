@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.demo.ui.tree
 
+import android.os.Bundle
 import android.view.Gravity
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
@@ -27,7 +28,7 @@ class SystemArrFragment : BaseFragment<TreeViewModel, FragmentSystemBinding>() {
 
     override fun layoutId() = R.layout.fragment_system
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         arguments?.let {
             data = it.getSerializable("data") as SystemResponse
             index = it.getInt("index")

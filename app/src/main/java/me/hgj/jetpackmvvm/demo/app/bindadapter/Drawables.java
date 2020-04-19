@@ -19,9 +19,10 @@ import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.PARAMETER;
 
 /**
- * Created by linjiang on 2018/9/5.
+ * 作者　: hegaojian
+ * 时间　: 2020/4/10
+ * 描述　:
  */
-
 public class Drawables {
     private static final String TAG = "Drawables";
 
@@ -282,8 +283,8 @@ public class Drawables {
             float marginBottom,
             float ringThickness,
             float ringThicknessRatio,
-            float   ringInnerRadius,
-            float   ringInnerRadiusRatio,
+            float ringInnerRadius,
+            float ringInnerRadiusRatio,
 
             @ShapeMode int checked_shapeMode,
             @ColorInt Integer checked_solidColor,
@@ -312,8 +313,8 @@ public class Drawables {
             float checked_marginBottom,
             float checked_ringThickness,
             float checked_ringThicknessRatio,
-            float   checked_ringInnerRadius,
-            float   checked_ringInnerRadiusRatio,
+            float checked_ringInnerRadius,
+            float checked_ringInnerRadiusRatio,
 
             @ShapeMode int checkable_shapeMode,
             @ColorInt Integer checkable_solidColor,
@@ -342,8 +343,8 @@ public class Drawables {
             float checkable_marginBottom,
             float checkable_ringThickness,
             float checkable_ringThicknessRatio,
-            float   checkable_ringInnerRadius,
-            float   checkable_ringInnerRadiusRatio,
+            float checkable_ringInnerRadius,
+            float checkable_ringInnerRadiusRatio,
 
             @ShapeMode int enabled_shapeMode,
             @ColorInt Integer enabled_solidColor,
@@ -372,8 +373,8 @@ public class Drawables {
             float enabled_marginBottom,
             float enabled_ringThickness,
             float enabled_ringThicknessRatio,
-            float   enabled_ringInnerRadius,
-            float   enabled_ringInnerRadiusRatio,
+            float enabled_ringInnerRadius,
+            float enabled_ringInnerRadiusRatio,
 
             @ShapeMode int focused_shapeMode,
             @ColorInt Integer focused_solidColor,
@@ -402,8 +403,8 @@ public class Drawables {
             float focused_marginBottom,
             float focused_ringThickness,
             float focused_ringThicknessRatio,
-            float   focused_ringInnerRadius,
-            float   focused_ringInnerRadiusRatio,
+            float focused_ringInnerRadius,
+            float focused_ringInnerRadiusRatio,
 
             @ShapeMode int pressed_shapeMode,
             @ColorInt Integer pressed_solidColor,
@@ -432,8 +433,8 @@ public class Drawables {
             float pressed_marginBottom,
             float pressed_ringThickness,
             float pressed_ringThicknessRatio,
-            float   pressed_ringInnerRadius,
-            float   pressed_ringInnerRadiusRatio,
+            float pressed_ringInnerRadius,
+            float pressed_ringInnerRadiusRatio,
 
             @ShapeMode int selected_shapeMode,
             @ColorInt Integer selected_solidColor,
@@ -462,8 +463,8 @@ public class Drawables {
             float selected_marginBottom,
             float selected_ringThickness,
             float selected_ringThicknessRatio,
-            float   selected_ringInnerRadius,
-            float   selected_ringInnerRadiusRatio,
+            float selected_ringInnerRadius,
+            float selected_ringInnerRadiusRatio,
 
             Drawable drawable,
             Drawable drawable_checked,
@@ -778,9 +779,9 @@ public class Drawables {
             @DP float width, @DP float height,
             @DP float marginLeft, @DP float marginTop, @DP float marginRight, @DP float marginBottom,
             @DP float ringThickness,
-            @DP float   ringThicknessRatio,
+            @DP float ringThicknessRatio,
             @DP float ringInnerRadius,
-            @DP float   ringInnerRadiusRatio
+            @DP float ringInnerRadiusRatio
     ) {
         if (shapeMode == INVALID && solidColor == null && strokeColor == INVALID
                 && strokeWidth == INVALID && strokeDash == INVALID && strokeDashGap == INVALID

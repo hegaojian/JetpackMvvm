@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.demo.ui.integral
 
+import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,7 +36,7 @@ class IntegralHistoryFragment : BaseFragment<IntegralViewModel, FragmentListBind
 
     override fun layoutId() = R.layout.fragment_list
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         toolbar.initClose("积分记录") {
             Navigation.findNavController(toolbar).navigateUp()
         }

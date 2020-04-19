@@ -46,7 +46,7 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
 
     override fun layoutId() = R.layout.fragment_list
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?)  {
         arguments?.let { arguments -> arguments.getString("searchKey")?.let { searchKey = it } }
 
         toolbar.initClose(searchKey) {
@@ -93,7 +93,7 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
                     }
                 }
             })
-            setOnItemClickListener { adapter, view, position ->
+            setNbOnItemClickListener { adapter, view, position ->
                 NavHostFragment.findNavController(this@SearchResultFragment)
                     .navigate(R.id.action_searchResultFragment_to_webFragment, Bundle().apply {
                         putSerializable("ariticleData", articleAdapter.data[position])
@@ -101,7 +101,7 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
             }
             addChildClickViewIds(R.id.item_home_author)
             addChildClickViewIds(R.id.item_project_author)
-            setOnItemChildClickListener { adapter, view, position ->
+            setNbOnItemChildClickListener { adapter, view, position ->
                 when (view.id) {
                     R.id.item_home_author, R.id.item_project_author -> {
                         Navigation.findNavController(view).navigate(
