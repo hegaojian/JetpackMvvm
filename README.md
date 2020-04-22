@@ -20,7 +20,7 @@
  
 #### APK下载：
 
-- [Github下载](https://github.com/hegaojian/JetpackMvvm/releases/download/1.0.1/app-release.apk)
+- [Github下载](https://github.com/hegaojian/JetpackMvvm/releases/download/1.0.7/app-release.apk)
 
 - [firm下载(推荐)](http://d.6short.com/v9q7)
 
@@ -217,7 +217,7 @@ abstract class BaseFragment<VM : BaseViewModel> : BaseVmDbFragment<VM>() {
     }
 }
 ```
-## 3.创建一个Fragment（开启了DataBinding）
+## 3.创建一个Fragment（以开启DataBinding为例）
 
 - **3.1 编写fragment_login.xml界面后转换成 databind 布局（鼠标停在根布局，Alt+Enter 点击提示 Convert to data binding layout即可）**
 ```
@@ -321,7 +321,7 @@ class NetworkApi : BaseNetworkApi() {
     "errorMsg": ""
 }
 ```
-该格式是 [玩Android Api](ttps://www.wanandroid.com/blog/show/2)返回的数据格式，如果errorCode等于0 请求成功，否则请求失败
+该格式是 [玩Android Api](https://www.wanandroid.com/blog/show/2)返回的数据格式，如果errorCode等于0 请求成功，否则请求失败
 作为开发者的角度来说，我们主要是想得到脱壳数据-data，且不想每次都判断errorCode==0请求是否成功或失败
 这时我们可以在服务器返回数据基类中继承BaseResponse，实现相关方法：
 
