@@ -177,7 +177,7 @@ abstract class BaseActivity<VM : BaseViewModel> : BaseVmActivity<VM>() {
 ```
 **Fragment:**
 ```
-abstract class BaseFragment<VM : BaseViewModel> : BaseVmDbFragment<VM>() {
+abstract class BaseFragment<VM : BaseViewModel> : BaseVmFragment<VM>() {
     /**
      * 当前Fragment绑定的视图布局Id abstract修饰供子类实现
      */
