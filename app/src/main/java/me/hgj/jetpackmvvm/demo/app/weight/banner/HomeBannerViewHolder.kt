@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.zhpan.bannerview.holder.ViewHolder
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.data.bean.BannerResponse
+import me.hgj.jetpackmvvm.demo.data.model.bean.BannerResponse
 
 class HomeBannerViewHolder : ViewHolder<BannerResponse> {
     override fun getLayoutId(): Int {

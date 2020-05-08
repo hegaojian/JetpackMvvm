@@ -5,42 +5,18 @@ import android.net.Uri
 import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.blankj.utilcode.util.ToastUtils
-import com.blankj.utilcode.util.Utils
-import me.hgj.jetpackmvvm.Ktx
-import me.hgj.jetpackmvvm.ext.getVmClazz
-import me.hgj.jetpackmvvm.demo.App
-import me.hgj.jetpackmvvm.demo.app.AppViewModel
+import me.hgj.jetpackmvvm.demo.R
+import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
-import me.hgj.jetpackmvvm.demo.ui.MessageViewmodel
 import java.io.BufferedReader
 import java.io.FileReader
 import java.io.IOException
-
-
-fun AppCompatActivity.getAppViewModel(): AppViewModel {
-    (Utils.getApp() as App).let {
-        return it.getAppViewModelProvider().get(AppViewModel::class.java)
-    }
-}
-
-fun Fragment.getAppViewModel(): AppViewModel {
-    (Ktx.app as App).let {
-        return it.getAppViewModelProvider().get(AppViewModel::class.java)
-    }
-}
-
-fun Fragment.getActivityMessageViewModel():MessageViewmodel{
-    return  activity.let { it as AppCompatActivity
-        ViewModelProvider(it).get(getVmClazz(it ) as Class<MessageViewmodel>)
-    }
-}
-
 
 /**
  * @param message 显示对话框的内容 必填项
@@ -148,7 +124,8 @@ fun getProcessName(pid: Int): String? {
  */
 fun Fragment.joinQQGroup(key: String): Boolean {
     val intent = Intent()
-    intent.data = Uri.parse("mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D$key")
+    intent.data =
+        Uri.parse("mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D$key")
     // 此Flag可根据具体产品需要自定义，如设置，则在加群界面按返回，返回手Q主界面，不设置，按返回会返回到呼起产品界面    //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     return try {
         startActivity(intent)
@@ -159,3 +136,32 @@ fun Fragment.joinQQGroup(key: String): Boolean {
         false
     }
 }
+
+/**
+ * 拦截登录操作，如果没有登录跳转登录，登录过了贼执行你的方法
+ */
+fun NavController.jumpByLogin(action: (NavController) -> Unit) {
+    if (CacheUtil.isLogin()) {
+        action(this)
+    } else {
+        //注意一下，这里我是确定我所有的拦截登录都是在MainFragment中的，所以我可以写死，但是如果不在MainFragment中时跳转，你会报错,
+        //当然你也可以执行下面那个方法 自己写跳转
+        this.navigate(R.id.action_mainFragment_to_loginFragment)
+    }
+}
+
+/**
+ * 拦截登录操作，如果没有登录执行方法 actionLogin 登录过了执行 action
+ */
+fun NavController.jumpByLogin(
+    actionLogin: (NavController) -> Unit,
+    action: (NavController) -> Unit
+) {
+    if (CacheUtil.isLogin()) {
+        action(this)
+    } else {
+        actionLogin(this)
+    }
+}
+
+

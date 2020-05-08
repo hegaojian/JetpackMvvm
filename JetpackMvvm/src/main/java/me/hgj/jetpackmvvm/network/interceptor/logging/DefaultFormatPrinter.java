@@ -18,7 +18,7 @@ import okhttp3.Request;
  * 描述　:
  */
 public class DefaultFormatPrinter implements FormatPrinter {
-    private static final String TAG = "JetpackMVVMHttpLog";
+    private static final String TAG = "HttpLog";
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");
     private static final String DOUBLE_SEPARATOR = LINE_SEPARATOR + LINE_SEPARATOR;
 

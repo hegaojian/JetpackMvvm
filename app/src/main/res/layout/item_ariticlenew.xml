@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/item_home_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/item_imgselector"
+            android:text="有何高见"
+            android:textColor="@color/colorBlack666"
+            android:textSize="13dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_home_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/title_lable_shap"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:text="置顶"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_home_author"
+            app:layout_constraintStart_toEndOf="@+id/item_home_author"
+            app:layout_constraintTop_toTopOf="@+id/item_home_author" />
+
+        <TextView
+            android:id="@+id/item_home_new"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/title_lable_shap"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:text="新"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_home_author"
+            app:layout_constraintStart_toEndOf="@+id/item_home_top"
+            app:layout_constraintTop_toTopOf="@+id/item_home_author" />
+
+        <TextView
+            android:id="@+id/item_home_type1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/title_lable_shap1"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:text="问答"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_home_author"
+            app:layout_constraintStart_toEndOf="@+id/item_home_new"
+            app:layout_constraintTop_toTopOf="@+id/item_home_author" />
+
+
+        <TextView
+            android:id="@+id/item_home_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="1小时前"
+            android:textColor="@color/colorBlack666"
+            android:textSize="13dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_home_author"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_home_author" />
+
+        <TextView
+            android:id="@+id/item_home_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="这是一个根据JetpackMvvm框架开发玩Android的一个APP"
+            android:textColor="@color/colorBlack333"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_home_author" />
+
+        <TextView
+            android:id="@+id/item_home_type2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:text="分类·项目"
+            android:textColor="@color/colorBlack666"
+            android:textSize="13dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_home_content" />
+
+        <me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView
+            android:id="@+id/item_home_collect"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_home_type2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_home_type2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

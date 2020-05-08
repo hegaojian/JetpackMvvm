@@ -3,7 +3,11 @@ package me.hgj.jetpackmvvm.ext
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
-import me.hgj.jetpackmvvm.*
+import me.hgj.jetpackmvvm.base.activity.BaseVmActivity
+import me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity
+import me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment
+import me.hgj.jetpackmvvm.base.fragment.BaseVmFragment
+import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.ext.util.logd
 import me.hgj.jetpackmvvm.ext.util.loge
 import me.hgj.jetpackmvvm.ext.util.toJson
@@ -207,14 +211,14 @@ fun <T> BaseViewModel.request(
     loadingMessage: String = "请求网络中..."
 ) {
     //如果需要弹窗 通知Activity/fragment弹窗
-    if (isShowDialog) uiChange.showDialog.postValue(loadingMessage)
+    if (isShowDialog) loadingChange.showDialog.postValue(loadingMessage)
     viewModelScope.launch {
         runCatching {
             //请求代码块调度在Io线程中
             withContext(Dispatchers.IO) { block() }
         }.onSuccess {
             //网络请求成功 关闭弹窗
-            uiChange.dismissDialog.call()
+            loadingChange.dismissDialog.call()
             try {
                 //因为要判断请求的数据结果是否成功，失败会抛出自定义异常，所以在这里try一下
                 executeResponse(it) { tIt -> success(tIt) }
@@ -226,7 +230,7 @@ fun <T> BaseViewModel.request(
             }
         }.onFailure {
             //网络请求异常 关闭弹窗
-            uiChange.dismissDialog.call()
+            loadingChange.dismissDialog.call()
             //打印错误消息
             it.message?.loge("JetpackMvvm")
             //失败回调
@@ -251,19 +255,19 @@ fun <T> BaseViewModel.requestNoCheck(
     loadingMessage: String = "请求网络中..."
 ) {
     //如果需要弹窗 通知Activity/fragment弹窗
-    if (isShowDialog) uiChange.showDialog.postValue(loadingMessage)
+    if (isShowDialog) loadingChange.showDialog.postValue(loadingMessage)
     viewModelScope.launch {
         runCatching {
             //请求时调度在Io线程中
             withContext(Dispatchers.IO) { block() }
         }.onSuccess {
             //网络请求成功 关闭弹窗
-            uiChange.dismissDialog.call()
+            loadingChange.dismissDialog.call()
             //成功回调
             success(it)
         }.onFailure {
             //网络请求异常 关闭弹窗
-            uiChange.dismissDialog.call()
+            loadingChange.dismissDialog.call()
             //打印错误消息
             it.message?.loge("JetpackMvvm")
             //失败回调
@@ -275,7 +279,7 @@ fun <T> BaseViewModel.requestNoCheck(
 /**
  * 请求结果过滤，判断请求服务器请求结果是否成功，不成功则会抛出异常
  */
-suspend fun <T> BaseViewModel.executeResponse(response: BaseResponse<T>,success: suspend CoroutineScope.(T) -> Unit) {
+suspend fun <T> BaseViewModel.executeResponse(response: BaseResponse<T>, success: suspend CoroutineScope.(T) -> Unit) {
     coroutineScope {
         if (response.isSucces()) success(response.getResponseData())
         else throw AppException(response.getResponseCode(), response.getResponseMsg(), response.getResponseMsg())

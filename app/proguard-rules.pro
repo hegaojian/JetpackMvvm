@@ -15,10 +15,10 @@
 
 -optimizations !code/simplification/artithmetic,!field/*,!class/merging/*
 
--keep class me.hgj.jetpackmvvm.**{*;}
+
+-keep class me.hgj.jetpackmvvm.demo.data.**{*;}
 
 ################common###############
-
 
  #实体类不参与混淆
 -keep class * implements android.os.Parcelable {
@@ -70,10 +70,7 @@
 -keep class com.tbruyelle.rxpermissions2.** { *; }
 -keep interface com.tbruyelle.rxpermissions2.** { *; }
 
-
-
-
--keep class me.hgj.jetpackmvvm.demo.data.bean.**{ *; }
+-keep class me.hgj.jetpackmvvm.demo.data.model.bean.**{ *; }
 
 # 保留自定义控件(继承自View)不能被混淆
 -keep public class * extends android.view.View {

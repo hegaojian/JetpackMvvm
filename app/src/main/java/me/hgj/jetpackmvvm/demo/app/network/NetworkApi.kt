@@ -1,11 +1,11 @@
 package me.hgj.jetpackmvvm.demo.app.network
 
+import com.blankj.utilcode.util.Utils
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import com.google.gson.GsonBuilder
-import me.hgj.jetpackmvvm.demo.App
-import me.hgj.jetpackmvvm.demo.app.NetApiService
+import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
 import me.hgj.jetpackmvvm.network.BaseNetworkApi
 import me.hgj.jetpackmvvm.network.CoroutineCallAdapterFactory
 import me.hgj.jetpackmvvm.network.interceptor.CacheInterceptor
@@ -24,10 +24,16 @@ import java.util.concurrent.TimeUnit
  * 描述　: 网络请求构建器，继承BasenetworkApi 并实现setHttpClientBuilder/setRetrofitBuilder方法，
  * 在这里可以添加拦截器，设置构造器可以对Builder做任意操作
  */
+
 class NetworkApi : BaseNetworkApi() {
+
+    companion object {
+        val instance: NetworkApi by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+            NetworkApi() }
+    }
     //封装NetApiService变量 方便直接快速调用
-    val service: NetApiService by lazy {
-        getApi(NetApiService::class.java, NetApiService.SERVER_URL)
+    val service: ApiService by lazy {
+        getApi(ApiService::class.java, ApiService.SERVER_URL)
     }
 
     /**
@@ -37,7 +43,7 @@ class NetworkApi : BaseNetworkApi() {
     override fun setHttpClientBuilder(builder: OkHttpClient.Builder): OkHttpClient.Builder {
         builder.apply {
             //设置缓存配置 缓存最大10M
-            cache(Cache(File(App.CONTEXT.cacheDir, "cxk_cache"), 10 * 1024 * 1024))
+            cache(Cache(File(Utils.getApp().cacheDir, "cxk_cache"), 10 * 1024 * 1024))
             //添加Cookies自动持久化
             cookieJar(cookieJar)
             //添加公共heads 注意要设置在日志拦截器之前，不然Log中会不显示head信息
@@ -66,7 +72,7 @@ class NetworkApi : BaseNetworkApi() {
     }
 
     val cookieJar: PersistentCookieJar by lazy {
-        PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(App.CONTEXT))
+        PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(Utils.getApp()))
     }
 
 }

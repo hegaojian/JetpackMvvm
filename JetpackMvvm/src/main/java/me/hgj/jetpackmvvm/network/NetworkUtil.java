@@ -15,23 +15,40 @@ import java.util.Enumeration;
 
 public class NetworkUtil {
     public static String url = "http://www.baidu.com";
-    public static int NET_CNNT_BAIDU_OK = 1; // NetworkAvailable
-    public static int NET_CNNT_BAIDU_TIMEOUT = 2; // no NetworkAvailable
-    public static int NET_NOT_PREPARE = 3; // Net no ready
-    public static int NET_ERROR = 4; //net error
-    private static int TIMEOUT = 3000; // TIMEOUT
+    /**
+     * NetworkAvailable
+     */
+    public static int NET_CNNT_BAIDU_OK = 1;
+    /**
+     * no NetworkAvailable
+     */
+    public static int NET_CNNT_BAIDU_TIMEOUT = 2;
+    /**
+     * Net no ready
+     */
+    public static int NET_NOT_PREPARE = 3;
+    /**
+     * net error
+     */
+    public static int NET_ERROR = 4;
+    /**
+     * TIMEOUT
+     */
+    private static int TIMEOUT = 3000;
 
 
     /**
      * check NetworkAvailable
+     *
      * @param context
      * @return
      */
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager manager = (ConnectivityManager) context.getApplicationContext().getSystemService(
                 Context.CONNECTIVITY_SERVICE);
-        if (null == manager)
+        if (null == manager) {
             return false;
+        }
         NetworkInfo info = manager.getActiveNetworkInfo();
         if (null == info || !info.isAvailable())
             return false;
@@ -40,14 +57,15 @@ public class NetworkUtil {
 
     /**
      * getLocalIpAddress
+     *
      * @return
      */
     public static String getLocalIpAddress() {
         String ret = "";
         try {
-            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
                 NetworkInterface intf = en.nextElement();
-                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
+                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
                     InetAddress inetAddress = enumIpAddr.nextElement();
                     if (!inetAddress.isLoopbackAddress()) {
                         ret = inetAddress.getHostAddress().toString();
@@ -74,10 +92,11 @@ public class NetworkUtil {
                 NetworkInfo networkinfo = connectivity.getActiveNetworkInfo();
                 if (networkinfo != null) {
                     if (networkinfo.isAvailable() && networkinfo.isConnected()) {
-                        if (!connectionNetwork())
+                        if (!connectionNetwork()) {
                             return NET_CNNT_BAIDU_TIMEOUT;
-                        else
+                        } else {
                             return NET_CNNT_BAIDU_OK;
+                        }
                     } else {
                         return NET_NOT_PREPARE;
                     }
@@ -90,7 +109,8 @@ public class NetworkUtil {
     }
 
     /**
-     *ping "http://www.baidu.com"
+     * ping "http://www.baidu.com"
+     *
      * @return
      */
     static private boolean connectionNetwork() {
@@ -114,6 +134,7 @@ public class NetworkUtil {
 
     /**
      * check is3G
+     *
      * @param context
      * @return boolean
      */
@@ -130,6 +151,7 @@ public class NetworkUtil {
 
     /**
      * isWifi
+     *
      * @param context
      * @return boolean
      */
@@ -146,6 +168,7 @@ public class NetworkUtil {
 
     /**
      * is2G
+     *
      * @param context
      * @return boolean
      */
@@ -163,7 +186,7 @@ public class NetworkUtil {
     }
 
     /**
-     *  is wifi on
+     * is wifi on
      */
     public static boolean isWifiEnabled(Context context) {
         ConnectivityManager mgrConn = (ConnectivityManager) context

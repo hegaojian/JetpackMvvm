@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.graphics.Color
-import android.text.Html
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
@@ -15,7 +14,6 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -36,7 +34,9 @@ import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.ErrorCallback
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.LoadingCallback
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView
 import me.hgj.jetpackmvvm.demo.app.weight.viewpager.ScaleTransitionPagerTitleView
-import me.hgj.jetpackmvvm.demo.data.bean.ClassifyResponse
+import me.hgj.jetpackmvvm.demo.data.model.bean.ClassifyResponse
+import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.util.toHtml
 import net.lucode.hackware.magicindicator.MagicIndicator
 import net.lucode.hackware.magicindicator.buildins.UIUtil
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
@@ -48,8 +48,9 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.Li
 /**
  * 作者　: hegaojian
  * 时间　: 2020/2/20
- * 描述　:项目中自定义类的拓展函数--很香
+ * 描述　:项目中自定义类的拓展函数
  */
+
 fun BannerViewPager<*, *>.setPageListener(onPageSelected: (Int) -> Unit) {
     this.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
         override fun onPageScrollStateChanged(state: Int) {
@@ -82,7 +83,6 @@ fun LoadServiceInit(view: View, callback: () -> Unit): LoadService<Any> {
     loadsir.showCallback(LoadingCallback::class.java)
     SettingUtil.setLoadingColor(SettingUtil.getColor(view.context.applicationContext), loadsir)
     return loadsir
-
 }
 
 //绑定普通的Recyclerview
@@ -91,6 +91,19 @@ fun RecyclerView.init(
     bindAdapter: RecyclerView.Adapter<*>,
     isScroll: Boolean = true
 ): RecyclerView {
+    layoutManager = layoutManger
+    setHasFixedSize(true)
+    adapter = bindAdapter
+    isNestedScrollingEnabled = isScroll
+    return this
+}
+
+//绑定SwipeRecyclerView
+fun SwipeRecyclerView.init(
+    layoutManger: RecyclerView.LayoutManager,
+    bindAdapter: RecyclerView.Adapter<*>,
+    isScroll: Boolean = true
+): SwipeRecyclerView {
     layoutManager = layoutManger
     setHasFixedSize(true)
     adapter = bindAdapter
@@ -169,7 +182,7 @@ fun Toolbar.initClose(
     onBack: (toolbar: Toolbar) -> Unit
 ): Toolbar {
     setBackgroundColor(SettingUtil.getColor(context.applicationContext))
-    title = Html.fromHtml(titleStr)
+    title = titleStr.toHtml()
     setNavigationIcon(backImg)
     setNavigationOnClickListener { onBack.invoke(this) }
     return this
@@ -231,9 +244,9 @@ fun MagicIndicator.bindViewPager2(
         override fun getTitleView(context: Context, index: Int): IPagerTitleView {
             return ScaleTransitionPagerTitleView(context.applicationContext).apply {
                 text = if (mDataList.size != 0) {
-                    Html.fromHtml(mDataList[index].name)
+                    mDataList[index].name.toHtml()
                 } else {
-                    Html.fromHtml(mStringList[index])
+                    mStringList[index].toHtml()
                 }
                 textSize = 17f
                 normalColor = Color.WHITE
@@ -330,10 +343,11 @@ fun View.clickNoRepeatLogin(interval: Long = 500, action: (view: View) -> Unit) 
             return@setOnClickListener
         }
         lastloginClickTime = currentTime
-        if(CacheUtil.isLogin()){
+        if (CacheUtil.isLogin()) {
             action(it)
-        }else{
-            Navigation.findNavController(it).navigate(R.id.action_mainFragment_to_loginFragment)
+        } else {
+            //注意一下，这里我是确定我所有的拦截登录都是在MainFragment中的，所以我可以写死，但是如果不在MainFragment中时跳转，你会报错
+            nav(it).navigate(R.id.action_mainFragment_to_loginFragment)
         }
     }
 }
@@ -344,18 +358,19 @@ fun View.clickNoRepeatLogin(interval: Long = 500, action: (view: View) -> Unit) 
  * @param interval 时间间隔 默认0.5秒
  * @param action 执行方法
  */
-fun clickNoRepeatLogin(vararg view: View?,interval: Long = 500, action: (view: View) -> Unit) {
-    view.forEach {
-        it?.setOnClickListener {
+fun clickNoRepeatLogin(vararg view: View?, interval: Long = 500, action: (view: View) -> Unit) {
+    view.forEach {view1 ->
+        view1?.setOnClickListener { view2 ->
             val currentTime = System.currentTimeMillis()
             if (lastloginClickTime != 0L && (currentTime - lastloginClickTime < interval)) {
                 return@setOnClickListener
             }
             lastloginClickTime = currentTime
-            if(CacheUtil.isLogin()){
-                action(it)
-            }else{
-                Navigation.findNavController(it).navigate(R.id.action_mainFragment_to_loginFragment)
+            if (CacheUtil.isLogin()) {
+                action(view2)
+            } else {
+                //注意一下，这里我是确定我所有的拦截登录都是在MainFragment中的，所以我可以写死，但是如果不在MainFragment中时跳转，你会报错
+                nav(view2).navigate(R.id.action_mainFragment_to_loginFragment)
             }
         }
     }

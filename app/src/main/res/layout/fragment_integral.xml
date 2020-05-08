@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="me.hgj.jetpackmvvm.demo.ui.integral.IntegralViewModel" />
+            type="me.hgj.jetpackmvvm.demo.viewmodel.state.IntegralViewModel" />
     </data>
 
     <LinearLayout

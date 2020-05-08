@@ -4,13 +4,15 @@
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewmodel"
-            type="me.hgj.jetpackmvvm.demo.ui.login.LoginRegisterViewModel" />
+            type="me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel" />
         <variable
             name="view"
             type="android.view.View" />
+        <variable
+            name="click"
+            type="me.hgj.jetpackmvvm.demo.ui.fragment.login.RegisterFrgment.ProxyClick" />
     </data>
 
     <LinearLayout
@@ -70,6 +72,7 @@
                         android:layout_height="24dp"
                         android:layout_marginRight="6dp"
                         android:src="@drawable/ic_clear"
+                        android:onClick="@{()->click.clear()}"
                         android:visibility="@{viewmodel.username.length()>0?view.VISIBLE:view.GONE}" />
                 </LinearLayout>
 
@@ -104,6 +107,7 @@
                         android:layout_marginRight="6dp"
                         android:button="@drawable/keyvisibily_selector"
                         android:checked="false"
+                        bind:checkChange="@{click.onCheckedChangeListener1}"
                         android:visibility="@{viewmodel.password.length()>0?view.VISIBLE:view.GONE}" />
                 </LinearLayout>
 
@@ -135,9 +139,10 @@
                         android:id="@+id/registerKey1"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:layout_marginRight="6dp"
+                        android:layout_marginEnd="6dp"
                         android:button="@drawable/keyvisibily_selector"
                         android:checked="false"
+                        bind:checkChange="@{click.onCheckedChangeListener2}"
                         android:visibility="@{viewmodel.password2.length()>0?view.VISIBLE:view.GONE}" />
                 </LinearLayout>
 
@@ -150,6 +155,7 @@
                     android:background="@drawable/button_shap"
                     android:gravity="center"
                     android:text="注册并登录"
+                    android:onClick="@{()->click.register()}"
                     android:textColor="@color/white"
                     android:textSize="16dp" />
 

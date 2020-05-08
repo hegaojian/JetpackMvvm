@@ -1,6 +1,6 @@
 package me.hgj.jetpackmvvm.network.interceptor
 
-import me.hgj.jetpackmvvm.Ktx
+import me.hgj.jetpackmvvm.base.Ktx
 import me.hgj.jetpackmvvm.network.NetworkUtil
 import okhttp3.CacheControl
 import okhttp3.Interceptor

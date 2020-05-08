@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/mainfragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.MainFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment"
         android:label="HomeFragment">
 
         <action
@@ -90,7 +90,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.login.LoginFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment"
         android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment_to_registerFrgment"
@@ -102,7 +102,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFrgment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.login.RegisterFrgment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.login.RegisterFrgment"
         android:label="RegisterFrgment">
 
         <action
@@ -123,7 +123,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.search.SearchFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchFragment"
         android:label="SearchFragment">
         <action
             android:id="@+id/action_searchFragment_to_searchResultFragment"
@@ -135,7 +135,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchResultFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.search.SearchResultFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchResultFragment"
         android:label="SearchResultFragment">
         <action
             android:id="@+id/action_searchResultFragment_to_webFragment"
@@ -161,7 +161,7 @@
     </fragment>
     <fragment
         android:id="@+id/webFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.web.WebFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.web.WebFragment"
         android:label="WebFragment">
         <action
             android:id="@+id/action_webFragment_to_loginFragment"
@@ -173,7 +173,7 @@
     </fragment>
     <fragment
         android:id="@+id/systemArrFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.tree.SystemArrFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemArrFragment"
         android:label="SystemArrFragment"
         app:destination="@id/loginFragment">
         <action
@@ -200,7 +200,7 @@
     </fragment>
     <fragment
         android:id="@+id/lookInfoFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.lookinfo.LookInfoFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.lookinfo.LookInfoFragment"
         android:label="LookInfoFragment">
         <action
             android:id="@+id/action_lookInfoFragment_to_loginFragment"
@@ -219,7 +219,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.setting.SettingFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.setting.SettingFragment"
         android:label="SettingFragment">
         <action
             android:id="@+id/action_settingFragment_to_webFragment"
@@ -231,7 +231,7 @@
     </fragment>
     <fragment
         android:id="@+id/integralFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.integral.IntegralFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralFragment"
         android:label="IntegralFragment">
         <action
             android:id="@+id/action_integralFragment_to_webFragment"
@@ -250,11 +250,11 @@
     </fragment>
     <fragment
         android:id="@+id/integralHistoryFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.integral.IntegralHistoryFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralHistoryFragment"
         android:label="IntegralHistoryFragment" />
     <fragment
         android:id="@+id/collectFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.collect.CollectFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectFragment"
         android:label="CollectFragment">
         <action
             android:id="@+id/action_collectFragment_to_webFragment"
@@ -266,11 +266,11 @@
     </fragment>
     <fragment
         android:id="@+id/addAriticleFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.share.AddAriticleFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.share.AddAriticleFragment"
         android:label="AddAriticleFragment"/>
     <fragment
         android:id="@+id/ariticleFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.share.AriticleFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.share.AriticleFragment"
         android:label="AriticleFragment">
         <action
             android:id="@+id/action_ariticleFragment_to_addAriticleFragment"
@@ -289,7 +289,7 @@
     </fragment>
     <fragment
         android:id="@+id/todoListFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.todo.TodoListFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.todo.TodoListFragment"
         android:label="TodoListFragment">
         <action
             android:id="@+id/action_todoListFragment_to_addTodoFragment"
@@ -301,7 +301,7 @@
     </fragment>
     <fragment
         android:id="@+id/addTodoFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.todo.AddTodoFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.todo.AddTodoFragment"
         android:label="AddTodoFragment"/>
 
 </navigation>

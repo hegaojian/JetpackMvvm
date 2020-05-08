@@ -4,7 +4,7 @@
     package="me.hgj.jetpackmvvm.demo">
 
     <application
-        android:name=".App"
+        android:name=".app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,7 +14,7 @@
         android:hardwareAccelerated="true"
         tools:ignore="GoogleAppIndexingWarning,LockedOrientationActivity">
         <activity
-            android:name=".ui.welcome.WelcomeActivity"
+            android:name=".ui.activity.WelcomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenThemse">
             <intent-filter>
@@ -24,11 +24,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.welcome.ErrorActivity"
+            android:name=".ui.activity.ErrorActivity"
             android:label="错误界面"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
@@ -41,13 +41,14 @@
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:theme="@android:style/Theme.Translucent" />
+
         <!-- Arms 配置 -->
         <meta-data
             android:name="design_width_in_dp"
             android:value="375" />
         <meta-data
             android:name="design_height_in_dp"
-            android:value="667" />
+            android:value="100000" />
     </application>
 
 

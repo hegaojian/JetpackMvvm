@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.ConvertUtils
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.adapter.PriorityAdapter
+import me.hgj.jetpackmvvm.demo.ui.adapter.PriorityAdapter
 import me.hgj.jetpackmvvm.demo.app.ext.setNbOnItemClickListener
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.GridDividerItemDecoration
-import me.hgj.jetpackmvvm.demo.data.enums.TodoType
+import me.hgj.jetpackmvvm.demo.data.model.enums.TodoType
 
 
 class PriorityDialog(context: Context, type: Int) : Dialog(context, R.style.BottomDialogStyle) {

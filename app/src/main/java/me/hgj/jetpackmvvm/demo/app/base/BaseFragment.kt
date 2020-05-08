@@ -8,12 +8,14 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
-import me.hgj.jetpackmvvm.BaseViewModel
-import me.hgj.jetpackmvvm.BaseVmDbFragment
+import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
+import me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.app.AppViewModel
-import me.hgj.jetpackmvvm.demo.app.ext.getAppViewModel
+import me.hgj.jetpackmvvm.demo.app.event.AppViewModel
+import me.hgj.jetpackmvvm.demo.app.ext.hideSoftKeyboard
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
+import me.hgj.jetpackmvvm.demo.app.event.EventViewModel
+import me.hgj.jetpackmvvm.ext.getAppViewModel
 
 /**
  * 作者　: hegaojian
@@ -22,11 +24,14 @@ import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
  * BaseVmFragment例如
  * abstract class BaseFragment<VM : BaseViewModel> : BaseVmFragment<VM>() {
  */
-abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFragment<VM,DB>() {
+abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDbFragment<VM, DB>() {
 
     private var dialog: MaterialDialog? = null
 
-    val appViewModel: AppViewModel by lazy { getAppViewModel() }
+    //Application全局的ViewModel，里面存放了一些账户信息，基本配置信息等
+    val shareViewModel: AppViewModel by lazy { getAppViewModel<AppViewModel>() }
+    //Application全局的ViewModel，用于发送全局通知操作
+    val eventViewModel: EventViewModel by lazy { getAppViewModel<EventViewModel>()}
 
     /**
      * 当前Fragment绑定的视图布局
@@ -42,9 +47,9 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
     abstract override fun lazyLoadData()
 
     /**
-     * 创建观察者 懒加载之后才会触发
+     * 创建LiveData观察者 懒加载之后才会触发
      */
-    abstract override fun createObserver()
+    override fun createObserver() {}
 
 
     /**
@@ -69,7 +74,7 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
             }
             dialog?.getCustomView()?.run {
                 this.findViewById<TextView>(R.id.loading_tips).text = message
-                appViewModel.appColor.value?.let {
+                shareViewModel.appColor.value.let {
                     this.findViewById<ProgressBar>(R.id.progressBar).indeterminateTintList =
                         SettingUtil.getOneColorStateList(it)
                 }
@@ -85,4 +90,8 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
         dialog?.dismiss()
     }
 
+    override fun onPause() {
+        super.onPause()
+        hideSoftKeyboard(activity)
+    }
 }

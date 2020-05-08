@@ -11,49 +11,43 @@
     app:cardCornerRadius="4dp"
     app:cardElevation="4dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/item_integral_rank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="99+"
             android:textColor="@color/colorBlack333"
             android:textSize="18dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            tools:text="99+" />
 
         <TextView
             android:id="@+id/item_integral_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="时长2年半的练习生"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:lines="1"
             android:textColor="@color/colorBlack666"
             android:textSize="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/item_integral_rank"
-            app:layout_constraintStart_toEndOf="@+id/item_integral_rank"
-            app:layout_constraintTop_toTopOf="@+id/item_integral_rank" />
+            tools:text="时长2年半的练习生" />
 
         <TextView
             android:id="@+id/item_integral_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="100"
             android:textColor="@color/textHint"
             android:textSize="16dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/item_integral_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/item_integral_name" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            tools:text="100" />
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

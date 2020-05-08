@@ -4,8 +4,7 @@ import android.text.TextUtils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.tencent.mmkv.MMKV
-import me.hgj.jetpackmvvm.demo.data.bean.UserInfo
-import me.hgj.jetpackmvvm.ext.util.logd
+import me.hgj.jetpackmvvm.demo.data.model.bean.UserInfo
 
 object CacheUtil {
     /**

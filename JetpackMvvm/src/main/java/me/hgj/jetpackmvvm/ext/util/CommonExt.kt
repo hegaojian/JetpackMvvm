@@ -3,6 +3,8 @@ package me.hgj.jetpackmvvm.ext.util
 import android.content.ClipData
 import android.content.Context
 import android.provider.Settings
+import android.text.Html
+import android.text.Spanned
 import android.text.TextUtils
 import android.view.View
 import me.hgj.jetpackmvvm.ext.view.clickNoRepeat
@@ -112,6 +114,14 @@ fun setOnclickNoRepeat(vararg views: View?, interval: Long = 500, onClick: (View
         it?.clickNoRepeat(interval = interval) { view ->
             onClick.invoke(view)
         }
+    }
+}
+
+fun String.toHtml(flag: Int = Html.FROM_HTML_MODE_LEGACY): Spanned {
+    return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+        Html.fromHtml(this, flag)
+    } else {
+        Html.fromHtml(this)
     }
 }
 

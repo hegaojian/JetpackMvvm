@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="click"
+            type="me.hgj.jetpackmvvm.demo.ui.activity.WelcomeActivity.ProxyClick" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,7 +33,7 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/button2"
+            android:id="@+id/welcomeJoin"
             drawable_radius="@{8}"
             drawable_solidColor="@{@color/accent}"
             android:layout_width="wrap_content"
@@ -42,6 +44,7 @@
             android:paddingRight="12dp"
             android:paddingBottom="8dp"
             android:text="立即进入"
+            android:onClick="@{()->click.toMain()}"
             android:textColor="@color/white"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"

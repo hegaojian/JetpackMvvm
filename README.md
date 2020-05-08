@@ -234,7 +234,7 @@ abstract class BaseFragment<VM : BaseViewModel> : BaseVmDbFragment<VM>() {
 - **3.2 创建LoginViewModel类继承BaseViewModel**
 
 ```
-class LoginViewModel : BaseViewModel() {
+class LoginViewModel(application: Application) : BaseViewModel(application) {
   
 }
 ```
@@ -346,7 +346,7 @@ data class ApiResponse<T>(var errorCode: Int, var errorMsg: String, var data: T)
 **3-4直接在当前ViewMdel中拿到请求结果做处理**
 
 ```
-class LoginViewModel : BaseViewModel() {
+class LoginViewModel(application: Application) : BaseViewModel(application) {
    //1  自动脱壳过滤处理请求结果，判断结果是否成功
     var loginResult = MutableLiveData<ResultState<UserInfo>>()
     //2  不用框架帮脱壳，判断结果是否成功

@@ -8,6 +8,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter
  * 时间　: 2020/4/16
  * 描述　:
  */
+
+/**
+ * 给adapter拓展的，防止重复点击item
+ */
 var adapterlastClickTime = 0L
 fun BaseQuickAdapter<*, *>.setNbOnItemClickListener(interval: Long = 500,action: (adapter: BaseQuickAdapter<*, *>, view: View, position: Int) -> Unit) {
     setOnItemClickListener { adapter, view, position ->
@@ -20,6 +24,9 @@ fun BaseQuickAdapter<*, *>.setNbOnItemClickListener(interval: Long = 500,action:
     }
 }
 
+/**
+ * 给adapter拓展的，防止重复点击item
+ */
 var adapterchildlastClickTime = 0L
 fun BaseQuickAdapter<*, *>.setNbOnItemChildClickListener(interval: Long = 500,action: (adapter: BaseQuickAdapter<*, *>, view: View, position: Int) -> Unit) {
     setOnItemChildClickListener { adapter, view, position ->
