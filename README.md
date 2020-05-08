@@ -47,7 +47,7 @@ allprojects {
 ```
 dependencies {
   ...
-  implementation 'me.hegj:JetpackMvvm:1.0.7'
+  implementation 'me.hegj:JetpackMvvm:1.0.8'
 }
 ```
 
