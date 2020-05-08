@@ -10,7 +10,7 @@
 # JetPackMvvm
 - **基于MVVM模式集成谷歌官方推荐的JetPack组件库：LiveData、ViewModel、Lifecycle、Navigation组件**
 - **使用kotlin语言，添加大量拓展函数，简化代码**
-- **加入Retorfit网络请求,协程，帮你简化各种操作，让你快速请求网络**  
+- **加入Retrofit网络请求,协程，帮你简化各种操作，让你快速请求网络**  
 
 ## 演示Demo
  已用该库重构了我之前的玩安卓项目，利用Navigation组件以单Activity+Fragment架构编写，优化了很多代码，对比之前的mvp项目，开发效率与舒适度要提高了不少，想看之前MVP的项目可以去 [https://github.com/hegaojian/WanAndroid](https://github.com/hegaojian/WanAndroid) 
@@ -20,7 +20,7 @@
  
 #### APK下载：
 
-- [Github下载](https://github.com/hegaojian/JetpackMvvm/releases/download/1.0.1/app-release.apk)
+- [Github下载](https://github.com/hegaojian/JetpackMvvm/releases/download/1.0.7/app-release.apk)
 
 - [firm下载(推荐)](http://d.6short.com/v9q7)
 
@@ -57,7 +57,7 @@ dependencies {
 android {
     ...
     dataBinding {
-        enabled = true
+        enabled = true 
     }
 }
 ```
@@ -177,7 +177,7 @@ abstract class BaseActivity<VM : BaseViewModel> : BaseVmActivity<VM>() {
 ```
 **Fragment:**
 ```
-abstract class BaseFragment<VM : BaseViewModel> : BaseVmDbFragment<VM>() {
+abstract class BaseFragment<VM : BaseViewModel> : BaseVmFragment<VM>() {
     /**
      * 当前Fragment绑定的视图布局Id abstract修饰供子类实现
      */
@@ -217,7 +217,7 @@ abstract class BaseFragment<VM : BaseViewModel> : BaseVmDbFragment<VM>() {
     }
 }
 ```
-## 3.创建一个Fragment（开启了DataBinding）
+## 3.创建一个Fragment（以开启DataBinding为例）
 
 - **3.1 编写fragment_login.xml界面后转换成 databind 布局（鼠标停在根布局，Alt+Enter 点击提示 Convert to data binding layout即可）**
 ```
@@ -321,7 +321,7 @@ class NetworkApi : BaseNetworkApi() {
     "errorMsg": ""
 }
 ```
-该格式是 [玩Android Api](ttps://www.wanandroid.com/blog/show/2)返回的数据格式，如果errorCode等于0 请求成功，否则请求失败
+该格式是 [玩Android Api](https://www.wanandroid.com/blog/show/2)返回的数据格式，如果errorCode等于0 请求成功，否则请求失败
 作为开发者的角度来说，我们主要是想得到脱壳数据-data，且不想每次都判断errorCode==0请求是否成功或失败
 这时我们可以在服务器返回数据基类中继承BaseResponse，实现相关方法：
 
