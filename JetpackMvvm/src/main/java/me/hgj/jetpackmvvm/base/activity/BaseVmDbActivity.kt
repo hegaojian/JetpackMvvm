@@ -6,6 +6,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.ext.getVmClazz
 import me.hgj.jetpackmvvm.network.manager.NetState
@@ -34,7 +38,6 @@ abstract class BaseVmDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : AppC
         registorDefUIChange()
         initView(savedInstanceState)
         createObserver()
-        lifecycle.addObserver(NetworkStateManager.instance)
         NetworkStateManager.instance.mNetworkStateCallback.observe(this, Observer {
             onNetworkStateChanged(it)
         })

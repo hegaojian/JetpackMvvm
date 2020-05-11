@@ -15,6 +15,7 @@ import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.LoadingCallback
 import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
 import me.hgj.jetpackmvvm.demo.ui.activity.ErrorActivity
 import me.hgj.jetpackmvvm.demo.ui.activity.WelcomeActivity
+import me.hgj.jetpackmvvm.network.manager.NetworkStateReceive
 
 /**
  * 作者　: hegaojian
@@ -30,7 +31,6 @@ class App : BaseApp() {
     }
     override fun onCreate() {
         super.onCreate()
-
         MMKV.initialize(this.filesDir.absolutePath + "/mmkv")
         //界面加载管理 初始化
         LoadSir.beginBuilder()

@@ -8,9 +8,7 @@ import me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity
 import me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment
 import me.hgj.jetpackmvvm.base.fragment.BaseVmFragment
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
-import me.hgj.jetpackmvvm.ext.util.logd
 import me.hgj.jetpackmvvm.ext.util.loge
-import me.hgj.jetpackmvvm.ext.util.toJson
 import me.hgj.jetpackmvvm.network.AppException
 import me.hgj.jetpackmvvm.network.BaseResponse
 import me.hgj.jetpackmvvm.network.ExceptionHandle
@@ -160,7 +158,6 @@ fun <T> BaseViewModel.request(
             if (isShowDialog) resultState.value = ResultState.onAppLoading(loadingMessage)
             withContext(Dispatchers.IO) { block() }
         }.onSuccess {
-            it.toJson().logd("hgj")
             resultState.paresResult(it)
         }.onFailure {
             it.message?.loge("JetpackMvvm")

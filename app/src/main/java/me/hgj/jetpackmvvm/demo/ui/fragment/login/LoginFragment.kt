@@ -18,6 +18,8 @@ import me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel
 import me.hgj.jetpackmvvm.ext.getViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.parseState
+import me.hgj.jetpackmvvm.ext.util.logd
+import me.hgj.jetpackmvvm.ext.util.toJson
 
 /**
  * 作者　: hegaojian
@@ -63,6 +65,9 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
                     showMessage(it.errorMsg)
                 })
             })
+        mViewModel.data1.observe(viewLifecycleOwner, Observer {
+            it.toJson().logd("hgj")
+        })
     }
 
     override fun lazyLoadData() {}
@@ -71,6 +76,7 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
     inner class ProxyClick {
 
         fun clear() {
+            mViewModel.data1
             mViewModel.username.postValue("")
         }
 

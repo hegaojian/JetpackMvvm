@@ -13,7 +13,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 2
-        versionName "1.0.1"
+        versionName "1.0.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk {
             // 设置支持的SO库架构 一般只设置这个就阔以设配所有的设备了，还可以极大的减少apk的大小

@@ -1,7 +1,7 @@
 # compiler: R8
 # compiler_version: 1.6.82
 # min_api: 21
-# pg_map_id: b20886b
+# pg_map_id: 5842601
 # common_typos_disable
 $$ServiceLoaderMethods -> a:
     java.util.Iterator $load1() -> a
@@ -11282,8 +11282,9 @@ me.hgj.jetpackmvvm.DataBinderMapperImpl$InnerBrLookup -> me.hgj.jetpackmvvm.Data
 me.hgj.jetpackmvvm.DataBinderMapperImpl$InnerLayoutIdLookup -> me.hgj.jetpackmvvm.DataBinderMapperImpl$b:
     java.util.HashMap sKeys -> a
 me.hgj.jetpackmvvm.base.BaseApp -> me.hgj.jetpackmvvm.base.BaseApp:
-    androidx.lifecycle.ViewModelStore mAppViewModelStore -> a
-    androidx.lifecycle.ViewModelProvider$Factory mFactory -> b
+    androidx.lifecycle.ViewModelStore mAppViewModelStore -> b
+    androidx.lifecycle.ViewModelProvider$Factory mFactory -> c
+    me.hgj.jetpackmvvm.network.manager.NetworkStateReceive mNetworkStateReceive -> a
     androidx.lifecycle.ViewModelProvider getAppViewModelProvider() -> a
     androidx.lifecycle.ViewModelProvider$Factory getAppFactory() -> b
 me.hgj.jetpackmvvm.base.Ktx -> me.hgj.jetpackmvvm.base.Ktx:
@@ -12478,6 +12479,9 @@ me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$createObserver$1$1 -> me
     void invoke(me.hgj.jetpackmvvm.demo.data.model.bean.UserInfo) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$createObserver$1$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$createObserver$1$2:
     void invoke(me.hgj.jetpackmvvm.network.AppException) -> a
+me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$createObserver$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$b:
+    me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$createObserver$2 INSTANCE -> a
+    void onChanged(me.hgj.jetpackmvvm.demo.data.model.bean.ApiResponse) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$initView$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$initView$1:
     void invoke(androidx.appcompat.widget.Toolbar) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.login.RegisterFrgment -> me.hgj.jetpackmvvm.demo.ui.fragment.login.RegisterFrgment:
@@ -13543,14 +13547,16 @@ me.hgj.jetpackmvvm.demo.viewmodel.state.IntegralViewModel -> me.hgj.jetpackmvvm.
 me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel -> me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel:
     me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData isShowPwd2 -> f
     me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData isShowPwd -> e
+    androidx.lifecycle.LiveData data1 -> g
     me.hgj.jetpackmvvm.callback.livedata.StringLiveData password2 -> d
     me.hgj.jetpackmvvm.callback.livedata.StringLiveData password -> c
     me.hgj.jetpackmvvm.callback.livedata.StringLiveData username -> b
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getPassword() -> b
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getPassword2() -> c
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getUsername() -> d
-    me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData isShowPwd() -> e
-    me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData isShowPwd2() -> f
+    androidx.lifecycle.LiveData getData1() -> b
+    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getPassword() -> c
+    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getPassword2() -> d
+    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getUsername() -> e
+    me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData isShowPwd() -> f
+    me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData isShowPwd2() -> g
 me.hgj.jetpackmvvm.demo.viewmodel.state.LookInfoViewModel -> me.hgj.jetpackmvvm.demo.viewmodel.state.LookInfoViewModel:
     me.hgj.jetpackmvvm.callback.databind.StringObservableField info -> d
     me.hgj.jetpackmvvm.callback.databind.StringObservableField imageUrl -> c

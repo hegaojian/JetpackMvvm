@@ -1,9 +1,12 @@
 package me.hgj.jetpackmvvm.base
 
 import android.app.Application
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
+import me.hgj.jetpackmvvm.network.manager.NetworkStateReceive
 
 /**
  * 作者　: hegaojian
@@ -14,6 +17,8 @@ import androidx.lifecycle.ViewModelStoreOwner
  * GetViewModelExt类的getAppViewModel方法
  */
 open class BaseApp : Application(), ViewModelStoreOwner {
+
+    private var mNetworkStateReceive: NetworkStateReceive? = null
 
     private lateinit var mAppViewModelStore: ViewModelStore
 
@@ -26,6 +31,8 @@ open class BaseApp : Application(), ViewModelStoreOwner {
     override fun onCreate() {
         super.onCreate()
         mAppViewModelStore = ViewModelStore()
+        mNetworkStateReceive = NetworkStateReceive()
+        registerReceiver(mNetworkStateReceive,IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
     }
 
     /**
@@ -41,5 +48,4 @@ open class BaseApp : Application(), ViewModelStoreOwner {
         }
         return mFactory as ViewModelProvider.Factory
     }
-
 }
