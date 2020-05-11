@@ -25,12 +25,11 @@ import me.hgj.jetpackmvvm.network.manager.NetworkStateReceive
 class App : BaseApp() {
 
     companion object {
-        val instance: App by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
-            App()
-        }
+        lateinit var instance: App
     }
     override fun onCreate() {
         super.onCreate()
+        instance = this
         MMKV.initialize(this.filesDir.absolutePath + "/mmkv")
         //界面加载管理 初始化
         LoadSir.beginBuilder()

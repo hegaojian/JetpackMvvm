@@ -28,6 +28,7 @@ import com.kingja.loadsir.core.LoadSir
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
 import com.zhpan.bannerview.BannerViewPager
 import me.hgj.jetpackmvvm.demo.R
+import me.hgj.jetpackmvvm.demo.app.App
 import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.ErrorCallback
@@ -81,7 +82,7 @@ fun LoadServiceInit(view: View, callback: () -> Unit): LoadService<Any> {
         callback.invoke()
     }
     loadsir.showCallback(LoadingCallback::class.java)
-    SettingUtil.setLoadingColor(SettingUtil.getColor(view.context.applicationContext), loadsir)
+    SettingUtil.setLoadingColor(SettingUtil.getColor(App.instance), loadsir)
     return loadsir
 }
 
@@ -112,9 +113,9 @@ fun SwipeRecyclerView.init(
 }
 
 fun SwipeRecyclerView.initFooter(loadmoreListener: SwipeRecyclerView.LoadMoreListener): DefineLoadMoreView {
-    val footerView = DefineLoadMoreView(context.applicationContext)
+    val footerView = DefineLoadMoreView(App.instance)
     //给尾部设置颜色
-    footerView.setLoadViewColor(SettingUtil.getOneColorStateList(context.applicationContext))
+    footerView.setLoadViewColor(SettingUtil.getOneColorStateList(App.instance))
     //设置尾部点击回调
     footerView.setmLoadMoreListener(SwipeRecyclerView.LoadMoreListener {
         footerView.onLoading()
@@ -141,7 +142,7 @@ fun RecyclerView.initFloatBtn(floatbtn: FloatingActionButton) {
             }
         }
     })
-    floatbtn.backgroundTintList = SettingUtil.getOneColorStateList(context.applicationContext)
+    floatbtn.backgroundTintList = SettingUtil.getOneColorStateList(App.instance)
     floatbtn.setOnClickListener {
         val layoutManager = layoutManager as LinearLayoutManager
         //如果当前recyclerview 最后一个视图位置的索引大于等于40，则迅速返回顶部，否则带有滚动动画效果返回到顶部
@@ -160,7 +161,7 @@ fun SwipeRefreshLayout.init(onRefreshListener: () -> Unit) {
             onRefreshListener.invoke()
         }
         //设置主题颜色
-        setColorSchemeColors(SettingUtil.getColor(context.applicationContext))
+        setColorSchemeColors(SettingUtil.getColor(App.instance))
     }
 }
 
@@ -168,7 +169,7 @@ fun SwipeRefreshLayout.init(onRefreshListener: () -> Unit) {
  * 初始化普通的toolbar 只设置标题
  */
 fun Toolbar.init(titleStr: String = ""): Toolbar {
-    setBackgroundColor(SettingUtil.getColor(context.applicationContext))
+    setBackgroundColor(SettingUtil.getColor(App.instance))
     title = titleStr
     return this
 }
@@ -181,7 +182,7 @@ fun Toolbar.initClose(
     backImg: Int = R.drawable.ic_back,
     onBack: (toolbar: Toolbar) -> Unit
 ): Toolbar {
-    setBackgroundColor(SettingUtil.getColor(context.applicationContext))
+    setBackgroundColor(SettingUtil.getColor(App.instance))
     title = titleStr.toHtml()
     setNavigationIcon(backImg)
     setNavigationOnClickListener { onBack.invoke(this) }
@@ -231,7 +232,7 @@ fun MagicIndicator.bindViewPager2(
     mStringList: ArrayList<String> = arrayListOf(),
     action: (index: Int) -> Unit = {}
 ) {
-    val commonNavigator = CommonNavigator(context.applicationContext)
+    val commonNavigator = CommonNavigator(App.instance)
     commonNavigator.adapter = object : CommonNavigatorAdapter() {
         override fun getCount(): Int {
             return if (mDataList.size != 0) {
@@ -242,7 +243,7 @@ fun MagicIndicator.bindViewPager2(
         }
 
         override fun getTitleView(context: Context, index: Int): IPagerTitleView {
-            return ScaleTransitionPagerTitleView(context.applicationContext).apply {
+            return ScaleTransitionPagerTitleView(App.instance).apply {
                 text = if (mDataList.size != 0) {
                     mDataList[index].name.toHtml()
                 } else {
@@ -262,10 +263,10 @@ fun MagicIndicator.bindViewPager2(
             return LinePagerIndicator(context).apply {
                 mode = LinePagerIndicator.MODE_EXACTLY
                 //线条的宽高度
-                lineHeight = UIUtil.dip2px(context.applicationContext, 3.0).toFloat()
-                lineWidth = UIUtil.dip2px(context.applicationContext, 30.0).toFloat()
+                lineHeight = UIUtil.dip2px(App.instance, 3.0).toFloat()
+                lineWidth = UIUtil.dip2px(App.instance, 30.0).toFloat()
                 //线条的圆角
-                roundRadius = UIUtil.dip2px(context.applicationContext, 6.0).toFloat()
+                roundRadius = UIUtil.dip2px(App.instance, 6.0).toFloat()
                 startInterpolator = AccelerateInterpolator()
                 endInterpolator = DecelerateInterpolator(2.0f)
                 //线条的颜色
