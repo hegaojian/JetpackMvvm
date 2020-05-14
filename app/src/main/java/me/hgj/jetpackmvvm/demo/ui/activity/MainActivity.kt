@@ -2,11 +2,9 @@ package me.hgj.jetpackmvvm.demo.ui.activity
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.blankj.utilcode.util.ToastUtils
-import com.kingja.loadsir.core.LoadService
 import com.tencent.bugly.beta.Beta
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseActivity

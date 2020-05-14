@@ -1,12 +1,9 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.state
 
 import android.app.Application
-import androidx.lifecycle.liveData
-import kotlinx.coroutines.Dispatchers
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData
 import me.hgj.jetpackmvvm.callback.livedata.StringLiveData
-import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
 
 /**
  * 作者　: hegaojian
@@ -27,11 +24,5 @@ class LoginRegisterViewModel(application: Application) : BaseViewModel(applicati
     var isShowPwd = BooleanLiveData()
 
     var isShowPwd2 = BooleanLiveData()
-
-
-    var data1 = liveData(Dispatchers.IO) {
-        val datas = HttpRequestManger.instance.getAskData(1)
-        emit(datas)
-    }
 
 }

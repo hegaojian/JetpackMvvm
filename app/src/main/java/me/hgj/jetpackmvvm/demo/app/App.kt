@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.demo.app
 
+import androidx.multidex.MultiDex
 import cat.ereza.customactivityoncrash.config.CaocConfig
 import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.LoadSir
@@ -12,10 +13,8 @@ import me.hgj.jetpackmvvm.demo.app.ext.getProcessName
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.EmptyCallback
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.ErrorCallback
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.LoadingCallback
-import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
 import me.hgj.jetpackmvvm.demo.ui.activity.ErrorActivity
 import me.hgj.jetpackmvvm.demo.ui.activity.WelcomeActivity
-import me.hgj.jetpackmvvm.network.manager.NetworkStateReceive
 
 /**
  * 作者　: hegaojian
@@ -30,6 +29,7 @@ class App : BaseApp() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        MultiDex.install(this)
         MMKV.initialize(this.filesDir.absolutePath + "/mmkv")
         //界面加载管理 初始化
         LoadSir.beginBuilder()

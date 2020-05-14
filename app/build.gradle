@@ -12,13 +12,14 @@ android {
         applicationId "me.hgj.jetpackmvvm.demo"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 2
-        versionName "1.0.3"
+        versionCode 4
+        versionName "1.0.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        ndk {
-            // 设置支持的SO库架构 一般只设置这个就阔以设配所有的设备了，还可以极大的减少apk的大小
+      /* ndk {
+            // 设置支持的SO库架构 一般只设置这个就阔以设配所有的设备了，还可以减少apk的大小
             abiFilters 'armeabi','armeabi-v7a'
-        }
+        }*/
+        multiDexEnabled true
     }
     dataBinding{
         enabled = true
@@ -74,7 +75,7 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
+    implementation 'com.android.support:multidex:1.0.3'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.2'
     //androidx UI
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -98,8 +99,8 @@ dependencies {
     //微信开源项目，替代SP
     implementation 'com.tencent:mmkv:1.0.22'
     //项目核心框架
-    implementation project(path: ':JetpackMvvm')
-//    implementation 'me.hegj:JetpackMvvm:1.0.9'
+//    implementation project(path: ':JetpackMvvm')
+    implementation 'me.hegj:JetpackMvvm:1.1.0'
     //轮播图
     implementation 'com.github.zhpanvip:BannerViewPager:2.6.6'
     //BaseAdapter

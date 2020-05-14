@@ -65,9 +65,6 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
                     showMessage(it.errorMsg)
                 })
             })
-        mViewModel.data1.observe(viewLifecycleOwner, Observer {
-            it.toJson().logd("hgj")
-        })
     }
 
     override fun lazyLoadData() {}
@@ -76,7 +73,6 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
     inner class ProxyClick {
 
         fun clear() {
-            mViewModel.data1
             mViewModel.username.postValue("")
         }
 

@@ -5,7 +5,6 @@ import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import com.google.gson.GsonBuilder
-import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
 import me.hgj.jetpackmvvm.network.BaseNetworkApi
 import me.hgj.jetpackmvvm.network.CoroutineCallAdapterFactory
 import me.hgj.jetpackmvvm.network.interceptor.CacheInterceptor
@@ -28,12 +27,14 @@ import java.util.concurrent.TimeUnit
 class NetworkApi : BaseNetworkApi() {
 
     companion object {
-        val instance: NetworkApi by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+
+        private val instance: NetworkApi by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
             NetworkApi() }
-    }
-    //封装NetApiService变量 方便直接快速调用
-    val service: ApiService by lazy {
-        getApi(ApiService::class.java, ApiService.SERVER_URL)
+
+        //双重校验锁式-单例 封装NetApiService 方便直接快速调用
+        val service: ApiService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+            instance.getApi(ApiService::class.java, ApiService.SERVER_URL)
+        }
     }
 
     /**

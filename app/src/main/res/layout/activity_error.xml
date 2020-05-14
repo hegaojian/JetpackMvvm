@@ -34,6 +34,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
                     android:gravity="center"
                     android:lineSpacingMultiplier="1.5"
                     android:text="@string/error_occurred"
@@ -41,7 +43,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/error_restart"
+                    android:id="@+id/errorRestart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -49,7 +51,7 @@
                     android:textSize="15dp" />
 
                 <Button
-                    android:id="@+id/error_sendError"
+                    android:id="@+id/errorSendError"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"

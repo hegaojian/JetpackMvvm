@@ -20,68 +20,67 @@ class HttpRequestManger {
             HttpRequestManger()
         }
     }
-
     /**
      * 添加文章
      */
     suspend fun addAriticle(title: String, content: String): ApiResponse<Any?> {
-        return NetworkApi.instance.service.addAriticle(title, content)
+        return NetworkApi.service.addAriticle(title, content)
     }
 
     /**
      * 获取自己分享的文章集合
      */
     suspend fun getShareAriticle(pageNo: Int): ApiResponse<ShareResponse> {
-        return NetworkApi.instance.service.getShareData(pageNo)
+        return NetworkApi.service.getShareData(pageNo)
     }
 
     /**
      * 删除自己分享的文章集合
      */
     suspend fun delShareAriticle(id: Int): ApiResponse<Any?> {
-        return NetworkApi.instance.service.deleteShareData(id)
+        return NetworkApi.service.deleteShareData(id)
     }
 
     /**
      * 收藏文章
      */
     suspend fun collect(id: Int): ApiResponse<Any?> {
-        return NetworkApi.instance.service.collect(id)
+        return NetworkApi.service.collect(id)
     }
 
     /**
      * 收藏网址
      */
     suspend fun collectUrl(name: String, link: String): ApiResponse<CollectUrlResponse> {
-        return NetworkApi.instance.service.collectUrl(name, link)
+        return NetworkApi.service.collectUrl(name, link)
     }
 
     /**
      * 取消收藏文章
      */
     suspend fun uncollect(id: Int): ApiResponse<Any?> {
-        return NetworkApi.instance.service.uncollect(id)
+        return NetworkApi.service.uncollect(id)
     }
 
     /**
      * 取消收藏网址
      */
     suspend fun uncollectUrl(id: Int): ApiResponse<Any?> {
-        return NetworkApi.instance.service.deletetool(id)
+        return NetworkApi.service.deletetool(id)
     }
 
     /**
      * 收藏的文章数据
      */
     suspend fun collectAriticleData(pageNo: Int): ApiResponse<ApiPagerResponse<ArrayList<CollectResponse>>> {
-        return NetworkApi.instance.service.getCollectData(pageNo)
+        return NetworkApi.service.getCollectData(pageNo)
     }
 
     /**
      * 收藏的网址数据
      */
     suspend fun collectUrlData(): ApiResponse<ArrayList<CollectUrlResponse>> {
-        return NetworkApi.instance.service.getCollectUrlData()
+        return NetworkApi.service.getCollectUrlData()
     }
 
     /**
@@ -90,7 +89,7 @@ class HttpRequestManger {
      suspend fun getHomeData(pageNo: Int): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>> {
         //同时异步请求2个接口，请求完成后合并数据
         return withContext(Dispatchers.IO) {
-            val data = async { NetworkApi().service.getAritrilList(pageNo) }
+            val data = async { NetworkApi.service.getAritrilList(pageNo) }
             //如果App配置打开了首页请求置顶文章，且是第一页
             if (CacheUtil.isNeedTop() && pageNo == 0) {
                 val topData = async { getTopData() }
@@ -106,42 +105,42 @@ class HttpRequestManger {
      * 获取置顶文章数据
      */
     private suspend fun getTopData(): ApiResponse<ArrayList<AriticleResponse>> {
-        return NetworkApi.instance.service.getTopAritrilList()
+        return NetworkApi.service.getTopAritrilList()
     }
 
     /**
      * 获取轮播图数据
      */
     suspend fun getBannData(): ApiResponse<ArrayList<BannerResponse>> {
-        return NetworkApi.instance.service.getBanner()
+        return NetworkApi.service.getBanner()
     }
 
     /**
      * 获取积分数据
      */
     suspend fun getIntegralData(pageNo: Int): ApiResponse<ApiPagerResponse<ArrayList<IntegralResponse>>> {
-        return NetworkApi.instance.service.getIntegralRank(pageNo)
+        return NetworkApi.service.getIntegralRank(pageNo)
     }
 
     /**
      * 积分获取记录
      */
     suspend fun getIntegralHistoryData(pageNo: Int): ApiResponse<ApiPagerResponse<ArrayList<IntegralHistoryResponse>>> {
-        return NetworkApi.instance.service.getIntegralHistory(pageNo)
+        return NetworkApi.service.getIntegralHistory(pageNo)
     }
 
     /**
      * 登录
      */
     suspend fun login(username: String, password: String): ApiResponse<UserInfo> {
-        return NetworkApi.instance.service.login(username, password)
+        return NetworkApi.service.login(username, password)
     }
 
     /**
      * 注册并登陆
      */
     suspend fun register(username: String, password: String): ApiResponse<UserInfo> {
-        val registerData = NetworkApi().service.register(username, password, password)
+        val registerData = NetworkApi.service.register(username, password, password)
         //判断注册结果 注册成功，调用登录接口
         if (registerData.isSucces()) {
             return login(username, password)
@@ -155,14 +154,14 @@ class HttpRequestManger {
      * 获取个人信息积分
      */
     suspend fun getIntegral(): ApiResponse<IntegralResponse> {
-        return NetworkApi.instance.service.getIntegral()
+        return NetworkApi.service.getIntegral()
     }
 
     /**
      * 获取公众号标题数据
      */
     suspend fun getTitleData(): ApiResponse<ArrayList<ClassifyResponse>> {
-        return NetworkApi.instance.service.getPublicTitle()
+        return NetworkApi.service.getPublicTitle()
     }
 
     /**
@@ -172,14 +171,14 @@ class HttpRequestManger {
         pageNo: Int,
         cid: Int = 0
     ): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>> {
-        return NetworkApi.instance.service.getPublicData(pageNo, cid)
+        return NetworkApi.service.getPublicData(pageNo, cid)
     }
 
     /**
      * 获取热门搜索数据
      */
     suspend fun getHotData(): ApiResponse<ArrayList<SearchResponse>> {
-        return NetworkApi.instance.service.getSearchData()
+        return NetworkApi.service.getSearchData()
     }
 
     /**
@@ -189,14 +188,14 @@ class HttpRequestManger {
         pageNo: Int,
         searchKey: String
     ): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>> {
-        return NetworkApi.instance.service.getSearchDataByKey(pageNo, searchKey)
+        return NetworkApi.service.getSearchDataByKey(pageNo, searchKey)
     }
 
     /**
      * 获取项目标题数据
      */
     suspend fun getProjecTitle(): ApiResponse<ArrayList<ClassifyResponse>> {
-        return NetworkApi.instance.service.getProjecTitle()
+        return NetworkApi.service.getProjecTitle()
     }
 
     /**
@@ -208,9 +207,9 @@ class HttpRequestManger {
         isNew: Boolean = false
     ): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>> {
         return if (isNew) {
-            NetworkApi().service.getProjecNewData(pageNo)
+            NetworkApi.service.getProjecNewData(pageNo)
         } else {
-            NetworkApi().service.getProjecDataByType(pageNo, cid)
+            NetworkApi.service.getProjecDataByType(pageNo, cid)
         }
     }
 
@@ -218,21 +217,21 @@ class HttpRequestManger {
      * 获取某某的个人信息
      */
     suspend fun getLookinfoById(id: Int, pageNo: Int): ApiResponse<ShareResponse> {
-        return NetworkApi.instance.service.getShareByidData(pageNo, id)
+        return NetworkApi.service.getShareByidData(pageNo, id)
     }
 
     /**
      * 获取TODo列表数据
      */
     suspend fun getTodoListData(pageNo: Int): ApiResponse<ApiPagerResponse<ArrayList<TodoResponse>>> {
-        return NetworkApi.instance.service.getTodoData(pageNo)
+        return NetworkApi.service.getTodoData(pageNo)
     }
 
     /**
      * 删除TODo数据
      */
     suspend fun delTodotData(id: Int): ApiResponse<Any?> {
-        return NetworkApi.instance.service.deleteTodo(id)
+        return NetworkApi.service.deleteTodo(id)
     }
 
     /**
@@ -240,7 +239,7 @@ class HttpRequestManger {
      */
     suspend fun doneTodotData(id: Int): ApiResponse<Any?> {
         //1完成
-        return NetworkApi.instance.service.doneTodo(id, 1)
+        return NetworkApi.service.doneTodo(id, 1)
     }
 
     /**
@@ -253,7 +252,7 @@ class HttpRequestManger {
         type: Int,
         priority: Int
     ): ApiResponse<Any?> {
-        return NetworkApi.instance.service.addTodo(title, content, date, type, priority)
+        return NetworkApi.service.addTodo(title, content, date, type, priority)
     }
 
     /**
@@ -267,35 +266,35 @@ class HttpRequestManger {
         priority: Int,
         id: Int
     ): ApiResponse<Any?> {
-        return NetworkApi.instance.service.updateTodo(title, content, date, type, priority, id)
+        return NetworkApi.service.updateTodo(title, content, date, type, priority, id)
     }
 
     /**
      * 获取广场数据
      */
     suspend fun getPlazaData(pageNo: Int): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>> {
-        return NetworkApi.instance.service.getSquareData(pageNo)
+        return NetworkApi.service.getSquareData(pageNo)
     }
 
     /**
      * 获取每日一问数据
      */
     suspend fun getAskData(pageNo: Int): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>> {
-        return NetworkApi.instance.service.getAskData(pageNo)
+        return NetworkApi.service.getAskData(pageNo)
     }
 
     /**
      * 获取体系数据
      */
     suspend fun getSystemData(): ApiResponse<ArrayList<SystemResponse>> {
-        return NetworkApi.instance.service.getSystemData()
+        return NetworkApi.service.getSystemData()
     }
 
     /**
      * 获取导航数据
      */
     suspend fun getNavigationData(): ApiResponse<ArrayList<NavigationResponse>> {
-        return NetworkApi.instance.service.getNavigationData()
+        return NetworkApi.service.getNavigationData()
     }
 
     /**
@@ -305,7 +304,7 @@ class HttpRequestManger {
         pageNo: Int,
         cid: Int
     ): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>> {
-        return NetworkApi.instance.service.getSystemChildData(pageNo, cid)
+        return NetworkApi.service.getSystemChildData(pageNo, cid)
     }
 
 }

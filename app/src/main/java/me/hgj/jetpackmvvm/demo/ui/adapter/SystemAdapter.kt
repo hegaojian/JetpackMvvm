@@ -37,6 +37,8 @@ class SystemAdapter(data: ArrayList<SystemResponse>) :
             }
             layoutManager = foxayoutManager
             setHasFixedSize(true)
+            setItemViewCacheSize(200)
+            isNestedScrollingEnabled = false
             adapter = SystemChildAdapter(item.children).apply {
                 setNbOnItemClickListener { _, view, position ->
                     method(item, view, position)

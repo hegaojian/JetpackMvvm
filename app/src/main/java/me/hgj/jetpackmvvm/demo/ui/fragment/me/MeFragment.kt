@@ -52,6 +52,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
     }
 
     override fun createObserver() {
+
         requestMeViewModel.meData.observe(viewLifecycleOwner, Observer { resultState ->
             me_swipe.isRefreshing = false
             parseState(resultState, {
@@ -62,10 +63,12 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
                 ToastUtils.showShort(it.errorMsg)
             })
         })
+
         shareViewModel.run {
             appColor.observe(viewLifecycleOwner, Observer {
                 setUiTheme(it, me_linear, me_swipe, me_integral)
             })
+
             userinfo.observe(viewLifecycleOwner, Observer {
                 it.notNull({
                     me_swipe.isRefreshing = true
