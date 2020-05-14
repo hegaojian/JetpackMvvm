@@ -18,8 +18,6 @@ import me.hgj.jetpackmvvm.network.manager.NetworkStateReceive
  */
 open class BaseApp : Application(), ViewModelStoreOwner {
 
-    private var mNetworkStateReceive: NetworkStateReceive? = null
-
     private lateinit var mAppViewModelStore: ViewModelStore
 
     private var mFactory: ViewModelProvider.Factory? = null
@@ -31,8 +29,6 @@ open class BaseApp : Application(), ViewModelStoreOwner {
     override fun onCreate() {
         super.onCreate()
         mAppViewModelStore = ViewModelStore()
-        mNetworkStateReceive = NetworkStateReceive()
-        registerReceiver(mNetworkStateReceive,IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
     }
 
     /**
