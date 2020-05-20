@@ -12,7 +12,7 @@ import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.LoadingCallback
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.ErrorCallback
 import me.hgj.jetpackmvvm.demo.data.model.bean.ClassifyResponse
 import me.hgj.jetpackmvvm.demo.databinding.FragmentViewpagerBinding
-import me.hgj.jetpackmvvm.demo.viewmodel.request.PublicNumberViewModel
+import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestPublicNumberViewModel
 import me.hgj.jetpackmvvm.ext.parseState
 
 /**
@@ -20,7 +20,7 @@ import me.hgj.jetpackmvvm.ext.parseState
  * 时间　: 2019/12/28
  * 描述　:聚合公众号
  */
-class PublicNumberFragment : BaseFragment<PublicNumberViewModel, FragmentViewpagerBinding>() {
+class PublicNumberFragment : BaseFragment<RequestPublicNumberViewModel, FragmentViewpagerBinding>() {
 
     //界面状态管理者
     private lateinit var loadsir: LoadService<Any>

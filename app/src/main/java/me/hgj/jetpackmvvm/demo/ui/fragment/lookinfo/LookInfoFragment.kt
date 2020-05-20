@@ -110,8 +110,8 @@ class LookInfoFragment : BaseFragment<LookInfoViewModel, FragmentLookinfoBinding
 
     override fun createObserver() {
         requestLookInfoViewModel.shareResponse.observe(viewLifecycleOwner, Observer {
-            mViewModel.name.set(it.coinInfoResponse.username)
-            mViewModel.info.set("积分 : ${it.coinInfoResponse.coinCount}　排名 : ${it.coinInfoResponse.rank}")
+            mViewModel.name.postValue(it.coinInfo.username)
+            mViewModel.info.postValue("积分 : ${it.coinInfo.coinCount}　排名 : ${it.coinInfo.rank}")
         })
         requestLookInfoViewModel.shareListDataUistate.observe(viewLifecycleOwner, Observer {
             swipeRefresh.isRefreshing = false

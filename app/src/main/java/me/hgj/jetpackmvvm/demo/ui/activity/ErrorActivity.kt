@@ -40,21 +40,24 @@ class ErrorActivity : BaseActivity<BaseViewModel, ActivityErrorBinding>() {
                 CustomActivityOnCrash.restartApplication(this@ErrorActivity, this)
             }
         }
-        errorSendError.setOnClickListener {
-            val errorLog = CustomActivityOnCrash.getStackTraceFromIntent(intent)
-            showMessage(errorLog!!,"发现有Bug不去打作者脸？","必须打",{
-                // 创建普通字符型ClipData
-                val mClipData = ClipData.newPlainText("errorLog",errorLog)
-                // 将ClipData内容放到系统剪贴板里。
-                clipboardManager?.setPrimaryClip(mClipData)
-                ToastUtils.showShort("已复制错误日志")
-                try {
-                    val url = "mqqwpa://im/chat?chat_type=wpa&uin=824868922"
-                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
-                } catch (e: Exception) {
-                    ToastUtils.showShort("请先安装QQ")
-                }
-            },"我不敢")
+        errorSendError.clickNoRepeat {
+            /** */
+            /* */
+            CustomActivityOnCrash.getStackTraceFromIntent(intent)?.let {
+                showMessage(it,"发现有Bug不去打作者脸？","必须打",{
+                    val mClipData = ClipData.newPlainText("errorLog",it)
+                    // 将ClipData内容放到系统剪贴板里。
+                    clipboardManager?.setPrimaryClip(mClipData)
+                    ToastUtils.showShort("已复制错误日志")
+                    try {
+                        val url = "mqqwpa://im/chat?chat_type=wpa&uin=824868922"
+                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+                    } catch (e: Exception) {
+                        ToastUtils.showShort("请先安装QQ")
+                    }
+                },"我不敢")
+            }
+
 
         }
     }

@@ -86,6 +86,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainfragment_to_demoFragment"
+            app:destination="@id/demoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
     <fragment
@@ -267,7 +274,7 @@
     <fragment
         android:id="@+id/addAriticleFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.share.AddAriticleFragment"
-        android:label="AddAriticleFragment"/>
+        android:label="AddAriticleFragment" />
     <fragment
         android:id="@+id/ariticleFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.share.AriticleFragment"
@@ -302,6 +309,11 @@
     <fragment
         android:id="@+id/addTodoFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.todo.AddTodoFragment"
-        android:label="AddTodoFragment"/>
+        android:label="AddTodoFragment" />
+
+    <fragment
+        android:id="@+id/demoFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.demo.DemoFragment"
+        android:label="DemoFragment" />
 
 </navigation>

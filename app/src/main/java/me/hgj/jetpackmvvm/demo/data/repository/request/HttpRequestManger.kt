@@ -307,4 +307,7 @@ class HttpRequestManger {
         return NetworkApi.service.getSystemChildData(pageNo, cid)
     }
 
+    suspend fun download(){
+
+    }
 }

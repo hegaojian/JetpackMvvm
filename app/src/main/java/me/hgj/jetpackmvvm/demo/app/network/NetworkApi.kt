@@ -5,6 +5,7 @@ import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import com.google.gson.GsonBuilder
+import me.hgj.jetpackmvvm.demo.app.App
 import me.hgj.jetpackmvvm.network.BaseNetworkApi
 import me.hgj.jetpackmvvm.network.CoroutineCallAdapterFactory
 import me.hgj.jetpackmvvm.network.interceptor.CacheInterceptor
@@ -28,7 +29,7 @@ class NetworkApi : BaseNetworkApi() {
 
     companion object {
 
-        private val instance: NetworkApi by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+         val instance: NetworkApi by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
             NetworkApi() }
 
         //双重校验锁式-单例 封装NetApiService 方便直接快速调用
@@ -44,7 +45,7 @@ class NetworkApi : BaseNetworkApi() {
     override fun setHttpClientBuilder(builder: OkHttpClient.Builder): OkHttpClient.Builder {
         builder.apply {
             //设置缓存配置 缓存最大10M
-            cache(Cache(File(Utils.getApp().cacheDir, "cxk_cache"), 10 * 1024 * 1024))
+            cache(Cache(File(App.instance.cacheDir, "cxk_cache"), 10 * 1024 * 1024))
             //添加Cookies自动持久化
             cookieJar(cookieJar)
             //添加公共heads 注意要设置在日志拦截器之前，不然Log中会不显示head信息

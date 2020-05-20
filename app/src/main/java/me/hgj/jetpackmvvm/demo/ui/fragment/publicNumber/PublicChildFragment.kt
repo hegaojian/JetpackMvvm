@@ -21,8 +21,9 @@ import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.CollectBus
 import me.hgj.jetpackmvvm.demo.databinding.IncludeListBinding
 import me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter
-import me.hgj.jetpackmvvm.demo.viewmodel.request.PublicNumberViewModel
+import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestPublicNumberViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
+import me.hgj.jetpackmvvm.demo.viewmodel.state.PublicNumberViewModel
 import me.hgj.jetpackmvvm.ext.getViewModel
 import me.hgj.jetpackmvvm.ext.nav
 
@@ -42,11 +43,13 @@ class PublicChildFragment : BaseFragment<PublicNumberViewModel, IncludeListBindi
     //recyclerview的底部加载view 因为在首页要动态改变他的颜色，所以加了他这个字段
     private lateinit var footView: DefineLoadMoreView
 
-    //该公众号对应的id
+    //该项目对应的id
     private var cid = 0
 
     //收藏viewmodel 注意，在by lazy中使用getViewModel一定要使用泛型，虽然他提示不报错，但是你不写是不行的
     private val requestCollectViewModel: RequestCollectViewModel by lazy { getViewModel<RequestCollectViewModel>() }
+    //请求viewmodel
+    private val requestPublicNumberViewModel: RequestPublicNumberViewModel by lazy { getViewModel<RequestPublicNumberViewModel>() }
 
     override fun layoutId() = R.layout.include_list
 
@@ -61,14 +64,14 @@ class PublicChildFragment : BaseFragment<PublicNumberViewModel, IncludeListBindi
         loadsir = LoadServiceInit(swipeRefresh) {
             //点击重试时触发的操作
             loadsir.showCallback(LoadingCallback::class.java)
-            mViewModel.getPublicData(true, cid)
+            requestPublicNumberViewModel.getPublicData(true, cid)
         }
         //初始化recyclerView
         recyclerView.init(LinearLayoutManager(context), articleAdapter).let {
             it.addItemDecoration(SpaceItemDecoration(0, ConvertUtils.dp2px(8f)))
             footView = it.initFooter(SwipeRecyclerView.LoadMoreListener {
                 //触发加载更多时请求数据
-                mViewModel.getPublicData(false, cid)
+                requestPublicNumberViewModel.getPublicData(false, cid)
             })
             //初始化FloatingActionButton
             it.initFloatBtn(floatbtn)
@@ -77,7 +80,7 @@ class PublicChildFragment : BaseFragment<PublicNumberViewModel, IncludeListBindi
         //初始化 SwipeRefreshLayout
         swipeRefresh.init {
             //触发刷新监听时请求数据
-            mViewModel.getPublicData(true, cid)
+            requestPublicNumberViewModel.getPublicData(true, cid)
         }
 
         articleAdapter.run {
@@ -114,11 +117,11 @@ class PublicChildFragment : BaseFragment<PublicNumberViewModel, IncludeListBindi
                 }
             }
         }
-        mViewModel.getPublicData(true, cid)
+        requestPublicNumberViewModel.getPublicData(true, cid)
     }
 
     override fun createObserver() {
-        mViewModel.publicDataState.observe(viewLifecycleOwner, Observer {
+        requestPublicNumberViewModel.publicDataState.observe(viewLifecycleOwner, Observer {
             swipeRefresh.isRefreshing = false
             recyclerView.loadMoreFinish(it.isEmpty, it.hasMore)
             if (it.isSuccess) {

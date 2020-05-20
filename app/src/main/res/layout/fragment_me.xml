@@ -154,7 +154,6 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/me_collect"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:background="?attr/selectableItemBackground"
@@ -186,7 +185,6 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/me_article"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:background="?attr/selectableItemBackground"
@@ -218,7 +216,6 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/me_todo"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:background="?attr/selectableItemBackground"
@@ -256,7 +253,6 @@
                                 android:background="@color/windowBackground" />
 
                             <LinearLayout
-                                android:id="@+id/me_about"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:background="?attr/selectableItemBackground"
@@ -288,7 +284,6 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/me_join"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:background="?attr/selectableItemBackground"
@@ -318,9 +313,38 @@
                                     android:layout_height="16dp"
                                     android:src="@drawable/ic_right" />
                             </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:background="?attr/selectableItemBackground"
+                                android:gravity="center_vertical"
+                                android:onClick="@{()->click.demo()}"
+                                android:orientation="horizontal"
+                                android:paddingLeft="16dp"
+                                android:paddingRight="16dp">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_marginRight="16dp"
+                                    android:src="@drawable/ic_demo" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Demo示例"
+                                    android:textColor="@color/colorBlack333"
+                                    android:textSize="14dp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:src="@drawable/ic_right" />
+                            </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/me_setting"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:background="?attr/selectableItemBackground"
