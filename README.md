@@ -80,9 +80,9 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
     abstract override fun initView(savedInstanceState: Bundle?)
 
     /**
-     * 创建liveData数据观察 abstract修饰供子类实现
+     * 创建liveData数据观察
      */
-    abstract override fun createObserver()
+    override override fun createObserver()
 
 
     /**
@@ -116,9 +116,9 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
     abstract override fun lazyLoadData()
 
     /**
-     * 创建liveData数据观察 懒加载之后才会触发 abstract修饰供子类实现
+     * 创建liveData数据观察 懒加载之后才会触发
      */
-    abstract override fun createObserver()
+    override override fun createObserver()
   
     /**
      * Fragment执行onViewCreated后触发的方法 
