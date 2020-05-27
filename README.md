@@ -63,8 +63,7 @@ android {
 ```
 
 ## 2.继承基类
-一般我们项目中都会有一套自己定义的符合业务需求的基类 ***BaseActivity/BaseFragment***，所以我们的基类需要**继承本框架的Base类**
-- **2.1 如果你开启了DataBinding 那么基类可以继承BaseVmDbActivity/BaseVmDbFragment**  
+一般我们项目中都会有一套自己定义的符合业务需求的基类 ***BaseActivity/BaseFragment***，所以我们的基类需要**继承本框架的Base类BaseVmDbActivity/BaseVmDbFragment**
 
 **Activity：**
 
