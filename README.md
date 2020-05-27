@@ -143,81 +143,7 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
 }
 ```
 
-- **2.2 如果你没有开启DataBinding 那么基类可以继承 BaseVmActivity/BaseVmFragment**
-
-**Activity：**
-
-```
-abstract class BaseActivity<VM : BaseViewModel> : BaseVmActivity<VM>() {
-    
-    abstract override fun layoutId(): Int
-    
-    abstract override fun initView(savedInstanceState: Bundle?)
-    
-    /**
-     * 创建liveData数据观察 abstract修饰供子类实现
-     */
-    abstract override fun createObserver()
-
-
-    /**
-     * 打开等待框 在这里实现你的等待框展示
-     */
-    override fun showLoading(message: String) {
-       ...
-    }
-
-    /**
-     * 关闭等待框 在这里实现你的等待框关闭
-     */
-    override fun dismissLoading() {
-       ...
-    }
-}
-```
-**Fragment:**
-```
-abstract class BaseFragment<VM : BaseViewModel> : BaseVmFragment<VM>() {
-    /**
-     * 当前Fragment绑定的视图布局Id abstract修饰供子类实现
-     */
-    abstract override fun layoutId(): Int
-    
-    abstract override fun initView(savedInstanceState: Bundle?)
-
-    /**
-     * 懒加载 只有当前fragment视图显示时才会触发该方法 abstract修饰供子类实现
-     */
-    abstract override fun lazyLoadData()
-
-    /**
-     * 创建liveData数据观察 懒加载之后才会触发
-     */
-    abstract override fun createObserver()
-  
-    /**
-     * Fragment执行onViewCreated后触发的方法
-     */
-    override fun initData() {
-
-    }
-    
-   /**
-     * 打开等待框 在这里实现你的等待框展示
-     */
-    override fun showLoading(message: String) {
-       ...
-    }
-
-    /**
-     * 关闭等待框 在这里实现你的等待框关闭
-     */
-    override fun dismissLoading() {
-       ...
-    }
-}
-```
-## 3.创建一个Fragment（以开启DataBinding为例）
+## 3.编写一个登录功能
 
 - **3.1 编写fragment_login.xml界面后转换成 databind 布局（鼠标停在根布局，Alt+Enter 点击提示 Convert to data binding layout即可）**
 ```
@@ -239,24 +165,28 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
 }
 ```
 
-- **3.3 LoginFragment继承基类传入相关泛型,第一个泛型为你创建的LoginViewModel,第二个泛型为ViewDataBind，保存fragment_login.xml后databinding会生成一个FragmentLoginBinding类。（如果没有生成，试着点击Build->Clean Project）**
+- **3.3 创建LoginFragment 继承基类传入相关泛型,第一个泛型为你创建的LoginViewModel,第二个泛型为ViewDataBind，保存fragment_login.xml后databinding会生成一个FragmentLoginBinding类。（如果没有生成，试着点击Build->Clean Project）**
 ```
 class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
-  
+    
+    /**
+     *  当前fragment绑定的布局
+     */
     override fun layoutId() = R.layout.fragment_login
-
+    
+    /**
+     *  初始化操作
+     */
     override fun initView(savedInstanceState: Bundle?) {
         ...
     }
     
+    /**
+     *  fragment 懒加载
+     */
     override fun lazyLoadData() { 
         ...
     }
-    
-    override fun createObserver() {
-        ...
-    }
-    
 }
 ```
 
@@ -265,25 +195,25 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 - **4.1 新建请求配置类继承 BaseNetworkApi 示例：**
 ```
 class NetworkApi : BaseNetworkApi() {
-    //封装NetApiService变量 方便直接快速调用
-    val service: NetApiService by lazy {
-        getApi(NetApiService::class.java, NetApiService.SERVER_URL)
-    }
 
+   companion object {
+         
+        val instance: NetworkApi by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) { NetworkApi() }
+
+        //双重校验锁式-单例 封装NetApiService 方便直接快速调用
+        val service: ApiService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+            instance.getApi(ApiService::class.java, ApiService.SERVER_URL)
+        }
+    }
+   
     /**
      * 实现重写父类的setHttpClientBuilder方法，
-     * 在这里可以添加拦截器，可以对 OkHttpClient.Builder 做任意操作
+     * 在这里可以添加拦截器，可以对 OkHttpClient.Builder 做任意你想要做的骚操作
      */
     override fun setHttpClientBuilder(builder: OkHttpClient.Builder): OkHttpClient.Builder {
         builder.apply {
-            //设置缓存配置 缓存最大10M
-            cache(Cache(File(App.CONTEXT.cacheDir, "cxk_cache"), 10 * 1024 * 1024))
-            //添加Cookies自动持久化
-            cookieJar(cookieJar)
-            //添加公共heads 注意要设置在日志拦截器之前，不然Log中会不显示head信息
-            addInterceptor(HeadInterceptor(mapOf()))
-            //添加缓存拦截器 可传入缓存天数，不传默认7天
-            addInterceptor(CacheInterceptor())
+            //示例：添加公共heads，可以存放token，公共参数等， 注意要设置在日志拦截器之前，不然Log中会不显示head信息
+            addInterceptor(MyHeadInterceptor())
             // 日志拦截器
             addInterceptor(LogInterceptor())
             //超时时间 连接、读、写
@@ -296,7 +226,7 @@ class NetworkApi : BaseNetworkApi() {
 
     /**
      * 实现重写父类的setRetrofitBuilder方法，
-     * 在这里可以对Retrofit.Builder做任意操作，比如添加GSON解析器，protobuf等
+     * 在这里可以对Retrofit.Builder做任意骚操作，比如添加GSON解析器，protobuf等
      */
     override fun setRetrofitBuilder(builder: Retrofit.Builder): Retrofit.Builder {
         return builder.apply {
@@ -304,11 +234,6 @@ class NetworkApi : BaseNetworkApi() {
             addCallAdapterFactory(CoroutineCallAdapterFactory())
         }
     }
-
-    val cookieJar: PersistentCookieJar by lazy {
-        PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(App.CONTEXT))
-    }
-
 }
 ```
 
@@ -321,7 +246,7 @@ class NetworkApi : BaseNetworkApi() {
     "errorMsg": ""
 }
 ```
-该格式是 [玩Android Api](https://www.wanandroid.com/blog/show/2)返回的数据格式，如果errorCode等于0 请求成功，否则请求失败
+该示例格式是 [玩Android Api](https://www.wanandroid.com/blog/show/2)返回的数据格式，如果errorCode等于0 请求成功，否则请求失败
 作为开发者的角度来说，我们主要是想得到脱壳数据-data，且不想每次都判断errorCode==0请求是否成功或失败
 这时我们可以在服务器返回数据基类中继承BaseResponse，实现相关方法：
 
@@ -339,7 +264,7 @@ data class ApiResponse<T>(var errorCode: Int, var errorMsg: String, var data: T)
 
 }
 ```
-- **4.3 在Viewmodel中发起请求，所有请求都是在viewModelScope中启动，请求会发生在IO线程，最终回调在主线程上，当页面销毁的时候，请求会统一取消，不用担心内存泄露的风险，框架做了2种请求使用方式**  
+- **4.3 在ViewModel中发起请求，所有请求都是在viewModelScope中启动，请求会发生在IO线程，最终回调在主线程上，当页面销毁的时候，请求会统一取消，不用担心内存泄露的风险，框架做了2种请求使用方式**  
 
 **1-2将请求数据包装给ResultState，在Activity/Fragment中去监听ResultState拿到数据做处理**
 
