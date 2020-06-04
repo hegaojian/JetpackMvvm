@@ -413,6 +413,10 @@ val mainViewModel = getAppViewModel<MainViewModel>()
  的包中看，反正你也可以自己写，按照自己的喜好与需求来
 ```
 
+## 感谢
+- [Jetpack-MVVM-Best-Practice](https://github.com/KunMinX/Jetpack-MVVM-Best-Practice)
+- [重学安卓](https://xiaozhuanlan.com/kunminx)
+
 ## License
 ```
  Copyright 2019, hegaojian(何高建)       
