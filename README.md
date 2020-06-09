@@ -383,27 +383,27 @@ class RequestLoginViewModel(application: Application) : BaseViewModel(applicatio
 ```
 
 ## 5.获取ViewModel
-- **5.1我们的activity/fragment会有多个ViewModel，按官方的写感觉有点累**
+- **5.1我们的activity/fragment会有多个ViewModel，按传统的写法感觉有点累**
 ```
  val mainViewModel = ViewModelProvider(this,
             ViewModelProvider.AndroidViewModelFactory(application)).get(MainViewModel::class.java)
 ```
-**优化了一下改成了
+**官方Ktx有拓展函数可以轻松调用
 ```
 //在activity中获取当前Activity级别作用域的ViewModel
- val mainViewModel = getViewModel<MainViewModel>()
+ private val mainViewModel:MainViewModel by viewModels()
  
-//在activity中获取Application级别作用域的ViewModel（注，Application类继承框架的BaseApp类才有用）
- val mainViewModel = getAppViewModel<MainViewModel>()
+//在activity中获取Application级别作用域的ViewModel（注，这个是本框架提供的，Application类继承框架的BaseApp才有用）
+ private val mainViewModel by lazy { getAppViewModel<MainViewModel>()}
 
 //在fragment中获取当前Fragment级别作用域的ViewModel
-val mainViewModel = getViewModel<MainViewModel>()
+ private val mainViewModel:MainViewModel by viewModels()
 
 //在fragment中获取父类Activity级别作用域的ViewModel
-val mainViewModel = getActivityViewModel<MainViewModel>()
+private val mainViewModel：MainViewModel by activityViewModels()
 
-//在fragment中获取Application级别作用域的ViewModel（注，Application类继承框架的BaseApp类才有用）
-val mainViewModel = getAppViewModel<MainViewModel>()
+//在fragment中获取Application级别作用域的ViewModel（注，这个是本框架提供的，Application类继承框架的BaseApp才有用）
+private val mainViewModel by lazy { getAppViewModel<MainViewModel>()}
 ```
 ## 6.写了一些常用的拓展函数
 ```
