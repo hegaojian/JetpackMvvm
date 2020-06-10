@@ -63,9 +63,10 @@ android {
 ```
 
 ## 2.继承基类
-一般我们项目中都会有一套自己定义的符合业务需求的基类 ***BaseActivity/BaseFragment***，所以我们的基类需要**继承本框架的Base类
-不想用Databinding可以继承 BaseVmActivity/BaseVmFragment
-用Databinding的可以继承BaseVmDbActivity/BaseVmDbFragment**
+一般我们项目中都会有一套自己定义的符合业务需求的基类 ***BaseActivity/BaseFragment***，所以我们的基类需要**继承本框架的Base类**
+
+- 不想用Databinding的-------可以继承 BaseVmActivity/BaseVmFragment
+- 用Databinding的-----------可以继承BaseVmDbActivity/BaseVmDbFragment**
 
 **Activity：**
 
@@ -366,7 +367,7 @@ class RequestLoginViewModel(application: Application) : BaseViewModel(applicatio
              it.errorMsg.logd()
          },true,"正在登录中...")
         
-   //2.拿到未脱壳的数据，你可以自己根据code做业务需求操作（项目没有基类的可以用）
+   //2.拿到未脱壳的数据，你可以自己根据code做业务需求操作（项目没有基类或者不想框架帮忙脱壳的可以用）
        requestNoCheck({HttpRequestManger.instance.login(username,password)},{
             //请求成功 自己拿到数据做业务需求操作
             if(it.errorCode==0){
@@ -389,7 +390,7 @@ class RequestLoginViewModel(application: Application) : BaseViewModel(applicatio
  val mainViewModel = ViewModelProvider(this,
             ViewModelProvider.AndroidViewModelFactory(application)).get(MainViewModel::class.java)
 ```
-**官方Ktx有拓展函数可以轻松调用
+**现在官方Ktx有拓展函数可以轻松调用
 ```
 //在activity中获取当前Activity级别作用域的ViewModel
  private val mainViewModel:MainViewModel by viewModels()
