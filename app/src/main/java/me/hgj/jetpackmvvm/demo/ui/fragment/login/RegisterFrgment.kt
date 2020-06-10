@@ -2,6 +2,7 @@ package me.hgj.jetpackmvvm.demo.ui.fragment.login
 
 import android.os.Bundle
 import android.widget.CompoundButton
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.include_toolbar.*
@@ -14,7 +15,6 @@ import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.databinding.FragmentRegisterBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestLoginRegisterViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel
-import me.hgj.jetpackmvvm.ext.getViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.parseState
 
@@ -25,7 +25,7 @@ import me.hgj.jetpackmvvm.ext.parseState
  */
 class RegisterFrgment : BaseFragment<LoginRegisterViewModel, FragmentRegisterBinding>() {
 
-    private val requestLoginRegisterViewModel:RequestLoginRegisterViewModel by lazy { getViewModel<RequestLoginRegisterViewModel>()}
+    private val requestLoginRegisterViewModel:RequestLoginRegisterViewModel by viewModels()
 
     override fun layoutId() = R.layout.fragment_register
 
@@ -47,7 +47,7 @@ class RegisterFrgment : BaseFragment<LoginRegisterViewModel, FragmentRegisterBin
             viewLifecycleOwner,
             Observer { resultState ->
                 parseState(resultState, {
-                    shareViewModel.isLogin.postValue(true)
+                    CacheUtil.setIsLogin(true)
                     CacheUtil.setUser(it)
                     shareViewModel.userinfo.postValue(it)
                     nav().navigate(R.id.action_registerFrgment_to_mainFragment)
@@ -57,7 +57,6 @@ class RegisterFrgment : BaseFragment<LoginRegisterViewModel, FragmentRegisterBin
             })
     }
 
-    override fun lazyLoadData() {}
 
     inner class ProxyClick {
         /**清空*/

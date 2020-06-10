@@ -1,6 +1,7 @@
 package me.hgj.jetpackmvvm.demo.ui.fragment.share
 
 import android.os.Bundle
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
@@ -12,15 +13,11 @@ import kotlinx.android.synthetic.main.include_toolbar.*
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
-import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.EmptyCallback
-import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.ErrorCallback
-import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.LoadingCallback
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
 import me.hgj.jetpackmvvm.demo.databinding.FragmentListBinding
 import me.hgj.jetpackmvvm.demo.ui.adapter.ShareAdapter
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestAriticleViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.AriticleViewModel
-import me.hgj.jetpackmvvm.ext.getViewModel
 import me.hgj.jetpackmvvm.ext.nav
 
 /**
@@ -37,7 +34,7 @@ class AriticleFragment : BaseFragment<AriticleViewModel, FragmentListBinding>() 
     private lateinit var loadsir: LoadService<Any>
 
     //记得要写泛型，虽然在 by lazy中 提示不用写，但是你不写就会报错
-    private val requestViewModel: RequestAriticleViewModel by lazy { getViewModel<RequestAriticleViewModel>() }
+    private val requestViewModel: RequestAriticleViewModel by viewModels()
 
     override fun layoutId() = R.layout.fragment_list
 
@@ -57,9 +54,9 @@ class AriticleFragment : BaseFragment<AriticleViewModel, FragmentListBinding>() 
             }
         }
         //状态页配置
-        loadsir = LoadServiceInit(swipeRefresh) {
+        loadsir = loadServiceInit(swipeRefresh) {
             //点击重试时触发的操作
-            loadsir.showCallback(LoadingCallback::class.java)
+            loadsir.showLoading()
             requestViewModel.getShareData(true)
         }
 
@@ -81,7 +78,7 @@ class AriticleFragment : BaseFragment<AriticleViewModel, FragmentListBinding>() 
 
         articleAdapter.run {
             setNbOnItemClickListener { adapter, view, position ->
-                nav().navigate(R.id.action_ariticleFragment_to_webFragment, Bundle().apply {
+                nav().navigate(R.id.action_to_webFragment, Bundle().apply {
                     putParcelable("ariticleData", articleAdapter.data[position])
                 })
             }
@@ -102,58 +99,32 @@ class AriticleFragment : BaseFragment<AriticleViewModel, FragmentListBinding>() 
     }
 
     override fun lazyLoadData() {
+        //设置界面 加载中
+        loadsir.showLoading()
         requestViewModel.getShareData(true)
     }
 
     override fun createObserver() {
         requestViewModel.shareDataState.observe(viewLifecycleOwner, Observer {
-            swipeRefresh.isRefreshing = false
-            recyclerView.loadMoreFinish(it.isEmpty, it.hasMore)
-            if (it.isSuccess) {
-                //成功
-                when {
-                    //第一页并没有数据 显示空布局界面
-                    it.isFirstEmpty -> {
-                        loadsir.showCallback(EmptyCallback::class.java)
-                    }
-                    //是第一页
-                    it.isRefresh -> {
-                        loadsir.showSuccess()
-                        articleAdapter.setNewInstance(it.listData)
-                    }
-                    //不是第一页
-                    else -> {
-                        loadsir.showSuccess()
-                        articleAdapter.addData(it.listData)
-                    }
-                }
-            } else {
-                //失败
-                if (it.isRefresh) {
-                    //如果是第一页，则显示错误界面，并提示错误信息
-                    loadsir.setErrorText(it.errMessage)
-                    loadsir.showCallback(ErrorCallback::class.java)
-                } else {
-                    recyclerView.loadMoreError(0, it.errMessage)
-                }
-            }
+            //设值 新写了个拓展函数，搞死了这个恶心的重复代码
+            loadListData(it, articleAdapter, loadsir, recyclerView,swipeRefresh)
         })
         requestViewModel.delDataState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 //删除成功 如果是删除的最后一个了，那么直接把界面设置为空布局
                 if (articleAdapter.data.size == 1) {
-                    loadsir.showCallback(EmptyCallback::class.java)
+                    loadsir.showEmpty()
                 }
-                articleAdapter.remove(it.data)
+                articleAdapter.remove(it.data!!)
             } else {
                 //删除失败，提示
                 showMessage(it.errorMsg)
             }
         })
-        eventViewModel.shareArticle.observe(viewLifecycleOwner, Observer {
+        eventViewModel.shareArticleEvent.observe(viewLifecycleOwner, Observer {
             if (articleAdapter.data.size == 0) {
                 //界面没有数据时，变为加载中 增强一丢丢体验
-                loadsir.showCallback(LoadingCallback::class.java)
+                loadsir.showLoading()
             } else {
                 //有数据时，swipeRefresh 显示刷新状态
                 swipeRefresh.isRefreshing = true

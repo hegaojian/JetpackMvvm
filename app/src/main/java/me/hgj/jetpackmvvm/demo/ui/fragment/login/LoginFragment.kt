@@ -2,6 +2,7 @@ package me.hgj.jetpackmvvm.demo.ui.fragment.login
 
 import android.os.Bundle
 import android.widget.CompoundButton
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.include_toolbar.*
@@ -15,11 +16,8 @@ import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestLoginRegisterViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel
-import me.hgj.jetpackmvvm.ext.getViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.parseState
-import me.hgj.jetpackmvvm.ext.util.logd
-import me.hgj.jetpackmvvm.ext.util.toJson
 
 /**
  * 作者　: hegaojian
@@ -28,8 +26,9 @@ import me.hgj.jetpackmvvm.ext.util.toJson
  */
 class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>() {
 
-    /** 注意，在by lazy中使用getViewModel一定要使用泛型，虽然他提示不报错，但是你不写是不行的 */
-    private val requestLoginRegisterViewModel: RequestLoginRegisterViewModel by lazy { getViewModel<RequestLoginRegisterViewModel>() }
+    /** */
+    private val requestLoginRegisterViewModel: RequestLoginRegisterViewModel by viewModels()
+
 
     override fun layoutId() = R.layout.fragment_login
 
@@ -50,14 +49,11 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
     }
 
     override fun createObserver() {
-        //监听请求结果
-        requestLoginRegisterViewModel.loginResult.observe(
-            viewLifecycleOwner,
-            Observer { resultState ->
+        requestLoginRegisterViewModel.loginResult.observe(viewLifecycleOwner,Observer { resultState ->
                 parseState(resultState, {
                     //登录成功 通知账户数据发生改变鸟
                     CacheUtil.setUser(it)
-                    shareViewModel.isLogin.postValue(true)
+                    CacheUtil.setIsLogin(true)
                     shareViewModel.userinfo.postValue(it)
                     nav().navigateUp()
                 }, {
@@ -66,9 +62,6 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
                 })
             })
     }
-
-    override fun lazyLoadData() {}
-
 
     inner class ProxyClick {
 
@@ -96,6 +89,5 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
             CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
                 mViewModel.isShowPwd.postValue(isChecked)
             }
-
     }
 }

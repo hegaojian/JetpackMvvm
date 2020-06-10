@@ -1,6 +1,8 @@
 package me.hgj.jetpackmvvm.demo.ui.fragment.me
 
+import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.blankj.utilcode.util.ToastUtils
 import kotlinx.android.synthetic.main.fragment_me.*
@@ -15,7 +17,6 @@ import me.hgj.jetpackmvvm.demo.data.model.bean.IntegralResponse
 import me.hgj.jetpackmvvm.demo.databinding.FragmentMeBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestMeViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.MeViewModel
-import me.hgj.jetpackmvvm.ext.getViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.parseState
 import me.hgj.jetpackmvvm.ext.util.notNull
@@ -25,12 +26,14 @@ import me.hgj.jetpackmvvm.ext.util.notNull
  * 时间　: 2019/12/23
  * 描述　: 我的
  */
+
+
 class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
     private var rank: IntegralResponse? = null
 
-    /** 注意，在by lazy中使用getViewModel一定要使用泛型，虽然他提示不报错，但是你不写是不行的 */
-    private val requestMeViewModel: RequestMeViewModel by lazy { getViewModel<RequestMeViewModel>() }
+    /** */
+    private val requestMeViewModel: RequestMeViewModel by viewModels()
 
     override fun layoutId() = R.layout.fragment_me
 
@@ -52,7 +55,6 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
     }
 
     override fun createObserver() {
-
         requestMeViewModel.meData.observe(viewLifecycleOwner, Observer { resultState ->
             me_swipe.isRefreshing = false
             parseState(resultState, {
@@ -68,7 +70,6 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
             appColor.observe(viewLifecycleOwner, Observer {
                 setUiTheme(it, me_linear, me_swipe, me_integral)
             })
-
             userinfo.observe(viewLifecycleOwner, Observer {
                 it.notNull({
                     me_swipe.isRefreshing = true
@@ -124,7 +125,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
         /** 玩Android开源网站 */
         fun about() {
-            nav().navigate(R.id.action_mainfragment_to_webFragment, Bundle().apply {
+            nav().navigate(R.id.action_to_webFragment, Bundle().apply {
                 putParcelable(
                     "bannerdata",
                     BannerResponse(
@@ -140,10 +141,11 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
             joinQQGroup("9n4i5sHt4189d4DvbotKiCHy-5jZtD4D")
         }
 
-        /** 设置 */
+        /** 设置*/
         fun setting() {
             nav().navigate(R.id.action_mainfragment_to_settingFragment)
         }
+
         /**demo*/
         fun demo() {
             nav().navigate(R.id.action_mainfragment_to_demoFragment)

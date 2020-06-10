@@ -17,6 +17,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.util.concurrent.TimeUnit
+import javax.net.ssl.HostnameVerifier
 
 /**
  * 作者　: hegaojian
@@ -48,8 +49,8 @@ class NetworkApi : BaseNetworkApi() {
             cache(Cache(File(App.instance.cacheDir, "cxk_cache"), 10 * 1024 * 1024))
             //添加Cookies自动持久化
             cookieJar(cookieJar)
-            //添加公共heads 注意要设置在日志拦截器之前，不然Log中会不显示head信息
-            addInterceptor(HeadInterceptor(mapOf()))
+            //示例：添加公共heads 注意要设置在日志拦截器之前，不然Log中会不显示head信息
+            addInterceptor(MyHeadInterceptor())
             //添加缓存拦截器 可传入缓存天数，不传默认7天
             addInterceptor(CacheInterceptor())
             // 日志拦截器

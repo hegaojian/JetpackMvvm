@@ -37,7 +37,7 @@ class TodoAdapter(data: ArrayList<TodoResponse>) : BaseQuickAdapter<TodoResponse
                 holder.setImageResource(R.id.item_todo_status, R.drawable.ic_done)
                 holder.getView<CardView>(R.id.item_todo_cardview).foreground = context.getDrawable(R.drawable.forground_shap)
             } else {
-                if (date < DatetimeUtil.nows.time) {
+                if (isDone()) {
                     //未完成并且超过了预定完成时间
                     holder.setVisible(R.id.item_todo_status, true)
                     holder.setImageResource(R.id.item_todo_status, R.drawable.ic_yiguoqi)

@@ -11,21 +11,23 @@ import android.widget.LinearLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.just.agentweb.AgentWeb
 import kotlinx.android.synthetic.main.fragment_web.*
 import kotlinx.android.synthetic.main.include_toolbar.*
+import me.hgj.jetpackmvvm.callback.livedata.event.Event
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.hideSoftKeyboard
 import me.hgj.jetpackmvvm.demo.app.ext.initClose
 import me.hgj.jetpackmvvm.demo.app.ext.showMessage
+import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.data.model.bean.*
 import me.hgj.jetpackmvvm.demo.data.model.enums.CollectType
 import me.hgj.jetpackmvvm.demo.databinding.FragmentWebBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.WebViewModel
-import me.hgj.jetpackmvvm.ext.getViewModel
 import me.hgj.jetpackmvvm.ext.nav
 
 /**
@@ -38,8 +40,8 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
 
     private var mAgentWeb: AgentWeb? = null
 
-    /** 注意，在by lazy中使用getViewModel一定要使用泛型，虽然他提示不报错，但是你不写是不行的 */
-    private val requestCollectViewModel: RequestCollectViewModel by lazy { getViewModel<RequestCollectViewModel>() }
+    /** */
+    private val requestCollectViewModel: RequestCollectViewModel by viewModels()
 
     override fun layoutId() = R.layout.fragment_web
 
@@ -120,7 +122,7 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 mViewModel.collect = it.collect
-                eventViewModel.collect.postValue(CollectBus(it.id, it.collect))
+                eventViewModel.collectEvent.postValue(Event( CollectBus(it.id, it.collect)))
                 //刷新一下menu
                 activity?.window?.invalidatePanelMenu(Window.FEATURE_OPTIONS_PANEL)
                 activity?.invalidateOptionsMenu()
@@ -130,7 +132,7 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
         })
         requestCollectViewModel.collectUrlUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
-                eventViewModel.collect.postValue(CollectBus(it.id, it.collect))
+                eventViewModel.collectEvent.postValue(Event(CollectBus(it.id, it.collect)))
                 mViewModel.collect = it.collect
                 //刷新一下menu
                 activity?.window?.invalidatePanelMenu(Window.FEATURE_OPTIONS_PANEL)
@@ -180,7 +182,7 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
             R.id.web_collect -> {
                 //点击收藏
                 //是否已经登录了，没登录需要跳转到登录页去
-                if (shareViewModel.isLogin.value) {
+                if (CacheUtil.isLogin()) {
                     //是否已经收藏了
                     if (mViewModel.collect) {
                         if (mViewModel.collectType == CollectType.Url.type) {
@@ -201,7 +203,7 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
                     }
                 } else {
                     //跳转到登录页
-                    nav().navigate(R.id.action_webFragment_to_loginFragment)
+                    nav().navigate(R.id.action_to_loginFragment)
                 }
             }
             R.id.web_liulanqi -> {

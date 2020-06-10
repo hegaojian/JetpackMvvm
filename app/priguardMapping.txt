@@ -1,7 +1,7 @@
 # compiler: R8
 # compiler_version: 1.6.82
 # min_api: 21
-# pg_map_id: a168504
+# pg_map_id: e742143
 # common_typos_disable
 $$ServiceLoaderMethods -> a:
     java.util.Iterator $load1() -> a
@@ -4944,6 +4944,284 @@ com.chad.library.adapter.base.provider.BaseItemProvider$longClickViewIds$2 -> co
     com.chad.library.adapter.base.provider.BaseItemProvider$longClickViewIds$2 INSTANCE -> a
 com.chad.library.adapter.base.util.AdapterUtilsKt -> com.chad.library.adapter.base.g.a:
     android.view.View getItemView(android.view.ViewGroup,int) -> a
+com.download.library.DefaultFileComparator -> com.download.library.a:
+    int compare(java.lang.String,java.io.File,java.lang.String,java.lang.String) -> a
+com.download.library.DefaultFileComparator$DefaultFileComparatorFactory -> com.download.library.a$a:
+    com.download.library.FileComparator newFileComparator() -> a
+com.download.library.DefaultStorageEngine -> com.download.library.b:
+    android.content.Context mContext -> a
+    void save(java.lang.String,java.lang.String) -> a
+    java.lang.String get(java.lang.String,java.lang.String) -> b
+com.download.library.DefaultStorageEngine$DefaultStorageEngineFactory -> com.download.library.b$a:
+    com.download.library.StorageEngine newStoraEngine(android.content.Context) -> a
+com.download.library.DownloadImpl -> com.download.library.c:
+    android.content.Context mContext -> c
+    java.util.concurrent.ConcurrentHashMap mTasks -> a
+    com.download.library.DownloadImpl sInstance -> b
+    com.download.library.DownloadTask cancel(java.lang.String) -> a
+    boolean enqueue(com.download.library.DownloadTask) -> a
+    com.download.library.DownloadImpl getInstance() -> a
+    com.download.library.ResourceRequest with(android.content.Context) -> a
+    boolean exist(java.lang.String) -> b
+    void safe(com.download.library.DownloadTask) -> b
+    com.download.library.ResourceRequest with(java.lang.String) -> c
+    void remove(java.lang.String) -> d
+com.download.library.DownloadListener -> com.download.library.d:
+com.download.library.DownloadListenerAdapter -> com.download.library.e:
+com.download.library.DownloadNotifier -> com.download.library.f:
+    java.lang.String mChannelId -> f
+    long sLastUpdateNoticationTime -> l
+    java.lang.String TAG -> k
+    java.lang.String mContent -> j
+    android.app.NotificationManager mNotificationManager -> b
+    androidx.core.app.NotificationCompat$Builder mBuilder -> d
+    android.content.Context mContext -> e
+    com.download.library.DownloadTask mDownloadTask -> i
+    int mNotificationId -> a
+    androidx.core.app.NotificationCompat$Action mAction -> h
+    android.os.Handler NOTIFICATION_UPDATE_QUEUE -> m
+    android.app.Notification mNotification -> c
+    boolean mAddedCancelAction -> g
+    void access$000(com.download.library.DownloadNotifier) -> a
+    android.app.PendingIntent buildCancelContent(android.content.Context,int,java.lang.String) -> a
+    void cancel() -> a
+    void initBuilder(com.download.library.DownloadTask) -> a
+    void onDownloaded(long) -> a
+    void onDownloading(int) -> a
+    void setDelecte(android.app.PendingIntent) -> a
+    void setProgress(int,int,boolean) -> a
+    java.lang.String byte2FitMemorySize(long) -> b
+    void onDownloadFinished() -> b
+    void updateTitle(com.download.library.DownloadTask) -> b
+    void cancel(com.download.library.DownloadTask) -> c
+    void onDownloadPaused() -> c
+    java.lang.String getTitle(com.download.library.DownloadTask) -> d
+    void onPreDownload() -> d
+    long getDelayTime() -> e
+    boolean hasDeleteContent() -> f
+    void removeCancelAction() -> g
+    void sent() -> h
+com.download.library.DownloadNotifier$1 -> com.download.library.f$a:
+    com.download.library.DownloadNotifier this$0 -> a
+com.download.library.DownloadNotifier$2 -> com.download.library.f$b:
+    com.download.library.DownloadNotifier this$0 -> a
+com.download.library.DownloadTask -> com.download.library.DownloadTask:
+    java.lang.String TAG -> a
+    android.content.Context getContext() -> A
+    com.download.library.DownloadListener getDownloadListener() -> B
+    com.download.library.DownloadingListener getDownloadingListener() -> C
+    java.io.File getFile() -> D
+    android.net.Uri getFileUri() -> E
+    int getId() -> F
+    int getStatus() -> G
+    long getTotalsLength() -> H
+    long getUsedTime() -> I
+    boolean isCustomFile() -> J
+    boolean isUniquePath() -> K
+    void pause() -> L
+    void resetConnectTimes() -> M
+    void resetTime() -> N
+    com.download.library.DownloadTask setBlockMaxTime(long) -> a
+    com.download.library.DownloadTask setBreakPointDownload(boolean) -> a
+    com.download.library.DownloadTask setContentDisposition(java.lang.String) -> a
+    com.download.library.DownloadTask setContext(android.content.Context) -> a
+    com.download.library.DownloadTask setDownloadListener(com.download.library.DownloadListener) -> a
+    com.download.library.DownloadTask setDownloadListenerAdapter(com.download.library.DownloadListenerAdapter) -> a
+    com.download.library.DownloadTask setDownloadingListener(com.download.library.DownloadingListener) -> a
+    com.download.library.DownloadTask setFileSafe(java.io.File) -> a
+    com.download.library.DownloadTask setIcon(int) -> a
+    com.download.library.DownloadTask setConnectTimeOut(long) -> b
+    com.download.library.DownloadTask setEnableIndicator(boolean) -> b
+    com.download.library.DownloadTask setFileMD5(java.lang.String) -> b
+    void setStatus(int) -> b
+    com.download.library.DownloadTask setContentLength(long) -> c
+    com.download.library.DownloadTask setForceDownload(boolean) -> c
+    com.download.library.DownloadTask setMimetype(java.lang.String) -> c
+    com.download.library.DownloadTask setDownloadTimeOut(long) -> d
+    com.download.library.DownloadTask setParallelDownload(boolean) -> d
+    com.download.library.DownloadTask setUrl(java.lang.String) -> d
+    void setLoaded(long) -> e
+    com.download.library.DownloadTask setUserAgent(java.lang.String) -> e
+    void setTotalsLength(long) -> f
+    void updateTime(long) -> g
+    java.lang.String getFileMD5() -> j
+    com.download.library.DownloadTask autoOpenIgnoreMD5() -> v
+    com.download.library.DownloadTask closeAutoOpen() -> w
+    void completed() -> x
+    void destroy() -> y
+    java.lang.String getAuthority() -> z
+com.download.library.Downloader -> com.download.library.g:
+    long mConnectTimeOut -> j
+    long mDownloadTimeOut -> i
+    android.os.Handler HANDLER -> u
+    boolean enableProgress -> o
+    com.download.library.DownloadNotifier mDownloadNotifier -> k
+    boolean mCallbackInMainThread -> p
+    android.util.SparseArray DOWNLOAD_MESSAGE -> s
+    long mLastTime -> f
+    com.download.library.DownloadTask mDownloadTask -> a
+    long mUsedTime -> e
+    long mBeginTime -> g
+    long mLoaded -> b
+    java.lang.Throwable mThrowable -> h
+    long mLastLoaded -> d
+    long mTotals -> c
+    boolean quickProgress -> q
+    java.lang.String TAG -> r
+    java.util.concurrent.Executor SERIAL_EXECUTOR -> t
+    java.util.concurrent.atomic.AtomicBoolean mIsShutdown -> n
+    java.util.concurrent.atomic.AtomicBoolean mIsPaused -> m
+    java.util.concurrent.atomic.AtomicBoolean mIsCanceled -> l
+    void access$000(com.download.library.Downloader,com.download.library.DownloadTask) -> a
+    long access$100(com.download.library.Downloader) -> a
+    long access$102(com.download.library.Downloader,long) -> a
+    void access$400(com.download.library.Downloader,java.lang.Object[]) -> a
+    com.download.library.DownloadTask cancelDownload() -> a
+    void checkIsNullTask(com.download.library.DownloadTask) -> a
+    void closeIO(java.io.Closeable) -> a
+    java.net.HttpURLConnection createUrlConnection(java.net.URL) -> a
+    java.lang.Integer doInBackground(java.lang.Void[]) -> a
+    long getHeaderFieldLong(java.net.HttpURLConnection,java.lang.String) -> a
+    java.io.InputStream getInputStream(java.net.HttpURLConnection) -> a
+    void onPostExecute(java.lang.Integer) -> a
+    void onProgressUpdate(java.lang.Integer[]) -> a
+    void rangeHeaders(com.download.library.DownloadTask,java.net.HttpURLConnection) -> a
+    int transferData(java.io.InputStream,java.io.RandomAccessFile,boolean) -> a
+    long access$200(com.download.library.Downloader) -> b
+    long access$302(com.download.library.Downloader,long) -> b
+    void access$500(com.download.library.Downloader,java.lang.Object[]) -> b
+    com.download.library.DownloadTask cancel() -> b
+    boolean doCallback(java.lang.Integer) -> b
+    boolean download(com.download.library.DownloadTask) -> b
+    void saveEtag(java.net.HttpURLConnection) -> b
+    void settingHeaders(com.download.library.DownloadTask,java.net.HttpURLConnection) -> b
+    long access$300(com.download.library.Downloader) -> c
+    void access$600(com.download.library.Downloader,java.lang.Object[]) -> c
+    void destroyTask() -> c
+    boolean downloadInternal(com.download.library.DownloadTask) -> c
+    void start(java.net.HttpURLConnection) -> c
+    void onStart() -> d
+    void run(com.download.library.DownloadTask) -> d
+    boolean checkNet() -> e
+    boolean checkSpace() -> f
+    void createNotifier() -> g
+    int doDownload() -> h
+    long getAvailableStorage() -> i
+    java.lang.String getEtag() -> j
+    void updateNotifierTitle() -> k
+com.download.library.Downloader$1 -> com.download.library.g$a:
+    com.download.library.DownloadTask val$downloadTask -> a
+com.download.library.Downloader$2 -> com.download.library.g$b:
+    com.download.library.DownloadTask val$downloadTask -> a
+    com.download.library.Downloader this$0 -> b
+com.download.library.Downloader$LoadingRandomAccessFile -> com.download.library.g$c:
+    com.download.library.Downloader this$0 -> a
+com.download.library.DownloadingListener -> com.download.library.h:
+com.download.library.DownloadingListener$MainThread -> com.download.library.h$a:
+com.download.library.ExecuteTask -> com.download.library.i:
+    com.download.library.DownloadTask cancelDownload() -> a
+com.download.library.ExecuteTasksMap -> com.download.library.j:
+    java.util.concurrent.ConcurrentHashMap mTasks -> a
+    void addTask(java.lang.String,com.download.library.ExecuteTask) -> a
+    com.download.library.DownloadTask cancelTask(java.lang.String) -> a
+    com.download.library.ExecuteTasksMap getInstance() -> a
+    boolean exist(java.lang.String) -> b
+    void removeTask(java.lang.String) -> c
+com.download.library.ExecuteTasksMap$1 -> com.download.library.j$a:
+com.download.library.ExecuteTasksMap$ExecuteTaskHolder -> com.download.library.j$b:
+    com.download.library.ExecuteTasksMap INSTANCE -> a
+    com.download.library.ExecuteTasksMap access$000() -> a
+com.download.library.Extra -> com.download.library.Extra:
+    long getBlockMaxTime() -> a
+    long getConnectTimeOut() -> b
+    java.lang.String getContentDisposition() -> e
+    int getDownloadDoneIcon() -> f
+    int getDownloadIcon() -> h
+    long getDownloadTimeOut() -> i
+    java.lang.String getFileMD5() -> j
+    java.util.Map getHeaders() -> k
+    java.lang.String getMimetype() -> l
+    java.lang.String getTargetCompareMD5() -> m
+    java.lang.String getUrl() -> n
+    java.lang.String getUserAgent() -> o
+    boolean isAutoOpen() -> p
+    boolean isBreakPointDownload() -> q
+    boolean isEnableIndicator() -> r
+    boolean isForceDownload() -> s
+    boolean isParallelDownload() -> t
+    boolean isQuickProgress() -> u
+com.download.library.FileComparator -> com.download.library.k:
+    int compare(java.lang.String,java.io.File,java.lang.String,java.lang.String) -> a
+com.download.library.FileComparator$FileComparatorFactory -> com.download.library.k$a:
+    com.download.library.FileComparator newFileComparator() -> a
+com.download.library.ResourceRequest -> com.download.library.l:
+    com.download.library.DownloadTask mDownloadTask -> a
+    com.download.library.ResourceRequest addHeader(java.lang.String,java.lang.String) -> a
+    com.download.library.ResourceRequest autoOpenIgnoreMD5() -> a
+    void enqueue(com.download.library.DownloadListenerAdapter) -> a
+    com.download.library.ResourceRequest setEnableIndicator(boolean) -> a
+    com.download.library.ResourceRequest url(java.lang.String) -> a
+    com.download.library.ResourceRequest with(android.content.Context) -> a
+    com.download.library.DownloadTask getDownloadTask() -> b
+    com.download.library.ResourceRequest setDownloadListenerAdapter(com.download.library.DownloadListenerAdapter) -> b
+    com.download.library.ResourceRequest setForceDownload(boolean) -> b
+com.download.library.Runtime -> com.download.library.m:
+    java.lang.String authority -> f
+    java.io.File mDownloadDir -> d
+    com.download.library.DownloadTask sDefaultDownloadTask -> a
+    java.util.regex.Pattern CONTENT_DISPOSITION_WITHOUT_ASTERISK_PATTERN -> m
+    java.util.regex.Pattern DISPOSITION_PATTERN -> l
+    com.download.library.Runtime sInstance -> k
+    java.util.concurrent.atomic.AtomicInteger mThreadGlobalCounter -> c
+    java.util.concurrent.atomic.AtomicInteger mIDGenerator -> b
+    com.download.library.FileComparator$FileComparatorFactory mFileComparatorFactory -> i
+    boolean DEBUG -> e
+    com.download.library.StorageEngine mStorageEngine -> g
+    com.download.library.FileComparator mFileComparator -> j
+    com.download.library.StorageEngine$StorageEngineFactory mStorageEngineFactory -> h
+    boolean checkNetwork(android.content.Context) -> a
+    java.io.File createFile(android.content.Context,com.download.library.Extra) -> a
+    java.io.File createFile(android.content.Context,com.download.library.Extra,java.io.File) -> a
+    java.io.File createFileByName(java.io.File,android.content.Context,java.lang.String,boolean) -> a
+    int generateGlobalId() -> a
+    android.content.Intent getCommonFileIntentCompat(android.content.Context,com.download.library.DownloadTask) -> a
+    java.io.File getDir(android.content.Context,boolean) -> a
+    java.lang.String getFileNameByContentDisposition(java.lang.String) -> a
+    java.lang.String getMIMEType(java.io.File) -> a
+    android.net.Uri getUriFromFile(android.content.Context,java.io.File,java.lang.String) -> a
+    void log(java.lang.String,java.lang.String) -> a
+    void setIntentDataAndType(android.content.Context,android.content.Intent,java.lang.String,java.io.File,boolean,java.lang.String) -> a
+    java.io.File uniqueFile(com.download.library.DownloadTask,java.io.File) -> a
+    boolean checkWifi(android.content.Context) -> b
+    int generateGlobalThreadId() -> b
+    void logError(java.lang.String,java.lang.String) -> b
+    java.lang.String md5(java.io.File) -> b
+    java.lang.String md5(java.lang.String) -> b
+    java.lang.String getApplicationName(android.content.Context) -> c
+    com.download.library.DownloadTask getDefaultDownloadTask() -> c
+    com.download.library.FileComparator getFileComparator() -> d
+    com.download.library.StorageEngine getStorageEngine(android.content.Context) -> d
+    java.lang.String getAuthority(android.content.Context) -> e
+    com.download.library.FileComparator$FileComparatorFactory getFileComparatorFactory() -> e
+    java.lang.String getIdentify() -> f
+    com.download.library.StorageEngine$StorageEngineFactory getStorageEngineFactory() -> g
+    java.lang.String getVersion() -> h
+    boolean isDebug() -> i
+    void createDefaultDownloadTask() -> j
+    com.download.library.Runtime getInstance() -> k
+com.download.library.SerialExecutor -> com.download.library.n:
+    java.lang.Runnable mActive -> b
+    java.util.concurrent.Executor THREAD_POOL_EXECUTOR -> c
+    java.util.ArrayDeque mTasks -> a
+    void scheduleNext() -> a
+com.download.library.SerialExecutor$1 -> com.download.library.n$a:
+    com.download.library.SerialExecutor this$0 -> b
+    java.lang.Runnable val$r -> a
+com.download.library.StorageEngine -> com.download.library.o:
+    void save(java.lang.String,java.lang.String) -> a
+    java.lang.String get(java.lang.String,java.lang.String) -> b
+com.download.library.StorageEngine$StorageEngineFactory -> com.download.library.o$a:
+    com.download.library.StorageEngine newStoraEngine(android.content.Context) -> a
 com.franmontiel.persistentcookiejar.PersistentCookieJar -> com.franmontiel.persistentcookiejar.PersistentCookieJar:
     com.franmontiel.persistentcookiejar.cache.CookieCache cache -> b
     com.franmontiel.persistentcookiejar.persistence.CookiePersistor persistor -> c
@@ -9784,10 +10062,8 @@ kotlin.collections.EmptySet -> kotlin.collections.EmptySet:
 kotlin.collections.IntIterator -> kotlin.collections.u:
 kotlin.collections.LongIterator -> kotlin.collections.v:
 kotlin.collections.MapsKt -> kotlin.collections.w:
-    java.util.Map emptyMap() -> a
     int mapCapacity(int) -> a
     java.util.Map toMap(java.lang.Iterable) -> a
-    java.util.List toList(java.util.Map) -> c
 kotlin.collections.MapsKt__MapWithDefaultKt -> kotlin.collections.x:
 kotlin.collections.MapsKt__MapsJVMKt -> kotlin.collections.y:
     int mapCapacity(int) -> a
@@ -9800,7 +10076,6 @@ kotlin.collections.MapsKt__MapsKt -> kotlin.collections.z:
     java.util.Map toMap(java.lang.Iterable,java.util.Map) -> a
     java.util.Map optimizeReadOnlyMap(java.util.Map) -> b
 kotlin.collections.MapsKt___MapsKt -> kotlin.collections.a0:
-    java.util.List toList(java.util.Map) -> c
 kotlin.collections.SetsKt__SetsJVMKt -> kotlin.collections.b0:
     java.util.Set setOf(java.lang.Object) -> a
 kotlin.collections.SetsKt__SetsKt -> kotlin.collections.c0:
@@ -11300,16 +11575,20 @@ me.hgj.jetpackmvvm.base.Ktx -> me.hgj.jetpackmvvm.base.Ktx:
 me.hgj.jetpackmvvm.base.Ktx$Companion -> me.hgj.jetpackmvvm.base.Ktx$a:
     android.app.Application getApp() -> a
 me.hgj.jetpackmvvm.base.activity.BaseVmActivity -> me.hgj.jetpackmvvm.base.activity.BaseVmActivity:
-    me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel mViewModel -> a
+    me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel mViewModel -> b
+    boolean isUserDb -> a
     void createObserver() -> a
     void initView(android.os.Bundle) -> a
     void onNetworkStateChanged(me.hgj.jetpackmvvm.network.manager.NetState) -> a
     void showLoading(java.lang.String) -> a
+    void userDataBinding(boolean) -> a
     void dismissLoading() -> b
-    int layoutId() -> c
-    me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel createViewModel() -> d
-    void registerUiChange() -> e
-me.hgj.jetpackmvvm.base.activity.BaseVmActivity$onCreate$1 -> me.hgj.jetpackmvvm.base.activity.BaseVmActivity$a:
+    void init(android.os.Bundle) -> b
+    void initDataBind() -> c
+    int layoutId() -> d
+    me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel createViewModel() -> e
+    void registerUiChange() -> f
+me.hgj.jetpackmvvm.base.activity.BaseVmActivity$init$1 -> me.hgj.jetpackmvvm.base.activity.BaseVmActivity$a:
     me.hgj.jetpackmvvm.base.activity.BaseVmActivity this$0 -> a
     void onChanged(me.hgj.jetpackmvvm.network.manager.NetState) -> a
 me.hgj.jetpackmvvm.base.activity.BaseVmActivity$registerUiChange$1 -> me.hgj.jetpackmvvm.base.activity.BaseVmActivity$b:
@@ -11319,56 +11598,14 @@ me.hgj.jetpackmvvm.base.activity.BaseVmActivity$registerUiChange$2 -> me.hgj.jet
     me.hgj.jetpackmvvm.base.activity.BaseVmActivity this$0 -> a
     void onChanged(java.lang.Void) -> a
 me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity -> me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity:
-    me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel mViewModel -> a
-    androidx.databinding.ViewDataBinding mDatabind -> b
-    void createObserver() -> a
-    void initView(android.os.Bundle) -> a
-    void onNetworkStateChanged(me.hgj.jetpackmvvm.network.manager.NetState) -> a
-    void showLoading(java.lang.String) -> a
-    void dismissLoading() -> b
-    androidx.databinding.ViewDataBinding getMDatabind() -> c
-    int layoutId() -> d
-    void createViewDataBinding() -> e
-    me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel createViewModel() -> f
-    void registorDefUIChange() -> g
-me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity$onCreate$1 -> me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity$a:
-    me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity this$0 -> a
-    void onChanged(me.hgj.jetpackmvvm.network.manager.NetState) -> a
-me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity$registorDefUIChange$1 -> me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity$b:
-    me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity this$0 -> a
-    void onChanged(java.lang.String) -> a
-me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity$registorDefUIChange$2 -> me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity$c:
-    me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity this$0 -> a
-    void onChanged(java.lang.Void) -> a
-me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment -> me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment:
-    me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel mViewModel -> b
     androidx.databinding.ViewDataBinding mDatabind -> c
-    boolean isFirst -> a
-    java.util.HashMap _$_findViewCache -> d
-    void initView(android.os.Bundle) -> a
-    void onNetworkStateChanged(me.hgj.jetpackmvvm.network.manager.NetState) -> a
-    void showLoading(java.lang.String) -> a
-    void showLoading$default(me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment,java.lang.String,int,java.lang.Object) -> a
+    void initDataBind() -> c
+    androidx.databinding.ViewDataBinding getMDatabind() -> e
+me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment -> me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment:
+    androidx.databinding.ViewDataBinding mDatabind -> d
+    java.util.HashMap _$_findViewCache -> e
     void _$_clearFindViewByIdCache() -> d
-    void createObserver() -> e
-    void dismissLoading() -> f
-    androidx.databinding.ViewDataBinding getMDatabind() -> g
-    me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel getMViewModel() -> h
-    void initData() -> i
-    int layoutId() -> j
-    void lazyLoadData() -> k
-    me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel createViewModel() -> l
-    void onVisible() -> m
-    void registorDefUIChange() -> n
-me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment$onVisible$1 -> me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment$a:
-    me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment this$0 -> a
-    void onChanged(me.hgj.jetpackmvvm.network.manager.NetState) -> a
-me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment$registorDefUIChange$1 -> me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment$b:
-    me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment this$0 -> a
-    void onChanged(java.lang.String) -> a
-me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment$registorDefUIChange$2 -> me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment$c:
-    me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment this$0 -> a
-    void onChanged(java.lang.Void) -> a
+    androidx.databinding.ViewDataBinding getMDatabind() -> k
 me.hgj.jetpackmvvm.base.fragment.BaseVmFragment -> me.hgj.jetpackmvvm.base.fragment.BaseVmFragment:
     me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel mViewModel -> b
     boolean isFirst -> a
@@ -11380,12 +11617,13 @@ me.hgj.jetpackmvvm.base.fragment.BaseVmFragment -> me.hgj.jetpackmvvm.base.fragm
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
     void dismissLoading() -> f
-    void initData() -> g
-    int layoutId() -> h
-    void lazyLoadData() -> i
-    me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel createViewModel() -> j
-    void onVisible() -> k
-    void registorDefUIChange() -> l
+    me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel getMViewModel() -> g
+    void initData() -> h
+    int layoutId() -> i
+    void lazyLoadData() -> j
+    me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel createViewModel() -> k
+    void onVisible() -> l
+    void registorDefUIChange() -> m
 me.hgj.jetpackmvvm.base.fragment.BaseVmFragment$onViewCreated$1 -> me.hgj.jetpackmvvm.base.fragment.BaseVmFragment$a:
     me.hgj.jetpackmvvm.base.fragment.BaseVmFragment this$0 -> a
     void onChanged(me.hgj.jetpackmvvm.network.manager.NetState) -> a
@@ -11401,16 +11639,81 @@ me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel -> me.hgj.jetpackmvvm.base.viewm
 me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange -> me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange:
     kotlin.Lazy dismissDialog$delegate -> b
     kotlin.Lazy showDialog$delegate -> a
-    me.hgj.jetpackmvvm.state.SingleLiveEvent getDismissDialog() -> a
-    me.hgj.jetpackmvvm.state.SingleLiveEvent getShowDialog() -> b
+    me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent getDismissDialog() -> a
+    me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent getShowDialog() -> b
 me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$dismissDialog$2 -> me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$dismissDialog$2:
     me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$dismissDialog$2 INSTANCE -> a
 me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$showDialog$2 -> me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$showDialog$2:
     me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$showDialog$2 INSTANCE -> a
+me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent -> me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent:
+    java.util.concurrent.atomic.AtomicBoolean mPending -> a
+    java.util.concurrent.atomic.AtomicBoolean access$getMPending$p(me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent) -> a
+    void call() -> a
+me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent$observe$1 -> me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent$a:
+    androidx.lifecycle.Observer $observer -> b
+    me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent this$0 -> a
 me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData -> me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData:
     void hook(androidx.lifecycle.Observer) -> a
 me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData -> me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData:
     void hook(androidx.lifecycle.Observer) -> a
+me.hgj.jetpackmvvm.callback.livedata.event.Event -> me.hgj.jetpackmvvm.callback.livedata.event.a:
+    java.lang.Object content -> b
+    boolean hasHandled -> a
+    java.lang.Object getContent() -> a
+me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData -> me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData:
+    java.lang.Object NOT_SET -> j
+    me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$Companion Companion -> k
+    java.lang.Runnable mPostValueRunnable -> i
+    java.lang.Object mData -> d
+    java.lang.Object mPendingData -> e
+    androidx.arch.core.internal.SafeIterableMap mObservers -> b
+    int version -> f
+    boolean mDispatchingValue -> g
+    java.lang.Object mDataLock -> a
+    boolean mDispatchInvalidated -> h
+    int mActiveCount -> c
+    java.lang.Object access$getMDataLock$p(me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData) -> a
+    void considerNotify(me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$ObserverWrapper,java.lang.Object) -> a
+    void dispatchingValue(me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$ObserverWrapper) -> a
+    int getMActiveCount() -> a
+    void observe(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Observer) -> a
+    void postValue(me.hgj.jetpackmvvm.callback.livedata.event.Event) -> a
+    void removeObserver(androidx.lifecycle.Observer) -> a
+    void setMActiveCount(int) -> a
+    void setMPendingData(java.lang.Object) -> a
+    java.lang.Object getMPendingData() -> b
+    void setValue(me.hgj.jetpackmvvm.callback.livedata.event.Event) -> b
+    void onActive() -> c
+    void onInactive() -> d
+    java.lang.Object access$getNOT_SET$cp() -> e
+me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$Companion -> me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$a:
+    void assertMainThread(java.lang.String) -> a
+    java.lang.Object getNOT_SET() -> a
+me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$LifecycleBoundObserver -> me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$LifecycleBoundObserver:
+    androidx.lifecycle.LifecycleOwner mOwner -> e
+    me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData this$0 -> f
+    void detachObserver() -> a
+    boolean isAttachedTo(androidx.lifecycle.LifecycleOwner) -> a
+    boolean shouldBeActive() -> e
+me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$ObserverWrapper -> me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$b:
+    androidx.lifecycle.Observer mEventObserver -> c
+    boolean mActive -> a
+    int mLastVersion -> b
+    me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData this$0 -> d
+    void activeStateChanged(boolean) -> a
+    void detachObserver() -> a
+    boolean isAttachedTo(androidx.lifecycle.LifecycleOwner) -> a
+    void setMLastVersion(int) -> a
+    boolean getMActive() -> b
+    androidx.lifecycle.Observer getMEventObserver() -> c
+    int getMLastVersion() -> d
+    boolean shouldBeActive() -> e
+me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$mPostValueRunnable$1 -> me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$c:
+    me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData this$0 -> a
+me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData -> me.hgj.jetpackmvvm.callback.livedata.event.b:
+    void postValue(me.hgj.jetpackmvvm.callback.livedata.event.Event) -> a
+    void postValue(java.lang.Object) -> b
+    void setValue(me.hgj.jetpackmvvm.callback.livedata.event.Event) -> b
 me.hgj.jetpackmvvm.demo.DataBinderMapperImpl -> me.hgj.jetpackmvvm.demo.DataBinderMapperImpl:
     android.util.SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP -> a
 me.hgj.jetpackmvvm.demo.DataBinderMapperImpl$InnerBrLookup -> me.hgj.jetpackmvvm.demo.DataBinderMapperImpl$a:
@@ -11424,42 +11727,39 @@ me.hgj.jetpackmvvm.demo.app.App -> me.hgj.jetpackmvvm.demo.app.App:
 me.hgj.jetpackmvvm.demo.app.App$Companion -> me.hgj.jetpackmvvm.demo.app.App$a:
     me.hgj.jetpackmvvm.demo.app.App getInstance() -> a
 me.hgj.jetpackmvvm.demo.app.base.BaseActivity -> me.hgj.jetpackmvvm.demo.app.base.BaseActivity:
-    kotlin.Lazy shareViewModel$delegate -> d
-    com.afollestad.materialdialogs.MaterialDialog dialog -> c
+    com.afollestad.materialdialogs.MaterialDialog dialog -> d
+    kotlin.Lazy shareViewModel$delegate -> e
     void createObserver() -> a
     void showLoading(java.lang.String) -> a
     void dismissLoading() -> b
-    me.hgj.jetpackmvvm.demo.app.event.AppViewModel getShareViewModel() -> e
+    me.hgj.jetpackmvvm.demo.app.event.AppViewModel getShareViewModel() -> f
 me.hgj.jetpackmvvm.demo.app.base.BaseFragment -> me.hgj.jetpackmvvm.demo.app.base.BaseFragment:
-    com.afollestad.materialdialogs.MaterialDialog dialog -> e
-    java.util.HashMap _$_findViewCache -> h
-    kotlin.Lazy shareViewModel$delegate -> f
-    kotlin.Lazy eventViewModel$delegate -> g
+    java.util.HashMap _$_findViewCache -> i
+    com.afollestad.materialdialogs.MaterialDialog dialog -> f
+    kotlin.Lazy shareViewModel$delegate -> g
+    kotlin.Lazy eventViewModel$delegate -> h
     void showLoading(java.lang.String) -> a
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
     void dismissLoading() -> f
-    void initData() -> i
+    void initData() -> h
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.app.event.EventViewModel getEventViewModel() -> l
     me.hgj.jetpackmvvm.demo.app.event.AppViewModel getShareViewModel() -> m
 me.hgj.jetpackmvvm.demo.app.event.AppViewModel -> me.hgj.jetpackmvvm.demo.app.event.AppViewModel:
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData userinfo -> d
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData appAnimation -> f
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData appColor -> e
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData isLogin -> c
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData isFirst -> b
+    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData userinfo -> b
+    me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData appAnimation -> d
+    me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData appColor -> c
     me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData getAppAnimation() -> b
     me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData getAppColor() -> c
     me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData getUserinfo() -> d
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData isFirst() -> e
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData isLogin() -> f
 me.hgj.jetpackmvvm.demo.app.event.EventViewModel -> me.hgj.jetpackmvvm.demo.app.event.EventViewModel:
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData collect -> b
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData addTodo -> d
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData shareArticle -> c
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData getAddTodo() -> b
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData getCollect() -> c
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData getShareArticle() -> d
+    me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData shareArticleEvent -> c
+    me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData todoEvent -> d
+    me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData collectEvent -> b
+    me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData getCollectEvent() -> b
+    me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData getShareArticleEvent() -> c
+    me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData getTodoEvent() -> d
 me.hgj.jetpackmvvm.demo.app.ext.AdapterExtKt -> me.hgj.jetpackmvvm.demo.app.ext.a:
     long adapterchildlastClickTime -> b
     long adapterlastClickTime -> a
@@ -11504,13 +11804,13 @@ me.hgj.jetpackmvvm.demo.app.ext.AppExtKt$showMessage$4 -> me.hgj.jetpackmvvm.dem
 me.hgj.jetpackmvvm.demo.app.ext.AppExtKt$showMessage$5 -> me.hgj.jetpackmvvm.demo.app.ext.AppExtKt$showMessage$5:
     me.hgj.jetpackmvvm.demo.app.ext.AppExtKt$showMessage$5 INSTANCE -> a
 me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt -> me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt:
-    com.kingja.loadsir.core.LoadService LoadServiceInit(android.view.View,kotlin.jvm.functions.Function0) -> a
     void bindViewPager2(net.lucode.hackware.magicindicator.MagicIndicator,androidx.viewpager2.widget.ViewPager2,java.util.ArrayList,java.util.ArrayList,kotlin.jvm.functions.Function1) -> a
     void bindViewPager2$default(net.lucode.hackware.magicindicator.MagicIndicator,androidx.viewpager2.widget.ViewPager2,java.util.ArrayList,java.util.ArrayList,kotlin.jvm.functions.Function1,int,java.lang.Object) -> a
     void hideSoftKeyboard(android.app.Activity) -> a
     androidx.appcompat.widget.Toolbar init(androidx.appcompat.widget.Toolbar,java.lang.String) -> a
     androidx.recyclerview.widget.RecyclerView init(androidx.recyclerview.widget.RecyclerView,androidx.recyclerview.widget.RecyclerView$LayoutManager,androidx.recyclerview.widget.RecyclerView$Adapter,boolean) -> a
     androidx.viewpager2.widget.ViewPager2 init(androidx.viewpager2.widget.ViewPager2,androidx.fragment.app.Fragment,java.util.ArrayList,boolean) -> a
+    com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx init(com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx,kotlin.jvm.functions.Function1) -> a
     com.yanzhenjie.recyclerview.SwipeRecyclerView init(com.yanzhenjie.recyclerview.SwipeRecyclerView,androidx.recyclerview.widget.RecyclerView$LayoutManager,androidx.recyclerview.widget.RecyclerView$Adapter,boolean) -> a
     void init(androidx.swiperefreshlayout.widget.SwipeRefreshLayout,kotlin.jvm.functions.Function0) -> a
     androidx.viewpager2.widget.ViewPager2 init$default(androidx.viewpager2.widget.ViewPager2,androidx.fragment.app.Fragment,java.util.ArrayList,boolean,int,java.lang.Object) -> a
@@ -11519,10 +11819,16 @@ me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt -> me.hgj.jetpackmvvm.demo.app.e
     androidx.appcompat.widget.Toolbar initClose$default(androidx.appcompat.widget.Toolbar,java.lang.String,int,kotlin.jvm.functions.Function1,int,java.lang.Object) -> a
     void initFloatBtn(androidx.recyclerview.widget.RecyclerView,com.google.android.material.floatingactionbutton.FloatingActionButton) -> a
     me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView initFooter(com.yanzhenjie.recyclerview.SwipeRecyclerView,com.yanzhenjie.recyclerview.SwipeRecyclerView$LoadMoreListener) -> a
+    androidx.viewpager2.widget.ViewPager2 initMain(androidx.viewpager2.widget.ViewPager2,androidx.fragment.app.Fragment) -> a
+    void loadListData(me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState,com.chad.library.adapter.base.BaseQuickAdapter,com.kingja.loadsir.core.LoadService,com.yanzhenjie.recyclerview.SwipeRecyclerView,androidx.swiperefreshlayout.widget.SwipeRefreshLayout) -> a
+    com.kingja.loadsir.core.LoadService loadServiceInit(android.view.View,kotlin.jvm.functions.Function0) -> a
     void setAdapterAnimion(com.chad.library.adapter.base.BaseQuickAdapter,int) -> a
     void setErrorText(com.kingja.loadsir.core.LoadService,java.lang.String) -> a
     void setPageListener(com.zhpan.bannerview.BannerViewPager,kotlin.jvm.functions.Function1) -> a
     void setUiTheme(int,java.lang.Object[]) -> a
+    void showEmpty(com.kingja.loadsir.core.LoadService) -> a
+    void showError(com.kingja.loadsir.core.LoadService,java.lang.String) -> b
+    void showLoading(com.kingja.loadsir.core.LoadService) -> b
 me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$bindViewPager2$1 -> me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$bindViewPager2$1:
     me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$bindViewPager2$1 INSTANCE -> a
     void invoke(int) -> a
@@ -11544,19 +11850,21 @@ me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$init$$inlined$run$lambda$1 -> me
     kotlin.jvm.functions.Function0 $onRefreshListener$inlined -> a
 me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$init$2 -> me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$init$2:
     java.util.ArrayList $fragments -> a
-me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$initClose$1 -> me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$c:
+me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$init$3 -> me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$c:
+    kotlin.jvm.functions.Function1 $navigationItemSelectedAction -> a
+me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$initClose$1 -> me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$d:
     androidx.appcompat.widget.Toolbar $this_initClose -> a
     kotlin.jvm.functions.Function1 $onBack -> b
 me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$initFloatBtn$1 -> me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$initFloatBtn$1:
     com.google.android.material.floatingactionbutton.FloatingActionButton $floatbtn -> b
     androidx.recyclerview.widget.RecyclerView $this_initFloatBtn -> a
-me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$initFloatBtn$2 -> me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$d:
+me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$initFloatBtn$2 -> me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$e:
     androidx.recyclerview.widget.RecyclerView $this_initFloatBtn -> a
-me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$initFooter$1 -> me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$e:
+me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$initFooter$1 -> me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$f:
     me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView $footerView -> a
     com.yanzhenjie.recyclerview.SwipeRecyclerView$LoadMoreListener $loadmoreListener -> b
     void onLoadMore() -> a
-me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$setErrorText$1 -> me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$f:
+me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$setErrorText$1 -> me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$g:
     java.lang.String $message -> a
 me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$setPageListener$1 -> me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$setPageListener$1:
     kotlin.jvm.functions.Function1 $onPageSelected -> a
@@ -11598,6 +11906,8 @@ me.hgj.jetpackmvvm.demo.app.network.ApiService -> me.hgj.jetpackmvvm.demo.app.ne
     java.lang.Object uncollect(int,kotlin.coroutines.Continuation) -> n
 me.hgj.jetpackmvvm.demo.app.network.ApiService$Companion -> me.hgj.jetpackmvvm.demo.app.network.a$a:
     me.hgj.jetpackmvvm.demo.app.network.ApiService$Companion $$INSTANCE -> a
+me.hgj.jetpackmvvm.demo.app.network.MyHeadInterceptor -> me.hgj.jetpackmvvm.demo.app.network.b:
+    okhttp3.Response intercept(okhttp3.Interceptor$Chain) -> a
 me.hgj.jetpackmvvm.demo.app.network.NetworkApi -> me.hgj.jetpackmvvm.demo.app.network.NetworkApi:
     kotlin.Lazy instance$delegate -> b
     kotlin.Lazy service$delegate -> c
@@ -11617,7 +11927,7 @@ me.hgj.jetpackmvvm.demo.app.network.NetworkApi$Companion$service$2 -> me.hgj.jet
     me.hgj.jetpackmvvm.demo.app.network.NetworkApi$Companion$service$2 INSTANCE -> a
 me.hgj.jetpackmvvm.demo.app.network.NetworkApi$cookieJar$2 -> me.hgj.jetpackmvvm.demo.app.network.NetworkApi$cookieJar$2:
     me.hgj.jetpackmvvm.demo.app.network.NetworkApi$cookieJar$2 INSTANCE -> a
-me.hgj.jetpackmvvm.demo.app.network.stateCallback.CollectUiState -> me.hgj.jetpackmvvm.demo.app.network.b.a:
+me.hgj.jetpackmvvm.demo.app.network.stateCallback.CollectUiState -> me.hgj.jetpackmvvm.demo.app.network.c.a:
     boolean isSuccess -> a
     boolean collect -> b
     int id -> c
@@ -11626,7 +11936,7 @@ me.hgj.jetpackmvvm.demo.app.network.stateCallback.CollectUiState -> me.hgj.jetpa
     java.lang.String getErrorMsg() -> b
     int getId() -> c
     boolean isSuccess() -> d
-me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState -> me.hgj.jetpackmvvm.demo.app.network.b.b:
+me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState -> me.hgj.jetpackmvvm.demo.app.network.c.b:
     boolean hasMore -> e
     java.util.ArrayList listData -> g
     boolean isFirstEmpty -> f
@@ -11641,7 +11951,7 @@ me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState -> me.hgj.jetp
     boolean isFirstEmpty() -> e
     boolean isRefresh() -> f
     boolean isSuccess() -> g
-me.hgj.jetpackmvvm.demo.app.network.stateCallback.UpdateUiState -> me.hgj.jetpackmvvm.demo.app.network.b.c:
+me.hgj.jetpackmvvm.demo.app.network.stateCallback.UpdateUiState -> me.hgj.jetpackmvvm.demo.app.network.c.c:
     java.lang.Object data -> b
     boolean isSuccess -> a
     java.lang.String errorMsg -> c
@@ -11685,6 +11995,7 @@ me.hgj.jetpackmvvm.demo.app.util.DatetimeUtil -> me.hgj.jetpackmvvm.demo.app.a.e
     java.lang.String DATE_PATTERN_SS -> b
     java.lang.String formatDate(long,java.lang.String) -> a
     java.lang.String formatDate(java.util.Date,java.lang.String) -> a
+    java.util.Date formatDate(java.lang.String,java.lang.String) -> a
     java.util.Date formatDate(java.lang.String,java.util.Date) -> a
     java.lang.String getDATE_PATTERN() -> a
     java.lang.String getDATE_PATTERN_SS() -> b
@@ -11797,11 +12108,6 @@ me.hgj.jetpackmvvm.demo.databinding.ActivityErrorBindingImpl -> me.hgj.jetpackmv
 me.hgj.jetpackmvvm.demo.databinding.ActivityMainBindingImpl -> me.hgj.jetpackmvvm.demo.databinding.ActivityMainBindingImpl:
     android.util.SparseIntArray sViewsWithIds -> d
     androidx.constraintlayout.widget.ConstraintLayout mboundView0 -> a
-    androidx.databinding.ViewDataBinding$IncludedLayouts sIncludes -> c
-    long mDirtyFlags -> b
-me.hgj.jetpackmvvm.demo.databinding.ActivityTestBindingImpl -> me.hgj.jetpackmvvm.demo.databinding.ActivityTestBindingImpl:
-    android.util.SparseIntArray sViewsWithIds -> d
-    android.widget.LinearLayout mboundView0 -> a
     androidx.databinding.ViewDataBinding$IncludedLayouts sIncludes -> c
     long mDirtyFlags -> b
 me.hgj.jetpackmvvm.demo.databinding.ActivityWelcomeBinding -> me.hgj.jetpackmvvm.demo.databinding.ActivityWelcomeBinding:
@@ -12088,7 +12394,7 @@ me.hgj.jetpackmvvm.demo.generated.callback.OnClickListener -> me.hgj.jetpackmvvm
 me.hgj.jetpackmvvm.demo.generated.callback.OnClickListener$Listener -> me.hgj.jetpackmvvm.demo.a.a.a$a:
     void _internalCallbackOnClick(int,android.view.View) -> a
 me.hgj.jetpackmvvm.demo.ui.activity.ErrorActivity -> me.hgj.jetpackmvvm.demo.ui.activity.ErrorActivity:
-    java.util.HashMap _$_findViewCache -> e
+    java.util.HashMap _$_findViewCache -> f
     android.view.View _$_findCachedViewById(int) -> a
     void initView(android.os.Bundle) -> a
     int layoutId() -> d
@@ -12105,9 +12411,9 @@ me.hgj.jetpackmvvm.demo.ui.activity.MainActivity$createObserver$1 -> me.hgj.jetp
     me.hgj.jetpackmvvm.demo.ui.activity.MainActivity this$0 -> a
     void onChanged(java.lang.Integer) -> a
 me.hgj.jetpackmvvm.demo.ui.activity.WelcomeActivity -> me.hgj.jetpackmvvm.demo.ui.activity.WelcomeActivity:
-    com.zhpan.bannerview.BannerViewPager mViewPager -> f
-    java.util.HashMap _$_findViewCache -> g
-    java.lang.String[] resList -> e
+    java.util.HashMap _$_findViewCache -> h
+    com.zhpan.bannerview.BannerViewPager mViewPager -> g
+    java.lang.String[] resList -> f
     android.view.View _$_findCachedViewById(int) -> a
     java.lang.String[] access$getResList$p(me.hgj.jetpackmvvm.demo.ui.activity.WelcomeActivity) -> a
     void initView(android.os.Bundle) -> a
@@ -12241,51 +12547,29 @@ me.hgj.jetpackmvvm.demo.ui.adapter.TodoAdapter -> me.hgj.jetpackmvvm.demo.ui.ada
     void convert(com.chad.library.adapter.base.viewholder.BaseViewHolder,java.lang.Object) -> a
     void convert(com.chad.library.adapter.base.viewholder.BaseViewHolder,me.hgj.jetpackmvvm.demo.data.model.bean.TodoResponse) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment:
-    java.util.ArrayList fragments -> i
-    kotlin.Lazy homeFragment$delegate -> j
-    kotlin.Lazy projectFragment$delegate -> k
-    kotlin.Lazy treeArrFragment$delegate -> l
-    kotlin.Lazy publicNumberFragment$delegate -> m
-    java.util.HashMap _$_findViewCache -> o
-    kotlin.Lazy meFragment$delegate -> n
+    java.util.HashMap _$_findViewCache -> j
     android.view.View _$_findCachedViewById(int) -> a
     void initView(android.os.Bundle) -> a
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
-    me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment getHomeFragment() -> n
-    me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment getMeFragment() -> o
-    me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectFragment getProjectFragment() -> p
-    me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicNumberFragment getPublicNumberFragment() -> q
-    me.hgj.jetpackmvvm.demo.ui.fragment.tree.TreeArrFragment getTreeArrFragment() -> r
+    int layoutId() -> i
 me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$createObserver$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$a:
     me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment this$0 -> a
     void onChanged(java.lang.Integer) -> a
-me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$homeFragment$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$homeFragment$2:
-    me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$homeFragment$2 INSTANCE -> a
-me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$initView$$inlined$run$lambda$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$b:
-    me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment this$0 -> a
-me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$meFragment$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$meFragment$2:
-    me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$meFragment$2 INSTANCE -> a
-me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$projectFragment$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$projectFragment$2:
-    me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$projectFragment$2 INSTANCE -> a
-me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$publicNumberFragment$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$publicNumberFragment$2:
-    me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$publicNumberFragment$2 INSTANCE -> a
-me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$treeArrFragment$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$treeArrFragment$2:
-    me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$treeArrFragment$2 INSTANCE -> a
+me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$initView$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment$initView$1:
+    void invoke(int) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectAriticleFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectAriticleFragment:
-    com.kingja.loadsir.core.LoadService loadsir -> i
-    java.util.HashMap _$_findViewCache -> k
-    kotlin.Lazy articleAdapter$delegate -> j
+    com.kingja.loadsir.core.LoadService loadsir -> j
+    java.util.HashMap _$_findViewCache -> l
+    kotlin.Lazy articleAdapter$delegate -> k
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.CollectAdapter access$getArticleAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectAriticleFragment) -> a
     void initView(android.os.Bundle) -> a
     com.kingja.loadsir.core.LoadService access$getLoadsir$p(me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectAriticleFragment) -> b
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.ui.adapter.CollectAdapter getArticleAdapter() -> n
 me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectAriticleFragment$articleAdapter$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectAriticleFragment$articleAdapter$2:
     me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectAriticleFragment$articleAdapter$2 INSTANCE -> a
@@ -12308,29 +12592,27 @@ me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectAriticleFragment$initView$$in
     java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object) -> a
     void invoke(com.chad.library.adapter.base.BaseQuickAdapter,android.view.View,int) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectFragment:
-    java.util.ArrayList fragments -> j
-    java.util.ArrayList titleData -> i
-    java.util.HashMap _$_findViewCache -> k
+    java.util.ArrayList fragments -> k
+    java.util.ArrayList titleData -> j
+    java.util.HashMap _$_findViewCache -> l
     android.view.View _$_findCachedViewById(int) -> a
     void initView(android.os.Bundle) -> a
     void _$_clearFindViewByIdCache() -> d
-    void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
 me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectFragment$initView$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectFragment$initView$2:
     void invoke(androidx.appcompat.widget.Toolbar) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectUrlFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectUrlFragment:
-    com.kingja.loadsir.core.LoadService loadsir -> i
-    java.util.HashMap _$_findViewCache -> k
-    kotlin.Lazy articleAdapter$delegate -> j
+    com.kingja.loadsir.core.LoadService loadsir -> j
+    java.util.HashMap _$_findViewCache -> l
+    kotlin.Lazy articleAdapter$delegate -> k
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.CollectUrlAdapter access$getArticleAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectUrlFragment) -> a
     void initView(android.os.Bundle) -> a
     com.kingja.loadsir.core.LoadService access$getLoadsir$p(me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectUrlFragment) -> b
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.ui.adapter.CollectUrlAdapter getArticleAdapter() -> n
 me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectUrlFragment$articleAdapter$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectUrlFragment$articleAdapter$2:
     me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectUrlFragment$articleAdapter$2 INSTANCE -> a
@@ -12350,24 +12632,22 @@ me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectUrlFragment$initView$$inlined
     java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object) -> a
     void invoke(com.chad.library.adapter.base.BaseQuickAdapter,android.view.View,int) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.demo.DemoFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.demo.DemoFragment:
-    java.util.HashMap _$_findViewCache -> j
-    kotlin.Lazy requestViewModel$delegate -> i
+    java.util.HashMap _$_findViewCache -> k
+    kotlin.Lazy requestViewModel$delegate -> j
     void initView(android.os.Bundle) -> a
     void _$_clearFindViewByIdCache() -> d
-    void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestDemoViewModel getRequestViewModel() -> n
 me.hgj.jetpackmvvm.demo.ui.fragment.demo.DemoFragment$ProxClick -> me.hgj.jetpackmvvm.demo.ui.fragment.demo.DemoFragment$a:
     me.hgj.jetpackmvvm.demo.ui.fragment.demo.DemoFragment this$0 -> a
     void download() -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment:
-    me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView footView -> k
-    com.kingja.loadsir.core.LoadService loadsir -> j
-    java.util.HashMap _$_findViewCache -> n
-    kotlin.Lazy articleAdapter$delegate -> i
-    kotlin.Lazy requestCollectViewModel$delegate -> l
-    kotlin.Lazy requestHomeViewModel$delegate -> m
+    me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView footView -> l
+    com.kingja.loadsir.core.LoadService loadsir -> k
+    kotlin.Lazy articleAdapter$delegate -> j
+    kotlin.Lazy requestCollectViewModel$delegate -> m
+    java.util.HashMap _$_findViewCache -> o
+    kotlin.Lazy requestHomeViewModel$delegate -> n
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter access$getArticleAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -12377,8 +12657,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment -> me.hgj.jetpackmvvm.demo
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel access$getRequestCollectViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment) -> d
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestHomeViewModel access$getRequestHomeViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment) -> e
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter getArticleAdapter() -> n
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel getRequestCollectViewModel() -> o
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestHomeViewModel getRequestHomeViewModel() -> p
@@ -12433,11 +12713,11 @@ me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment$initView$$inlined$run$lamb
     java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object) -> a
     void invoke(com.chad.library.adapter.base.BaseQuickAdapter,android.view.View,int) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralFragment:
-    me.hgj.jetpackmvvm.demo.data.model.bean.IntegralResponse rank -> i
-    com.kingja.loadsir.core.LoadService loadsir -> k
-    java.util.HashMap _$_findViewCache -> m
-    me.hgj.jetpackmvvm.demo.ui.adapter.IntegralAdapter integralAdapter -> j
-    kotlin.Lazy requestIntegralViewModel$delegate -> l
+    me.hgj.jetpackmvvm.demo.data.model.bean.IntegralResponse rank -> j
+    java.util.HashMap _$_findViewCache -> n
+    me.hgj.jetpackmvvm.demo.ui.adapter.IntegralAdapter integralAdapter -> k
+    kotlin.Lazy requestIntegralViewModel$delegate -> m
+    com.kingja.loadsir.core.LoadService loadsir -> l
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.IntegralAdapter access$getIntegralAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -12446,8 +12726,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralFragment -> me.hgj.jetpackm
     void _$_clearFindViewByIdCache() -> d
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestIntegralViewModel access$getRequestIntegralViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralFragment) -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestIntegralViewModel getRequestIntegralViewModel() -> n
 me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralFragment$createObserver$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralFragment$a:
     me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralFragment this$0 -> a
@@ -12460,10 +12740,10 @@ me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralFragment$initView$$inlined$
 me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralFragment$initView$$inlined$run$lambda$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralFragment$initView$$inlined$run$lambda$2:
     void invoke(androidx.appcompat.widget.Toolbar) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralHistoryFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralHistoryFragment:
-    com.kingja.loadsir.core.LoadService loadsir -> j
-    java.util.HashMap _$_findViewCache -> l
-    kotlin.Lazy integralAdapter$delegate -> i
-    kotlin.Lazy requestIntegralViewModel$delegate -> k
+    com.kingja.loadsir.core.LoadService loadsir -> k
+    java.util.HashMap _$_findViewCache -> m
+    kotlin.Lazy integralAdapter$delegate -> j
+    kotlin.Lazy requestIntegralViewModel$delegate -> l
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.IntegralHistoryAdapter access$getIntegralAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralHistoryFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -12471,8 +12751,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralHistoryFragment -> me.hgj.j
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestIntegralViewModel access$getRequestIntegralViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralHistoryFragment) -> c
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.ui.adapter.IntegralHistoryAdapter getIntegralAdapter() -> n
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestIntegralViewModel getRequestIntegralViewModel() -> o
 me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralHistoryFragment$createObserver$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralHistoryFragment$a:
@@ -12486,15 +12766,14 @@ me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralHistoryFragment$initView$1 
 me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralHistoryFragment$integralAdapter$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralHistoryFragment$integralAdapter$2:
     me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralHistoryFragment$integralAdapter$2 INSTANCE -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment:
-    java.util.HashMap _$_findViewCache -> j
-    kotlin.Lazy requestLoginRegisterViewModel$delegate -> i
+    java.util.HashMap _$_findViewCache -> k
+    kotlin.Lazy requestLoginRegisterViewModel$delegate -> j
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestLoginRegisterViewModel access$getRequestLoginRegisterViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment) -> a
     void initView(android.os.Bundle) -> a
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestLoginRegisterViewModel getRequestLoginRegisterViewModel() -> n
 me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$ProxyClick -> me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$a:
     android.widget.CompoundButton$OnCheckedChangeListener onCheckedChangeListener -> a
@@ -12515,15 +12794,14 @@ me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$createObserver$1$2 -> me
 me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$initView$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$initView$1:
     void invoke(androidx.appcompat.widget.Toolbar) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.login.RegisterFrgment -> me.hgj.jetpackmvvm.demo.ui.fragment.login.RegisterFrgment:
-    java.util.HashMap _$_findViewCache -> j
-    kotlin.Lazy requestLoginRegisterViewModel$delegate -> i
+    java.util.HashMap _$_findViewCache -> k
+    kotlin.Lazy requestLoginRegisterViewModel$delegate -> j
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestLoginRegisterViewModel access$getRequestLoginRegisterViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.login.RegisterFrgment) -> a
     void initView(android.os.Bundle) -> a
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestLoginRegisterViewModel getRequestLoginRegisterViewModel() -> n
 me.hgj.jetpackmvvm.demo.ui.fragment.login.RegisterFrgment$ProxyClick -> me.hgj.jetpackmvvm.demo.ui.fragment.login.RegisterFrgment$a:
     android.widget.CompoundButton$OnCheckedChangeListener onCheckedChangeListener2 -> b
@@ -12547,12 +12825,12 @@ me.hgj.jetpackmvvm.demo.ui.fragment.login.RegisterFrgment$createObserver$1$2 -> 
 me.hgj.jetpackmvvm.demo.ui.fragment.login.RegisterFrgment$initView$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.login.RegisterFrgment$initView$1:
     void invoke(androidx.appcompat.widget.Toolbar) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.lookinfo.LookInfoFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.lookinfo.LookInfoFragment:
-    com.kingja.loadsir.core.LoadService loadsir -> j
-    java.util.HashMap _$_findViewCache -> n
-    int shareId -> i
-    kotlin.Lazy articleAdapter$delegate -> k
-    kotlin.Lazy requestCollectViewModel$delegate -> l
-    kotlin.Lazy requestLookInfoViewModel$delegate -> m
+    com.kingja.loadsir.core.LoadService loadsir -> k
+    int shareId -> j
+    kotlin.Lazy articleAdapter$delegate -> l
+    kotlin.Lazy requestCollectViewModel$delegate -> m
+    java.util.HashMap _$_findViewCache -> o
+    kotlin.Lazy requestLookInfoViewModel$delegate -> n
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter access$getArticleAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.lookinfo.LookInfoFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -12562,8 +12840,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.lookinfo.LookInfoFragment -> me.hgj.jetpackm
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestLookInfoViewModel access$getRequestLookInfoViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.lookinfo.LookInfoFragment) -> d
     int access$getShareId$p(me.hgj.jetpackmvvm.demo.ui.fragment.lookinfo.LookInfoFragment) -> e
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter getArticleAdapter() -> n
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel getRequestCollectViewModel() -> o
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestLookInfoViewModel getRequestLookInfoViewModel() -> p
@@ -12596,9 +12874,9 @@ me.hgj.jetpackmvvm.demo.ui.fragment.lookinfo.LookInfoFragment$initView$$inlined$
 me.hgj.jetpackmvvm.demo.ui.fragment.lookinfo.LookInfoFragment$initView$3 -> me.hgj.jetpackmvvm.demo.ui.fragment.lookinfo.LookInfoFragment$initView$3:
     void invoke(androidx.appcompat.widget.Toolbar) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment:
-    me.hgj.jetpackmvvm.demo.data.model.bean.IntegralResponse rank -> i
-    java.util.HashMap _$_findViewCache -> k
-    kotlin.Lazy requestMeViewModel$delegate -> j
+    me.hgj.jetpackmvvm.demo.data.model.bean.IntegralResponse rank -> j
+    java.util.HashMap _$_findViewCache -> l
+    kotlin.Lazy requestMeViewModel$delegate -> k
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.data.model.bean.IntegralResponse access$getRank$p(me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment) -> a
     void access$setRank$p(me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment,me.hgj.jetpackmvvm.demo.data.model.bean.IntegralResponse) -> a
@@ -12606,8 +12884,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment -> me.hgj.jetpackmvvm.demo.ui.
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestMeViewModel access$getRequestMeViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment) -> b
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestMeViewModel getRequestMeViewModel() -> n
 me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$ProxyClick -> me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$ProxyClick:
     me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment this$0 -> a
@@ -12649,15 +12927,15 @@ me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$createObserver$1$2 -> me.hgj.j
     me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$createObserver$1$2 INSTANCE -> a
     void invoke(me.hgj.jetpackmvvm.network.AppException) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment:
-    me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView footView -> k
-    com.kingja.loadsir.core.LoadService loadsir -> j
-    int cid -> m
-    kotlin.Lazy articleAdapter$delegate -> i
-    boolean isNew -> l
-    me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$Companion Companion -> q
-    java.util.HashMap _$_findViewCache -> p
-    kotlin.Lazy requestCollectViewModel$delegate -> n
-    kotlin.Lazy requestProjectViewModel$delegate -> o
+    me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView footView -> l
+    boolean isNew -> m
+    int cid -> n
+    com.kingja.loadsir.core.LoadService loadsir -> k
+    kotlin.Lazy articleAdapter$delegate -> j
+    me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$Companion Companion -> r
+    java.util.HashMap _$_findViewCache -> q
+    kotlin.Lazy requestCollectViewModel$delegate -> o
+    kotlin.Lazy requestProjectViewModel$delegate -> p
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter access$getArticleAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -12669,8 +12947,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment -> me.hgj.jetpa
     void createObserver() -> e
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestProjectViewModel access$getRequestProjectViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment) -> f
     boolean access$isNew$p(me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment) -> g
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter getArticleAdapter() -> n
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel getRequestCollectViewModel() -> o
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestProjectViewModel getRequestProjectViewModel() -> p
@@ -12696,32 +12974,32 @@ me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$createObserver$
 me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$createObserver$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$g:
     me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment this$0 -> a
     void onChanged(me.hgj.jetpackmvvm.demo.app.network.stateCallback.CollectUiState) -> a
-me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$lazyLoadData$$inlined$let$lambda$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$h:
+me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$initView$$inlined$let$lambda$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$h:
     me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment this$0 -> a
     void onLoadMore() -> a
-me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$lazyLoadData$$inlined$run$lambda$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$i:
+me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$initView$$inlined$run$lambda$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$i:
     me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment this$0 -> a
     void onClick(me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse,me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView,int) -> a
-me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$lazyLoadData$$inlined$run$lambda$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$lazyLoadData$$inlined$run$lambda$2:
+me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$initView$$inlined$run$lambda$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$initView$$inlined$run$lambda$2:
     java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object) -> a
     void invoke(com.chad.library.adapter.base.BaseQuickAdapter,android.view.View,int) -> a
-me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$lazyLoadData$$inlined$run$lambda$3 -> me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$lazyLoadData$$inlined$run$lambda$3:
+me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$initView$$inlined$run$lambda$3 -> me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment$initView$$inlined$run$lambda$3:
     java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object) -> a
     void invoke(com.chad.library.adapter.base.BaseQuickAdapter,android.view.View,int) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectFragment:
-    com.kingja.loadsir.core.LoadService loadsir -> i
-    java.util.ArrayList mDataList -> k
-    java.util.ArrayList fragments -> j
-    java.util.HashMap _$_findViewCache -> m
-    kotlin.Lazy requestProjectViewModel$delegate -> l
+    com.kingja.loadsir.core.LoadService loadsir -> j
+    java.util.ArrayList mDataList -> l
+    java.util.ArrayList fragments -> k
+    java.util.HashMap _$_findViewCache -> n
+    kotlin.Lazy requestProjectViewModel$delegate -> m
     android.view.View _$_findCachedViewById(int) -> a
     com.kingja.loadsir.core.LoadService access$getLoadsir$p(me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectFragment) -> a
     void initView(android.os.Bundle) -> a
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestProjectViewModel access$getRequestProjectViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectFragment) -> b
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     java.util.ArrayList getFragments() -> n
     java.util.ArrayList getMDataList() -> o
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestProjectViewModel getRequestProjectViewModel() -> p
@@ -12736,14 +13014,14 @@ me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectFragment$createObserver$2 -> 
     me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectFragment this$0 -> a
     void onChanged(java.lang.Integer) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment:
-    me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView footView -> k
-    com.kingja.loadsir.core.LoadService loadsir -> j
-    int cid -> l
-    kotlin.Lazy articleAdapter$delegate -> i
-    kotlin.Lazy requestCollectViewModel$delegate -> m
-    java.util.HashMap _$_findViewCache -> o
-    kotlin.Lazy requestPublicNumberViewModel$delegate -> n
-    me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$Companion Companion -> p
+    me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView footView -> l
+    com.kingja.loadsir.core.LoadService loadsir -> k
+    int cid -> m
+    kotlin.Lazy articleAdapter$delegate -> j
+    java.util.HashMap _$_findViewCache -> p
+    kotlin.Lazy requestCollectViewModel$delegate -> n
+    kotlin.Lazy requestPublicNumberViewModel$delegate -> o
+    me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$Companion Companion -> q
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter access$getArticleAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -12754,8 +13032,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment -> me.hgj.j
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel access$getRequestCollectViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment) -> e
     void createObserver() -> e
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestPublicNumberViewModel access$getRequestPublicNumberViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment) -> f
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter getArticleAdapter() -> n
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel getRequestCollectViewModel() -> o
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestPublicNumberViewModel getRequestPublicNumberViewModel() -> p
@@ -12781,23 +13059,23 @@ me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$createObser
 me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$createObserver$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$g:
     me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment this$0 -> a
     void onChanged(me.hgj.jetpackmvvm.demo.app.network.stateCallback.CollectUiState) -> a
-me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$lazyLoadData$$inlined$let$lambda$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$h:
+me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$initView$$inlined$let$lambda$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$h:
     me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment this$0 -> a
     void onLoadMore() -> a
-me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$lazyLoadData$$inlined$run$lambda$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$i:
+me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$initView$$inlined$run$lambda$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$i:
     me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment this$0 -> a
     void onClick(me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse,me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView,int) -> a
-me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$lazyLoadData$$inlined$run$lambda$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$lazyLoadData$$inlined$run$lambda$2:
+me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$initView$$inlined$run$lambda$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$initView$$inlined$run$lambda$2:
     java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object) -> a
     void invoke(com.chad.library.adapter.base.BaseQuickAdapter,android.view.View,int) -> a
-me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$lazyLoadData$$inlined$run$lambda$3 -> me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$lazyLoadData$$inlined$run$lambda$3:
+me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$initView$$inlined$run$lambda$3 -> me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicChildFragment$initView$$inlined$run$lambda$3:
     java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object) -> a
     void invoke(com.chad.library.adapter.base.BaseQuickAdapter,android.view.View,int) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicNumberFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicNumberFragment:
-    com.kingja.loadsir.core.LoadService loadsir -> i
-    java.util.ArrayList mDataList -> k
-    java.util.ArrayList fragments -> j
-    java.util.HashMap _$_findViewCache -> l
+    com.kingja.loadsir.core.LoadService loadsir -> j
+    java.util.ArrayList mDataList -> l
+    java.util.ArrayList fragments -> k
+    java.util.HashMap _$_findViewCache -> m
     android.view.View _$_findCachedViewById(int) -> a
     java.util.ArrayList access$getFragments$p(me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicNumberFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -12805,8 +13083,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicNumberFragment -> me.hgj.
     java.util.ArrayList access$getMDataList$p(me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicNumberFragment) -> c
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
 me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicNumberFragment$createObserver$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicNumberFragment$createObserver$1:
     me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicNumberFragment this$0 -> a
     void onChanged(me.hgj.jetpackmvvm.state.ResultState) -> a
@@ -12818,10 +13096,10 @@ me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicNumberFragment$createObse
     me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicNumberFragment this$0 -> a
     void onChanged(java.lang.Integer) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchFragment:
-    me.hgj.jetpackmvvm.demo.ui.adapter.SearcHistoryAdapter historyAdapter -> i
-    java.util.HashMap _$_findViewCache -> l
-    kotlin.Lazy requestSearchViewModel$delegate -> k
-    me.hgj.jetpackmvvm.demo.ui.adapter.SearcHotAdapter hotAdapter -> j
+    java.util.HashMap _$_findViewCache -> m
+    me.hgj.jetpackmvvm.demo.ui.adapter.SearcHistoryAdapter historyAdapter -> j
+    kotlin.Lazy requestSearchViewModel$delegate -> l
+    me.hgj.jetpackmvvm.demo.ui.adapter.SearcHotAdapter hotAdapter -> k
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.SearcHistoryAdapter access$getHistoryAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -12830,8 +13108,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchFragment -> me.hgj.jetpackmvvm.
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestSearchViewModel access$getRequestSearchViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchFragment) -> c
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestSearchViewModel getRequestSearchViewModel() -> n
 me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchFragment$createObserver$$inlined$run$lambda$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchFragment$createObserver$$inlined$run$lambda$1:
     me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchFragment this$0 -> a
@@ -12859,12 +13137,12 @@ me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchFragment$initView$5$$special$$i
 me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchFragment$onCreateOptionsMenu$$inlined$run$lambda$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchFragment$onCreateOptionsMenu$$inlined$run$lambda$1:
     me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchFragment this$0 -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchResultFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchResultFragment:
-    java.lang.String searchKey -> i
-    com.kingja.loadsir.core.LoadService loadsir -> k
-    java.util.HashMap _$_findViewCache -> n
-    kotlin.Lazy articleAdapter$delegate -> j
-    kotlin.Lazy requestCollectViewModel$delegate -> l
-    kotlin.Lazy requestSearchViewModel$delegate -> m
+    java.lang.String searchKey -> j
+    kotlin.Lazy articleAdapter$delegate -> k
+    kotlin.Lazy requestCollectViewModel$delegate -> m
+    java.util.HashMap _$_findViewCache -> o
+    com.kingja.loadsir.core.LoadService loadsir -> l
+    kotlin.Lazy requestSearchViewModel$delegate -> n
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter access$getArticleAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchResultFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -12874,8 +13152,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchResultFragment -> me.hgj.jetpac
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestSearchViewModel access$getRequestSearchViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchResultFragment) -> d
     java.lang.String access$getSearchKey$p(me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchResultFragment) -> e
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter getArticleAdapter() -> n
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel getRequestCollectViewModel() -> o
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestSearchViewModel getRequestSearchViewModel() -> p
@@ -12912,12 +13190,11 @@ me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchResultFragment$initView$$inline
 me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchResultFragment$initView$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchResultFragment$initView$2:
     void invoke(androidx.appcompat.widget.Toolbar) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.setting.SettingFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.setting.SettingFragment:
-    kotlin.Lazy shareViewModel$delegate -> b
-    me.hgj.jetpackmvvm.demo.app.weight.preference.IconPreference colorPreview -> c
-    androidx.appcompat.widget.Toolbar toolbar -> a
+    me.hgj.jetpackmvvm.demo.app.weight.preference.IconPreference colorPreview -> b
+    android.view.View toolbarView -> c
     java.util.HashMap _$_findViewCache -> d
-    androidx.appcompat.widget.Toolbar access$getToolbar$p(me.hgj.jetpackmvvm.demo.ui.fragment.setting.SettingFragment) -> a
-    void access$setText(me.hgj.jetpackmvvm.demo.ui.fragment.setting.SettingFragment) -> b
+    kotlin.Lazy shareViewModel$delegate -> a
+    void access$setText(me.hgj.jetpackmvvm.demo.ui.fragment.setting.SettingFragment) -> a
     void _$_clearFindViewByIdCache() -> d
     me.hgj.jetpackmvvm.demo.app.event.AppViewModel getShareViewModel() -> e
     void setText() -> f
@@ -12945,15 +13222,14 @@ me.hgj.jetpackmvvm.demo.ui.fragment.setting.SettingFragment$onCreatePreferences$
 me.hgj.jetpackmvvm.demo.ui.fragment.setting.SettingFragment$onViewCreated$$inlined$let$lambda$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.setting.SettingFragment$onViewCreated$$inlined$let$lambda$1:
     void invoke(androidx.appcompat.widget.Toolbar) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.share.AddAriticleFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.share.AddAriticleFragment:
-    java.util.HashMap _$_findViewCache -> j
-    kotlin.Lazy requestViewModel$delegate -> i
+    java.util.HashMap _$_findViewCache -> k
+    kotlin.Lazy requestViewModel$delegate -> j
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestAriticleViewModel access$getRequestViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.share.AddAriticleFragment) -> a
     void initView(android.os.Bundle) -> a
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestAriticleViewModel getRequestViewModel() -> n
 me.hgj.jetpackmvvm.demo.ui.fragment.share.AddAriticleFragment$createObserver$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.share.AddAriticleFragment$createObserver$1:
     me.hgj.jetpackmvvm.demo.ui.fragment.share.AddAriticleFragment this$0 -> a
@@ -12967,10 +13243,10 @@ me.hgj.jetpackmvvm.demo.ui.fragment.share.AddAriticleFragment$initView$$inlined$
 me.hgj.jetpackmvvm.demo.ui.fragment.share.AddAriticleFragment$initView$4 -> me.hgj.jetpackmvvm.demo.ui.fragment.share.AddAriticleFragment$initView$4:
     void invoke(android.view.View) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.share.AriticleFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.share.AriticleFragment:
-    com.kingja.loadsir.core.LoadService loadsir -> j
-    java.util.HashMap _$_findViewCache -> l
-    kotlin.Lazy articleAdapter$delegate -> i
-    kotlin.Lazy requestViewModel$delegate -> k
+    com.kingja.loadsir.core.LoadService loadsir -> k
+    java.util.HashMap _$_findViewCache -> m
+    kotlin.Lazy articleAdapter$delegate -> j
+    kotlin.Lazy requestViewModel$delegate -> l
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.ShareAdapter access$getArticleAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.share.AriticleFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -12978,8 +13254,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.share.AriticleFragment -> me.hgj.jetpackmvvm
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestAriticleViewModel access$getRequestViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.share.AriticleFragment) -> c
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.ui.adapter.ShareAdapter getArticleAdapter() -> n
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestAriticleViewModel getRequestViewModel() -> o
 me.hgj.jetpackmvvm.demo.ui.fragment.share.AriticleFragment$articleAdapter$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.share.AriticleFragment$articleAdapter$2:
@@ -13007,17 +13283,16 @@ me.hgj.jetpackmvvm.demo.ui.fragment.share.AriticleFragment$initView$$inlined$run
     java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object) -> a
     void invoke(com.chad.library.adapter.base.BaseQuickAdapter,android.view.View,int) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.todo.AddTodoFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.todo.AddTodoFragment:
-    me.hgj.jetpackmvvm.demo.data.model.bean.TodoResponse todoResponse -> i
-    java.util.HashMap _$_findViewCache -> k
-    kotlin.Lazy requestViewModel$delegate -> j
+    me.hgj.jetpackmvvm.demo.data.model.bean.TodoResponse todoResponse -> j
+    java.util.HashMap _$_findViewCache -> l
+    kotlin.Lazy requestViewModel$delegate -> k
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTodoViewModel access$getRequestViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.todo.AddTodoFragment) -> a
     void initView(android.os.Bundle) -> a
     me.hgj.jetpackmvvm.demo.data.model.bean.TodoResponse access$getTodoResponse$p(me.hgj.jetpackmvvm.demo.ui.fragment.todo.AddTodoFragment) -> b
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTodoViewModel getRequestViewModel() -> n
 me.hgj.jetpackmvvm.demo.ui.fragment.todo.AddTodoFragment$ProxyClick -> me.hgj.jetpackmvvm.demo.ui.fragment.todo.AddTodoFragment$ProxyClick:
     me.hgj.jetpackmvvm.demo.ui.fragment.todo.AddTodoFragment this$0 -> a
@@ -13035,10 +13310,10 @@ me.hgj.jetpackmvvm.demo.ui.fragment.todo.AddTodoFragment$createObserver$1 -> me.
 me.hgj.jetpackmvvm.demo.ui.fragment.todo.AddTodoFragment$initView$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.todo.AddTodoFragment$initView$2:
     void invoke(androidx.appcompat.widget.Toolbar) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.todo.TodoListFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.todo.TodoListFragment:
-    com.kingja.loadsir.core.LoadService loadsir -> j
-    java.util.HashMap _$_findViewCache -> l
-    kotlin.Lazy articleAdapter$delegate -> i
-    kotlin.Lazy requestViewModel$delegate -> k
+    com.kingja.loadsir.core.LoadService loadsir -> k
+    java.util.HashMap _$_findViewCache -> m
+    kotlin.Lazy articleAdapter$delegate -> j
+    kotlin.Lazy requestViewModel$delegate -> l
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.TodoAdapter access$getArticleAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.todo.TodoListFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -13046,8 +13321,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.todo.TodoListFragment -> me.hgj.jetpackmvvm.
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTodoViewModel access$getRequestViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.todo.TodoListFragment) -> c
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.ui.adapter.TodoAdapter getArticleAdapter() -> n
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTodoViewModel getRequestViewModel() -> o
 me.hgj.jetpackmvvm.demo.ui.fragment.todo.TodoListFragment$articleAdapter$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.todo.TodoListFragment$articleAdapter$2:
@@ -13081,11 +13356,11 @@ me.hgj.jetpackmvvm.demo.ui.fragment.todo.TodoListFragment$initView$$inlined$run$
     java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object) -> a
     void invoke(com.afollestad.materialdialogs.MaterialDialog,int,java.lang.CharSequence) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.tree.AskFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.tree.AskFragment:
-    com.kingja.loadsir.core.LoadService loadsir -> i
-    java.util.HashMap _$_findViewCache -> m
-    kotlin.Lazy requestTreeViewModel$delegate -> j
-    kotlin.Lazy articleAdapter$delegate -> k
-    kotlin.Lazy requestCollectViewModel$delegate -> l
+    com.kingja.loadsir.core.LoadService loadsir -> j
+    java.util.HashMap _$_findViewCache -> n
+    kotlin.Lazy requestTreeViewModel$delegate -> k
+    kotlin.Lazy articleAdapter$delegate -> l
+    kotlin.Lazy requestCollectViewModel$delegate -> m
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter access$getArticleAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.tree.AskFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -13094,8 +13369,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.tree.AskFragment -> me.hgj.jetpackmvvm.demo.
     void _$_clearFindViewByIdCache() -> d
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTreeViewModel access$getRequestTreeViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.tree.AskFragment) -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter getArticleAdapter() -> n
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel getRequestCollectViewModel() -> o
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTreeViewModel getRequestTreeViewModel() -> p
@@ -13132,10 +13407,10 @@ me.hgj.jetpackmvvm.demo.ui.fragment.tree.AskFragment$initView$$inlined$run$lambd
     java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object) -> a
     void invoke(com.chad.library.adapter.base.BaseQuickAdapter,android.view.View,int) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.tree.NavigationFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.tree.NavigationFragment:
-    com.kingja.loadsir.core.LoadService loadsir -> i
-    java.util.HashMap _$_findViewCache -> l
-    kotlin.Lazy navigationAdapter$delegate -> j
-    kotlin.Lazy requestTreeViewModel$delegate -> k
+    com.kingja.loadsir.core.LoadService loadsir -> j
+    java.util.HashMap _$_findViewCache -> m
+    kotlin.Lazy navigationAdapter$delegate -> k
+    kotlin.Lazy requestTreeViewModel$delegate -> l
     android.view.View _$_findCachedViewById(int) -> a
     com.kingja.loadsir.core.LoadService access$getLoadsir$p(me.hgj.jetpackmvvm.demo.ui.fragment.tree.NavigationFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -13143,8 +13418,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.tree.NavigationFragment -> me.hgj.jetpackmvv
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTreeViewModel access$getRequestTreeViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.tree.NavigationFragment) -> c
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.ui.adapter.NavigationAdapter getNavigationAdapter() -> n
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTreeViewModel getRequestTreeViewModel() -> o
 me.hgj.jetpackmvvm.demo.ui.fragment.tree.NavigationFragment$createObserver$$inlined$run$lambda$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.tree.NavigationFragment$a:
@@ -13162,11 +13437,11 @@ me.hgj.jetpackmvvm.demo.ui.fragment.tree.NavigationFragment$initView$4 -> me.hgj
 me.hgj.jetpackmvvm.demo.ui.fragment.tree.NavigationFragment$navigationAdapter$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.tree.NavigationFragment$navigationAdapter$2:
     me.hgj.jetpackmvvm.demo.ui.fragment.tree.NavigationFragment$navigationAdapter$2 INSTANCE -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.tree.PlazaFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.tree.PlazaFragment:
-    com.kingja.loadsir.core.LoadService loadsir -> i
-    java.util.HashMap _$_findViewCache -> m
-    kotlin.Lazy requestCollectViewModel$delegate -> j
-    kotlin.Lazy requestTreeViewModel$delegate -> k
-    kotlin.Lazy articleAdapter$delegate -> l
+    com.kingja.loadsir.core.LoadService loadsir -> j
+    java.util.HashMap _$_findViewCache -> n
+    kotlin.Lazy requestCollectViewModel$delegate -> k
+    kotlin.Lazy requestTreeViewModel$delegate -> l
+    kotlin.Lazy articleAdapter$delegate -> m
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter access$getArticleAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.tree.PlazaFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -13175,8 +13450,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.tree.PlazaFragment -> me.hgj.jetpackmvvm.dem
     void _$_clearFindViewByIdCache() -> d
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTreeViewModel access$getRequestTreeViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.tree.PlazaFragment) -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter getArticleAdapter() -> n
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel getRequestCollectViewModel() -> o
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTreeViewModel getRequestTreeViewModel() -> p
@@ -13213,29 +13488,29 @@ me.hgj.jetpackmvvm.demo.ui.fragment.tree.PlazaFragment$initView$$inlined$run$lam
     java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object) -> a
     void invoke(com.chad.library.adapter.base.BaseQuickAdapter,android.view.View,int) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemArrFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemArrFragment:
-    int index -> j
-    java.util.ArrayList fragments -> k
-    java.util.HashMap _$_findViewCache -> l
-    me.hgj.jetpackmvvm.demo.data.model.bean.SystemResponse data -> i
+    java.util.ArrayList fragments -> l
+    int index -> k
+    java.util.HashMap _$_findViewCache -> m
+    me.hgj.jetpackmvvm.demo.data.model.bean.SystemResponse data -> j
     android.view.View _$_findCachedViewById(int) -> a
     void initView(android.os.Bundle) -> a
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     int getIndex() -> n
 me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemArrFragment$initView$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemArrFragment$initView$2:
     void invoke(androidx.appcompat.widget.Toolbar) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemArrFragment$lazyLoadData$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemArrFragment$a:
     me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemArrFragment this$0 -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemChildFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemChildFragment:
-    me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemChildFragment$Companion Companion -> o
-    com.kingja.loadsir.core.LoadService loadsir -> i
-    int cid -> j
-    java.util.HashMap _$_findViewCache -> n
-    kotlin.Lazy articleAdapter$delegate -> k
-    kotlin.Lazy requestCollectViewModel$delegate -> l
-    kotlin.Lazy requestTreeViewModel$delegate -> m
+    com.kingja.loadsir.core.LoadService loadsir -> j
+    int cid -> k
+    kotlin.Lazy articleAdapter$delegate -> l
+    kotlin.Lazy requestCollectViewModel$delegate -> m
+    java.util.HashMap _$_findViewCache -> o
+    kotlin.Lazy requestTreeViewModel$delegate -> n
+    me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemChildFragment$Companion Companion -> p
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter access$getArticleAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemChildFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -13245,8 +13520,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemChildFragment -> me.hgj.jetpackmv
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel access$getRequestCollectViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemChildFragment) -> d
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTreeViewModel access$getRequestTreeViewModel$p(me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemChildFragment) -> e
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter getArticleAdapter() -> n
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel getRequestCollectViewModel() -> o
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTreeViewModel getRequestTreeViewModel() -> p
@@ -13279,10 +13554,10 @@ me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemChildFragment$initView$$inlined$r
     java.lang.Object invoke(java.lang.Object,java.lang.Object,java.lang.Object) -> a
     void invoke(com.chad.library.adapter.base.BaseQuickAdapter,android.view.View,int) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemFragment:
-    com.kingja.loadsir.core.LoadService loadsir -> i
-    java.util.HashMap _$_findViewCache -> l
-    kotlin.Lazy systemAdapter$delegate -> j
-    kotlin.Lazy requestTreeViewModel$delegate -> k
+    com.kingja.loadsir.core.LoadService loadsir -> j
+    java.util.HashMap _$_findViewCache -> m
+    kotlin.Lazy systemAdapter$delegate -> k
+    kotlin.Lazy requestTreeViewModel$delegate -> l
     android.view.View _$_findCachedViewById(int) -> a
     com.kingja.loadsir.core.LoadService access$getLoadsir$p(me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemFragment) -> a
     void initView(android.os.Bundle) -> a
@@ -13290,8 +13565,8 @@ me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemFragment -> me.hgj.jetpackmvvm.de
     me.hgj.jetpackmvvm.demo.ui.adapter.SystemAdapter access$getSystemAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemFragment) -> c
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTreeViewModel getRequestTreeViewModel() -> n
     me.hgj.jetpackmvvm.demo.ui.adapter.SystemAdapter getSystemAdapter() -> o
 me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemFragment$createObserver$$inlined$run$lambda$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemFragment$a:
@@ -13312,15 +13587,15 @@ me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemFragment$initView$$inlined$run$la
 me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemFragment$systemAdapter$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemFragment$systemAdapter$2:
     me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemFragment$systemAdapter$2 INSTANCE -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.tree.TreeArrFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.tree.TreeArrFragment:
-    java.util.ArrayList fragments -> j
-    java.util.ArrayList titleData -> i
-    java.util.HashMap _$_findViewCache -> k
+    java.util.ArrayList fragments -> k
+    java.util.ArrayList titleData -> j
+    java.util.HashMap _$_findViewCache -> l
     android.view.View _$_findCachedViewById(int) -> a
     void initView(android.os.Bundle) -> a
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
 me.hgj.jetpackmvvm.demo.ui.fragment.tree.TreeArrFragment$createObserver$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.tree.TreeArrFragment$a:
     me.hgj.jetpackmvvm.demo.ui.fragment.tree.TreeArrFragment this$0 -> a
     void onChanged(java.lang.Integer) -> a
@@ -13329,16 +13604,16 @@ me.hgj.jetpackmvvm.demo.ui.fragment.tree.TreeArrFragment$initView$$inlined$run$l
 me.hgj.jetpackmvvm.demo.ui.fragment.tree.TreeArrFragment$lazyLoadData$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.tree.TreeArrFragment$lazyLoadData$1:
     void invoke(int) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.web.WebFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.web.WebFragment:
-    com.just.agentweb.AgentWeb mAgentWeb -> i
-    java.util.HashMap _$_findViewCache -> k
-    kotlin.Lazy requestCollectViewModel$delegate -> j
+    java.util.HashMap _$_findViewCache -> l
+    kotlin.Lazy requestCollectViewModel$delegate -> k
+    com.just.agentweb.AgentWeb mAgentWeb -> j
     android.view.View _$_findCachedViewById(int) -> a
     com.just.agentweb.AgentWeb access$getMAgentWeb$p(me.hgj.jetpackmvvm.demo.ui.fragment.web.WebFragment) -> a
     void initView(android.os.Bundle) -> a
     void _$_clearFindViewByIdCache() -> d
     void createObserver() -> e
-    int layoutId() -> j
-    void lazyLoadData() -> k
+    int layoutId() -> i
+    void lazyLoadData() -> j
     me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel getRequestCollectViewModel() -> n
 me.hgj.jetpackmvvm.demo.ui.fragment.web.WebFragment$createObserver$1 -> me.hgj.jetpackmvvm.demo.ui.fragment.web.WebFragment$a:
     me.hgj.jetpackmvvm.demo.ui.fragment.web.WebFragment this$0 -> a
@@ -13598,6 +13873,8 @@ me.hgj.jetpackmvvm.demo.viewmodel.state.LookInfoViewModel -> me.hgj.jetpackmvvm.
     me.hgj.jetpackmvvm.callback.livedata.StringLiveData getImageUrl() -> b
     me.hgj.jetpackmvvm.callback.livedata.StringLiveData getInfo() -> c
     me.hgj.jetpackmvvm.callback.livedata.StringLiveData getName() -> d
+me.hgj.jetpackmvvm.demo.viewmodel.state.MainViewModel -> me.hgj.jetpackmvvm.demo.viewmodel.state.MainViewModel:
+    me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData name2 -> b
 me.hgj.jetpackmvvm.demo.viewmodel.state.MeViewModel -> me.hgj.jetpackmvvm.demo.viewmodel.state.MeViewModel:
     me.hgj.jetpackmvvm.callback.livedata.IntLiveData integral -> c
     me.hgj.jetpackmvvm.callback.livedata.StringLiveData imageUrl -> e
@@ -13635,13 +13912,13 @@ me.hgj.jetpackmvvm.demo.viewmodel.state.WebViewModel -> me.hgj.jetpackmvvm.demo.
     java.lang.String getShowTitle() -> e
     java.lang.String getUrl() -> f
 me.hgj.jetpackmvvm.ext.BaseViewModelExtKt -> me.hgj.jetpackmvvm.ext.BaseViewModelExtKt:
-    java.lang.Object executeResponse(me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel,me.hgj.jetpackmvvm.network.BaseResponse,kotlin.jvm.functions.Function3,kotlin.coroutines.Continuation) -> a
-    void parseState(me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment,me.hgj.jetpackmvvm.state.ResultState,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function0) -> a
-    void parseState$default(me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment,me.hgj.jetpackmvvm.state.ResultState,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function0,int,java.lang.Object) -> a
-    void request(me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel,kotlin.jvm.functions.Function1,androidx.lifecycle.MutableLiveData,boolean,java.lang.String) -> a
-    void request(me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function1,boolean,java.lang.String) -> a
-    void request$default(me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel,kotlin.jvm.functions.Function1,androidx.lifecycle.MutableLiveData,boolean,java.lang.String,int,java.lang.Object) -> a
-    void request$default(me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function1,boolean,java.lang.String,int,java.lang.Object) -> a
+    java.lang.Object executeResponse(me.hgj.jetpackmvvm.network.BaseResponse,kotlin.jvm.functions.Function3,kotlin.coroutines.Continuation) -> a
+    void parseState(me.hgj.jetpackmvvm.base.fragment.BaseVmFragment,me.hgj.jetpackmvvm.state.ResultState,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function0) -> a
+    void parseState$default(me.hgj.jetpackmvvm.base.fragment.BaseVmFragment,me.hgj.jetpackmvvm.state.ResultState,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function0,int,java.lang.Object) -> a
+    kotlinx.coroutines.Job request(me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel,kotlin.jvm.functions.Function1,androidx.lifecycle.MutableLiveData,boolean,java.lang.String) -> a
+    kotlinx.coroutines.Job request(me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function1,boolean,java.lang.String) -> a
+    kotlinx.coroutines.Job request$default(me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel,kotlin.jvm.functions.Function1,androidx.lifecycle.MutableLiveData,boolean,java.lang.String,int,java.lang.Object) -> a
+    kotlinx.coroutines.Job request$default(me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function1,kotlin.jvm.functions.Function1,boolean,java.lang.String,int,java.lang.Object) -> a
 me.hgj.jetpackmvvm.ext.BaseViewModelExtKt$request$2 -> me.hgj.jetpackmvvm.ext.BaseViewModelExtKt$request$2:
     me.hgj.jetpackmvvm.ext.BaseViewModelExtKt$request$2 INSTANCE -> a
     void invoke(me.hgj.jetpackmvvm.network.AppException) -> a
@@ -13707,14 +13984,20 @@ me.hgj.jetpackmvvm.navigation.DialogFragmentNavigator -> me.hgj.jetpackmvvm.navi
     androidx.navigation.NavDestination navigate(me.hgj.jetpackmvvm.navigation.DialogFragmentNavigator$Destination,android.os.Bundle,androidx.navigation.NavOptions,androidx.navigation.Navigator$Extras) -> a
 me.hgj.jetpackmvvm.navigation.DialogFragmentNavigator$Destination -> me.hgj.jetpackmvvm.navigation.DialogFragmentNavigator$Destination:
     java.lang.String mClassName -> a
+    java.lang.String getClassName() -> a
+    me.hgj.jetpackmvvm.navigation.DialogFragmentNavigator$Destination setClassName(java.lang.String) -> a
 me.hgj.jetpackmvvm.navigation.FragmentNavigator -> me.hgj.jetpackmvvm.navigation.FragmentNavigator:
     android.content.Context mContext -> a
     androidx.fragment.app.FragmentManager mFragmentManager -> b
     java.util.ArrayDeque mBackStack -> d
     int mContainerId -> c
+    java.lang.String generateBackStackName(int,int) -> a
+    androidx.fragment.app.Fragment instantiateFragment(android.content.Context,androidx.fragment.app.FragmentManager,java.lang.String,android.os.Bundle) -> a
     androidx.navigation.NavDestination navigate(me.hgj.jetpackmvvm.navigation.FragmentNavigator$Destination,android.os.Bundle,androidx.navigation.NavOptions,androidx.navigation.Navigator$Extras) -> a
 me.hgj.jetpackmvvm.navigation.FragmentNavigator$Destination -> me.hgj.jetpackmvvm.navigation.FragmentNavigator$Destination:
     java.lang.String mClassName -> a
+    java.lang.String getClassName() -> a
+    me.hgj.jetpackmvvm.navigation.FragmentNavigator$Destination setClassName(java.lang.String) -> a
 me.hgj.jetpackmvvm.navigation.FragmentNavigator$Extras -> me.hgj.jetpackmvvm.navigation.FragmentNavigator$Extras:
     java.util.LinkedHashMap mSharedElements -> a
     java.util.Map getSharedElements() -> a
@@ -13723,6 +14006,10 @@ me.hgj.jetpackmvvm.navigation.NavHostFragment -> me.hgj.jetpackmvvm.navigation.N
     int mGraphId -> c
     java.lang.Boolean mIsPrimaryBeforeOnCreate -> b
     boolean mDefaultNavHost -> d
+    androidx.navigation.NavController findNavController(androidx.fragment.app.Fragment) -> a
+    void onCreateNavController(androidx.navigation.NavController) -> a
+    androidx.navigation.Navigator createFragmentNavigator() -> d
+    int getContainerId() -> e
 me.hgj.jetpackmvvm.network.AppException -> me.hgj.jetpackmvvm.network.AppException:
     java.lang.String getErrorMsg() -> a
 me.hgj.jetpackmvvm.network.BaseNetworkApi -> me.hgj.jetpackmvvm.network.a:
@@ -13761,9 +14048,6 @@ me.hgj.jetpackmvvm.network.NetworkUtil -> me.hgj.jetpackmvvm.network.d:
     boolean isNetworkAvailable(android.content.Context) -> a
 me.hgj.jetpackmvvm.network.interceptor.CacheInterceptor -> me.hgj.jetpackmvvm.network.e.a:
     int day -> a
-    okhttp3.Response intercept(okhttp3.Interceptor$Chain) -> a
-me.hgj.jetpackmvvm.network.interceptor.HeadInterceptor -> me.hgj.jetpackmvvm.network.e.b:
-    java.util.Map headers -> a
     okhttp3.Response intercept(okhttp3.Interceptor$Chain) -> a
 me.hgj.jetpackmvvm.network.interceptor.logging.DefaultFormatPrinter -> me.hgj.jetpackmvvm.network.interceptor.logging.a:
     java.lang.String[] ARMS -> e
@@ -13826,31 +14110,24 @@ me.hgj.jetpackmvvm.network.manager.NetworkStateManager$Companion -> me.hgj.jetpa
 me.hgj.jetpackmvvm.network.manager.NetworkStateManager$Companion$instance$2 -> me.hgj.jetpackmvvm.network.manager.NetworkStateManager$Companion$instance$2:
     me.hgj.jetpackmvvm.network.manager.NetworkStateManager$Companion$instance$2 INSTANCE -> a
 me.hgj.jetpackmvvm.network.manager.NetworkStateReceive -> me.hgj.jetpackmvvm.network.manager.b:
-me.hgj.jetpackmvvm.state.ResultState -> me.hgj.jetpackmvvm.state.a:
+me.hgj.jetpackmvvm.state.ResultState -> me.hgj.jetpackmvvm.a.a:
     me.hgj.jetpackmvvm.state.ResultState$Companion Companion -> a
-me.hgj.jetpackmvvm.state.ResultState$Companion -> me.hgj.jetpackmvvm.state.a$a:
+me.hgj.jetpackmvvm.state.ResultState$Companion -> me.hgj.jetpackmvvm.a.a$a:
     me.hgj.jetpackmvvm.state.ResultState onAppError(me.hgj.jetpackmvvm.network.AppException) -> a
     me.hgj.jetpackmvvm.state.ResultState onAppLoading(java.lang.String) -> a
     me.hgj.jetpackmvvm.state.ResultState onAppSuccess(java.lang.Object) -> a
-me.hgj.jetpackmvvm.state.ResultState$Error -> me.hgj.jetpackmvvm.state.a$b:
+me.hgj.jetpackmvvm.state.ResultState$Error -> me.hgj.jetpackmvvm.a.a$b:
     me.hgj.jetpackmvvm.network.AppException error -> b
     me.hgj.jetpackmvvm.network.AppException getError() -> a
-me.hgj.jetpackmvvm.state.ResultState$Loading -> me.hgj.jetpackmvvm.state.a$c:
+me.hgj.jetpackmvvm.state.ResultState$Loading -> me.hgj.jetpackmvvm.a.a$c:
     java.lang.String loadingMessage -> b
     java.lang.String getLoadingMessage() -> a
-me.hgj.jetpackmvvm.state.ResultState$Success -> me.hgj.jetpackmvvm.state.a$d:
+me.hgj.jetpackmvvm.state.ResultState$Success -> me.hgj.jetpackmvvm.a.a$d:
     java.lang.Object data -> b
     java.lang.Object getData() -> a
-me.hgj.jetpackmvvm.state.ResultStateKt -> me.hgj.jetpackmvvm.state.b:
+me.hgj.jetpackmvvm.state.ResultStateKt -> me.hgj.jetpackmvvm.a.b:
     void paresException(androidx.lifecycle.MutableLiveData,java.lang.Throwable) -> a
     void paresResult(androidx.lifecycle.MutableLiveData,me.hgj.jetpackmvvm.network.BaseResponse) -> a
-me.hgj.jetpackmvvm.state.SingleLiveEvent -> me.hgj.jetpackmvvm.state.SingleLiveEvent:
-    java.util.concurrent.atomic.AtomicBoolean mPending -> a
-    java.util.concurrent.atomic.AtomicBoolean access$getMPending$p(me.hgj.jetpackmvvm.state.SingleLiveEvent) -> a
-    void call() -> a
-me.hgj.jetpackmvvm.state.SingleLiveEvent$observe$1 -> me.hgj.jetpackmvvm.state.SingleLiveEvent$a:
-    me.hgj.jetpackmvvm.state.SingleLiveEvent this$0 -> a
-    androidx.lifecycle.Observer $observer -> b
 me.hgj.jetpackmvvm.util.CharacterHandler -> me.hgj.jetpackmvvm.util.a:
     java.lang.String jsonFormat(java.lang.String) -> a
     java.lang.String xmlFormat(java.lang.String) -> b

@@ -42,11 +42,4 @@ class CollectFragment:BaseFragment<RequestCollectViewModel,FragmentCollectBindin
         }
 
     }
-
-    override fun lazyLoadData() {
-
-    }
-
-    override fun createObserver() {
-    }
 }

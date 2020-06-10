@@ -17,7 +17,6 @@
             android:summary="退出登录"
             android:title="@string/setting_exit" />
 
-
     </me.hgj.jetpackmvvm.demo.app.weight.preference.PreferenceCategory>
 
     <me.hgj.jetpackmvvm.demo.app.weight.preference.PreferenceCategory

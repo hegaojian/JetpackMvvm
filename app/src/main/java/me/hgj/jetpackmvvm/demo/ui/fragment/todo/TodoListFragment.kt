@@ -1,6 +1,7 @@
 package me.hgj.jetpackmvvm.demo.ui.fragment.todo
 
 import android.os.Bundle
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
@@ -17,15 +18,11 @@ import kotlinx.android.synthetic.main.include_toolbar.*
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
-import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.EmptyCallback
-import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.ErrorCallback
-import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.LoadingCallback
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
 import me.hgj.jetpackmvvm.demo.databinding.FragmentListBinding
 import me.hgj.jetpackmvvm.demo.ui.adapter.TodoAdapter
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTodoViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.TodoViewModel
-import me.hgj.jetpackmvvm.ext.getViewModel
 import me.hgj.jetpackmvvm.ext.nav
 
 /**
@@ -41,8 +38,8 @@ class TodoListFragment : BaseFragment<TodoViewModel, FragmentListBinding>() {
     //界面状态管理者
     private lateinit var loadsir: LoadService<Any>
 
-    //请求数据Viewmodel 注意，在by lazy中使用getViewModel一定要使用泛型，虽然他提示不报错，但是你不写是不行的
-    private val requestViewModel: RequestTodoViewModel by lazy { getViewModel<RequestTodoViewModel>() }
+    //请求数据Viewmodel
+    private val requestViewModel: RequestTodoViewModel by viewModels()
 
     override fun layoutId() = R.layout.fragment_list
 
@@ -62,9 +59,9 @@ class TodoListFragment : BaseFragment<TodoViewModel, FragmentListBinding>() {
             }
         }
         //状态页配置 swipeRefresh参数表示你要包裹的布局
-        loadsir = LoadServiceInit(swipeRefresh) {
+        loadsir = loadServiceInit(swipeRefresh) {
             //点击错误重试时触发的操作
-            loadsir.showCallback(LoadingCallback::class.java)
+            loadsir.showLoading()
             //请求数据
             requestViewModel.getTodoData(true)
         }
@@ -143,48 +140,23 @@ class TodoListFragment : BaseFragment<TodoViewModel, FragmentListBinding>() {
     }
 
     override fun lazyLoadData() {
+        //设置界面 加载中
+        loadsir.showLoading()
         requestViewModel.getTodoData(true)
+
     }
 
     override fun createObserver() {
         requestViewModel.todoDataState.observe(viewLifecycleOwner, Observer {
-            swipeRefresh.isRefreshing = false
-            recyclerView.loadMoreFinish(it.isEmpty, it.hasMore)
-            if (it.isSuccess) {
-                //成功
-                when {
-                    //第一页并没有数据 显示空布局界面
-                    it.isFirstEmpty -> {
-                        loadsir.showCallback(EmptyCallback::class.java)
-                    }
-                    //是第一页
-                    it.isRefresh -> {
-                        loadsir.showSuccess()
-                        articleAdapter.setNewInstance(it.listData)
-                    }
-                    //不是第一页
-                    else -> {
-                        loadsir.showSuccess()
-                        articleAdapter.addData(it.listData)
-                    }
-                }
-            } else {
-                //失败
-                if (it.isRefresh) {
-                    //如果是第一页，则显示错误界面，并提示错误信息
-                    loadsir.setErrorText(it.errMessage)
-                    loadsir.showCallback(ErrorCallback::class.java)
-                } else {
-                    recyclerView.loadMoreError(0, it.errMessage)
-                }
-            }
+            //设值 新写了个拓展函数，搞死了这个恶心的重复代码
+            loadListData(it, articleAdapter, loadsir, recyclerView,swipeRefresh)
         })
         requestViewModel.delDataState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 if (articleAdapter.data.size == 1) {
-                    loadsir.showCallback(EmptyCallback::class.java)
+                    loadsir.showEmpty()
                 }
-                articleAdapter.remove(it.data)
+                articleAdapter.remove(it.data!!)
             } else {
                 showMessage(it.errorMsg)
             }
@@ -197,16 +169,18 @@ class TodoListFragment : BaseFragment<TodoViewModel, FragmentListBinding>() {
                 showMessage(it.errorMsg)
             }
         })
-        eventViewModel.addTodo.observe(viewLifecycleOwner, Observer {
+
+        eventViewModel.todoEvent.observe(viewLifecycleOwner, Observer {
             if (articleAdapter.data.size == 0) {
                 //界面没有数据时，变为加载中 增强一丢丢体验
-                loadsir.showCallback(LoadingCallback::class.java)
+                loadsir.showLoading()
             } else {
                 //有数据时，swipeRefresh 显示刷新状态
                 swipeRefresh.isRefreshing = true
             }
             requestViewModel.getTodoData(true)
         })
+
     }
 
 }

@@ -18,7 +18,9 @@ import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.blankj.utilcode.util.AppUtils
 import com.tencent.bugly.beta.Beta
+import kotlinx.android.synthetic.main.include_toolbar.*
 import me.hgj.jetpackmvvm.demo.R
+import me.hgj.jetpackmvvm.demo.app.event.AppViewModel
 import me.hgj.jetpackmvvm.demo.app.ext.initClose
 import me.hgj.jetpackmvvm.demo.app.ext.showMessage
 import me.hgj.jetpackmvvm.demo.app.network.NetworkApi
@@ -26,7 +28,6 @@ import me.hgj.jetpackmvvm.demo.app.util.CacheDataManager
 import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.app.util.ColorUtil
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
-import me.hgj.jetpackmvvm.demo.app.event.AppViewModel
 import me.hgj.jetpackmvvm.demo.app.weight.preference.CheckBoxPreference
 import me.hgj.jetpackmvvm.demo.app.weight.preference.IconPreference
 import me.hgj.jetpackmvvm.demo.app.weight.preference.PreferenceCategory
@@ -42,12 +43,12 @@ import me.hgj.jetpackmvvm.ext.nav
 class SettingFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private var toolbar: Toolbar? = null
-
     //这里不能继承BaseFragment了，所以手动获取一下 AppViewModel
     val shareViewModel: AppViewModel by lazy { getAppViewModel<AppViewModel>() }
 
     private var colorPreview: IconPreference? = null
+
+    var toolbarView: View? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,14 +58,14 @@ class SettingFragment : PreferenceFragmentCompat(),
             //转为线性布局
             val linearLayout = it.parent as? LinearLayout
             linearLayout?.run {
-                val toolbarView =
-                    LayoutInflater.from(activity).inflate(R.layout.include_toolbar, null)
-                toolbar = toolbarView.findViewById(R.id.toolbar)
-                toolbar?.initClose("设置") { toolbar ->
-                    nav().navigateUp()
+                toolbarView =  LayoutInflater.from(activity).inflate(R.layout.include_toolbar, null)
+                toolbarView?.let {view ->
+                    view.findViewById<Toolbar>(R.id.toolbar)?.initClose("设置") {
+                        nav().navigateUp()
+                    }
+                    //添加到第一个
+                    addView(toolbarView, 0)
                 }
-                //添加到第一个
-                addView(toolbarView, 0)
             }
         }
 
@@ -75,7 +76,7 @@ class SettingFragment : PreferenceFragmentCompat(),
 
         colorPreview = findPreference("color")
         setText()
-        findPreference<Preference>("exit")?.isVisible = shareViewModel.isLogin.value//未登录时，退出登录需要隐藏
+        findPreference<Preference>("exit")?.isVisible = CacheUtil.isLogin()//未登录时，退出登录需要隐藏
 
         findPreference<Preference>("exit")?.setOnPreferenceClickListener { preference ->
             showMessage(
@@ -84,13 +85,11 @@ class SettingFragment : PreferenceFragmentCompat(),
                 negativeButtonText = "取消",
                 positiveAction = {
                     //清空cookie
-                    NetworkApi().cookieJar.clear()
-                    shareViewModel.userinfo.postValue(null)
+                    NetworkApi.instance.cookieJar.clear()
                     CacheUtil.setUser(null)
-                    shareViewModel.isLogin.postValue(false)
-                    view?.let {
-                        nav().navigateUp()
-                    }
+                    shareViewModel.userinfo.postValue(null)
+                    nav().navigateUp()
+//                    activity?.finish()
                 })
             false
         }
@@ -153,7 +152,6 @@ class SettingFragment : PreferenceFragmentCompat(),
                         findPreference<PreferenceCategory>("other")?.setTitleColor(color)
                         findPreference<PreferenceCategory>("about")?.setTitleColor(color)
                         findPreference<CheckBoxPreference>("top")?.setBottonColor()
-                        toolbar?.setBackgroundColor(color)
                         //通知其他界面立马修改配置
                         shareViewModel.appColor.postValue(color)
                     }
@@ -197,15 +195,11 @@ class SettingFragment : PreferenceFragmentCompat(),
                 url = findPreference<Preference>("project")?.summary.toString()
             )
             view?.let {
-                nav().navigate(R.id.action_settingFragment_to_webFragment, Bundle()
+                nav().navigate(R.id.action_to_webFragment, Bundle()
                     .apply { putParcelable("bannerdata", data) })
             }
             false
         }
-        /*findPreference<Preference>("open")?.setOnPreferenceClickListener {
-            parentActivity.launchActivity(Intent(parentActivity, OpenProjectActivity::class.java))
-            false
-        }*/
     }
 
     /**

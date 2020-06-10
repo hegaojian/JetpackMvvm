@@ -39,7 +39,7 @@ class WelcomeActivity : BaseActivity<BaseViewModel, ActivityWelcomeBinding>() {
         mDatabind.click = ProxyClick()
         welcome_baseview.setBackgroundColor(SettingUtil.getColor(this))
         mViewPager = findViewById(R.id.banner_view)
-        if (shareViewModel.isFirst.value) {
+        if (CacheUtil.isFirst()) {
             //是第一次打开App 显示引导页
             welcome_image.gone()
             mViewPager.setHolderCreator {
@@ -67,7 +67,6 @@ class WelcomeActivity : BaseActivity<BaseViewModel, ActivityWelcomeBinding>() {
 
     inner class ProxyClick {
         fun toMain() {
-            shareViewModel.isFirst.postValue(false)
             CacheUtil.setFirst(false)
             startActivity(Intent(this@WelcomeActivity, MainActivity::class.java))
             finish()

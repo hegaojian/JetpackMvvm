@@ -6,6 +6,7 @@ import android.view.MenuInflater
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
@@ -27,7 +28,6 @@ import me.hgj.jetpackmvvm.demo.ui.adapter.SearcHistoryAdapter
 import me.hgj.jetpackmvvm.demo.ui.adapter.SearcHotAdapter
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestSearchViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.SearchViewModel
-import me.hgj.jetpackmvvm.ext.getViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.parseState
 import me.hgj.jetpackmvvm.ext.util.toJson
@@ -45,7 +45,7 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
 
     private val hotAdapter: SearcHotAdapter = SearcHotAdapter(arrayListOf())
 
-    private val requestSearchViewModel: RequestSearchViewModel by lazy { getViewModel<RequestSearchViewModel>() }
+    private val requestSearchViewModel: RequestSearchViewModel by viewModels()
 
     override fun layoutId() = R.layout.fragment_search
 

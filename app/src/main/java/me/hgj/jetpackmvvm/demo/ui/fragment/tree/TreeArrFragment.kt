@@ -9,6 +9,7 @@ import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.bindViewPager2
 import me.hgj.jetpackmvvm.demo.app.ext.init
 import me.hgj.jetpackmvvm.demo.app.ext.setUiTheme
+import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.databinding.FragmentViewpagerBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.state.TreeViewModel
 import me.hgj.jetpackmvvm.ext.nav
@@ -41,12 +42,11 @@ class TreeArrFragment : BaseFragment<TreeViewModel, FragmentViewpagerBinding>() 
             setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.todo_add -> {
-                        if(shareViewModel.isLogin.value){
+                        if(CacheUtil.isLogin()){
                            nav().navigate(R.id.action_mainfragment_to_addAriticleFragment)
                         }else{
-                            nav().navigate(R.id.action_mainFragment_to_loginFragment)
+                            nav().navigate(R.id.action_to_loginFragment)
                         }
-
                     }
                 }
                 true

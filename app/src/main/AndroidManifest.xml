@@ -4,6 +4,7 @@
     package="me.hgj.jetpackmvvm.demo">
 
     <uses-sdk tools:overrideLibrary="me.hgj.jetpackmvvm" />
+
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -20,7 +21,6 @@
             android:theme="@style/FullscreenThemse">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -44,7 +44,7 @@
             android:value="375" />
         <meta-data
             android:name="design_height_in_dp"
-            android:value="100000" />
+            android:value="667" />
     </application>
 
 

@@ -1,6 +1,7 @@
 package me.hgj.jetpackmvvm.demo.ui.fragment.share
 
 import android.os.Bundle
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.WhichButton
@@ -18,7 +19,6 @@ import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.databinding.FragmentShareAriticleBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestAriticleViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.AriticleViewModel
-import me.hgj.jetpackmvvm.ext.getViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.parseState
 import me.hgj.jetpackmvvm.ext.view.clickNoRepeat
@@ -30,8 +30,8 @@ import me.hgj.jetpackmvvm.ext.view.clickNoRepeat
  */
 class AddAriticleFragment : BaseFragment<AriticleViewModel, FragmentShareAriticleBinding>() {
 
-    /** 注意，在by lazy中使用getViewModel一定要使用泛型，虽然他提示不报错，但是你不写是不行的 */
-    private val requestViewModel: RequestAriticleViewModel by lazy { getViewModel<RequestAriticleViewModel>() }
+    /** */
+    private val requestViewModel: RequestAriticleViewModel by viewModels()
 
     override fun layoutId() = R.layout.fragment_share_ariticle
 
@@ -100,14 +100,10 @@ class AddAriticleFragment : BaseFragment<AriticleViewModel, FragmentShareAriticl
         }
     }
 
-    override fun lazyLoadData() {
-
-    }
-
     override fun createObserver() {
         requestViewModel.addData.observe(viewLifecycleOwner, Observer { resultState ->
             parseState(resultState, {
-                eventViewModel.shareArticle.postValue(true)
+                eventViewModel.shareArticleEvent.postValue(true)
                 nav().navigateUp()
             }, {
                 showMessage(it.errorMsg)

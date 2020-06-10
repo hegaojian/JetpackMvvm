@@ -1,6 +1,7 @@
 package me.hgj.jetpackmvvm.demo.ui.fragment.todo
 
 import android.os.Bundle
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.datetime.datePicker
@@ -19,7 +20,6 @@ import me.hgj.jetpackmvvm.demo.data.model.enums.TodoType
 import me.hgj.jetpackmvvm.demo.databinding.FragmentAddtodoBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTodoViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.TodoViewModel
-import me.hgj.jetpackmvvm.ext.getViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.util.notNull
 import java.util.*
@@ -33,8 +33,8 @@ class AddTodoFragment : BaseFragment<TodoViewModel, FragmentAddtodoBinding>() {
 
     private var todoResponse: TodoResponse? = null
 
-    //请求数据Viewmodel 注意，在by lazy中使用getViewModel一定要使用泛型，虽然他提示不报错，但是你不写是不行的
-    private val requestViewModel: RequestTodoViewModel by lazy { getViewModel<RequestTodoViewModel>() }
+    //请求数据Viewmodel
+    private val requestViewModel: RequestTodoViewModel by viewModels()
 
     override fun layoutId() = R.layout.fragment_addtodo
 
@@ -57,13 +57,11 @@ class AddTodoFragment : BaseFragment<TodoViewModel, FragmentAddtodoBinding>() {
         shareViewModel.appColor.value.let { SettingUtil.setShapColor(addtodoSubmit, it) }
     }
 
-    override fun lazyLoadData() {}
-
     override fun createObserver() {
         requestViewModel.updateDataState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 nav().navigateUp()
-                eventViewModel.addTodo.postValue(true)
+                eventViewModel.todoEvent.postValue(true)
             } else {
                 showMessage(it.errorMsg)
             }

@@ -1,6 +1,7 @@
 package me.hgj.jetpackmvvm.demo.ui.fragment.search
 
 import android.os.Bundle
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
@@ -9,13 +10,13 @@ import com.yanzhenjie.recyclerview.SwipeRecyclerView
 import kotlinx.android.synthetic.main.include_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
 import kotlinx.android.synthetic.main.include_toolbar.*
+import me.hgj.jetpackmvvm.callback.livedata.event.Event
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
+import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView
-import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.EmptyCallback
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.ErrorCallback
-import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.LoadingCallback
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
 import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.CollectBus
@@ -24,7 +25,6 @@ import me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestSearchViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.SearchViewModel
-import me.hgj.jetpackmvvm.ext.getViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.parseState
 
@@ -43,11 +43,11 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
     //界面状态管理者
     private lateinit var loadsir: LoadService<Any>
 
-    //收藏viewmodel 注意，在by lazy中使用getViewModel一定要使用泛型，虽然他提示不报错，但是你不写是不行的
-    private val requestCollectViewModel: RequestCollectViewModel by lazy { getViewModel<RequestCollectViewModel>() }
+    //收藏viewmodel
+    private val requestCollectViewModel: RequestCollectViewModel by viewModels()
 
-    /** 注意，在by lazy中使用getViewModel一定要使用泛型，虽然他提示不报错，但是你不写是不行的 */
-    private val requestSearchViewModel: RequestSearchViewModel by lazy { getViewModel<RequestSearchViewModel>() }
+    /** */
+    private val requestSearchViewModel: RequestSearchViewModel by viewModels()
 
     override fun layoutId() = R.layout.fragment_list
 
@@ -58,9 +58,9 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
             nav().navigateUp()
         }
         //状态页配置
-        loadsir = LoadServiceInit(swipeRefresh) {
+        loadsir = loadServiceInit(swipeRefresh) {
             //点击重试时触发的操作
-            loadsir.showCallback(LoadingCallback::class.java)
+            loadsir.showLoading()
             requestSearchViewModel.getSearchResultData(searchKey, true)
         }
 
@@ -84,7 +84,7 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
             setOnCollectViewClickListener(object :
                 AriticleAdapter.OnCollectViewClickListener {
                 override fun onClick(item: AriticleResponse, v: CollectView, position: Int) {
-                    if (shareViewModel.isLogin.value) {
+                    if (CacheUtil.isLogin()) {
                         if (v.isChecked) {
                             requestCollectViewModel.uncollect(item.id)
                         } else {
@@ -92,12 +92,12 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
                         }
                     } else {
                         v.isChecked = true
-                        nav().navigate(R.id.action_searchResultFragment_to_loginFragment)
+                        nav().navigate(R.id.action_to_loginFragment)
                     }
                 }
             })
             setNbOnItemClickListener { adapter, view, position ->
-                nav().navigate(R.id.action_searchResultFragment_to_webFragment, Bundle().apply {
+                nav().navigate(R.id.action_to_webFragment, Bundle().apply {
                     putParcelable("ariticleData", articleAdapter.data[position])
                 })
             }
@@ -118,6 +118,8 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
     }
 
     override fun lazyLoadData() {
+        //设置界面 加载中
+        loadsir.showLoading()
         requestSearchViewModel.getSearchResultData(searchKey, true)
     }
 
@@ -129,7 +131,7 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
                 requestSearchViewModel.pageNo++
                 if (it.isRefresh() && it.datas.size == 0) {
                     //如果是第一页，并且没有数据，页面提示空布局
-                    loadsir.showCallback(EmptyCallback::class.java)
+                    loadsir.showEmpty()
                 } else if (it.isRefresh()) {
                     //如果是刷新的，有数据
                     loadsir.showSuccess()
@@ -154,7 +156,7 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
         })
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
-                eventViewModel.collect.postValue(CollectBus(it.id, it.collect))
+                eventViewModel.collectEvent.postValue(Event(CollectBus(it.id, it.collect)))
             } else {
                 showMessage(it.errorMsg)
                 for (index in articleAdapter.data.indices) {
@@ -187,7 +189,7 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
             })
 
             //监听全局的收藏信息 收藏的Id跟本列表的数据id匹配则需要更新
-            eventViewModel.collect.observe(viewLifecycleOwner, Observer {
+            eventViewModel.collectEvent.observe(viewLifecycleOwner, Observer {
                 for (index in articleAdapter.data.indices) {
                     if (articleAdapter.data[index].id == it.id) {
                         articleAdapter.data[index].collect = it.collect

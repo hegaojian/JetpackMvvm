@@ -15,32 +15,17 @@ import me.hgj.jetpackmvvm.demo.data.model.bean.UserInfo
  * 比如 全局可使用的 地理位置信息，账户信息,App的基本配置等等，
  */
 class AppViewModel(app: Application) : BaseViewModel(app) {
-    
-    //是否是第一次启动
-    var isFirst  =
-        UnPeekNotNullLiveData<Boolean>()
-
-    //是否已经登录过
-    var isLogin  =
-        UnPeekNotNullLiveData<Boolean>()
 
     //App的账户信息 使用UnPeekLiveData 因为账户信息有可能为空
-    var userinfo =
-        UnPeekLiveData<UserInfo>()
+    var userinfo = UnPeekLiveData<UserInfo>()
 
     //App主题颜色 中大型项目不推荐以这种方式改变主题颜色，比较繁琐耦合，且容易有遗漏某些控件没有设置主题色
-    var appColor =
-        UnPeekNotNullLiveData<Int>()
+    var appColor = UnPeekNotNullLiveData<Int>()
 
     //App 列表动画
-    var appAnimation =
-        UnPeekNotNullLiveData<Int>()
+    var appAnimation = UnPeekNotNullLiveData<Int>()
 
     init {
-        //初始化
-        isFirst.value = CacheUtil.isFirst()
-        //初始化
-        isLogin.value = CacheUtil.isLogin()
         //默认值保存的账户信息，没有登陆过则为null
         userinfo.value = CacheUtil.getUser()
         //默认值颜色

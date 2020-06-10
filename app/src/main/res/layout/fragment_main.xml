@@ -13,10 +13,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:id="@+id/main_viewpager"
+            android:id="@+id/mainViewpager"
             />
         <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
-            android:id="@+id/main_bottom"
+            android:id="@+id/mainBottom"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/white"

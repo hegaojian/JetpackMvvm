@@ -9,4 +9,5 @@ import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
  */
 class HomeViewModel(application: Application) : BaseViewModel(application){
 
+
 }

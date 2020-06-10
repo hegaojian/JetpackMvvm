@@ -27,16 +27,22 @@ import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
 import com.zhpan.bannerview.BannerViewPager
+import me.hgj.jetpackmvvm.base.Ktx
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.App
-import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
+import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
+import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.EmptyCallback
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.ErrorCallback
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.LoadingCallback
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView
 import me.hgj.jetpackmvvm.demo.app.weight.viewpager.ScaleTransitionPagerTitleView
 import me.hgj.jetpackmvvm.demo.data.model.bean.ClassifyResponse
-import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment
+import me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment
+import me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectFragment
+import me.hgj.jetpackmvvm.demo.ui.fragment.publicNumber.PublicNumberFragment
+import me.hgj.jetpackmvvm.demo.ui.fragment.tree.TreeArrFragment
 import me.hgj.jetpackmvvm.ext.util.toHtml
 import net.lucode.hackware.magicindicator.MagicIndicator
 import net.lucode.hackware.magicindicator.buildins.UIUtil
@@ -70,18 +76,43 @@ fun BannerViewPager<*, *>.setPageListener(onPageSelected: (Int) -> Unit) {
     })
 }
 
+
 fun LoadService<*>.setErrorText(message: String) {
-    this.setCallBack(ErrorCallback::class.java) { _, view ->
-        view.findViewById<TextView>(R.id.error_text).text = message
+    if (message.isNotEmpty()) {
+        this.setCallBack(ErrorCallback::class.java) { _, view ->
+            view.findViewById<TextView>(R.id.error_text).text = message
+        }
     }
 }
 
-fun LoadServiceInit(view: View, callback: () -> Unit): LoadService<Any> {
+/**
+ * 设置错误布局
+ * @param message 错误布局显示的提示内容
+ */
+fun LoadService<*>.showError(message: String = "") {
+    this.setErrorText(message)
+    this.showCallback(ErrorCallback::class.java)
+}
+
+/**
+ * 设置空布局
+ */
+fun LoadService<*>.showEmpty() {
+    this.showCallback(EmptyCallback::class.java)
+}
+
+/**
+ * 设置加载中
+ */
+fun LoadService<*>.showLoading() {
+    this.showCallback(LoadingCallback::class.java)
+}
+
+fun loadServiceInit(view: View, callback: () -> Unit): LoadService<Any> {
     val loadsir = LoadSir.getDefault().register(view) {
         //点击重试时触发的操作
         callback.invoke()
     }
-    loadsir.showCallback(LoadingCallback::class.java)
     SettingUtil.setLoadingColor(SettingUtil.getColor(App.instance), loadsir)
     return loadsir
 }
@@ -194,23 +225,25 @@ fun Toolbar.initClose(
  * 列如下面的BottomNavigationViewEx他的顶级父控件为FragmentLayout，如果先 is Fragmentlayout判断在 is BottomNavigationViewEx上面
  * 那么就会直接去执行 is FragmentLayout的代码块 跳过 is BottomNavigationViewEx的代码块了
  */
-fun setUiTheme(color: Int, vararg anylist: Any) {
-    anylist.forEach {
-        when (it) {
-            is LoadService<*> -> SettingUtil.setLoadingColor(color, it as LoadService<Any>)
-            is FloatingActionButton -> it.backgroundTintList =
-                SettingUtil.getOneColorStateList(color)
-            is SwipeRefreshLayout -> it.setColorSchemeColors(color)
-            is DefineLoadMoreView -> it.setLoadViewColor(SettingUtil.getOneColorStateList(color))
-            is BottomNavigationViewEx -> {
-                it.itemIconTintList = SettingUtil.getColorStateList(color)
-                it.itemTextColor = SettingUtil.getColorStateList(color)
+fun setUiTheme(color: Int, vararg anylist: Any?) {
+    anylist.forEach { view ->
+        view?.let {
+            when (it) {
+                is LoadService<*> -> SettingUtil.setLoadingColor(color, it as LoadService<Any>)
+                is FloatingActionButton -> it.backgroundTintList =
+                    SettingUtil.getOneColorStateList(color)
+                is SwipeRefreshLayout -> it.setColorSchemeColors(color)
+                is DefineLoadMoreView -> it.setLoadViewColor(SettingUtil.getOneColorStateList(color))
+                is BottomNavigationViewEx -> {
+                    it.itemIconTintList = SettingUtil.getColorStateList(color)
+                    it.itemTextColor = SettingUtil.getColorStateList(color)
+                }
+                is Toolbar -> it.setBackgroundColor(color)
+                is TextView -> it.setTextColor(color)
+                is LinearLayout -> it.setBackgroundColor(color)
+                is ConstraintLayout -> it.setBackgroundColor(color)
+                is FrameLayout -> it.setBackgroundColor(color)
             }
-            is Toolbar -> it.setBackgroundColor(color)
-            is TextView -> it.setTextColor(color)
-            is LinearLayout -> it.setBackgroundColor(color)
-            is ConstraintLayout -> it.setBackgroundColor(color)
-            is FrameLayout -> it.setBackgroundColor(color)
         }
     }
 }
@@ -314,6 +347,54 @@ fun ViewPager2.init(
     return this
 }
 
+fun ViewPager2.initMain(fragment: Fragment): ViewPager2 {
+    //是否可滑动
+    this.isUserInputEnabled = false
+    this.offscreenPageLimit = 5
+    //设置适配器
+    adapter = object : FragmentStateAdapter(fragment) {
+        override fun createFragment(position: Int): Fragment {
+            when (position) {
+                0 -> {
+                    return HomeFragment()
+                }
+                1 -> {
+                    return ProjectFragment()
+                }
+                2 -> {
+                    return TreeArrFragment()
+                }
+                3 -> {
+                    return PublicNumberFragment()
+                }
+                4 -> {
+                    return MeFragment()
+                }
+                else -> {
+                    return HomeFragment()
+                }
+            }
+        }
+
+        override fun getItemCount() = 5
+    }
+    return this
+}
+
+fun BottomNavigationViewEx.init(navigationItemSelectedAction: (Int) -> Unit): BottomNavigationViewEx {
+    enableAnimation(false)
+    enableShiftingMode(false)
+    enableItemShiftingMode(false)
+    itemIconTintList = SettingUtil.getColorStateList(SettingUtil.getColor(Ktx.app))
+    itemTextColor = SettingUtil.getColorStateList(Ktx.app)
+    setTextSize(12F)
+    setOnNavigationItemSelectedListener {
+        navigationItemSelectedAction.invoke(it.itemId)
+        true
+    }
+    return this
+}
+
 /**
  * 隐藏软键盘
  */
@@ -331,48 +412,40 @@ fun hideSoftKeyboard(activity: Activity?) {
     }
 }
 
-/**
- * 防止重复点击事件 默认0.5秒内不可重复点击 跳转前做登录校验
- * @param interval 时间间隔 默认0.5秒
- * @param action 执行方法
- */
-var lastloginClickTime = 0L
-fun View.clickNoRepeatLogin(interval: Long = 500, action: (view: View) -> Unit) {
-    setOnClickListener {
-        val currentTime = System.currentTimeMillis()
-        if (lastloginClickTime != 0L && (currentTime - lastloginClickTime < interval)) {
-            return@setOnClickListener
+fun <T> loadListData(
+    data: ListDataUiState<T>,
+    baseQuickAdapter: BaseQuickAdapter<T, *>,
+    loadService: LoadService<*>,
+    recyclerView: SwipeRecyclerView,
+    swipeRefreshLayout: SwipeRefreshLayout
+) {
+    swipeRefreshLayout.isRefreshing = false
+    recyclerView.loadMoreFinish(data.isEmpty, data.hasMore)
+    if (data.isSuccess) {
+        //成功
+        when {
+            //第一页并没有数据 显示空布局界面
+            data.isFirstEmpty -> {
+                loadService.showEmpty()
+            }
+            //是第一页
+            data.isRefresh -> {
+                loadService.showSuccess()
+                baseQuickAdapter.setNewInstance(data.listData)
+            }
+            //不是第一页
+            else -> {
+                loadService.showSuccess()
+                baseQuickAdapter.addData(data.listData)
+            }
         }
-        lastloginClickTime = currentTime
-        if (CacheUtil.isLogin()) {
-            action(it)
+    } else {
+        //失败
+        if (data.isRefresh) {
+            //如果是第一页，则显示错误界面，并提示错误信息
+            loadService.showError(data.errMessage)
         } else {
-            //注意一下，这里我是确定我所有的拦截登录都是在MainFragment中的，所以我可以写死，但是如果不在MainFragment中时跳转，你会报错
-            nav(it).navigate(R.id.action_mainFragment_to_loginFragment)
-        }
-    }
-}
-
-/**
- * 防止重复点击事件 默认0.5秒内不可重复点击 跳转前做登录校验
- * @param view 触发的view集合
- * @param interval 时间间隔 默认0.5秒
- * @param action 执行方法
- */
-fun clickNoRepeatLogin(vararg view: View?, interval: Long = 500, action: (view: View) -> Unit) {
-    view.forEach {view1 ->
-        view1?.setOnClickListener { view2 ->
-            val currentTime = System.currentTimeMillis()
-            if (lastloginClickTime != 0L && (currentTime - lastloginClickTime < interval)) {
-                return@setOnClickListener
-            }
-            lastloginClickTime = currentTime
-            if (CacheUtil.isLogin()) {
-                action(view2)
-            } else {
-                //注意一下，这里我是确定我所有的拦截登录都是在MainFragment中的，所以我可以写死，但是如果不在MainFragment中时跳转，你会报错
-                nav(view2).navigate(R.id.action_mainFragment_to_loginFragment)
-            }
+            recyclerView.loadMoreError(0, data.errMessage)
         }
     }
 }

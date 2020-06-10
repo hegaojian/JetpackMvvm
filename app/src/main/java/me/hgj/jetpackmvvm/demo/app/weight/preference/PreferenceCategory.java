@@ -38,7 +38,9 @@ import me.hgj.jetpackmvvm.demo.app.util.SettingUtil;
  * 可以设置标题颜色
  */
 public class PreferenceCategory extends PreferenceGroup {
-     TextView titleView;
+
+    TextView titleView;
+
     public PreferenceCategory(
             Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -89,7 +91,7 @@ public class PreferenceCategory extends PreferenceGroup {
                 // Return if the attribute could not be resolved
                 return;
             }
-             titleView = (TextView) holder.findViewById(android.R.id.title);
+            titleView = (TextView) holder.findViewById(android.R.id.title);
             if (titleView == null) {
                 return;
             }
@@ -105,8 +107,8 @@ public class PreferenceCategory extends PreferenceGroup {
         }
     }
 
-    public void setTitleColor(int color){
-        if(titleView!=null){
+    public void setTitleColor(int color) {
+        if (titleView != null) {
             titleView.setTextColor(color);
         }
     }
@@ -129,7 +131,7 @@ public class PreferenceCategory extends PreferenceGroup {
                     existingItemInfo.getRowSpan(),
                     existingItemInfo.getColumnIndex(),
                     existingItemInfo.getColumnSpan(),
-                    true /* heading */,
+                    true,
                     existingItemInfo.isSelected());
             info.setCollectionItemInfo(newItemInfo);
         }

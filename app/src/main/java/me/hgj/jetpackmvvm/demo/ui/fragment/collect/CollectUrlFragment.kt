@@ -8,17 +8,14 @@ import com.kingja.loadsir.core.LoadService
 import kotlinx.android.synthetic.main.include_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.ui.adapter.CollectUrlAdapter
-import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
 import me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView
-import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.EmptyCallback
-import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.LoadingCallback
-import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.ErrorCallback
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
 import me.hgj.jetpackmvvm.demo.data.model.bean.CollectUrlResponse
 import me.hgj.jetpackmvvm.demo.databinding.IncludeListBinding
+import me.hgj.jetpackmvvm.demo.ui.adapter.CollectUrlAdapter
+import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
 import me.hgj.jetpackmvvm.ext.nav
 
 /**
@@ -35,11 +32,11 @@ class CollectUrlFragment : BaseFragment<RequestCollectViewModel, IncludeListBind
 
     override fun layoutId() = R.layout.include_list
 
-    override fun initView(savedInstanceState: Bundle?)  {
+    override fun initView(savedInstanceState: Bundle?) {
         //状态页配置
-        loadsir = LoadServiceInit(swipeRefresh) {
+        loadsir = loadServiceInit(swipeRefresh) {
             //点击重试时触发的操作
-            loadsir.showCallback(LoadingCallback::class.java)
+            loadsir.showLoading()
             mViewModel.getCollectUrlData()
 
         }
@@ -66,14 +63,16 @@ class CollectUrlFragment : BaseFragment<RequestCollectViewModel, IncludeListBind
                 }
             })
             setNbOnItemClickListener { _, view, position ->
-               nav().navigate(R.id.action_collectFragment_to_webFragment, Bundle().apply {
-                        putParcelable("collectUrl", articleAdapter.data[position])
-                    })
+                nav().navigate(R.id.action_to_webFragment, Bundle().apply {
+                    putParcelable("collectUrl", articleAdapter.data[position])
+                })
             }
         }
     }
 
     override fun lazyLoadData() {
+        //设置界面 加载中
+        loadsir.showLoading()
         mViewModel.getCollectUrlData()
     }
 
@@ -86,7 +85,7 @@ class CollectUrlFragment : BaseFragment<RequestCollectViewModel, IncludeListBind
                 when {
                     //第一页并没有数据 显示空布局界面
                     it.isEmpty -> {
-                        loadsir.showCallback(EmptyCallback::class.java)
+                        loadsir.showEmpty()
                     }
                     else -> {
                         loadsir.showSuccess()
@@ -95,8 +94,7 @@ class CollectUrlFragment : BaseFragment<RequestCollectViewModel, IncludeListBind
                 }
             } else {
                 //失败
-                loadsir.setErrorText(it.errMessage)
-                loadsir.showCallback(ErrorCallback::class.java)
+                loadsir.showError(it.errMessage)
             }
         })
         mViewModel.collectUrlUiState.observe(viewLifecycleOwner, Observer {
@@ -105,7 +103,7 @@ class CollectUrlFragment : BaseFragment<RequestCollectViewModel, IncludeListBind
                     if (articleAdapter.data[index].id == it.id) {
                         articleAdapter.remove(index)
                         if (articleAdapter.data.size == 0) {
-                            loadsir.showCallback(EmptyCallback::class.java)
+                            loadsir.showEmpty()
                         }
                         return@Observer
                     }
@@ -122,13 +120,13 @@ class CollectUrlFragment : BaseFragment<RequestCollectViewModel, IncludeListBind
         })
         eventViewModel.run {
             //监听全局的收藏信息 收藏的Id跟本列表的数据id匹配则 需要删除他 否则则请求最新收藏数据
-            collect.observe(viewLifecycleOwner, Observer {
+            collectEvent.observe(viewLifecycleOwner, Observer {
                 for (index in articleAdapter.data.indices) {
                     if (articleAdapter.data[index].id == it.id) {
                         articleAdapter.data.removeAt(index)
                         articleAdapter.notifyItemChanged(index)
                         if (articleAdapter.data.size == 0) {
-                            loadsir.showCallback(EmptyCallback::class.java)
+                            loadsir.showEmpty()
                         }
                         return@Observer
                     }

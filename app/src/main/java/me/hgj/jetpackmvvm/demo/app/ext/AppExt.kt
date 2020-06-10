@@ -144,9 +144,7 @@ fun NavController.jumpByLogin(action: (NavController) -> Unit) {
     if (CacheUtil.isLogin()) {
         action(this)
     } else {
-        //注意一下，这里我是确定我所有的拦截登录都是在MainFragment中的，所以我可以写死，但是如果不在MainFragment中时跳转，你会报错,
-        //当然你也可以执行下面那个方法 自己写跳转
-        this.navigate(R.id.action_mainFragment_to_loginFragment)
+        this.navigate(R.id.action_to_loginFragment)
     }
 }
 

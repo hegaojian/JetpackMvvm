@@ -2,7 +2,7 @@ package me.hgj.jetpackmvvm.demo.app.event
 
 import android.app.Application
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
-import me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData
+import me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData
 import me.hgj.jetpackmvvm.demo.data.model.bean.CollectBus
 
 /**
@@ -13,14 +13,12 @@ import me.hgj.jetpackmvvm.demo.data.model.bean.CollectBus
 class EventViewModel(app: Application) : BaseViewModel(app) {
 
     //全局收藏，在任意一个地方收藏或取消收藏，监听该值的界面都会收到消息
-    var collect =
-        UnPeekLiveData<CollectBus>()
+    val collectEvent = EventLiveData<CollectBus>()
 
     //分享文章通知
-    var shareArticle =
-        UnPeekLiveData<Boolean>()
+    val shareArticleEvent = EventLiveData<Boolean>()
 
-    //添加toto通知
-    var addTodo = UnPeekLiveData<Boolean>()
+    //添加TODO通知
+    val todoEvent = EventLiveData<Boolean>()
 
 }

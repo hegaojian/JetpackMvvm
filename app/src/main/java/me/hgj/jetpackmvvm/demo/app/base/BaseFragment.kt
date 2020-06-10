@@ -44,16 +44,16 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
     /**
      * 懒加载 只有当前fragment视图显示时才会触发该方法
      */
-    abstract override fun lazyLoadData()
+    override  fun lazyLoadData(){}
 
     /**
-     * 创建LiveData观察者 懒加载之后才会触发
+     * 创建LiveData观察者 Fragment执行onViewCreated后触发
      */
     override fun createObserver() {}
 
 
     /**
-     * Fragment执行onViewCreated后触发的方法
+     * Fragment执行onViewCreated后触发
      */
     override fun initData() {
 

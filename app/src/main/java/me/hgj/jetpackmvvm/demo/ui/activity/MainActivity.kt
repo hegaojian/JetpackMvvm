@@ -52,4 +52,5 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
             ToastUtils.showShort("没有网络")
         }
     }
+
 }

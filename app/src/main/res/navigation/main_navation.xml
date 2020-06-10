@@ -10,22 +10,8 @@
         android:label="HomeFragment">
 
         <action
-            android:id="@+id/action_mainFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
             android:id="@+id/action_mainfragment_to_searchFragment"
             app:destination="@id/searchFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_mainfragment_to_webFragment"
-            app:destination="@id/webFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -40,13 +26,6 @@
         <action
             android:id="@+id/action_mainfragment_to_lookInfoFragment"
             app:destination="@id/lookInfoFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_mainfragment_to_settingFragment"
-            app:destination="@id/settingFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -87,14 +66,22 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_mainfragment_to_demoFragment"
-            app:destination="@id/demoFragment"
+            android:id="@+id/action_mainfragment_to_settingFragment"
+            app:destination="@id/settingFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
-
     </fragment>
+
+    <action
+        android:id="@+id/action_mainfragment_to_demoFragment"
+        app:destination="@id/demoFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment"
@@ -143,21 +130,8 @@
     <fragment
         android:id="@+id/searchResultFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchResultFragment"
-        android:label="SearchResultFragment">
-        <action
-            android:id="@+id/action_searchResultFragment_to_webFragment"
-            app:destination="@id/webFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_searchResultFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+        android:label="SearchResultFragment"
+        app:startDestination="@id/action_searchResultFragment_to_lookInfoFragment">
         <action
             android:id="@+id/action_searchResultFragment_to_lookInfoFragment"
             app:destination="@id/lookInfoFragment"
@@ -169,34 +143,13 @@
     <fragment
         android:id="@+id/webFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.web.WebFragment"
-        android:label="WebFragment">
-        <action
-            android:id="@+id/action_webFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-    </fragment>
+        android:label="WebFragment" />
+
     <fragment
         android:id="@+id/systemArrFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemArrFragment"
         android:label="SystemArrFragment"
         app:destination="@id/loginFragment">
-        <action
-            android:id="@+id/action_systemArrFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_systemArrFragment_to_webFragment"
-            app:destination="@id/webFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_systemArrFragment_to_lookInfoFragment"
             app:destination="@id/lookInfoFragment"
@@ -208,45 +161,11 @@
     <fragment
         android:id="@+id/lookInfoFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.lookinfo.LookInfoFragment"
-        android:label="LookInfoFragment">
-        <action
-            android:id="@+id/action_lookInfoFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_lookInfoFragment_to_webFragment"
-            app:destination="@id/webFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-    </fragment>
-    <fragment
-        android:id="@+id/settingFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.setting.SettingFragment"
-        android:label="SettingFragment">
-        <action
-            android:id="@+id/action_settingFragment_to_webFragment"
-            app:destination="@id/webFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-    </fragment>
+        android:label="LookInfoFragment" />
     <fragment
         android:id="@+id/integralFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralFragment"
         android:label="IntegralFragment">
-        <action
-            android:id="@+id/action_integralFragment_to_webFragment"
-            app:destination="@id/webFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_integralFragment_to_integralHistoryFragment"
             app:destination="@id/integralHistoryFragment"
@@ -259,18 +178,12 @@
         android:id="@+id/integralHistoryFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralHistoryFragment"
         android:label="IntegralHistoryFragment" />
+
     <fragment
         android:id="@+id/collectFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectFragment"
-        android:label="CollectFragment">
-        <action
-            android:id="@+id/action_collectFragment_to_webFragment"
-            app:destination="@id/webFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-    </fragment>
+        android:label="CollectFragment" />
+
     <fragment
         android:id="@+id/addAriticleFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.share.AddAriticleFragment"
@@ -282,13 +195,6 @@
         <action
             android:id="@+id/action_ariticleFragment_to_addAriticleFragment"
             app:destination="@id/addAriticleFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_ariticleFragment_to_webFragment"
-            app:destination="@id/webFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -315,5 +221,24 @@
         android:id="@+id/demoFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.demo.DemoFragment"
         android:label="DemoFragment" />
+
+    <action
+        android:id="@+id/action_to_webFragment"
+        app:destination="@id/webFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <action
+        android:id="@+id/action_to_loginFragment"
+        app:destination="@id/loginFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.setting.SettingFragment"
+        android:label="SettingFragment" />
 
 </navigation>

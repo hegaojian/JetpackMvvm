@@ -8,7 +8,6 @@ import kotlinx.android.synthetic.main.include_viewpager.*
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
-import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.LoadingCallback
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.ErrorCallback
 import me.hgj.jetpackmvvm.demo.data.model.bean.ClassifyResponse
 import me.hgj.jetpackmvvm.demo.databinding.FragmentViewpagerBinding
@@ -35,9 +34,9 @@ class PublicNumberFragment : BaseFragment<RequestPublicNumberViewModel, Fragment
 
     override fun initView(savedInstanceState: Bundle?)  {
         //状态页配置
-        loadsir = LoadServiceInit(view_pager) {
+        loadsir = loadServiceInit(view_pager) {
             //点击重试时触发的操作
-            loadsir.showCallback(LoadingCallback::class.java)
+            loadsir.showLoading()
             mViewModel.getPublicTitleData()
         }
         //初始化viewpager2
@@ -52,6 +51,8 @@ class PublicNumberFragment : BaseFragment<RequestPublicNumberViewModel, Fragment
      * 懒加载
      */
     override fun lazyLoadData() {
+        //设置界面 加载中
+        loadsir.showLoading()
         //请求标题数据
         mViewModel.getPublicTitleData()
     }

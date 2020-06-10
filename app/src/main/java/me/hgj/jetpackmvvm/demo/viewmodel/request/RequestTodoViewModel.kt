@@ -99,8 +99,10 @@ class RequestTodoViewModel(application: Application) : BaseViewModel(application
             val uistate = UpdateUiState(isSuccess = true, data = 0)
             updateDataState.postValue(uistate)
         }, {
-            val uistate = UpdateUiState(isSuccess = false, data = 0, errorMsg = it.errorMsg)
+            val uistate = UpdateUiState<Int>(isSuccess = false, errorMsg = it.errorMsg)
             updateDataState.postValue(uistate)
+
         }, isShowDialog = true)
     }
 }
+

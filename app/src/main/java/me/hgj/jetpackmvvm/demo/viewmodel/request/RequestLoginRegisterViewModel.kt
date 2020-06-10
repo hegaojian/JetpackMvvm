@@ -29,7 +29,6 @@ class RequestLoginRegisterViewModel(application: Application) : BaseViewModel(ap
             true,//是否显示等待框，，默认false不显示 可以默认不传
             "正在登录中..."//等待框内容，可以默认不填请求网络中...
         )
-
         //2.这种是在Activity/Fragment中的监听拿到未脱壳的数据，你可以自己根据code做业务需求操作（项目没有基类的可以用）
         /*requestNoCheck({HttpRequestManger.instance.login(username,password)},loginResult2,true)*/
 
