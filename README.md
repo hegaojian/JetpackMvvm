@@ -20,7 +20,7 @@
  
 #### APK下载：
 
-- [Github下载](https://github.com/hegaojian/JetpackMvvm/releases/download/1.1.0/app-release.apk)
+- [Github下载](https://github.com/hegaojian/JetpackMvvm/releases/download/1.1.1/app-release.apk)
 
 - [firm下载(推荐)](http://d.6short.com/v9q7)
 
@@ -47,7 +47,7 @@ allprojects {
 ```
 dependencies {
   ...
-  implementation 'me.hegj:JetpackMvvm:1.1.0'
+  implementation 'me.hegj:JetpackMvvm:1.1.1'
 }
 ```
 
@@ -63,7 +63,9 @@ android {
 ```
 
 ## 2.继承基类
-一般我们项目中都会有一套自己定义的符合业务需求的基类 ***BaseActivity/BaseFragment***，所以我们的基类需要**继承本框架的Base类BaseVmDbActivity/BaseVmDbFragment**
+一般我们项目中都会有一套自己定义的符合业务需求的基类 ***BaseActivity/BaseFragment***，所以我们的基类需要**继承本框架的Base类
+不想用Databinding可以继承 BaseVmActivity/BaseVmFragment
+用Databinding的可以继承BaseVmDbActivity/BaseVmDbFragment**
 
 **Activity：**
 
@@ -296,8 +298,7 @@ class RequestLoginViewModel(application: Application) : BaseViewModel(applicatio
 
 class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
     
-    /** 注意，在by lazy中使用getViewModel一定要使用泛型，虽然他提示不报错，但是你不写是不行的 */
-    private val requestLoginRegisterViewModel: RequestLoginRegisterViewModel by lazy { getViewModel<RequestLoginRegisterViewModel>() }
+    private val requestLoginRegisterViewModel: RequestLoginRegisterViewModel by viewModels()
     
     /**
      *  当前fragment绑定的布局
