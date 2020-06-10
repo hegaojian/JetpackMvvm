@@ -4,7 +4,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
+import me.hgj.jetpackmvvm.navigation.NavHostFragment
 
 /**
  * 作者　: hegaojian

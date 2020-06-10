@@ -16,6 +16,11 @@ import me.hgj.jetpackmvvm.network.manager.NetworkStateManager
  */
 abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
 
+    /**
+     * 是否需要使用Databinding 供子类BaseVmDbActivity修改，用户请慎动
+     */
+    private var isUserDb = false
+
     lateinit var mViewModel: VM
 
     abstract fun layoutId(): Int
@@ -28,7 +33,15 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutId())
+        if (!isUserDb) {
+            setContentView(layoutId())
+        } else {
+            initDataBind()
+        }
+        init(savedInstanceState)
+    }
+
+    private fun init(savedInstanceState: Bundle?) {
         mViewModel = createViewModel()
         registerUiChange()
         initView(savedInstanceState)
@@ -75,4 +88,13 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
             dismissLoading()
         })
     }
+
+    fun userDataBinding(isUserDb: Boolean) {
+        this.isUserDb = isUserDb
+    }
+
+    /**
+     * 供子类BaseVmDbActivity 初始化Databinding操作
+     */
+    open fun initDataBind() { }
 }

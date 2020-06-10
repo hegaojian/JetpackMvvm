@@ -12,7 +12,12 @@ import androidx.lifecycle.Observer
  * 可避免共享作用域 VM 下 liveData 被 observe 时旧数据倒灌的情况
  * 这里是做了处理，保证数据不为空，取值的时候就不需要使用非空判断了，请根据实际情况用保证值不为空才使用它
  */
-class UnPeekNotNullLiveData<T> : MutableLiveData<T>() {
+open class UnPeekNotNullLiveData<T> : MutableLiveData<T> {
+
+    constructor() : super()
+
+    constructor(value: T) : super(value)
+
     override fun observe(
         owner: LifecycleOwner,
         observer: Observer<in T>

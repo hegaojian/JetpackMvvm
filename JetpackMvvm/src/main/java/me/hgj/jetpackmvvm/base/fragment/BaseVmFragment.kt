@@ -42,6 +42,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = createViewModel()
         initView(savedInstanceState)
+        createObserver()
         onVisible()
         registorDefUIChange()
         initData()
@@ -91,7 +92,6 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
         if (lifecycle.currentState == Lifecycle.State.STARTED && isFirst) {
             lazyLoadData()
             isFirst = false
-            createObserver()
         }
     }
 

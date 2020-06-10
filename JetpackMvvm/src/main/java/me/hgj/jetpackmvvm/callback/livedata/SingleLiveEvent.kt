@@ -13,7 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package me.hgj.jetpackmvvm.state
+package me.hgj.jetpackmvvm.callback.livedata
 
 import android.util.Log
 

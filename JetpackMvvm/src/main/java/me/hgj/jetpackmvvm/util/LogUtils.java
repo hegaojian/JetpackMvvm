@@ -3,6 +3,8 @@ package me.hgj.jetpackmvvm.util;
 import android.text.TextUtils;
 import android.util.Log;
 
+import me.hgj.jetpackmvvm.BuildConfig;
+
 /**
  * 作者　: hegaojian
  * 时间　: 2020/3/26
@@ -10,7 +12,8 @@ import android.util.Log;
  */
 public class LogUtils {
     private static final String DEFAULT_TAG = "JetpackMvvm";
-    private static boolean isLog = true;
+
+    private static boolean isLog = BuildConfig.DEBUG;
 
     private LogUtils() {
         throw new IllegalStateException("you can't instantiate me!");

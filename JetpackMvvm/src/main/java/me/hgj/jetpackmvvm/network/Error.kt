@@ -6,6 +6,7 @@ package me.hgj.jetpackmvvm.network
  * 描述　: 错误枚举类
  */
 enum class Error(private val code: Int, private val err: String) {
+
     /**
      * 未知错误
      */

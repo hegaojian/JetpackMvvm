@@ -9,7 +9,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 10
-        versionName "1.1.0"
+        versionName "1.1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -22,6 +22,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -29,18 +36,18 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     //kotlin
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.core:core-ktx:1.3.0'
     //lifecycle
     api 'androidx.lifecycle:lifecycle-runtime:2.2.0'
     api 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
     api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     // viewModel
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    api "androidx.fragment:fragment-ktx:1.2.4"
     // liveData
     api "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     //navigation
-    api "androidx.navigation:navigation-fragment-ktx:2.3.0-alpha06"
-    api "androidx.navigation:navigation-ui-ktx:2.3.0-alpha06"
+    api 'androidx.navigation:navigation-runtime:2.2.2'
     //retrofit
     api "com.squareup.retrofit2:retrofit:2.6.2"
     api "com.squareup.retrofit2:converter-gson:2.6.2"
@@ -53,7 +60,7 @@ publish {
     repoName = 'cxk'//仓库名字 这个可以随便起,比如我觉得我比较菜，所以我取了个蔡徐坤
     groupId = 'me.hegj'//路径 名等于“me.hegj.JetpackMvvm:1.0.0”中的   me.hegj，你也可以写com.xxx
     artifactId = 'JetpackMvvm'//项目名 等于“me.hegj.JetpackMvvm:1.0.0”中的  JetpackMvvm
-    publishVersion = '1.1.0'//版本号 等于“me.hegj.JetpackMvvm:1.0.0”中的 1.0.0
+    publishVersion = '1.1.1'//版本号 等于“me.hegj.JetpackMvvm:1.0.0”中的 1.0.0
     desc = 'An Android Jetpack-MVVM framework,JetpackMvvm is nb'//说明，不重要的东西，随便写
     website = 'https://github.com/hegaojian/JetpackMvvm'//项目主页，用GitHub地址
     licences = ['Apache-2.0']//协议

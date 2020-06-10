@@ -51,6 +51,7 @@ fun <T> BaseVmDbActivity<*, *>.parseState(
         }
     }
 }
+
 /**
  * 显示页面状态，这里有个技巧，成功回调在第一个，其后两个带默认值的回调可省
  * @param resultState 接口返回值
@@ -112,37 +113,8 @@ fun <T> BaseVmFragment<*>.parseState(
 }
 
 /**
- * 显示页面状态，这里有个技巧，成功回调在第一个，其后两个带默认值的回调可省
- * @param resultState 接口返回值
- * @param onLoading 加载中
- * @param onSuccess 成功回调
- * @param onError 失败回调
- *
- */
-fun <T> BaseVmDbFragment<*, *>.parseState(
-    resultState: ResultState<T>,
-    onSuccess: (T) -> Unit,
-    onError: ((AppException) -> Unit)? = null,
-    onLoading: (() -> Unit)? = null
-) {
-    when (resultState) {
-        is ResultState.Loading -> {
-            showLoading(resultState.loadingMessage)
-            onLoading?.run { this }
-        }
-        is ResultState.Success -> {
-            dismissLoading()
-            onSuccess(resultState.data)
-        }
-        is ResultState.Error -> {
-            dismissLoading()
-            onError?.run { this(resultState.error) }
-        }
-    }
-}
-/**
  * net request 不校验请求结果数据是否是成功
- * @param block 请求体方法0
+ * @param block 请求体方法
  * @param resultState 请求回调的ResultState数据
  * @param isShowDialog 是否显示加载框
  * @param loadingMessage 加载框提示内容
@@ -151,9 +123,9 @@ fun <T> BaseViewModel.request(
     block: suspend () -> BaseResponse<T>,
     resultState: MutableLiveData<ResultState<T>>,
     isShowDialog: Boolean = false,
-    loadingMessage: String="请求网络中..."
-) {
-    viewModelScope.launch {
+    loadingMessage: String = "请求网络中..."
+): Job {
+    return viewModelScope.launch {
         runCatching {
             if (isShowDialog) resultState.value = ResultState.onAppLoading(loadingMessage)
             withContext(Dispatchers.IO) { block() }
@@ -177,9 +149,9 @@ fun <T> BaseViewModel.requestNoCheck(
     block: suspend () -> T,
     resultState: MutableLiveData<ResultState<T>>,
     isShowDialog: Boolean = false,
-    loadingMessage: String="请求网络中..."
-) {
-    viewModelScope.launch {
+    loadingMessage: String = "请求网络中..."
+): Job {
+    return viewModelScope.launch {
         runCatching {
             if (isShowDialog) resultState.value = ResultState.onAppLoading(loadingMessage)
             withContext(Dispatchers.IO) { block() }
@@ -206,20 +178,20 @@ fun <T> BaseViewModel.request(
     error: (AppException) -> Unit = {},
     isShowDialog: Boolean = false,
     loadingMessage: String = "请求网络中..."
-) {
+): Job {
     //如果需要弹窗 通知Activity/fragment弹窗
     if (isShowDialog) loadingChange.showDialog.postValue(loadingMessage)
-    viewModelScope.launch {
+    return viewModelScope.launch {
         runCatching {
             //请求代码块调度在Io线程中
             withContext(Dispatchers.IO) { block() }
         }.onSuccess {
             //网络请求成功 关闭弹窗
             loadingChange.dismissDialog.call()
-            try {
-                //因为要判断请求的数据结果是否成功，失败会抛出自定义异常，所以在这里try一下
-                executeResponse(it) { tIt -> success(tIt) }
-            }catch (e:Exception){
+            runCatching {
+                //校验请求结果码是否正确，不正确会抛出异常走下面的onFailure
+                executeResponse(it) { t -> success(t) }
+            }.onFailure { e ->
                 //打印错误消息
                 e.message?.loge("JetpackMvvm")
                 //失败回调
@@ -250,10 +222,10 @@ fun <T> BaseViewModel.requestNoCheck(
     error: (AppException) -> Unit = {},
     isShowDialog: Boolean = false,
     loadingMessage: String = "请求网络中..."
-) {
+): Job {
     //如果需要弹窗 通知Activity/fragment弹窗
     if (isShowDialog) loadingChange.showDialog.postValue(loadingMessage)
-    viewModelScope.launch {
+    return viewModelScope.launch {
         runCatching {
             //请求时调度在Io线程中
             withContext(Dispatchers.IO) { block() }
@@ -276,9 +248,16 @@ fun <T> BaseViewModel.requestNoCheck(
 /**
  * 请求结果过滤，判断请求服务器请求结果是否成功，不成功则会抛出异常
  */
-suspend fun <T> BaseViewModel.executeResponse(response: BaseResponse<T>, success: suspend CoroutineScope.(T) -> Unit) {
+suspend fun <T> executeResponse(
+    response: BaseResponse<T>,
+    success: suspend CoroutineScope.(T) -> Unit
+) {
     coroutineScope {
         if (response.isSucces()) success(response.getResponseData())
-        else throw AppException(response.getResponseCode(), response.getResponseMsg(), response.getResponseMsg())
+        else throw AppException(
+            response.getResponseCode(),
+            response.getResponseMsg(),
+            response.getResponseMsg()
+        )
     }
 }

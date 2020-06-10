@@ -12,8 +12,7 @@ import me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData
  */
 object KtxAppLifeObserver : LifecycleObserver {
 
-    var isForeground =
-        UnPeekNotNullLiveData<Boolean>()
+    var isForeground = UnPeekNotNullLiveData<Boolean>()
 
     //在前台
     @OnLifecycleEvent(Lifecycle.Event.ON_START)

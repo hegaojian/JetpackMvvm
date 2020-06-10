@@ -2,7 +2,7 @@ package me.hgj.jetpackmvvm.base.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import me.hgj.jetpackmvvm.state.SingleLiveEvent
+import me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent
 
 /**
  * 作者　: hegaojian

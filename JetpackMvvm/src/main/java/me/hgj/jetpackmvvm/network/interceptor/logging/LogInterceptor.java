@@ -1,18 +1,3 @@
-/*
- * Copyright 2017 JessYan
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package me.hgj.jetpackmvvm.network.interceptor.logging;
 
 import android.util.Log;
@@ -181,7 +166,12 @@ public class LogInterceptor implements Interceptor {
 
         if (logResponse) {
             final List<String> segmentList = request.url().encodedPathSegments();
-            final String header = originalResponse.headers().toString();
+            final String header;
+            if (originalResponse.networkResponse() == null) {
+                header = originalResponse.headers().toString();
+            } else {
+                header = originalResponse.networkResponse().request().headers().toString();
+            }
             final int code = originalResponse.code();
             final boolean isSuccessful = originalResponse.isSuccessful();
             final String message = originalResponse.message();
