@@ -152,6 +152,7 @@ class SettingFragment : PreferenceFragmentCompat(),
                         findPreference<PreferenceCategory>("other")?.setTitleColor(color)
                         findPreference<PreferenceCategory>("about")?.setTitleColor(color)
                         findPreference<CheckBoxPreference>("top")?.setBottonColor()
+                        toolbarView?.setBackgroundColor(color)
                         //通知其他界面立马修改配置
                         shareViewModel.appColor.postValue(color)
                     }

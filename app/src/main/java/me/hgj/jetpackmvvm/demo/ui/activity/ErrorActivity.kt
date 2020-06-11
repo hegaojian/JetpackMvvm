@@ -41,8 +41,6 @@ class ErrorActivity : BaseActivity<BaseViewModel, ActivityErrorBinding>() {
             }
         }
         errorSendError.clickNoRepeat {
-            /** */
-            /* */
             CustomActivityOnCrash.getStackTraceFromIntent(intent)?.let {
                 showMessage(it,"发现有Bug不去打作者脸？","必须打",{
                     val mClipData = ClipData.newPlainText("errorLog",it)
