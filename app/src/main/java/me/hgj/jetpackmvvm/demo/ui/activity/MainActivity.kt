@@ -37,10 +37,6 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         })
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return Navigation.findNavController(this, R.id.main_navation).navigateUp()
-    }
-
     /**
      * 示例，在Activity/Fragment中如果想监听网络变化，可重写onNetworkStateChanged该方法
      */
@@ -50,6 +46,23 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
             ToastUtils.showShort("有网络")
         } else {
             ToastUtils.showShort("没有网络")
+        }
+    }
+
+    var exitTime = 0L
+    override fun onBackPressed() {
+        val nav = Navigation.findNavController(this, R.id.host_fragment)
+        if (nav.currentDestination != null && nav.currentDestination!!.id != R.id.mainfragment) {
+            //如果当前界面不是主页，那么直接调用返回即可
+            nav.navigateUp()
+        }else{
+            //是主页
+            if (System.currentTimeMillis() - exitTime > 2000) {
+                ToastUtils.showShort("再按一次退出程序")
+                exitTime = System.currentTimeMillis()
+            } else {
+                super.onBackPressed()
+            }
         }
     }
 

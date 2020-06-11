@@ -48,9 +48,6 @@ class SystemAdapter(data: ArrayList<SystemResponse>) :
         }
     }
 
-    interface SystemClickInterFace {
-        fun onSystemClickListener(item: SystemResponse, position: Int, view: View)
-    }
 
     fun setChildClick(method: (data: SystemResponse, view: View, position: Int) -> Unit) {
         this.method = method

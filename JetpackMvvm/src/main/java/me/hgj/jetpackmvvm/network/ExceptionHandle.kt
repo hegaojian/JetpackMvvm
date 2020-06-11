@@ -20,7 +20,7 @@ object ExceptionHandle {
         e?.let {
             when (it) {
                 is HttpException -> {
-                    ex = AppException(Error.NETWORD_ERROR,e)
+                    ex = AppException(Error.NETWORK_ERROR,e)
                     return ex
                 }
                 is JsonParseException, is JSONException, is ParseException, is MalformedJsonException -> {
@@ -28,7 +28,7 @@ object ExceptionHandle {
                     return ex
                 }
                 is ConnectException -> {
-                    ex = AppException(Error.NETWORD_ERROR,e)
+                    ex = AppException(Error.NETWORK_ERROR,e)
                     return ex
                 }
                 is javax.net.ssl.SSLException -> {

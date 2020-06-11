@@ -430,13 +430,13 @@ fun <T> loadListData(
             }
             //是第一页
             data.isRefresh -> {
-                loadService.showSuccess()
                 baseQuickAdapter.setNewInstance(data.listData)
+                loadService.showSuccess()
             }
             //不是第一页
             else -> {
-                loadService.showSuccess()
                 baseQuickAdapter.addData(data.listData)
+                loadService.showSuccess()
             }
         }
     } else {

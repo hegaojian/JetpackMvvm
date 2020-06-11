@@ -12,16 +12,12 @@ import com.zhpan.bannerview.BannerViewPager
 import kotlinx.android.synthetic.main.include_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
 import kotlinx.android.synthetic.main.include_toolbar.*
-import me.hgj.jetpackmvvm.callback.livedata.event.Event
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
-import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.app.weight.banner.HomeBannerViewHolder
-import me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
-import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.BannerResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.CollectBus
 import me.hgj.jetpackmvvm.demo.databinding.FragmentHomeBinding
@@ -93,32 +89,32 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
             requestHomeViewModel.getHomeData(true)
         }
         articleAdapter.run {
-            setOnCollectViewClickListener(object :
-                AriticleAdapter.OnCollectViewClickListener {
-                override fun onClick(item: AriticleResponse, v: CollectView, position: Int) {
-                    if (CacheUtil.isLogin()) {
-                        if (v.isChecked) {
-                            requestCollectViewModel.uncollect(item.id)
-                        } else {
-                            requestCollectViewModel.collect(item.id)
-                        }
-                    } else {
-                        v.isChecked = true
-                        nav().navigate(R.id.action_to_loginFragment)
-                    }
+            setCollectClick { item, v, _ ->
+                if (v.isChecked) {
+                    requestCollectViewModel.uncollect(item.id)
+                } else {
+                    requestCollectViewModel.collect(item.id)
                 }
-            })
+            }
             setNbOnItemClickListener { adapter, view, position ->
                 nav().navigate(R.id.action_to_webFragment, Bundle().apply {
-                    putParcelable("ariticleData",articleAdapter.data[position - recyclerView.headerCount])
+                    putParcelable(
+                        "ariticleData",
+                        articleAdapter.data[position - recyclerView.headerCount]
+                    )
                 })
             }
             addChildClickViewIds(R.id.item_home_author, R.id.item_project_author)
             setNbOnItemChildClickListener { adapter, view, position ->
                 when (view.id) {
                     R.id.item_home_author, R.id.item_project_author -> {
-                        nav().navigate(R.id.action_mainfragment_to_lookInfoFragment,Bundle().apply {
-                                putInt("id",articleAdapter.data[position - recyclerView.headerCount].userId)
+                        nav().navigate(
+                            R.id.action_mainfragment_to_lookInfoFragment,
+                            Bundle().apply {
+                                putInt(
+                                    "id",
+                                    articleAdapter.data[position - recyclerView.headerCount].userId
+                                )
                             })
                     }
                 }
@@ -143,15 +139,20 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
             //监听首页文章列表请求的数据变化
             homeDataState.observe(viewLifecycleOwner, Observer {
                 //设值 新写了个拓展函数，搞死了这个恶心的重复代码
-                loadListData(it, articleAdapter, loadsir, recyclerView,swipeRefresh)
+                loadListData(it, articleAdapter, loadsir, recyclerView, swipeRefresh)
             })
             //监听轮播图请求的数据变化
             bannerData.observe(viewLifecycleOwner, Observer { resultState ->
                 parseState(resultState, { data ->
                     //请求轮播图数据成功，添加轮播图到headview ，如果等于0说明没有添加过头部，添加一个
                     if (recyclerView.headerCount == 0) {
-                        val headview = LayoutInflater.from(context).inflate(R.layout.include_banner, null).apply {
-                                    val bannerview =findViewById<BannerViewPager<BannerResponse, HomeBannerViewHolder>>(R.id.banner_view)
+                        val headview =
+                            LayoutInflater.from(context).inflate(R.layout.include_banner, null)
+                                .apply {
+                                    val bannerview =
+                                        findViewById<BannerViewPager<BannerResponse, HomeBannerViewHolder>>(
+                                            R.id.banner_view
+                                        )
                                     bannerview.setHolderCreator {
                                         HomeBannerViewHolder()
                                     }.setOnPageClickListener {

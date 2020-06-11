@@ -1,6 +1,7 @@
 package me.hgj.jetpackmvvm.demo.ui.fragment.setting
 
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +19,6 @@ import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.blankj.utilcode.util.AppUtils
 import com.tencent.bugly.beta.Beta
-import kotlinx.android.synthetic.main.include_toolbar.*
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.event.AppViewModel
 import me.hgj.jetpackmvvm.demo.app.ext.initClose
@@ -68,7 +68,6 @@ class SettingFragment : PreferenceFragmentCompat(),
                 }
             }
         }
-
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {

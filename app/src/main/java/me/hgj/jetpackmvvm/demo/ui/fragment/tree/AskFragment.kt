@@ -13,11 +13,8 @@ import me.hgj.jetpackmvvm.callback.livedata.event.Event
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
-import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
-import me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
-import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.CollectBus
 import me.hgj.jetpackmvvm.demo.databinding.IncludeListBinding
 import me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter
@@ -76,21 +73,14 @@ class AskFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
             requestTreeViewModel.getAskData(true)
         }
         articleAdapter.run {
-            setOnCollectViewClickListener(object :
-                AriticleAdapter.OnCollectViewClickListener {
-                override fun onClick(item: AriticleResponse, v: CollectView, position: Int) {
-                    if (CacheUtil.isLogin()) {
-                        if (v.isChecked) {
-                            requestCollectViewModel.uncollect(item.id)
-                        } else {
-                            requestCollectViewModel.collect(item.id)
-                        }
-                    } else {
-                        v.isChecked = true
-                        nav().navigate(R.id.action_to_loginFragment)
-                    }
+            setCollectClick { item, v, _ ->
+                if (v.isChecked) {
+                    requestCollectViewModel.uncollect(item.id)
+                } else {
+                    requestCollectViewModel.collect(item.id)
                 }
-            })
+
+            }
             setNbOnItemClickListener { _, view, position ->
                 nav().navigate(R.id.action_to_webFragment, Bundle().apply {
                     putParcelable("ariticleData", articleAdapter.data[position])
@@ -123,7 +113,7 @@ class AskFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
     override fun createObserver() {
         requestTreeViewModel.askDataState.observe(viewLifecycleOwner, Observer {
             //设值 新写了个拓展函数，搞死了这个恶心的重复代码
-            loadListData(it, articleAdapter, loadsir, recyclerView,swipeRefresh)
+            loadListData(it, articleAdapter, loadsir, recyclerView, swipeRefresh)
         })
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {

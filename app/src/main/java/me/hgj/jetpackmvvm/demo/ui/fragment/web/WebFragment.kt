@@ -9,10 +9,10 @@ import android.view.MenuItem
 import android.view.Window
 import android.widget.LinearLayout
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.blankj.utilcode.util.VibrateUtils
 import com.just.agentweb.AgentWeb
 import kotlinx.android.synthetic.main.fragment_web.*
 import kotlinx.android.synthetic.main.include_toolbar.*
@@ -86,7 +86,7 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
         }
         toolbar.run {
             //设置menu 关键代码
-            (activity as? AppCompatActivity)?.setSupportActionBar(this)
+            mActivity.setSupportActionBar(this)
             initClose(mViewModel.showTitle) {
                 hideSoftKeyboard(activity)
                 nav().navigateUp()
@@ -122,7 +122,7 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 mViewModel.collect = it.collect
-                eventViewModel.collectEvent.postValue(Event( CollectBus(it.id, it.collect)))
+                eventViewModel.collectEvent.postValue(Event(CollectBus(it.id, it.collect)))
                 //刷新一下menu
                 activity?.window?.invalidatePanelMenu(Window.FEATURE_OPTIONS_PANEL)
                 activity?.invalidateOptionsMenu()
@@ -180,7 +180,8 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
                 mAgentWeb?.urlLoader?.reload()
             }
             R.id.web_collect -> {
-                //点击收藏
+                //点击收藏 震动一下
+                VibrateUtils.vibrate(40)
                 //是否已经登录了，没登录需要跳转到登录页去
                 if (CacheUtil.isLogin()) {
                     //是否已经收藏了
@@ -226,7 +227,7 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
 
     override fun onDestroy() {
         mAgentWeb?.webLifeCycle?.onDestroy()
-        (activity as? AppCompatActivity)?.setSupportActionBar(null)
+        mActivity.setSupportActionBar(null)
         super.onDestroy()
     }
 

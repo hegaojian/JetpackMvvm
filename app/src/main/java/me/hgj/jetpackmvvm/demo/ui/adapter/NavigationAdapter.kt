@@ -18,7 +18,9 @@ import me.hgj.jetpackmvvm.ext.util.toHtml
 class NavigationAdapter(data: ArrayList<NavigationResponse>) :
     BaseQuickAdapter<NavigationResponse, BaseViewHolder>(R.layout.item_system, data) {
 
-    private lateinit var navigationClickInterFace: NavigationClickInterFace
+    private var navigationAction: (item: AriticleResponse, view: View) -> Unit =
+        { _: AriticleResponse, _: View -> }
+
 
     init {
         setAdapterAnimion(SettingUtil.getListMode())
@@ -27,7 +29,7 @@ class NavigationAdapter(data: ArrayList<NavigationResponse>) :
     override fun convert(holder: BaseViewHolder, item: NavigationResponse) {
         holder.setText(R.id.item_system_title, item.name.toHtml())
         holder.getView<RecyclerView>(R.id.item_system_rv).run {
-            val foxayoutManager: FlexboxLayoutManager by lazy {
+            val foxLayoutManager: FlexboxLayoutManager by lazy {
                 FlexboxLayoutManager(context).apply {
                     //方向 主轴为水平方向，起点在左端
                     flexDirection = FlexDirection.ROW
@@ -35,23 +37,18 @@ class NavigationAdapter(data: ArrayList<NavigationResponse>) :
                     justifyContent = JustifyContent.FLEX_START
                 }
             }
-            layoutManager = foxayoutManager
+            layoutManager = foxLayoutManager
             setHasFixedSize(true)
+            isNestedScrollingEnabled = false
             adapter = NavigationChildAdapter(item.articles).apply {
-                setNbOnItemClickListener { adapter, view, position ->
-                    navigationClickInterFace.onNavigationClickListener(
-                        item.articles[position], view
-                    )
+                setNbOnItemClickListener { _, view, position ->
+                    navigationAction.invoke(item.articles[position], view)
                 }
             }
         }
     }
 
-    interface NavigationClickInterFace {
-        fun onNavigationClickListener(item: AriticleResponse, view: View)
-    }
-
-    fun setNavigationClickInterFace(face: NavigationClickInterFace) {
-        navigationClickInterFace = face
+    fun setNavigationAction(inputNavigationAction: (item: AriticleResponse, view: View) -> Unit) {
+        this.navigationAction = inputNavigationAction
     }
 }

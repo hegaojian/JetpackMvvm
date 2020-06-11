@@ -56,16 +56,13 @@ class CollectAriticleFragment : BaseFragment<RequestCollectViewModel, IncludeLis
             mViewModel.getCollectAriticleData(true)
         }
         articleAdapter.run {
-            setOnCollectViewClickListener(object :
-                CollectAdapter.OnCollectViewClickListener {
-                override fun onClick(item: CollectResponse, v: CollectView, position: Int) {
-                    if (v.isChecked) {
-                        mViewModel.uncollect(item.originId)
-                    } else {
-                        mViewModel.collect(item.originId)
-                    }
+            setCollectClick { item, v, position ->
+                if (v.isChecked) {
+                    mViewModel.uncollect(item.originId)
+                } else {
+                    mViewModel.collect(item.originId)
                 }
-            })
+            }
             setNbOnItemClickListener { _, view, position ->
                 nav().navigate(R.id.action_to_webFragment, Bundle().apply {
                         putParcelable("collect", articleAdapter.data[position])

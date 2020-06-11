@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -32,7 +31,6 @@ import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.parseState
 import me.hgj.jetpackmvvm.ext.util.toJson
 
-
 /**
  * 作者　: hegaojian
  * 时间　: 2020/2/29
@@ -41,25 +39,17 @@ import me.hgj.jetpackmvvm.ext.util.toJson
 
 class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
 
-    private val historyAdapter: SearcHistoryAdapter = SearcHistoryAdapter(arrayListOf())
+    private val historyAdapter: SearcHistoryAdapter by lazy { SearcHistoryAdapter(arrayListOf()) }
 
-    private val hotAdapter: SearcHotAdapter = SearcHotAdapter(arrayListOf())
+    private val hotAdapter: SearcHotAdapter by lazy { SearcHotAdapter(arrayListOf()) }
 
     private val requestSearchViewModel: RequestSearchViewModel by viewModels()
 
     override fun layoutId() = R.layout.fragment_search
 
     override fun initView(savedInstanceState: Bundle?) {
-        setHasOptionsMenu(true)
-        toolbar.run {
-            //设置menu 关键代码
-            (activity as? AppCompatActivity)?.setSupportActionBar(this)
-            initClose {
-                nav().navigateUp()
-            }
-        }
+        setMenu()
         shareViewModel.appColor.value.let { setUiTheme(it, search_text1, search_text2) }
-
         //初始化搜搜历史Recyclerview
         search_historyRv.init(LinearLayoutManager(context), historyAdapter, false)
         //初始化热门Recyclerview
@@ -216,12 +206,27 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        (activity as? AppCompatActivity)?.setSupportActionBar(null)
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        //当该Fragment重新获得视图时，重新设置Menu，防止退出WebFragment ActionBar被清空后，导致该界面的ActionBar无法显示bug
+        if (!hidden) {
+            setMenu()
+        }
     }
 
-    override fun onResume() {
-        super.onResume()
+    private fun setMenu() {
+        setHasOptionsMenu(true)
+        toolbar.run {
+            //设置menu 关键代码
+            mActivity.setSupportActionBar(this)
+            initClose {
+                nav().navigateUp()
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mActivity.setSupportActionBar(null)
     }
 }

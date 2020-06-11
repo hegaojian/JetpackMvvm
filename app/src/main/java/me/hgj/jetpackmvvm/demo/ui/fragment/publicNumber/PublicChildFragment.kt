@@ -14,10 +14,8 @@ import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
 import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
-import me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
-import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.CollectBus
 import me.hgj.jetpackmvvm.demo.databinding.IncludeListBinding
 import me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter
@@ -81,21 +79,13 @@ class PublicChildFragment : BaseFragment<PublicNumberViewModel, IncludeListBindi
         }
 
         articleAdapter.run {
-            setOnCollectViewClickListener(object :
-                AriticleAdapter.OnCollectViewClickListener {
-                override fun onClick(item: AriticleResponse, v: CollectView, position: Int) {
-                    if (CacheUtil.isLogin()) {
-                        if (v.isChecked) {
-                            requestCollectViewModel.uncollect(item.id)
-                        } else {
-                            requestCollectViewModel.collect(item.id)
-                        }
-                    } else {
-                        v.isChecked = true
-                        nav().navigate(R.id.action_to_loginFragment)
-                    }
+            setCollectClick { item, v, position ->
+                if (v.isChecked) {
+                    requestCollectViewModel.uncollect(item.id)
+                } else {
+                    requestCollectViewModel.collect(item.id)
                 }
-            })
+            }
             setNbOnItemClickListener { _, view, position ->
                 nav().navigate(R.id.action_to_webFragment, Bundle().apply {
                     putParcelable("ariticleData", articleAdapter.data[position])

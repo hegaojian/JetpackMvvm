@@ -6,6 +6,8 @@ import android.view.MotionEvent
 import android.view.View
 import com.blankj.utilcode.util.VibrateUtils
 import me.hgj.jetpackmvvm.demo.R
+import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
+import me.hgj.jetpackmvvm.ext.nav
 
 
 import per.goweii.reveallayout.RevealLayout
@@ -33,7 +35,13 @@ class CollectView @JvmOverloads constructor(context: Context, attrs: AttributeSe
             MotionEvent.ACTION_UP ->{
                 //震动一下
                 VibrateUtils.vibrate(40)
-                onCollectViewClickListener?.onClick(this)
+                if(CacheUtil.isLogin()){
+                    onCollectViewClickListener?.onClick(this)
+                }else{
+                    isChecked = true
+                    nav(v).navigate(R.id.action_to_loginFragment)
+                }
+
             }
         }
         return false

@@ -15,11 +15,13 @@ class CollectUrlAdapter(data: ArrayList<CollectUrlResponse>) :
         R.layout.item_collecturl, data
     ) {
 
-    private var mOnCollectViewClickListener: OnCollectViewClickListener? = null
+    private var collectAction: (item: CollectUrlResponse, v: CollectView, position: Int) -> Unit =
+        { _: CollectUrlResponse, _: CollectView, _: Int -> }
 
     init {
         setAdapterAnimion(SettingUtil.getListMode())
     }
+
     override fun convert(holder: BaseViewHolder, item: CollectUrlResponse) {
         //赋值
         item.run {
@@ -30,17 +32,13 @@ class CollectUrlAdapter(data: ArrayList<CollectUrlResponse>) :
         holder.getView<CollectView>(R.id.item_collecturl_collect)
             .setOnCollectViewClickListener(object : CollectView.OnCollectViewClickListener {
                 override fun onClick(v: CollectView) {
-                    mOnCollectViewClickListener?.onClick(item, v, holder.adapterPosition)
+                    collectAction.invoke(item, v, holder.adapterPosition)
                 }
             })
     }
 
-    fun setOnCollectViewClickListener(onCollectViewClickListener: OnCollectViewClickListener) {
-        mOnCollectViewClickListener = onCollectViewClickListener
-    }
-
-    interface OnCollectViewClickListener {
-        fun onClick(item: CollectUrlResponse, v: CollectView, position: Int)
+    fun setCollectClick(inputCollectAction: (item: CollectUrlResponse, v: CollectView, position: Int) -> Unit) {
+        this.collectAction = inputCollectAction
     }
 }
 

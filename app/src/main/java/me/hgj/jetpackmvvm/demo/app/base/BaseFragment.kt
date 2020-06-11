@@ -8,13 +8,13 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
-import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment
+import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.event.AppViewModel
+import me.hgj.jetpackmvvm.demo.app.event.EventViewModel
 import me.hgj.jetpackmvvm.demo.app.ext.hideSoftKeyboard
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
-import me.hgj.jetpackmvvm.demo.app.event.EventViewModel
 import me.hgj.jetpackmvvm.ext.getAppViewModel
 
 /**
@@ -30,8 +30,9 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
 
     //Application全局的ViewModel，里面存放了一些账户信息，基本配置信息等
     val shareViewModel: AppViewModel by lazy { getAppViewModel<AppViewModel>() }
+
     //Application全局的ViewModel，用于发送全局通知操作
-    val eventViewModel: EventViewModel by lazy { getAppViewModel<EventViewModel>()}
+    val eventViewModel: EventViewModel by lazy { getAppViewModel<EventViewModel>() }
 
     /**
      * 当前Fragment绑定的视图布局
@@ -44,7 +45,7 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
     /**
      * 懒加载 只有当前fragment视图显示时才会触发该方法
      */
-    override  fun lazyLoadData(){}
+    override fun lazyLoadData() {}
 
     /**
      * 创建LiveData观察者 Fragment执行onViewCreated后触发

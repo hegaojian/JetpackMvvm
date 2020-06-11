@@ -52,16 +52,13 @@ class CollectUrlFragment : BaseFragment<RequestCollectViewModel, IncludeListBind
             mViewModel.getCollectUrlData()
         }
         articleAdapter.run {
-            setOnCollectViewClickListener(object :
-                CollectUrlAdapter.OnCollectViewClickListener {
-                override fun onClick(item: CollectUrlResponse, v: CollectView, position: Int) {
-                    if (v.isChecked) {
-                        mViewModel.uncollectUrl(item.id)
-                    } else {
-                        mViewModel.collectUrl(item.name, item.link)
-                    }
+            setCollectClick { item, v, position ->
+                if (v.isChecked) {
+                    mViewModel.uncollectUrl(item.id)
+                } else {
+                    mViewModel.collectUrl(item.name, item.link)
                 }
-            })
+            }
             setNbOnItemClickListener { _, view, position ->
                 nav().navigate(R.id.action_to_webFragment, Bundle().apply {
                     putParcelable("collectUrl", articleAdapter.data[position])

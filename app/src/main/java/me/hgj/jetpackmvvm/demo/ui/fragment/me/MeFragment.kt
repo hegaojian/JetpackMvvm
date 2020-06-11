@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.demo.ui.fragment.me
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -14,6 +13,8 @@ import me.hgj.jetpackmvvm.demo.app.ext.jumpByLogin
 import me.hgj.jetpackmvvm.demo.app.ext.setUiTheme
 import me.hgj.jetpackmvvm.demo.data.model.bean.BannerResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.IntegralResponse
+import me.hgj.jetpackmvvm.demo.data.model.bean.MeItemEntity
+import me.hgj.jetpackmvvm.demo.data.model.enums.MeItemType
 import me.hgj.jetpackmvvm.demo.databinding.FragmentMeBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestMeViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.MeViewModel
@@ -27,12 +28,10 @@ import me.hgj.jetpackmvvm.ext.util.notNull
  * 描述　: 我的
  */
 
-
 class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
     private var rank: IntegralResponse? = null
 
-    /** */
     private val requestMeViewModel: RequestMeViewModel by viewModels()
 
     override fun layoutId() = R.layout.fragment_me

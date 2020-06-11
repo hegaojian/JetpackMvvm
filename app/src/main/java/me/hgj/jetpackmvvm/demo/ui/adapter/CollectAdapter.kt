@@ -16,9 +16,12 @@ import me.hgj.jetpackmvvm.ext.util.toHtml
 
 class CollectAdapter(data: ArrayList<CollectResponse>) :
     BaseDelegateMultiAdapter<CollectResponse, BaseViewHolder>(data) {
-    private var mOnCollectViewClickListener: OnCollectViewClickListener? = null
-    private val Ariticle = 1//文章类型
-    private val Project = 2//项目类型 本来打算不区分文章和项目布局用统一布局的，但是布局完以后发现差异化蛮大的，所以还是分开吧
+    //文章类型
+    private val Ariticle = 1
+    //项目类型 本来打算不区分文章和项目布局用统一布局的，但是布局完以后发现差异化蛮大的，所以还是分开吧
+    private val Project = 2
+    private var collectAction: (item: CollectResponse, v: CollectView, position: Int) -> Unit =
+        { _: CollectResponse, _: CollectView, _: Int -> }
 
     init {
 
@@ -56,7 +59,7 @@ class CollectAdapter(data: ArrayList<CollectResponse>) :
                 holder.getView<CollectView>(R.id.item_home_collect)
                     .setOnCollectViewClickListener(object : CollectView.OnCollectViewClickListener {
                         override fun onClick(v: CollectView) {
-                            mOnCollectViewClickListener?.onClick(item, v, holder.adapterPosition)
+                            collectAction.invoke(item, v, holder.adapterPosition)
                         }
                     })
             }
@@ -76,30 +79,25 @@ class CollectAdapter(data: ArrayList<CollectResponse>) :
                     holder.setGone(R.id.item_project_type1, true)
                     holder.setGone(R.id.item_project_new, true)
                     holder.getView<CollectView>(R.id.item_project_collect).isChecked = true
-                    Glide.with(context.applicationContext).load(envelopePic)
+                    Glide.with(context).load(envelopePic)
                         .transition(DrawableTransitionOptions.withCrossFade(500))
                         .into(holder.getView(R.id.item_project_imageview))
                 }
                 holder.getView<CollectView>(R.id.item_project_collect)
                     .setOnCollectViewClickListener(object : CollectView.OnCollectViewClickListener {
                         override fun onClick(v: CollectView) {
-                            mOnCollectViewClickListener?.onClick(item, v, holder.adapterPosition)
+                            collectAction.invoke(item, v, holder.adapterPosition)
                         }
                     })
             }
         }
 
-
     }
 
-    fun setOnCollectViewClickListener(onCollectViewClickListener: OnCollectViewClickListener) {
-        mOnCollectViewClickListener = onCollectViewClickListener
+    fun setCollectClick(inputCollectAction: (item: CollectResponse, v: CollectView, position: Int) -> Unit) {
+        this.collectAction = inputCollectAction
     }
 
-
-    interface OnCollectViewClickListener {
-        fun onClick(item: CollectResponse, v: CollectView, position: Int)
-    }
 }
 
 

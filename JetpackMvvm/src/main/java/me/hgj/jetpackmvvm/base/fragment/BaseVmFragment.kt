@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
@@ -25,6 +26,8 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
 
     lateinit var mViewModel: VM
 
+    lateinit var mActivity: AppCompatActivity
+
     /**
      * 当前Fragment绑定的视图布局
      */
@@ -35,11 +38,12 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(layoutId(),container,false)
+        return inflater.inflate(layoutId(), container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mActivity = activity as AppCompatActivity
         mViewModel = createViewModel()
         initView(savedInstanceState)
         createObserver()
@@ -54,13 +58,14 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
     /**
      * 网络变化监听 子类重写
      */
-    open fun onNetworkStateChanged(netState: NetState) { }
+    open fun onNetworkStateChanged(netState: NetState) {}
 
     /**
      * 创建viewModel
      */
     private fun createViewModel(): VM {
-        return ViewModelProvider(this,
+        return ViewModelProvider(
+            this,
             ViewModelProvider.AndroidViewModelFactory(this.requireActivity().application)
         ).get(getVmClazz(this))
     }
@@ -101,7 +106,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
     open fun initData() {}
 
 
-    abstract fun showLoading(message:String = "请求网络中...")
+    abstract fun showLoading(message: String = "请求网络中...")
 
     abstract fun dismissLoading()
 

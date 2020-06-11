@@ -13,6 +13,11 @@ import java.net.SocketException;
 import java.net.URL;
 import java.util.Enumeration;
 
+/**
+ * @author : hgj
+ * @date   : 2020/6/11
+ */
+
 public class NetworkUtil {
     public static String url = "http://www.baidu.com";
     /**

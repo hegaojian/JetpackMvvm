@@ -16,10 +16,12 @@ import me.hgj.jetpackmvvm.ext.util.toHtml
 
 class AriticleAdapter(data: MutableList<AriticleResponse>?) :
     BaseDelegateMultiAdapter<AriticleResponse, BaseViewHolder>(data) {
-    private var mOnCollectViewClickListener: OnCollectViewClickListener? = null
     private val Ariticle = 1//文章类型
     private val Project = 2//项目类型 本来打算不区分文章和项目布局用统一布局的，但是布局完以后发现差异化蛮大的，所以还是分开吧
     private var showTag = false//是否展示标签 tag 一般主页才用的到
+
+    private var collectAction: (item: AriticleResponse, v: CollectView, position: Int) -> Unit =
+        { _: AriticleResponse, _: CollectView, _: Int -> }
 
     constructor(data: MutableList<AriticleResponse>?, showTag: Boolean) : this(data) {
         this.showTag = showTag
@@ -74,7 +76,7 @@ class AriticleAdapter(data: MutableList<AriticleResponse>?) :
                 helper.getView<CollectView>(R.id.item_home_collect)
                     .setOnCollectViewClickListener(object : CollectView.OnCollectViewClickListener {
                         override fun onClick(v: CollectView) {
-                            mOnCollectViewClickListener?.onClick(item, v, helper.adapterPosition)
+                            collectAction.invoke(item, v, helper.adapterPosition)
                         }
                     })
             }
@@ -87,7 +89,10 @@ class AriticleAdapter(data: MutableList<AriticleResponse>?) :
                     )
                     helper.setText(R.id.item_project_title, title.toHtml())
                     helper.setText(R.id.item_project_content, desc.toHtml())
-                    helper.setText(R.id.item_project_type, "$superChapterName·$chapterName".toHtml())
+                    helper.setText(
+                        R.id.item_project_type,
+                        "$superChapterName·$chapterName".toHtml()
+                    )
                     helper.setText(R.id.item_project_date, niceDate)
                     if (showTag) {
                         //展示标签
@@ -106,31 +111,23 @@ class AriticleAdapter(data: MutableList<AriticleResponse>?) :
                         helper.setGone(R.id.item_project_new, true)
                     }
                     helper.getView<CollectView>(R.id.item_project_collect).isChecked = collect
-                    Glide.with(context.applicationContext).load(envelopePic)
+                    Glide.with(context).load(envelopePic)
                         .transition(DrawableTransitionOptions.withCrossFade(500))
                         .into(helper.getView(R.id.item_project_imageview))
                 }
                 helper.getView<CollectView>(R.id.item_project_collect)
                     .setOnCollectViewClickListener(object : CollectView.OnCollectViewClickListener {
                         override fun onClick(v: CollectView) {
-                            mOnCollectViewClickListener?.onClick(item, v, helper.adapterPosition)
+                            collectAction.invoke(item, v, helper.adapterPosition)
                         }
                     })
             }
         }
-
-
     }
 
-    fun setOnCollectViewClickListener(onCollectViewClickListener: OnCollectViewClickListener) {
-        mOnCollectViewClickListener = onCollectViewClickListener
+    fun setCollectClick(inputCollectAction: (item: AriticleResponse, v: CollectView, position: Int) -> Unit) {
+        this.collectAction = inputCollectAction
     }
-
-
-    interface OnCollectViewClickListener {
-        fun onClick(item: AriticleResponse, v: CollectView, position: Int)
-    }
-
 
 }
 

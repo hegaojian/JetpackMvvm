@@ -1,7 +1,6 @@
 package me.hgj.jetpackmvvm.demo.ui.fragment.tree
 
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +12,6 @@ import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
-import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.databinding.IncludeListBinding
 import me.hgj.jetpackmvvm.demo.ui.adapter.NavigationAdapter
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTreeViewModel
@@ -54,16 +52,13 @@ class NavigationFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
             //触发刷新监听时请求数据
             requestTreeViewModel.getNavigationData()
         }
-        navigationAdapter.setNavigationClickInterFace(object :
-            NavigationAdapter.NavigationClickInterFace {
-            override fun onNavigationClickListener(item: AriticleResponse, view: View) {
-                nav().navigate(R.id.action_to_webFragment,
-                    Bundle().apply {
-                        putParcelable("ariticleData", item)
-                    }
-                )
-            }
-        })
+        navigationAdapter.setNavigationAction { item, view ->
+            nav().navigate(R.id.action_to_webFragment,
+                Bundle().apply {
+                    putParcelable("ariticleData", item)
+                }
+            )
+        }
     }
 
     override fun lazyLoadData() {

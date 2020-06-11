@@ -18,7 +18,7 @@ enum class Error(private val code: Int, private val err: String) {
     /**
      * 网络错误
      */
-    NETWORD_ERROR(1002, "网络连接错误，请稍后重试"),
+    NETWORK_ERROR(1002, "网络连接错误，请稍后重试"),
 
     /**
      * 证书出错

@@ -85,6 +85,5 @@ class RegisterFrgment : BaseFragment<LoginRegisterViewModel, FragmentRegisterBin
         var onCheckedChangeListener2 = CompoundButton.OnCheckedChangeListener { _, isChecked ->
             mViewModel.isShowPwd2.postValue(isChecked)
         }
-
     }
 }
