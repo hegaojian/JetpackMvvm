@@ -100,7 +100,7 @@ dependencies {
     implementation 'com.tencent:mmkv:1.0.22'
     //项目核心框架
     implementation project(path: ':JetpackMvvm')
-//    implementation 'me.hegj:JetpackMvvm:1.1.1'
+//    implementation 'me.hegj:JetpackMvvm:1.1.2'
     //轮播图
     implementation 'com.github.zhpanvip:BannerViewPager:2.6.6'
     //BaseAdapter
