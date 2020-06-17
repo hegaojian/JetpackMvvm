@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">鸡你太美</string>
-    <string name="bottomname1">首页</string>
-    <string name="bottomname2">项目</string>
-    <string name="bottomname3">广场</string>
-    <string name="bottomname4">公众号</string>
-    <string name="bottomname5">我的</string>
+    <string name="bottom_name1">首页</string>
+    <string name="bottom_name2">项目</string>
+    <string name="bottom_name3">广场</string>
+    <string name="bottom_name4">公众号</string>
+    <string name="bottom_name5">我的</string>
     <string name="confirm">确定</string>
     <string name="cancel">取消</string>
     <string name="done">完成</string>
@@ -24,8 +24,8 @@
     <string name="copyright">版权声明</string>
     <string name="copyright_tip">本App使用的Api均为 玩Android网站 提供，仅供于大家学习交流</string>
     <string name="copyright_summary">仅作个人及非商业用途</string>
-    <string name="auther">作者</string>
-    <string name="auther_name">一个练习时长两年半的安卓开发者→_→</string>
+    <string name="author">作者</string>
+    <string name="author_name">一个练习时长两年半的安卓开发者→_→</string>
     <string name="project_address">项目源码</string>
     <string name="github_url">https://github.com/hegaojian/JetpackMvvm</string>
     <string name="open_project">开源项目</string>

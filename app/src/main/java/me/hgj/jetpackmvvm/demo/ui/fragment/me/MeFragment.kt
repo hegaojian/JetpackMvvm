@@ -13,8 +13,6 @@ import me.hgj.jetpackmvvm.demo.app.ext.jumpByLogin
 import me.hgj.jetpackmvvm.demo.app.ext.setUiTheme
 import me.hgj.jetpackmvvm.demo.data.model.bean.BannerResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.IntegralResponse
-import me.hgj.jetpackmvvm.demo.data.model.bean.MeItemEntity
-import me.hgj.jetpackmvvm.demo.data.model.enums.MeItemType
 import me.hgj.jetpackmvvm.demo.databinding.FragmentMeBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestMeViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.MeViewModel
@@ -40,7 +38,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
         mDatabind.vm = mViewModel
         mDatabind.click = ProxyClick()
         shareViewModel.appColor.value.let { setUiTheme(it, me_linear, me_integral) }
-        shareViewModel.userinfo.value?.let { mViewModel.name.postValue(if (it.nickname.isEmpty()) it.username else it.nickname) }
+        shareViewModel.userinfo.value?.let { mViewModel.name.set(if (it.nickname.isEmpty()) it.username else it.nickname) }
         me_swipe.init {
             requestMeViewModel.getIntegral()
         }
@@ -58,8 +56,8 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
             me_swipe.isRefreshing = false
             parseState(resultState, {
                 rank = it
-                mViewModel.info.postValue("id：${it.userId}　排名：${it.rank}")
-                mViewModel.integral.postValue(it.coinCount)
+                mViewModel.info.set("id：${it.userId}　排名：${it.rank}")
+                mViewModel.integral.set(it.coinCount)
             }, {
                 ToastUtils.showShort(it.errorMsg)
             })
@@ -72,12 +70,12 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
             userinfo.observe(viewLifecycleOwner, Observer {
                 it.notNull({
                     me_swipe.isRefreshing = true
-                    mViewModel.name.postValue(if (it.nickname.isEmpty()) it.username else it.nickname)
+                    mViewModel.name.set(if (it.nickname.isEmpty()) it.username else it.nickname)
                     requestMeViewModel.getIntegral()
                 }, {
-                    mViewModel.name.postValue("请先登录~")
-                    mViewModel.info.postValue("id：--　排名：--")
-                    mViewModel.integral.postValue(0)
+                    mViewModel.name.set("请先登录~")
+                    mViewModel.info.set("id：--　排名：--")
+                    mViewModel.integral.set(0)
                 })
             })
         }

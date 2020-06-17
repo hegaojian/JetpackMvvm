@@ -25,14 +25,14 @@ class RequestPublicNumberViewModel(application: Application) : BaseViewModel(app
 
 
     fun getPublicTitleData() {
-        request({ HttpRequestManger.instance.getTitleData() }, titleData)
+        request({ HttpRequestManger.apiService.getPublicTitle() }, titleData)
     }
 
     fun getPublicData(isRefresh: Boolean, cid: Int) {
         if (isRefresh) {
             pageNo = 1
         }
-        request({ HttpRequestManger.instance.getPublicData(pageNo, cid) }, {
+        request({ HttpRequestManger.apiService.getPublicData(pageNo, cid) }, {
             //请求成功
             pageNo++
             val listDataUiState =

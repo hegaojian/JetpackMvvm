@@ -18,6 +18,6 @@ class RequestMeViewModel(application: Application) : BaseViewModel(application) 
     var meData = MutableLiveData<ResultState<IntegralResponse>>()
 
     fun getIntegral() {
-        request({ HttpRequestManger.instance.getIntegral() }, meData)
+        request({ HttpRequestManger.apiService.getIntegral() }, meData)
     }
 }

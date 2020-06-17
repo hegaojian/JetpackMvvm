@@ -43,7 +43,7 @@ class RequestTreeViewModel(application: Application) : BaseViewModel(application
         if (isRefresh) {
             pageNo = 0
         }
-        request({ HttpRequestManger.instance.getPlazaData(pageNo) }, {
+        request({ HttpRequestManger.apiService.getSquareData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -76,7 +76,7 @@ class RequestTreeViewModel(application: Application) : BaseViewModel(application
         if (isRefresh) {
             pageNo = 1 //每日一问的页码从1开始
         }
-        request({ HttpRequestManger.instance.getAskData(pageNo) }, {
+        request({ HttpRequestManger.apiService.getAskData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -106,7 +106,7 @@ class RequestTreeViewModel(application: Application) : BaseViewModel(application
      * 获取体系数据
      */
     fun getSystemData() {
-        request({ HttpRequestManger.instance.getSystemData() }, {
+        request({ HttpRequestManger.apiService.getSystemData() }, {
             //请求成功
             val dataUiState =
                 ListDataUiState(
@@ -130,7 +130,7 @@ class RequestTreeViewModel(application: Application) : BaseViewModel(application
      * 获取导航数据
      */
     fun getNavigationData() {
-        request({ HttpRequestManger.instance.getNavigationData() }, {
+        request({ HttpRequestManger.apiService.getNavigationData() }, {
             //请求成功
             val dataUiState =
                 ListDataUiState(
@@ -157,7 +157,7 @@ class RequestTreeViewModel(application: Application) : BaseViewModel(application
         if (isRefresh) {
             pageNo = 0
         }
-        request({ HttpRequestManger.instance.getSystemChildData(pageNo,cid) }, {
+        request({ HttpRequestManger.apiService.getSystemChildData(pageNo,cid) }, {
             //请求成功
             pageNo++
             val listDataUiState =

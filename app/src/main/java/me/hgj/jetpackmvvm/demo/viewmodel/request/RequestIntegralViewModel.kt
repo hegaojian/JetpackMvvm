@@ -28,7 +28,7 @@ class RequestIntegralViewModel(application: Application) : BaseViewModel(applica
         if(isRefresh){
             pageNo = 1
         }
-        request({HttpRequestManger.instance.getIntegralData(pageNo)},{
+        request({HttpRequestManger.apiService.getIntegralRank(pageNo)},{
             //请求成功
             pageNo++
             val listDataUiState =
@@ -58,7 +58,7 @@ class RequestIntegralViewModel(application: Application) : BaseViewModel(applica
         if(isRefresh){
             pageNo = 1
         }
-        request({HttpRequestManger.instance.getIntegralHistoryData(pageNo)},{
+        request({HttpRequestManger.apiService.getIntegralHistory(pageNo)},{
             //请求成功
             pageNo++
             val listDataUiState =

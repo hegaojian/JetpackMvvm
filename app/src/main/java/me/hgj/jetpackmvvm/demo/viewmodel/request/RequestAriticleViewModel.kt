@@ -29,7 +29,7 @@ class RequestAriticleViewModel(application: Application) : BaseViewModel(applica
 
     fun addAriticle(shareTitle: String, shareUrl: String) {
         request(
-            { HttpRequestManger.instance.addAriticle(shareTitle, shareUrl) },
+            { HttpRequestManger.apiService.addAriticle(shareTitle, shareUrl) },
             addData,
             true,
             "正在分享文章中..."
@@ -40,7 +40,7 @@ class RequestAriticleViewModel(application: Application) : BaseViewModel(applica
         if (isRefresh) {
             pageNo = 0
         }
-        request({ HttpRequestManger.instance.getShareAriticle(pageNo) }, {
+        request({ HttpRequestManger.apiService.getShareData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -67,7 +67,7 @@ class RequestAriticleViewModel(application: Application) : BaseViewModel(applica
     }
 
     fun deleteShareData(id: Int, position: Int) {
-        request({ HttpRequestManger.instance.delShareAriticle(id) }, {
+        request({ HttpRequestManger.apiService.deleteShareData(id) }, {
             val updateUiState = UpdateUiState(isSuccess = true, data = position)
             delDataState.postValue(updateUiState)
         }, {

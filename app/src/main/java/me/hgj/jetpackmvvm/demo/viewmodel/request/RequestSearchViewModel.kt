@@ -34,7 +34,7 @@ class RequestSearchViewModel(application: Application) : BaseViewModel(applicati
      * 获取热门数据
      */
     fun getHotData() {
-        request({ HttpRequestManger.instance.getHotData() }, hotData)
+        request({ HttpRequestManger.apiService.getSearchData() }, hotData)
     }
 
     /**
@@ -51,6 +51,6 @@ class RequestSearchViewModel(application: Application) : BaseViewModel(applicati
         if (isRefresh) {
             pageNo = 0
         }
-        request({ HttpRequestManger.instance.getSearchResultData(pageNo, searchKey) }, seachResultData)
+        request({ HttpRequestManger.apiService.getSearchDataByKey(pageNo, searchKey) }, seachResultData)
     }
 }

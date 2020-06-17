@@ -100,8 +100,8 @@ class LookInfoFragment : BaseFragment<LookInfoViewModel, FragmentLookinfoBinding
 
     override fun createObserver() {
         requestLookInfoViewModel.shareResponse.observe(viewLifecycleOwner, Observer {
-            mViewModel.name.postValue(it.coinInfo.username)
-            mViewModel.info.postValue("积分 : ${it.coinInfo.coinCount}　排名 : ${it.coinInfo.rank}")
+            mViewModel.name.set(it.coinInfo.username)
+            mViewModel.info.set("积分 : ${it.coinInfo.coinCount}　排名 : ${it.coinInfo.rank}")
         })
         requestLookInfoViewModel.shareListDataUistate.observe(viewLifecycleOwner, Observer {
             //设值 新写了个拓展函数，搞死了这个恶心的重复代码

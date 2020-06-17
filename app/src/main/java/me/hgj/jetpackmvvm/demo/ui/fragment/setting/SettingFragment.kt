@@ -88,7 +88,6 @@ class SettingFragment : PreferenceFragmentCompat(),
                     CacheUtil.setUser(null)
                     shareViewModel.userinfo.postValue(null)
                     nav().navigateUp()
-//                    activity?.finish()
                 })
             false
         }
@@ -239,6 +238,5 @@ class SettingFragment : PreferenceFragmentCompat(),
             CacheUtil.setIsNeedTop(sharedPreferences.getBoolean("top", true))
         }
     }
-
 }
 

@@ -23,10 +23,9 @@ class RequestProjectViewModel(application: Application) : BaseViewModel(applicat
     var titleData: MutableLiveData<ResultState<ArrayList<ClassifyResponse>>> = MutableLiveData()
 
     var projectDataState: MutableLiveData<ListDataUiState<AriticleResponse>> = MutableLiveData()
-
-
+    
     fun getProjectTitleData() {
-        request({ HttpRequestManger.instance.getProjecTitle() }, titleData)
+        request({ HttpRequestManger.apiService.getProjecTitle() }, titleData)
     }
 
     fun getProjectData(isRefresh: Boolean, cid: Int, isNew: Boolean = false) {

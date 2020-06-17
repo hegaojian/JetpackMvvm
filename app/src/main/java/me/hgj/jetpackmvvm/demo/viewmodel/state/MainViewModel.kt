@@ -10,11 +10,5 @@ import me.hgj.jetpackmvvm.demo.app.ext.showMessage
 
 class MainViewModel(application: Application):BaseViewModel(application) {
 
-    var name = UnPeekNotNullLiveData("你是谁")
-    var name1 = UnPeekNotNullLiveData(0.0)
-    var name2 = UnPeekNotNullLiveData<String>()
-    init {
-        name2.value = "你是谁111"
-    }
 
 }

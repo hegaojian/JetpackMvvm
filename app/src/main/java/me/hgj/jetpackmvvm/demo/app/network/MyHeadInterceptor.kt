@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.demo.app.network
 
+import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
@@ -14,6 +15,7 @@ class MyHeadInterceptor : Interceptor {
         val builder = chain.request().newBuilder()
         builder.addHeader("token", "token123456").build()
         builder.addHeader("device", "Android").build()
+        builder.addHeader("isLogin", CacheUtil.isLogin().toString()).build()
         return chain.proceed(builder.build())
     }
 

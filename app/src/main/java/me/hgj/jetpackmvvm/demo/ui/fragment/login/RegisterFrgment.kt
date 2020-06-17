@@ -61,29 +61,29 @@ class RegisterFrgment : BaseFragment<LoginRegisterViewModel, FragmentRegisterBin
     inner class ProxyClick {
         /**清空*/
         fun clear() {
-            mViewModel.username.postValue("")
+            mViewModel.username.set("")
         }
 
         /**注册*/
         fun register() {
             when {
-                mViewModel.username.value.isEmpty() -> showMessage("请填写账号")
-                mViewModel.password.value.isEmpty() -> showMessage("请填写密码")
-                mViewModel.password2.value.isEmpty() -> showMessage("请填写确认密码")
-                mViewModel.password.value.length < 6 -> showMessage("密码最少6位")
-                mViewModel.password.value != mViewModel.password2.value -> showMessage("密码不一致")
+                mViewModel.username.get().isEmpty() -> showMessage("请填写账号")
+                mViewModel.password.get().isEmpty() -> showMessage("请填写密码")
+                mViewModel.password2.get().isEmpty() -> showMessage("请填写确认密码")
+                mViewModel.password.get().length < 6 -> showMessage("密码最少6位")
+                mViewModel.password.get() != mViewModel.password2.get() -> showMessage("密码不一致")
                 else -> requestLoginRegisterViewModel.registerAndlogin(
-                    mViewModel.username.value,
-                    mViewModel.password.value
+                    mViewModel.username.get(),
+                    mViewModel.password.get()
                 )
             }
         }
 
         var onCheckedChangeListener1 = CompoundButton.OnCheckedChangeListener { _, isChecked ->
-            mViewModel.isShowPwd.postValue(isChecked)
+            mViewModel.isShowPwd.set(isChecked)
         }
         var onCheckedChangeListener2 = CompoundButton.OnCheckedChangeListener { _, isChecked ->
-            mViewModel.isShowPwd2.postValue(isChecked)
+            mViewModel.isShowPwd2.set(isChecked)
         }
     }
 }

@@ -4,24 +4,24 @@
         android:id="@+id/menu_main"
         android:checked="true"
         android:icon="@drawable/menu_main"
-        android:title="@string/bottomname1" />
+        android:title="@string/bottom_name1" />
 
     <item
         android:id="@+id/menu_project"
         android:icon="@drawable/menu_project"
-        android:title="@string/bottomname2" />
+        android:title="@string/bottom_name2" />
 
     <item
         android:id="@+id/menu_system"
         android:icon="@drawable/menu_tree"
-        android:title="@string/bottomname3" />
+        android:title="@string/bottom_name3" />
     <item
         android:id="@+id/menu_public"
         android:icon="@drawable/menu_public"
-        android:title="@string/bottomname4" />
+        android:title="@string/bottom_name4" />
     <item
         android:id="@+id/menu_me"
         android:icon="@drawable/menu_me"
-        android:title="@string/bottomname5" />
+        android:title="@string/bottom_name5" />
 
 </menu>

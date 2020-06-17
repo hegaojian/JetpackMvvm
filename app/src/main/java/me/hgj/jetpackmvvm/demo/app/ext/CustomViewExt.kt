@@ -375,16 +375,15 @@ fun ViewPager2.initMain(fragment: Fragment): ViewPager2 {
                 }
             }
         }
-
         override fun getItemCount() = 5
     }
     return this
 }
 
 fun BottomNavigationViewEx.init(navigationItemSelectedAction: (Int) -> Unit): BottomNavigationViewEx {
-    enableAnimation(false)
+    enableAnimation(true)
     enableShiftingMode(false)
-    enableItemShiftingMode(false)
+    enableItemShiftingMode(true)
     itemIconTintList = SettingUtil.getColorStateList(SettingUtil.getColor(Ktx.app))
     itemTextColor = SettingUtil.getColorStateList(Ktx.app)
     setTextSize(12F)

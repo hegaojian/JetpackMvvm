@@ -41,8 +41,8 @@
             android:title="@string/setting_version" />
         <Preference
             android:key="author"
-            android:summary="@string/auther_name"
-            android:title="@string/auther" />
+            android:summary="@string/author_name"
+            android:title="@string/author" />
         <Preference
             android:key="project"
             android:summary="@string/github_url"

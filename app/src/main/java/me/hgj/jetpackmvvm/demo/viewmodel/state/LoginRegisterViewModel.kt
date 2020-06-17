@@ -2,6 +2,8 @@ package me.hgj.jetpackmvvm.demo.viewmodel.state
 
 import android.app.Application
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
+import me.hgj.jetpackmvvm.callback.databind.BooleanObservableField
+import me.hgj.jetpackmvvm.callback.databind.StringObservableField
 import me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData
 import me.hgj.jetpackmvvm.callback.livedata.StringLiveData
 
@@ -13,16 +15,16 @@ import me.hgj.jetpackmvvm.callback.livedata.StringLiveData
 class LoginRegisterViewModel(application: Application) : BaseViewModel(application) {
 
     //用户名
-    var username = StringLiveData()
+    var username = StringObservableField()
 
     //密码(登录注册界面)
-    var password = StringLiveData()
+    var password = StringObservableField()
 
-    var password2 = StringLiveData()
+    var password2 = StringObservableField()
 
     //是否显示明文密码（登录注册界面）
-    var isShowPwd = BooleanLiveData()
+    var isShowPwd = BooleanObservableField()
 
-    var isShowPwd2 = BooleanLiveData()
+    var isShowPwd2 = BooleanObservableField()
 
 }

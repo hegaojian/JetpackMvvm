@@ -34,7 +34,7 @@ class RequestTodoViewModel(application: Application) : BaseViewModel(application
         if (isRefresh) {
             pageNo = 1
         }
-        request({ HttpRequestManger.instance.getTodoListData(pageNo) }, {
+        request({ HttpRequestManger.apiService.getTodoData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -61,7 +61,7 @@ class RequestTodoViewModel(application: Application) : BaseViewModel(application
     }
 
     fun delTodo(id: Int, position: Int) {
-        request({ HttpRequestManger.instance.delTodotData(id) }, {
+        request({ HttpRequestManger.apiService.deleteTodo(id) }, {
             val uistate = UpdateUiState(isSuccess = true, data = position)
             delDataState.postValue(uistate)
         }, {
@@ -71,7 +71,7 @@ class RequestTodoViewModel(application: Application) : BaseViewModel(application
     }
 
     fun doneTodo(id: Int, position: Int) {
-        request({ HttpRequestManger.instance.doneTodotData(id) }, {
+        request({ HttpRequestManger.apiService.doneTodo(id,1) }, {
             val uistate = UpdateUiState(isSuccess = true, data = position)
             doneDataState.postValue(uistate)
         }, {
@@ -82,7 +82,7 @@ class RequestTodoViewModel(application: Application) : BaseViewModel(application
 
     fun addTodo(todoTitle: String, todoContent: String, todoTime: String, todoLeve: Int) {
         request({
-            HttpRequestManger.instance.addTodotData( todoTitle, todoContent,todoTime,0,todoLeve )
+            HttpRequestManger.apiService.addTodo( todoTitle, todoContent,todoTime,0,todoLeve )
         }, {
             val uistate = UpdateUiState(isSuccess = true, data = 0)
             updateDataState.postValue(uistate)
@@ -94,7 +94,7 @@ class RequestTodoViewModel(application: Application) : BaseViewModel(application
 
     fun updateTodo(id: Int,todoTitle: String, todoContent: String, todoTime: String, todoLeve: Int) {
         request({
-            HttpRequestManger.instance.updateTodotData(todoTitle,todoContent,todoTime,0,todoLeve,id)
+            HttpRequestManger.apiService.updateTodo(todoTitle,todoContent,todoTime,0,todoLeve,id)
         }, {
             val uistate = UpdateUiState(isSuccess = true, data = 0)
             updateDataState.postValue(uistate)

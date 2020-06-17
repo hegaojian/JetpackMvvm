@@ -2,8 +2,8 @@ package me.hgj.jetpackmvvm.demo.viewmodel.state
 
 import android.app.Application
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
-import me.hgj.jetpackmvvm.callback.livedata.IntLiveData
-import me.hgj.jetpackmvvm.callback.livedata.StringLiveData
+import me.hgj.jetpackmvvm.callback.databind.IntObservableField
+import me.hgj.jetpackmvvm.callback.databind.StringObservableField
 import me.hgj.jetpackmvvm.demo.app.util.ColorUtil
 
 /**
@@ -13,12 +13,12 @@ import me.hgj.jetpackmvvm.demo.app.util.ColorUtil
  */
 class MeViewModel(application: Application) : BaseViewModel(application) {
 
-    var name = StringLiveData("请先登录~")
+    var name = StringObservableField("请先登录~")
 
-    var integral = IntLiveData(0)
+    var integral = IntObservableField(0)
 
-    var info = StringLiveData("id：--　排名：-")
+    var info = StringObservableField("id：--　排名：-")
 
-    var imageUrl = StringLiveData(ColorUtil.randomImage())
+    var imageUrl = StringObservableField(ColorUtil.randomImage())
 
 }

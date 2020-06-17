@@ -9,7 +9,6 @@ import me.hgj.jetpackmvvm.demo.app.App
 import me.hgj.jetpackmvvm.network.BaseNetworkApi
 import me.hgj.jetpackmvvm.network.CoroutineCallAdapterFactory
 import me.hgj.jetpackmvvm.network.interceptor.CacheInterceptor
-import me.hgj.jetpackmvvm.network.interceptor.HeadInterceptor
 import me.hgj.jetpackmvvm.network.interceptor.logging.LogInterceptor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -17,7 +16,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.util.concurrent.TimeUnit
-import javax.net.ssl.HostnameVerifier
 
 /**
  * 作者　: hegaojian
@@ -32,11 +30,6 @@ class NetworkApi : BaseNetworkApi() {
 
          val instance: NetworkApi by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
             NetworkApi() }
-
-        //双重校验锁式-单例 封装NetApiService 方便直接快速调用
-        val service: ApiService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
-            instance.getApi(ApiService::class.java, ApiService.SERVER_URL)
-        }
     }
 
     /**

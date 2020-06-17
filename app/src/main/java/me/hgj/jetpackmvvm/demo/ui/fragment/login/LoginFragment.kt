@@ -66,16 +66,16 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
     inner class ProxyClick {
 
         fun clear() {
-            mViewModel.username.postValue("")
+            mViewModel.username.set("")
         }
 
         fun login() {
             when {
-                mViewModel.username.value.isEmpty() -> showMessage("请填写账号")
-                mViewModel.password.value.isEmpty() -> showMessage("请填写密码")
+                mViewModel.username.get().isEmpty() -> showMessage("请填写账号")
+                mViewModel.password.get().isEmpty() -> showMessage("请填写密码")
                 else -> requestLoginRegisterViewModel.loginReq(
-                    mViewModel.username.value,
-                    mViewModel.password.value
+                    mViewModel.username.get(),
+                    mViewModel.password.get()
                 )
             }
         }
@@ -87,7 +87,7 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
 
         var onCheckedChangeListener =
             CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
-                mViewModel.isShowPwd.postValue(isChecked)
+                mViewModel.isShowPwd.set(isChecked)
             }
     }
 }

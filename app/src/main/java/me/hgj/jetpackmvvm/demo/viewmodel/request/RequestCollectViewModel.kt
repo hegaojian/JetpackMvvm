@@ -37,7 +37,7 @@ open class RequestCollectViewModel(application: Application) : BaseViewModel(app
      * 不然会出错
      */
     fun collect(id: Int) {
-        request({ HttpRequestManger.instance.collect(id) }, {
+        request({ HttpRequestManger.apiService.collect(id) }, {
             val uiState = CollectUiState(isSuccess = true, collect = true, id = id)
             collectUiState.postValue(uiState)
         }, {
@@ -53,7 +53,7 @@ open class RequestCollectViewModel(application: Application) : BaseViewModel(app
      * 不然会出错
      */
     fun uncollect(id: Int) {
-        request({ HttpRequestManger.instance.uncollect(id) }, {
+        request({ HttpRequestManger.apiService.uncollect(id) }, {
             val uiState = CollectUiState(isSuccess = true, collect = false, id = id)
             collectUiState.postValue(uiState)
         }, {
@@ -69,7 +69,7 @@ open class RequestCollectViewModel(application: Application) : BaseViewModel(app
      * 不然会出错
      */
     fun collectUrl(name: String, link: String) {
-        request({ HttpRequestManger.instance.collectUrl(name, link) }, {
+        request({ HttpRequestManger.apiService.collectUrl(name, link) }, {
             val uiState = CollectUiState(isSuccess = true, collect = true, id = it.id)
             collectUrlUiState.postValue(uiState)
         }, {
@@ -85,7 +85,7 @@ open class RequestCollectViewModel(application: Application) : BaseViewModel(app
      * 不然会出错
      */
     fun uncollectUrl(id: Int) {
-        request({ HttpRequestManger.instance.uncollectUrl(id) }, {
+        request({ HttpRequestManger.apiService.uncollect(id) }, {
             val uiState = CollectUiState(isSuccess = true, collect = false, id = id)
             collectUrlUiState.postValue(uiState)
         }, {
@@ -99,7 +99,7 @@ open class RequestCollectViewModel(application: Application) : BaseViewModel(app
         if (isRefresh) {
             pageNo = 0
         }
-        request({ HttpRequestManger.instance.collectAriticleData(pageNo) }, {
+        request({ HttpRequestManger.apiService.getCollectData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -126,7 +126,7 @@ open class RequestCollectViewModel(application: Application) : BaseViewModel(app
     }
 
     fun getCollectUrlData() {
-        request({ HttpRequestManger.instance.collectUrlData() }, {
+        request({ HttpRequestManger.apiService.getCollectUrlData() }, {
             //请求成功
             val listDataUiState =
                 ListDataUiState(

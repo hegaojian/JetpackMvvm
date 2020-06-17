@@ -72,6 +72,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainfragment_to_pagerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/pagerFragment" />
     </fragment>
 
     <action
@@ -113,6 +120,7 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/searchResultFragment" />
+
 
     </fragment>
     <fragment
@@ -240,5 +248,9 @@
         android:id="@+id/settingFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.setting.SettingFragment"
         android:label="SettingFragment" />
+    <fragment
+        android:id="@+id/pagerFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.demo.PagerFragment"
+        android:label="PagerFragment" />
 
 </navigation>

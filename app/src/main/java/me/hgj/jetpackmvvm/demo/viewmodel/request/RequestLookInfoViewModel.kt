@@ -26,7 +26,7 @@ class RequestLookInfoViewModel(application: Application) : BaseViewModel(applica
         if (isRefresh) {
             pageNo = 1
         }
-        request({ HttpRequestManger.instance.getLookinfoById(id, pageNo) }, {
+        request({ HttpRequestManger.apiService.getShareByidData(id, pageNo) }, {
             //请求成功
             pageNo++
             shareResponse.postValue(it)

@@ -27,6 +27,7 @@ import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestHomeViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.HomeViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.parseState
+import me.hgj.jetpackmvvm.ext.util.logd
 
 /**
  * 作者　: hegaojian
@@ -126,6 +127,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
      * 懒加载
      */
     override fun lazyLoadData() {
+        "HomeFragment-lazyLoadData".logd("hgj")
         //设置界面 加载中
         loadsir.showLoading()
         //请求轮播图数据

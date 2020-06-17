@@ -15,6 +15,7 @@ import me.hgj.jetpackmvvm.demo.databinding.FragmentViewpagerBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestProjectViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.ProjectViewModel
 import me.hgj.jetpackmvvm.ext.parseState
+import me.hgj.jetpackmvvm.ext.util.logd
 
 /**
  * 作者　: hegaojian
@@ -56,6 +57,7 @@ class ProjectFragment : BaseFragment<ProjectViewModel, FragmentViewpagerBinding>
      * 懒加载
      */
     override fun lazyLoadData() {
+        "ProjectFragment-lazyLoadData".logd("hgj")
         //设置界面 加载中
         loadsir.showLoading()
         //请求标题数据
