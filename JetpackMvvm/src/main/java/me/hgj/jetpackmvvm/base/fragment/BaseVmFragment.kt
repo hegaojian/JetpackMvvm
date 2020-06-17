@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.base.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,9 +42,13 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
         return inflater.inflate(layoutId(), container, false)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mActivity = context as AppCompatActivity
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mActivity = activity as AppCompatActivity
         mViewModel = createViewModel()
         initView(savedInstanceState)
         createObserver()
@@ -121,5 +126,9 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
         mViewModel.loadingChange.dismissDialog.observe(viewLifecycleOwner, Observer {
             dismissLoading()
         })
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
     }
 }
