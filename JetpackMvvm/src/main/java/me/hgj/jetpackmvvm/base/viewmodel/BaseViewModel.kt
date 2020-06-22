@@ -6,7 +6,7 @@ import me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData
 /**
  * 作者　: hegaojian
  * 时间　: 2019/12/12
- * 描述　: ViewModel的基类
+ * 描述　: ViewModel的基类 使用ViewModel类，放弃AndroidViewModel，原因：用处不大 完全有其他方式获取Application上下文
  */
 open class BaseViewModel : ViewModel() {
 
