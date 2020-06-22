@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.request
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.data.model.bean.ApiPagerResponse
@@ -16,7 +15,7 @@ import me.hgj.jetpackmvvm.state.ResultState
  * 时间　: 2020/2/29
  * 描述　:
  */
-class RequestSearchViewModel(application: Application) : BaseViewModel(application) {
+class RequestSearchViewModel : BaseViewModel() {
 
     var pageNo = 0
 

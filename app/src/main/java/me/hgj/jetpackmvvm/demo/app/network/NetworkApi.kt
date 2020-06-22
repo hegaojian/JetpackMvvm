@@ -68,7 +68,7 @@ class NetworkApi : BaseNetworkApi() {
     }
 
     val cookieJar: PersistentCookieJar by lazy {
-        PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(Utils.getApp()))
+        PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(App.instance))
     }
 
 }

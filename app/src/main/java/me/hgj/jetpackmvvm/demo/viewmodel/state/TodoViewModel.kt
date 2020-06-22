@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.state
 
-import android.app.Application
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.callback.databind.IntObservableField
 import me.hgj.jetpackmvvm.callback.databind.StringObservableField
@@ -11,7 +10,7 @@ import me.hgj.jetpackmvvm.demo.data.model.enums.TodoType
  * 时间　: 2020/3/11
  * 描述　:
  */
-class TodoViewModel(application: Application) : BaseViewModel(application) {
+class TodoViewModel : BaseViewModel() {
 
     //标题
     var todoTitle = StringObservableField()

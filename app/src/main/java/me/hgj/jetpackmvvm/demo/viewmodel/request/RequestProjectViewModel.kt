@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.request
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
@@ -15,7 +14,7 @@ import me.hgj.jetpackmvvm.state.ResultState
  * 时间　: 2020/2/28
  * 描述　:
  */
-class RequestProjectViewModel(application: Application) : BaseViewModel(application){
+class RequestProjectViewModel : BaseViewModel() {
 
     //页码
     var pageNo = 1
@@ -23,7 +22,7 @@ class RequestProjectViewModel(application: Application) : BaseViewModel(applicat
     var titleData: MutableLiveData<ResultState<ArrayList<ClassifyResponse>>> = MutableLiveData()
 
     var projectDataState: MutableLiveData<ListDataUiState<AriticleResponse>> = MutableLiveData()
-    
+
     fun getProjectTitleData() {
         request({ HttpRequestManger.apiService.getProjecTitle() }, titleData)
     }
@@ -32,7 +31,7 @@ class RequestProjectViewModel(application: Application) : BaseViewModel(applicat
         if (isRefresh) {
             pageNo = if (isNew) 0 else 1
         }
-        request({ HttpRequestManger.instance.getProjectData(pageNo, cid, isNew)},{
+        request({ HttpRequestManger.instance.getProjectData(pageNo, cid, isNew) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -45,7 +44,7 @@ class RequestProjectViewModel(application: Application) : BaseViewModel(applicat
                     listData = it.datas
                 )
             projectDataState.postValue(listDataUiState)
-        },{
+        }, {
             //请求失败
             val listDataUiState =
                 ListDataUiState(

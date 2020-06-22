@@ -2,10 +2,12 @@ package me.hgj.jetpackmvvm.demo.ui.fragment.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.kingja.loadsir.core.LoadService
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
 import com.zhpan.bannerview.BannerViewPager
@@ -28,6 +30,7 @@ import me.hgj.jetpackmvvm.demo.viewmodel.state.HomeViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.parseState
 import me.hgj.jetpackmvvm.ext.util.logd
+import me.hgj.jetpackmvvm.network.manager.NetState
 
 /**
  * 作者　: hegaojian
@@ -127,7 +130,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
      * 懒加载
      */
     override fun lazyLoadData() {
-        "HomeFragment-lazyLoadData".logd("hgj")
         //设置界面 加载中
         loadsir.showLoading()
         //请求轮播图数据
@@ -136,6 +138,14 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         requestHomeViewModel.getHomeData(true)
     }
 
+    override fun onNetworkStateChanged(netState: NetState) {
+        super.onNetworkStateChanged(netState)
+        if (netState.isSuccess) {
+            Toast.makeText(mActivity,"HomeFragment-我特么终于有网了啊!", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(mActivity,"HomeFragment-我特么怎么断网了!", Toast.LENGTH_SHORT).show()
+        }
+    }
     override fun createObserver() {
         requestHomeViewModel.run {
             //监听首页文章列表请求的数据变化

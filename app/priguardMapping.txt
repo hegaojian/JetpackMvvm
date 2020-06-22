@@ -1,7 +1,7 @@
 # compiler: R8
 # compiler_version: 1.6.82
 # min_api: 21
-# pg_map_id: 8dd6a5e
+# pg_map_id: b1b5153
 # common_typos_disable
 $$ServiceLoaderMethods -> a:
     java.util.Iterator $load1() -> a
@@ -11872,61 +11872,55 @@ me.hgj.jetpackmvvm.demo.app.ext.CustomViewExtKt$setPageListener$1 -> me.hgj.jetp
     kotlin.jvm.functions.Function1 $onPageSelected -> a
 me.hgj.jetpackmvvm.demo.app.network.ApiService -> me.hgj.jetpackmvvm.demo.app.network.a:
     java.lang.Object addTodo(java.lang.String,java.lang.String,java.lang.String,int,int,kotlin.coroutines.Continuation) -> a
+    java.lang.Object collect(int,kotlin.coroutines.Continuation) -> a
     java.lang.Object collectUrl(java.lang.String,java.lang.String,kotlin.coroutines.Continuation) -> a
-    java.lang.Object deletetool(int,kotlin.coroutines.Continuation) -> a
     java.lang.Object getSearchData(kotlin.coroutines.Continuation) -> a
     java.lang.Object getSearchDataByKey(int,java.lang.String,kotlin.coroutines.Continuation) -> a
     java.lang.Object getShareByidData(int,int,kotlin.coroutines.Continuation) -> a
     java.lang.Object register(java.lang.String,java.lang.String,java.lang.String,kotlin.coroutines.Continuation) -> a
     java.lang.Object updateTodo(java.lang.String,java.lang.String,java.lang.String,int,int,int,kotlin.coroutines.Continuation) -> a
     java.lang.Object addAriticle(java.lang.String,java.lang.String,kotlin.coroutines.Continuation) -> b
-    java.lang.Object collect(int,kotlin.coroutines.Continuation) -> b
     java.lang.Object getBanner(kotlin.coroutines.Continuation) -> b
     java.lang.Object getPublicData(int,int,kotlin.coroutines.Continuation) -> b
+    java.lang.Object getShareData(int,kotlin.coroutines.Continuation) -> b
     java.lang.Object getCollectUrlData(kotlin.coroutines.Continuation) -> c
-    java.lang.Object getShareData(int,kotlin.coroutines.Continuation) -> c
+    java.lang.Object getIntegralHistory(int,kotlin.coroutines.Continuation) -> c
     java.lang.Object getSystemChildData(int,int,kotlin.coroutines.Continuation) -> c
     java.lang.Object login(java.lang.String,java.lang.String,kotlin.coroutines.Continuation) -> c
     java.lang.Object doneTodo(int,int,kotlin.coroutines.Continuation) -> d
-    java.lang.Object getIntegralHistory(int,kotlin.coroutines.Continuation) -> d
+    java.lang.Object getAritrilList(int,kotlin.coroutines.Continuation) -> d
     java.lang.Object getSystemData(kotlin.coroutines.Continuation) -> d
-    java.lang.Object getAritrilList(int,kotlin.coroutines.Continuation) -> e
+    java.lang.Object getIntegralRank(int,kotlin.coroutines.Continuation) -> e
     java.lang.Object getNavigationData(kotlin.coroutines.Continuation) -> e
     java.lang.Object getProjecDataByType(int,int,kotlin.coroutines.Continuation) -> e
-    java.lang.Object getIntegralRank(int,kotlin.coroutines.Continuation) -> f
+    java.lang.Object deleteShareData(int,kotlin.coroutines.Continuation) -> f
     java.lang.Object getTopAritrilList(kotlin.coroutines.Continuation) -> f
-    java.lang.Object deleteShareData(int,kotlin.coroutines.Continuation) -> g
+    java.lang.Object getCollectData(int,kotlin.coroutines.Continuation) -> g
     java.lang.Object getIntegral(kotlin.coroutines.Continuation) -> g
-    java.lang.Object getCollectData(int,kotlin.coroutines.Continuation) -> h
+    java.lang.Object getAskData(int,kotlin.coroutines.Continuation) -> h
     java.lang.Object getPublicTitle(kotlin.coroutines.Continuation) -> h
-    java.lang.Object getAskData(int,kotlin.coroutines.Continuation) -> i
     java.lang.Object getProjecTitle(kotlin.coroutines.Continuation) -> i
-    java.lang.Object getTodoData(int,kotlin.coroutines.Continuation) -> j
-    java.lang.Object getProjecNewData(int,kotlin.coroutines.Continuation) -> k
-    java.lang.Object getSquareData(int,kotlin.coroutines.Continuation) -> l
-    java.lang.Object deleteTodo(int,kotlin.coroutines.Continuation) -> m
-    java.lang.Object uncollect(int,kotlin.coroutines.Continuation) -> n
+    java.lang.Object getTodoData(int,kotlin.coroutines.Continuation) -> i
+    java.lang.Object getProjecNewData(int,kotlin.coroutines.Continuation) -> j
+    java.lang.Object getSquareData(int,kotlin.coroutines.Continuation) -> k
+    java.lang.Object deleteTodo(int,kotlin.coroutines.Continuation) -> l
+    java.lang.Object uncollect(int,kotlin.coroutines.Continuation) -> m
 me.hgj.jetpackmvvm.demo.app.network.ApiService$Companion -> me.hgj.jetpackmvvm.demo.app.network.a$a:
     me.hgj.jetpackmvvm.demo.app.network.ApiService$Companion $$INSTANCE -> a
 me.hgj.jetpackmvvm.demo.app.network.MyHeadInterceptor -> me.hgj.jetpackmvvm.demo.app.network.b:
     okhttp3.Response intercept(okhttp3.Interceptor$Chain) -> a
 me.hgj.jetpackmvvm.demo.app.network.NetworkApi -> me.hgj.jetpackmvvm.demo.app.network.NetworkApi:
     kotlin.Lazy instance$delegate -> b
-    kotlin.Lazy service$delegate -> c
-    me.hgj.jetpackmvvm.demo.app.network.NetworkApi$Companion Companion -> d
+    me.hgj.jetpackmvvm.demo.app.network.NetworkApi$Companion Companion -> c
     kotlin.Lazy cookieJar$delegate -> a
     com.franmontiel.persistentcookiejar.PersistentCookieJar getCookieJar() -> a
     okhttp3.OkHttpClient$Builder setHttpClientBuilder(okhttp3.OkHttpClient$Builder) -> a
     retrofit2.Retrofit$Builder setRetrofitBuilder(retrofit2.Retrofit$Builder) -> a
     kotlin.Lazy access$getInstance$cp() -> b
-    kotlin.Lazy access$getService$cp() -> c
 me.hgj.jetpackmvvm.demo.app.network.NetworkApi$Companion -> me.hgj.jetpackmvvm.demo.app.network.NetworkApi$a:
     me.hgj.jetpackmvvm.demo.app.network.NetworkApi getInstance() -> a
-    me.hgj.jetpackmvvm.demo.app.network.ApiService getService() -> b
 me.hgj.jetpackmvvm.demo.app.network.NetworkApi$Companion$instance$2 -> me.hgj.jetpackmvvm.demo.app.network.NetworkApi$Companion$instance$2:
     me.hgj.jetpackmvvm.demo.app.network.NetworkApi$Companion$instance$2 INSTANCE -> a
-me.hgj.jetpackmvvm.demo.app.network.NetworkApi$Companion$service$2 -> me.hgj.jetpackmvvm.demo.app.network.NetworkApi$Companion$service$2:
-    me.hgj.jetpackmvvm.demo.app.network.NetworkApi$Companion$service$2 INSTANCE -> a
 me.hgj.jetpackmvvm.demo.app.network.NetworkApi$cookieJar$2 -> me.hgj.jetpackmvvm.demo.app.network.NetworkApi$cookieJar$2:
     me.hgj.jetpackmvvm.demo.app.network.NetworkApi$cookieJar$2 INSTANCE -> a
 me.hgj.jetpackmvvm.demo.app.network.stateCallback.CollectUiState -> me.hgj.jetpackmvvm.demo.app.network.c.a:
@@ -12224,12 +12218,12 @@ me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBindingImpl -> me.hgj.jetpackmv
     android.widget.LinearLayout mboundView0 -> i
     long mDirtyFlags -> o
     void _internalCallbackOnClick(int,android.view.View) -> a
-    boolean onChangeViewmodelIsShowPwd(me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData,int) -> a
-    boolean onChangeViewmodelPassword(me.hgj.jetpackmvvm.callback.livedata.StringLiveData,int) -> a
+    boolean onChangeViewmodelIsShowPwd(me.hgj.jetpackmvvm.callback.databind.BooleanObservableField,int) -> a
+    boolean onChangeViewmodelPassword(me.hgj.jetpackmvvm.callback.databind.StringObservableField,int) -> a
     void setClick(me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$ProxyClick) -> a
     void setView(android.view.View) -> a
     void setViewmodel(me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel) -> a
-    boolean onChangeViewmodelUsername(me.hgj.jetpackmvvm.callback.livedata.StringLiveData,int) -> b
+    boolean onChangeViewmodelUsername(me.hgj.jetpackmvvm.callback.databind.StringObservableField,int) -> b
 me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBindingImpl$1 -> me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBindingImpl$a:
     me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBindingImpl this$0 -> a
 me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBindingImpl$2 -> me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBindingImpl$b:
@@ -12247,10 +12241,10 @@ me.hgj.jetpackmvvm.demo.databinding.FragmentLookinfoBindingImpl -> me.hgj.jetpac
     android.widget.LinearLayout mboundView0 -> e
     android.util.SparseIntArray sViewsWithIds -> j
     androidx.databinding.ViewDataBinding$IncludedLayouts sIncludes -> i
-    boolean onChangeVmImageUrl(me.hgj.jetpackmvvm.callback.livedata.StringLiveData,int) -> a
+    boolean onChangeVmImageUrl(me.hgj.jetpackmvvm.callback.databind.StringObservableField,int) -> a
     void setVm(me.hgj.jetpackmvvm.demo.viewmodel.state.LookInfoViewModel) -> a
-    boolean onChangeVmInfo(me.hgj.jetpackmvvm.callback.livedata.StringLiveData,int) -> b
-    boolean onChangeVmName(me.hgj.jetpackmvvm.callback.livedata.StringLiveData,int) -> c
+    boolean onChangeVmInfo(me.hgj.jetpackmvvm.callback.databind.StringObservableField,int) -> b
+    boolean onChangeVmName(me.hgj.jetpackmvvm.callback.databind.StringObservableField,int) -> c
 me.hgj.jetpackmvvm.demo.databinding.FragmentMainBindingImpl -> me.hgj.jetpackmvvm.demo.databinding.FragmentMainBindingImpl:
     android.util.SparseIntArray sViewsWithIds -> d
     android.widget.LinearLayout mboundView0 -> a
@@ -12289,12 +12283,17 @@ me.hgj.jetpackmvvm.demo.databinding.FragmentMeBindingImpl -> me.hgj.jetpackmvvm.
     android.view.View$OnClickListener mCallback10 -> x
     android.view.View$OnClickListener mCallback12 -> w
     void _internalCallbackOnClick(int,android.view.View) -> a
-    boolean onChangeVmImageUrl(me.hgj.jetpackmvvm.callback.livedata.StringLiveData,int) -> a
-    boolean onChangeVmIntegral(me.hgj.jetpackmvvm.callback.livedata.IntLiveData,int) -> a
+    boolean onChangeVmImageUrl(me.hgj.jetpackmvvm.callback.databind.StringObservableField,int) -> a
+    boolean onChangeVmIntegral(me.hgj.jetpackmvvm.callback.databind.IntObservableField,int) -> a
     void setClick(me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$ProxyClick) -> a
     void setVm(me.hgj.jetpackmvvm.demo.viewmodel.state.MeViewModel) -> a
-    boolean onChangeVmInfo(me.hgj.jetpackmvvm.callback.livedata.StringLiveData,int) -> b
-    boolean onChangeVmName(me.hgj.jetpackmvvm.callback.livedata.StringLiveData,int) -> c
+    boolean onChangeVmInfo(me.hgj.jetpackmvvm.callback.databind.StringObservableField,int) -> b
+    boolean onChangeVmName(me.hgj.jetpackmvvm.callback.databind.StringObservableField,int) -> c
+me.hgj.jetpackmvvm.demo.databinding.FragmentPagerBindingImpl -> me.hgj.jetpackmvvm.demo.databinding.FragmentPagerBindingImpl:
+    android.util.SparseIntArray sViewsWithIds -> d
+    android.widget.LinearLayout mboundView0 -> a
+    androidx.databinding.ViewDataBinding$IncludedLayouts sIncludes -> c
+    long mDirtyFlags -> b
 me.hgj.jetpackmvvm.demo.databinding.FragmentRegisterBinding -> me.hgj.jetpackmvvm.demo.databinding.FragmentRegisterBinding:
     android.widget.CheckBox registerKey1 -> c
     android.widget.EditText registerPwd1 -> e
@@ -12318,14 +12317,14 @@ me.hgj.jetpackmvvm.demo.databinding.FragmentRegisterBindingImpl -> me.hgj.jetpac
     android.widget.LinearLayout mboundView0 -> j
     long mDirtyFlags -> p
     void _internalCallbackOnClick(int,android.view.View) -> a
-    boolean onChangeViewmodelIsShowPwd(me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData,int) -> a
-    boolean onChangeViewmodelPassword(me.hgj.jetpackmvvm.callback.livedata.StringLiveData,int) -> a
+    boolean onChangeViewmodelIsShowPwd(me.hgj.jetpackmvvm.callback.databind.BooleanObservableField,int) -> a
+    boolean onChangeViewmodelPassword(me.hgj.jetpackmvvm.callback.databind.StringObservableField,int) -> a
     void setClick(me.hgj.jetpackmvvm.demo.ui.fragment.login.RegisterFrgment$ProxyClick) -> a
     void setView(android.view.View) -> a
     void setViewmodel(me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel) -> a
-    boolean onChangeViewmodelIsShowPwd2(me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData,int) -> b
-    boolean onChangeViewmodelPassword2(me.hgj.jetpackmvvm.callback.livedata.StringLiveData,int) -> b
-    boolean onChangeViewmodelUsername(me.hgj.jetpackmvvm.callback.livedata.StringLiveData,int) -> c
+    boolean onChangeViewmodelIsShowPwd2(me.hgj.jetpackmvvm.callback.databind.BooleanObservableField,int) -> b
+    boolean onChangeViewmodelPassword2(me.hgj.jetpackmvvm.callback.databind.StringObservableField,int) -> b
+    boolean onChangeViewmodelUsername(me.hgj.jetpackmvvm.callback.databind.StringObservableField,int) -> c
 me.hgj.jetpackmvvm.demo.databinding.FragmentRegisterBindingImpl$1 -> me.hgj.jetpackmvvm.demo.databinding.FragmentRegisterBindingImpl$a:
     me.hgj.jetpackmvvm.demo.databinding.FragmentRegisterBindingImpl this$0 -> a
 me.hgj.jetpackmvvm.demo.databinding.FragmentRegisterBindingImpl$2 -> me.hgj.jetpackmvvm.demo.databinding.FragmentRegisterBindingImpl$b:
@@ -12651,6 +12650,12 @@ me.hgj.jetpackmvvm.demo.ui.fragment.demo.DemoFragment -> me.hgj.jetpackmvvm.demo
 me.hgj.jetpackmvvm.demo.ui.fragment.demo.DemoFragment$ProxClick -> me.hgj.jetpackmvvm.demo.ui.fragment.demo.DemoFragment$a:
     me.hgj.jetpackmvvm.demo.ui.fragment.demo.DemoFragment this$0 -> a
     void download() -> a
+me.hgj.jetpackmvvm.demo.ui.fragment.demo.PagerFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.demo.PagerFragment:
+    java.util.HashMap _$_findViewCache -> k
+    android.view.View _$_findCachedViewById(int) -> a
+    void initView(android.os.Bundle) -> a
+    void _$_clearFindViewByIdCache() -> d
+    int layoutId() -> j
 me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment:
     me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView footView -> m
     kotlin.Lazy articleAdapter$delegate -> k
@@ -13873,34 +13878,32 @@ me.hgj.jetpackmvvm.demo.viewmodel.state.IntegralViewModel -> me.hgj.jetpackmvvm.
     androidx.databinding.ObservableField rank -> b
     androidx.databinding.ObservableField getRank() -> b
 me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel -> me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel:
-    me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData isShowPwd2 -> f
-    me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData isShowPwd -> e
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData password2 -> d
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData password -> c
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData username -> b
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getPassword() -> b
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getPassword2() -> c
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getUsername() -> d
-    me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData isShowPwd() -> e
-    me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData isShowPwd2() -> f
+    me.hgj.jetpackmvvm.callback.databind.BooleanObservableField isShowPwd2 -> f
+    me.hgj.jetpackmvvm.callback.databind.BooleanObservableField isShowPwd -> e
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField password2 -> d
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField password -> c
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField username -> b
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField getPassword() -> b
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField getPassword2() -> c
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField getUsername() -> d
+    me.hgj.jetpackmvvm.callback.databind.BooleanObservableField isShowPwd() -> e
+    me.hgj.jetpackmvvm.callback.databind.BooleanObservableField isShowPwd2() -> f
 me.hgj.jetpackmvvm.demo.viewmodel.state.LookInfoViewModel -> me.hgj.jetpackmvvm.demo.viewmodel.state.LookInfoViewModel:
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData info -> d
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData imageUrl -> c
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData name -> b
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getImageUrl() -> b
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getInfo() -> c
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getName() -> d
-me.hgj.jetpackmvvm.demo.viewmodel.state.MainViewModel -> me.hgj.jetpackmvvm.demo.viewmodel.state.MainViewModel:
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData name2 -> b
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField info -> d
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField imageUrl -> c
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField name -> b
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField getImageUrl() -> b
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField getInfo() -> c
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField getName() -> d
 me.hgj.jetpackmvvm.demo.viewmodel.state.MeViewModel -> me.hgj.jetpackmvvm.demo.viewmodel.state.MeViewModel:
-    me.hgj.jetpackmvvm.callback.livedata.IntLiveData integral -> c
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData imageUrl -> e
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData info -> d
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData name -> b
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getImageUrl() -> b
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getInfo() -> c
-    me.hgj.jetpackmvvm.callback.livedata.IntLiveData getIntegral() -> d
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getName() -> e
+    me.hgj.jetpackmvvm.callback.databind.IntObservableField integral -> c
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField imageUrl -> e
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField info -> d
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField name -> b
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField getImageUrl() -> b
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField getInfo() -> c
+    me.hgj.jetpackmvvm.callback.databind.IntObservableField getIntegral() -> d
+    me.hgj.jetpackmvvm.callback.databind.StringObservableField getName() -> e
 me.hgj.jetpackmvvm.demo.viewmodel.state.TodoViewModel -> me.hgj.jetpackmvvm.demo.viewmodel.state.TodoViewModel:
     me.hgj.jetpackmvvm.callback.databind.StringObservableField todoLeve -> e
     me.hgj.jetpackmvvm.callback.databind.StringObservableField todoTime -> d

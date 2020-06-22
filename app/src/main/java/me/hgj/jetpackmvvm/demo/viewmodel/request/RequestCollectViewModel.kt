@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.request
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.CollectUiState
@@ -15,7 +14,7 @@ import me.hgj.jetpackmvvm.ext.request
  * 时间　: 2020/3/3
  * 描述　: 专门为了收藏而写的Viewmodel
  */
-open class RequestCollectViewModel(application: Application) : BaseViewModel(application) {
+open class RequestCollectViewModel : BaseViewModel() {
 
     private var pageNo = 0
 

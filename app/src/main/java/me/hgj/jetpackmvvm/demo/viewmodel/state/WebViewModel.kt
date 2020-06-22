@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.state
 
-import android.app.Application
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 
 /**
@@ -8,7 +7,7 @@ import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
  * 时间　: 2020/3/3
  * 描述　:
  */
-class WebViewModel(application: Application) : BaseViewModel(application) {
+class WebViewModel : BaseViewModel() {
 
     //是否收藏
     var collect = false

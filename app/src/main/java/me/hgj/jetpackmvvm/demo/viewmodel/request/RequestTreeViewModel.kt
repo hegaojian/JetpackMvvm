@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.request
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
@@ -15,7 +14,7 @@ import me.hgj.jetpackmvvm.ext.request
  * 时间　: 2020/3/2
  * 描述　:
  */
-class RequestTreeViewModel(application: Application) : BaseViewModel(application) {
+class RequestTreeViewModel : BaseViewModel() {
 
     //页码，体系 广场的页码是从0开始的
     private var pageNo = 0

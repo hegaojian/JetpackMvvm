@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.request
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
@@ -14,7 +13,7 @@ import me.hgj.jetpackmvvm.ext.request
  * 时间　: 2020/3/10
  * 描述　:
  */
-class RequestIntegralViewModel(application: Application) : BaseViewModel(application){
+class RequestIntegralViewModel : BaseViewModel() {
 
     private var pageNo = 1
 
@@ -24,11 +23,11 @@ class RequestIntegralViewModel(application: Application) : BaseViewModel(applica
     //获取积分历史数据
     var integralHistoryDataState = MutableLiveData<ListDataUiState<IntegralHistoryResponse>>()
 
-    fun getIntegralData(isRefresh:Boolean){
-        if(isRefresh){
+    fun getIntegralData(isRefresh: Boolean) {
+        if (isRefresh) {
             pageNo = 1
         }
-        request({HttpRequestManger.apiService.getIntegralRank(pageNo)},{
+        request({ HttpRequestManger.apiService.getIntegralRank(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -41,7 +40,7 @@ class RequestIntegralViewModel(application: Application) : BaseViewModel(applica
                     listData = it.datas
                 )
             integralDataState.postValue(listDataUiState)
-        },{
+        }, {
             //请求失败
             val listDataUiState =
                 ListDataUiState(
@@ -54,11 +53,11 @@ class RequestIntegralViewModel(application: Application) : BaseViewModel(applica
         })
     }
 
-    fun getIntegralHistoryData(isRefresh:Boolean){
-        if(isRefresh){
+    fun getIntegralHistoryData(isRefresh: Boolean) {
+        if (isRefresh) {
             pageNo = 1
         }
-        request({HttpRequestManger.apiService.getIntegralHistory(pageNo)},{
+        request({ HttpRequestManger.apiService.getIntegralHistory(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -71,7 +70,7 @@ class RequestIntegralViewModel(application: Application) : BaseViewModel(applica
                     listData = it.datas
                 )
             integralHistoryDataState.postValue(listDataUiState)
-        },{
+        }, {
             //请求失败
             val listDataUiState =
                 ListDataUiState(

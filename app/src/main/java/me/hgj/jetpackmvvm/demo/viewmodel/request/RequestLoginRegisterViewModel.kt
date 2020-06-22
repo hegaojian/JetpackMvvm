@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.request
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.data.model.bean.UserInfo
@@ -13,7 +12,7 @@ import me.hgj.jetpackmvvm.state.ResultState
  * 时间　: 2019/12/23
  * 描述　:登录注册的请求ViewModel
  */
-class RequestLoginRegisterViewModel(application: Application) : BaseViewModel(application) {
+class RequestLoginRegisterViewModel : BaseViewModel() {
 
     //方式1  自动脱壳过滤处理请求结果，判断结果是否成功
     var loginResult = MutableLiveData<ResultState<UserInfo>>()

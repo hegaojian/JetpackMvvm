@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.state
 
-import android.app.Application
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.callback.databind.StringObservableField
 
@@ -9,7 +8,7 @@ import me.hgj.jetpackmvvm.callback.databind.StringObservableField
  * 时间　: 2020/3/11
  * 描述　:
  */
-class AriticleViewModel(application: Application) : BaseViewModel(application) {
+class AriticleViewModel : BaseViewModel() {
 
     //分享文章标题
     var shareTitle = StringObservableField()

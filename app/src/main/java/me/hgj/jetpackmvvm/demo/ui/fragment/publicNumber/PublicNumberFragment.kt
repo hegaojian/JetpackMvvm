@@ -43,8 +43,6 @@ class PublicNumberFragment : BaseFragment<RequestPublicNumberViewModel, Fragment
         view_pager.init(this,fragments)
         //初始化 magic_indicator
         magic_indicator.bindViewPager2(view_pager,mDataList)
-        //初始化时设置顶部主题颜色
-        shareViewModel.appColor.value.let { viewpager_linear.setBackgroundColor(it) }
     }
 
     /**

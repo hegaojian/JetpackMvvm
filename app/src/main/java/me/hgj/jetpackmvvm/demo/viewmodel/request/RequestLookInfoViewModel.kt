@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.request
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
@@ -14,13 +13,13 @@ import me.hgj.jetpackmvvm.ext.request
  * 时间　: 2020/3/4
  * 描述　:
  */
-class RequestLookInfoViewModel(application: Application) : BaseViewModel(application){
+class RequestLookInfoViewModel : BaseViewModel() {
 
     var pageNo = 1
 
     var shareListDataUistate = MutableLiveData<ListDataUiState<AriticleResponse>>()
 
-    var shareResponse  = MutableLiveData<ShareResponse>()
+    var shareResponse = MutableLiveData<ShareResponse>()
 
     fun getLookinfo(id: Int, isRefresh: Boolean) {
         if (isRefresh) {

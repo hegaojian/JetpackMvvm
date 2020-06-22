@@ -10,6 +10,7 @@ import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestDemoViewModel
 
 class DemoFragment : BaseFragment<BaseViewModel, FragmentDemoBinding>() {
 
+
     val requestViewModel: RequestDemoViewModel by viewModels()
 
     override fun layoutId() = R.layout.fragment_demo

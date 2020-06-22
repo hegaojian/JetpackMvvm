@@ -18,6 +18,7 @@ import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestMeViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.MeViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.parseState
+import me.hgj.jetpackmvvm.ext.util.logd
 import me.hgj.jetpackmvvm.ext.util.notNull
 
 /**
@@ -79,6 +80,9 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
                 })
             })
         }
+        mViewModel.testString.observe(viewLifecycleOwner, Observer {
+            showLoading(it)
+        })
     }
 
     inner class ProxyClick {

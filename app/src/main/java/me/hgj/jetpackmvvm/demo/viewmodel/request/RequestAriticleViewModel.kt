@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.request
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
@@ -15,7 +14,7 @@ import me.hgj.jetpackmvvm.state.ResultState
  * 时间　: 2020/5/2
  * 描述　: 只做一件事，拿数据源
  */
-class RequestAriticleViewModel(application: Application) : BaseViewModel(application) {
+class RequestAriticleViewModel : BaseViewModel() {
 
     var pageNo = 0
 
