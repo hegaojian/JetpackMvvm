@@ -33,9 +33,9 @@ import java.util.concurrent.atomic.AtomicBoolean
  * can be emitted if the observer is active. This LiveData only calls the observable if there's an
  * explicit call to setValue() or call().
  *
- *
  * Note that only one observer is going to be notified of changes.
  */
+@Deprecated("已过时,使用EventLiveData替代，后面的版本会删除他")
 class SingleLiveEvent<T> : MutableLiveData<T>() {
 
     private val mPending = AtomicBoolean(false)

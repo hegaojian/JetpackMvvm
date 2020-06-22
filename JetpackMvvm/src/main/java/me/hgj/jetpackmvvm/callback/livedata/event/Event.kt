@@ -5,7 +5,7 @@ package me.hgj.jetpackmvvm.callback.livedata.event
  * @author : hgj
  * @date   : 2020/6/8
  */
-class Event<T>(private val content: T) {
+class Event<T>(private val content: T?) {
     private var hasHandled = false
     fun getContent(): T? {
         if (hasHandled) {

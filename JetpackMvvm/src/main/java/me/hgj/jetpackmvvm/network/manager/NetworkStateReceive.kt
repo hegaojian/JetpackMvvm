@@ -19,7 +19,7 @@ class NetworkStateReceive : BroadcastReceiver() {
                 //收到没有网络时判断之前的值是不是有网络，如果有网络才提示通知 ，防止重复通知
                 NetworkStateManager.instance.mNetworkStateCallback.value?.let {
                     if(it.isSuccess){
-                        Toast.makeText(context,"网络不给力啊",Toast.LENGTH_SHORT).show()
+                        //没网
                         NetworkStateManager.instance.mNetworkStateCallback.postValue(NetState(isSuccess = false))
                     }
                 }
@@ -27,6 +27,7 @@ class NetworkStateReceive : BroadcastReceiver() {
                 //收到有网络时判断之前的值是不是没有网络，如果没有网络才提示通知 ，防止重复通知
                 NetworkStateManager.instance.mNetworkStateCallback.value?.let {
                     if(!it.isSuccess){
+                        //有网络了
                         NetworkStateManager.instance.mNetworkStateCallback.postValue(NetState(isSuccess = true))
                     }
                 }

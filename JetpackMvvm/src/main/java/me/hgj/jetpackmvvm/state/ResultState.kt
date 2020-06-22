@@ -15,7 +15,6 @@ sealed class ResultState<out T> {
         fun <T> onAppLoading(loadingMessage:String): ResultState<T> = Loading(loadingMessage)
         fun <T> onAppError(error: AppException): ResultState<T> = Error(error)
     }
-
     data class Loading(val loadingMessage:String) : ResultState<Nothing>()
     data class Success<out T>(val data: T) : ResultState<T>()
     data class Error(val error: AppException) : ResultState<Nothing>()

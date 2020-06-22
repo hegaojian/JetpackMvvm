@@ -5,7 +5,7 @@ import java.util.*
 
 /**
  * 作者　: hegaojian
- * 时间　: 20120/1/7
+ * 时间　: 2020/1/7
  * 描述　:
  */
 object KtxActivityManger {
@@ -14,7 +14,6 @@ object KtxActivityManger {
         get() =
             if (mActivityList.isEmpty()) null
             else mActivityList.last
-
 
     /**
      * activity入栈

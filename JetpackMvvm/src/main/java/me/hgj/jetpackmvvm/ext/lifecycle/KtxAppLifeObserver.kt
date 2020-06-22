@@ -3,7 +3,7 @@ package me.hgj.jetpackmvvm.ext.lifecycle
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData
+import me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData
 
 /**
  * 作者　: hegaojian
@@ -12,7 +12,7 @@ import me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData
  */
 object KtxAppLifeObserver : LifecycleObserver {
 
-    var isForeground = UnPeekNotNullLiveData<Boolean>()
+    var isForeground = BooleanLiveData()
 
     //在前台
     @OnLifecycleEvent(Lifecycle.Event.ON_START)

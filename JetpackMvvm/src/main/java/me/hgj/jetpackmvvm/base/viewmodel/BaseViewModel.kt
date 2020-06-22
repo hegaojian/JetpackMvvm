@@ -1,15 +1,14 @@
 package me.hgj.jetpackmvvm.base.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent
+import androidx.lifecycle.ViewModel
+import me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData
 
 /**
  * 作者　: hegaojian
  * 时间　: 2019/12/12
  * 描述　: ViewModel的基类
  */
-open class BaseViewModel(application: Application) : AndroidViewModel(application) {
+open class BaseViewModel : ViewModel() {
 
     val loadingChange: UiLoadingChange by lazy { UiLoadingChange() }
 
@@ -18,9 +17,9 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
      */
     inner class UiLoadingChange {
         //显示加载框
-        val showDialog by lazy { SingleLiveEvent<String>() }
+        val showDialog by lazy { EventLiveData<String>() }
         //隐藏
-        val dismissDialog by lazy { SingleLiveEvent<Void>() }
+        val dismissDialog by lazy { EventLiveData<String>() }
     }
 
 }

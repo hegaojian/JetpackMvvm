@@ -60,10 +60,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
      * 创建viewModel
      */
     private fun createViewModel(): VM {
-        return ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory(application)
-        ).get(getVmClazz(this))
+        return ViewModelProvider(this).get(getVmClazz(this))
     }
 
     /**
@@ -96,5 +93,5 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
     /**
      * 供子类BaseVmDbActivity 初始化Databinding操作
      */
-    open fun initDataBind() { }
+    open fun initDataBind() {}
 }

@@ -37,6 +37,7 @@ class KtxLifeCycleCallBack : Application.ActivityLifecycleCallbacks {
     }
 
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle?) {
+
     }
 
     override fun onActivityStopped(activity: Activity) {

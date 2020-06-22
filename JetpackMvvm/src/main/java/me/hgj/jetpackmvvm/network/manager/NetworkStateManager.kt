@@ -1,6 +1,8 @@
 package me.hgj.jetpackmvvm.network.manager
 
+import me.hgj.jetpackmvvm.base.Ktx
 import me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData
+import me.hgj.jetpackmvvm.network.NetworkUtil
 
 /**
  * 作者　: hegaojian
@@ -10,12 +12,9 @@ import me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData
 class NetworkStateManager private constructor() {
 
     val mNetworkStateCallback = UnPeekLiveData<NetState>()
-
+    
     init {
-        //mNetworkStateCallback值为null时或者,不为空但是没有网络时才能初始化设值有网络
-        if (mNetworkStateCallback.value == null || !mNetworkStateCallback.value!!.isSuccess) {
-            mNetworkStateCallback.postValue(NetState(isSuccess = true))
-        }
+        mNetworkStateCallback.postValue(NetState(isSuccess = NetworkUtil.isNetworkAvailable(Ktx.app)))
     }
 
     companion object {

@@ -55,9 +55,6 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
         onVisible()
         registorDefUIChange()
         initData()
-        NetworkStateManager.instance.mNetworkStateCallback.observe(this, Observer {
-            onNetworkStateChanged(it)
-        })
     }
 
     /**
@@ -69,10 +66,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
      * 创建viewModel
      */
     private fun createViewModel(): VM {
-        return ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory(this.requireActivity().application)
-        ).get(getVmClazz(this))
+        return ViewModelProvider(this).get(getVmClazz(this))
     }
 
     /**
@@ -101,6 +95,15 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
     private fun onVisible() {
         if (lifecycle.currentState == Lifecycle.State.STARTED && isFirst) {
             lazyLoadData()
+            //在Fragment中，只有懒加载过了才能开启网络变化监听
+            NetworkStateManager.instance.mNetworkStateCallback.observe(
+                viewLifecycleOwner,
+                Observer {
+                    //不是首次订阅时调用方法，防止数据第一次监听错误
+                    if (!isFirst) {
+                        onNetworkStateChanged(it)
+                    }
+                })
             isFirst = false
         }
     }
