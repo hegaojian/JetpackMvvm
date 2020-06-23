@@ -352,7 +352,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 }
 ```
 
-**2、 直接在当前ViewMdel中拿到请求结果**
+**2、 直接在当前ViewModel中拿到请求结果**
 
 ```
 class RequestLoginViewModel(application: Application) : BaseViewModel(application) {
