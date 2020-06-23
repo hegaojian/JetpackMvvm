@@ -162,7 +162,7 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
 - **3.2 创建LoginViewModel类继承BaseViewModel**
 
 ```
-class LoginViewModel(application: Application) : BaseViewModel(application) {
+class LoginViewModel : BaseViewModel() {
   
 }
 ```
@@ -355,7 +355,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 **2、 直接在当前ViewModel中拿到请求结果**
 
 ```
-class RequestLoginViewModel(application: Application) : BaseViewModel(application) {
+class RequestLoginViewModel : BaseViewModel() {
     
   fun login(username: String, password: String){
    //1.拿到已脱壳的数据（项目有基类的可以用）
