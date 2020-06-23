@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.demo.app.network
 
-import com.blankj.utilcode.util.Utils
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
@@ -28,8 +27,9 @@ class NetworkApi : BaseNetworkApi() {
 
     companion object {
 
-         val instance: NetworkApi by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
-            NetworkApi() }
+        val instance: NetworkApi by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+            NetworkApi()
+        }
     }
 
     /**

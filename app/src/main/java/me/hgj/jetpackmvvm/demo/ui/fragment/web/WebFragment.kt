@@ -171,7 +171,7 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
                 //分享
                 startActivity(Intent.createChooser(Intent().apply {
                     action = Intent.ACTION_SEND
-                    putExtra(Intent.EXTRA_TEXT, "$mViewModel.showTitle:$mViewModel.url")
+                    putExtra(Intent.EXTRA_TEXT, "{${mViewModel.showTitle}}:${mViewModel.url}")
                     type = "text/plain"
                 }, "分享到"))
             }

@@ -9,4 +9,9 @@ import kotlinx.android.parcel.Parcelize
  */
 @SuppressLint("ParcelCreator")
 @Parcelize
-data class CoinInfoResponse(var coinCount: Int, var rank:Int, var userId: Int, var username:String) : Parcelable
+data class CoinInfoResponse(
+    var coinCount: Int,
+    var rank: String,
+    var userId: Int,
+    var username: String
+) : Parcelable

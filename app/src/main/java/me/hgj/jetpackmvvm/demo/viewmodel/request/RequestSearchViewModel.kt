@@ -1,12 +1,16 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
+import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.data.model.bean.ApiPagerResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.SearchResponse
 import me.hgj.jetpackmvvm.demo.data.repository.local.LocalDataManger
 import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
+import me.hgj.jetpackmvvm.ext.launch
 import me.hgj.jetpackmvvm.ext.request
 import me.hgj.jetpackmvvm.state.ResultState
 
@@ -40,7 +44,13 @@ class RequestSearchViewModel : BaseViewModel() {
      * 获取历史数据
      */
     fun getHistoryData() {
-        historyData.postValue(LocalDataManger.instance.getHistoryData())
+        launch({
+            CacheUtil.getSearchHistoryData()
+        },{
+            historyData.postValue(it)
+        },{
+            //获取本地历史数据出异常了
+        })
     }
 
     /**
@@ -50,6 +60,9 @@ class RequestSearchViewModel : BaseViewModel() {
         if (isRefresh) {
             pageNo = 0
         }
-        request({ HttpRequestManger.apiService.getSearchDataByKey(pageNo, searchKey) }, seachResultData)
+        request(
+            { HttpRequestManger.apiService.getSearchDataByKey(pageNo, searchKey) },
+            seachResultData
+        )
     }
 }

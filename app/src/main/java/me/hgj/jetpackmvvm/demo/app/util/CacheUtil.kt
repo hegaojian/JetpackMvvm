@@ -87,7 +87,7 @@ object CacheUtil {
         val kv = MMKV.mmkvWithID("cache")
         val searchCacheStr =  kv.decodeString("history")
         if (!TextUtils.isEmpty(searchCacheStr)) {
-            return Gson().fromJson<ArrayList<String>>(searchCacheStr
+            return Gson().fromJson(searchCacheStr
                 , object : TypeToken<ArrayList<String>>() {}.type)
         }
         return arrayListOf()

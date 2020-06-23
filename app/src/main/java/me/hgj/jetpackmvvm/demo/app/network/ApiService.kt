@@ -1,7 +1,5 @@
 package me.hgj.jetpackmvvm.demo.app.network
 
-import me.hgj.jetpackmvvm.demo.data.model.bean.ApiPagerResponse
-import me.hgj.jetpackmvvm.demo.data.model.bean.ApiResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.*
 import retrofit2.http.*
 
@@ -106,7 +104,6 @@ interface ApiService {
     @GET("wenda/list/{page}/json")
     suspend fun getAskData(@Path("page") page: Int): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>>
 
-
     /**
      * 获取体系数据
      */
@@ -118,7 +115,6 @@ interface ApiService {
      */
     @GET("article/list/{page}/json")
     suspend fun getSystemChildData(@Path("page") pageNo: Int, @Query("cid") cid: Int): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>>
-
 
     /**
      * 获取导航数据
@@ -166,7 +162,7 @@ interface ApiService {
      * 获取他人分享文章列表数据
      */
     @GET("user/{id}/share_articles/{page}/json")
-    suspend fun getShareByidData(@Path("page") page: Int, @Path("id") id: Int): ApiResponse<ShareResponse>
+    suspend fun getShareByidData(@Path("id") id: Int,@Path("page") page: Int): ApiResponse<ShareResponse>
 
     /**
      * 获取当前账户的个人积分

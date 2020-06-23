@@ -1,7 +1,7 @@
 # compiler: R8
 # compiler_version: 1.6.82
 # min_api: 21
-# pg_map_id: b1b5153
+# pg_map_id: db6b61c
 # common_typos_disable
 $$ServiceLoaderMethods -> a:
     java.util.Iterator $load1() -> a
@@ -10671,7 +10671,6 @@ kotlinx.coroutines.DispatchedContinuation -> kotlinx.coroutines.p0:
     kotlin.coroutines.Continuation continuation -> h
     kotlin.coroutines.Continuation getDelegate$kotlinx_coroutines_core() -> b
     java.lang.Object takeState$kotlinx_coroutines_core() -> c
-    void dispatchYield$kotlinx_coroutines_core(java.lang.Object) -> d
 kotlinx.coroutines.DispatchedCoroutine -> kotlinx.coroutines.q0:
     java.util.concurrent.atomic.AtomicIntegerFieldUpdater _decision$FU -> e
     void afterCompletionInternal(java.lang.Object,int) -> a
@@ -10687,7 +10686,6 @@ kotlinx.coroutines.DispatchedKt -> kotlinx.coroutines.r0:
     void resumeCancellable(kotlin.coroutines.Continuation,java.lang.Object) -> a
     void resumeCancellableWithException(kotlin.coroutines.Continuation,java.lang.Throwable) -> a
     void resumeUnconfined(kotlinx.coroutines.DispatchedTask) -> a
-    boolean yieldUndispatched(kotlinx.coroutines.DispatchedContinuation) -> a
     void resumeDirect(kotlin.coroutines.Continuation,java.lang.Object) -> b
     void resumeDirectWithException(kotlin.coroutines.Continuation,java.lang.Throwable) -> b
 kotlinx.coroutines.DispatchedTask -> kotlinx.coroutines.s0:
@@ -10994,7 +10992,6 @@ kotlinx.coroutines.UndispatchedCoroutine -> kotlinx.coroutines.j2:
     int getDefaultResumeMode$kotlinx_coroutines_core() -> l
 kotlinx.coroutines.YieldKt -> kotlinx.coroutines.k2:
     void checkCompletion(kotlin.coroutines.CoroutineContext) -> a
-    java.lang.Object yield(kotlin.coroutines.Continuation) -> a
 kotlinx.coroutines.android.AndroidDispatcherFactory -> kotlinx.coroutines.android.AndroidDispatcherFactory:
     kotlinx.coroutines.MainCoroutineDispatcher createDispatcher(java.util.List) -> a
     kotlinx.coroutines.android.HandlerContext createDispatcher(java.util.List) -> a
@@ -11596,7 +11593,7 @@ me.hgj.jetpackmvvm.base.activity.BaseVmActivity$registerUiChange$1 -> me.hgj.jet
     void onChanged(java.lang.String) -> a
 me.hgj.jetpackmvvm.base.activity.BaseVmActivity$registerUiChange$2 -> me.hgj.jetpackmvvm.base.activity.BaseVmActivity$c:
     me.hgj.jetpackmvvm.base.activity.BaseVmActivity this$0 -> a
-    void onChanged(java.lang.Void) -> a
+    void onChanged(java.lang.String) -> a
 me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity -> me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity:
     androidx.databinding.ViewDataBinding mDatabind -> c
     void initDataBind() -> c
@@ -11611,6 +11608,7 @@ me.hgj.jetpackmvvm.base.fragment.BaseVmFragment -> me.hgj.jetpackmvvm.base.fragm
     androidx.appcompat.app.AppCompatActivity mActivity -> c
     boolean isFirst -> a
     java.util.HashMap _$_findViewCache -> d
+    boolean access$isFirst$p(me.hgj.jetpackmvvm.base.fragment.BaseVmFragment) -> a
     void initView(android.os.Bundle) -> a
     void onNetworkStateChanged(me.hgj.jetpackmvvm.network.manager.NetState) -> a
     void showLoading(java.lang.String) -> a
@@ -11626,7 +11624,7 @@ me.hgj.jetpackmvvm.base.fragment.BaseVmFragment -> me.hgj.jetpackmvvm.base.fragm
     me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel createViewModel() -> l
     void onVisible() -> m
     void registorDefUIChange() -> n
-me.hgj.jetpackmvvm.base.fragment.BaseVmFragment$onViewCreated$1 -> me.hgj.jetpackmvvm.base.fragment.BaseVmFragment$a:
+me.hgj.jetpackmvvm.base.fragment.BaseVmFragment$onVisible$1 -> me.hgj.jetpackmvvm.base.fragment.BaseVmFragment$a:
     me.hgj.jetpackmvvm.base.fragment.BaseVmFragment this$0 -> a
     void onChanged(me.hgj.jetpackmvvm.network.manager.NetState) -> a
 me.hgj.jetpackmvvm.base.fragment.BaseVmFragment$registorDefUIChange$1 -> me.hgj.jetpackmvvm.base.fragment.BaseVmFragment$b:
@@ -11634,15 +11632,15 @@ me.hgj.jetpackmvvm.base.fragment.BaseVmFragment$registorDefUIChange$1 -> me.hgj.
     void onChanged(java.lang.String) -> a
 me.hgj.jetpackmvvm.base.fragment.BaseVmFragment$registorDefUIChange$2 -> me.hgj.jetpackmvvm.base.fragment.BaseVmFragment$c:
     me.hgj.jetpackmvvm.base.fragment.BaseVmFragment this$0 -> a
-    void onChanged(java.lang.Void) -> a
+    void onChanged(java.lang.String) -> a
 me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel -> me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel:
     kotlin.Lazy loadingChange$delegate -> a
     me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange getLoadingChange() -> a
 me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange -> me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange:
     kotlin.Lazy dismissDialog$delegate -> b
     kotlin.Lazy showDialog$delegate -> a
-    me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent getDismissDialog() -> a
-    me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent getShowDialog() -> b
+    me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData getDismissDialog() -> a
+    me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData getShowDialog() -> b
 me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$dismissDialog$2 -> me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$dismissDialog$2:
     me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$dismissDialog$2 INSTANCE -> a
 me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$showDialog$2 -> me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$showDialog$2:
@@ -11650,7 +11648,6 @@ me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$showDialog$2 -> 
 me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent -> me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent:
     java.util.concurrent.atomic.AtomicBoolean mPending -> a
     java.util.concurrent.atomic.AtomicBoolean access$getMPending$p(me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent) -> a
-    void call() -> a
 me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent$observe$1 -> me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent$a:
     androidx.lifecycle.Observer $observer -> b
     me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent this$0 -> a
@@ -11716,6 +11713,7 @@ me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData -> me.hgj.jetpackmvvm.c
     void postValue(me.hgj.jetpackmvvm.callback.livedata.event.Event) -> a
     void postValue(java.lang.Object) -> b
     void setValue(me.hgj.jetpackmvvm.callback.livedata.event.Event) -> b
+    void call() -> f
 me.hgj.jetpackmvvm.demo.DataBinderMapperImpl -> me.hgj.jetpackmvvm.demo.DataBinderMapperImpl:
     android.util.SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP -> a
 me.hgj.jetpackmvvm.demo.DataBinderMapperImpl$InnerBrLookup -> me.hgj.jetpackmvvm.demo.DataBinderMapperImpl$a:
@@ -11749,12 +11747,12 @@ me.hgj.jetpackmvvm.demo.app.base.BaseFragment -> me.hgj.jetpackmvvm.demo.app.bas
     me.hgj.jetpackmvvm.demo.app.event.EventViewModel getEventViewModel() -> m
     me.hgj.jetpackmvvm.demo.app.event.AppViewModel getShareViewModel() -> n
 me.hgj.jetpackmvvm.demo.app.event.AppViewModel -> me.hgj.jetpackmvvm.demo.app.event.AppViewModel:
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData userinfo -> b
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData appAnimation -> d
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData appColor -> c
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData getAppAnimation() -> b
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData getAppColor() -> c
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData getUserinfo() -> d
+    me.hgj.jetpackmvvm.callback.livedata.IntLiveData appAnimation -> d
+    androidx.lifecycle.MutableLiveData userinfo -> b
+    me.hgj.jetpackmvvm.callback.livedata.IntLiveData appColor -> c
+    me.hgj.jetpackmvvm.callback.livedata.IntLiveData getAppAnimation() -> b
+    me.hgj.jetpackmvvm.callback.livedata.IntLiveData getAppColor() -> c
+    androidx.lifecycle.MutableLiveData getUserinfo() -> d
 me.hgj.jetpackmvvm.demo.app.event.EventViewModel -> me.hgj.jetpackmvvm.demo.app.event.EventViewModel:
     me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData shareArticleEvent -> c
     me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData todoEvent -> d
@@ -12666,6 +12664,7 @@ me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment -> me.hgj.jetpackmvvm.demo
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter access$getArticleAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment) -> a
     void initView(android.os.Bundle) -> a
+    void onNetworkStateChanged(me.hgj.jetpackmvvm.network.manager.NetState) -> a
     me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView access$getFootView$p(me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment) -> b
     com.kingja.loadsir.core.LoadService access$getLoadsir$p(me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment) -> c
     void _$_clearFindViewByIdCache() -> d
@@ -12941,6 +12940,9 @@ me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$createObserver$1$1 -> me.hgj.j
 me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$createObserver$1$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$createObserver$1$2:
     me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$createObserver$1$2 INSTANCE -> a
     void invoke(me.hgj.jetpackmvvm.network.AppException) -> a
+me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$createObserver$3 -> me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$b:
+    me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment this$0 -> a
+    void onChanged(java.lang.String) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment:
     boolean isNew -> n
     int cid -> o
@@ -13899,11 +13901,13 @@ me.hgj.jetpackmvvm.demo.viewmodel.state.MeViewModel -> me.hgj.jetpackmvvm.demo.v
     me.hgj.jetpackmvvm.callback.databind.IntObservableField integral -> c
     me.hgj.jetpackmvvm.callback.databind.StringObservableField imageUrl -> e
     me.hgj.jetpackmvvm.callback.databind.StringObservableField info -> d
+    me.hgj.jetpackmvvm.callback.livedata.StringLiveData testString -> f
     me.hgj.jetpackmvvm.callback.databind.StringObservableField name -> b
     me.hgj.jetpackmvvm.callback.databind.StringObservableField getImageUrl() -> b
     me.hgj.jetpackmvvm.callback.databind.StringObservableField getInfo() -> c
     me.hgj.jetpackmvvm.callback.databind.IntObservableField getIntegral() -> d
     me.hgj.jetpackmvvm.callback.databind.StringObservableField getName() -> e
+    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getTestString() -> f
 me.hgj.jetpackmvvm.demo.viewmodel.state.TodoViewModel -> me.hgj.jetpackmvvm.demo.viewmodel.state.TodoViewModel:
     me.hgj.jetpackmvvm.callback.databind.StringObservableField todoLeve -> e
     me.hgj.jetpackmvvm.callback.databind.StringObservableField todoTime -> d
@@ -13957,7 +13961,7 @@ me.hgj.jetpackmvvm.ext.lifecycle.KtxActivityManger -> me.hgj.jetpackmvvm.ext.lif
     void pushActivity(android.app.Activity) -> b
 me.hgj.jetpackmvvm.ext.lifecycle.KtxAppLifeObserver -> me.hgj.jetpackmvvm.ext.lifecycle.KtxAppLifeObserver:
     me.hgj.jetpackmvvm.ext.lifecycle.KtxAppLifeObserver INSTANCE -> b
-    me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData isForeground -> a
+    me.hgj.jetpackmvvm.callback.livedata.BooleanLiveData isForeground -> a
 me.hgj.jetpackmvvm.ext.lifecycle.KtxHandler -> me.hgj.jetpackmvvm.ext.lifecycle.KtxHandler:
     androidx.lifecycle.LifecycleOwner mLifecycleOwner -> a
 me.hgj.jetpackmvvm.ext.lifecycle.KtxLifeCycleCallBack -> me.hgj.jetpackmvvm.ext.lifecycle.b:
@@ -14447,7 +14451,18 @@ net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.badge.BadgePa
     void onSelected(int,int) -> b
 net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.badge.BadgeRule -> net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.badge.a:
     net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.badge.BadgeAnchor getAnchor() -> a
-okhttp3.Address -> okhttp3.a:
+okhttp3.-$$Lambda$Authenticator$xBBU2iHkJpDKH0vhaB2vteUyEoc -> okhttp3.a:
+    okhttp3.-$$Lambda$Authenticator$xBBU2iHkJpDKH0vhaB2vteUyEoc INSTANCE -> b
+    okhttp3.Request authenticate(okhttp3.Route,okhttp3.Response) -> a
+okhttp3.-$$Lambda$CipherSuite$9SWcmR6qHxy1V18Yo6Z-Hyn4RNk -> okhttp3.b:
+    okhttp3.-$$Lambda$CipherSuite$9SWcmR6qHxy1V18Yo6Z-Hyn4RNk INSTANCE -> a
+okhttp3.-$$Lambda$Dns$mTkNcZf2K4euny3_jks6Cac6Az0 -> okhttp3.c:
+    okhttp3.-$$Lambda$Dns$mTkNcZf2K4euny3_jks6Cac6Az0 INSTANCE -> b
+    java.util.List lookup(java.lang.String) -> a
+okhttp3.-$$Lambda$EventListener$ahubxrUJKWnWohQgQKQidD9cuoA -> okhttp3.d:
+    okhttp3.EventListener f$0 -> a
+    okhttp3.EventListener create(okhttp3.Call) -> a
+okhttp3.Address -> okhttp3.e:
     okhttp3.Authenticator proxyAuthenticator -> d
     javax.net.ssl.HostnameVerifier hostnameVerifier -> j
     okhttp3.HttpUrl url -> a
@@ -14471,12 +14486,12 @@ okhttp3.Address -> okhttp3.a:
     javax.net.SocketFactory socketFactory() -> i
     javax.net.ssl.SSLSocketFactory sslSocketFactory() -> j
     okhttp3.HttpUrl url() -> k
-okhttp3.Authenticator -> okhttp3.b:
+okhttp3.Authenticator -> okhttp3.g:
     okhttp3.Authenticator NONE -> a
     okhttp3.Request authenticate(okhttp3.Route,okhttp3.Response) -> a
-okhttp3.Authenticator$1 -> okhttp3.b$a:
-    okhttp3.Request authenticate(okhttp3.Route,okhttp3.Response) -> a
-okhttp3.Cache -> okhttp3.c:
+okhttp3.Authenticator$-CC -> okhttp3.f:
+    okhttp3.Request okhttp3.Authenticator.lambda$static$0(okhttp3.Route,okhttp3.Response) -> a
+okhttp3.Cache -> okhttp3.h:
     int hitCount -> f
     int requestCount -> g
     int writeAbortCount -> d
@@ -14493,7 +14508,7 @@ okhttp3.Cache -> okhttp3.c:
     void update(okhttp3.Response,okhttp3.Response) -> a
     void remove(okhttp3.Request) -> b
     void trackConditionalCacheHit() -> b
-okhttp3.Cache$1 -> okhttp3.c$a:
+okhttp3.Cache$1 -> okhttp3.h$a:
     okhttp3.Cache this$0 -> a
     okhttp3.Response get(okhttp3.Request) -> a
     okhttp3.internal.cache.CacheRequest put(okhttp3.Response) -> a
@@ -14501,7 +14516,7 @@ okhttp3.Cache$1 -> okhttp3.c$a:
     void trackResponse(okhttp3.internal.cache.CacheStrategy) -> a
     void update(okhttp3.Response,okhttp3.Response) -> a
     void remove(okhttp3.Request) -> b
-okhttp3.Cache$CacheRequestImpl -> okhttp3.c$b:
+okhttp3.Cache$CacheRequestImpl -> okhttp3.h$b:
     okio.Sink cacheOut -> b
     okio.Sink body -> c
     okhttp3.internal.cache.DiskLruCache$Editor editor -> a
@@ -14509,17 +14524,17 @@ okhttp3.Cache$CacheRequestImpl -> okhttp3.c$b:
     boolean done -> d
     okio.Sink body() -> a
     void abort() -> b
-okhttp3.Cache$CacheRequestImpl$1 -> okhttp3.c$b$a:
+okhttp3.Cache$CacheRequestImpl$1 -> okhttp3.h$b$a:
     okhttp3.Cache$CacheRequestImpl this$1 -> c
     okhttp3.internal.cache.DiskLruCache$Editor val$editor -> b
-okhttp3.Cache$CacheResponseBody -> okhttp3.c$c:
+okhttp3.Cache$CacheResponseBody -> okhttp3.h$c:
     okio.BufferedSource bodySource -> b
     okhttp3.internal.cache.DiskLruCache$Snapshot snapshot -> a
     java.lang.String contentType -> c
     java.lang.String contentLength -> d
-okhttp3.Cache$CacheResponseBody$1 -> okhttp3.c$c$a:
+okhttp3.Cache$CacheResponseBody$1 -> okhttp3.h$c$a:
     okhttp3.internal.cache.DiskLruCache$Snapshot val$snapshot -> a
-okhttp3.Cache$Entry -> okhttp3.c$d:
+okhttp3.Cache$Entry -> okhttp3.h$d:
     long receivedResponseMillis -> j
     java.lang.String message -> f
     long sentRequestMillis -> i
@@ -14538,7 +14553,7 @@ okhttp3.Cache$Entry -> okhttp3.c$d:
     okhttp3.Response response(okhttp3.internal.cache.DiskLruCache$Snapshot) -> a
     void writeCertList(okio.BufferedSink,java.util.List) -> a
     void writeTo(okhttp3.internal.cache.DiskLruCache$Editor) -> a
-okhttp3.CacheControl -> okhttp3.d:
+okhttp3.CacheControl -> okhttp3.i:
     boolean onlyIfCached -> j
     int maxStaleSeconds -> h
     boolean noTransform -> k
@@ -14564,7 +14579,7 @@ okhttp3.CacheControl -> okhttp3.d:
     boolean noStore() -> h
     boolean onlyIfCached() -> i
     java.lang.String headerValue() -> j
-okhttp3.CacheControl$Builder -> okhttp3.d$a:
+okhttp3.CacheControl$Builder -> okhttp3.i$a:
     boolean onlyIfCached -> f
     int maxStaleSeconds -> d
     boolean noTransform -> g
@@ -14577,12 +14592,12 @@ okhttp3.CacheControl$Builder -> okhttp3.d$a:
     okhttp3.CacheControl$Builder maxStale(int,java.util.concurrent.TimeUnit) -> a
     okhttp3.CacheControl$Builder noCache() -> b
     okhttp3.CacheControl$Builder onlyIfCached() -> c
-okhttp3.Call -> okhttp3.e:
+okhttp3.Call -> okhttp3.j:
     void enqueue(okhttp3.Callback) -> a
-okhttp3.Call$Factory -> okhttp3.e$a:
+okhttp3.Call$Factory -> okhttp3.j$a:
     okhttp3.Call newCall(okhttp3.Request) -> a
-okhttp3.Callback -> okhttp3.f:
-okhttp3.CertificatePinner -> okhttp3.g:
+okhttp3.Callback -> okhttp3.k:
+okhttp3.CertificatePinner -> okhttp3.l:
     okhttp3.internal.tls.CertificateChainCleaner certificateChainCleaner -> b
     java.util.Set pins -> a
     okhttp3.CertificatePinner DEFAULT -> c
@@ -14592,19 +14607,17 @@ okhttp3.CertificatePinner -> okhttp3.g:
     okio.ByteString sha1(java.security.cert.X509Certificate) -> a
     okhttp3.CertificatePinner withCertificateChainCleaner(okhttp3.internal.tls.CertificateChainCleaner) -> a
     okio.ByteString sha256(java.security.cert.X509Certificate) -> b
-okhttp3.CertificatePinner$Builder -> okhttp3.g$a:
+okhttp3.CertificatePinner$Builder -> okhttp3.l$a:
     java.util.List pins -> a
     okhttp3.CertificatePinner build() -> a
-okhttp3.CertificatePinner$Pin -> okhttp3.g$b:
+okhttp3.CertificatePinner$Pin -> okhttp3.l$b:
     okio.ByteString hash -> d
     java.lang.String pattern -> a
     java.lang.String hashAlgorithm -> c
     java.lang.String canonicalHostname -> b
     boolean matches(java.lang.String) -> a
-okhttp3.CipherSuite -> okhttp3.h:
-    okhttp3.CipherSuite TLS_AES_128_CCM_SHA256 -> t
+okhttp3.CipherSuite -> okhttp3.m:
     okhttp3.CipherSuite TLS_CHACHA20_POLY1305_SHA256 -> s
-    okhttp3.CipherSuite TLS_AES_256_CCM_8_SHA256 -> u
     okhttp3.CipherSuite TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 -> p
     okhttp3.CipherSuite TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 -> o
     okhttp3.CipherSuite TLS_AES_256_GCM_SHA384 -> r
@@ -14627,27 +14640,12 @@ okhttp3.CipherSuite -> okhttp3.h:
     java.util.List forJavaNames(java.lang.String[]) -> a
     okhttp3.CipherSuite init(java.lang.String,int) -> a
     java.lang.String javaName() -> a
+    int lambda$static$0(java.lang.String,java.lang.String) -> a
     java.lang.String secondaryName(java.lang.String) -> b
-okhttp3.CipherSuite$1 -> okhttp3.h$a:
-    int compare(java.lang.String,java.lang.String) -> a
-okhttp3.Connection -> okhttp3.i:
-okhttp3.ConnectionPool -> okhttp3.j:
-    java.util.Deque connections -> d
-    java.lang.Runnable cleanupRunnable -> c
-    long keepAliveDurationNs -> b
-    boolean cleanupRunning -> f
-    java.util.concurrent.Executor executor -> g
-    okhttp3.internal.connection.RouteDatabase routeDatabase -> e
-    int maxIdleConnections -> a
-    long cleanup(long) -> a
-    boolean connectionBecameIdle(okhttp3.internal.connection.RealConnection) -> a
-    java.net.Socket deduplicate(okhttp3.Address,okhttp3.internal.connection.StreamAllocation) -> a
-    okhttp3.internal.connection.RealConnection get(okhttp3.Address,okhttp3.internal.connection.StreamAllocation,okhttp3.Route) -> a
-    int pruneAndGetAllocationCount(okhttp3.internal.connection.RealConnection,long) -> a
-    void put(okhttp3.internal.connection.RealConnection) -> b
-okhttp3.ConnectionPool$1 -> okhttp3.j$a:
-    okhttp3.ConnectionPool this$0 -> a
-okhttp3.ConnectionSpec -> okhttp3.k:
+okhttp3.Connection -> okhttp3.n:
+okhttp3.ConnectionPool -> okhttp3.o:
+    okhttp3.internal.connection.RealConnectionPool delegate -> a
+okhttp3.ConnectionSpec -> okhttp3.p:
     okhttp3.ConnectionSpec MODERN_TLS -> g
     okhttp3.ConnectionSpec CLEARTEXT -> h
     okhttp3.CipherSuite[] APPROVED_CIPHER_SUITES -> f
@@ -14663,7 +14661,7 @@ okhttp3.ConnectionSpec -> okhttp3.k:
     okhttp3.ConnectionSpec supportedSpec(javax.net.ssl.SSLSocket,boolean) -> b
     boolean supportsTlsExtensions() -> c
     java.util.List tlsVersions() -> d
-okhttp3.ConnectionSpec$Builder -> okhttp3.k$a:
+okhttp3.ConnectionSpec$Builder -> okhttp3.p$a:
     boolean tls -> a
     java.lang.String[] tlsVersions -> c
     java.lang.String[] cipherSuites -> b
@@ -14674,7 +14672,7 @@ okhttp3.ConnectionSpec$Builder -> okhttp3.k$a:
     okhttp3.ConnectionSpec$Builder supportsTlsExtensions(boolean) -> a
     okhttp3.ConnectionSpec$Builder tlsVersions(okhttp3.TlsVersion[]) -> a
     okhttp3.ConnectionSpec$Builder tlsVersions(java.lang.String[]) -> b
-okhttp3.Cookie -> okhttp3.l:
+okhttp3.Cookie -> okhttp3.q:
     boolean hostOnly -> i
     long expiresAt -> c
     java.util.regex.Pattern MONTH_PATTERN -> k
@@ -14708,7 +14706,7 @@ okhttp3.Cookie -> okhttp3.l:
     boolean persistent() -> g
     boolean secure() -> h
     java.lang.String value() -> i
-okhttp3.Cookie$Builder -> okhttp3.l$a:
+okhttp3.Cookie$Builder -> okhttp3.q$a:
     boolean hostOnly -> i
     boolean secure -> f
     java.lang.String name -> a
@@ -14728,14 +14726,14 @@ okhttp3.Cookie$Builder -> okhttp3.l$a:
     okhttp3.Cookie$Builder secure() -> c
     okhttp3.Cookie$Builder path(java.lang.String) -> d
     okhttp3.Cookie$Builder value(java.lang.String) -> e
-okhttp3.CookieJar -> okhttp3.m:
+okhttp3.CookieJar -> okhttp3.r:
     okhttp3.CookieJar NO_COOKIES -> a
     java.util.List loadForRequest(okhttp3.HttpUrl) -> a
     void saveFromResponse(okhttp3.HttpUrl,java.util.List) -> a
-okhttp3.CookieJar$1 -> okhttp3.m$a:
+okhttp3.CookieJar$1 -> okhttp3.r$a:
     java.util.List loadForRequest(okhttp3.HttpUrl) -> a
     void saveFromResponse(okhttp3.HttpUrl,java.util.List) -> a
-okhttp3.Dispatcher -> okhttp3.n:
+okhttp3.Dispatcher -> okhttp3.s:
     java.lang.Runnable idleCallback -> c
     java.util.concurrent.ExecutorService executorService -> d
     java.util.Deque runningSyncCalls -> g
@@ -14746,18 +14744,18 @@ okhttp3.Dispatcher -> okhttp3.n:
     void enqueue(okhttp3.RealCall$AsyncCall) -> a
     void executed(okhttp3.RealCall) -> a
     java.util.concurrent.ExecutorService executorService() -> a
+    okhttp3.RealCall$AsyncCall findExistingCallWithHost(java.lang.String) -> a
     void finished(java.util.Deque,java.lang.Object) -> a
     void finished(okhttp3.RealCall$AsyncCall) -> b
     void finished(okhttp3.RealCall) -> b
     int runningCallsCount() -> b
     boolean promoteAndExecute() -> c
-    int runningCallsForHost(okhttp3.RealCall$AsyncCall) -> c
-okhttp3.Dns -> okhttp3.o:
+okhttp3.Dns -> okhttp3.u:
     okhttp3.Dns SYSTEM -> a
     java.util.List lookup(java.lang.String) -> a
-okhttp3.Dns$1 -> okhttp3.o$a:
-    java.util.List lookup(java.lang.String) -> a
-okhttp3.EventListener -> okhttp3.p:
+okhttp3.Dns$-CC -> okhttp3.t:
+    java.util.List okhttp3.Dns.lambda$static$0(java.lang.String) -> a
+okhttp3.EventListener -> okhttp3.v:
     okhttp3.EventListener NONE -> a
     void callEnd(okhttp3.Call) -> a
     void callFailed(okhttp3.Call,java.io.IOException) -> a
@@ -14768,37 +14766,37 @@ okhttp3.EventListener -> okhttp3.p:
     void dnsEnd(okhttp3.Call,java.lang.String,java.util.List) -> a
     void dnsStart(okhttp3.Call,java.lang.String) -> a
     okhttp3.EventListener$Factory factory(okhttp3.EventListener) -> a
+    okhttp3.EventListener lambda$factory$0(okhttp3.EventListener,okhttp3.Call) -> a
     void requestBodyEnd(okhttp3.Call,long) -> a
     void requestHeadersEnd(okhttp3.Call,okhttp3.Request) -> a
     void responseHeadersEnd(okhttp3.Call,okhttp3.Response) -> a
     void secureConnectEnd(okhttp3.Call,okhttp3.Handshake) -> a
     void callStart(okhttp3.Call) -> b
     void connectionReleased(okhttp3.Call,okhttp3.Connection) -> b
+    void requestFailed(okhttp3.Call,java.io.IOException) -> b
     void responseBodyEnd(okhttp3.Call,long) -> b
     void requestBodyStart(okhttp3.Call) -> c
+    void responseFailed(okhttp3.Call,java.io.IOException) -> c
     void requestHeadersStart(okhttp3.Call) -> d
     void responseBodyStart(okhttp3.Call) -> e
     void responseHeadersStart(okhttp3.Call) -> f
     void secureConnectStart(okhttp3.Call) -> g
-okhttp3.EventListener$1 -> okhttp3.p$a:
-okhttp3.EventListener$2 -> okhttp3.p$b:
-    okhttp3.EventListener val$listener -> a
+okhttp3.EventListener$1 -> okhttp3.v$a:
+okhttp3.EventListener$Factory -> okhttp3.v$b:
     okhttp3.EventListener create(okhttp3.Call) -> a
-okhttp3.EventListener$Factory -> okhttp3.p$c:
-    okhttp3.EventListener create(okhttp3.Call) -> a
-okhttp3.FormBody -> okhttp3.q:
+okhttp3.FormBody -> okhttp3.w:
     java.util.List encodedValues -> b
     java.util.List encodedNames -> a
     okhttp3.MediaType CONTENT_TYPE -> c
     long writeOrCountBytes(okio.BufferedSink,boolean) -> a
-okhttp3.FormBody$Builder -> okhttp3.q$a:
+okhttp3.FormBody$Builder -> okhttp3.w$a:
     java.util.List values -> b
     java.util.List names -> a
     java.nio.charset.Charset charset -> c
     okhttp3.FormBody$Builder add(java.lang.String,java.lang.String) -> a
     okhttp3.FormBody build() -> a
     okhttp3.FormBody$Builder addEncoded(java.lang.String,java.lang.String) -> b
-okhttp3.Handshake -> okhttp3.r:
+okhttp3.Handshake -> okhttp3.x:
     okhttp3.TlsVersion tlsVersion -> a
     okhttp3.CipherSuite cipherSuite -> b
     java.util.List localCertificates -> d
@@ -14806,10 +14804,11 @@ okhttp3.Handshake -> okhttp3.r:
     okhttp3.CipherSuite cipherSuite() -> a
     okhttp3.Handshake get(javax.net.ssl.SSLSession) -> a
     okhttp3.Handshake get(okhttp3.TlsVersion,okhttp3.CipherSuite,java.util.List,java.util.List) -> a
+    java.util.List names(java.util.List) -> a
     java.util.List localCertificates() -> b
     java.util.List peerCertificates() -> c
     okhttp3.TlsVersion tlsVersion() -> d
-okhttp3.Headers -> okhttp3.s:
+okhttp3.Headers -> okhttp3.y:
     java.lang.String[] namesAndValues -> a
     void checkValue(java.lang.String,java.lang.String) -> a
     java.lang.String get(java.lang.String) -> a
@@ -14821,7 +14820,7 @@ okhttp3.Headers -> okhttp3.s:
     java.lang.String value(int) -> b
     java.util.List values(java.lang.String) -> b
     void checkName(java.lang.String) -> c
-okhttp3.Headers$Builder -> okhttp3.s$a:
+okhttp3.Headers$Builder -> okhttp3.y$a:
     java.util.List namesAndValues -> a
     okhttp3.Headers$Builder add(java.lang.String,java.lang.String) -> a
     okhttp3.Headers$Builder addAll(okhttp3.Headers) -> a
@@ -14831,7 +14830,7 @@ okhttp3.Headers$Builder -> okhttp3.s$a:
     java.lang.String get(java.lang.String) -> b
     okhttp3.Headers$Builder removeAll(java.lang.String) -> c
     okhttp3.Headers$Builder set(java.lang.String,java.lang.String) -> c
-okhttp3.HttpUrl -> okhttp3.t:
+okhttp3.HttpUrl -> okhttp3.z:
     java.lang.String url -> i
     java.lang.String fragment -> h
     java.util.List pathSegments -> f
@@ -14873,7 +14872,7 @@ okhttp3.HttpUrl -> okhttp3.t:
     java.lang.String redact() -> m
     java.lang.String scheme() -> n
     java.net.URI uri() -> o
-okhttp3.HttpUrl$Builder -> okhttp3.t$a:
+okhttp3.HttpUrl$Builder -> okhttp3.z$a:
     java.lang.String encodedFragment -> h
     java.util.List encodedPathSegments -> f
     java.lang.String scheme -> a
@@ -14904,14 +14903,14 @@ okhttp3.HttpUrl$Builder -> okhttp3.t$a:
     boolean isDot(java.lang.String) -> f
     int slashCount(java.lang.String,int,int) -> f
     boolean isDotDot(java.lang.String) -> g
-okhttp3.Interceptor -> okhttp3.u:
+okhttp3.Interceptor -> okhttp3.a0:
     okhttp3.Response intercept(okhttp3.Interceptor$Chain) -> a
-okhttp3.Interceptor$Chain -> okhttp3.u$a:
+okhttp3.Interceptor$Chain -> okhttp3.a0$a:
     int connectTimeoutMillis() -> a
     okhttp3.Response proceed(okhttp3.Request) -> a
     int readTimeoutMillis() -> b
     int writeTimeoutMillis() -> c
-okhttp3.MediaType -> okhttp3.v:
+okhttp3.MediaType -> okhttp3.b0:
     java.util.regex.Pattern PARAMETER -> f
     java.util.regex.Pattern TYPE_SUBTYPE -> e
     java.lang.String mediaType -> a
@@ -14924,7 +14923,7 @@ okhttp3.MediaType -> okhttp3.v:
     okhttp3.MediaType parse(java.lang.String) -> b
     java.lang.String subtype() -> b
     java.lang.String type() -> c
-okhttp3.MultipartBody -> okhttp3.w:
+okhttp3.MultipartBody -> okhttp3.c0:
     okio.ByteString boundary -> a
     java.util.List parts -> c
     okhttp3.MediaType FORM -> f
@@ -14935,7 +14934,7 @@ okhttp3.MultipartBody -> okhttp3.w:
     byte[] DASHDASH -> i
     okhttp3.MediaType contentType -> b
     long writeOrCountBytes(okio.BufferedSink,boolean) -> a
-okhttp3.MultipartBody$Builder -> okhttp3.w$a:
+okhttp3.MultipartBody$Builder -> okhttp3.c0$a:
     okio.ByteString boundary -> a
     java.util.List parts -> c
     okhttp3.MediaType type -> b
@@ -14943,11 +14942,11 @@ okhttp3.MultipartBody$Builder -> okhttp3.w$a:
     okhttp3.MultipartBody$Builder addPart(okhttp3.MultipartBody$Part) -> a
     okhttp3.MultipartBody build() -> a
     okhttp3.MultipartBody$Builder setType(okhttp3.MediaType) -> a
-okhttp3.MultipartBody$Part -> okhttp3.w$b:
+okhttp3.MultipartBody$Part -> okhttp3.c0$b:
     okhttp3.Headers headers -> a
     okhttp3.RequestBody body -> b
     okhttp3.MultipartBody$Part create(okhttp3.Headers,okhttp3.RequestBody) -> a
-okhttp3.OkHttpClient -> okhttp3.x:
+okhttp3.OkHttpClient -> okhttp3.d0:
     okhttp3.internal.cache.InternalCache internalCache -> k
     okhttp3.CookieJar cookieJar -> i
     boolean followSslRedirects -> u
@@ -15006,19 +15005,16 @@ okhttp3.OkHttpClient -> okhttp3.x:
     javax.net.SocketFactory socketFactory() -> x
     javax.net.ssl.SSLSocketFactory sslSocketFactory() -> y
     int writeTimeoutMillis() -> z
-okhttp3.OkHttpClient$1 -> okhttp3.x$a:
+okhttp3.OkHttpClient$1 -> okhttp3.d0$a:
     void addLenient(okhttp3.Headers$Builder,java.lang.String) -> a
     void addLenient(okhttp3.Headers$Builder,java.lang.String,java.lang.String) -> a
     void apply(okhttp3.ConnectionSpec,javax.net.ssl.SSLSocket,boolean) -> a
     int code(okhttp3.Response$Builder) -> a
-    boolean connectionBecameIdle(okhttp3.ConnectionPool,okhttp3.internal.connection.RealConnection) -> a
-    java.net.Socket deduplicate(okhttp3.ConnectionPool,okhttp3.Address,okhttp3.internal.connection.StreamAllocation) -> a
     boolean equalsNonHost(okhttp3.Address,okhttp3.Address) -> a
-    okhttp3.internal.connection.RealConnection get(okhttp3.ConnectionPool,okhttp3.Address,okhttp3.internal.connection.StreamAllocation,okhttp3.Route) -> a
-    okhttp3.internal.connection.RouteDatabase routeDatabase(okhttp3.ConnectionPool) -> a
-    java.io.IOException timeoutExit(okhttp3.Call,java.io.IOException) -> a
-    void put(okhttp3.ConnectionPool,okhttp3.internal.connection.RealConnection) -> b
-okhttp3.OkHttpClient$Builder -> okhttp3.x$b:
+    okhttp3.internal.connection.Exchange exchange(okhttp3.Response) -> a
+    void initExchange(okhttp3.Response$Builder,okhttp3.internal.connection.Exchange) -> a
+    okhttp3.internal.connection.RealConnectionPool realConnectionPool(okhttp3.ConnectionPool) -> a
+okhttp3.OkHttpClient$Builder -> okhttp3.d0$b:
     okhttp3.internal.cache.InternalCache internalCache -> k
     okhttp3.CookieJar cookieJar -> i
     boolean followSslRedirects -> u
@@ -15063,33 +15059,29 @@ okhttp3.Protocol -> okhttp3.Protocol:
     okhttp3.Protocol HTTP_2 -> d
     okhttp3.Protocol H2_PRIOR_KNOWLEDGE -> e
     okhttp3.Protocol get(java.lang.String) -> a
-okhttp3.RealCall -> okhttp3.y:
+okhttp3.RealCall -> okhttp3.e0:
     okhttp3.OkHttpClient client -> a
-    okhttp3.EventListener eventListener -> d
-    okhttp3.Request originalRequest -> e
-    boolean forWebSocket -> f
-    okhttp3.internal.http.RetryAndFollowUpInterceptor retryAndFollowUpInterceptor -> b
-    okio.AsyncTimeout timeout -> c
-    boolean executed -> g
-    okhttp3.EventListener access$000(okhttp3.RealCall) -> a
+    okhttp3.internal.connection.Transmitter transmitter -> b
+    boolean executed -> e
+    okhttp3.Request originalRequest -> c
+    boolean forWebSocket -> d
+    okhttp3.internal.connection.Transmitter access$000(okhttp3.RealCall) -> a
     void enqueue(okhttp3.Callback) -> a
     okhttp3.Response getResponseWithInterceptorChain() -> a
     okhttp3.RealCall newRealCall(okhttp3.OkHttpClient,okhttp3.Request,boolean) -> a
-    java.io.IOException timeoutExit(java.io.IOException) -> a
     java.lang.String redactedUrl() -> b
     java.lang.String toLoggableString() -> c
-    void captureCallStackTrace() -> d
-okhttp3.RealCall$1 -> okhttp3.y$a:
-    okhttp3.RealCall this$0 -> k
-    void timedOut() -> i
-okhttp3.RealCall$AsyncCall -> okhttp3.y$b:
+okhttp3.RealCall$AsyncCall -> okhttp3.e0$a:
+    okhttp3.RealCall this$0 -> d
+    java.util.concurrent.atomic.AtomicInteger callsPerHost -> c
     okhttp3.Callback responseCallback -> b
-    okhttp3.RealCall this$0 -> c
     void executeOn(java.util.concurrent.ExecutorService) -> a
+    void reuseCallsPerHostFrom(okhttp3.RealCall$AsyncCall) -> a
     void execute() -> b
-    okhttp3.RealCall get() -> c
-    java.lang.String host() -> d
-okhttp3.Request -> okhttp3.z:
+    java.util.concurrent.atomic.AtomicInteger callsPerHost() -> c
+    okhttp3.RealCall get() -> d
+    java.lang.String host() -> e
+okhttp3.Request -> okhttp3.f0:
     okhttp3.HttpUrl url -> a
     okhttp3.RequestBody body -> d
     okhttp3.CacheControl cacheControl -> f
@@ -15106,7 +15098,7 @@ okhttp3.Request -> okhttp3.z:
     java.lang.String method() -> e
     okhttp3.Request$Builder newBuilder() -> f
     okhttp3.HttpUrl url() -> g
-okhttp3.Request$Builder -> okhttp3.z$a:
+okhttp3.Request$Builder -> okhttp3.f0$a:
     okhttp3.HttpUrl url -> a
     okhttp3.RequestBody body -> d
     okhttp3.Headers$Builder headers -> c
@@ -15122,31 +15114,32 @@ okhttp3.Request$Builder -> okhttp3.z$a:
     okhttp3.Request$Builder url(okhttp3.HttpUrl) -> a
     okhttp3.Request$Builder header(java.lang.String,java.lang.String) -> b
     okhttp3.Request$Builder url(java.lang.String) -> b
-okhttp3.RequestBody -> okhttp3.a0:
-okhttp3.RequestBody$1 -> okhttp3.a0$a:
+okhttp3.RequestBody -> okhttp3.g0:
+okhttp3.RequestBody$1 -> okhttp3.g0$a:
     okio.ByteString val$content -> b
     okhttp3.MediaType val$contentType -> a
-okhttp3.RequestBody$2 -> okhttp3.a0$b:
+okhttp3.RequestBody$2 -> okhttp3.g0$b:
     int val$offset -> d
     int val$byteCount -> b
     byte[] val$content -> c
     okhttp3.MediaType val$contentType -> a
-okhttp3.RequestBody$3 -> okhttp3.a0$c:
+okhttp3.RequestBody$3 -> okhttp3.g0$c:
     java.io.File val$file -> b
     okhttp3.MediaType val$contentType -> a
-okhttp3.Response -> okhttp3.b0:
+okhttp3.Response -> okhttp3.h0:
     okhttp3.Response networkResponse -> h
     long receivedResponseAtMillis -> l
     long sentRequestAtMillis -> k
     okhttp3.ResponseBody body -> g
+    okhttp3.internal.connection.Exchange exchange -> m
     okhttp3.Headers headers -> f
     int code -> c
     okhttp3.Response cacheResponse -> i
     okhttp3.Response priorResponse -> j
     okhttp3.Handshake handshake -> e
     okhttp3.Protocol protocol -> b
-    okhttp3.CacheControl cacheControl -> m
     okhttp3.Request request -> a
+    okhttp3.CacheControl cacheControl -> n
     java.lang.String message -> d
     java.lang.String header(java.lang.String,java.lang.String) -> a
     okhttp3.ResponseBody body() -> b
@@ -15164,19 +15157,20 @@ okhttp3.Response -> okhttp3.b0:
     long receivedResponseAtMillis() -> u
     okhttp3.Request request() -> w
     long sentRequestAtMillis() -> x
-okhttp3.Response$Builder -> okhttp3.b0$a:
-    okhttp3.Handshake handshake -> e
+okhttp3.Response$Builder -> okhttp3.h0$a:
     okhttp3.Response networkResponse -> h
     long receivedResponseAtMillis -> l
     long sentRequestAtMillis -> k
     okhttp3.ResponseBody body -> g
-    okhttp3.Protocol protocol -> b
-    okhttp3.Request request -> a
+    okhttp3.internal.connection.Exchange exchange -> m
     int code -> c
     okhttp3.Response cacheResponse -> i
+    okhttp3.Response priorResponse -> j
+    okhttp3.Handshake handshake -> e
+    okhttp3.Protocol protocol -> b
+    okhttp3.Request request -> a
     java.lang.String message -> d
     okhttp3.Headers$Builder headers -> f
-    okhttp3.Response priorResponse -> j
     okhttp3.Response$Builder addHeader(java.lang.String,java.lang.String) -> a
     okhttp3.Response$Builder body(okhttp3.ResponseBody) -> a
     okhttp3.Response build() -> a
@@ -15185,6 +15179,7 @@ okhttp3.Response$Builder -> okhttp3.b0$a:
     okhttp3.Response$Builder code(int) -> a
     okhttp3.Response$Builder handshake(okhttp3.Handshake) -> a
     okhttp3.Response$Builder headers(okhttp3.Headers) -> a
+    void initExchange(okhttp3.internal.connection.Exchange) -> a
     okhttp3.Response$Builder message(java.lang.String) -> a
     okhttp3.Response$Builder protocol(okhttp3.Protocol) -> a
     okhttp3.Response$Builder receivedResponseAtMillis(long) -> a
@@ -15195,17 +15190,17 @@ okhttp3.Response$Builder -> okhttp3.b0$a:
     okhttp3.Response$Builder sentRequestAtMillis(long) -> b
     okhttp3.Response$Builder priorResponse(okhttp3.Response) -> c
     void checkPriorResponse(okhttp3.Response) -> d
-okhttp3.ResponseBody -> okhttp3.c0:
-okhttp3.ResponseBody$1 -> okhttp3.c0$a:
+okhttp3.ResponseBody -> okhttp3.i0:
+okhttp3.ResponseBody$1 -> okhttp3.i0$a:
     okio.BufferedSource val$content -> c
     long val$contentLength -> b
     okhttp3.MediaType val$contentType -> a
-okhttp3.ResponseBody$BomAwareReader -> okhttp3.c0$b:
+okhttp3.ResponseBody$BomAwareReader -> okhttp3.i0$b:
     okio.BufferedSource source -> a
     java.nio.charset.Charset charset -> b
     boolean closed -> c
     java.io.Reader delegate -> d
-okhttp3.Route -> okhttp3.d0:
+okhttp3.Route -> okhttp3.j0:
     java.net.InetSocketAddress inetSocketAddress -> c
     java.net.Proxy proxy -> b
     okhttp3.Address address -> a
@@ -15223,42 +15218,37 @@ okhttp3.TlsVersion -> okhttp3.TlsVersion:
     okhttp3.TlsVersion forJavaName(java.lang.String) -> a
     java.util.List forJavaNames(java.lang.String[]) -> a
     java.lang.String javaName() -> a
-okhttp3.internal.Internal -> okhttp3.e0.a:
+okhttp3.internal.-$$Lambda$TEfSBt3hRUlBSSARfPEHsJesTtE -> okhttp3.k0.a:
+    okhttp3.internal.-$$Lambda$TEfSBt3hRUlBSSARfPEHsJesTtE INSTANCE -> a
+okhttp3.internal.-$$Lambda$Util$h7t7benxn5wsEKvjxE9svqr_kuY -> okhttp3.k0.b:
+    java.lang.String f$0 -> a
+    boolean f$1 -> b
+okhttp3.internal.Internal -> okhttp3.k0.c:
     okhttp3.internal.Internal instance -> a
     void addLenient(okhttp3.Headers$Builder,java.lang.String) -> a
     void addLenient(okhttp3.Headers$Builder,java.lang.String,java.lang.String) -> a
     void apply(okhttp3.ConnectionSpec,javax.net.ssl.SSLSocket,boolean) -> a
     int code(okhttp3.Response$Builder) -> a
-    boolean connectionBecameIdle(okhttp3.ConnectionPool,okhttp3.internal.connection.RealConnection) -> a
-    java.net.Socket deduplicate(okhttp3.ConnectionPool,okhttp3.Address,okhttp3.internal.connection.StreamAllocation) -> a
     boolean equalsNonHost(okhttp3.Address,okhttp3.Address) -> a
-    okhttp3.internal.connection.RealConnection get(okhttp3.ConnectionPool,okhttp3.Address,okhttp3.internal.connection.StreamAllocation,okhttp3.Route) -> a
-    okhttp3.internal.connection.RouteDatabase routeDatabase(okhttp3.ConnectionPool) -> a
-    java.io.IOException timeoutExit(okhttp3.Call,java.io.IOException) -> a
-    void put(okhttp3.ConnectionPool,okhttp3.internal.connection.RealConnection) -> b
-okhttp3.internal.NamedRunnable -> okhttp3.e0.b:
+    okhttp3.internal.connection.Exchange exchange(okhttp3.Response) -> a
+    void initExchange(okhttp3.Response$Builder,okhttp3.internal.connection.Exchange) -> a
+    okhttp3.internal.connection.RealConnectionPool realConnectionPool(okhttp3.ConnectionPool) -> a
+okhttp3.internal.NamedRunnable -> okhttp3.k0.d:
     java.lang.String name -> a
     void execute() -> b
-okhttp3.internal.Util -> okhttp3.e0.c:
-    okhttp3.ResponseBody EMPTY_RESPONSE -> c
-    java.nio.charset.Charset UTF_32_LE -> m
-    java.nio.charset.Charset UTF_32_BE -> l
-    java.nio.charset.Charset UTF_16_LE -> k
-    java.nio.charset.Charset UTF_16_BE -> j
-    java.util.regex.Pattern VERIFY_AS_IP_ADDRESS -> q
-    java.nio.charset.Charset UTF_8 -> i
-    okio.ByteString UTF_32_BE_BOM -> g
-    okio.ByteString UTF_16_LE_BOM -> f
-    java.util.Comparator NATURAL_ORDER -> o
-    java.lang.reflect.Method addSuppressedExceptionMethod -> p
-    java.lang.String[] EMPTY_STRING_ARRAY -> b
-    okio.ByteString UTF_32_LE_BOM -> h
-    okio.ByteString UTF_16_BE_BOM -> e
+okhttp3.internal.Util -> okhttp3.k0.e:
+    okhttp3.ResponseBody EMPTY_RESPONSE -> d
     byte[] EMPTY_BYTE_ARRAY -> a
-    okio.ByteString UTF_8_BOM -> d
-    java.util.TimeZone UTC -> n
+    okio.Options UNICODE_BOMS -> e
+    java.util.Comparator NATURAL_ORDER -> i
+    java.lang.reflect.Method addSuppressedExceptionMethod -> j
+    java.util.regex.Pattern VERIFY_AS_IP_ADDRESS -> k
+    java.nio.charset.Charset UTF_32LE -> g
+    okhttp3.Headers EMPTY_HEADERS -> c
+    java.nio.charset.Charset UTF_32BE -> f
+    java.util.TimeZone UTC -> h
+    java.lang.String[] EMPTY_STRING_ARRAY -> b
     void addSuppressedIfPossible(java.lang.Throwable,java.lang.Throwable) -> a
-    java.lang.AssertionError assertionError(java.lang.String,java.lang.Exception) -> a
     java.nio.charset.Charset bomAwareCharset(okio.BufferedSource,java.nio.charset.Charset) -> a
     java.lang.String canonicalizeHost(java.lang.String) -> a
     int checkDuration(java.lang.String,long,java.util.concurrent.TimeUnit) -> a
@@ -15272,8 +15262,8 @@ okhttp3.internal.Util -> okhttp3.e0.c:
     int delimiterOffset(java.lang.String,int,int,char) -> a
     int delimiterOffset(java.lang.String,int,int,java.lang.String) -> a
     boolean discard(okio.Source,int,java.util.concurrent.TimeUnit) -> a
-    boolean equal(java.lang.Object,java.lang.Object) -> a
     java.lang.String format(java.lang.String,java.lang.Object[]) -> a
+    java.lang.String getSystemProperty(java.lang.String,java.lang.String) -> a
     java.lang.String hostHeader(okhttp3.HttpUrl,boolean) -> a
     java.util.List immutableList(java.util.List) -> a
     java.util.List immutableList(java.lang.Object[]) -> a
@@ -15282,8 +15272,11 @@ okhttp3.internal.Util -> okhttp3.e0.c:
     java.lang.String inet6AddressToAscii(byte[]) -> a
     java.lang.String[] intersect(java.util.Comparator,java.lang.String[],java.lang.String[]) -> a
     boolean isAndroidGetsocknameError(java.lang.AssertionError) -> a
+    java.lang.Thread lambda$threadFactory$0(java.lang.String,boolean,java.lang.Runnable) -> a
     javax.net.ssl.X509TrustManager platformTrustManager() -> a
+    boolean sameConnection(okhttp3.HttpUrl,okhttp3.HttpUrl) -> a
     java.util.concurrent.ThreadFactory threadFactory(java.lang.String,boolean) -> a
+    java.util.List toHeaderBlock(okhttp3.Headers) -> a
     boolean containsInvalidHostnameAsciiCodes(java.lang.String) -> b
     boolean nonEmptyIntersection(java.util.Comparator,java.lang.String[],java.lang.String[]) -> b
     boolean skipAll(okio.Source,int,java.util.concurrent.TimeUnit) -> b
@@ -15293,14 +15286,9 @@ okhttp3.internal.Util -> okhttp3.e0.c:
     int skipTrailingAsciiWhitespace(java.lang.String,int,int) -> c
     java.lang.String trimSubstring(java.lang.String,int,int) -> d
     boolean verifyAsIpAddress(java.lang.String) -> d
-okhttp3.internal.Util$1 -> okhttp3.e0.c$a:
-    int compare(java.lang.String,java.lang.String) -> a
-okhttp3.internal.Util$2 -> okhttp3.e0.c$b:
-    java.lang.String val$name -> a
-    boolean val$daemon -> b
-okhttp3.internal.Version -> okhttp3.e0.d:
+okhttp3.internal.Version -> okhttp3.k0.f:
     java.lang.String userAgent() -> a
-okhttp3.internal.cache.CacheInterceptor -> okhttp3.e0.e.a:
+okhttp3.internal.cache.CacheInterceptor -> okhttp3.k0.g.a:
     okhttp3.internal.cache.InternalCache cache -> a
     okhttp3.Response cacheWritingResponse(okhttp3.internal.cache.CacheRequest,okhttp3.Response) -> a
     okhttp3.Headers combine(okhttp3.Headers,okhttp3.Headers) -> a
@@ -15308,19 +15296,19 @@ okhttp3.internal.cache.CacheInterceptor -> okhttp3.e0.e.a:
     boolean isContentSpecificHeader(java.lang.String) -> a
     okhttp3.Response stripBody(okhttp3.Response) -> a
     boolean isEndToEnd(java.lang.String) -> b
-okhttp3.internal.cache.CacheInterceptor$1 -> okhttp3.e0.e.a$a:
+okhttp3.internal.cache.CacheInterceptor$1 -> okhttp3.k0.g.a$a:
     okio.BufferedSink val$cacheBody -> d
     okio.BufferedSource val$source -> b
     okhttp3.internal.cache.CacheRequest val$cacheRequest -> c
     boolean cacheRequestClosed -> a
-okhttp3.internal.cache.CacheRequest -> okhttp3.e0.e.b:
+okhttp3.internal.cache.CacheRequest -> okhttp3.k0.g.b:
     okio.Sink body() -> a
     void abort() -> b
-okhttp3.internal.cache.CacheStrategy -> okhttp3.e0.e.c:
+okhttp3.internal.cache.CacheStrategy -> okhttp3.k0.g.c:
     okhttp3.Response cacheResponse -> b
     okhttp3.Request networkRequest -> a
     boolean isCacheable(okhttp3.Response,okhttp3.Request) -> a
-okhttp3.internal.cache.CacheStrategy$Factory -> okhttp3.e0.e.c$a:
+okhttp3.internal.cache.CacheStrategy$Factory -> okhttp3.k0.g.c$a:
     java.util.Date lastModified -> f
     java.lang.String lastModifiedString -> g
     long receivedResponseMillis -> j
@@ -15339,7 +15327,7 @@ okhttp3.internal.cache.CacheStrategy$Factory -> okhttp3.e0.e.c$a:
     long computeFreshnessLifetime() -> c
     okhttp3.internal.cache.CacheStrategy getCandidate() -> d
     boolean isFreshnessLifetimeHeuristic() -> e
-okhttp3.internal.cache.DiskLruCache -> okhttp3.e0.e.d:
+okhttp3.internal.cache.DiskLruCache -> okhttp3.k0.g.d:
     java.io.File directory -> b
     boolean hasJournalErrors -> m
     long size -> i
@@ -15361,6 +15349,7 @@ okhttp3.internal.cache.DiskLruCache -> okhttp3.e0.e.d:
     java.util.concurrent.Executor executor -> s
     okhttp3.internal.io.FileSystem fileSystem -> a
     okio.BufferedSink journalWriter -> j
+    void $closeResource(java.lang.Throwable,java.lang.AutoCloseable) -> a
     void completeEdit(okhttp3.internal.cache.DiskLruCache$Editor,boolean) -> a
     okhttp3.internal.cache.DiskLruCache create(okhttp3.internal.io.FileSystem,java.io.File,int,int,long) -> a
     okhttp3.internal.cache.DiskLruCache$Editor edit(java.lang.String,long) -> a
@@ -15380,12 +15369,12 @@ okhttp3.internal.cache.DiskLruCache -> okhttp3.e0.e.d:
     okio.BufferedSink newJournalWriter() -> p
     void processJournal() -> q
     void readJournal() -> r
-okhttp3.internal.cache.DiskLruCache$1 -> okhttp3.e0.e.d$a:
+okhttp3.internal.cache.DiskLruCache$1 -> okhttp3.k0.g.d$a:
     okhttp3.internal.cache.DiskLruCache this$0 -> a
-okhttp3.internal.cache.DiskLruCache$2 -> okhttp3.e0.e.d$b:
+okhttp3.internal.cache.DiskLruCache$2 -> okhttp3.k0.g.d$b:
     okhttp3.internal.cache.DiskLruCache this$0 -> c
     void onException(java.io.IOException) -> a
-okhttp3.internal.cache.DiskLruCache$Editor -> okhttp3.e0.e.d$c:
+okhttp3.internal.cache.DiskLruCache$Editor -> okhttp3.k0.g.d$c:
     boolean[] written -> b
     okhttp3.internal.cache.DiskLruCache this$0 -> d
     okhttp3.internal.cache.DiskLruCache$Entry entry -> a
@@ -15394,10 +15383,10 @@ okhttp3.internal.cache.DiskLruCache$Editor -> okhttp3.e0.e.d$c:
     okio.Sink newSink(int) -> a
     void commit() -> b
     void detach() -> c
-okhttp3.internal.cache.DiskLruCache$Editor$1 -> okhttp3.e0.e.d$c$a:
+okhttp3.internal.cache.DiskLruCache$Editor$1 -> okhttp3.k0.g.d$c$a:
     okhttp3.internal.cache.DiskLruCache$Editor this$1 -> c
     void onException(java.io.IOException) -> a
-okhttp3.internal.cache.DiskLruCache$Entry -> okhttp3.e0.e.d$d:
+okhttp3.internal.cache.DiskLruCache$Entry -> okhttp3.k0.g.d$d:
     java.io.File[] cleanFiles -> c
     java.io.File[] dirtyFiles -> d
     okhttp3.internal.cache.DiskLruCache$Editor currentEditor -> f
@@ -15410,28 +15399,29 @@ okhttp3.internal.cache.DiskLruCache$Entry -> okhttp3.e0.e.d$d:
     okhttp3.internal.cache.DiskLruCache$Snapshot snapshot() -> a
     void writeLengths(okio.BufferedSink) -> a
     java.io.IOException invalidLengths(java.lang.String[]) -> b
-okhttp3.internal.cache.DiskLruCache$Snapshot -> okhttp3.e0.e.d$e:
+okhttp3.internal.cache.DiskLruCache$Snapshot -> okhttp3.k0.g.d$e:
     okio.Source[] sources -> c
     long sequenceNumber -> b
     okhttp3.internal.cache.DiskLruCache this$0 -> d
     java.lang.String key -> a
     okio.Source getSource(int) -> a
     okhttp3.internal.cache.DiskLruCache$Editor edit() -> b
-okhttp3.internal.cache.FaultHidingSink -> okhttp3.e0.e.e:
+okhttp3.internal.cache.FaultHidingSink -> okhttp3.k0.g.e:
     boolean hasErrors -> b
     void onException(java.io.IOException) -> a
     void write(okio.Buffer,long) -> a
-okhttp3.internal.cache.InternalCache -> okhttp3.e0.e.f:
+okhttp3.internal.cache.InternalCache -> okhttp3.k0.g.f:
     okhttp3.Response get(okhttp3.Request) -> a
     okhttp3.internal.cache.CacheRequest put(okhttp3.Response) -> a
     void trackConditionalCacheHit() -> a
     void trackResponse(okhttp3.internal.cache.CacheStrategy) -> a
     void update(okhttp3.Response,okhttp3.Response) -> a
     void remove(okhttp3.Request) -> b
-okhttp3.internal.connection.ConnectInterceptor -> okhttp3.internal.connection.a:
-    okhttp3.OkHttpClient client -> a
+okhttp3.internal.connection.-$$Lambda$RealConnectionPool$Cy61BJKpsrwSB_hQmB_R9MngVNU -> okhttp3.internal.connection.a:
+    okhttp3.internal.connection.RealConnectionPool f$0 -> a
+okhttp3.internal.connection.ConnectInterceptor -> okhttp3.internal.connection.b:
     okhttp3.Response intercept(okhttp3.Interceptor$Chain) -> a
-okhttp3.internal.connection.ConnectionSpecSelector -> okhttp3.internal.connection.b:
+okhttp3.internal.connection.ConnectionSpecSelector -> okhttp3.internal.connection.c:
     java.util.List connectionSpecs -> a
     int nextModeIndex -> b
     boolean isFallbackPossible -> c
@@ -15439,21 +15429,80 @@ okhttp3.internal.connection.ConnectionSpecSelector -> okhttp3.internal.connectio
     okhttp3.ConnectionSpec configureSecureSocket(javax.net.ssl.SSLSocket) -> a
     boolean connectionFailed(java.io.IOException) -> a
     boolean isFallbackPossible(javax.net.ssl.SSLSocket) -> b
-okhttp3.internal.connection.RealConnection -> okhttp3.internal.connection.c:
-    int successCount -> l
-    int allocationLimit -> m
-    boolean noNewStreams -> k
+okhttp3.internal.connection.Exchange -> okhttp3.internal.connection.d:
+    okhttp3.internal.connection.ExchangeFinder finder -> d
+    okhttp3.internal.connection.Transmitter transmitter -> a
+    okhttp3.EventListener eventListener -> c
+    boolean duplex -> f
+    okhttp3.Call call -> b
+    okhttp3.internal.http.ExchangeCodec codec -> e
+    java.io.IOException bodyComplete(long,boolean,boolean,java.io.IOException) -> a
+    void cancel() -> a
+    okio.Sink createRequestBody(okhttp3.Request,boolean) -> a
+    okhttp3.ResponseBody openResponseBody(okhttp3.Response) -> a
+    okhttp3.Response$Builder readResponseHeaders(boolean) -> a
+    void trackFailure(java.io.IOException) -> a
+    void writeRequestHeaders(okhttp3.Request) -> a
+    okhttp3.internal.connection.RealConnection connection() -> b
+    void responseHeadersEnd(okhttp3.Response) -> b
+    void detachWithViolence() -> c
+    void finishRequest() -> d
+    void flushRequest() -> e
+    boolean isDuplex() -> f
+    void noNewExchangesOnConnection() -> g
+    void noRequestBody() -> h
+    void responseHeadersStart() -> i
+okhttp3.internal.connection.Exchange$RequestBodySink -> okhttp3.internal.connection.d$a:
+    okhttp3.internal.connection.Exchange this$0 -> f
+    boolean closed -> e
+    long bytesReceived -> d
+    long contentLength -> c
+    boolean completed -> b
+    java.io.IOException complete(java.io.IOException) -> a
+    void write(okio.Buffer,long) -> a
+okhttp3.internal.connection.Exchange$ResponseBodySource -> okhttp3.internal.connection.d$b:
+    okhttp3.internal.connection.Exchange this$0 -> e
+    long bytesReceived -> b
+    long contentLength -> a
+    boolean completed -> c
+    boolean closed -> d
+    java.io.IOException complete(java.io.IOException) -> a
+okhttp3.internal.connection.ExchangeFinder -> okhttp3.internal.connection.e:
+    okhttp3.internal.connection.RealConnectionPool connectionPool -> c
+    okhttp3.EventListener eventListener -> e
+    okhttp3.internal.connection.Transmitter transmitter -> a
+    boolean hasStreamFailure -> i
+    okhttp3.internal.connection.RealConnection connectingConnection -> h
+    okhttp3.internal.connection.RouteSelector$Selection routeSelection -> f
+    okhttp3.Address address -> b
+    okhttp3.internal.connection.RouteSelector routeSelector -> g
+    okhttp3.Route nextRouteToTry -> j
+    okhttp3.Call call -> d
+    okhttp3.internal.connection.RealConnection connectingConnection() -> a
+    okhttp3.internal.http.ExchangeCodec find(okhttp3.OkHttpClient,okhttp3.Interceptor$Chain,boolean) -> a
+    okhttp3.internal.connection.RealConnection findConnection(int,int,int,int,boolean) -> a
+    okhttp3.internal.connection.RealConnection findHealthyConnection(int,int,int,int,boolean,boolean) -> a
+    boolean hasRouteToTry() -> b
+    boolean hasStreamFailure() -> c
+    void trackFailure() -> d
+    boolean retryCurrentRoute() -> e
+okhttp3.internal.connection.RealConnection -> okhttp3.internal.connection.f:
+    int refusedStreamCount -> n
+    int allocationLimit -> o
+    int routeFailureCount -> l
+    java.util.List transmitters -> p
+    int successCount -> m
+    okhttp3.internal.connection.RealConnectionPool connectionPool -> b
+    boolean noNewExchanges -> k
     okio.BufferedSource source -> i
     okhttp3.Handshake handshake -> f
-    okhttp3.ConnectionPool connectionPool -> b
     java.net.Socket socket -> e
     okhttp3.internal.http2.Http2Connection http2Connection -> h
-    java.util.List allocations -> n
+    long idleAtNanos -> q
     okhttp3.Route route -> c
     okhttp3.Protocol protocol -> g
     java.net.Socket rawSocket -> d
     okio.BufferedSink sink -> j
-    long idleAtNanos -> o
     void cancel() -> a
     void connect(int,int,int,int,boolean,okhttp3.Call,okhttp3.EventListener) -> a
     void connectSocket(int,int,okhttp3.Call,okhttp3.EventListener) -> a
@@ -15461,19 +15510,37 @@ okhttp3.internal.connection.RealConnection -> okhttp3.internal.connection.c:
     void connectTunnel(int,int,int,okhttp3.Call,okhttp3.EventListener) -> a
     okhttp3.Request createTunnel(int,int,okhttp3.Request,okhttp3.HttpUrl) -> a
     void establishProtocol(okhttp3.internal.connection.ConnectionSpecSelector,int,okhttp3.Call,okhttp3.EventListener) -> a
-    boolean isEligible(okhttp3.Address,okhttp3.Route) -> a
+    boolean isEligible(okhttp3.Address,java.util.List) -> a
     boolean isHealthy(boolean) -> a
-    okhttp3.internal.http.HttpCodec newCodec(okhttp3.OkHttpClient,okhttp3.Interceptor$Chain,okhttp3.internal.connection.StreamAllocation) -> a
+    okhttp3.internal.http.ExchangeCodec newCodec(okhttp3.OkHttpClient,okhttp3.Interceptor$Chain) -> a
     void onSettings(okhttp3.internal.http2.Http2Connection) -> a
     void onStream(okhttp3.internal.http2.Http2Stream) -> a
+    boolean routeMatchesAny(java.util.List) -> a
     void startHttp2(int) -> a
     boolean supportsUrl(okhttp3.HttpUrl) -> a
+    void trackFailure(java.io.IOException) -> a
     okhttp3.Handshake handshake() -> b
     boolean isMultiplexed() -> c
-    okhttp3.Route route() -> d
-    java.net.Socket socket() -> e
-    okhttp3.Request createTunnelRequest() -> f
-okhttp3.internal.connection.RouteDatabase -> okhttp3.internal.connection.d:
+    void noNewExchanges() -> d
+    okhttp3.Route route() -> e
+    java.net.Socket socket() -> f
+    okhttp3.Request createTunnelRequest() -> g
+okhttp3.internal.connection.RealConnectionPool -> okhttp3.internal.connection.g:
+    java.util.Deque connections -> d
+    java.lang.Runnable cleanupRunnable -> c
+    long keepAliveDurationNs -> b
+    boolean cleanupRunning -> f
+    java.util.concurrent.Executor executor -> g
+    okhttp3.internal.connection.RouteDatabase routeDatabase -> e
+    int maxIdleConnections -> a
+    long cleanup(long) -> a
+    void connectFailed(okhttp3.Route,java.io.IOException) -> a
+    boolean connectionBecameIdle(okhttp3.internal.connection.RealConnection) -> a
+    void lambda$new$0() -> a
+    int pruneAndGetAllocationCount(okhttp3.internal.connection.RealConnection,long) -> a
+    boolean transmitterAcquirePooledConnection(okhttp3.Address,okhttp3.internal.connection.Transmitter,java.util.List,boolean) -> a
+    void put(okhttp3.internal.connection.RealConnection) -> b
+okhttp3.internal.connection.RouteDatabase -> okhttp3.internal.connection.h:
     java.util.Set failedRoutes -> a
     void connected(okhttp3.Route) -> a
     void failed(okhttp3.Route) -> b
@@ -15482,7 +15549,7 @@ okhttp3.internal.connection.RouteException -> okhttp3.internal.connection.RouteE
     void addConnectException(java.io.IOException) -> a
     java.io.IOException getFirstConnectException() -> a
     java.io.IOException getLastConnectException() -> b
-okhttp3.internal.connection.RouteSelector -> okhttp3.internal.connection.e:
+okhttp3.internal.connection.RouteSelector -> okhttp3.internal.connection.i:
     okhttp3.EventListener eventListener -> d
     java.util.List proxies -> e
     okhttp3.internal.connection.RouteDatabase routeDatabase -> b
@@ -15491,7 +15558,6 @@ okhttp3.internal.connection.RouteSelector -> okhttp3.internal.connection.e:
     java.util.List inetSocketAddresses -> g
     okhttp3.Call call -> c
     okhttp3.Address address -> a
-    void connectFailed(okhttp3.Route,java.io.IOException) -> a
     java.lang.String getHostString(java.net.InetSocketAddress) -> a
     boolean hasNext() -> a
     void resetNextInetSocketAddress(java.net.Proxy) -> a
@@ -15499,72 +15565,75 @@ okhttp3.internal.connection.RouteSelector -> okhttp3.internal.connection.e:
     okhttp3.internal.connection.RouteSelector$Selection next() -> b
     boolean hasNextProxy() -> c
     java.net.Proxy nextProxy() -> d
-okhttp3.internal.connection.RouteSelector$Selection -> okhttp3.internal.connection.e$a:
+okhttp3.internal.connection.RouteSelector$Selection -> okhttp3.internal.connection.i$a:
     java.util.List routes -> a
     int nextRouteIndex -> b
     java.util.List getAll() -> a
     boolean hasNext() -> b
     okhttp3.Route next() -> c
-okhttp3.internal.connection.StreamAllocation -> okhttp3.internal.connection.f:
+okhttp3.internal.connection.Transmitter -> okhttp3.internal.connection.j:
     boolean canceled -> m
-    okhttp3.internal.http.HttpCodec codec -> n
-    java.lang.Object callStackTrace -> g
-    boolean reportedAcquired -> k
-    int refusedStreamCount -> i
-    boolean released -> l
-    okhttp3.internal.connection.RouteSelector routeSelector -> h
-    okhttp3.Address address -> a
-    okhttp3.EventListener eventListener -> f
-    okhttp3.ConnectionPool connectionPool -> d
-    okhttp3.internal.connection.RealConnection connection -> j
-    okhttp3.internal.connection.RouteSelector$Selection routeSelection -> b
-    okhttp3.Route route -> c
-    okhttp3.Call call -> e
-    void acquire(okhttp3.internal.connection.RealConnection,boolean) -> a
-    void cancel() -> a
-    java.net.Socket deallocate(boolean,boolean,boolean) -> a
-    okhttp3.internal.connection.RealConnection findConnection(int,int,int,int,boolean) -> a
-    okhttp3.internal.connection.RealConnection findHealthyConnection(int,int,int,int,boolean,boolean) -> a
-    okhttp3.internal.http.HttpCodec newStream(okhttp3.OkHttpClient,okhttp3.Interceptor$Chain,boolean) -> a
-    java.net.Socket releaseAndAcquire(okhttp3.internal.connection.RealConnection) -> a
-    void streamFailed(java.io.IOException) -> a
-    void streamFinished(boolean,okhttp3.internal.http.HttpCodec,long,java.io.IOException) -> a
-    okhttp3.internal.http.HttpCodec codec() -> b
-    void release(okhttp3.internal.connection.RealConnection) -> b
-    okhttp3.internal.connection.RealConnection connection() -> c
-    boolean hasMoreRoutes() -> d
-    void noNewStreams() -> e
-    void release() -> f
-    okhttp3.Route route() -> g
-    java.net.Socket releaseIfNoNewStreams() -> h
-    okhttp3.internal.connection.RouteDatabase routeDatabase() -> i
-okhttp3.internal.connection.StreamAllocation$StreamAllocationReference -> okhttp3.internal.connection.f$a:
+    boolean timeoutEarlyExit -> n
+    boolean noMoreExchanges -> o
+    java.lang.Object callStackTrace -> f
+    okhttp3.internal.connection.RealConnectionPool connectionPool -> b
+    boolean exchangeRequestDone -> k
+    boolean exchangeResponseDone -> l
+    okio.AsyncTimeout timeout -> e
+    okhttp3.internal.connection.Exchange exchange -> j
+    okhttp3.internal.connection.ExchangeFinder exchangeFinder -> h
+    okhttp3.OkHttpClient client -> a
+    okhttp3.EventListener eventListener -> d
+    okhttp3.internal.connection.RealConnection connection -> i
+    okhttp3.Request request -> g
+    okhttp3.Call call -> c
+    void acquireConnectionNoEvents(okhttp3.internal.connection.RealConnection) -> a
+    void callStart() -> a
+    okhttp3.Address createAddress(okhttp3.HttpUrl) -> a
+    java.io.IOException exchangeMessageDone(okhttp3.internal.connection.Exchange,boolean,boolean,java.io.IOException) -> a
+    java.io.IOException maybeReleaseConnection(java.io.IOException,boolean) -> a
+    okhttp3.internal.connection.Exchange newExchange(okhttp3.Interceptor$Chain,boolean) -> a
+    java.io.IOException noMoreExchanges(java.io.IOException) -> a
+    void prepareToConnect(okhttp3.Request) -> a
+    boolean canRetry() -> b
+    java.io.IOException timeoutExit(java.io.IOException) -> b
+    void cancel() -> c
+    void exchangeDoneDueToException() -> d
+    boolean hasExchange() -> e
+    boolean isCanceled() -> f
+    java.net.Socket releaseConnectionNoEvents() -> g
+    okio.Timeout timeout() -> h
+    void timeoutEarlyExit() -> i
+    void timeoutEnter() -> j
+okhttp3.internal.connection.Transmitter$1 -> okhttp3.internal.connection.j$a:
+    okhttp3.internal.connection.Transmitter this$0 -> k
+    void timedOut() -> i
+okhttp3.internal.connection.Transmitter$TransmitterReference -> okhttp3.internal.connection.j$b:
     java.lang.Object callStackTrace -> a
-okhttp3.internal.http.BridgeInterceptor -> okhttp3.e0.f.a:
+okhttp3.internal.http.BridgeInterceptor -> okhttp3.k0.h.a:
     okhttp3.CookieJar cookieJar -> a
     java.lang.String cookieHeader(java.util.List) -> a
     okhttp3.Response intercept(okhttp3.Interceptor$Chain) -> a
-okhttp3.internal.http.CallServerInterceptor -> okhttp3.e0.f.b:
+okhttp3.internal.http.CallServerInterceptor -> okhttp3.k0.h.b:
     boolean forWebSocket -> a
     okhttp3.Response intercept(okhttp3.Interceptor$Chain) -> a
-okhttp3.internal.http.CallServerInterceptor$CountingSink -> okhttp3.e0.f.b$a:
-    long successfulCount -> b
-    void write(okio.Buffer,long) -> a
-okhttp3.internal.http.HttpCodec -> okhttp3.e0.f.c:
+okhttp3.internal.http.ExchangeCodec -> okhttp3.k0.h.c:
     okio.Sink createRequestBody(okhttp3.Request,long) -> a
     void finishRequest() -> a
-    okhttp3.ResponseBody openResponseBody(okhttp3.Response) -> a
     okhttp3.Response$Builder readResponseHeaders(boolean) -> a
+    long reportedContentLength(okhttp3.Response) -> a
     void writeRequestHeaders(okhttp3.Request) -> a
     void flushRequest() -> b
-okhttp3.internal.http.HttpDate -> okhttp3.e0.f.d:
+    okio.Source openResponseBodySource(okhttp3.Response) -> b
+    okhttp3.internal.connection.RealConnection connection() -> c
+okhttp3.internal.http.HttpDate -> okhttp3.k0.h.d:
     java.lang.ThreadLocal STANDARD_DATE_FORMAT -> a
     java.text.DateFormat[] BROWSER_COMPATIBLE_DATE_FORMATS -> c
     java.lang.String[] BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS -> b
     java.lang.String format(java.util.Date) -> a
     java.util.Date parse(java.lang.String) -> a
-okhttp3.internal.http.HttpDate$1 -> okhttp3.e0.f.d$a:
-okhttp3.internal.http.HttpHeaders -> okhttp3.e0.f.e:
+okhttp3.internal.http.HttpDate$1 -> okhttp3.k0.h.d$a:
+okhttp3.internal.http.HttpHeaders -> okhttp3.k0.h.e:
     long contentLength(okhttp3.Headers) -> a
     long contentLength(okhttp3.Response) -> a
     int parseSeconds(java.lang.String,int) -> a
@@ -15580,113 +15649,114 @@ okhttp3.internal.http.HttpHeaders -> okhttp3.e0.f.e:
     java.util.Set varyFields(okhttp3.Headers) -> c
     java.util.Set varyFields(okhttp3.Response) -> d
     okhttp3.Headers varyHeaders(okhttp3.Response) -> e
-okhttp3.internal.http.HttpMethod -> okhttp3.e0.f.f:
+okhttp3.internal.http.HttpMethod -> okhttp3.k0.h.f:
     boolean invalidatesCache(java.lang.String) -> a
     boolean permitsRequestBody(java.lang.String) -> b
     boolean redirectsToGet(java.lang.String) -> c
     boolean redirectsWithBody(java.lang.String) -> d
     boolean requiresRequestBody(java.lang.String) -> e
-okhttp3.internal.http.RealInterceptorChain -> okhttp3.e0.f.g:
-    okhttp3.internal.connection.StreamAllocation streamAllocation -> b
+okhttp3.internal.http.RealInterceptorChain -> okhttp3.k0.h.g:
+    okhttp3.Call call -> f
     java.util.List interceptors -> a
-    okhttp3.internal.connection.RealConnection connection -> d
-    okhttp3.Call call -> g
-    int calls -> l
-    int readTimeout -> j
-    int writeTimeout -> k
-    int connectTimeout -> i
-    okhttp3.Request request -> f
-    okhttp3.internal.http.HttpCodec httpCodec -> c
-    int index -> e
-    okhttp3.EventListener eventListener -> h
+    okhttp3.internal.connection.Exchange exchange -> c
+    int calls -> j
+    int readTimeout -> h
+    okhttp3.internal.connection.Transmitter transmitter -> b
+    int writeTimeout -> i
+    okhttp3.Request request -> e
+    int connectTimeout -> g
+    int index -> d
     int connectTimeoutMillis() -> a
     okhttp3.Response proceed(okhttp3.Request) -> a
-    okhttp3.Response proceed(okhttp3.Request,okhttp3.internal.connection.StreamAllocation,okhttp3.internal.http.HttpCodec,okhttp3.internal.connection.RealConnection) -> a
+    okhttp3.Response proceed(okhttp3.Request,okhttp3.internal.connection.Transmitter,okhttp3.internal.connection.Exchange) -> a
     int readTimeoutMillis() -> b
     int writeTimeoutMillis() -> c
-    okhttp3.Call call() -> d
-    okhttp3.Connection connection() -> e
-    okhttp3.EventListener eventListener() -> f
-    okhttp3.internal.http.HttpCodec httpStream() -> g
-    okhttp3.internal.connection.StreamAllocation streamAllocation() -> h
-okhttp3.internal.http.RealResponseBody -> okhttp3.e0.f.h:
+    okhttp3.internal.connection.Exchange exchange() -> d
+    okhttp3.internal.connection.Transmitter transmitter() -> e
+okhttp3.internal.http.RealResponseBody -> okhttp3.k0.h.h:
     okio.BufferedSource source -> c
     long contentLength -> b
     java.lang.String contentTypeString -> a
-okhttp3.internal.http.RequestLine -> okhttp3.e0.f.i:
+okhttp3.internal.http.RequestLine -> okhttp3.k0.h.i:
     java.lang.String get(okhttp3.Request,java.net.Proxy$Type) -> a
     java.lang.String requestPath(okhttp3.HttpUrl) -> a
     boolean includeAuthorityInRequestLine(okhttp3.Request,java.net.Proxy$Type) -> b
-okhttp3.internal.http.RetryAndFollowUpInterceptor -> okhttp3.e0.f.j:
+okhttp3.internal.http.RetryAndFollowUpInterceptor -> okhttp3.k0.h.j:
     okhttp3.OkHttpClient client -> a
-    okhttp3.internal.connection.StreamAllocation streamAllocation -> b
-    java.lang.Object callStackTrace -> c
-    boolean canceled -> d
-    void cancel() -> a
-    okhttp3.Address createAddress(okhttp3.HttpUrl) -> a
     okhttp3.Request followUpRequest(okhttp3.Response,okhttp3.Route) -> a
     okhttp3.Response intercept(okhttp3.Interceptor$Chain) -> a
     boolean isRecoverable(java.io.IOException,boolean) -> a
-    boolean recover(java.io.IOException,okhttp3.internal.connection.StreamAllocation,boolean,okhttp3.Request) -> a
+    boolean recover(java.io.IOException,okhttp3.internal.connection.Transmitter,boolean,okhttp3.Request) -> a
+    boolean requestIsOneShot(java.io.IOException,okhttp3.Request) -> a
     int retryAfter(okhttp3.Response,int) -> a
-    boolean sameConnection(okhttp3.Response,okhttp3.HttpUrl) -> a
-    void setCallStackTrace(java.lang.Object) -> a
-    boolean isCanceled() -> b
-okhttp3.internal.http.StatusLine -> okhttp3.e0.f.k:
+okhttp3.internal.http.StatusLine -> okhttp3.k0.h.k:
     okhttp3.Protocol protocol -> a
     int code -> b
     java.lang.String message -> c
     okhttp3.internal.http.StatusLine parse(java.lang.String) -> a
-okhttp3.internal.http1.Http1Codec -> okhttp3.e0.g.a:
+okhttp3.internal.http1.Http1ExchangeCodec -> okhttp3.k0.i.a:
     okhttp3.OkHttpClient client -> a
-    okhttp3.internal.connection.StreamAllocation streamAllocation -> b
     okio.BufferedSink sink -> d
     okio.BufferedSource source -> c
     long headerLimit -> f
+    okhttp3.Headers trailers -> g
     int state -> e
+    okhttp3.internal.connection.RealConnection realConnection -> b
+    okhttp3.OkHttpClient access$1000(okhttp3.internal.http1.Http1ExchangeCodec) -> a
+    void access$300(okhttp3.internal.http1.Http1ExchangeCodec,okio.ForwardingTimeout) -> a
+    int access$402(okhttp3.internal.http1.Http1ExchangeCodec,int) -> a
+    okhttp3.Headers access$802(okhttp3.internal.http1.Http1ExchangeCodec,okhttp3.Headers) -> a
     okio.Sink createRequestBody(okhttp3.Request,long) -> a
     void detachTimeout(okio.ForwardingTimeout) -> a
     void finishRequest() -> a
     okio.Source newChunkedSource(okhttp3.HttpUrl) -> a
-    okio.Sink newFixedLengthSink(long) -> a
-    okhttp3.ResponseBody openResponseBody(okhttp3.Response) -> a
+    okio.Source newFixedLengthSource(long) -> a
     okhttp3.Response$Builder readResponseHeaders(boolean) -> a
+    long reportedContentLength(okhttp3.Response) -> a
     void writeRequest(okhttp3.Headers,java.lang.String) -> a
     void writeRequestHeaders(okhttp3.Request) -> a
+    okio.BufferedSink access$200(okhttp3.internal.http1.Http1ExchangeCodec) -> b
     void flushRequest() -> b
-    okio.Source newFixedLengthSource(long) -> b
-    okio.Sink newChunkedSink() -> c
-    okio.Source newUnknownLengthSource() -> d
-    okhttp3.Headers readHeaders() -> e
-    java.lang.String readHeaderLine() -> f
-okhttp3.internal.http1.Http1Codec$1 -> okhttp3.e0.g.a$a:
-okhttp3.internal.http1.Http1Codec$AbstractSource -> okhttp3.e0.g.a$b:
-    okhttp3.internal.http1.Http1Codec this$0 -> d
+    okio.Source openResponseBodySource(okhttp3.Response) -> b
+    int access$400(okhttp3.internal.http1.Http1ExchangeCodec) -> c
+    okhttp3.internal.connection.RealConnection connection() -> c
+    void skipConnectBody(okhttp3.Response) -> c
+    okio.BufferedSource access$500(okhttp3.internal.http1.Http1ExchangeCodec) -> d
+    okio.Sink newChunkedSink() -> d
+    okhttp3.internal.connection.RealConnection access$600(okhttp3.internal.http1.Http1ExchangeCodec) -> e
+    okio.Sink newKnownLengthSink() -> e
+    okhttp3.Headers access$800(okhttp3.internal.http1.Http1ExchangeCodec) -> f
+    okio.Source newUnknownLengthSource() -> f
+    okhttp3.Headers access$900(okhttp3.internal.http1.Http1ExchangeCodec) -> g
+    java.lang.String readHeaderLine() -> g
+    okhttp3.Headers readHeaders() -> h
+okhttp3.internal.http1.Http1ExchangeCodec$1 -> okhttp3.k0.i.a$a:
+okhttp3.internal.http1.Http1ExchangeCodec$AbstractSource -> okhttp3.k0.i.a$b:
+    okhttp3.internal.http1.Http1ExchangeCodec this$0 -> c
     okio.ForwardingTimeout timeout -> a
-    long bytesRead -> c
     boolean closed -> b
-    void endOfInput(boolean,java.io.IOException) -> a
-okhttp3.internal.http1.Http1Codec$ChunkedSink -> okhttp3.e0.g.a$c:
-    okhttp3.internal.http1.Http1Codec this$0 -> c
+    void responseBodyComplete() -> b
+okhttp3.internal.http1.Http1ExchangeCodec$ChunkedSink -> okhttp3.k0.i.a$c:
+    okhttp3.internal.http1.Http1ExchangeCodec this$0 -> c
+    okio.ForwardingTimeout timeout -> a
+    boolean closed -> b
+    void write(okio.Buffer,long) -> a
+okhttp3.internal.http1.Http1ExchangeCodec$ChunkedSource -> okhttp3.k0.i.a$d:
+    okhttp3.HttpUrl url -> d
+    okhttp3.internal.http1.Http1ExchangeCodec this$0 -> g
+    long bytesRemainingInChunk -> e
+    boolean hasMoreChunks -> f
+    void readChunkSize() -> e
+okhttp3.internal.http1.Http1ExchangeCodec$FixedLengthSource -> okhttp3.k0.i.a$e:
+    okhttp3.internal.http1.Http1ExchangeCodec this$0 -> e
+    long bytesRemaining -> d
+okhttp3.internal.http1.Http1ExchangeCodec$KnownLengthSink -> okhttp3.k0.i.a$f:
+    okhttp3.internal.http1.Http1ExchangeCodec this$0 -> c
     okio.ForwardingTimeout timeout -> a
     boolean closed -> b
     void write(okio.Buffer,long) -> a
-okhttp3.internal.http1.Http1Codec$ChunkedSource -> okhttp3.e0.g.a$d:
-    long bytesRemainingInChunk -> f
-    okhttp3.HttpUrl url -> e
-    okhttp3.internal.http1.Http1Codec this$0 -> h
-    boolean hasMoreChunks -> g
-    void readChunkSize() -> b
-okhttp3.internal.http1.Http1Codec$FixedLengthSink -> okhttp3.e0.g.a$e:
-    okhttp3.internal.http1.Http1Codec this$0 -> d
-    okio.ForwardingTimeout timeout -> a
-    long bytesRemaining -> c
-    boolean closed -> b
-    void write(okio.Buffer,long) -> a
-okhttp3.internal.http1.Http1Codec$FixedLengthSource -> okhttp3.e0.g.a$f:
-    long bytesRemaining -> e
-okhttp3.internal.http1.Http1Codec$UnknownLengthSource -> okhttp3.e0.g.a$g:
-    boolean inputExhausted -> e
+okhttp3.internal.http1.Http1ExchangeCodec$UnknownLengthSource -> okhttp3.k0.i.a$g:
+    boolean inputExhausted -> d
 okhttp3.internal.http2.ErrorCode -> okhttp3.internal.http2.ErrorCode:
     okhttp3.internal.http2.ErrorCode[] $VALUES -> l
     okhttp3.internal.http2.ErrorCode INADEQUATE_SECURITY -> j
@@ -15711,8 +15781,6 @@ okhttp3.internal.http2.Header -> okhttp3.internal.http2.a:
     int hpackSize -> c
     okio.ByteString TARGET_AUTHORITY -> i
     okio.ByteString TARGET_SCHEME -> h
-okhttp3.internal.http2.Header$Listener -> okhttp3.internal.http2.a$a:
-    void onHeaders(okhttp3.Headers) -> a
 okhttp3.internal.http2.Hpack -> okhttp3.internal.http2.b:
     java.util.Map NAME_TO_FIRST_INDEX -> b
     okhttp3.internal.http2.Header[] STATIC_HEADER_TABLE -> a
@@ -15771,52 +15839,37 @@ okhttp3.internal.http2.Http2 -> okhttp3.internal.http2.c:
     java.lang.String frameLog(boolean,int,int,byte,byte) -> a
     java.lang.IllegalArgumentException illegalArgument(java.lang.String,java.lang.Object[]) -> a
     java.io.IOException ioException(java.lang.String,java.lang.Object[]) -> b
-okhttp3.internal.http2.Http2Codec -> okhttp3.internal.http2.d:
-    okhttp3.internal.connection.StreamAllocation streamAllocation -> b
-    java.util.List HTTP_2_SKIPPED_REQUEST_HEADERS -> f
-    okhttp3.Interceptor$Chain chain -> a
-    java.util.List HTTP_2_SKIPPED_RESPONSE_HEADERS -> g
-    okhttp3.internal.http2.Http2Stream stream -> d
-    okhttp3.internal.http2.Http2Connection connection -> c
-    okhttp3.Protocol protocol -> e
-    okio.Sink createRequestBody(okhttp3.Request,long) -> a
-    void finishRequest() -> a
-    okhttp3.ResponseBody openResponseBody(okhttp3.Response) -> a
-    okhttp3.Response$Builder readHttp2HeadersList(okhttp3.Headers,okhttp3.Protocol) -> a
-    okhttp3.Response$Builder readResponseHeaders(boolean) -> a
-    void writeRequestHeaders(okhttp3.Request) -> a
-    void flushRequest() -> b
-    java.util.List http2HeadersList(okhttp3.Request) -> b
-okhttp3.internal.http2.Http2Codec$StreamFinishingSource -> okhttp3.internal.http2.d$a:
-    okhttp3.internal.http2.Http2Codec this$0 -> c
-    long bytesRead -> b
-    boolean completed -> a
-    void endOfInput(java.io.IOException) -> a
-okhttp3.internal.http2.Http2Connection -> okhttp3.internal.http2.e:
+okhttp3.internal.http2.Http2Connection -> okhttp3.internal.http2.d:
     okhttp3.internal.http2.Http2Connection$Listener listener -> b
-    long unacknowledgedBytesRead -> l
-    java.util.concurrent.ExecutorService listenerExecutor -> u
-    boolean receivedInitialPeerSettings -> p
-    java.util.Set currentPushRequests -> t
-    boolean awaitingPong -> k
+    long intervalPingsSent -> k
     int nextStreamId -> f
-    okhttp3.internal.http2.Http2Writer writer -> r
-    int lastGoodStreamId -> e
     okhttp3.internal.http2.PushObserver pushObserver -> j
-    java.net.Socket socket -> q
-    java.util.concurrent.ScheduledExecutorService writerExecutor -> h
+    okhttp3.internal.http2.Http2Connection$ReaderRunnable readerRunnable -> w
     java.util.Map streams -> c
-    okhttp3.internal.http2.Settings peerSettings -> o
-    okhttp3.internal.http2.Settings okHttpSettings -> n
-    okhttp3.internal.http2.Http2Connection$ReaderRunnable readerRunnable -> s
     java.util.concurrent.ExecutorService pushExecutor -> i
+    long unacknowledgedBytesRead -> q
+    okhttp3.internal.http2.Settings peerSettings -> t
+    long degradedPingsSent -> m
+    long awaitPongsReceived -> o
+    java.util.Set currentPushRequests -> x
+    long intervalPongsReceived -> l
+    java.util.concurrent.ExecutorService listenerExecutor -> y
+    java.net.Socket socket -> u
+    int lastGoodStreamId -> e
+    okhttp3.internal.http2.Http2Writer writer -> v
+    java.util.concurrent.ScheduledExecutorService writerExecutor -> h
+    long bytesLeftInWriteWindow -> r
+    okhttp3.internal.http2.Settings okHttpSettings -> s
     boolean shutdown -> g
     boolean client -> a
-    long bytesLeftInWriteWindow -> m
-    java.lang.String hostname -> d
-    void access$000(okhttp3.internal.http2.Http2Connection) -> a
+    long degradedPongsReceived -> n
+    long degradedPongDeadlineNs -> p
+    java.lang.String connectionName -> d
+    void access$000(okhttp3.internal.http2.Http2Connection,java.io.IOException) -> a
+    long access$100(okhttp3.internal.http2.Http2Connection) -> a
     boolean access$302(okhttp3.internal.http2.Http2Connection,boolean) -> a
-    void close(okhttp3.internal.http2.ErrorCode,okhttp3.internal.http2.ErrorCode) -> a
+    void close(okhttp3.internal.http2.ErrorCode,okhttp3.internal.http2.ErrorCode,java.io.IOException) -> a
+    void failConnection(java.io.IOException) -> a
     okhttp3.internal.http2.Http2Stream getStream(int) -> a
     okhttp3.internal.http2.Http2Stream newStream(java.util.List,boolean) -> a
     void pushDataLater(int,okio.BufferedSource,int,boolean) -> a
@@ -15827,54 +15880,64 @@ okhttp3.internal.http2.Http2Connection -> okhttp3.internal.http2.e:
     void shutdown(okhttp3.internal.http2.ErrorCode) -> a
     void start(boolean) -> a
     void writeData(int,boolean,okio.Buffer,long) -> a
+    void writeHeaders(int,boolean,java.util.List) -> a
     void writePing(boolean,int,int) -> a
     void writeWindowUpdateLater(int,long) -> a
-    java.util.concurrent.ScheduledExecutorService access$200(okhttp3.internal.http2.Http2Connection) -> b
-    boolean isShutdown() -> b
+    long access$108(okhttp3.internal.http2.Http2Connection) -> b
+    int maxConcurrentStreams() -> b
     okhttp3.internal.http2.Http2Stream newStream(int,java.util.List,boolean) -> b
     boolean pushedStream(int) -> b
     void writeSynReset(int,okhttp3.internal.http2.ErrorCode) -> b
+    long access$200(okhttp3.internal.http2.Http2Connection) -> c
     okhttp3.internal.http2.Http2Stream removeStream(int) -> c
     void writeSynResetLater(int,okhttp3.internal.http2.ErrorCode) -> c
-    int maxConcurrentStreams() -> e
+    long access$208(okhttp3.internal.http2.Http2Connection) -> d
+    boolean access$300(okhttp3.internal.http2.Http2Connection) -> e
+    void sendDegradedPingLater() -> e
+    java.util.concurrent.ScheduledExecutorService access$500(okhttp3.internal.http2.Http2Connection) -> f
     void start() -> f
-    void updateConnectionFlowControl(long) -> h
-    java.util.concurrent.ExecutorService access$100() -> i
-    void failConnection() -> j
-okhttp3.internal.http2.Http2Connection$1 -> okhttp3.internal.http2.e$a:
+    long access$608(okhttp3.internal.http2.Http2Connection) -> g
+    long access$708(okhttp3.internal.http2.Http2Connection) -> h
+    boolean isHealthy(long) -> h
+    java.util.concurrent.ExecutorService access$400() -> i
+    void updateConnectionFlowControl(long) -> i
+okhttp3.internal.http2.Http2Connection$1 -> okhttp3.internal.http2.d$a:
     int val$streamId -> b
     okhttp3.internal.http2.ErrorCode val$errorCode -> c
     okhttp3.internal.http2.Http2Connection this$0 -> d
     void execute() -> b
-okhttp3.internal.http2.Http2Connection$2 -> okhttp3.internal.http2.e$b:
+okhttp3.internal.http2.Http2Connection$2 -> okhttp3.internal.http2.d$b:
     long val$unacknowledgedBytesRead -> c
     int val$streamId -> b
     okhttp3.internal.http2.Http2Connection this$0 -> d
     void execute() -> b
-okhttp3.internal.http2.Http2Connection$3 -> okhttp3.internal.http2.e$c:
+okhttp3.internal.http2.Http2Connection$3 -> okhttp3.internal.http2.d$c:
+    okhttp3.internal.http2.Http2Connection this$0 -> b
+    void execute() -> b
+okhttp3.internal.http2.Http2Connection$4 -> okhttp3.internal.http2.d$d:
     java.util.List val$requestHeaders -> c
     int val$streamId -> b
     okhttp3.internal.http2.Http2Connection this$0 -> d
     void execute() -> b
-okhttp3.internal.http2.Http2Connection$4 -> okhttp3.internal.http2.e$d:
+okhttp3.internal.http2.Http2Connection$5 -> okhttp3.internal.http2.d$e:
     java.util.List val$requestHeaders -> c
     int val$streamId -> b
     okhttp3.internal.http2.Http2Connection this$0 -> e
     boolean val$inFinished -> d
     void execute() -> b
-okhttp3.internal.http2.Http2Connection$5 -> okhttp3.internal.http2.e$e:
+okhttp3.internal.http2.Http2Connection$6 -> okhttp3.internal.http2.d$f:
     okio.Buffer val$buffer -> c
     boolean val$inFinished -> e
     int val$byteCount -> d
     int val$streamId -> b
     okhttp3.internal.http2.Http2Connection this$0 -> f
     void execute() -> b
-okhttp3.internal.http2.Http2Connection$6 -> okhttp3.internal.http2.e$f:
+okhttp3.internal.http2.Http2Connection$7 -> okhttp3.internal.http2.d$g:
     int val$streamId -> b
     okhttp3.internal.http2.ErrorCode val$errorCode -> c
     okhttp3.internal.http2.Http2Connection this$0 -> d
     void execute() -> b
-okhttp3.internal.http2.Http2Connection$Builder -> okhttp3.internal.http2.e$g:
+okhttp3.internal.http2.Http2Connection$Builder -> okhttp3.internal.http2.d$h:
     okhttp3.internal.http2.PushObserver pushObserver -> f
     okio.BufferedSink sink -> d
     okio.BufferedSource source -> c
@@ -15882,28 +15945,30 @@ okhttp3.internal.http2.Http2Connection$Builder -> okhttp3.internal.http2.e$g:
     int pingIntervalMillis -> h
     boolean client -> g
     java.net.Socket socket -> a
-    java.lang.String hostname -> b
+    java.lang.String connectionName -> b
     okhttp3.internal.http2.Http2Connection build() -> a
     okhttp3.internal.http2.Http2Connection$Builder listener(okhttp3.internal.http2.Http2Connection$Listener) -> a
     okhttp3.internal.http2.Http2Connection$Builder pingIntervalMillis(int) -> a
     okhttp3.internal.http2.Http2Connection$Builder socket(java.net.Socket,java.lang.String,okio.BufferedSource,okio.BufferedSink) -> a
-okhttp3.internal.http2.Http2Connection$Listener -> okhttp3.internal.http2.e$h:
+okhttp3.internal.http2.Http2Connection$IntervalPingRunnable -> okhttp3.internal.http2.d$i:
+    okhttp3.internal.http2.Http2Connection this$0 -> b
+    void execute() -> b
+okhttp3.internal.http2.Http2Connection$Listener -> okhttp3.internal.http2.d$j:
     okhttp3.internal.http2.Http2Connection$Listener REFUSE_INCOMING_STREAMS -> a
     void onSettings(okhttp3.internal.http2.Http2Connection) -> a
     void onStream(okhttp3.internal.http2.Http2Stream) -> a
-okhttp3.internal.http2.Http2Connection$Listener$1 -> okhttp3.internal.http2.e$h$a:
+okhttp3.internal.http2.Http2Connection$Listener$1 -> okhttp3.internal.http2.d$j$a:
     void onStream(okhttp3.internal.http2.Http2Stream) -> a
-okhttp3.internal.http2.Http2Connection$PingRunnable -> okhttp3.internal.http2.e$i:
+okhttp3.internal.http2.Http2Connection$PingRunnable -> okhttp3.internal.http2.d$k:
     int payload2 -> d
     boolean reply -> b
     int payload1 -> c
     okhttp3.internal.http2.Http2Connection this$0 -> e
     void execute() -> b
-okhttp3.internal.http2.Http2Connection$ReaderRunnable -> okhttp3.internal.http2.e$j:
+okhttp3.internal.http2.Http2Connection$ReaderRunnable -> okhttp3.internal.http2.d$l:
     okhttp3.internal.http2.Http2Reader reader -> b
     okhttp3.internal.http2.Http2Connection this$0 -> c
     void ackSettings() -> a
-    void applyAndAckSettings(okhttp3.internal.http2.Settings) -> a
     void data(boolean,int,okio.BufferedSource,int) -> a
     void goAway(int,okhttp3.internal.http2.ErrorCode,okio.ByteString) -> a
     void headers(boolean,int,int,java.util.List) -> a
@@ -15913,18 +15978,39 @@ okhttp3.internal.http2.Http2Connection$ReaderRunnable -> okhttp3.internal.http2.
     void rstStream(int,okhttp3.internal.http2.ErrorCode) -> a
     void settings(boolean,okhttp3.internal.http2.Settings) -> a
     void windowUpdate(int,long) -> a
+    void applyAndAckSettings(boolean,okhttp3.internal.http2.Settings) -> b
     void execute() -> b
-okhttp3.internal.http2.Http2Connection$ReaderRunnable$1 -> okhttp3.internal.http2.e$j$a:
+okhttp3.internal.http2.Http2Connection$ReaderRunnable$1 -> okhttp3.internal.http2.d$l$a:
     okhttp3.internal.http2.Http2Connection$ReaderRunnable this$1 -> c
     okhttp3.internal.http2.Http2Stream val$newStream -> b
     void execute() -> b
-okhttp3.internal.http2.Http2Connection$ReaderRunnable$2 -> okhttp3.internal.http2.e$j$b:
+okhttp3.internal.http2.Http2Connection$ReaderRunnable$2 -> okhttp3.internal.http2.d$l$b:
+    okhttp3.internal.http2.Http2Connection$ReaderRunnable this$1 -> d
+    okhttp3.internal.http2.Settings val$settings -> c
+    boolean val$clearPrevious -> b
+    void execute() -> b
+okhttp3.internal.http2.Http2Connection$ReaderRunnable$3 -> okhttp3.internal.http2.d$l$c:
     okhttp3.internal.http2.Http2Connection$ReaderRunnable this$1 -> b
     void execute() -> b
-okhttp3.internal.http2.Http2Connection$ReaderRunnable$3 -> okhttp3.internal.http2.e$j$c:
-    okhttp3.internal.http2.Http2Connection$ReaderRunnable this$1 -> c
-    okhttp3.internal.http2.Settings val$peerSettings -> b
-    void execute() -> b
+okhttp3.internal.http2.Http2ExchangeCodec -> okhttp3.internal.http2.e:
+    boolean canceled -> f
+    java.util.List HTTP_2_SKIPPED_RESPONSE_HEADERS -> h
+    okhttp3.Interceptor$Chain chain -> a
+    java.util.List HTTP_2_SKIPPED_REQUEST_HEADERS -> g
+    okhttp3.internal.http2.Http2Stream stream -> d
+    okhttp3.internal.http2.Http2Connection connection -> c
+    okhttp3.internal.connection.RealConnection realConnection -> b
+    okhttp3.Protocol protocol -> e
+    okio.Sink createRequestBody(okhttp3.Request,long) -> a
+    void finishRequest() -> a
+    okhttp3.Response$Builder readHttp2HeadersList(okhttp3.Headers,okhttp3.Protocol) -> a
+    okhttp3.Response$Builder readResponseHeaders(boolean) -> a
+    long reportedContentLength(okhttp3.Response) -> a
+    void writeRequestHeaders(okhttp3.Request) -> a
+    void flushRequest() -> b
+    java.util.List http2HeadersList(okhttp3.Request) -> b
+    okio.Source openResponseBodySource(okhttp3.Response) -> b
+    okhttp3.internal.connection.RealConnection connection() -> c
 okhttp3.internal.http2.Http2Reader -> okhttp3.internal.http2.f:
     okio.BufferedSource source -> a
     java.util.logging.Logger logger -> e
@@ -15966,53 +16052,53 @@ okhttp3.internal.http2.Http2Reader$Handler -> okhttp3.internal.http2.f$b:
     void settings(boolean,okhttp3.internal.http2.Settings) -> a
     void windowUpdate(int,long) -> a
 okhttp3.internal.http2.Http2Stream -> okhttp3.internal.http2.g:
-    okhttp3.internal.http2.Http2Stream$StreamTimeout readTimeout -> j
-    okhttp3.internal.http2.Http2Stream$FramingSource source -> h
-    okhttp3.internal.http2.Http2Stream$StreamTimeout writeTimeout -> k
-    okhttp3.internal.http2.ErrorCode errorCode -> l
-    okhttp3.internal.http2.Header$Listener headersListener -> f
+    okhttp3.internal.http2.Http2Stream$StreamTimeout writeTimeout -> j
+    okhttp3.internal.http2.Http2Stream$FramingSource source -> g
+    okhttp3.internal.http2.ErrorCode errorCode -> k
+    java.io.IOException errorException -> l
     java.util.Deque headersQueue -> e
     long bytesLeftInWriteWindow -> b
-    okhttp3.internal.http2.Http2Stream$FramingSink sink -> i
     long unacknowledgedBytesRead -> a
-    boolean hasResponseHeaders -> g
+    boolean hasResponseHeaders -> f
+    okhttp3.internal.http2.Http2Stream$FramingSink sink -> h
     int id -> c
     okhttp3.internal.http2.Http2Connection connection -> d
-    java.util.Deque access$000(okhttp3.internal.http2.Http2Stream) -> a
+    okhttp3.internal.http2.Http2Stream$StreamTimeout readTimeout -> i
     void addBytesToWriteWindow(long) -> a
     void cancelStreamIfNecessary() -> a
-    void close(okhttp3.internal.http2.ErrorCode) -> a
+    void close(okhttp3.internal.http2.ErrorCode,java.io.IOException) -> a
+    void closeLater(okhttp3.internal.http2.ErrorCode) -> a
     void receiveData(okio.BufferedSource,int) -> a
-    void receiveHeaders(java.util.List) -> a
-    okhttp3.internal.http2.Header$Listener access$100(okhttp3.internal.http2.Http2Stream) -> b
+    void receiveHeaders(okhttp3.Headers,boolean) -> a
     void checkOutNotClosed() -> b
-    void closeLater(okhttp3.internal.http2.ErrorCode) -> b
+    boolean closeInternal(okhttp3.internal.http2.ErrorCode,java.io.IOException) -> b
+    void receiveRstStream(okhttp3.internal.http2.ErrorCode) -> b
     int getId() -> c
-    void receiveRstStream(okhttp3.internal.http2.ErrorCode) -> c
-    boolean closeInternal(okhttp3.internal.http2.ErrorCode) -> d
     okio.Sink getSink() -> d
     okio.Source getSource() -> e
     boolean isLocallyInitiated() -> f
     boolean isOpen() -> g
     okio.Timeout readTimeout() -> h
-    void receiveFin() -> i
-    okhttp3.Headers takeHeaders() -> j
-    void waitForIo() -> k
-    okio.Timeout writeTimeout() -> l
+    okhttp3.Headers takeHeaders() -> i
+    void waitForIo() -> j
+    okio.Timeout writeTimeout() -> k
 okhttp3.internal.http2.Http2Stream$FramingSink -> okhttp3.internal.http2.g$a:
+    okhttp3.internal.http2.Http2Stream this$0 -> e
     okio.Buffer sendBuffer -> a
-    okhttp3.internal.http2.Http2Stream this$0 -> d
-    boolean closed -> b
-    boolean finished -> c
+    boolean closed -> c
+    okhttp3.Headers trailers -> b
+    boolean finished -> d
     void emitFrame(boolean) -> a
     void write(okio.Buffer,long) -> a
 okhttp3.internal.http2.Http2Stream$FramingSource -> okhttp3.internal.http2.g$b:
     okio.Buffer readBuffer -> b
     okio.Buffer receiveBuffer -> a
-    okhttp3.internal.http2.Http2Stream this$0 -> f
-    boolean finished -> e
+    okhttp3.internal.http2.Http2Stream this$0 -> g
+    boolean closed -> e
+    okhttp3.Headers trailers -> d
+    boolean finished -> f
     long maxByteCount -> c
-    boolean closed -> d
+    okhttp3.Headers access$202(okhttp3.internal.http2.Http2Stream$FramingSource,okhttp3.Headers) -> a
     void receive(okio.BufferedSource,long) -> a
     void updateConnectionFlowControl(long) -> h
 okhttp3.internal.http2.Http2Stream$StreamTimeout -> okhttp3.internal.http2.g$c:
@@ -16037,7 +16123,6 @@ okhttp3.internal.http2.Http2Writer -> okhttp3.internal.http2.h:
     void ping(boolean,int,int) -> a
     void pushPromise(int,int,java.util.List) -> a
     void rstStream(int,okhttp3.internal.http2.ErrorCode) -> a
-    void synStream(boolean,int,int,java.util.List) -> a
     void windowUpdate(int,long) -> a
     void writeMedium(okio.BufferedSink,int) -> a
     void connectionPreface() -> b
@@ -16083,7 +16168,7 @@ okhttp3.internal.http2.Settings -> okhttp3.internal.http2.k:
     int getMaxFrameSize(int) -> c
     boolean isSet(int) -> d
     int size() -> d
-okhttp3.internal.io.FileSystem -> okhttp3.e0.h.a:
+okhttp3.internal.io.FileSystem -> okhttp3.k0.j.a:
     okhttp3.internal.io.FileSystem SYSTEM -> a
     void delete(java.io.File) -> a
     void rename(java.io.File,java.io.File) -> a
@@ -16093,7 +16178,7 @@ okhttp3.internal.io.FileSystem -> okhttp3.e0.h.a:
     okio.Sink appendingSink(java.io.File) -> e
     boolean exists(java.io.File) -> f
     long size(java.io.File) -> g
-okhttp3.internal.io.FileSystem$1 -> okhttp3.e0.h.a$a:
+okhttp3.internal.io.FileSystem$1 -> okhttp3.k0.j.a$a:
     void delete(java.io.File) -> a
     void rename(java.io.File,java.io.File) -> a
     okio.Source source(java.io.File) -> b
@@ -16102,12 +16187,18 @@ okhttp3.internal.io.FileSystem$1 -> okhttp3.e0.h.a$a:
     okio.Sink appendingSink(java.io.File) -> e
     boolean exists(java.io.File) -> f
     long size(java.io.File) -> g
-okhttp3.internal.platform.AndroidPlatform -> okhttp3.e0.i.a:
-    okhttp3.internal.platform.OptionalMethod getAlpnSelectedProtocol -> e
-    okhttp3.internal.platform.OptionalMethod setAlpnProtocols -> f
-    okhttp3.internal.platform.OptionalMethod setUseSessionTickets -> c
-    okhttp3.internal.platform.OptionalMethod setHostname -> d
-    okhttp3.internal.platform.AndroidPlatform$CloseGuard closeGuard -> g
+okhttp3.internal.platform.Android10Platform -> okhttp3.k0.k.a:
+    void configureTlsExtensions(javax.net.ssl.SSLSocket,java.lang.String,java.util.List) -> a
+    java.lang.String getSelectedProtocol(javax.net.ssl.SSLSocket) -> b
+    okhttp3.internal.platform.Platform buildIfSupported() -> c
+    void enableSessionTickets(javax.net.ssl.SSLSocket) -> c
+okhttp3.internal.platform.AndroidPlatform -> okhttp3.k0.k.b:
+    java.lang.reflect.Method setAlpnProtocols -> g
+    java.lang.reflect.Method setUseSessionTickets -> d
+    okhttp3.internal.platform.AndroidPlatform$CloseGuard closeGuard -> h
+    java.lang.reflect.Method setHostname -> e
+    java.lang.reflect.Method getAlpnSelectedProtocol -> f
+    java.lang.Class sslSocketClass -> c
     boolean api23IsCleartextTrafficPermitted(java.lang.String,java.lang.Class,java.lang.Object) -> a
     okhttp3.internal.tls.CertificateChainCleaner buildCertificateChainCleaner(javax.net.ssl.X509TrustManager) -> a
     void configureTlsExtensions(javax.net.ssl.SSLSocket,java.lang.String,java.util.List) -> a
@@ -16121,36 +16212,30 @@ okhttp3.internal.platform.AndroidPlatform -> okhttp3.e0.i.a:
     java.lang.String getSelectedProtocol(javax.net.ssl.SSLSocket) -> b
     boolean isCleartextTrafficPermitted(java.lang.String) -> b
     okhttp3.internal.platform.Platform buildIfSupported() -> c
-    boolean supportsAlpn() -> f
-okhttp3.internal.platform.AndroidPlatform$AndroidCertificateChainCleaner -> okhttp3.e0.i.a$a:
+    int getSdkInt() -> d
+okhttp3.internal.platform.AndroidPlatform$AndroidCertificateChainCleaner -> okhttp3.k0.k.b$a:
     java.lang.Object x509TrustManagerExtensions -> a
     java.lang.reflect.Method checkServerTrusted -> b
     java.util.List clean(java.util.List,java.lang.String) -> a
-okhttp3.internal.platform.AndroidPlatform$AndroidTrustRootIndex -> okhttp3.e0.i.a$b:
-    javax.net.ssl.X509TrustManager trustManager -> a
-    java.lang.reflect.Method findByIssuerAndSignatureMethod -> b
-    java.security.cert.X509Certificate findByIssuerAndSignature(java.security.cert.X509Certificate) -> a
-okhttp3.internal.platform.AndroidPlatform$CloseGuard -> okhttp3.e0.i.a$c:
+okhttp3.internal.platform.AndroidPlatform$CloseGuard -> okhttp3.k0.k.b$b:
     java.lang.reflect.Method warnIfOpenMethod -> c
     java.lang.reflect.Method getMethod -> a
     java.lang.reflect.Method openMethod -> b
     java.lang.Object createAndOpen(java.lang.String) -> a
     okhttp3.internal.platform.AndroidPlatform$CloseGuard get() -> a
     boolean warnIfOpen(java.lang.Object) -> a
-okhttp3.internal.platform.ConscryptPlatform -> okhttp3.e0.i.b:
+okhttp3.internal.platform.AndroidPlatform$CustomTrustRootIndex -> okhttp3.k0.k.b$c:
+    javax.net.ssl.X509TrustManager trustManager -> a
+    java.lang.reflect.Method findByIssuerAndSignatureMethod -> b
+    java.security.cert.X509Certificate findByIssuerAndSignature(java.security.cert.X509Certificate) -> a
+okhttp3.internal.platform.ConscryptPlatform -> okhttp3.k0.k.c:
     void configureSslSocketFactory(javax.net.ssl.SSLSocketFactory) -> a
     void configureTlsExtensions(javax.net.ssl.SSLSocket,java.lang.String,java.util.List) -> a
     javax.net.ssl.SSLContext getSSLContext() -> b
     java.lang.String getSelectedProtocol(javax.net.ssl.SSLSocket) -> b
     okhttp3.internal.platform.ConscryptPlatform buildIfSupported() -> c
-    java.security.Provider getProvider() -> f
-okhttp3.internal.platform.Jdk9Platform -> okhttp3.e0.i.c:
-    java.lang.reflect.Method setProtocolMethod -> c
-    java.lang.reflect.Method getProtocolMethod -> d
-    void configureTlsExtensions(javax.net.ssl.SSLSocket,java.lang.String,java.util.List) -> a
-    java.lang.String getSelectedProtocol(javax.net.ssl.SSLSocket) -> b
-    okhttp3.internal.platform.Jdk9Platform buildIfSupported() -> c
-okhttp3.internal.platform.JdkWithJettyBootPlatform -> okhttp3.e0.i.d:
+    java.security.Provider getProvider() -> d
+okhttp3.internal.platform.Jdk8WithJettyBootPlatform -> okhttp3.k0.k.d:
     java.lang.Class clientProviderClass -> f
     java.lang.Class serverProviderClass -> g
     java.lang.reflect.Method putMethod -> c
@@ -16160,22 +16245,17 @@ okhttp3.internal.platform.JdkWithJettyBootPlatform -> okhttp3.e0.i.d:
     void configureTlsExtensions(javax.net.ssl.SSLSocket,java.lang.String,java.util.List) -> a
     java.lang.String getSelectedProtocol(javax.net.ssl.SSLSocket) -> b
     okhttp3.internal.platform.Platform buildIfSupported() -> c
-okhttp3.internal.platform.JdkWithJettyBootPlatform$JettyNegoProvider -> okhttp3.e0.i.d$a:
+okhttp3.internal.platform.Jdk8WithJettyBootPlatform$AlpnProvider -> okhttp3.k0.k.d$a:
     java.util.List protocols -> a
     java.lang.String selected -> c
     boolean unsupported -> b
-okhttp3.internal.platform.OptionalMethod -> okhttp3.e0.i.e:
-    java.lang.Class[] methodParams -> c
-    java.lang.Class returnType -> a
-    java.lang.String methodName -> b
-    java.lang.reflect.Method getMethod(java.lang.Class) -> a
-    java.lang.reflect.Method getPublicMethod(java.lang.Class,java.lang.String,java.lang.Class[]) -> a
-    java.lang.Object invoke(java.lang.Object,java.lang.Object[]) -> a
-    boolean isSupported(java.lang.Object) -> a
-    java.lang.Object invokeOptional(java.lang.Object,java.lang.Object[]) -> b
-    java.lang.Object invokeOptionalWithoutCheckedException(java.lang.Object,java.lang.Object[]) -> c
-    java.lang.Object invokeWithoutCheckedException(java.lang.Object,java.lang.Object[]) -> d
-okhttp3.internal.platform.Platform -> okhttp3.e0.i.f:
+okhttp3.internal.platform.Jdk9Platform -> okhttp3.k0.k.e:
+    java.lang.reflect.Method setProtocolMethod -> c
+    java.lang.reflect.Method getProtocolMethod -> d
+    void configureTlsExtensions(javax.net.ssl.SSLSocket,java.lang.String,java.util.List) -> a
+    java.lang.String getSelectedProtocol(javax.net.ssl.SSLSocket) -> b
+    okhttp3.internal.platform.Jdk9Platform buildIfSupported() -> c
+okhttp3.internal.platform.Platform -> okhttp3.k0.k.f:
     okhttp3.internal.platform.Platform PLATFORM -> a
     java.util.logging.Logger logger -> b
     void afterHandshake(javax.net.ssl.SSLSocket) -> a
@@ -16193,10 +16273,13 @@ okhttp3.internal.platform.Platform -> okhttp3.e0.i.f:
     javax.net.ssl.SSLContext getSSLContext() -> b
     java.lang.String getSelectedProtocol(javax.net.ssl.SSLSocket) -> b
     boolean isCleartextTrafficPermitted(java.lang.String) -> b
-    okhttp3.internal.platform.Platform findPlatform() -> c
-    okhttp3.internal.platform.Platform get() -> d
-    boolean isConscryptPreferred() -> e
-okhttp3.internal.proxy.NullProxySelector -> okhttp3.e0.j.a:
+    okhttp3.internal.platform.Platform findAndroidPlatform() -> c
+    okhttp3.internal.platform.Platform findJvmPlatform() -> d
+    okhttp3.internal.platform.Platform findPlatform() -> e
+    okhttp3.internal.platform.Platform get() -> f
+    boolean isAndroid() -> g
+    boolean isConscryptPreferred() -> h
+okhttp3.internal.proxy.NullProxySelector -> okhttp3.k0.l.a:
 okhttp3.internal.publicsuffix.PublicSuffixDatabase -> okhttp3.internal.publicsuffix.PublicSuffixDatabase:
     java.util.concurrent.CountDownLatch readCompleteLatch -> b
     okhttp3.internal.publicsuffix.PublicSuffixDatabase instance -> h
@@ -16212,17 +16295,17 @@ okhttp3.internal.publicsuffix.PublicSuffixDatabase -> okhttp3.internal.publicsuf
     java.lang.String getEffectiveTldPlusOne(java.lang.String) -> a
     void readTheList() -> b
     void readTheListUninterruptibly() -> c
-okhttp3.internal.tls.BasicCertificateChainCleaner -> okhttp3.e0.k.a:
+okhttp3.internal.tls.BasicCertificateChainCleaner -> okhttp3.k0.m.a:
     okhttp3.internal.tls.TrustRootIndex trustRootIndex -> a
     java.util.List clean(java.util.List,java.lang.String) -> a
     boolean verifySignature(java.security.cert.X509Certificate,java.security.cert.X509Certificate) -> a
-okhttp3.internal.tls.BasicTrustRootIndex -> okhttp3.e0.k.b:
+okhttp3.internal.tls.BasicTrustRootIndex -> okhttp3.k0.m.b:
     java.util.Map subjectToCaCerts -> a
     java.security.cert.X509Certificate findByIssuerAndSignature(java.security.cert.X509Certificate) -> a
-okhttp3.internal.tls.CertificateChainCleaner -> okhttp3.e0.k.c:
+okhttp3.internal.tls.CertificateChainCleaner -> okhttp3.k0.m.c:
     java.util.List clean(java.util.List,java.lang.String) -> a
     okhttp3.internal.tls.CertificateChainCleaner get(javax.net.ssl.X509TrustManager) -> a
-okhttp3.internal.tls.OkHostnameVerifier -> okhttp3.e0.k.d:
+okhttp3.internal.tls.OkHostnameVerifier -> okhttp3.k0.m.d:
     okhttp3.internal.tls.OkHostnameVerifier INSTANCE -> a
     java.util.List allSubjectAltNames(java.security.cert.X509Certificate) -> a
     java.util.List getSubjectAltNames(java.security.cert.X509Certificate,int) -> a
@@ -16230,7 +16313,7 @@ okhttp3.internal.tls.OkHostnameVerifier -> okhttp3.e0.k.d:
     boolean verifyHostname(java.lang.String,java.lang.String) -> a
     boolean verifyHostname(java.lang.String,java.security.cert.X509Certificate) -> b
     boolean verifyIpAddress(java.lang.String,java.security.cert.X509Certificate) -> c
-okhttp3.internal.tls.TrustRootIndex -> okhttp3.e0.k.e:
+okhttp3.internal.tls.TrustRootIndex -> okhttp3.k0.m.e:
     java.security.cert.X509Certificate findByIssuerAndSignature(java.security.cert.X509Certificate) -> a
 okio.AsyncTimeout -> okio.a:
     long IDLE_TIMEOUT_NANOS -> i
@@ -16272,12 +16355,12 @@ okio.Buffer -> okio.c:
     okio.Buffer copyTo(okio.Buffer,long,long) -> a
     long indexOf(byte) -> a
     long indexOf(byte,long,long) -> a
-    boolean rangeEquals(long,okio.ByteString) -> a
-    boolean rangeEquals(long,okio.ByteString,int,int) -> a
     long readAll(okio.Sink) -> a
     java.lang.String readString(long,java.nio.charset.Charset) -> a
     java.lang.String readString(java.nio.charset.Charset) -> a
     boolean request(long) -> a
+    int select(okio.Options) -> a
+    int selectPrefix(okio.Options,boolean) -> a
     okio.ByteString snapshot(int) -> a
     okio.Buffer write(okio.ByteString) -> a
     okio.BufferedSink write(okio.ByteString) -> a
@@ -16333,10 +16416,10 @@ okio.BufferedSink -> okio.d:
 okio.BufferedSource -> okio.e:
     okio.Buffer buffer() -> a
     long indexOf(byte) -> a
-    boolean rangeEquals(long,okio.ByteString) -> a
     long readAll(okio.Sink) -> a
     java.lang.String readString(java.nio.charset.Charset) -> a
     boolean request(long) -> a
+    int select(okio.Options) -> a
     okio.ByteString readByteString(long) -> c
     java.lang.String readUtf8LineStrict() -> c
     byte[] readByteArray() -> d
@@ -16440,7 +16523,13 @@ okio.Okio$4 -> okio.k$d:
     java.net.Socket val$socket -> k
     java.io.IOException newTimeoutException(java.io.IOException) -> b
     void timedOut() -> i
-okio.RealBufferedSink -> okio.l:
+okio.Options -> okio.l:
+    okio.ByteString[] byteStrings -> a
+    int[] trie -> b
+    void buildTrieRecursive(long,okio.Buffer,int,java.util.List,int,int,java.util.List) -> a
+    int intCount(okio.Buffer) -> a
+    okio.Options of(okio.ByteString[]) -> a
+okio.RealBufferedSink -> okio.m:
     okio.Buffer buffer -> a
     okio.Sink sink -> b
     boolean closed -> c
@@ -16452,18 +16541,17 @@ okio.RealBufferedSink -> okio.l:
     okio.BufferedSink writeHexadecimalUnsignedLong(long) -> b
     okio.BufferedSink writeDecimalLong(long) -> g
     okio.BufferedSink emitCompleteSegments() -> n
-okio.RealBufferedSource -> okio.m:
+okio.RealBufferedSource -> okio.n:
     okio.Buffer buffer -> a
     okio.Source source -> b
     boolean closed -> c
     okio.Buffer buffer() -> a
     long indexOf(byte) -> a
     long indexOf(byte,long,long) -> a
-    boolean rangeEquals(long,okio.ByteString) -> a
-    boolean rangeEquals(long,okio.ByteString,int,int) -> a
     long readAll(okio.Sink) -> a
     java.lang.String readString(java.nio.charset.Charset) -> a
     boolean request(long) -> a
+    int select(okio.Options) -> a
     okio.ByteString readByteString(long) -> c
     java.lang.String readUtf8LineStrict() -> c
     byte[] readByteArray() -> d
@@ -16476,9 +16564,9 @@ okio.RealBufferedSource -> okio.m:
     long readDecimalLong() -> o
     long readHexadecimalUnsignedLong() -> t
     java.io.InputStream inputStream() -> v
-okio.RealBufferedSource$1 -> okio.m$a:
+okio.RealBufferedSource$1 -> okio.n$a:
     okio.RealBufferedSource this$0 -> a
-okio.Segment -> okio.n:
+okio.Segment -> okio.o:
     byte[] data -> a
     boolean owner -> e
     int pos -> b
@@ -16492,7 +16580,7 @@ okio.Segment -> okio.n:
     void writeTo(okio.Segment,int) -> a
     okio.Segment pop() -> b
     okio.Segment sharedCopy() -> c
-okio.SegmentPool -> okio.o:
+okio.SegmentPool -> okio.p:
     long byteCount -> b
     okio.Segment next -> a
     void recycle(okio.Segment) -> a
@@ -16516,10 +16604,10 @@ okio.SegmentedByteString -> okio.SegmentedByteString:
     byte[] toByteArray() -> k
     java.lang.String utf8() -> l
     okio.ByteString toByteString() -> m
-okio.Sink -> okio.p:
+okio.Sink -> okio.q:
     void write(okio.Buffer,long) -> a
-okio.Source -> okio.q:
-okio.Timeout -> okio.r:
+okio.Source -> okio.r:
+okio.Timeout -> okio.s:
     okio.Timeout NONE -> d
     long deadlineNanoTime -> b
     long timeoutNanos -> c
@@ -16532,11 +16620,11 @@ okio.Timeout -> okio.r:
     boolean hasDeadline() -> d
     void throwIfReached() -> e
     long timeoutNanos() -> f
-okio.Timeout$1 -> okio.r$a:
+okio.Timeout$1 -> okio.s$a:
     okio.Timeout deadlineNanoTime(long) -> a
     okio.Timeout timeout(long,java.util.concurrent.TimeUnit) -> a
     void throwIfReached() -> e
-okio.Util -> okio.s:
+okio.Util -> okio.t:
     java.nio.charset.Charset UTF_8 -> a
     boolean arrayRangeEquals(byte[],int,byte[],int,int) -> a
     void checkOffsetAndCount(long,long,long) -> a
@@ -16595,3 +16683,14 @@ per.goweii.reveallayout.RevealLayout$OnAnimStateChangeListener -> per.goweii.rev
     void onEnd() -> b
 per.goweii.reveallayout.RevealLayout$OnCheckedChangeListener -> per.goweii.reveallayout.RevealLayout$d:
     void onCheckedChanged(per.goweii.reveallayout.RevealLayout,boolean) -> a
+retrofit2.-$$Lambda$DefaultCallAdapterFactory$ExecutorCallbackCall$1$3wC8FyV4pyjrzrYL5U0mlYiviZw -> retrofit2.a:
+    retrofit2.Callback f$1 -> b
+    retrofit2.Response f$2 -> c
+    retrofit2.DefaultCallAdapterFactory$ExecutorCallbackCall$1 f$0 -> a
+retrofit2.-$$Lambda$DefaultCallAdapterFactory$ExecutorCallbackCall$1$7JZMXmGMmuA6QMd5UmiN1rIhtW0 -> retrofit2.b:
+    retrofit2.Callback f$1 -> b
+    java.lang.Throwable f$2 -> c
+    retrofit2.DefaultCallAdapterFactory$ExecutorCallbackCall$1 f$0 -> a
+retrofit2.DefaultCallAdapterFactory$ExecutorCallbackCall$1 -> retrofit2.DefaultCallAdapterFactory$ExecutorCallbackCall$1:
+    void lambda$onFailure$1(retrofit2.Callback,java.lang.Throwable) -> a
+    void lambda$onResponse$0(retrofit2.Callback,retrofit2.Response) -> a

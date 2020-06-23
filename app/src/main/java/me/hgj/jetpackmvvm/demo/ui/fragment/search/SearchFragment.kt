@@ -120,16 +120,14 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
                         )
                     }
             }
-
         }
     }
-
 
     override fun createObserver() {
         requestSearchViewModel.run {
             //监听热门数据变化
-            hotData.observe(viewLifecycleOwner, Observer {
-                parseState(it, {
+            hotData.observe(viewLifecycleOwner, Observer {resultState->
+                parseState(resultState, {
                     hotAdapter.setNewInstance(it)
                 })
             })
