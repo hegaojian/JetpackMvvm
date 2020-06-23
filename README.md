@@ -20,7 +20,7 @@
  
 #### APK下载：
 
-- [Github下载](https://github.com/hegaojian/JetpackMvvm/releases/download/1.1.1/app-release.apk)
+- [Github下载](https://github.com/hegaojian/JetpackMvvm/releases/download/1.1.3/app-release.apk)
 
 - [firm下载(推荐)](http://d.6short.com/v9q7)
 
@@ -47,7 +47,7 @@ allprojects {
 ```
 dependencies {
   ...
-  implementation 'me.hegj:JetpackMvvm:1.1.2'
+  implementation 'me.hegj:JetpackMvvm:1.1.3'
 }
 ```
 
@@ -162,7 +162,7 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
 - **3.2 创建LoginViewModel类继承BaseViewModel**
 
 ```
-class LoginViewModel(application: Application) : BaseViewModel(application) {
+class LoginViewModel : BaseViewModel() {
   
 }
 ```
@@ -271,7 +271,7 @@ data class ApiResponse<T>(var errorCode: Int, var errorMsg: String, var data: T)
 **1、将请求数据包装给ResultState，在Activity/Fragment中去监听ResultState拿到数据做处理**
 
 ```
-class RequestLoginViewModel(application: Application) : BaseViewModel(application) {
+class RequestLoginViewModel: BaseViewModel {
 
   //自动脱壳过滤处理请求结果，自动判断结果是否成功
     var loginResult = MutableLiveData<ResultState<UserInfo>>()
@@ -352,10 +352,10 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 }
 ```
 
-**2、 直接在当前ViewMdel中拿到请求结果**
+**2、 直接在当前ViewModel中拿到请求结果**
 
 ```
-class RequestLoginViewModel(application: Application) : BaseViewModel(application) {
+class RequestLoginViewModel : BaseViewModel() {
     
   fun login(username: String, password: String){
    //1.拿到已脱壳的数据（项目有基类的可以用）
