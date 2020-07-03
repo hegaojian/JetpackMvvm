@@ -1,8 +1,8 @@
 package me.hgj.jetpackmvvm.demo.app.event
 
-import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.callback.livedata.IntLiveData
+import me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData
 import me.hgj.jetpackmvvm.demo.app.App
 import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
@@ -17,7 +17,7 @@ import me.hgj.jetpackmvvm.demo.data.model.bean.UserInfo
 class AppViewModel : BaseViewModel() {
 
     //App的账户信息
-    var userinfo = MutableLiveData<UserInfo>()
+    var userinfo = UnPeekLiveData<UserInfo>()
 
     //App主题颜色 中大型项目不推荐以这种方式改变主题颜色，比较繁琐耦合，且容易有遗漏某些控件没有设置主题色
     var appColor = IntLiveData()

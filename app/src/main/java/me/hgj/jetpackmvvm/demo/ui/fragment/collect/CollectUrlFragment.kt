@@ -86,7 +86,7 @@ class CollectUrlFragment : BaseFragment<RequestCollectViewModel, IncludeListBind
                     }
                     else -> {
                         loadsir.showSuccess()
-                        articleAdapter.setNewInstance(it.listData)
+                        articleAdapter.setList(it.listData)
                     }
                 }
             } else {

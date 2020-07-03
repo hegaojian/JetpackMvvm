@@ -15,6 +15,8 @@ import me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.event.AppViewModel
 import me.hgj.jetpackmvvm.demo.app.event.EventViewModel
+import me.hgj.jetpackmvvm.demo.app.ext.dismissLoadingExt
+import me.hgj.jetpackmvvm.demo.app.ext.showLoadingExt
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.ext.getAppViewModel
 import me.jessyan.autosize.AutoSizeCompat
@@ -27,8 +29,6 @@ import me.jessyan.autosize.AutoSizeCompat
  * abstract class BaseActivity<VM : BaseViewModel> : BaseVmActivity<VM>() {
  */
 abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDbActivity<VM, DB>() {
-
-    private var dialog: MaterialDialog? = null
 
     //Application全局的ViewModel，里面存放了一些账户信息，基本配置信息等
     val shareViewModel: AppViewModel by lazy { getAppViewModel<AppViewModel>()}
@@ -49,30 +49,14 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
      * 打开等待框
      */
     override fun showLoading(message: String) {
-        if (dialog == null) {
-            dialog = this.let {
-                MaterialDialog(it)
-                    .cancelable(true)
-                    .cancelOnTouchOutside(false)
-                    .customView(R.layout.layout_custom_progress_dialog_view)
-                    .lifecycleOwner(this)
-            }
-            dialog?.getCustomView()?.run {
-                this.findViewById<TextView>(R.id.loading_tips).text = message
-                shareViewModel.appColor.value.let {
-                    this.findViewById<ProgressBar>(R.id.progressBar).indeterminateTintList =
-                        SettingUtil.getOneColorStateList(it)
-                }
-            }
-        }
-        dialog?.show()
+        showLoadingExt(message)
     }
 
     /**
      * 关闭等待框
      */
     override fun dismissLoading() {
-        dialog?.dismiss()
+        dismissLoadingExt()
     }
 
     /**

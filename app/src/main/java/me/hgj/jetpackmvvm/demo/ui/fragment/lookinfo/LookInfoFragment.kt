@@ -43,7 +43,7 @@ class LookInfoFragment : BaseFragment<LookInfoViewModel, FragmentLookinfoBinding
     //收藏viewmodel
     private val requestCollectViewModel: RequestCollectViewModel by viewModels()
 
-    //专门负责请求数据的Viewmodel
+    //专门负责请求数据的ViewModel
     private val requestLookInfoViewModel: RequestLookInfoViewModel by viewModels()
 
     override fun layoutId() = R.layout.fragment_lookinfo
@@ -110,7 +110,7 @@ class LookInfoFragment : BaseFragment<LookInfoViewModel, FragmentLookinfoBinding
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 //收藏或取消收藏操作成功，发送全局收藏消息
-                eventViewModel.collectEvent.postValue(Event(CollectBus(it.id, it.collect)))
+                eventViewModel.collectEvent.postValue(CollectBus(it.id, it.collect))
             } else {
                 showMessage(it.errorMsg)
                 for (index in articleAdapter.data.indices) {

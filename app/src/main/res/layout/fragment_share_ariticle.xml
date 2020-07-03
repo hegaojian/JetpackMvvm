@@ -46,7 +46,6 @@
                     android:inputType="text"
                     android:lines="1"
                     android:text="@={vm.shareTitle}"
-                    android:maxLength="10"
                     android:padding="12dp"
                     android:textColor="@color/black"
                     android:textSize="15dp" />

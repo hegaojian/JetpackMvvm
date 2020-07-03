@@ -10,26 +10,20 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 
 /**
- * 专为 Event LiveData 改造的底层 LiveData 支持
  * @author : hgj
- * @date   : 2020/6/8
+ * @date   : 2020/7/3
  */
+
 @SuppressLint("RestrictedApi")
 abstract class EventBaseLiveData<T> {
     private val mDataLock = Any()
-
-    private val mObservers =
-        SafeIterableMap<Observer<T>, ObserverWrapper>()
-
-    // how many observers are in active state
-    var mActiveCount = 0
+    private val mObservers = SafeIterableMap<Observer<T>, ObserverWrapper>()
+    private var mActiveCount = 0
 
     @Volatile
     private var mData: Any
 
-    // when setData is called, we set the pending data and actual data swap happens on the main
-    // thread
-    /* synthetic access */@Volatile
+   @Volatile
     var mPendingData = NOT_SET
     var version: Int
         private set
@@ -41,7 +35,7 @@ abstract class EventBaseLiveData<T> {
             newValue = mPendingData
             mPendingData = NOT_SET
         }
-        setValue(newValue as Event<T>)
+        setEvent(newValue as Event<T>)
     }
 
     /**
@@ -62,10 +56,7 @@ abstract class EventBaseLiveData<T> {
         version = START_VERSION
     }
 
-    private fun considerNotify(
-        observer: ObserverWrapper,
-        data: T?
-    ) {
+    private fun considerNotify(observer: ObserverWrapper) {
         if (!observer.mActive) {
             return
         }
@@ -82,14 +73,14 @@ abstract class EventBaseLiveData<T> {
             return
         }
         observer.mLastVersion = version
+        val data = (mData as Event<T>).getContent()
         if (data != null) {
             observer.mEventObserver.onChanged(data)
         }
     }
-    /* synthetic access */
-    fun  dispatchingValue(initiator: ObserverWrapper?) {
-        var initiator =
-            initiator
+
+    fun dispatchingValue(initiator: ObserverWrapper?) {
+        var initiator = initiator
         if (mDispatchingValue) {
             mDispatchInvalidated = true
             return
@@ -98,19 +89,14 @@ abstract class EventBaseLiveData<T> {
         do {
             mDispatchInvalidated = false
             if (initiator != null) {
-                considerNotify(initiator, null)
+                considerNotify(initiator)
                 initiator = null
             } else {
-                val data =
-                    (mData as Event<T>).getContent()
-                if (data != null) {
-                    val iterator: Iterator<Map.Entry<Observer<T>, ObserverWrapper>> =
-                        mObservers.iteratorWithAdditions()
-                    while (iterator.hasNext()) {
-                        considerNotify(iterator.next().value, data)
-                        if (mDispatchInvalidated) {
-                            break
-                        }
+                val iterator: Iterator<Map.Entry<Observer<T>, ObserverWrapper>> = mObservers.iteratorWithAdditions()
+                while (iterator.hasNext()) {
+                    considerNotify(iterator.next().value)
+                    if (mDispatchInvalidated) {
+                        break
                     }
                 }
             }
@@ -155,19 +141,12 @@ abstract class EventBaseLiveData<T> {
     @MainThread
     fun observe(owner: LifecycleOwner, eventObserver: Observer<T>) {
         assertMainThread("observe")
-        if (owner.lifecycle
-                .currentState == Lifecycle.State.DESTROYED
-        ) {
+        if (owner.lifecycle.currentState == Lifecycle.State.DESTROYED) {
             // ignore
             return
         }
-        val wrapper =
-            LifecycleBoundObserver(
-                owner,
-                eventObserver
-            )
-        val existing =
-            mObservers.putIfAbsent(eventObserver, wrapper)
+        val wrapper = LifecycleBoundObserver(owner, eventObserver)
+        val existing = mObservers.putIfAbsent(eventObserver, wrapper)
         require(!(existing != null && !existing.isAttachedTo(owner))) {
             ("Cannot add the same observer"
                     + " with different lifecycles")
@@ -180,7 +159,7 @@ abstract class EventBaseLiveData<T> {
 
     /**
      * Adds the given observer to the observers list. This call is similar to
-     * [ELiveData.observe] with a LifecycleOwner, which
+     * [EventBaseLiveData.observe] with a LifecycleOwner, which
      * is always active. This means that the given observer will receive all events and will never
      * be automatically removed. You should manually call [.removeObserver] to stop
      * observing this LiveData.
@@ -196,12 +175,8 @@ abstract class EventBaseLiveData<T> {
     @MainThread
     fun observeForever(eventObserver: Observer<T>) {
         assertMainThread("observeForever")
-        val wrapper =
-            AlwaysActiveObserver(
-                eventObserver
-            )
-        val existing =
-            mObservers.putIfAbsent(eventObserver, wrapper)
+        val wrapper = AlwaysActiveObserver(eventObserver)
+        val existing = mObservers.putIfAbsent(eventObserver, wrapper)
         require(existing !is LifecycleBoundObserver) {
             ("Cannot add the same observer"
                     + " with different lifecycles")
@@ -220,8 +195,7 @@ abstract class EventBaseLiveData<T> {
     @MainThread
     fun removeObserver(eventObserver: Observer<T>) {
         assertMainThread("removeObserver")
-        val removed =
-            mObservers.remove(eventObserver) ?: return
+        val removed = mObservers.remove(eventObserver) ?: return
         removed.detachObserver()
         removed.activeStateChanged(false)
     }
@@ -257,7 +231,7 @@ abstract class EventBaseLiveData<T> {
      *
      * @param value The new value
      */
-    protected open fun postValue(value: Event<T>) {
+    protected fun postEvent(value: Event<T>) {
         var postTask: Boolean
         synchronized(mDataLock) {
             postTask = mPendingData === NOT_SET
@@ -274,12 +248,12 @@ abstract class EventBaseLiveData<T> {
      *
      *
      * This method must be called from the main thread. If you need set a value from a background
-     * thread, you can use [&lt;][.setValue]
+     * thread, you can use [.postValue]
      *
      * @param value The new value
      */
     @MainThread
-    protected open fun setValue(value: Event<T>) {
+    protected fun setEvent(value: Event<T>) {
         assertMainThread("setValue")
         version++
         mData = value
@@ -341,23 +315,14 @@ abstract class EventBaseLiveData<T> {
         return mActiveCount > 0
     }
 
-    internal inner class LifecycleBoundObserver(
-        val mOwner: LifecycleOwner,
-        eventObserver: Observer<T>?
-    ) : ObserverWrapper(eventObserver!!),
-        LifecycleEventObserver {
+    private inner class LifecycleBoundObserver(private val mOwner: LifecycleOwner, eventObserver: Observer<T>) : ObserverWrapper(eventObserver), LifecycleEventObserver {
         override fun shouldBeActive(): Boolean {
-            return mOwner.lifecycle.currentState
-                .isAtLeast(Lifecycle.State.STARTED)
+            return mOwner.lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)
         }
 
-        override fun onStateChanged(
-            source: LifecycleOwner,
-            event: Lifecycle.Event
-        ) {
-            if (mOwner.lifecycle
-                    .currentState == Lifecycle.State.DESTROYED
-            ) {
+        override fun onStateChanged(source: LifecycleOwner,
+                                    event: Lifecycle.Event) {
+            if (mOwner.lifecycle.currentState == Lifecycle.State.DESTROYED) {
                 removeObserver(mEventObserver)
                 return
             }
@@ -374,7 +339,8 @@ abstract class EventBaseLiveData<T> {
 
     }
 
-    abstract inner class ObserverWrapper internal constructor(val mEventObserver: Observer<T>) {
+    abstract inner class ObserverWrapper internal constructor(eventObserver: Observer<T>) {
+        val mEventObserver: Observer<T> = eventObserver
         var mActive = false
         var mLastVersion = START_VERSION
         abstract fun shouldBeActive(): Boolean
@@ -405,8 +371,7 @@ abstract class EventBaseLiveData<T> {
 
     }
 
-    private inner class AlwaysActiveObserver internal constructor(eventObserver: Observer<T>?) :
-        ObserverWrapper(eventObserver!!) {
+    private inner class AlwaysActiveObserver internal constructor(eventObserver: Observer<T>) : ObserverWrapper(eventObserver) {
         override fun shouldBeActive(): Boolean {
             return true
         }

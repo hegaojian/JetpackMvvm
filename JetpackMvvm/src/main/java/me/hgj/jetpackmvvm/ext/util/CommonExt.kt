@@ -24,9 +24,23 @@ val Context.screenHeight
 /**
  * 判断是否为空 并传入相关操作
  */
-fun <T> Any?.notNull(f: () -> T, t: () -> T): T {
-    return if (this != null) f() else t()
+inline fun <reified T> T?.notNull(notNullAction: (T) -> Unit, nullAction: () -> Unit) {
+    if (this != null) {
+        notNullAction.invoke(this)
+    } else {
+        nullAction.invoke()
+    }
 }
+
+/**
+ * 判断是否为空 并传入相关操作
+ */
+/*fun <T> Any?.notNull(f: () -> T, t: () -> T): T {
+    return if (this != null) f() else t()
+}*/
+
+
+
 
 /**
  * dp值转换为px
@@ -77,17 +91,15 @@ fun Context.checkAccessibilityServiceEnabled(serviceName: String): Boolean {
             applicationContext.contentResolver,
             Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES
         )
-    return settingValue.notNull({
-        var result = false
-        val splitter = TextUtils.SimpleStringSplitter(':')
-        while (splitter.hasNext()) {
-            if (splitter.next().equals(serviceName, true)) {
-                result = true
-                break
-            }
+    var result = false
+    val splitter = TextUtils.SimpleStringSplitter(':')
+    while (splitter.hasNext()) {
+        if (splitter.next().equals(serviceName, true)) {
+            result = true
+            break
         }
-        result
-    }, { false })
+    }
+    return result
 }
 
 /**

@@ -128,7 +128,7 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
             //监听热门数据变化
             hotData.observe(viewLifecycleOwner, Observer {resultState->
                 parseState(resultState, {
-                    hotAdapter.setNewInstance(it)
+                    hotAdapter.setList(it)
                 })
             })
             //监听历史数据变化

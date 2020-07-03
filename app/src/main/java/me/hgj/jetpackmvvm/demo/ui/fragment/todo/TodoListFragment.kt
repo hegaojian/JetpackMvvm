@@ -38,7 +38,7 @@ class TodoListFragment : BaseFragment<TodoViewModel, FragmentListBinding>() {
     //界面状态管理者
     private lateinit var loadsir: LoadService<Any>
 
-    //请求数据Viewmodel
+    //请求数据ViewModel
     private val requestViewModel: RequestTodoViewModel by viewModels()
 
     override fun layoutId() = R.layout.fragment_list
@@ -132,7 +132,6 @@ class TodoListFragment : BaseFragment<TodoViewModel, FragmentListBinding>() {
                                     }
                                 }
                         }
-
                     }
                 }
             }

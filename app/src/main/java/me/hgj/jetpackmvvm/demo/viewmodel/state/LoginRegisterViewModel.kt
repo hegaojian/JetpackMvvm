@@ -7,7 +7,7 @@ import me.hgj.jetpackmvvm.callback.databind.StringObservableField
 /**
  * 作者　: hegaojian
  * 时间　: 2019/12/23
- * 描述　:登录注册的Viewmodel
+ * 描述　:登录注册的ViewModel
  */
 class LoginRegisterViewModel : BaseViewModel() {
 

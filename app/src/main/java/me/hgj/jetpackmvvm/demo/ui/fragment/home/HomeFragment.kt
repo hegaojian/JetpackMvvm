@@ -7,7 +7,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
-import com.blankj.utilcode.util.ToastUtils
 import com.kingja.loadsir.core.LoadService
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
 import com.zhpan.bannerview.BannerViewPager
@@ -15,6 +14,7 @@ import kotlinx.android.synthetic.main.include_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
 import kotlinx.android.synthetic.main.include_toolbar.*
 import me.hgj.jetpackmvvm.demo.R
+import me.hgj.jetpackmvvm.demo.app.App
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
 import me.hgj.jetpackmvvm.demo.app.weight.banner.HomeBannerViewHolder
@@ -29,7 +29,6 @@ import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestHomeViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.HomeViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.parseState
-import me.hgj.jetpackmvvm.ext.util.logd
 import me.hgj.jetpackmvvm.network.manager.NetState
 
 /**
@@ -141,9 +140,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
     override fun onNetworkStateChanged(netState: NetState) {
         super.onNetworkStateChanged(netState)
         if (netState.isSuccess) {
-            Toast.makeText(mActivity,"HomeFragment-我特么终于有网了啊!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(App.instance,"HomeFragment-我特么终于有网了啊!", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(mActivity,"HomeFragment-我特么怎么断网了!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(App.instance,"HomeFragment-我特么怎么断网了!", Toast.LENGTH_SHORT).show()
         }
     }
     override fun createObserver() {
@@ -223,7 +222,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
             })
             //监听全局的列表动画改编
             appAnimation.observe(viewLifecycleOwner, Observer {
-                articleAdapter.setAdapterAnimion(it)
+                articleAdapter.setAdapterAnimation(it)
             })
             //监听全局的收藏信息 收藏的Id跟本列表的数据id匹配则需要更新
             eventViewModel.collectEvent.observe(viewLifecycleOwner, Observer {

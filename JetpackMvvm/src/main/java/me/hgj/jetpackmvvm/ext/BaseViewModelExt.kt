@@ -127,7 +127,8 @@ fun <T> BaseViewModel.request(
     return viewModelScope.launch {
         runCatching {
             if (isShowDialog) resultState.value = ResultState.onAppLoading(loadingMessage)
-            withContext(Dispatchers.IO) { block() }
+            //请求体
+            block()
         }.onSuccess {
             resultState.paresResult(it)
         }.onFailure {
@@ -153,7 +154,8 @@ fun <T> BaseViewModel.requestNoCheck(
     return viewModelScope.launch {
         runCatching {
             if (isShowDialog) resultState.value = ResultState.onAppLoading(loadingMessage)
-            withContext(Dispatchers.IO) { block() }
+            //请求体
+            block()
         }.onSuccess {
             resultState.paresResult(it)
         }.onFailure {
@@ -182,11 +184,11 @@ fun <T> BaseViewModel.request(
     return viewModelScope.launch {
         runCatching {
             if (isShowDialog) loadingChange.showDialog.postValue(loadingMessage)
-            //请求代码块调度在Io线程中
-            withContext(Dispatchers.IO) { block() }
+            //请求体
+            block()
         }.onSuccess {
             //网络请求成功 关闭弹窗
-            loadingChange.dismissDialog.call()
+            loadingChange.dismissDialog.postValue(false)
             runCatching {
                 //校验请求结果码是否正确，不正确会抛出异常走下面的onFailure
                 executeResponse(it) { t -> success(t) }
@@ -198,7 +200,7 @@ fun <T> BaseViewModel.request(
             }
         }.onFailure {
             //网络请求异常 关闭弹窗
-            loadingChange.dismissDialog.call()
+            loadingChange.dismissDialog.postValue(false)
             //打印错误消息
             it.message?.loge("JetpackMvvm")
             //失败回调
@@ -226,16 +228,16 @@ fun <T> BaseViewModel.requestNoCheck(
     if (isShowDialog) loadingChange.showDialog.postValue(loadingMessage)
     return viewModelScope.launch {
         runCatching {
-            //请求时调度在Io线程中
-            withContext(Dispatchers.IO) { block() }
+            //请求体
+           block()
         }.onSuccess {
             //网络请求成功 关闭弹窗
-            loadingChange.dismissDialog.call()
+            loadingChange.dismissDialog.postValue(false)
             //成功回调
             success(it)
         }.onFailure {
             //网络请求异常 关闭弹窗
-            loadingChange.dismissDialog.call()
+            loadingChange.dismissDialog.postValue(false)
             //打印错误消息
             it.message?.loge("JetpackMvvm")
             //失败回调

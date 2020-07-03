@@ -3,15 +3,14 @@ package me.hgj.jetpackmvvm.demo.ui.fragment.web
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.Window
+import android.view.*
 import android.widget.LinearLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
+import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.VibrateUtils
 import com.just.agentweb.AgentWeb
 import kotlinx.android.synthetic.main.fragment_web.*
@@ -29,6 +28,7 @@ import me.hgj.jetpackmvvm.demo.databinding.FragmentWebBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.WebViewModel
 import me.hgj.jetpackmvvm.ext.nav
+
 
 /**
  * 作者　: hegaojian
@@ -89,7 +89,13 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
             mActivity.setSupportActionBar(this)
             initClose(mViewModel.showTitle) {
                 hideSoftKeyboard(activity)
-                nav().navigateUp()
+                mAgentWeb?.let { web ->
+                    if (web.webCreator.webView.canGoBack()) {
+                        web.webCreator.webView.goBack()
+                    } else {
+                        nav().navigateUp()
+                    }
+                }
             }
         }
     }
@@ -102,41 +108,39 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
             .createAgentWeb()
             .ready()
             .go(mViewModel.url)
-        //添加返回键逻辑
-        val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    mAgentWeb?.let {
-                        if (it.webCreator.webView.canGoBack()) {
-                            it.webCreator.webView.goBack()
-                        } else {
-                            nav().navigateUp()
-                        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(this,object :OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                mAgentWeb?.let { web ->
+                    if (web.webCreator.webView.canGoBack()) {
+                        web.webCreator.webView.goBack()
+                    }else{
+                        nav().navigateUp()
                     }
                 }
             }
-        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+        })
     }
 
     override fun createObserver() {
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 mViewModel.collect = it.collect
-                eventViewModel.collectEvent.postValue(Event(CollectBus(it.id, it.collect)))
+                eventViewModel.collectEvent.postValue(CollectBus(it.id, it.collect))
                 //刷新一下menu
-                activity?.window?.invalidatePanelMenu(Window.FEATURE_OPTIONS_PANEL)
-                activity?.invalidateOptionsMenu()
+                mActivity.window?.invalidatePanelMenu(Window.FEATURE_OPTIONS_PANEL)
+                mActivity.invalidateOptionsMenu()
             } else {
                 showMessage(it.errorMsg)
             }
         })
         requestCollectViewModel.collectUrlUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
-                eventViewModel.collectEvent.postValue(Event(CollectBus(it.id, it.collect)))
+                eventViewModel.collectEvent.postValue(CollectBus(it.id, it.collect))
                 mViewModel.collect = it.collect
                 //刷新一下menu
-                activity?.window?.invalidatePanelMenu(Window.FEATURE_OPTIONS_PANEL)
-                activity?.invalidateOptionsMenu()
+                mActivity.window?.invalidatePanelMenu(Window.FEATURE_OPTIONS_PANEL)
+                mActivity.invalidateOptionsMenu()
             } else {
                 showMessage(it.errorMsg)
             }

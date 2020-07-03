@@ -126,7 +126,7 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
                 } else if (it.isRefresh()) {
                     //如果是刷新的，有数据
                     loadsir.showSuccess()
-                    articleAdapter.setNewInstance(it.datas)
+                    articleAdapter.setList(it.datas)
                 } else {
                     //不是第一页
                     loadsir.showSuccess()
@@ -147,7 +147,7 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
         })
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
-                eventViewModel.collectEvent.postValue(Event(CollectBus(it.id, it.collect)))
+                eventViewModel.collectEvent.postValue(CollectBus(it.id, it.collect))
             } else {
                 showMessage(it.errorMsg)
                 for (index in articleAdapter.data.indices) {

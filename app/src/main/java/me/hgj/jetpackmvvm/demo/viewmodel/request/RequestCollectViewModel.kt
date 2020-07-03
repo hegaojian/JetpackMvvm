@@ -12,7 +12,7 @@ import me.hgj.jetpackmvvm.ext.request
 /**
  * 作者　: hegaojian
  * 时间　: 2020/3/3
- * 描述　: 专门为了收藏而写的Viewmodel
+ * 描述　: 专门为了收藏而写的ViewModel
  */
 open class RequestCollectViewModel : BaseViewModel() {
 

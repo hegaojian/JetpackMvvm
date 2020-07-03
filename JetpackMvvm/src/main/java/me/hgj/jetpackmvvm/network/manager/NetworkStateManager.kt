@@ -1,8 +1,6 @@
 package me.hgj.jetpackmvvm.network.manager
 
-import me.hgj.jetpackmvvm.base.Ktx
 import me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData
-import me.hgj.jetpackmvvm.network.NetworkUtil
 
 /**
  * 作者　: hegaojian
@@ -12,10 +10,6 @@ import me.hgj.jetpackmvvm.network.NetworkUtil
 class NetworkStateManager private constructor() {
 
     val mNetworkStateCallback = UnPeekLiveData<NetState>()
-    
-    init {
-        mNetworkStateCallback.postValue(NetState(isSuccess = NetworkUtil.isNetworkAvailable(Ktx.app)))
-    }
 
     companion object {
         val instance: NetworkStateManager by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {

@@ -33,7 +33,7 @@ class AddTodoFragment : BaseFragment<TodoViewModel, FragmentAddtodoBinding>() {
 
     private var todoResponse: TodoResponse? = null
 
-    //请求数据Viewmodel
+    //请求数据ViewModel
     private val requestViewModel: RequestTodoViewModel by viewModels()
 
     override fun layoutId() = R.layout.fragment_addtodo
@@ -61,7 +61,7 @@ class AddTodoFragment : BaseFragment<TodoViewModel, FragmentAddtodoBinding>() {
         requestViewModel.updateDataState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 nav().navigateUp()
-                eventViewModel.todoEvent.postValue(true)
+                eventViewModel.todoEvent.setValue(false)
             } else {
                 showMessage(it.errorMsg)
             }

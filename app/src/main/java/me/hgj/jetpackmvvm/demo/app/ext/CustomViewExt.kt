@@ -225,8 +225,8 @@ fun Toolbar.initClose(
  * 列如下面的BottomNavigationViewEx他的顶级父控件为FragmentLayout，如果先 is Fragmentlayout判断在 is BottomNavigationViewEx上面
  * 那么就会直接去执行 is FragmentLayout的代码块 跳过 is BottomNavigationViewEx的代码块了
  */
-fun setUiTheme(color: Int, vararg anylist: Any?) {
-    anylist.forEach { view ->
+fun setUiTheme(color: Int, vararg anyList: Any?) {
+    anyList.forEach { view ->
         view?.let {
             when (it) {
                 is LoadService<*> -> SettingUtil.setLoadingColor(color, it as LoadService<Any>)
@@ -249,7 +249,7 @@ fun setUiTheme(color: Int, vararg anylist: Any?) {
 }
 
 //设置适配器的列表动画
-fun BaseQuickAdapter<*, *>.setAdapterAnimion(mode: Int) {
+fun BaseQuickAdapter<*, *>.setAdapterAnimation(mode: Int) {
     //等于0，关闭列表动画 否则开启
     if (mode == 0) {
         this.animationEnable = false
@@ -411,6 +411,9 @@ fun hideSoftKeyboard(activity: Activity?) {
     }
 }
 
+/**
+ * 加载列表数据
+ */
 fun <T> loadListData(
     data: ListDataUiState<T>,
     baseQuickAdapter: BaseQuickAdapter<T, *>,
@@ -429,7 +432,7 @@ fun <T> loadListData(
             }
             //是第一页
             data.isRefresh -> {
-                baseQuickAdapter.setNewInstance(data.listData)
+                baseQuickAdapter.setList(data.listData)
                 loadService.showSuccess()
             }
             //不是第一页

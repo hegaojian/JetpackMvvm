@@ -13,7 +13,9 @@ import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.event.AppViewModel
 import me.hgj.jetpackmvvm.demo.app.event.EventViewModel
+import me.hgj.jetpackmvvm.demo.app.ext.dismissLoadingExt
 import me.hgj.jetpackmvvm.demo.app.ext.hideSoftKeyboard
+import me.hgj.jetpackmvvm.demo.app.ext.showLoadingExt
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.ext.getAppViewModel
 
@@ -25,8 +27,6 @@ import me.hgj.jetpackmvvm.ext.getAppViewModel
  * abstract class BaseFragment<VM : BaseViewModel> : BaseVmFragment<VM>() {
  */
 abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDbFragment<VM, DB>() {
-
-    private var dialog: MaterialDialog? = null
 
     //Application全局的ViewModel，里面存放了一些账户信息，基本配置信息等
     val shareViewModel: AppViewModel by lazy { getAppViewModel<AppViewModel>() }
@@ -52,7 +52,6 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
      */
     override fun createObserver() {}
 
-
     /**
      * Fragment执行onViewCreated后触发
      */
@@ -64,31 +63,14 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
      * 打开等待框
      */
     override fun showLoading(message: String) {
-        if (dialog == null) {
-            dialog = activity?.let {
-                MaterialDialog(it)
-                    .cancelable(true)
-                    .cancelOnTouchOutside(false)
-                    .cornerRadius(8f)
-                    .customView(R.layout.layout_custom_progress_dialog_view)
-                    .lifecycleOwner(this)
-            }
-            dialog?.getCustomView()?.run {
-                this.findViewById<TextView>(R.id.loading_tips).text = message
-                shareViewModel.appColor.value.let {
-                    this.findViewById<ProgressBar>(R.id.progressBar).indeterminateTintList =
-                        SettingUtil.getOneColorStateList(it)
-                }
-            }
-        }
-        dialog?.show()
+        showLoadingExt(message)
     }
 
     /**
      * 关闭等待框
      */
     override fun dismissLoading() {
-        dialog?.dismiss()
+        dismissLoadingExt()
     }
 
     override fun onPause() {

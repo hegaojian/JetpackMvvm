@@ -12,8 +12,8 @@ android {
         applicationId "me.hgj.jetpackmvvm.demo"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 8
-        versionName "1.0.8"
+        versionCode 14
+        versionName "1.1.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
       /* ndk {
             // 设置支持的SO库架构 一般只设置这个就阔以设配所有的设备了，还可以减少apk的大小
@@ -43,7 +43,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
@@ -100,7 +99,7 @@ dependencies {
     implementation 'com.tencent:mmkv:1.0.22'
     //项目核心框架
     implementation project(path: ':JetpackMvvm')
-//    implementation 'me.hegj:JetpackMvvm:1.1.2'
+//    implementation 'me.hegj:JetpackMvvm:1.1.4'
     //轮播图
     implementation 'com.github.zhpanvip:BannerViewPager:2.6.6'
     //BaseAdapter

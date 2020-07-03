@@ -8,9 +8,9 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class SpaceItemDecoration//leftRight为横向间的距离 topBottom为纵向间距离
-    (private val leftRight: Int, private val topBottom: Int,private val firstNeedTop:Boolean = true) : RecyclerView.ItemDecoration() {
 
+class SpaceItemDecoration(private val leftRight: Int, private val topBottom: Int,private val firstNeedTop:Boolean = true) : RecyclerView.ItemDecoration() {
+    //leftRight为横向间的距离 topBottom为纵向间距离
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDraw(c, parent, state)
     }

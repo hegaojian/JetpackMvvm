@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseDelegateMultiAdapter
 import com.chad.library.adapter.base.delegate.BaseMultiTypeDelegate
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.app.ext.setAdapterAnimion
+import me.hgj.jetpackmvvm.demo.app.ext.setAdapterAnimation
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView
 import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
@@ -28,7 +28,7 @@ class AriticleAdapter(data: MutableList<AriticleResponse>?) :
     }
 
     init {
-        setAdapterAnimion(SettingUtil.getListMode())
+        setAdapterAnimation(SettingUtil.getListMode())
         // 第一步，设置代理
         setMultiTypeDelegate(object : BaseMultiTypeDelegate<AriticleResponse>() {
             override fun getItemType(data: List<AriticleResponse>, position: Int): Int {

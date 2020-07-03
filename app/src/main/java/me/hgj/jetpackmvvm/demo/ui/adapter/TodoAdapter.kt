@@ -6,8 +6,7 @@ import androidx.cardview.widget.CardView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.app.ext.setAdapterAnimion
-import me.hgj.jetpackmvvm.demo.app.util.DatetimeUtil
+import me.hgj.jetpackmvvm.demo.app.ext.setAdapterAnimation
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 
 import me.hgj.jetpackmvvm.demo.data.model.bean.TodoResponse
@@ -22,7 +21,7 @@ class TodoAdapter(data: ArrayList<TodoResponse>) : BaseQuickAdapter<TodoResponse
 
 
     init {
-        setAdapterAnimion(SettingUtil.getListMode())
+        setAdapterAnimation(SettingUtil.getListMode())
     }
 
     override fun convert(holder: BaseViewHolder, item: TodoResponse) {

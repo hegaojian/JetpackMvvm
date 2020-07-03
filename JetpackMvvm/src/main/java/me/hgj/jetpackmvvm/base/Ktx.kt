@@ -35,13 +35,11 @@ class Ktx : ContentProvider() {
     private fun install(application: Application) {
         app = application
         mNetworkStateReceive = NetworkStateReceive()
-        app.registerReceiver(
-            mNetworkStateReceive,
-            IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
-        )
+        app.registerReceiver( mNetworkStateReceive,IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
         if (watchActivityLife) application.registerActivityLifecycleCallbacks(KtxLifeCycleCallBack())
         if (watchAppLife) ProcessLifecycleOwner.get().lifecycle.addObserver(KtxAppLifeObserver)
     }
+
 
     override fun insert(uri: Uri, values: ContentValues?): Uri? = null
 

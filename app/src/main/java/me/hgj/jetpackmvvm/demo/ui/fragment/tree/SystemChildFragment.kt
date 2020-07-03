@@ -44,7 +44,7 @@ class SystemChildFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
     //收藏viewmodel
     private val requestCollectViewModel: RequestCollectViewModel by viewModels()
 
-    /** 请求Viewmodel */
+    /** 请求ViewModel */
     private val requestTreeViewModel: RequestTreeViewModel by viewModels()
 
     override fun layoutId() = R.layout.include_list
@@ -116,7 +116,7 @@ class SystemChildFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 //收藏或取消收藏操作成功，发送全局收藏消息
-                eventViewModel.collectEvent.postValue(Event(CollectBus(it.id, it.collect)))
+                eventViewModel.collectEvent.postValue(CollectBus(it.id, it.collect))
             } else {
                 showMessage(it.errorMsg)
                 for (index in articleAdapter.data.indices) {

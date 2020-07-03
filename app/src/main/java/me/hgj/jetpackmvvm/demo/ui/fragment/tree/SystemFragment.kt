@@ -85,7 +85,7 @@ class SystemFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
             swipeRefresh.isRefreshing = false
             if (it.isSuccess) {
                 loadsir.showSuccess()
-                systemAdapter.setNewInstance(it.listData)
+                systemAdapter.setList(it.listData)
             } else {
                 loadsir.showError(it.errMessage)
             }
@@ -98,7 +98,7 @@ class SystemFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
             })
             //监听全局的列表动画改编
             appAnimation.observe(viewLifecycleOwner, Observer {
-                systemAdapter.setAdapterAnimion(it)
+                systemAdapter.setAdapterAnimation(it)
             })
         }
 

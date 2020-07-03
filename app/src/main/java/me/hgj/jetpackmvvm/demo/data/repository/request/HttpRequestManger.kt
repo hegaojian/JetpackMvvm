@@ -52,7 +52,6 @@ class HttpRequestManger {
         }
     }
 
-
     /**
      * 注册并登陆
      */

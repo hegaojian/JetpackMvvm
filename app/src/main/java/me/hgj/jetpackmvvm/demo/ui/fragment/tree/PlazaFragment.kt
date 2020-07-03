@@ -36,7 +36,7 @@ class PlazaFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
     //收藏viewmodel
     private val requestCollectViewModel: RequestCollectViewModel by viewModels()
 
-    //请求Viewmodel
+    //请求ViewModel
     private val requestTreeViewModel: RequestTreeViewModel by viewModels()
 
     //recyclerview的底部加载view 因为要在首页动态改变他的颜色，所以加了他这个字段
@@ -115,7 +115,7 @@ class PlazaFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 //收藏或取消收藏操作成功，发送全局收藏消息
-                eventViewModel.collectEvent.postValue(Event(CollectBus(it.id, it.collect)))
+                eventViewModel.collectEvent.postValue(CollectBus(it.id, it.collect))
             } else {
                 showMessage(it.errorMsg)
                 for (index in articleAdapter.data.indices) {
@@ -152,7 +152,7 @@ class PlazaFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
             })
             //监听全局的列表动画改编
             appAnimation.observe(viewLifecycleOwner, Observer {
-                articleAdapter.setAdapterAnimion(it)
+                articleAdapter.setAdapterAnimation(it)
             })
         }
         //监听全局的收藏信息 收藏的Id跟本列表的数据id匹配则需要更新

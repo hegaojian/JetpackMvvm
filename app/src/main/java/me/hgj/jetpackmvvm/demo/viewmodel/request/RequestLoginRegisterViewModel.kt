@@ -31,14 +31,14 @@ class RequestLoginRegisterViewModel : BaseViewModel() {
         //2.这种是在Activity/Fragment中的监听拿到未脱壳的数据，你可以自己根据code做业务需求操作（项目没有基类的可以用）
         /*requestNoCheck({HttpRequestManger.instance.login(username,password)},loginResult2,true)*/
 
-        //3. 这种是直接在当前Viewmodel中就拿到了脱壳数据数据，做一层封装再给Activity/Fragment，如果 （项目有基类的可以用）
+        //3. 这种是直接在当前ViewModel中就拿到了脱壳数据数据，做一层封装再给Activity/Fragment，如果 （项目有基类的可以用）
         /* request({HttpRequestManger.instance.login(username,password)},{
              //请求成功 已自动处理了 请求结果是否正常
          },{
              //请求失败 网络异常，或者请求结果码错误都会回调在这里
          })*/
 
-        //4.这种是直接在当前Viewmodel中就拿到了未脱壳数据数据，（项目没有基类的可以用）
+        //4.这种是直接在当前ViewModel中就拿到了未脱壳数据数据，（项目没有基类的可以用）
         /*requestNoCheck({HttpRequestManger.instance.login(username,password)},{
             //请求成功 自己拿到数据做业务需求操作
             if(it.errorCode==0){

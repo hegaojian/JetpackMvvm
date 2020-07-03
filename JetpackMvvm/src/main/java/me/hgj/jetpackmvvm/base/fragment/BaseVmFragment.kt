@@ -49,6 +49,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        isFirst = true
         mViewModel = createViewModel()
         initView(savedInstanceState)
         createObserver()
@@ -129,9 +130,5 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
         mViewModel.loadingChange.dismissDialog.observe(viewLifecycleOwner, Observer {
             dismissLoading()
         })
-    }
-
-    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        super.setUserVisibleHint(isVisibleToUser)
     }
 }

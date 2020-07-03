@@ -13,7 +13,6 @@ import me.hgj.jetpackmvvm.callback.livedata.event.Event
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
-import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
 import me.hgj.jetpackmvvm.demo.data.model.bean.CollectBus
@@ -122,7 +121,7 @@ class ProjectChildFragment : BaseFragment<ProjectViewModel, IncludeListBinding>(
         })
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
-                eventViewModel.collectEvent.postValue(Event(CollectBus(it.id, it.collect)))
+                eventViewModel.collectEvent.postValue(CollectBus(it.id, it.collect))
             } else {
                 showMessage(it.errorMsg)
                 for (index in articleAdapter.data.indices) {
@@ -159,7 +158,7 @@ class ProjectChildFragment : BaseFragment<ProjectViewModel, IncludeListBinding>(
             })
             //监听全局的列表动画改编
             appAnimation.observe(viewLifecycleOwner, Observer {
-                articleAdapter.setAdapterAnimion(it)
+                articleAdapter.setAdapterAnimation(it)
             })
             //监听全局的收藏信息 收藏的Id跟本列表的数据id匹配则需要更新
             eventViewModel.collectEvent.observe(viewLifecycleOwner, Observer {

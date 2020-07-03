@@ -72,7 +72,7 @@ class NavigationFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
             swipeRefresh.isRefreshing = false
             if (it.isSuccess) {
                 loadsir.showSuccess()
-                navigationAdapter.setNewInstance(it.listData)
+                navigationAdapter.setList(it.listData)
             } else {
                 loadsir.showError(it.errMessage)
             }
@@ -84,7 +84,7 @@ class NavigationFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
             })
             //监听全局的列表动画改编
             appAnimation.observe(viewLifecycleOwner, Observer {
-                navigationAdapter.setAdapterAnimion(it)
+                navigationAdapter.setAdapterAnimation(it)
             })
         }
 

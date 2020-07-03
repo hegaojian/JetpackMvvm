@@ -8,7 +8,7 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.app.ext.setAdapterAnimion
+import me.hgj.jetpackmvvm.demo.app.ext.setAdapterAnimation
 import me.hgj.jetpackmvvm.demo.app.ext.setNbOnItemClickListener
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.data.model.bean.SystemResponse
@@ -21,7 +21,7 @@ class SystemAdapter(data: ArrayList<SystemResponse>) :
         { _: SystemResponse, _: View, _: Int -> }
 
     init {
-        setAdapterAnimion(SettingUtil.getListMode())
+        setAdapterAnimation(SettingUtil.getListMode())
     }
 
     override fun convert(holder: BaseViewHolder, item: SystemResponse) {

@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 import me.hgj.jetpackmvvm.demo.app.util.DatetimeUtil
-import java.util.*
 
 /**
  * 项目分类

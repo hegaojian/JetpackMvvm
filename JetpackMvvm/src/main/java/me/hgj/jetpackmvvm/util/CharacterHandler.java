@@ -27,7 +27,8 @@ import javax.xml.transform.stream.StreamSource;
  * 描述　:
  */
 public class CharacterHandler {
-    public static final InputFilter EMOJI_FILTER = new InputFilter() {//emoji过滤器
+    //emoji过滤器
+    public static final InputFilter EMOJI_FILTER = new InputFilter() {
         Pattern emoji = Pattern.compile(
                 "[\ud83c\udc00-\ud83c\udfff]|[\ud83d\udc00-\ud83d\udfff]|[\u2600-\u27ff]",
                 Pattern.UNICODE_CASE | Pattern.CASE_INSENSITIVE);

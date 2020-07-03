@@ -4,7 +4,7 @@ import androidx.core.content.ContextCompat
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.app.ext.setAdapterAnimion
+import me.hgj.jetpackmvvm.demo.app.ext.setAdapterAnimation
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.data.model.bean.IntegralResponse
 
@@ -20,7 +20,7 @@ class IntegralAdapter(data: ArrayList<IntegralResponse>) : BaseQuickAdapter<Inte
         this.rankNum = rank
     }
     init {
-        setAdapterAnimion(SettingUtil.getListMode())
+        setAdapterAnimation(SettingUtil.getListMode())
     }
     override fun convert(holder: BaseViewHolder, item: IntegralResponse) {
         //赋值
