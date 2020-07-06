@@ -24,6 +24,8 @@ import me.hgj.jetpackmvvm.demo.ui.adapter.TodoAdapter
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTodoViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.TodoViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
+import me.hgj.jetpackmvvm.ext.util.logd
 
 /**
  * 作者　: hegaojian
@@ -52,7 +54,7 @@ class TodoListFragment : BaseFragment<TodoViewModel, FragmentListBinding>() {
             setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.todo_add -> {
-                        nav().navigate(R.id.action_todoListFragment_to_addTodoFragment)
+                        nav().navigateAction(R.id.action_todoListFragment_to_addTodoFragment)
                     }
                 }
                 true
@@ -82,14 +84,14 @@ class TodoListFragment : BaseFragment<TodoViewModel, FragmentListBinding>() {
             requestViewModel.getTodoData(true)
         }
         articleAdapter.run {
-            setNbOnItemClickListener { _, _, position ->
-                nav().navigate(R.id.action_todoListFragment_to_addTodoFragment,
+            setOnItemClickListener { _, _, position ->
+                nav().navigateAction(R.id.action_todoListFragment_to_addTodoFragment,
                     Bundle().apply {
                         putParcelable("todo", articleAdapter.data[position])
                     })
             }
             addChildClickViewIds(R.id.item_todo_setting)
-            setNbOnItemChildClickListener { adapter, view, position ->
+            setOnItemChildClickListener { adapter, view, position ->
                 when (view.id) {
                     R.id.item_todo_setting -> {
                         val items = if (articleAdapter.data[position].isDone()) {
@@ -113,7 +115,7 @@ class TodoListFragment : BaseFragment<TodoViewModel, FragmentListBinding>() {
                                             }
                                             1 -> {
                                                 //编辑
-                                                nav().navigate(R.id.action_todoListFragment_to_addTodoFragment,
+                                                nav().navigateAction(R.id.action_todoListFragment_to_addTodoFragment,
                                                     Bundle().apply {
                                                         putParcelable(
                                                             "todo",
@@ -142,7 +144,6 @@ class TodoListFragment : BaseFragment<TodoViewModel, FragmentListBinding>() {
         //设置界面 加载中
         loadsir.showLoading()
         requestViewModel.getTodoData(true)
-
     }
 
     override fun createObserver() {

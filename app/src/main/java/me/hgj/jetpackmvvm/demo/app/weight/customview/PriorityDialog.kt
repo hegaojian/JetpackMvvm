@@ -10,10 +10,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.ConvertUtils
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.ui.adapter.PriorityAdapter
-import me.hgj.jetpackmvvm.demo.app.ext.setNbOnItemClickListener
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.GridDividerItemDecoration
 import me.hgj.jetpackmvvm.demo.data.model.enums.TodoType
+import me.hgj.jetpackmvvm.demo.ui.adapter.PriorityAdapter
 
 
 class PriorityDialog(context: Context, type: Int) : Dialog(context, R.style.BottomDialogStyle) {
@@ -46,7 +45,7 @@ class PriorityDialog(context: Context, type: Int) : Dialog(context, R.style.Bott
         }
         //初始化adapter
         shareAdapter = PriorityAdapter(proiorityData, type).apply {
-            setNbOnItemClickListener { adapter, view1, position ->
+            setOnItemClickListener { adapter, view1, position ->
                 priorityInterface?.run {
                     onSelect(proiorityData[position])
                 }

@@ -10,13 +10,12 @@ import kotlinx.android.synthetic.main.include_recyclerview.*
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
-import me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
-import me.hgj.jetpackmvvm.demo.data.model.bean.CollectUrlResponse
 import me.hgj.jetpackmvvm.demo.databinding.IncludeListBinding
 import me.hgj.jetpackmvvm.demo.ui.adapter.CollectUrlAdapter
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 
 /**
  * 作者　: hegaojian
@@ -59,8 +58,8 @@ class CollectUrlFragment : BaseFragment<RequestCollectViewModel, IncludeListBind
                     mViewModel.collectUrl(item.name, item.link)
                 }
             }
-            setNbOnItemClickListener { _, view, position ->
-                nav().navigate(R.id.action_to_webFragment, Bundle().apply {
+            setOnItemClickListener { _, view, position ->
+                nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {
                     putParcelable("collectUrl", articleAdapter.data[position])
                 })
             }

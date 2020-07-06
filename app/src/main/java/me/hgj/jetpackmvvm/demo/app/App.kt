@@ -38,7 +38,6 @@ class App : BaseApp() {
             .addCallback(EmptyCallback())//空
             .setDefaultCallback(SuccessCallback::class.java)//设置默认加载状态页
             .commit()
-
         //初始化Bugly
         val context = applicationContext
         // 获取当前包名

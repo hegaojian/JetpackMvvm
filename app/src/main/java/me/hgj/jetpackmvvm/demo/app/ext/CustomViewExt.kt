@@ -113,6 +113,7 @@ fun loadServiceInit(view: View, callback: () -> Unit): LoadService<Any> {
         //点击重试时触发的操作
         callback.invoke()
     }
+    loadsir.showSuccess()
     SettingUtil.setLoadingColor(SettingUtil.getColor(App.instance), loadsir)
     return loadsir
 }

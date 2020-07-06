@@ -9,7 +9,6 @@ import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.ext.setAdapterAnimation
-import me.hgj.jetpackmvvm.demo.app.ext.setNbOnItemClickListener
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.NavigationResponse
@@ -41,7 +40,7 @@ class NavigationAdapter(data: ArrayList<NavigationResponse>) :
             setHasFixedSize(true)
             isNestedScrollingEnabled = false
             adapter = NavigationChildAdapter(item.articles).apply {
-                setNbOnItemClickListener { _, view, position ->
+                setOnItemClickListener { _, view, position ->
                     navigationAction.invoke(item.articles[position], view)
                 }
             }

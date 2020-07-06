@@ -12,15 +12,15 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 /**
  * 给adapter拓展的，防止重复点击item
  */
-var adapterlastClickTime = 0L
+var adapterLastClickTime = 0L
 
 fun BaseQuickAdapter<*, *>.setNbOnItemClickListener(interval: Long = 1000,action: (adapter: BaseQuickAdapter<*, *>, view: View, position: Int) -> Unit) {
     setOnItemClickListener { adapter, view, position ->
          val currentTime = System.currentTimeMillis()
-         if (adapterlastClickTime != 0L && (currentTime - adapterlastClickTime < interval)) {
+         if (adapterLastClickTime != 0L && (currentTime - adapterLastClickTime < interval)) {
              return@setOnItemClickListener
          }
-        adapterlastClickTime = currentTime
+        adapterLastClickTime = currentTime
         action(adapter,view,position)
     }
 }

@@ -19,7 +19,9 @@ import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.include_toolbar.*
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
-import me.hgj.jetpackmvvm.demo.app.ext.*
+import me.hgj.jetpackmvvm.demo.app.ext.init
+import me.hgj.jetpackmvvm.demo.app.ext.initClose
+import me.hgj.jetpackmvvm.demo.app.ext.setUiTheme
 import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.databinding.FragmentSearchBinding
@@ -28,6 +30,7 @@ import me.hgj.jetpackmvvm.demo.ui.adapter.SearcHotAdapter
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestSearchViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.SearchViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
 import me.hgj.jetpackmvvm.ext.util.toJson
 
@@ -61,17 +64,17 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
         search_hotRv.init(layoutManager, hotAdapter, false)
 
         historyAdapter.run {
-            setNbOnItemClickListener { adapter, view, position ->
+            setOnItemClickListener { adapter, view, position ->
                 val queryStr = historyAdapter.data[position]
                 updateKey(queryStr)
-                nav().navigate(R.id.action_searchFragment_to_searchResultFragment,
+                nav().navigateAction(R.id.action_searchFragment_to_searchResultFragment,
                     Bundle().apply {
                         putString("searchKey", queryStr)
                     }
                 )
             }
             addChildClickViewIds(R.id.item_history_del)
-            setNbOnItemChildClickListener { adapter, view, position ->
+            setOnItemChildClickListener { adapter, view, position ->
                 when (view.id) {
                     R.id.item_history_del -> {
                         requestSearchViewModel.historyData.value?.let {
@@ -84,10 +87,10 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
         }
 
         hotAdapter.run {
-            setNbOnItemClickListener { adapter, view, position ->
+            setOnItemClickListener { adapter, view, position ->
                 val queryStr = hotAdapter.data[position].name
                 updateKey(queryStr)
-                nav().navigate(R.id.action_searchFragment_to_searchResultFragment,
+                nav().navigateAction(R.id.action_searchFragment_to_searchResultFragment,
                     Bundle().apply {
                         putString("searchKey", queryStr)
                     }
@@ -161,7 +164,7 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
                     //当点击搜索时 输入法的搜索，和右边的搜索都会触发
                     query?.let { queryStr ->
                         updateKey(queryStr)
-                        nav().navigate(R.id.action_searchFragment_to_searchResultFragment,
+                        nav().navigateAction(R.id.action_searchFragment_to_searchResultFragment,
                             Bundle().apply {
                                 putString("searchKey", queryStr)
                             }

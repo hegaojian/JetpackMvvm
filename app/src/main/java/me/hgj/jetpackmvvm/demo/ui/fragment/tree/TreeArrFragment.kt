@@ -13,6 +13,7 @@ import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.databinding.FragmentViewpagerBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.state.TreeViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 
 /**
  * 作者　: hegaojian
@@ -43,9 +44,9 @@ class TreeArrFragment : BaseFragment<TreeViewModel, FragmentViewpagerBinding>() 
                 when (it.itemId) {
                     R.id.todo_add -> {
                         if(CacheUtil.isLogin()){
-                           nav().navigate(R.id.action_mainfragment_to_addAriticleFragment)
+                           nav().navigateAction(R.id.action_mainfragment_to_addAriticleFragment)
                         }else{
-                            nav().navigate(R.id.action_to_loginFragment)
+                            nav().navigateAction(R.id.action_to_loginFragment)
                         }
                     }
                 }

@@ -19,6 +19,7 @@ import me.hgj.jetpackmvvm.demo.ui.adapter.ShareAdapter
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestAriticleViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.AriticleViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 
 /**
  * 作者　: hegaojian
@@ -47,7 +48,7 @@ class AriticleFragment : BaseFragment<AriticleViewModel, FragmentListBinding>() 
             setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.todo_add -> {
-                        nav().navigate(R.id.action_ariticleFragment_to_addAriticleFragment)
+                        nav().navigateAction(R.id.action_ariticleFragment_to_addAriticleFragment)
                     }
                 }
                 true
@@ -77,13 +78,13 @@ class AriticleFragment : BaseFragment<AriticleViewModel, FragmentListBinding>() 
         }
 
         articleAdapter.run {
-            setNbOnItemClickListener { adapter, view, position ->
-                nav().navigate(R.id.action_to_webFragment, Bundle().apply {
+            setOnItemClickListener { adapter, view, position ->
+                nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {
                     putParcelable("ariticleData", articleAdapter.data[position])
                 })
             }
             addChildClickViewIds(R.id.item_share_del)
-            setNbOnItemChildClickListener { adapter, view, position ->
+            setOnItemChildClickListener { adapter, view, position ->
                 when (view.id) {
                     R.id.item_share_del -> {
                         showMessage("确定删除该文章吗？", positiveButtonText = "删除", positiveAction = {

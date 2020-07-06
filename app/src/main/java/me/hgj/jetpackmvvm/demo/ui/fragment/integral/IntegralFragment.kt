@@ -22,6 +22,7 @@ import me.hgj.jetpackmvvm.demo.ui.adapter.IntegralAdapter
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestIntegralViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.IntegralViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.util.notNull
 import me.hgj.jetpackmvvm.ext.view.gone
 
@@ -58,7 +59,7 @@ class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding
             setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.integral_guize -> {
-                        nav().navigate(R.id.action_to_webFragment,
+                        nav().navigateAction(R.id.action_to_webFragment,
                             Bundle().apply {
                                 putParcelable(
                                     "bannerdata",
@@ -71,7 +72,7 @@ class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding
                         )
                     }
                     R.id.integral_history -> {
-                        nav().navigate(R.id.action_integralFragment_to_integralHistoryFragment)
+                        nav().navigateAction(R.id.action_integralFragment_to_integralHistoryFragment)
                     }
                 }
                 true

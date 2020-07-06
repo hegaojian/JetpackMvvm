@@ -17,6 +17,7 @@ import me.hgj.jetpackmvvm.demo.databinding.FragmentMeBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestMeViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.MeViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
 import me.hgj.jetpackmvvm.ext.util.logd
 import me.hgj.jetpackmvvm.ext.util.notNull
@@ -95,14 +96,14 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
         /** 收藏 */
         fun collect() {
             nav().jumpByLogin {
-                it.navigate(R.id.action_mainfragment_to_collectFragment)
+                it.navigateAction(R.id.action_mainfragment_to_collectFragment)
             }
         }
 
         /** 积分 */
         fun integral() {
             nav().jumpByLogin {
-                it.navigate(R.id.action_mainfragment_to_integralFragment,
+                it.navigateAction(R.id.action_mainfragment_to_integralFragment,
                     Bundle().apply {
                         putParcelable("rank", rank)
                     }
@@ -113,20 +114,20 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
         /** 文章 */
         fun ariticle() {
             nav().jumpByLogin {
-                it.navigate(R.id.action_mainfragment_to_ariticleFragment)
+                it.navigateAction(R.id.action_mainfragment_to_ariticleFragment)
             }
         }
 
         /** Todo */
         fun todo() {
             nav().jumpByLogin {
-                it.navigate(R.id.action_mainfragment_to_todoListFragment)
+                it.navigateAction(R.id.action_mainfragment_to_todoListFragment)
             }
         }
 
         /** 玩Android开源网站 */
         fun about() {
-            nav().navigate(R.id.action_to_webFragment, Bundle().apply {
+            nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {
                 putParcelable(
                     "bannerdata",
                     BannerResponse(
@@ -144,12 +145,12 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
         /** 设置*/
         fun setting() {
-            nav().navigate(R.id.action_mainfragment_to_settingFragment)
+            nav().navigateAction(R.id.action_mainfragment_to_settingFragment)
         }
 
         /**demo*/
         fun demo() {
-            nav().navigate(R.id.action_mainfragment_to_demoFragment)
+            nav().navigateAction(R.id.action_mainfragment_to_demoFragment)
         }
     }
 }

@@ -14,6 +14,7 @@ import com.blankj.utilcode.util.ToastUtils
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
+import me.hgj.jetpackmvvm.ext.navigateAction
 import java.io.BufferedReader
 import java.io.FileReader
 import java.io.IOException
@@ -144,7 +145,7 @@ fun NavController.jumpByLogin(action: (NavController) -> Unit) {
     if (CacheUtil.isLogin()) {
         action(this)
     } else {
-        this.navigate(R.id.action_to_loginFragment)
+        this.navigateAction(R.id.action_to_loginFragment)
     }
 }
 

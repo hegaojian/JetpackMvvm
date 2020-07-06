@@ -18,6 +18,7 @@ import me.hgj.jetpackmvvm.demo.ui.adapter.SystemAdapter
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTreeViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.TreeViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 
 /**
  * 作者　: hegaojian
@@ -54,9 +55,9 @@ class SystemFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
             requestTreeViewModel.getSystemData()
         }
         systemAdapter.run {
-            setNbOnItemClickListener { _, view, position ->
+            setOnItemClickListener { _, view, position ->
                 if(systemAdapter.data[position].children.isNotEmpty()){
-                    nav().navigate(R.id.action_mainfragment_to_systemArrFragment,
+                    nav().navigateAction(R.id.action_mainfragment_to_systemArrFragment,
                         Bundle().apply {
                             putParcelable("data", systemAdapter.data[position])
                         }
@@ -64,7 +65,7 @@ class SystemFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
                 }
             }
             setChildClick { item: SystemResponse, view, position ->
-                nav().navigate(R.id.action_mainfragment_to_systemArrFragment,
+                nav().navigateAction(R.id.action_mainfragment_to_systemArrFragment,
                         Bundle().apply {
                             putParcelable("data", item)
                             putInt("index", position)

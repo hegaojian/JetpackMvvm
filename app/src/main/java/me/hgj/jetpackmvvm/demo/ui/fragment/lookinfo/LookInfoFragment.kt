@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.fragment_lookinfo.*
 import kotlinx.android.synthetic.main.include_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
 import kotlinx.android.synthetic.main.include_toolbar.*
-import me.hgj.jetpackmvvm.callback.livedata.event.Event
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
@@ -23,6 +22,7 @@ import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestLookInfoViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.LookInfoViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 
 /**
  * 作者　: hegaojian
@@ -81,8 +81,8 @@ class LookInfoFragment : BaseFragment<LookInfoViewModel, FragmentLookinfoBinding
                     requestCollectViewModel.collect(item.id)
                 }
             }
-            setNbOnItemClickListener { adapter, view, position ->
-                nav().navigate(R.id.action_to_webFragment, Bundle().apply {
+            setOnItemClickListener { adapter, view, position ->
+                nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {
                     putParcelable(
                         "ariticleData",
                         articleAdapter.data[position - recyclerView.headerCount]

@@ -10,14 +10,11 @@ import com.yanzhenjie.recyclerview.SwipeRecyclerView
 import kotlinx.android.synthetic.main.include_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
 import kotlinx.android.synthetic.main.include_toolbar.*
-import me.hgj.jetpackmvvm.callback.livedata.event.Event
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
-import me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.ErrorCallback
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
-import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.CollectBus
 import me.hgj.jetpackmvvm.demo.databinding.FragmentListBinding
 import me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter
@@ -25,6 +22,7 @@ import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestSearchViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.SearchViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
 
 /**
@@ -87,16 +85,16 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
                     requestCollectViewModel.collect(item.id)
                 }
             }
-            setNbOnItemClickListener { adapter, view, position ->
-                nav().navigate(R.id.action_to_webFragment, Bundle().apply {
+            setOnItemClickListener { adapter, view, position ->
+                nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {
                     putParcelable("ariticleData", articleAdapter.data[position])
                 })
             }
             addChildClickViewIds(R.id.item_home_author, R.id.item_project_author)
-            setNbOnItemChildClickListener { adapter, view, position ->
+            setOnItemChildClickListener { adapter, view, position ->
                 when (view.id) {
                     R.id.item_home_author, R.id.item_project_author -> {
-                        nav().navigate(
+                        nav().navigateAction(
                             R.id.action_searchResultFragment_to_lookInfoFragment,
                             Bundle().apply {
                                 putInt("id", articleAdapter.data[position].userId)

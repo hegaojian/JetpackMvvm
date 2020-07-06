@@ -28,6 +28,7 @@ import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestHomeViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.HomeViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
 import me.hgj.jetpackmvvm.network.manager.NetState
 
@@ -70,7 +71,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
             setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.home_search -> {
-                        nav().navigate(R.id.action_mainfragment_to_searchFragment)
+                        nav().navigateAction(R.id.action_mainfragment_to_searchFragment)
                     }
                 }
                 true
@@ -99,8 +100,8 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                     requestCollectViewModel.collect(item.id)
                 }
             }
-            setNbOnItemClickListener { adapter, view, position ->
-                nav().navigate(R.id.action_to_webFragment, Bundle().apply {
+            setOnItemClickListener { adapter, view, position ->
+                nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {
                     putParcelable(
                         "ariticleData",
                         articleAdapter.data[position - recyclerView.headerCount]
@@ -108,10 +109,10 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                 })
             }
             addChildClickViewIds(R.id.item_home_author, R.id.item_project_author)
-            setNbOnItemChildClickListener { adapter, view, position ->
+            setOnItemChildClickListener { adapter, view, position ->
                 when (view.id) {
                     R.id.item_home_author, R.id.item_project_author -> {
-                        nav().navigate(
+                        nav().navigateAction(
                             R.id.action_mainfragment_to_lookInfoFragment,
                             Bundle().apply {
                                 putInt(
@@ -167,7 +168,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                                     bannerview.setHolderCreator {
                                         HomeBannerViewHolder()
                                     }.setOnPageClickListener {
-                                        nav().navigate(R.id.action_to_webFragment,
+                                        nav().navigateAction(R.id.action_to_webFragment,
                                             Bundle().apply {
                                                 putParcelable("bannerdata", data[it])
                                             }

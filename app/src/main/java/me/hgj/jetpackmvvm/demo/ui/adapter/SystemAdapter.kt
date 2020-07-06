@@ -9,7 +9,6 @@ import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.ext.setAdapterAnimation
-import me.hgj.jetpackmvvm.demo.app.ext.setNbOnItemClickListener
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.data.model.bean.SystemResponse
 import me.hgj.jetpackmvvm.ext.util.toHtml
@@ -40,7 +39,7 @@ class SystemAdapter(data: ArrayList<SystemResponse>) :
             setItemViewCacheSize(200)
             isNestedScrollingEnabled = false
             adapter = SystemChildAdapter(item.children).apply {
-                setNbOnItemClickListener { _, view, position ->
+                setOnItemClickListener { _, view, position ->
                     method(item, view, position)
                 }
             }

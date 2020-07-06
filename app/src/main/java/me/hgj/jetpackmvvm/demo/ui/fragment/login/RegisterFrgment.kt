@@ -16,6 +16,7 @@ import me.hgj.jetpackmvvm.demo.databinding.FragmentRegisterBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestLoginRegisterViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
 
 /**
@@ -50,7 +51,7 @@ class RegisterFrgment : BaseFragment<LoginRegisterViewModel, FragmentRegisterBin
                     CacheUtil.setIsLogin(true)
                     CacheUtil.setUser(it)
                     shareViewModel.userinfo.postValue(it)
-                    nav().navigate(R.id.action_registerFrgment_to_mainFragment)
+                    nav().navigateAction(R.id.action_registerFrgment_to_mainFragment)
                 }, {
                     showMessage(it.errorMsg)
                 })
@@ -61,19 +62,19 @@ class RegisterFrgment : BaseFragment<LoginRegisterViewModel, FragmentRegisterBin
     inner class ProxyClick {
         /**清空*/
         fun clear() {
-            mViewModel.username.set("")
+            mViewModel.username.value=""
         }
 
         /**注册*/
         fun register() {
             when {
-                mViewModel.username.get().isEmpty() -> showMessage("请填写账号")
+                mViewModel.username.value.isEmpty() -> showMessage("请填写账号")
                 mViewModel.password.get().isEmpty() -> showMessage("请填写密码")
                 mViewModel.password2.get().isEmpty() -> showMessage("请填写确认密码")
                 mViewModel.password.get().length < 6 -> showMessage("密码最少6位")
                 mViewModel.password.get() != mViewModel.password2.get() -> showMessage("密码不一致")
                 else -> requestLoginRegisterViewModel.registerAndlogin(
-                    mViewModel.username.get(),
+                    mViewModel.username.value,
                     mViewModel.password.get()
                 )
             }

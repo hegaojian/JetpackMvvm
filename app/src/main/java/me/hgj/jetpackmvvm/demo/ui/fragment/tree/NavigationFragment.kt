@@ -17,6 +17,7 @@ import me.hgj.jetpackmvvm.demo.ui.adapter.NavigationAdapter
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTreeViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.TreeViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 
 /**
  * 作者　: hegaojian
@@ -53,7 +54,7 @@ class NavigationFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
             requestTreeViewModel.getNavigationData()
         }
         navigationAdapter.setNavigationAction { item, view ->
-            nav().navigate(R.id.action_to_webFragment,
+            nav().navigateAction(R.id.action_to_webFragment,
                 Bundle().apply {
                     putParcelable("ariticleData", item)
                 }

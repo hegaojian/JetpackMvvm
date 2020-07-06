@@ -8,6 +8,7 @@ import com.blankj.utilcode.util.VibrateUtils
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 
 
 import per.goweii.reveallayout.RevealLayout
@@ -39,7 +40,7 @@ class CollectView @JvmOverloads constructor(context: Context, attrs: AttributeSe
                     onCollectViewClickListener?.onClick(this)
                 }else{
                     isChecked = true
-                    nav(v).navigate(R.id.action_to_loginFragment)
+                    nav(v).navigateAction(R.id.action_to_loginFragment)
                 }
 
             }

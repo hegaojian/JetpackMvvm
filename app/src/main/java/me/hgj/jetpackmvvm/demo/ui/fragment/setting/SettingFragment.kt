@@ -34,6 +34,7 @@ import me.hgj.jetpackmvvm.demo.app.weight.preference.PreferenceCategory
 import me.hgj.jetpackmvvm.demo.data.model.bean.BannerResponse
 import me.hgj.jetpackmvvm.ext.getAppViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 
 /**
  * 作者　: hegaojian
@@ -194,7 +195,7 @@ class SettingFragment : PreferenceFragmentCompat(),
                 url = findPreference<Preference>("project")?.summary.toString()
             )
             view?.let {
-                nav().navigate(R.id.action_to_webFragment, Bundle()
+                nav().navigateAction(R.id.action_to_webFragment, Bundle()
                     .apply { putParcelable("bannerdata", data) })
             }
             false

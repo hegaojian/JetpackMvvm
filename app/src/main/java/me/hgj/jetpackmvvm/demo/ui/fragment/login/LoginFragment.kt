@@ -17,6 +17,7 @@ import me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestLoginRegisterViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
 
 /**
@@ -66,15 +67,15 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
     inner class ProxyClick {
 
         fun clear() {
-            mViewModel.username.set("")
+            mViewModel.username.value = ""
         }
 
         fun login() {
             when {
-                mViewModel.username.get().isEmpty() -> showMessage("请填写账号")
+                mViewModel.username.value.isEmpty() -> showMessage("请填写账号")
                 mViewModel.password.get().isEmpty() -> showMessage("请填写密码")
                 else -> requestLoginRegisterViewModel.loginReq(
-                    mViewModel.username.get(),
+                    mViewModel.username.value,
                     mViewModel.password.get()
                 )
             }
@@ -82,7 +83,7 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
 
         fun goRegister() {
             hideSoftKeyboard(activity)
-            nav().navigate(R.id.action_loginFragment_to_registerFrgment)
+            nav().navigateAction(R.id.action_loginFragment_to_registerFrgment)
         }
 
         var onCheckedChangeListener =

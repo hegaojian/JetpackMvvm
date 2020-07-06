@@ -7,6 +7,7 @@ import me.hgj.jetpackmvvm.demo.app.network.stateCallback.UpdateUiState
 import me.hgj.jetpackmvvm.demo.data.model.bean.TodoResponse
 import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
 import me.hgj.jetpackmvvm.ext.request
+import me.hgj.jetpackmvvm.ext.util.logd
 
 /**
  * 作者　: hegaojian

@@ -9,7 +9,6 @@ import com.kingja.loadsir.core.LoadService
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
 import kotlinx.android.synthetic.main.include_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
-import me.hgj.jetpackmvvm.callback.livedata.event.Event
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
@@ -22,6 +21,7 @@ import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestPublicNumberViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.PublicNumberViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 
 /**
  * 作者　: hegaojian
@@ -85,16 +85,16 @@ class PublicChildFragment : BaseFragment<PublicNumberViewModel, IncludeListBindi
                     requestCollectViewModel.collect(item.id)
                 }
             }
-            setNbOnItemClickListener { _, view, position ->
-                nav().navigate(R.id.action_to_webFragment, Bundle().apply {
+            setOnItemClickListener { _, view, position ->
+                nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {
                     putParcelable("ariticleData", articleAdapter.data[position])
                 })
             }
             addChildClickViewIds(R.id.item_home_author, R.id.item_project_author)
-            setNbOnItemChildClickListener { _, view, position ->
+            setOnItemChildClickListener { _, view, position ->
                 when (view.id) {
                     R.id.item_home_author, R.id.item_project_author -> {
-                        nav().navigate(
+                        nav().navigateAction(
                             R.id.action_mainfragment_to_lookInfoFragment,
                             Bundle().apply {
                                 putInt("id", articleAdapter.data[position].userId)

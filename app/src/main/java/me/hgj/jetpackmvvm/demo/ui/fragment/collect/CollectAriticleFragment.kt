@@ -9,16 +9,15 @@ import com.yanzhenjie.recyclerview.SwipeRecyclerView
 import kotlinx.android.synthetic.main.include_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.ui.adapter.CollectAdapter
-import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
-import me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
 import me.hgj.jetpackmvvm.demo.data.model.bean.CollectBus
-import me.hgj.jetpackmvvm.demo.data.model.bean.CollectResponse
 import me.hgj.jetpackmvvm.demo.databinding.IncludeListBinding
+import me.hgj.jetpackmvvm.demo.ui.adapter.CollectAdapter
+import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.navigateAction
 
 /**
  * 作者　: hegaojian
@@ -63,8 +62,8 @@ class CollectAriticleFragment : BaseFragment<RequestCollectViewModel, IncludeLis
                     mViewModel.collect(item.originId)
                 }
             }
-            setNbOnItemClickListener { _, view, position ->
-                nav().navigate(R.id.action_to_webFragment, Bundle().apply {
+            setOnItemClickListener { _, view, position ->
+                nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {
                         putParcelable("collect", articleAdapter.data[position])
                     })
             }
