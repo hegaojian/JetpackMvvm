@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 14
-        versionName "1.1.4"
+        versionCode 15
+        versionName "1.1.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -47,11 +47,13 @@ dependencies {
     // liveData
     api "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     //navigation
-    api 'androidx.navigation:navigation-runtime:2.2.2'
+    api 'androidx.navigation:navigation-runtime:2.3.0'
     //retrofit
     api "com.squareup.retrofit2:retrofit:2.9.0"
     api "com.squareup.retrofit2:converter-gson:2.9.0"
     api 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+    //动态替换BaseUrl库 使用可参考 https://github.com/JessYanCoding/RetrofitUrlManager
+    api 'me.jessyan:retrofit-url-manager:1.4.0'
 
 }
 
@@ -60,7 +62,7 @@ publish {
     repoName = 'cxk'//仓库名字 这个可以随便起,比如我觉得我比较菜，所以我取了个蔡徐坤
     groupId = 'me.hegj'//路径 名等于“me.hegj.JetpackMvvm:1.0.0”中的   me.hegj，你也可以写com.xxx
     artifactId = 'JetpackMvvm'//项目名 等于“me.hegj.JetpackMvvm:1.0.0”中的  JetpackMvvm
-    publishVersion = '1.1.4'//版本号 等于“me.hegj.JetpackMvvm:1.0.0”中的 1.0.0
+    publishVersion = '1.1.5'//版本号 等于“me.hegj.JetpackMvvm:1.0.0”中的 1.0.0
     desc = 'An Android Jetpack-MVVM framework,JetpackMvvm is nb'//说明，不重要的东西，随便写
     website = 'https://github.com/hegaojian/JetpackMvvm'//项目主页，用GitHub地址
     licences = ['Apache-2.0']//协议

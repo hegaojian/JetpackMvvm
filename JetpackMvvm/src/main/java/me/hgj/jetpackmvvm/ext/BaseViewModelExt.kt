@@ -229,7 +229,7 @@ fun <T> BaseViewModel.requestNoCheck(
     return viewModelScope.launch {
         runCatching {
             //请求体
-           block()
+            block()
         }.onSuccess {
             //网络请求成功 关闭弹窗
             loadingChange.dismissDialog.postValue(false)

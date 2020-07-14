@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.network
 
+import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
@@ -34,7 +35,7 @@ abstract class BaseNetworkApi {
      */
     private val okHttpClient: OkHttpClient
         get() {
-            var builder = OkHttpClient.Builder()
+            var builder = RetrofitUrlManager.getInstance().with(OkHttpClient.Builder())
             builder = setHttpClientBuilder(builder)
             return builder.build()
         }

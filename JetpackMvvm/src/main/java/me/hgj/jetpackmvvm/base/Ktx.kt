@@ -17,6 +17,9 @@ import me.hgj.jetpackmvvm.network.manager.NetworkStateReceive
  * 时间　: 2019/12/14
  * 描述　:
  */
+
+val appContext: Application by lazy { Ktx.app }
+
 class Ktx : ContentProvider() {
 
     companion object {
@@ -35,7 +38,10 @@ class Ktx : ContentProvider() {
     private fun install(application: Application) {
         app = application
         mNetworkStateReceive = NetworkStateReceive()
-        app.registerReceiver( mNetworkStateReceive,IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
+        app.registerReceiver(
+            mNetworkStateReceive,
+            IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
+        )
         if (watchActivityLife) application.registerActivityLifecycleCallbacks(KtxLifeCycleCallBack())
         if (watchAppLife) ProcessLifecycleOwner.get().lifecycle.addObserver(KtxAppLifeObserver)
     }

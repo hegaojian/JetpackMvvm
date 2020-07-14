@@ -17,7 +17,7 @@ import me.hgj.jetpackmvvm.network.manager.NetworkStateManager
 abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
 
     /**
-     * 是否需要使用Databinding 供子类BaseVmDbActivity修改，用户请慎动
+     * 是否需要使用DataBinding 供子类BaseVmDbActivity修改，用户请慎动
      */
     private var isUserDb = false
 
@@ -62,7 +62,6 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
     private fun createViewModel(): VM {
         return ViewModelProvider(this).get(getVmClazz(this))
     }
-
     /**
      * 创建LiveData数据观察者
      */
