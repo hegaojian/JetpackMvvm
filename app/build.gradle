@@ -12,8 +12,8 @@ android {
         applicationId "me.hgj.jetpackmvvm.demo"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 14
-        versionName "1.1.4"
+        versionCode 15
+        versionName "1.1.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
       /* ndk {
             // 设置支持的SO库架构 一般只设置这个就阔以设配所有的设备了，还可以减少apk的大小
@@ -99,7 +99,7 @@ dependencies {
     implementation 'com.tencent:mmkv:1.0.22'
     //项目核心框架
     implementation project(path: ':JetpackMvvm')
-//    implementation 'me.hegj:JetpackMvvm:1.1.4'
+//    implementation 'me.hegj:JetpackMvvm:1.1.5'
     //轮播图
     implementation 'com.github.zhpanvip:BannerViewPager:2.6.6'
     //BaseAdapter
@@ -125,6 +125,11 @@ dependencies {
     implementation 'me.jessyan:autosize:1.2.1'
     //防崩溃
     implementation 'cat.ereza:customactivityoncrash:2.3.0'
+    //下载
+    implementation("com.liulishuo.filedownloader:library:1.7.7") {
+        exclude group: "com.android.support"
+    }
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
 
 }

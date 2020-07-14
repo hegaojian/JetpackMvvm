@@ -37,7 +37,6 @@ class DefineLoadMoreView(context: Context) : LinearLayout(context), SwipeRecycle
         visibility = View.GONE
         val minHeight = ConvertUtils.dp2px(36f)
         minimumHeight = minHeight
-
         View.inflate(context, R.layout.layout_fotter_loadmore, this)
         mProgressBar = findViewById(R.id.loading_view)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

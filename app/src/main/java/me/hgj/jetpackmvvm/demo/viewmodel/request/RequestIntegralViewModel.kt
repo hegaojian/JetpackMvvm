@@ -2,10 +2,10 @@ package me.hgj.jetpackmvvm.demo.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
+import me.hgj.jetpackmvvm.demo.app.network.apiService
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.data.model.bean.IntegralHistoryResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.IntegralResponse
-import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
 import me.hgj.jetpackmvvm.ext.request
 
 /**
@@ -27,7 +27,7 @@ class RequestIntegralViewModel : BaseViewModel() {
         if (isRefresh) {
             pageNo = 1
         }
-        request({ HttpRequestManger.apiService.getIntegralRank(pageNo) }, {
+        request({ apiService.getIntegralRank(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -57,7 +57,7 @@ class RequestIntegralViewModel : BaseViewModel() {
         if (isRefresh) {
             pageNo = 1
         }
-        request({ HttpRequestManger.apiService.getIntegralHistory(pageNo) }, {
+        request({ apiService.getIntegralHistory(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =

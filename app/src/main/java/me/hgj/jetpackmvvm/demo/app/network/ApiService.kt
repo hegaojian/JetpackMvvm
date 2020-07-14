@@ -1,6 +1,8 @@
 package me.hgj.jetpackmvvm.demo.app.network
 
 import me.hgj.jetpackmvvm.demo.data.model.bean.*
+import okhttp3.ResponseBody
+import retrofit2.Response
 import retrofit2.http.*
 
 /**
@@ -11,7 +13,8 @@ import retrofit2.http.*
 interface ApiService {
 
     companion object {
-         const val SERVER_URL = "https://wanandroid.com/"
+        const val SERVER_URL = "https://wanandroid.com/"
+        const val SERVER_URL1 = "https://wanandroid.com/"
     }
 
     /**
@@ -19,7 +22,10 @@ interface ApiService {
      */
     @FormUrlEncoded
     @POST("user/login")
-    suspend fun login(@Field("username") username: String, @Field("password") pwd: String): ApiResponse<UserInfo>
+    suspend fun login(
+        @Field("username") username: String,
+        @Field("password") pwd: String
+    ): ApiResponse<UserInfo>
 
     /**
      * 注册
@@ -60,7 +66,10 @@ interface ApiService {
      * 根据分类id获取项目数据
      */
     @GET("project/list/{page}/json")
-    suspend fun getProjecDataByType(@Path("page") pageNo: Int, @Query("cid") cid: Int): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>>
+    suspend fun getProjecDataByType(
+        @Path("page") pageNo: Int,
+        @Query("cid") cid: Int
+    ): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>>
 
     /**
      * 获取最新项目数据
@@ -78,7 +87,10 @@ interface ApiService {
      * 获取公众号数据
      */
     @GET("wxarticle/list/{id}/{page}/json")
-    suspend fun getPublicData(@Path("page") pageNo: Int, @Path("id") id: Int): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>>
+    suspend fun getPublicData(
+        @Path("page") pageNo: Int,
+        @Path("id") id: Int
+    ): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>>
 
     /**
      * 获取热门搜索数据
@@ -90,7 +102,10 @@ interface ApiService {
      * 根据关键词搜索数据
      */
     @POST("article/query/{page}/json")
-    suspend fun getSearchDataByKey(@Path("page") pageNo: Int, @Query("k") searchKey: String): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>>
+    suspend fun getSearchDataByKey(
+        @Path("page") pageNo: Int,
+        @Query("k") searchKey: String
+    ): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>>
 
     /**
      * 广场列表数据
@@ -114,7 +129,10 @@ interface ApiService {
      * 知识体系下的文章数据
      */
     @GET("article/list/{page}/json")
-    suspend fun getSystemChildData(@Path("page") pageNo: Int, @Query("cid") cid: Int): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>>
+    suspend fun getSystemChildData(
+        @Path("page") pageNo: Int,
+        @Query("cid") cid: Int
+    ): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>>
 
     /**
      * 获取导航数据
@@ -138,7 +156,10 @@ interface ApiService {
      * 收藏网址
      */
     @POST("lg/collect/addtool/json")
-    suspend fun collectUrl(@Query("name") name: String, @Query("link") link: String): ApiResponse<CollectUrlResponse>
+    suspend fun collectUrl(
+        @Query("name") name: String,
+        @Query("link") link: String
+    ): ApiResponse<CollectUrlResponse>
 
     /**
      * 取消收藏网址
@@ -162,7 +183,10 @@ interface ApiService {
      * 获取他人分享文章列表数据
      */
     @GET("user/{id}/share_articles/{page}/json")
-    suspend fun getShareByidData(@Path("id") id: Int,@Path("page") page: Int): ApiResponse<ShareResponse>
+    suspend fun getShareByidData(
+        @Path("id") id: Int,
+        @Path("page") page: Int
+    ): ApiResponse<ShareResponse>
 
     /**
      * 获取当前账户的个人积分
@@ -217,23 +241,27 @@ interface ApiService {
      */
     @POST("/lg/todo/add/json")
     @FormUrlEncoded
-    suspend fun addTodo(@Field("title") title: String,
-                @Field("content") content: String,
-                @Field("date") date: String,
-                @Field("type") type: Int,
-                @Field("priority") priority: Int): ApiResponse<Any?>
+    suspend fun addTodo(
+        @Field("title") title: String,
+        @Field("content") content: String,
+        @Field("date") date: String,
+        @Field("type") type: Int,
+        @Field("priority") priority: Int
+    ): ApiResponse<Any?>
 
     /**
      * 修改一个TODO
      */
     @POST("/lg/todo/update/{id}/json")
     @FormUrlEncoded
-    suspend fun updateTodo(@Field("title") title: String,
-                   @Field("content") content: String,
-                   @Field("date") date: String,
-                   @Field("type") type: Int,
-                   @Field("priority") priority: Int,
-                   @Path("id") id: Int): ApiResponse<Any?>
+    suspend fun updateTodo(
+        @Field("title") title: String,
+        @Field("content") content: String,
+        @Field("date") date: String,
+        @Field("type") type: Int,
+        @Field("priority") priority: Int,
+        @Path("id") id: Int
+    ): ApiResponse<Any?>
 
     /**
      * 删除一个TODO

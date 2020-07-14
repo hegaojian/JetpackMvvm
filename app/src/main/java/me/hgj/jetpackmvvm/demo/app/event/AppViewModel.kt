@@ -1,9 +1,9 @@
 package me.hgj.jetpackmvvm.demo.app.event
 
+import me.hgj.jetpackmvvm.base.appContext
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.callback.livedata.IntLiveData
 import me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData
-import me.hgj.jetpackmvvm.demo.app.App
 import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.data.model.bean.UserInfo
@@ -29,7 +29,7 @@ class AppViewModel : BaseViewModel() {
         //默认值保存的账户信息，没有登陆过则为null
         userinfo.value = CacheUtil.getUser()
         //默认值颜色
-        appColor.value = SettingUtil.getColor(App.instance)
+        appColor.value = SettingUtil.getColor(appContext)
         //初始化列表动画
         appAnimation.value = SettingUtil.getListMode()
     }

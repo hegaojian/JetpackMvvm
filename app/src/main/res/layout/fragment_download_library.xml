@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="click"
+            type="me.hgj.jetpackmvvm.demo.ui.fragment.demo.DownLoadLibraryFragment.ProxyClick" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/windowBackground"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_toolbar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/downloadLibraryProgressBar"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:max="100"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/downloadLibraryProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="0%"
+                app:layout_constraintStart_toStartOf="@+id/downloadLibraryProgressBar"
+                app:layout_constraintTop_toBottomOf="@+id/downloadLibraryProgressBar" />
+
+            <TextView
+                android:id="@+id/downloadLibrarySize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="0KB/0KB"
+                app:layout_constraintEnd_toEndOf="@+id/downloadLibraryProgressBar"
+                app:layout_constraintTop_toBottomOf="@+id/downloadLibraryProgressBar" />
+
+            <Button
+                android:id="@+id/cancelLibraryRequest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:onClick="@{()->click.cancel()}"
+                android:text="取消下载"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/downloadLibraryProgress" />
+
+            <Button
+                android:id="@+id/pauseLibraryRequest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="暂停下载"
+                android:onClick="@{()->click.pause()}"
+                app:layout_constraintEnd_toStartOf="@+id/startLibraryRequest"
+                app:layout_constraintStart_toEndOf="@+id/cancelLibraryRequest"
+                app:layout_constraintTop_toTopOf="@+id/cancelLibraryRequest" />
+
+            <Button
+                android:id="@+id/startLibraryRequest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="开始下载"
+                android:onClick="@{()->click.downloadLibrary()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/pauseLibraryRequest" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+</layout>

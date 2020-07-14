@@ -2,9 +2,11 @@ package me.hgj.jetpackmvvm.demo.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
+import me.hgj.jetpackmvvm.demo.app.network.apiService
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.BannerResponse
+import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestCoroutine
 import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
 import me.hgj.jetpackmvvm.ext.request
 import me.hgj.jetpackmvvm.state.ResultState
@@ -36,7 +38,7 @@ class RequestHomeViewModel : BaseViewModel() {
         if (isRefresh) {
             pageNo = 0
         }
-        request({ HttpRequestManger.instance.getHomeData(pageNo) }, {
+        request({ HttpRequestCoroutine.getHomeData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -66,6 +68,6 @@ class RequestHomeViewModel : BaseViewModel() {
      * 获取轮播图数据
      */
     fun getBannerData() {
-        request({ HttpRequestManger.apiService.getBanner() }, bannerData)
+        request({ apiService.getBanner() }, bannerData)
     }
 }

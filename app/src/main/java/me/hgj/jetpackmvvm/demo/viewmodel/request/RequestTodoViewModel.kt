@@ -2,12 +2,11 @@ package me.hgj.jetpackmvvm.demo.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
+import me.hgj.jetpackmvvm.demo.app.network.apiService
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.UpdateUiState
 import me.hgj.jetpackmvvm.demo.data.model.bean.TodoResponse
-import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
 import me.hgj.jetpackmvvm.ext.request
-import me.hgj.jetpackmvvm.ext.util.logd
 
 /**
  * 作者　: hegaojian
@@ -17,6 +16,7 @@ import me.hgj.jetpackmvvm.ext.util.logd
 class RequestTodoViewModel : BaseViewModel() {
 
     var pageNo = 1
+
     //列表集合数据
     var todoDataState = MutableLiveData<ListDataUiState<TodoResponse>>()
 
@@ -34,7 +34,7 @@ class RequestTodoViewModel : BaseViewModel() {
         if (isRefresh) {
             pageNo = 1
         }
-        request({ HttpRequestManger.apiService.getTodoData(pageNo) }, {
+        request({ apiService.getTodoData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -61,7 +61,7 @@ class RequestTodoViewModel : BaseViewModel() {
     }
 
     fun delTodo(id: Int, position: Int) {
-        request({ HttpRequestManger.apiService.deleteTodo(id) }, {
+        request({ apiService.deleteTodo(id) }, {
             val uistate = UpdateUiState(isSuccess = true, data = position)
             delDataState.postValue(uistate)
         }, {
@@ -71,7 +71,7 @@ class RequestTodoViewModel : BaseViewModel() {
     }
 
     fun doneTodo(id: Int, position: Int) {
-        request({ HttpRequestManger.apiService.doneTodo(id,1) }, {
+        request({ apiService.doneTodo(id, 1) }, {
             val uistate = UpdateUiState(isSuccess = true, data = position)
             doneDataState.postValue(uistate)
         }, {
@@ -82,7 +82,7 @@ class RequestTodoViewModel : BaseViewModel() {
 
     fun addTodo(todoTitle: String, todoContent: String, todoTime: String, todoLeve: Int) {
         request({
-            HttpRequestManger.apiService.addTodo( todoTitle, todoContent,todoTime,0,todoLeve )
+            apiService.addTodo(todoTitle, todoContent, todoTime, 0, todoLeve)
         }, {
             val uistate = UpdateUiState(isSuccess = true, data = 0)
             updateDataState.postValue(uistate)
@@ -92,9 +92,15 @@ class RequestTodoViewModel : BaseViewModel() {
         }, isShowDialog = true)
     }
 
-    fun updateTodo(id: Int,todoTitle: String, todoContent: String, todoTime: String, todoLeve: Int) {
+    fun updateTodo(
+        id: Int,
+        todoTitle: String,
+        todoContent: String,
+        todoTime: String,
+        todoLeve: Int
+    ) {
         request({
-            HttpRequestManger.apiService.updateTodo(todoTitle,todoContent,todoTime,0,todoLeve,id)
+            apiService.updateTodo(todoTitle, todoContent, todoTime, 0, todoLeve, id)
         }, {
             val uistate = UpdateUiState(isSuccess = true, data = 0)
             updateDataState.postValue(uistate)

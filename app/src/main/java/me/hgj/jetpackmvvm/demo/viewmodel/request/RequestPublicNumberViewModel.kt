@@ -2,10 +2,10 @@ package me.hgj.jetpackmvvm.demo.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
+import me.hgj.jetpackmvvm.demo.app.network.apiService
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.ClassifyResponse
-import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
 import me.hgj.jetpackmvvm.ext.request
 import me.hgj.jetpackmvvm.state.ResultState
 
@@ -24,14 +24,14 @@ class RequestPublicNumberViewModel : BaseViewModel() {
 
 
     fun getPublicTitleData() {
-        request({ HttpRequestManger.apiService.getPublicTitle() }, titleData)
+        request({ apiService.getPublicTitle() }, titleData)
     }
 
     fun getPublicData(isRefresh: Boolean, cid: Int) {
         if (isRefresh) {
             pageNo = 1
         }
-        request({ HttpRequestManger.apiService.getPublicData(pageNo, cid) }, {
+        request({ apiService.getPublicData(pageNo, cid) }, {
             //请求成功
             pageNo++
             val listDataUiState =

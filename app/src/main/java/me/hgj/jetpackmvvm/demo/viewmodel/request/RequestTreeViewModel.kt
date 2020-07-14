@@ -2,11 +2,11 @@ package me.hgj.jetpackmvvm.demo.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
+import me.hgj.jetpackmvvm.demo.app.network.apiService
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.NavigationResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.SystemResponse
-import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
 import me.hgj.jetpackmvvm.ext.request
 
 /**
@@ -42,7 +42,7 @@ class RequestTreeViewModel : BaseViewModel() {
         if (isRefresh) {
             pageNo = 0
         }
-        request({ HttpRequestManger.apiService.getSquareData(pageNo) }, {
+        request({ apiService.getSquareData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -75,7 +75,7 @@ class RequestTreeViewModel : BaseViewModel() {
         if (isRefresh) {
             pageNo = 1 //每日一问的页码从1开始
         }
-        request({ HttpRequestManger.apiService.getAskData(pageNo) }, {
+        request({ apiService.getAskData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -105,7 +105,7 @@ class RequestTreeViewModel : BaseViewModel() {
      * 获取体系数据
      */
     fun getSystemData() {
-        request({ HttpRequestManger.apiService.getSystemData() }, {
+        request({ apiService.getSystemData() }, {
             //请求成功
             val dataUiState =
                 ListDataUiState(
@@ -129,7 +129,7 @@ class RequestTreeViewModel : BaseViewModel() {
      * 获取导航数据
      */
     fun getNavigationData() {
-        request({ HttpRequestManger.apiService.getNavigationData() }, {
+        request({ apiService.getNavigationData() }, {
             //请求成功
             val dataUiState =
                 ListDataUiState(
@@ -152,11 +152,11 @@ class RequestTreeViewModel : BaseViewModel() {
     /**
      * 获取体系子栏目列表数据
      */
-    fun getSystemChildData(isRefresh: Boolean,cid:Int) {
+    fun getSystemChildData(isRefresh: Boolean, cid: Int) {
         if (isRefresh) {
             pageNo = 0
         }
-        request({ HttpRequestManger.apiService.getSystemChildData(pageNo,cid) }, {
+        request({ apiService.getSystemChildData(pageNo, cid) }, {
             //请求成功
             pageNo++
             val listDataUiState =

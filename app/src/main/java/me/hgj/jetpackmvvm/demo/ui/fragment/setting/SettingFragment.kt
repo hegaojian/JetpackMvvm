@@ -1,7 +1,6 @@
 package me.hgj.jetpackmvvm.demo.ui.fragment.setting
 
 import android.content.SharedPreferences
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -85,7 +84,7 @@ class SettingFragment : PreferenceFragmentCompat(),
                 negativeButtonText = "取消",
                 positiveAction = {
                     //清空cookie
-                    NetworkApi.instance.cookieJar.clear()
+                    NetworkApi.INSTANCE.cookieJar.clear()
                     CacheUtil.setUser(null)
                     shareViewModel.userinfo.postValue(null)
                     nav().navigateUp()

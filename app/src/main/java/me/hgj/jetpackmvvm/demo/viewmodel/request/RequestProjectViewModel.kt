@@ -2,10 +2,11 @@ package me.hgj.jetpackmvvm.demo.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
+import me.hgj.jetpackmvvm.demo.app.network.apiService
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.ClassifyResponse
-import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
+import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestCoroutine
 import me.hgj.jetpackmvvm.ext.request
 import me.hgj.jetpackmvvm.state.ResultState
 
@@ -24,14 +25,14 @@ class RequestProjectViewModel : BaseViewModel() {
     var projectDataState: MutableLiveData<ListDataUiState<AriticleResponse>> = MutableLiveData()
 
     fun getProjectTitleData() {
-        request({ HttpRequestManger.apiService.getProjecTitle() }, titleData)
+        request({ apiService.getProjecTitle() }, titleData)
     }
 
     fun getProjectData(isRefresh: Boolean, cid: Int, isNew: Boolean = false) {
         if (isRefresh) {
             pageNo = if (isNew) 0 else 1
         }
-        request({ HttpRequestManger.instance.getProjectData(pageNo, cid, isNew) }, {
+        request({ HttpRequestCoroutine.getProjectData(pageNo, cid, isNew) }, {
             //请求成功
             pageNo++
             val listDataUiState =

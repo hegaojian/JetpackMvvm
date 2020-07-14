@@ -2,10 +2,10 @@ package me.hgj.jetpackmvvm.demo.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
+import me.hgj.jetpackmvvm.demo.app.network.apiService
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.UpdateUiState
 import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
-import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
 import me.hgj.jetpackmvvm.ext.request
 import me.hgj.jetpackmvvm.state.ResultState
 
@@ -28,7 +28,7 @@ class RequestAriticleViewModel : BaseViewModel() {
 
     fun addAriticle(shareTitle: String, shareUrl: String) {
         request(
-            { HttpRequestManger.apiService.addAriticle(shareTitle, shareUrl) },
+            { apiService.addAriticle(shareTitle, shareUrl) },
             addData,
             true,
             "正在分享文章中..."
@@ -39,7 +39,7 @@ class RequestAriticleViewModel : BaseViewModel() {
         if (isRefresh) {
             pageNo = 0
         }
-        request({ HttpRequestManger.apiService.getShareData(pageNo) }, {
+        request({ apiService.getShareData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -66,7 +66,7 @@ class RequestAriticleViewModel : BaseViewModel() {
     }
 
     fun deleteShareData(id: Int, position: Int) {
-        request({ HttpRequestManger.apiService.deleteShareData(id) }, {
+        request({ apiService.deleteShareData(id) }, {
             val updateUiState = UpdateUiState(isSuccess = true, data = position)
             delDataState.postValue(updateUiState)
         }, {

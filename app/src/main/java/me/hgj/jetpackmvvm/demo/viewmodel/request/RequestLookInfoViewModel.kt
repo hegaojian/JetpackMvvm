@@ -2,10 +2,10 @@ package me.hgj.jetpackmvvm.demo.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
+import me.hgj.jetpackmvvm.demo.app.network.apiService
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.data.model.bean.AriticleResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.ShareResponse
-import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
 import me.hgj.jetpackmvvm.ext.request
 
 /**
@@ -25,7 +25,7 @@ class RequestLookInfoViewModel : BaseViewModel() {
         if (isRefresh) {
             pageNo = 1
         }
-        request({ HttpRequestManger.apiService.getShareByidData(id, pageNo) }, {
+        request({ apiService.getShareByidData(id, pageNo) }, {
             //请求成功
             pageNo++
             shareResponse.postValue(it)

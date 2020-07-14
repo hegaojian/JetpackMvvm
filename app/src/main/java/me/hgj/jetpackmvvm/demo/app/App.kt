@@ -21,11 +21,13 @@ import me.hgj.jetpackmvvm.demo.ui.activity.WelcomeActivity
  * 时间　: 2019/12/23
  * 描述　:
  */
+
 class App : BaseApp() {
 
     companion object {
         lateinit var instance: App
     }
+
     override fun onCreate() {
         super.onCreate()
         instance = this

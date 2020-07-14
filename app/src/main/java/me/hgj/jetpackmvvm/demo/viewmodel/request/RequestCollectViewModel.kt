@@ -2,11 +2,11 @@ package me.hgj.jetpackmvvm.demo.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
+import me.hgj.jetpackmvvm.demo.app.network.apiService
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.CollectUiState
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.data.model.bean.CollectResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.CollectUrlResponse
-import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestManger
 import me.hgj.jetpackmvvm.ext.request
 
 /**
@@ -15,7 +15,7 @@ import me.hgj.jetpackmvvm.ext.request
  * 描述　: 专门为了收藏而写的ViewModel
  */
 open class RequestCollectViewModel : BaseViewModel() {
-
+    
     private var pageNo = 0
 
     //收藏文章
@@ -36,7 +36,7 @@ open class RequestCollectViewModel : BaseViewModel() {
      * 不然会出错
      */
     fun collect(id: Int) {
-        request({ HttpRequestManger.apiService.collect(id) }, {
+        request({ apiService.collect(id) }, {
             val uiState = CollectUiState(isSuccess = true, collect = true, id = id)
             collectUiState.postValue(uiState)
         }, {
@@ -52,7 +52,7 @@ open class RequestCollectViewModel : BaseViewModel() {
      * 不然会出错
      */
     fun uncollect(id: Int) {
-        request({ HttpRequestManger.apiService.uncollect(id) }, {
+        request({ apiService.uncollect(id) }, {
             val uiState = CollectUiState(isSuccess = true, collect = false, id = id)
             collectUiState.postValue(uiState)
         }, {
@@ -68,7 +68,7 @@ open class RequestCollectViewModel : BaseViewModel() {
      * 不然会出错
      */
     fun collectUrl(name: String, link: String) {
-        request({ HttpRequestManger.apiService.collectUrl(name, link) }, {
+        request({ apiService.collectUrl(name, link) }, {
             val uiState = CollectUiState(isSuccess = true, collect = true, id = it.id)
             collectUrlUiState.postValue(uiState)
         }, {
@@ -84,7 +84,7 @@ open class RequestCollectViewModel : BaseViewModel() {
      * 不然会出错
      */
     fun uncollectUrl(id: Int) {
-        request({ HttpRequestManger.apiService.uncollect(id) }, {
+        request({ apiService.uncollect(id) }, {
             val uiState = CollectUiState(isSuccess = true, collect = false, id = id)
             collectUrlUiState.postValue(uiState)
         }, {
@@ -98,7 +98,7 @@ open class RequestCollectViewModel : BaseViewModel() {
         if (isRefresh) {
             pageNo = 0
         }
-        request({ HttpRequestManger.apiService.getCollectData(pageNo) }, {
+        request({ apiService.getCollectData(pageNo) }, {
             //请求成功
             pageNo++
             val listDataUiState =
@@ -125,7 +125,7 @@ open class RequestCollectViewModel : BaseViewModel() {
     }
 
     fun getCollectUrlData() {
-        request({ HttpRequestManger.apiService.getCollectUrlData() }, {
+        request({ apiService.getCollectUrlData() }, {
             //请求成功
             val listDataUiState =
                 ListDataUiState(
