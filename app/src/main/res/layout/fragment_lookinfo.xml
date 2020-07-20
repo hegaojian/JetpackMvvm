@@ -80,9 +80,7 @@
                 android:layout_marginTop="-16dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp">
-
                 <include layout="@layout/include_list" />
-
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 

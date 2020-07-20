@@ -37,7 +37,7 @@ class TreeArrFragment : BaseFragment<TreeViewModel, FragmentViewpagerBinding>() 
 
     override fun initView(savedInstanceState: Bundle?)  {
         //初始化时设置顶部主题颜色
-        shareViewModel.appColor.value.let { viewpager_linear.setBackgroundColor(it) }
+        appViewModel.appColor.value?.let { setUiTheme(it, viewpager_linear) }
         include_viewpager_toolbar.run {
             inflateMenu(R.menu.todo_menu)
             setOnMenuItemClickListener {
@@ -71,7 +71,7 @@ class TreeArrFragment : BaseFragment<TreeViewModel, FragmentViewpagerBinding>() 
     }
 
     override fun createObserver() {
-        shareViewModel.appColor.observe(viewLifecycleOwner, Observer {
+        appViewModel.appColor.observe(viewLifecycleOwner, Observer {
             setUiTheme(it, viewpager_linear)
         })
     }

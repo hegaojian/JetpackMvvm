@@ -1,12 +1,9 @@
 package me.hgj.jetpackmvvm.base
 
 import android.app.Application
-import android.content.IntentFilter
-import android.net.ConnectivityManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
-import me.hgj.jetpackmvvm.network.manager.NetworkStateReceive
 
 /**
  * 作者　: hegaojian

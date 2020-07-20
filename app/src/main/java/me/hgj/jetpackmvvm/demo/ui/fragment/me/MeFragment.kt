@@ -19,7 +19,6 @@ import me.hgj.jetpackmvvm.demo.viewmodel.state.MeViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
-import me.hgj.jetpackmvvm.ext.util.logd
 import me.hgj.jetpackmvvm.ext.util.notNull
 
 /**
@@ -39,15 +38,15 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
     override fun initView(savedInstanceState: Bundle?) {
         mDatabind.vm = mViewModel
         mDatabind.click = ProxyClick()
-        shareViewModel.appColor.value.let { setUiTheme(it, me_linear, me_integral) }
-        shareViewModel.userinfo.value?.let { mViewModel.name.set(if (it.nickname.isEmpty()) it.username else it.nickname) }
+        appViewModel.appColor.value?.let { setUiTheme(it, me_linear, me_integral) }
+        appViewModel.userinfo.value?.let { mViewModel.name.set(if (it.nickname.isEmpty()) it.username else it.nickname) }
         me_swipe.init {
             requestMeViewModel.getIntegral()
         }
     }
 
     override fun lazyLoadData() {
-        shareViewModel.userinfo.value?.run {
+        appViewModel.userinfo.value?.run {
             me_swipe.isRefreshing = true
             requestMeViewModel.getIntegral()
         }
@@ -65,7 +64,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
             })
         })
 
-        shareViewModel.run {
+        appViewModel.run {
             appColor.observe(viewLifecycleOwner, Observer {
                 setUiTheme(it, me_linear, me_swipe, me_integral)
             })
@@ -81,9 +80,6 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
                 })
             })
         }
-        mViewModel.testString.observe(viewLifecycleOwner, Observer {
-            showLoading(it)
-        })
     }
 
     inner class ProxyClick {

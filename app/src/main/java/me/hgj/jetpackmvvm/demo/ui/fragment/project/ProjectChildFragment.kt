@@ -106,7 +106,6 @@ class ProjectChildFragment : BaseFragment<ProjectViewModel, IncludeListBinding>(
                 }
             }
         }
-
     }
 
     override fun lazyLoadData() {
@@ -133,7 +132,7 @@ class ProjectChildFragment : BaseFragment<ProjectViewModel, IncludeListBinding>(
                 }
             }
         })
-        shareViewModel.run {
+        appViewModel.run {
             //监听账户信息是否改变 有值时(登录)将相关的数据设置为已收藏，为空时(退出登录)，将已收藏的数据变为未收藏
             userinfo.observe(viewLifecycleOwner, Observer {
                 if (it != null) {

@@ -40,7 +40,7 @@ class SystemArrFragment : BaseFragment<TreeViewModel, FragmentSystemBinding>() {
             nav().navigateUp()
         }
         //初始化时设置顶部主题颜色
-        shareViewModel.appColor.value.let { viewpager_linear.setBackgroundColor(it) }
+        appViewModel.appColor.value?.let { viewpager_linear.setBackgroundColor(it) }
         //设置栏目标题居左显示
         (magic_indicator.layoutParams as FrameLayout.LayoutParams).gravity = Gravity.LEFT
 

@@ -42,7 +42,7 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
             nav().navigateUp()
         }
         //设置颜色跟主题颜色一致
-        shareViewModel.appColor.value.let {
+        appViewModel.appColor.value?.let {
             SettingUtil.setShapColor(loginSub, it)
             loginGoregister.setTextColor(it)
             toolbar.setBackgroundColor(it)
@@ -55,7 +55,7 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
                     //登录成功 通知账户数据发生改变鸟
                     CacheUtil.setUser(it)
                     CacheUtil.setIsLogin(true)
-                    shareViewModel.userinfo.postValue(it)
+                    appViewModel.userinfo.postValue(it)
                     nav().navigateUp()
                 }, {
                     //登录失败

@@ -32,7 +32,7 @@ class CollectFragment:BaseFragment<RequestCollectViewModel,FragmentCollectBindin
 
     override fun initView(savedInstanceState: Bundle?)  {
         //初始化时设置顶部主题颜色
-        shareViewModel.appColor.value.let { collect_viewpager_linear.setBackgroundColor(it) }
+        appViewModel.appColor.value?.let { collect_viewpager_linear.setBackgroundColor(it) }
         //初始化viewpager2
         collect_view_pager.init(this,fragments)
         //初始化 magic_indicator

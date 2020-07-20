@@ -48,6 +48,7 @@ class ProjectFragment : BaseFragment<ProjectViewModel, FragmentViewpagerBinding>
         view_pager.init(this, fragments)
         //初始化 magic_indicator
         magic_indicator.bindViewPager2(view_pager, mDataList)
+        appViewModel.appColor.value?.let { setUiTheme(it, viewpager_linear, loadsir) }
     }
 
     /**
@@ -84,7 +85,7 @@ class ProjectFragment : BaseFragment<ProjectViewModel, FragmentViewpagerBinding>
                 loadsir.setErrorText(it.errorMsg)
             })
         })
-        shareViewModel.appColor.observe(viewLifecycleOwner, Observer {
+        appViewModel.appColor.observe(viewLifecycleOwner, Observer {
             setUiTheme(it, viewpager_linear, loadsir)
         })
     }

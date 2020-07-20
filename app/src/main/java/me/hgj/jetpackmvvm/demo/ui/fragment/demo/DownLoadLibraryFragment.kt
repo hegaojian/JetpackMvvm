@@ -57,7 +57,7 @@ class DownLoadLibraryFragment : BaseFragment<DownloadLibraryViewModel, FragmentD
                     downloadLibraryProgressBar.progress = 100
                     downloadLibraryProgress.text = "100%"
                     downloadLibrarySize.text ="${FileTool.bytes2kb(it.totalBytes)}/${FileTool.bytes2kb(it.totalBytes)}"
-                    showMessage("下载成功--地址：${it.filePath}")
+                    showMessage("下载成功--文件地址：${it.filePath}")
                 }
                 is DownloadResultState.Pause -> {
                     showMessage("下载暂停")

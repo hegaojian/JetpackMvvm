@@ -9,5 +9,4 @@ import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
  */
 class DemoViewModel : BaseViewModel() {
 
-
 }

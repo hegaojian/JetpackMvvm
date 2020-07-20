@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.include_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
 import kotlinx.android.synthetic.main.include_toolbar.*
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.app.App
 import me.hgj.jetpackmvvm.base.appContext
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
@@ -31,7 +30,7 @@ import me.hgj.jetpackmvvm.demo.viewmodel.state.HomeViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
-import me.hgj.jetpackmvvm.ext.request
+import me.hgj.jetpackmvvm.ext.util.logi
 import me.hgj.jetpackmvvm.network.manager.NetState
 
 /**
@@ -139,15 +138,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         //请求文章列表数据
         requestHomeViewModel.getHomeData(true)
     }
-
-    override fun onNetworkStateChanged(netState: NetState) {
-        super.onNetworkStateChanged(netState)
-        if (netState.isSuccess) {
-            Toast.makeText(appContext,"HomeFragment-我特么终于有网了啊!", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(appContext,"HomeFragment-我特么怎么断网了!", Toast.LENGTH_SHORT).show()
-        }
-    }
     override fun createObserver() {
         requestHomeViewModel.run {
             //监听首页文章列表请求的数据变化
@@ -200,7 +190,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                 }
             }
         })
-        shareViewModel.run {
+        appViewModel.run {
             //监听账户信息是否改变 有值时(登录)将相关的数据设置为已收藏，为空时(退出登录)，将已收藏的数据变为未收藏
             userinfo.observe(viewLifecycleOwner, Observer {
                 if (it != null) {
@@ -238,6 +228,5 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                 }
             })
         }
-
     }
 }

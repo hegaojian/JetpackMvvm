@@ -74,6 +74,7 @@ object DownLoadManager {
         listener?.onDownLoadPause(key)
         DownLoadPool.pause(key)
     }
+
     /**
      * 取消所有下载
      */
@@ -82,6 +83,7 @@ object DownLoadManager {
             cancel(it.key)
         }
     }
+
     /**
      * 暂停所有下载
      */
@@ -135,15 +137,15 @@ object DownLoadManager {
         }
 
         val file = File("$savePath/$saveName")
-        if (file.exists() && !reDownload) {
-            //文件已存在了
-            loadListener.onDownLoadSuccess(tag, file.path,file.length())
-            return
-        }
         val currentLength = if (!file.exists()) {
             0L
         } else {
             ShareDownLoadUtil.getLong(tag, 0)
+        }
+        if (file.exists()&&currentLength == 0L && !reDownload) {
+            //文件已存在了
+            loadListener.onDownLoadSuccess(tag, file.path, file.length())
+            return
         }
         "startDownLoad current $currentLength".logi()
 

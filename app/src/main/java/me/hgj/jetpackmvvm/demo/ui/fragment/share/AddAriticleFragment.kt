@@ -39,12 +39,12 @@ class AddAriticleFragment : BaseFragment<AriticleViewModel, FragmentShareAriticl
 
         mDatabind.vm = mViewModel
 
-        shareViewModel.userinfo.value?.let {
+        appViewModel.userinfo.value?.let {
             if (it.nickname.isEmpty()) mViewModel.shareName.set(it.username) else mViewModel.shareName.set(
                 it.nickname
             )
         }
-        shareViewModel.appColor.value.let { SettingUtil.setShapColor(share_submit, it) }
+        appViewModel.appColor.value?.let { SettingUtil.setShapColor(share_submit, it) }
 
         toolbar.run {
             initClose("分享文章") {

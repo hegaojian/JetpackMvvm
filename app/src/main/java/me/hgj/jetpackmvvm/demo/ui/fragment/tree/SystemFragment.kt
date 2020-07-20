@@ -92,7 +92,7 @@ class SystemFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
             }
         })
 
-        shareViewModel.run {
+        appViewModel.run {
             //监听全局的主题颜色改变
             appColor.observe(viewLifecycleOwner, Observer {
                 setUiTheme(it, floatbtn, swipeRefresh, loadsir)

@@ -4,6 +4,7 @@ import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.callback.databind.IntObservableField
 import me.hgj.jetpackmvvm.callback.databind.StringObservableField
 import me.hgj.jetpackmvvm.callback.livedata.StringLiveData
+import me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData
 import me.hgj.jetpackmvvm.demo.app.util.ColorUtil
 
 /**
@@ -21,5 +22,5 @@ class MeViewModel : BaseViewModel() {
 
     var imageUrl = StringObservableField(ColorUtil.randomImage())
 
-    var testString = StringLiveData()
+    var testString = UnPeekLiveData<String>()
 }

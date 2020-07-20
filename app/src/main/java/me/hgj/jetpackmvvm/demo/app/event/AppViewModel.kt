@@ -2,7 +2,6 @@ package me.hgj.jetpackmvvm.demo.app.event
 
 import me.hgj.jetpackmvvm.base.appContext
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
-import me.hgj.jetpackmvvm.callback.livedata.IntLiveData
 import me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData
 import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
@@ -20,10 +19,10 @@ class AppViewModel : BaseViewModel() {
     var userinfo = UnPeekLiveData<UserInfo>()
 
     //App主题颜色 中大型项目不推荐以这种方式改变主题颜色，比较繁琐耦合，且容易有遗漏某些控件没有设置主题色
-    var appColor = IntLiveData()
+    var appColor = UnPeekLiveData<Int>()
 
     //App 列表动画
-    var appAnimation = IntLiveData()
+    var appAnimation = UnPeekLiveData<Int>()
 
     init {
         //默认值保存的账户信息，没有登陆过则为null

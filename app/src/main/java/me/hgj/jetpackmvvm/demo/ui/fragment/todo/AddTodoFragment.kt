@@ -54,7 +54,7 @@ class AddTodoFragment : BaseFragment<TodoViewModel, FragmentAddtodoBinding>() {
         toolbar.initClose(if (todoResponse == null) "添加TODO" else "修改TODO") {
             nav().navigateUp()
         }
-        shareViewModel.appColor.value.let { SettingUtil.setShapColor(addtodoSubmit, it) }
+        appViewModel.appColor.value?.let { SettingUtil.setShapColor(addtodoSubmit, it) }
     }
 
     override fun createObserver() {

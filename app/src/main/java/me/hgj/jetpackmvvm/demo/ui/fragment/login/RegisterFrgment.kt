@@ -37,7 +37,7 @@ class RegisterFrgment : BaseFragment<LoginRegisterViewModel, FragmentRegisterBin
             nav().navigateUp()
         }
         //设置颜色跟主题颜色一致
-        shareViewModel.appColor.value.let {
+        appViewModel.appColor.value?.let {
             SettingUtil.setShapColor(registerSub, it)
             toolbar.setBackgroundColor(it)
         }
@@ -50,7 +50,7 @@ class RegisterFrgment : BaseFragment<LoginRegisterViewModel, FragmentRegisterBin
                 parseState(resultState, {
                     CacheUtil.setIsLogin(true)
                     CacheUtil.setUser(it)
-                    shareViewModel.userinfo.postValue(it)
+                    appViewModel.userinfo.postValue(it)
                     nav().navigateAction(R.id.action_registerFrgment_to_mainFragment)
                 }, {
                     showMessage(it.errorMsg)

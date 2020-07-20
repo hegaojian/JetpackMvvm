@@ -32,6 +32,7 @@ import me.hgj.jetpackmvvm.demo.viewmodel.state.SearchViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
+import me.hgj.jetpackmvvm.ext.util.logi
 import me.hgj.jetpackmvvm.ext.util.toJson
 
 /**
@@ -52,7 +53,7 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         setMenu()
-        shareViewModel.appColor.value.let { setUiTheme(it, search_text1, search_text2) }
+        appViewModel.appColor.value?.let { setUiTheme(it, search_text1, search_text2) }
         //初始化搜搜历史Recyclerview
         search_historyRv.init(LinearLayoutManager(context), historyAdapter, false)
         //初始化热门Recyclerview

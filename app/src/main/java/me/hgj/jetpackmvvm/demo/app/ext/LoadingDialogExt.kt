@@ -1,13 +1,19 @@
 package me.hgj.jetpackmvvm.demo.app.ext
 
 import android.app.Activity
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
+import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
+import me.hgj.jetpackmvvm.base.appContext
 import me.hgj.jetpackmvvm.demo.R
+import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
+import me.hgj.jetpackmvvm.demo.app.util.ColorUtil
+import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 
 /**
  * @author : hgj
@@ -28,8 +34,10 @@ fun AppCompatActivity.showLoadingExt(message: String = "请求网络中") {
                     .cancelOnTouchOutside(false)
                     .cornerRadius(12f)
                     .customView(R.layout.layout_custom_progress_dialog_view)
+                    .lifecycleOwner(this)
             loadingDialog?.getCustomView()?.run {
                 this.findViewById<TextView>(R.id.loading_tips).text = message
+                this.findViewById<ProgressBar>(R.id.progressBar).indeterminateTintList = SettingUtil.getOneColorStateList(this@showLoadingExt)
             }
         }
         loadingDialog?.show()
@@ -49,14 +57,15 @@ fun Fragment.showLoadingExt(message: String = "请求网络中") {
                     .cancelOnTouchOutside(false)
                     .cornerRadius(12f)
                     .customView(R.layout.layout_custom_progress_dialog_view)
+                    .lifecycleOwner(this)
                 loadingDialog?.getCustomView()?.run {
                     this.findViewById<TextView>(R.id.loading_tips).text = message
+                    this.findViewById<ProgressBar>(R.id.progressBar).indeterminateTintList = SettingUtil.getOneColorStateList(it)
                 }
             }
             loadingDialog?.show()
         }
     }
-
 }
 
 /**

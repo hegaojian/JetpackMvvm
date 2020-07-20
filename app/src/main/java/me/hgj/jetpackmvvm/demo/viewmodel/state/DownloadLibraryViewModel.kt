@@ -31,7 +31,7 @@ class DownloadLibraryViewModel : BaseViewModel() {
         baseDownloadTask?.let {
             it.setPath("$path/cxk_tmd.apk", false)
                 .setAutoRetryTimes(5)
-                //是否直接强制下载，不管是否文件存在
+                //是否直接强制下载，不管文件是否存在，如果想每次都下载那就设置为true吧
                 .setForceReDownload(false)
                 .setCallbackProgressTimes(300)
                 .setMinIntervalUpdateSpeed(400)

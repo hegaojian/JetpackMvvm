@@ -20,6 +20,7 @@ import me.hgj.jetpackmvvm.network.manager.NetState
  */
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
+    var exitTime = 0L
     override fun layoutId() = R.layout.activity_main
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -42,10 +43,12 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
                 }
             }
         })
+        appViewModel.appColor.value?.let { supportActionBar?.setBackgroundDrawable(ColorDrawable(it))
+            StatusBarUtil.setColor(this, it, 0) }
     }
 
     override fun createObserver() {
-        shareViewModel.appColor.observe(this, Observer {
+        appViewModel.appColor.observe(this, Observer {
             supportActionBar?.setBackgroundDrawable(ColorDrawable(it))
             StatusBarUtil.setColor(this, it, 0)
         })
@@ -62,23 +65,4 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
             Toast.makeText(applicationContext, "我特么怎么断网了!", Toast.LENGTH_SHORT).show()
         }
     }
-
-
-    var exitTime = 0L
-    /*  override fun onBackPressed() {
-          val nav = Navigation.findNavController(this, R.id.host_fragment)
-          if (nav.currentDestination != null && nav.currentDestination!!.id != R.id.mainfragment) {
-              //如果当前界面不是主页，那么直接调用返回即可
-              nav.navigateUp()
-          } else {
-              //是主页
-              if (System.currentTimeMillis() - exitTime > 2000) {
-                  ToastUtils.showShort("再按一次退出程序")
-                  exitTime = System.currentTimeMillis()
-              } else {
-                  super.onBackPressed()
-              }
-          }
-      }*/
-
 }

@@ -16,4 +16,5 @@ class NetworkStateManager private constructor() {
             NetworkStateManager()
         }
     }
+
 }

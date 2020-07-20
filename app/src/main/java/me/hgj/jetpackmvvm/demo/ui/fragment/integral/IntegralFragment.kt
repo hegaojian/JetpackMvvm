@@ -102,9 +102,8 @@ class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding
             //触发刷新监听时请求数据
             requestIntegralViewModel.getIntegralData(true)
         }
-        shareViewModel.appColor.value.let {
-            setUiTheme(
-                it,
+        appViewModel.appColor.value?.let {
+            setUiTheme(it,
                 integral_merank, integral_mename, integral_mecount
             )
         }

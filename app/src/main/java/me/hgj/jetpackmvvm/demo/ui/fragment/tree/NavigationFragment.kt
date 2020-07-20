@@ -78,7 +78,7 @@ class NavigationFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
                 loadsir.showError(it.errMessage)
             }
         })
-        shareViewModel.run {
+        appViewModel.run {
             //监听全局的主题颜色改变
             appColor.observe(viewLifecycleOwner, Observer {
                 setUiTheme(it, floatbtn, swipeRefresh, loadsir)
