@@ -47,7 +47,7 @@ allprojects {
 ```
 dependencies {
   ...
-  implementation 'me.hegj:JetpackMvvm:1.1.6'
+  implementation 'me.hegj:JetpackMvvm:1.1.7'
 }
 ```
 
@@ -351,6 +351,9 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
    } 
 }
 ```
+**4.4 开启打印日志开关
+
+设置全局jetpackMvvmLog变量 是否打开请求日志，默认false不打印，如需要打印日志功能，请设值为 true
 
 **2、 直接在当前ViewModel中拿到请求结果**
 
