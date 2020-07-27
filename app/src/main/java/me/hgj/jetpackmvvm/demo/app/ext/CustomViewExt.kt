@@ -58,24 +58,6 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.Li
  * 描述　:项目中自定义类的拓展函数
  */
 
-fun BannerViewPager<*, *>.setPageListener(onPageSelected: (Int) -> Unit) {
-    this.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-        override fun onPageScrollStateChanged(state: Int) {
-        }
-
-        override fun onPageScrolled(
-            position: Int,
-            positionOffset: Float,
-            positionOffsetPixels: Int
-        ) {
-        }
-
-        override fun onPageSelected(position: Int) {
-            onPageSelected.invoke(position)
-        }
-    })
-}
-
 
 fun LoadService<*>.setErrorText(message: String) {
     if (message.isNotEmpty()) {

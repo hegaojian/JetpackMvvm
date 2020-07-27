@@ -27,9 +27,7 @@ import me.hgj.jetpackmvvm.ext.parseState
  */
 class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>() {
 
-    /** */
     private val requestLoginRegisterViewModel: RequestLoginRegisterViewModel by viewModels()
-
 
     override fun layoutId() = R.layout.fragment_login
 
@@ -37,6 +35,7 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
 
         mDatabind.viewmodel = mViewModel
         mDatabind.click = ProxyClick()
+
 
         toolbar.initClose("登录") {
             nav().navigateUp()

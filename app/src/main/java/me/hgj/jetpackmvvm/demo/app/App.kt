@@ -15,6 +15,7 @@ import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.ErrorCallback
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.LoadingCallback
 import me.hgj.jetpackmvvm.demo.ui.activity.ErrorActivity
 import me.hgj.jetpackmvvm.demo.ui.activity.WelcomeActivity
+import me.hgj.jetpackmvvm.ext.util.jetpackMvvmLog
 
 /**
  * 作者　: hegaojian
@@ -50,10 +51,9 @@ class App : BaseApp() {
         val strategy = CrashReport.UserStrategy(context)
         strategy.isUploadProcess = processName == null || processName == packageName
         // 初始化Bugly
-        Bugly.init(
-            context, if (BuildConfig.DEBUG) "xxx" else "a52f2b5ebb",
-            BuildConfig.DEBUG
-        )
+        Bugly.init(context, if (BuildConfig.DEBUG) "xxx" else "a52f2b5ebb", BuildConfig.DEBUG)
+
+        jetpackMvvmLog = BuildConfig.DEBUG
 
         //防止项目崩溃，崩溃后打开错误界面
         CaocConfig.Builder.create()

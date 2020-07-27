@@ -27,6 +27,7 @@
         <activity
             android:name=".ui.activity.MainActivity"
             android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.ErrorActivity"

@@ -2,10 +2,10 @@ package me.hgj.jetpackmvvm.demo.ui.fragment.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.blankj.utilcode.util.ConvertUtils
 import com.kingja.loadsir.core.LoadService
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
@@ -14,9 +14,9 @@ import kotlinx.android.synthetic.main.include_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
 import kotlinx.android.synthetic.main.include_toolbar.*
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.base.appContext
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
+import me.hgj.jetpackmvvm.demo.app.weight.banner.HomeBannerAdapter
 import me.hgj.jetpackmvvm.demo.app.weight.banner.HomeBannerViewHolder
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView
 import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
@@ -30,8 +30,7 @@ import me.hgj.jetpackmvvm.demo.viewmodel.state.HomeViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
-import me.hgj.jetpackmvvm.ext.util.logi
-import me.hgj.jetpackmvvm.network.manager.NetState
+import me.hgj.jetpackmvvm.ext.util.jetpackMvvmLog
 
 /**
  * 作者　: hegaojian
@@ -105,7 +104,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                 nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {
                     putParcelable(
                         "ariticleData",
-                        articleAdapter.data[position - recyclerView.headerCount]
+                        articleAdapter.data[position - this@HomeFragment.recyclerView.headerCount]
                     )
                 })
             }
@@ -118,7 +117,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                             Bundle().apply {
                                 putInt(
                                     "id",
-                                    articleAdapter.data[position - recyclerView.headerCount].userId
+                                    articleAdapter.data[position - this@HomeFragment.recyclerView.headerCount].userId
                                 )
                             })
                     }
@@ -138,6 +137,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         //请求文章列表数据
         requestHomeViewModel.getHomeData(true)
     }
+
     override fun createObserver() {
         requestHomeViewModel.run {
             //监听首页文章列表请求的数据变化
@@ -157,15 +157,18 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                                         findViewById<BannerViewPager<BannerResponse, HomeBannerViewHolder>>(
                                             R.id.banner_view
                                         )
-                                    bannerview.setHolderCreator {
-                                        HomeBannerViewHolder()
-                                    }.setOnPageClickListener {
-                                        nav().navigateAction(R.id.action_to_webFragment,
-                                            Bundle().apply {
-                                                putParcelable("bannerdata", data[it])
-                                            }
-                                        )
-                                    }.create(data.toList())
+                                    bannerview.apply {
+                                        adapter = HomeBannerAdapter()
+                                        setLifecycleRegistry(lifecycle)
+                                        setOnPageClickListener {
+                                            nav().navigateAction(R.id.action_to_webFragment,
+                                                Bundle().apply {
+                                                    putParcelable("bannerdata", data[it])
+                                                }
+                                            )
+                                        }
+                                        create(data)
+                                    }
                                 }
                         recyclerView.addHeaderView(headview)
                     }
@@ -174,7 +177,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                 })
             })
         }
-
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 //收藏或取消收藏操作成功，发送全局收藏消息

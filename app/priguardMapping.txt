@@ -1,7 +1,7 @@
 # compiler: R8
 # compiler_version: 1.6.82
 # min_api: 21
-# pg_map_id: 8455be0
+# pg_map_id: bda240d
 # common_typos_disable
 $$ServiceLoaderMethods -> a:
     java.util.Iterator $load1() -> a
@@ -1565,21 +1565,22 @@ com.bumptech.glide.RequestManager -> com.bumptech.glide.f:
     com.bumptech.glide.manager.RequestManagerTreeNode treeNode -> e
     android.os.Handler mainHandler -> h
     com.bumptech.glide.RequestBuilder as(java.lang.Class) -> a
-    com.bumptech.glide.RequestBuilder asBitmap() -> a
     void clear(com.bumptech.glide.request.target.Target) -> a
     com.bumptech.glide.RequestBuilder load(java.lang.String) -> a
+    void onStop() -> a
     void setRequestOptions(com.bumptech.glide.request.RequestOptions) -> a
     void track(com.bumptech.glide.request.target.Target,com.bumptech.glide.request.Request) -> a
+    com.bumptech.glide.RequestBuilder asBitmap() -> b
     com.bumptech.glide.TransitionOptions getDefaultTransitionOptions(java.lang.Class) -> b
     boolean untrack(com.bumptech.glide.request.target.Target) -> b
-    com.bumptech.glide.RequestBuilder asDrawable() -> c
     void untrackOrDelegate(com.bumptech.glide.request.target.Target) -> c
-    java.util.List getDefaultRequestListeners() -> d
-    com.bumptech.glide.request.RequestOptions getDefaultRequestOptions() -> e
-    void pauseAllRequests() -> f
-    void pauseAllRequestsRecursive() -> g
-    void pauseRequests() -> h
-    void resumeRequests() -> i
+    com.bumptech.glide.RequestBuilder asDrawable() -> d
+    java.util.List getDefaultRequestListeners() -> e
+    com.bumptech.glide.request.RequestOptions getDefaultRequestOptions() -> f
+    void pauseAllRequests() -> g
+    void pauseAllRequestsRecursive() -> h
+    void pauseRequests() -> i
+    void resumeRequests() -> j
 com.bumptech.glide.RequestManager$1 -> com.bumptech.glide.f$a:
     com.bumptech.glide.RequestManager this$0 -> a
 com.bumptech.glide.RequestManager$RequestManagerConnectivityListener -> com.bumptech.glide.f$b:
@@ -2567,7 +2568,8 @@ com.bumptech.glide.load.engine.SourceGenerator$1 -> com.bumptech.glide.load.engi
     void onLoadFailed(java.lang.Exception) -> a
 com.bumptech.glide.load.engine.bitmap_recycle.ArrayAdapterInterface -> com.bumptech.glide.load.engine.x.a:
     int getArrayLength(java.lang.Object) -> a
-    int getElementSizeInBytes() -> a
+    java.lang.String getTag() -> b
+    int getElementSizeInBytes() -> c
 com.bumptech.glide.load.engine.bitmap_recycle.ArrayPool -> com.bumptech.glide.load.engine.x.b:
     void clearMemory() -> a
     java.lang.Object getExact(int,java.lang.Class) -> a
@@ -2613,7 +2615,8 @@ com.bumptech.glide.load.engine.bitmap_recycle.BitmapPoolAdapter -> com.bumptech.
 com.bumptech.glide.load.engine.bitmap_recycle.ByteArrayAdapter -> com.bumptech.glide.load.engine.x.g:
     int getArrayLength(java.lang.Object) -> a
     int getArrayLength(byte[]) -> a
-    int getElementSizeInBytes() -> a
+    java.lang.String getTag() -> b
+    int getElementSizeInBytes() -> c
 com.bumptech.glide.load.engine.bitmap_recycle.GroupedLinkedMap -> com.bumptech.glide.load.engine.x.h:
     java.util.Map keyToEntry -> b
     com.bumptech.glide.load.engine.bitmap_recycle.GroupedLinkedMap$LinkedEntry head -> a
@@ -2635,7 +2638,8 @@ com.bumptech.glide.load.engine.bitmap_recycle.GroupedLinkedMap$LinkedEntry -> co
 com.bumptech.glide.load.engine.bitmap_recycle.IntegerArrayAdapter -> com.bumptech.glide.load.engine.x.i:
     int getArrayLength(java.lang.Object) -> a
     int getArrayLength(int[]) -> a
-    int getElementSizeInBytes() -> a
+    java.lang.String getTag() -> b
+    int getElementSizeInBytes() -> c
 com.bumptech.glide.load.engine.bitmap_recycle.LruArrayPool -> com.bumptech.glide.load.engine.x.j:
     com.bumptech.glide.load.engine.bitmap_recycle.LruArrayPool$KeyPool keyPool -> b
     java.util.Map sortedSizes -> c
@@ -3848,9 +3852,9 @@ com.bumptech.glide.load.resource.gif.GifFrameLoader$DelayTarget -> com.bumptech.
     long targetTime -> f
     android.graphics.Bitmap resource -> g
     int index -> e
-    android.graphics.Bitmap getResource() -> a
     void onResourceReady(android.graphics.Bitmap,com.bumptech.glide.request.transition.Transition) -> a
     void onResourceReady(java.lang.Object,com.bumptech.glide.request.transition.Transition) -> a
+    android.graphics.Bitmap getResource() -> b
     void onLoadCleared(android.graphics.drawable.Drawable) -> d
 com.bumptech.glide.load.resource.gif.GifFrameLoader$FrameCallback -> com.bumptech.glide.load.resource.gif.f$b:
     void onFrameReady() -> a
@@ -3931,8 +3935,9 @@ com.bumptech.glide.manager.DefaultConnectivityMonitor -> com.bumptech.glide.mana
     boolean isConnected -> c
     boolean isRegistered -> d
     boolean isConnected(android.content.Context) -> a
-    void register() -> a
-    void unregister() -> c
+    void onStop() -> a
+    void register() -> b
+    void unregister() -> d
 com.bumptech.glide.manager.DefaultConnectivityMonitor$1 -> com.bumptech.glide.manager.e$a:
     com.bumptech.glide.manager.DefaultConnectivityMonitor this$0 -> a
 com.bumptech.glide.manager.DefaultConnectivityMonitorFactory -> com.bumptech.glide.manager.f:
@@ -3943,7 +3948,9 @@ com.bumptech.glide.manager.Lifecycle -> com.bumptech.glide.manager.h:
     void addListener(com.bumptech.glide.manager.LifecycleListener) -> a
     void removeListener(com.bumptech.glide.manager.LifecycleListener) -> b
 com.bumptech.glide.manager.LifecycleListener -> com.bumptech.glide.manager.i:
+    void onStop() -> a
 com.bumptech.glide.manager.NullConnectivityMonitor -> com.bumptech.glide.manager.j:
+    void onStop() -> a
 com.bumptech.glide.manager.RequestManagerFragment -> com.bumptech.glide.manager.k:
     com.bumptech.glide.RequestManager requestManager -> d
     com.bumptech.glide.manager.RequestManagerFragment rootRequestManagerFragment -> e
@@ -4028,10 +4035,11 @@ com.bumptech.glide.manager.SupportRequestManagerFragment$SupportFragmentRequestM
     java.util.Set getDescendants() -> a
 com.bumptech.glide.manager.TargetTracker -> com.bumptech.glide.manager.o:
     java.util.Set targets -> a
-    void clear() -> a
+    void onStop() -> a
     void track(com.bumptech.glide.request.target.Target) -> a
+    void clear() -> b
     void untrack(com.bumptech.glide.request.target.Target) -> b
-    java.util.List getAll() -> c
+    java.util.List getAll() -> d
 com.bumptech.glide.module.AppGlideModule -> com.bumptech.glide.j.a:
     void applyOptions(android.content.Context,com.bumptech.glide.GlideBuilder) -> a
     boolean isManifestParsingEnabled() -> a
@@ -4178,30 +4186,32 @@ com.bumptech.glide.request.ErrorRequestCoordinator -> com.bumptech.glide.request
     com.bumptech.glide.request.Request primary -> c
     java.lang.Object requestLock -> a
     com.bumptech.glide.request.Request error -> d
-    boolean isAnyResourceSet() -> a
     void onRequestFailed(com.bumptech.glide.request.Request) -> a
+    void pause() -> a
     void setRequests(com.bumptech.glide.request.Request,com.bumptech.glide.request.Request) -> a
-    boolean isCleared() -> b
+    boolean isAnyResourceSet() -> b
     boolean isEquivalentTo(com.bumptech.glide.request.Request) -> b
     boolean canNotifyStatusChanged(com.bumptech.glide.request.Request) -> c
-    boolean parentCanNotifyCleared() -> c
-    void begin() -> d
+    boolean isCleared() -> c
     boolean canSetImage(com.bumptech.glide.request.Request) -> d
-    boolean isComplete() -> e
+    boolean parentCanNotifyCleared() -> d
+    void begin() -> e
     void onRequestSuccess(com.bumptech.glide.request.Request) -> e
     boolean canNotifyCleared(com.bumptech.glide.request.Request) -> f
-    boolean parentCanNotifyStatusChanged() -> f
+    boolean isComplete() -> f
     boolean isValidRequest(com.bumptech.glide.request.Request) -> g
-    boolean parentCanSetImage() -> g
+    boolean parentCanNotifyStatusChanged() -> g
+    boolean parentCanSetImage() -> h
 com.bumptech.glide.request.Request -> com.bumptech.glide.request.c:
-    boolean isAnyResourceSet() -> a
-    boolean isCleared() -> b
+    void pause() -> a
+    boolean isAnyResourceSet() -> b
     boolean isEquivalentTo(com.bumptech.glide.request.Request) -> b
-    void begin() -> d
-    boolean isComplete() -> e
+    boolean isCleared() -> c
+    void begin() -> e
+    boolean isComplete() -> f
 com.bumptech.glide.request.RequestCoordinator -> com.bumptech.glide.request.RequestCoordinator:
-    boolean isAnyResourceSet() -> a
     void onRequestFailed(com.bumptech.glide.request.Request) -> a
+    boolean isAnyResourceSet() -> b
     boolean canNotifyStatusChanged(com.bumptech.glide.request.Request) -> c
     boolean canSetImage(com.bumptech.glide.request.Request) -> d
     void onRequestSuccess(com.bumptech.glide.request.Request) -> e
@@ -4225,7 +4235,7 @@ com.bumptech.glide.request.RequestOptions -> com.bumptech.glide.request.e:
 com.bumptech.glide.request.ResourceCallback -> com.bumptech.glide.request.f:
     void onLoadFailed(com.bumptech.glide.load.engine.GlideException) -> a
     void onResourceReady(com.bumptech.glide.load.engine.Resource,com.bumptech.glide.load.DataSource) -> a
-    java.lang.Object getLock() -> c
+    java.lang.Object getLock() -> d
 com.bumptech.glide.request.SingleRequest -> com.bumptech.glide.request.SingleRequest:
     java.lang.Object model -> h
     int overrideHeight -> l
@@ -4257,7 +4267,6 @@ com.bumptech.glide.request.SingleRequest -> com.bumptech.glide.request.SingleReq
     long startTime -> t
     boolean isCallingCallbacks -> B
     boolean IS_VERBOSE_LOGGABLE -> D
-    boolean isAnyResourceSet() -> a
     android.graphics.drawable.Drawable loadDrawable(int) -> a
     void logV(java.lang.String) -> a
     int maybeApplySizeMultiplier(int,float) -> a
@@ -4267,23 +4276,25 @@ com.bumptech.glide.request.SingleRequest -> com.bumptech.glide.request.SingleReq
     void onResourceReady(com.bumptech.glide.load.engine.Resource,com.bumptech.glide.load.DataSource) -> a
     void onResourceReady(com.bumptech.glide.load.engine.Resource,java.lang.Object,com.bumptech.glide.load.DataSource) -> a
     void onSizeReady(int,int) -> a
-    boolean isCleared() -> b
+    void pause() -> a
+    boolean isAnyResourceSet() -> b
     boolean isEquivalentTo(com.bumptech.glide.request.Request) -> b
-    java.lang.Object getLock() -> c
-    void begin() -> d
-    boolean isComplete() -> e
-    void assertNotCallingCallbacks() -> f
-    boolean canNotifyCleared() -> g
-    boolean canNotifyStatusChanged() -> h
-    boolean canSetResource() -> i
-    void cancel() -> j
-    android.graphics.drawable.Drawable getErrorDrawable() -> k
-    android.graphics.drawable.Drawable getFallbackDrawable() -> l
-    android.graphics.drawable.Drawable getPlaceholderDrawable() -> m
-    boolean isFirstReadyResource() -> n
-    void notifyLoadFailed() -> o
-    void notifyLoadSuccess() -> p
-    void setErrorPlaceholder() -> q
+    boolean isCleared() -> c
+    java.lang.Object getLock() -> d
+    void begin() -> e
+    boolean isComplete() -> f
+    void assertNotCallingCallbacks() -> g
+    boolean canNotifyCleared() -> h
+    boolean canNotifyStatusChanged() -> i
+    boolean canSetResource() -> j
+    void cancel() -> k
+    android.graphics.drawable.Drawable getErrorDrawable() -> l
+    android.graphics.drawable.Drawable getFallbackDrawable() -> m
+    android.graphics.drawable.Drawable getPlaceholderDrawable() -> n
+    boolean isFirstReadyResource() -> o
+    void notifyLoadFailed() -> p
+    void notifyLoadSuccess() -> q
+    void setErrorPlaceholder() -> r
 com.bumptech.glide.request.SingleRequest$Status -> com.bumptech.glide.request.SingleRequest$Status:
     com.bumptech.glide.request.SingleRequest$Status PENDING -> a
     com.bumptech.glide.request.SingleRequest$Status RUNNING -> b
@@ -4300,21 +4311,23 @@ com.bumptech.glide.request.ThumbnailRequestCoordinator -> com.bumptech.glide.req
     com.bumptech.glide.request.Request full -> c
     boolean isRunningDuringBegin -> g
     com.bumptech.glide.request.Request thumb -> d
-    boolean isAnyResourceSet() -> a
     void onRequestFailed(com.bumptech.glide.request.Request) -> a
+    void pause() -> a
     void setRequests(com.bumptech.glide.request.Request,com.bumptech.glide.request.Request) -> a
-    boolean isCleared() -> b
+    boolean isAnyResourceSet() -> b
     boolean isEquivalentTo(com.bumptech.glide.request.Request) -> b
     boolean canNotifyStatusChanged(com.bumptech.glide.request.Request) -> c
-    boolean parentCanNotifyCleared() -> c
-    void begin() -> d
+    boolean isCleared() -> c
     boolean canSetImage(com.bumptech.glide.request.Request) -> d
-    boolean isComplete() -> e
+    boolean parentCanNotifyCleared() -> d
+    void begin() -> e
     void onRequestSuccess(com.bumptech.glide.request.Request) -> e
     boolean canNotifyCleared(com.bumptech.glide.request.Request) -> f
-    boolean parentCanNotifyStatusChanged() -> f
-    boolean parentCanSetImage() -> g
+    boolean isComplete() -> f
+    boolean parentCanNotifyStatusChanged() -> g
+    boolean parentCanSetImage() -> h
 com.bumptech.glide.request.target.BaseTarget -> com.bumptech.glide.request.h.a:
+    void onStop() -> a
     void onLoadFailed(android.graphics.drawable.Drawable) -> b
     void onLoadStarted(android.graphics.drawable.Drawable) -> c
     void onLoadCleared(android.graphics.drawable.Drawable) -> d
@@ -4325,21 +4338,23 @@ com.bumptech.glide.request.target.CustomTarget -> com.bumptech.glide.request.h.c
     com.bumptech.glide.request.Request request -> c
     int height -> b
     int width -> a
+    void onStop() -> a
     void removeCallback(com.bumptech.glide.request.target.SizeReadyCallback) -> a
     void setRequest(com.bumptech.glide.request.Request) -> a
-    com.bumptech.glide.request.Request getRequest() -> b
     void getSize(com.bumptech.glide.request.target.SizeReadyCallback) -> b
     void onLoadFailed(android.graphics.drawable.Drawable) -> b
+    com.bumptech.glide.request.Request getRequest() -> c
     void onLoadStarted(android.graphics.drawable.Drawable) -> c
 com.bumptech.glide.request.target.DrawableImageViewTarget -> com.bumptech.glide.request.h.d:
     void setResource(java.lang.Object) -> a
     void setResource(android.graphics.drawable.Drawable) -> e
 com.bumptech.glide.request.target.ImageViewTarget -> com.bumptech.glide.request.h.e:
     android.graphics.drawable.Animatable animatable -> g
-    android.graphics.drawable.Drawable getCurrentDrawable() -> a
     void onResourceReady(java.lang.Object,com.bumptech.glide.request.transition.Transition) -> a
+    void onStop() -> a
     void setDrawable(android.graphics.drawable.Drawable) -> a
     void setResource(java.lang.Object) -> a
+    android.graphics.drawable.Drawable getCurrentDrawable() -> b
     void maybeUpdateAnimatable(java.lang.Object) -> b
     void onLoadFailed(android.graphics.drawable.Drawable) -> b
     void onLoadStarted(android.graphics.drawable.Drawable) -> c
@@ -4353,9 +4368,9 @@ com.bumptech.glide.request.target.Target -> com.bumptech.glide.request.h.h:
     void onResourceReady(java.lang.Object,com.bumptech.glide.request.transition.Transition) -> a
     void removeCallback(com.bumptech.glide.request.target.SizeReadyCallback) -> a
     void setRequest(com.bumptech.glide.request.Request) -> a
-    com.bumptech.glide.request.Request getRequest() -> b
     void getSize(com.bumptech.glide.request.target.SizeReadyCallback) -> b
     void onLoadFailed(android.graphics.drawable.Drawable) -> b
+    com.bumptech.glide.request.Request getRequest() -> c
     void onLoadStarted(android.graphics.drawable.Drawable) -> c
     void onLoadCleared(android.graphics.drawable.Drawable) -> d
 com.bumptech.glide.request.target.ViewTarget -> com.bumptech.glide.request.h.i:
@@ -4368,13 +4383,13 @@ com.bumptech.glide.request.target.ViewTarget -> com.bumptech.glide.request.h.i:
     void removeCallback(com.bumptech.glide.request.target.SizeReadyCallback) -> a
     void setRequest(com.bumptech.glide.request.Request) -> a
     void setTag(java.lang.Object) -> a
-    com.bumptech.glide.request.Request getRequest() -> b
     void getSize(com.bumptech.glide.request.target.SizeReadyCallback) -> b
-    java.lang.Object getTag() -> c
+    com.bumptech.glide.request.Request getRequest() -> c
     void onLoadStarted(android.graphics.drawable.Drawable) -> c
-    void maybeAddAttachStateListener() -> d
+    java.lang.Object getTag() -> d
     void onLoadCleared(android.graphics.drawable.Drawable) -> d
-    void maybeRemoveAttachStateListener() -> e
+    void maybeAddAttachStateListener() -> e
+    void maybeRemoveAttachStateListener() -> f
 com.bumptech.glide.request.target.ViewTarget$SizeDeterminer -> com.bumptech.glide.request.h.i$a:
     java.util.List cbs -> b
     java.lang.Integer maxDisplayLength -> e
@@ -4420,8 +4435,8 @@ com.bumptech.glide.request.transition.NoTransition$NoAnimationFactory -> com.bum
 com.bumptech.glide.request.transition.Transition -> com.bumptech.glide.request.i.d:
     boolean transition(java.lang.Object,com.bumptech.glide.request.transition.Transition$ViewAdapter) -> a
 com.bumptech.glide.request.transition.Transition$ViewAdapter -> com.bumptech.glide.request.i.d$a:
-    android.graphics.drawable.Drawable getCurrentDrawable() -> a
     void setDrawable(android.graphics.drawable.Drawable) -> a
+    android.graphics.drawable.Drawable getCurrentDrawable() -> b
 com.bumptech.glide.request.transition.TransitionFactory -> com.bumptech.glide.request.i.e:
     com.bumptech.glide.request.transition.Transition build(com.bumptech.glide.load.DataSource,boolean) -> a
 com.bumptech.glide.signature.EmptySignature -> com.bumptech.glide.l.a:
@@ -4584,8 +4599,8 @@ com.chad.library.adapter.base.BaseBinderAdapter -> com.chad.library.adapter.base
     boolean onFailedToRecycleView(com.chad.library.adapter.base.viewholder.BaseViewHolder) -> c
     void bindChildClick(com.chad.library.adapter.base.viewholder.BaseViewHolder,int) -> d
     void onViewDetachedFromWindow(com.chad.library.adapter.base.viewholder.BaseViewHolder) -> d
-    com.chad.library.adapter.base.binder.BaseItemBinder getItemBinder(int) -> e
-    com.chad.library.adapter.base.binder.BaseItemBinder getItemBinderOrNull(int) -> f
+    com.chad.library.adapter.base.binder.BaseItemBinder getItemBinder(int) -> f
+    com.chad.library.adapter.base.binder.BaseItemBinder getItemBinderOrNull(int) -> g
 com.chad.library.adapter.base.BaseBinderAdapter$ItemCallback -> com.chad.library.adapter.base.BaseBinderAdapter$a:
     com.chad.library.adapter.base.BaseBinderAdapter this$0 -> a
 com.chad.library.adapter.base.BaseBinderAdapter$bindChildClick$$inlined$forEach$lambda$1 -> com.chad.library.adapter.base.BaseBinderAdapter$b:
@@ -4607,39 +4622,39 @@ com.chad.library.adapter.base.BaseDelegateMultiAdapter -> com.chad.library.adapt
     void setMultiTypeDelegate(com.chad.library.adapter.base.delegate.BaseMultiTypeDelegate) -> a
     int getDefItemViewType(int) -> b
     com.chad.library.adapter.base.viewholder.BaseViewHolder onCreateDefViewHolder(android.view.ViewGroup,int) -> b
-    com.chad.library.adapter.base.delegate.BaseMultiTypeDelegate getMultiTypeDelegate() -> r
+    com.chad.library.adapter.base.delegate.BaseMultiTypeDelegate getMultiTypeDelegate() -> s
 com.chad.library.adapter.base.BaseMultiItemQuickAdapter -> com.chad.library.adapter.base.BaseMultiItemQuickAdapter:
-    kotlin.reflect.KProperty[] $$delegatedProperties -> B
     kotlin.Lazy layouts$delegate -> A
     int getDefItemViewType(int) -> b
     com.chad.library.adapter.base.viewholder.BaseViewHolder onCreateDefViewHolder(android.view.ViewGroup,int) -> b
-    android.util.SparseIntArray getLayouts() -> r
+    android.util.SparseIntArray getLayouts() -> s
 com.chad.library.adapter.base.BaseMultiItemQuickAdapter$layouts$2 -> com.chad.library.adapter.base.BaseMultiItemQuickAdapter$layouts$2:
     com.chad.library.adapter.base.BaseMultiItemQuickAdapter$layouts$2 INSTANCE -> a
 com.chad.library.adapter.base.BaseNodeAdapter -> com.chad.library.adapter.base.BaseNodeAdapter:
-    java.util.HashSet fullSpanNodeTypeSet -> C
+    java.util.HashSet fullSpanNodeTypeSet -> B
     void addData(java.util.Collection) -> a
     java.util.List flatData(java.util.Collection,java.lang.Boolean) -> a
     java.util.List flatData$default(com.chad.library.adapter.base.BaseNodeAdapter,java.util.Collection,java.lang.Boolean,int,java.lang.Object) -> a
     void setList(java.util.Collection) -> b
     boolean isFixedViewType(int) -> c
-    void remove(int) -> d
-    int removeAt(int) -> f
+    void removeAt(int) -> e
     int removeChildAt(int) -> g
+    int removeNodesAt(int) -> h
 com.chad.library.adapter.base.BaseProviderMultiAdapter -> com.chad.library.adapter.base.BaseProviderMultiAdapter:
-    kotlin.reflect.KProperty[] $$delegatedProperties -> B
     kotlin.Lazy mItemProviders$delegate -> A
     android.util.SparseArray access$getMItemProviders$p(com.chad.library.adapter.base.BaseProviderMultiAdapter) -> a
     void bindViewClickListener(com.chad.library.adapter.base.viewholder.BaseViewHolder,int) -> a
     void convert(com.chad.library.adapter.base.viewholder.BaseViewHolder,java.lang.Object) -> a
     void convert(com.chad.library.adapter.base.viewholder.BaseViewHolder,java.lang.Object,java.util.List) -> a
     int getItemType(java.util.List,int) -> a
+    void onViewAttachedToWindow(com.chad.library.adapter.base.viewholder.BaseViewHolder) -> a
     void bindClick(com.chad.library.adapter.base.viewholder.BaseViewHolder) -> b
     int getDefItemViewType(int) -> b
     com.chad.library.adapter.base.viewholder.BaseViewHolder onCreateDefViewHolder(android.view.ViewGroup,int) -> b
+    void onViewDetachedFromWindow(com.chad.library.adapter.base.viewholder.BaseViewHolder) -> c
     void bindChildClick(com.chad.library.adapter.base.viewholder.BaseViewHolder,int) -> d
-    com.chad.library.adapter.base.provider.BaseItemProvider getItemProvider(int) -> e
-    android.util.SparseArray getMItemProviders() -> r
+    com.chad.library.adapter.base.provider.BaseItemProvider getItemProvider(int) -> f
+    android.util.SparseArray getMItemProviders() -> s
 com.chad.library.adapter.base.BaseProviderMultiAdapter$bindChildClick$$inlined$forEach$lambda$1 -> com.chad.library.adapter.base.BaseProviderMultiAdapter$a:
     com.chad.library.adapter.base.BaseProviderMultiAdapter this$0 -> a
     com.chad.library.adapter.base.provider.BaseItemProvider $provider$inlined -> c
@@ -4658,9 +4673,8 @@ com.chad.library.adapter.base.BaseProviderMultiAdapter$mItemProviders$2 -> com.c
     com.chad.library.adapter.base.BaseProviderMultiAdapter$mItemProviders$2 INSTANCE -> a
 com.chad.library.adapter.base.BaseQuickAdapter -> com.chad.library.adapter.base.BaseQuickAdapter:
     com.chad.library.adapter.base.listener.OnItemChildLongClickListener mOnItemChildLongClickListener -> r
-    com.chad.library.adapter.base.module.BaseLoadMoreModule mLoadMoreModule -> s
+    com.chad.library.adapter.base.module.BaseLoadMoreModule mLoadMoreModule -> u
     java.util.LinkedHashSet childLongClickViewIds -> y
-    com.chad.library.adapter.base.module.BaseUpFetchModule mUpFetchModule -> t
     android.widget.LinearLayout mFooterLayout -> k
     com.chad.library.adapter.base.listener.OnItemChildClickListener mOnItemChildClickListener -> q
     boolean footerViewAsFlow -> f
@@ -4668,19 +4682,20 @@ com.chad.library.adapter.base.BaseQuickAdapter -> com.chad.library.adapter.base.
     com.chad.library.adapter.base.listener.OnItemClickListener mOnItemClickListener -> o
     boolean headerWithEmptyEnable -> b
     com.chad.library.adapter.base.animation.BaseAnimation adapterAnimation -> i
+    com.chad.library.adapter.base.module.BaseDraggableModule mDraggableModule -> t
     boolean isUseEmpty -> d
+    androidx.recyclerview.widget.RecyclerView mRecyclerView -> w
     int mLastPosition -> m
     android.widget.FrameLayout mEmptyLayout -> l
     java.util.LinkedHashSet childClickViewIds -> x
     android.widget.LinearLayout mHeaderLayout -> j
+    com.chad.library.adapter.base.module.BaseUpFetchModule mUpFetchModule -> s
     java.util.List data -> a
     int layoutResId -> z
     com.chad.library.adapter.base.listener.GridSpanSizeLookup mSpanSizeLookup -> n
     com.chad.library.adapter.base.listener.OnItemLongClickListener mOnItemLongClickListener -> p
-    java.lang.ref.WeakReference weakRecyclerView -> w
     boolean headerViewAsFlow -> e
     boolean animationEnable -> g
-    com.chad.library.adapter.base.module.BaseDraggableModule mDraggableModule -> u
     boolean footerWithEmptyEnable -> c
     android.content.Context context -> v
     com.chad.library.adapter.base.listener.GridSpanSizeLookup access$getMSpanSizeLookup$p(com.chad.library.adapter.base.BaseQuickAdapter) -> a
@@ -4722,19 +4737,21 @@ com.chad.library.adapter.base.BaseQuickAdapter -> com.chad.library.adapter.base.
     void remove(int) -> d
     boolean setOnItemLongClick(android.view.View,int) -> d
     java.util.List getData() -> e
+    void removeAt(int) -> e
     int getDefItemCount() -> f
     int getFooterLayoutCount() -> g
     boolean getFooterViewAsFlow() -> h
     int getHeaderLayoutCount() -> i
     boolean getHeaderViewAsFlow() -> j
-    com.chad.library.adapter.base.listener.OnItemChildClickListener getOnItemChildClickListener() -> k
-    com.chad.library.adapter.base.listener.OnItemChildLongClickListener getOnItemChildLongClickListener() -> l
-    com.chad.library.adapter.base.listener.OnItemClickListener getOnItemClickListener() -> m
-    com.chad.library.adapter.base.listener.OnItemLongClickListener getOnItemLongClickListener() -> n
-    boolean hasEmptyView() -> o
-    boolean hasFooterLayout() -> p
-    boolean hasHeaderLayout() -> q
-    void checkModule() -> r
+    com.chad.library.adapter.base.module.BaseLoadMoreModule getMLoadMoreModule$com_github_CymChad_brvah() -> k
+    com.chad.library.adapter.base.listener.OnItemChildClickListener getOnItemChildClickListener() -> l
+    com.chad.library.adapter.base.listener.OnItemChildLongClickListener getOnItemChildLongClickListener() -> m
+    com.chad.library.adapter.base.listener.OnItemClickListener getOnItemClickListener() -> n
+    com.chad.library.adapter.base.listener.OnItemLongClickListener getOnItemLongClickListener() -> o
+    boolean hasEmptyView() -> p
+    boolean hasFooterLayout() -> q
+    boolean hasHeaderLayout() -> r
+    void checkModule() -> s
 com.chad.library.adapter.base.BaseQuickAdapter$AnimationType -> com.chad.library.adapter.base.BaseQuickAdapter$AnimationType:
     com.chad.library.adapter.base.BaseQuickAdapter$AnimationType AlphaIn -> a
     com.chad.library.adapter.base.BaseQuickAdapter$AnimationType ScaleIn -> b
@@ -4785,7 +4802,6 @@ com.chad.library.adapter.base.animation.SlideInRightAnimation -> com.chad.librar
     android.animation.Animator[] animators(android.view.View) -> a
 com.chad.library.adapter.base.binder.BaseItemBinder -> com.chad.library.adapter.base.binder.BaseItemBinder:
     kotlin.Lazy longClickViewIds$delegate -> b
-    kotlin.reflect.KProperty[] $$delegatedProperties -> c
     kotlin.Lazy clickViewIds$delegate -> a
     void convert(com.chad.library.adapter.base.viewholder.BaseViewHolder,java.lang.Object) -> a
     void convert(com.chad.library.adapter.base.viewholder.BaseViewHolder,java.lang.Object,java.util.List) -> a
@@ -4907,17 +4923,18 @@ com.chad.library.adapter.base.module.BaseUpFetchModule -> com.chad.library.adapt
     void autoUpFetch$com_github_CymChad_brvah(int) -> a
 com.chad.library.adapter.base.provider.BaseItemProvider -> com.chad.library.adapter.base.provider.BaseItemProvider:
     kotlin.Lazy longClickViewIds$delegate -> b
-    kotlin.reflect.KProperty[] $$delegatedProperties -> c
     kotlin.Lazy clickViewIds$delegate -> a
     void convert(com.chad.library.adapter.base.viewholder.BaseViewHolder,java.lang.Object) -> a
     void convert(com.chad.library.adapter.base.viewholder.BaseViewHolder,java.lang.Object,java.util.List) -> a
     java.util.ArrayList getChildClickViewIds() -> a
     void onChildClick(com.chad.library.adapter.base.viewholder.BaseViewHolder,android.view.View,java.lang.Object,int) -> a
     com.chad.library.adapter.base.viewholder.BaseViewHolder onCreateViewHolder(android.view.ViewGroup,int) -> a
+    void onViewAttachedToWindow(com.chad.library.adapter.base.viewholder.BaseViewHolder) -> a
     void onViewHolderCreated(com.chad.library.adapter.base.viewholder.BaseViewHolder,int) -> a
     void setContext(android.content.Context) -> a
     java.util.ArrayList getChildLongClickViewIds() -> b
     boolean onChildLongClick(com.chad.library.adapter.base.viewholder.BaseViewHolder,android.view.View,java.lang.Object,int) -> b
+    void onViewDetachedFromWindow(com.chad.library.adapter.base.viewholder.BaseViewHolder) -> b
     int getLayoutId() -> c
     void onClick(com.chad.library.adapter.base.viewholder.BaseViewHolder,android.view.View,java.lang.Object,int) -> c
     java.util.ArrayList getClickViewIds() -> d
@@ -6574,55 +6591,57 @@ com.ittianyu.bottomnavigationviewex.BottomNavigationViewInner -> com.ittianyu.bo
 com.ittianyu.bottomnavigationviewex.BottomNavigationViewInner$MyOnNavigationItemSelectedListener -> com.ittianyu.bottomnavigationviewex.BottomNavigationViewInner$a:
     void setOnNavigationItemSelectedListener(com.google.android.material.bottomnavigation.BottomNavigationView$OnNavigationItemSelectedListener) -> a
 com.liulishuo.filedownloader.BaseDownloadTask -> com.liulishuo.filedownloader.a:
-    boolean isPathAsDirectory() -> A
-    boolean isWifiRequired() -> C
-    boolean isSyncCallback() -> F
-    java.lang.String getFilename() -> H
+    boolean isPathAsDirectory() -> C
+    boolean isWifiRequired() -> E
+    boolean isSyncCallback() -> H
+    java.lang.String getFilename() -> J
+    boolean pause() -> a
     com.liulishuo.filedownloader.BaseDownloadTask setForceReDownload(boolean) -> a
     com.liulishuo.filedownloader.BaseDownloadTask setListener(com.liulishuo.filedownloader.FileDownloadListener) -> a
     com.liulishuo.filedownloader.BaseDownloadTask setMinIntervalUpdateSpeed(int) -> a
     com.liulishuo.filedownloader.BaseDownloadTask setPath(java.lang.String,boolean) -> a
     com.liulishuo.filedownloader.BaseDownloadTask setTag(java.lang.Object) -> a
-    java.lang.Throwable getErrorCause() -> b
+    java.lang.Object getTag() -> b
     com.liulishuo.filedownloader.BaseDownloadTask setPath(java.lang.String) -> b
-    int getRetryingTimes() -> c
     com.liulishuo.filedownloader.BaseDownloadTask setAutoRetryTimes(int) -> c
-    byte getStatus() -> d
+    java.lang.Throwable getErrorCause() -> d
     com.liulishuo.filedownloader.BaseDownloadTask setCallbackProgressTimes(int) -> d
-    boolean isLargeFile() -> e
-    int getSmallFileTotalBytes() -> f
-    int getAutoRetryTimes() -> g
-    int getSmallFileSoFarBytes() -> h
-    long getLargeFileTotalBytes() -> j
-    java.lang.String getTargetFilePath() -> m
-    java.lang.String getPath() -> n
-    com.liulishuo.filedownloader.BaseDownloadTask$InQueueTask asInQueueTask() -> q
-    int getCallbackProgressTimes() -> t
-    long getLargeFileSoFarBytes() -> u
-    boolean isAttached() -> v
-    int getCallbackProgressMinInterval() -> w
-    boolean isForceReDownload() -> x
+    int getRetryingTimes() -> e
+    byte getStatus() -> f
+    boolean isLargeFile() -> g
+    int getSmallFileTotalBytes() -> h
+    int getAutoRetryTimes() -> i
+    int getSmallFileSoFarBytes() -> j
+    long getLargeFileTotalBytes() -> l
+    java.lang.String getTargetFilePath() -> o
+    java.lang.String getPath() -> p
+    com.liulishuo.filedownloader.BaseDownloadTask$InQueueTask asInQueueTask() -> s
+    int getCallbackProgressTimes() -> v
+    long getLargeFileSoFarBytes() -> w
+    boolean isAttached() -> x
+    int getCallbackProgressMinInterval() -> y
+    boolean isForceReDownload() -> z
 com.liulishuo.filedownloader.BaseDownloadTask$FinishListener -> com.liulishuo.filedownloader.a$a:
     void over(com.liulishuo.filedownloader.BaseDownloadTask) -> a
 com.liulishuo.filedownloader.BaseDownloadTask$IRunningTask -> com.liulishuo.filedownloader.a$b:
-    com.liulishuo.filedownloader.BaseDownloadTask getOrigin() -> B
-    boolean isContainFinishListener() -> D
-    void markAdded2List() -> E
-    void free() -> a
+    boolean isOver() -> B
+    com.liulishuo.filedownloader.BaseDownloadTask getOrigin() -> D
+    boolean isContainFinishListener() -> F
+    void markAdded2List() -> G
     boolean is(int) -> b
-    void setAttachKeyDefault() -> k
-    void startTaskByRescue() -> l
-    int getAttachKey() -> o
-    boolean isMarkedAdded2List() -> p
-    java.lang.Object getPauseLock() -> r
-    com.liulishuo.filedownloader.ITaskHunter$IMessageHandler getMessageHandler() -> s
-    boolean isOver() -> z
+    void free() -> c
+    void setAttachKeyDefault() -> m
+    void startTaskByRescue() -> n
+    int getAttachKey() -> q
+    boolean isMarkedAdded2List() -> r
+    java.lang.Object getPauseLock() -> t
+    com.liulishuo.filedownloader.ITaskHunter$IMessageHandler getMessageHandler() -> u
 com.liulishuo.filedownloader.BaseDownloadTask$InQueueTask -> com.liulishuo.filedownloader.a$c:
     int enqueue() -> a
 com.liulishuo.filedownloader.BaseDownloadTask$LifeCycleCallback -> com.liulishuo.filedownloader.a$d:
-    void onOver() -> g
-    void onIng() -> j
-    void onBegin() -> k
+    void onOver() -> h
+    void onIng() -> k
+    void onBegin() -> l
 com.liulishuo.filedownloader.DownloadSpeedMonitor -> com.liulishuo.filedownloader.b:
     long mLastRefreshSofarBytes -> b
     int mMinIntervalUpdateSpeed -> f
@@ -6656,54 +6675,56 @@ com.liulishuo.filedownloader.DownloadTask -> com.liulishuo.filedownloader.c:
     int mAttachKey -> r
     java.lang.String mUrl -> e
     int mCallbackProgressMinIntervalMillis -> p
-    boolean isPathAsDirectory() -> A
-    com.liulishuo.filedownloader.BaseDownloadTask getOrigin() -> B
-    boolean isWifiRequired() -> C
-    boolean isContainFinishListener() -> D
-    void markAdded2List() -> E
-    boolean isSyncCallback() -> F
-    com.liulishuo.filedownloader.BaseDownloadTask$IRunningTask getRunningTask() -> G
-    java.lang.String getFilename() -> H
-    boolean isRunning() -> I
-    boolean isUsing() -> J
-    int startTaskUnchecked() -> K
+    com.liulishuo.filedownloader.model.FileDownloadHeader getHeader() -> A
+    boolean isOver() -> B
+    boolean isPathAsDirectory() -> C
+    com.liulishuo.filedownloader.BaseDownloadTask getOrigin() -> D
+    boolean isWifiRequired() -> E
+    boolean isContainFinishListener() -> F
+    void markAdded2List() -> G
+    boolean isSyncCallback() -> H
+    com.liulishuo.filedownloader.BaseDownloadTask$IRunningTask getRunningTask() -> I
+    java.lang.String getFilename() -> J
+    boolean isRunning() -> K
+    boolean isUsing() -> L
+    int startTaskUnchecked() -> M
     boolean access$102(com.liulishuo.filedownloader.DownloadTask,boolean) -> a
-    void free() -> a
+    boolean pause() -> a
     void setFileName(java.lang.String) -> a
     com.liulishuo.filedownloader.BaseDownloadTask setForceReDownload(boolean) -> a
     com.liulishuo.filedownloader.BaseDownloadTask setListener(com.liulishuo.filedownloader.FileDownloadListener) -> a
     com.liulishuo.filedownloader.BaseDownloadTask setMinIntervalUpdateSpeed(int) -> a
     com.liulishuo.filedownloader.BaseDownloadTask setPath(java.lang.String,boolean) -> a
     com.liulishuo.filedownloader.BaseDownloadTask setTag(java.lang.Object) -> a
-    java.lang.Throwable getErrorCause() -> b
+    java.lang.Object getTag() -> b
     boolean is(int) -> b
     com.liulishuo.filedownloader.BaseDownloadTask setPath(java.lang.String) -> b
-    int getRetryingTimes() -> c
+    void free() -> c
     com.liulishuo.filedownloader.BaseDownloadTask setAutoRetryTimes(int) -> c
-    byte getStatus() -> d
+    java.lang.Throwable getErrorCause() -> d
     com.liulishuo.filedownloader.BaseDownloadTask setCallbackProgressTimes(int) -> d
-    boolean isLargeFile() -> e
-    int getSmallFileTotalBytes() -> f
-    int getAutoRetryTimes() -> g
-    int getSmallFileSoFarBytes() -> h
-    java.util.ArrayList getFinishListenerList() -> i
-    long getLargeFileTotalBytes() -> j
-    void setAttachKeyDefault() -> k
-    void startTaskByRescue() -> l
-    java.lang.String getTargetFilePath() -> m
-    java.lang.String getPath() -> n
-    int getAttachKey() -> o
-    boolean isMarkedAdded2List() -> p
-    com.liulishuo.filedownloader.BaseDownloadTask$InQueueTask asInQueueTask() -> q
-    java.lang.Object getPauseLock() -> r
-    com.liulishuo.filedownloader.ITaskHunter$IMessageHandler getMessageHandler() -> s
-    int getCallbackProgressTimes() -> t
-    long getLargeFileSoFarBytes() -> u
-    boolean isAttached() -> v
-    int getCallbackProgressMinInterval() -> w
-    boolean isForceReDownload() -> x
-    com.liulishuo.filedownloader.model.FileDownloadHeader getHeader() -> y
-    boolean isOver() -> z
+    int getRetryingTimes() -> e
+    byte getStatus() -> f
+    boolean isLargeFile() -> g
+    int getSmallFileTotalBytes() -> h
+    int getAutoRetryTimes() -> i
+    int getSmallFileSoFarBytes() -> j
+    java.util.ArrayList getFinishListenerList() -> k
+    long getLargeFileTotalBytes() -> l
+    void setAttachKeyDefault() -> m
+    void startTaskByRescue() -> n
+    java.lang.String getTargetFilePath() -> o
+    java.lang.String getPath() -> p
+    int getAttachKey() -> q
+    boolean isMarkedAdded2List() -> r
+    com.liulishuo.filedownloader.BaseDownloadTask$InQueueTask asInQueueTask() -> s
+    java.lang.Object getPauseLock() -> t
+    com.liulishuo.filedownloader.ITaskHunter$IMessageHandler getMessageHandler() -> u
+    int getCallbackProgressTimes() -> v
+    long getLargeFileSoFarBytes() -> w
+    boolean isAttached() -> x
+    int getCallbackProgressMinInterval() -> y
+    boolean isForceReDownload() -> z
 com.liulishuo.filedownloader.DownloadTask$1 -> com.liulishuo.filedownloader.c$a:
 com.liulishuo.filedownloader.DownloadTask$InQueueTaskImpl -> com.liulishuo.filedownloader.c$b:
     com.liulishuo.filedownloader.DownloadTask mTask -> a
@@ -6720,32 +6741,33 @@ com.liulishuo.filedownloader.DownloadTaskHunter -> com.liulishuo.filedownloader.
     byte mStatus -> d
     java.lang.Throwable mThrowable -> e
     com.liulishuo.filedownloader.IDownloadSpeed$Lookup mSpeedLookup -> g
-    void free() -> a
+    boolean pause() -> a
     com.liulishuo.filedownloader.message.MessageSnapshot prepareErrorMessage(java.lang.Throwable) -> a
     void setMinIntervalUpdateSpeed(int) -> a
     boolean updateSameFilePathTaskRunning(com.liulishuo.filedownloader.message.MessageSnapshot) -> a
-    java.lang.Throwable getErrorCause() -> b
+    com.liulishuo.filedownloader.IFileDownloadMessenger getMessenger() -> b
     boolean updateMoreLikelyCompleted(com.liulishuo.filedownloader.message.MessageSnapshot) -> b
-    int getRetryingTimes() -> c
+    void free() -> c
     boolean updateKeepAhead(com.liulishuo.filedownloader.message.MessageSnapshot) -> c
-    byte getStatus() -> d
+    java.lang.Throwable getErrorCause() -> d
     boolean updateKeepFlow(com.liulishuo.filedownloader.message.MessageSnapshot) -> d
-    boolean isLargeFile() -> e
+    int getRetryingTimes() -> e
     void update(com.liulishuo.filedownloader.message.MessageSnapshot) -> e
-    com.liulishuo.filedownloader.IFileDownloadMessenger getMessenger() -> f
-    void onOver() -> g
-    void intoLaunchPool() -> h
-    long getSofarBytes() -> i
-    void onIng() -> j
-    void onBegin() -> k
-    long getTotalBytes() -> l
-    int getId() -> m
-    void prepare() -> n
+    byte getStatus() -> f
+    boolean isLargeFile() -> g
+    void onOver() -> h
+    void intoLaunchPool() -> i
+    long getSofarBytes() -> j
+    void onIng() -> k
+    void onBegin() -> l
+    long getTotalBytes() -> m
+    int getId() -> n
+    void prepare() -> o
 com.liulishuo.filedownloader.DownloadTaskHunter$ICaptureTask -> com.liulishuo.filedownloader.d$a:
-    com.liulishuo.filedownloader.BaseDownloadTask$IRunningTask getRunningTask() -> G
+    com.liulishuo.filedownloader.model.FileDownloadHeader getHeader() -> A
+    com.liulishuo.filedownloader.BaseDownloadTask$IRunningTask getRunningTask() -> I
     void setFileName(java.lang.String) -> a
-    java.util.ArrayList getFinishListenerList() -> i
-    com.liulishuo.filedownloader.model.FileDownloadHeader getHeader() -> y
+    java.util.ArrayList getFinishListenerList() -> k
 com.liulishuo.filedownloader.FileDownloadConnectListener -> com.liulishuo.filedownloader.e:
     com.liulishuo.filedownloader.event.DownloadServiceConnectChangedEvent$ConnectStatus mConnectStatus -> a
     boolean callback(com.liulishuo.filedownloader.event.IDownloadEvent) -> a
@@ -6859,13 +6881,14 @@ com.liulishuo.filedownloader.FileDownloadServiceProxy -> com.liulishuo.filedownl
     com.liulishuo.filedownloader.IFileDownloadServiceProxy handler -> a
     void bindStartByContext(android.content.Context) -> a
     boolean clearTaskData(int) -> a
-    boolean isRunServiceForeground() -> a
+    boolean isConnected() -> a
     boolean start(java.lang.String,java.lang.String,boolean,int,int,int,boolean,com.liulishuo.filedownloader.model.FileDownloadHeader,boolean) -> a
     void stopForeground(boolean) -> a
-    com.liulishuo.filedownloader.services.FDServiceSharedHandler$FileDownloadServiceSharedConnection getConnectionListener() -> b
     byte getStatus(int) -> b
-    com.liulishuo.filedownloader.FileDownloadServiceProxy getImpl() -> c
+    boolean isRunServiceForeground() -> b
+    com.liulishuo.filedownloader.services.FDServiceSharedHandler$FileDownloadServiceSharedConnection getConnectionListener() -> c
     boolean pause(int) -> c
+    com.liulishuo.filedownloader.FileDownloadServiceProxy getImpl() -> d
 com.liulishuo.filedownloader.FileDownloadServiceProxy$1 -> com.liulishuo.filedownloader.n$a:
 com.liulishuo.filedownloader.FileDownloadServiceProxy$HolderClass -> com.liulishuo.filedownloader.n$b:
     com.liulishuo.filedownloader.FileDownloadServiceProxy INSTANCE -> a
@@ -6878,11 +6901,12 @@ com.liulishuo.filedownloader.FileDownloadServiceSharedTransmit -> com.liulishuo.
     void bindStartByContext(android.content.Context) -> a
     void bindStartByContext(android.content.Context,java.lang.Runnable) -> a
     boolean clearTaskData(int) -> a
-    boolean isRunServiceForeground() -> a
+    boolean isConnected() -> a
     void onConnected(com.liulishuo.filedownloader.services.FDServiceSharedHandler) -> a
     boolean start(java.lang.String,java.lang.String,boolean,int,int,int,boolean,com.liulishuo.filedownloader.model.FileDownloadHeader,boolean) -> a
     void stopForeground(boolean) -> a
     byte getStatus(int) -> b
+    boolean isRunServiceForeground() -> b
     boolean pause(int) -> c
 com.liulishuo.filedownloader.FileDownloadServiceUIGuard -> com.liulishuo.filedownloader.p:
     android.os.IInterface asInterface(android.os.IBinder) -> a
@@ -6892,11 +6916,11 @@ com.liulishuo.filedownloader.FileDownloadServiceUIGuard -> com.liulishuo.filedow
     void registerCallback(com.liulishuo.filedownloader.i.IFileDownloadIPCService,com.liulishuo.filedownloader.FileDownloadServiceUIGuard$FileDownloadServiceCallback) -> a
     boolean start(java.lang.String,java.lang.String,boolean,int,int,int,boolean,com.liulishuo.filedownloader.model.FileDownloadHeader,boolean) -> a
     void stopForeground(boolean) -> a
-    android.os.Binder createCallback() -> b
-    com.liulishuo.filedownloader.FileDownloadServiceUIGuard$FileDownloadServiceCallback createCallback() -> b
     byte getStatus(int) -> b
     void unregisterCallback(android.os.IInterface,android.os.Binder) -> b
     void unregisterCallback(com.liulishuo.filedownloader.i.IFileDownloadIPCService,com.liulishuo.filedownloader.FileDownloadServiceUIGuard$FileDownloadServiceCallback) -> b
+    android.os.Binder createCallback() -> c
+    com.liulishuo.filedownloader.FileDownloadServiceUIGuard$FileDownloadServiceCallback createCallback() -> c
     boolean pause(int) -> c
 com.liulishuo.filedownloader.FileDownloadServiceUIGuard$FileDownloadServiceCallback -> com.liulishuo.filedownloader.p$a:
     void callback(com.liulishuo.filedownloader.message.MessageSnapshot) -> b
@@ -6959,10 +6983,11 @@ com.liulishuo.filedownloader.IFileDownloadMessenger -> com.liulishuo.filedownloa
 com.liulishuo.filedownloader.IFileDownloadServiceProxy -> com.liulishuo.filedownloader.v:
     void bindStartByContext(android.content.Context) -> a
     boolean clearTaskData(int) -> a
-    boolean isRunServiceForeground() -> a
+    boolean isConnected() -> a
     boolean start(java.lang.String,java.lang.String,boolean,int,int,int,boolean,com.liulishuo.filedownloader.model.FileDownloadHeader,boolean) -> a
     void stopForeground(boolean) -> a
     byte getStatus(int) -> b
+    boolean isRunServiceForeground() -> b
     boolean pause(int) -> c
 com.liulishuo.filedownloader.ILostServiceConnectedHandler -> com.liulishuo.filedownloader.w:
     boolean dispatchTaskStart(com.liulishuo.filedownloader.BaseDownloadTask$IRunningTask) -> a
@@ -6974,21 +6999,22 @@ com.liulishuo.filedownloader.IQueuesHandler -> com.liulishuo.filedownloader.x:
     void unFreezeSerialQueues(java.util.List) -> a
     void freezeAllSerialQueues() -> b
 com.liulishuo.filedownloader.ITaskHunter -> com.liulishuo.filedownloader.y:
-    void free() -> a
-    java.lang.Throwable getErrorCause() -> b
-    int getRetryingTimes() -> c
-    byte getStatus() -> d
-    boolean isLargeFile() -> e
-    void intoLaunchPool() -> h
-    long getSofarBytes() -> i
-    long getTotalBytes() -> l
+    boolean pause() -> a
+    void free() -> c
+    java.lang.Throwable getErrorCause() -> d
+    int getRetryingTimes() -> e
+    byte getStatus() -> f
+    boolean isLargeFile() -> g
+    void intoLaunchPool() -> i
+    long getSofarBytes() -> j
+    long getTotalBytes() -> m
 com.liulishuo.filedownloader.ITaskHunter$IMessageHandler -> com.liulishuo.filedownloader.y$a:
     com.liulishuo.filedownloader.message.MessageSnapshot prepareErrorMessage(java.lang.Throwable) -> a
     boolean updateSameFilePathTaskRunning(com.liulishuo.filedownloader.message.MessageSnapshot) -> a
+    com.liulishuo.filedownloader.IFileDownloadMessenger getMessenger() -> b
     boolean updateMoreLikelyCompleted(com.liulishuo.filedownloader.message.MessageSnapshot) -> b
     boolean updateKeepAhead(com.liulishuo.filedownloader.message.MessageSnapshot) -> c
     boolean updateKeepFlow(com.liulishuo.filedownloader.message.MessageSnapshot) -> d
-    com.liulishuo.filedownloader.IFileDownloadMessenger getMessenger() -> f
 com.liulishuo.filedownloader.ITaskHunter$IStarter -> com.liulishuo.filedownloader.y$b:
 com.liulishuo.filedownloader.IThreadPoolMonitor -> com.liulishuo.filedownloader.z:
     int findRunningTaskIdBySameTempPath(java.lang.String,int) -> a
@@ -7755,12 +7781,13 @@ com.liulishuo.filedownloader.services.BaseFileServiceUIGuard -> com.liulishuo.fi
     android.os.IInterface asInterface(android.os.IBinder) -> a
     void bindStartByContext(android.content.Context) -> a
     void bindStartByContext(android.content.Context,java.lang.Runnable) -> a
-    boolean isRunServiceForeground() -> a
+    boolean isConnected() -> a
     void registerCallback(android.os.IInterface,android.os.Binder) -> a
-    android.os.Binder createCallback() -> b
+    boolean isRunServiceForeground() -> b
     void releaseConnect(boolean) -> b
     void unregisterCallback(android.os.IInterface,android.os.Binder) -> b
-    android.os.IInterface getService() -> c
+    android.os.Binder createCallback() -> c
+    android.os.IInterface getService() -> d
 com.liulishuo.filedownloader.services.DefaultIdGenerator -> com.liulishuo.filedownloader.services.b:
     int generateId(java.lang.String,java.lang.String,boolean) -> a
     int transOldId(int,java.lang.String,java.lang.String,boolean) -> a
@@ -7795,6 +7822,7 @@ com.liulishuo.filedownloader.services.FDServiceSeparateHandler -> com.liulishuo.
     boolean checkDownloading(java.lang.String,java.lang.String) -> a
     boolean clearTaskData(int) -> a
     boolean isIdle() -> a
+    android.os.IBinder onBind(android.content.Intent) -> a
     void onStartCommand(android.content.Intent,int,int) -> a
     void receive(com.liulishuo.filedownloader.message.MessageSnapshot) -> a
     void registerCallback(com.liulishuo.filedownloader.i.IFileDownloadIPCCallback) -> a
@@ -7816,6 +7844,7 @@ com.liulishuo.filedownloader.services.FDServiceSharedHandler -> com.liulishuo.fi
     boolean checkDownloading(java.lang.String,java.lang.String) -> a
     boolean clearTaskData(int) -> a
     boolean isIdle() -> a
+    android.os.IBinder onBind(android.content.Intent) -> a
     void onStartCommand(android.content.Intent,int,int) -> a
     void registerCallback(com.liulishuo.filedownloader.i.IFileDownloadIPCCallback) -> a
     void start(java.lang.String,java.lang.String,boolean,int,int,int,boolean,com.liulishuo.filedownloader.model.FileDownloadHeader,boolean) -> a
@@ -7894,6 +7923,7 @@ com.liulishuo.filedownloader.services.ForegroundServiceConfig$Builder -> com.liu
     com.liulishuo.filedownloader.services.ForegroundServiceConfig build() -> a
     com.liulishuo.filedownloader.services.ForegroundServiceConfig$Builder needRecreateChannelId(boolean) -> a
 com.liulishuo.filedownloader.services.IFileDownloadServiceHandler -> com.liulishuo.filedownloader.services.j:
+    android.os.IBinder onBind(android.content.Intent) -> a
     void onStartCommand(android.content.Intent,int,int) -> a
 com.liulishuo.filedownloader.stream.FileDownloadOutputStream -> com.liulishuo.filedownloader.h0.a:
     void flushAndSync() -> a
@@ -11398,6 +11428,7 @@ kotlin.collections.ArrayAsCollection -> kotlin.collections.a:
     boolean isVarargs -> b
     int getSize() -> b
 kotlin.collections.ArraysKt -> kotlin.collections.b:
+    java.util.List asList(java.lang.Object[]) -> a
     boolean contains(int[],int) -> a
     java.lang.Object[] copyInto$default(java.lang.Object[],java.lang.Object[],int,int,int,int,java.lang.Object) -> a
     kotlin.ranges.IntRange getIndices(int[]) -> a
@@ -11437,13 +11468,15 @@ kotlin.collections.CollectionsKt -> kotlin.collections.i:
     java.util.ArrayList arrayListOf(java.lang.Object[]) -> a
     int collectionSizeOrDefault(java.lang.Iterable,int) -> a
     java.util.List emptyList() -> a
+    java.util.List listOf(java.lang.Object) -> a
+    java.lang.Object single(java.lang.Iterable) -> a
     int[] toIntArray(java.util.Collection) -> a
-    java.util.List toList(java.lang.Iterable) -> a
     java.util.List optimizeReadOnlyList(java.util.List) -> b
     void throwIndexOverflow() -> b
+    java.util.List toList(java.lang.Iterable) -> b
     java.util.List listOf(java.lang.Object[]) -> c
-    java.util.Set toSet(java.lang.Iterable) -> c
     java.lang.Object firstOrNull(java.util.List) -> d
+    java.util.Set toSet(java.lang.Iterable) -> d
     java.lang.Object last(java.util.List) -> e
 kotlin.collections.CollectionsKt__CollectionsJVMKt -> kotlin.collections.j:
     java.lang.Object[] copyToArrayOfAny(java.lang.Object[],boolean) -> a
@@ -11467,14 +11500,16 @@ kotlin.collections.CollectionsKt__ReversedViewsKt -> kotlin.collections.q:
 kotlin.collections.CollectionsKt___CollectionsJvmKt -> kotlin.collections.r:
     void reverse(java.util.List) -> c
 kotlin.collections.CollectionsKt___CollectionsKt -> kotlin.collections.s:
+    java.lang.Object single(java.lang.Iterable) -> a
     java.util.Collection toCollection(java.lang.Iterable,java.util.Collection) -> a
     int[] toIntArray(java.util.Collection) -> a
-    java.util.List toList(java.lang.Iterable) -> a
-    java.util.List toMutableList(java.lang.Iterable) -> b
+    java.util.List toList(java.lang.Iterable) -> b
     java.util.List toMutableList(java.util.Collection) -> b
-    java.util.Set toSet(java.lang.Iterable) -> c
+    java.util.List toMutableList(java.lang.Iterable) -> c
     java.lang.Object firstOrNull(java.util.List) -> d
+    java.util.Set toSet(java.lang.Iterable) -> d
     java.lang.Object last(java.util.List) -> e
+    java.lang.Object single(java.util.List) -> f
 kotlin.collections.EmptyIterator -> kotlin.collections.t:
     kotlin.collections.EmptyIterator INSTANCE -> a
 kotlin.collections.EmptyList -> kotlin.collections.EmptyList:
@@ -11655,7 +11690,7 @@ kotlin.jvm.internal.CallableReference -> kotlin.jvm.internal.CallableReference:
     kotlin.reflect.KCallable reflected -> a
     java.lang.Object call(java.lang.Object[]) -> a
     kotlin.reflect.KCallable compute() -> a
-    kotlin.reflect.KCallable computeReflected() -> e
+    kotlin.reflect.KCallable computeReflected() -> b
     java.lang.Object getBoundReceiver() -> f
     kotlin.reflect.KDeclarationContainer getOwner() -> h
     kotlin.reflect.KCallable getReflected() -> i
@@ -11680,7 +11715,7 @@ kotlin.jvm.internal.CollectionToArray -> kotlin.jvm.internal.e:
 kotlin.jvm.internal.DefaultConstructorMarker -> kotlin.jvm.internal.f:
 kotlin.jvm.internal.FunctionBase -> kotlin.jvm.internal.g:
 kotlin.jvm.internal.FunctionReference -> kotlin.jvm.internal.FunctionReference:
-    kotlin.reflect.KCallable computeReflected() -> e
+    kotlin.reflect.KCallable computeReflected() -> b
     kotlin.reflect.KCallable getReflected() -> i
     kotlin.reflect.KFunction getReflected() -> i
 kotlin.jvm.internal.InlineMarker -> kotlin.jvm.internal.h:
@@ -11690,9 +11725,11 @@ kotlin.jvm.internal.InlineMarker -> kotlin.jvm.internal.h:
 kotlin.jvm.internal.Intrinsics -> kotlin.jvm.internal.i:
     boolean areEqual(java.lang.Object,java.lang.Object) -> a
     void checkExpressionValueIsNotNull(java.lang.Object,java.lang.String) -> a
+    int compare(int,int) -> a
     void reifiedOperationMarker(int,java.lang.String) -> a
     java.lang.Throwable sanitizeStackTrace(java.lang.Throwable) -> a
     java.lang.Throwable sanitizeStackTrace(java.lang.Throwable,java.lang.String) -> a
+    java.lang.String stringPlus(java.lang.String,java.lang.Object) -> a
     void throwNpe() -> a
     void throwParameterIsNullException(java.lang.String) -> a
     void checkParameterIsNotNull(java.lang.Object,java.lang.String) -> b
@@ -11701,8 +11738,8 @@ kotlin.jvm.internal.Intrinsics -> kotlin.jvm.internal.i:
     void throwUninitializedProperty(java.lang.String) -> c
     void throwUninitializedPropertyAccessException(java.lang.String) -> d
 kotlin.jvm.internal.MutablePropertyReference1 -> kotlin.jvm.internal.MutablePropertyReference1:
-    kotlin.reflect.KProperty1$Getter getGetter() -> b
-    kotlin.reflect.KCallable computeReflected() -> e
+    kotlin.reflect.KCallable computeReflected() -> b
+    kotlin.reflect.KProperty1$Getter getGetter() -> e
 kotlin.jvm.internal.MutablePropertyReference1Impl -> kotlin.jvm.internal.MutablePropertyReference1Impl:
     kotlin.reflect.KDeclarationContainer getOwner() -> h
     java.lang.String getSignature() -> j
@@ -11713,8 +11750,8 @@ kotlin.jvm.internal.PropertyReference -> kotlin.jvm.internal.PropertyReference:
     kotlin.reflect.KCallable getReflected() -> i
     kotlin.reflect.KProperty getReflected() -> i
 kotlin.jvm.internal.PropertyReference1 -> kotlin.jvm.internal.PropertyReference1:
-    kotlin.reflect.KProperty1$Getter getGetter() -> b
-    kotlin.reflect.KCallable computeReflected() -> e
+    kotlin.reflect.KCallable computeReflected() -> b
+    kotlin.reflect.KProperty1$Getter getGetter() -> e
 kotlin.jvm.internal.PropertyReference1Impl -> kotlin.jvm.internal.PropertyReference1Impl:
     kotlin.reflect.KDeclarationContainer getOwner() -> h
     java.lang.String getSignature() -> j
@@ -11773,7 +11810,11 @@ kotlin.ranges.IntProgressionIterator -> kotlin.q.c:
     int next -> c
     int finalElement -> a
 kotlin.ranges.IntRange -> kotlin.q.d:
+    kotlin.ranges.IntRange EMPTY -> e
+    kotlin.ranges.IntRange$Companion Companion -> f
+    kotlin.ranges.IntRange access$getEMPTY$cp() -> c
 kotlin.ranges.IntRange$Companion -> kotlin.q.d$a:
+    kotlin.ranges.IntRange getEMPTY() -> a
 kotlin.ranges.RangesKt -> kotlin.q.e:
     int coerceAtLeast(int,int) -> a
     long coerceAtLeast(long,long) -> a
@@ -11781,6 +11822,7 @@ kotlin.ranges.RangesKt -> kotlin.q.e:
     int coerceAtMost(int,int) -> b
     long coerceAtMost(long,long) -> b
     kotlin.ranges.IntProgression downTo(int,int) -> c
+    kotlin.ranges.IntRange until(int,int) -> d
 kotlin.ranges.RangesKt__RangesKt -> kotlin.q.f:
 kotlin.ranges.RangesKt___RangesKt -> kotlin.q.g:
     int coerceAtLeast(int,int) -> a
@@ -11789,6 +11831,7 @@ kotlin.ranges.RangesKt___RangesKt -> kotlin.q.g:
     int coerceAtMost(int,int) -> b
     long coerceAtMost(long,long) -> b
     kotlin.ranges.IntProgression downTo(int,int) -> c
+    kotlin.ranges.IntRange until(int,int) -> d
 kotlin.reflect.KCallable -> kotlin.r.a:
     java.lang.Object call(java.lang.Object[]) -> a
 kotlin.reflect.KClass -> kotlin.r.b:
@@ -11799,14 +11842,15 @@ kotlin.reflect.KMutableProperty1 -> kotlin.r.e:
 kotlin.reflect.KProperty -> kotlin.r.g:
 kotlin.reflect.KProperty$Getter -> kotlin.r.g$a:
 kotlin.reflect.KProperty1 -> kotlin.r.h:
-    kotlin.reflect.KProperty1$Getter getGetter() -> b
+    kotlin.reflect.KProperty1$Getter getGetter() -> e
 kotlin.reflect.KProperty1$Getter -> kotlin.r.h$a:
 kotlin.sequences.ConstrainedOnceSequence -> kotlin.s.a:
     java.util.concurrent.atomic.AtomicReference sequenceRef -> a
 kotlin.sequences.Sequence -> kotlin.s.b:
 kotlin.sequences.SequencesKt -> kotlin.s.c:
     kotlin.sequences.Sequence asSequence(java.util.Iterator) -> a
-    java.util.List toList(kotlin.sequences.Sequence) -> b
+    java.lang.Iterable asIterable(kotlin.sequences.Sequence) -> b
+    java.util.List toList(kotlin.sequences.Sequence) -> c
 kotlin.sequences.SequencesKt__SequenceBuilderKt -> kotlin.s.d:
 kotlin.sequences.SequencesKt__SequencesJVMKt -> kotlin.s.e:
 kotlin.sequences.SequencesKt__SequencesKt -> kotlin.s.f:
@@ -11817,21 +11861,47 @@ kotlin.sequences.SequencesKt__SequencesKt$asSequence$$inlined$Sequence$1 -> kotl
 kotlin.sequences.SequencesKt___SequencesJvmKt -> kotlin.s.g:
 kotlin.sequences.SequencesKt___SequencesKt -> kotlin.s.h:
     java.util.Collection toCollection(kotlin.sequences.Sequence,java.util.Collection) -> a
-    java.util.List toList(kotlin.sequences.Sequence) -> b
-    java.util.List toMutableList(kotlin.sequences.Sequence) -> c
-kotlin.text.CharsKt__CharJVMKt -> kotlin.t.a:
+    java.lang.Iterable asIterable(kotlin.sequences.Sequence) -> b
+    java.util.List toList(kotlin.sequences.Sequence) -> c
+    java.util.List toMutableList(kotlin.sequences.Sequence) -> d
+kotlin.sequences.SequencesKt___SequencesKt$asIterable$$inlined$Iterable$1 -> kotlin.s.h$a:
+    kotlin.sequences.Sequence $this_asIterable$inlined -> a
+kotlin.text.CharsKt__CharJVMKt -> kotlin.text.a:
     int checkRadix(int) -> a
     int digitOf(char,int) -> a
     boolean isWhitespace(char) -> a
-kotlin.text.CharsKt__CharKt -> kotlin.t.b:
+kotlin.text.CharsKt__CharKt -> kotlin.text.b:
     boolean equals(char,char,boolean) -> a
-kotlin.text.Charsets -> kotlin.t.c:
+kotlin.text.Charsets -> kotlin.text.c:
     java.nio.charset.Charset UTF_8 -> a
-kotlin.text.StringsKt -> kotlin.t.d:
+kotlin.text.DelimitedRangesSequence -> kotlin.text.d:
+    java.lang.CharSequence input -> a
+    int startIndex -> b
+    int limit -> c
+    kotlin.jvm.functions.Function2 getNextMatch -> d
+    kotlin.jvm.functions.Function2 access$getGetNextMatch$p(kotlin.text.DelimitedRangesSequence) -> a
+    java.lang.CharSequence access$getInput$p(kotlin.text.DelimitedRangesSequence) -> b
+    int access$getLimit$p(kotlin.text.DelimitedRangesSequence) -> c
+    int access$getStartIndex$p(kotlin.text.DelimitedRangesSequence) -> d
+kotlin.text.DelimitedRangesSequence$iterator$1 -> kotlin.text.d$a:
+    kotlin.ranges.IntRange nextItem -> d
+    kotlin.text.DelimitedRangesSequence this$0 -> f
+    int counter -> e
+    int currentStartIndex -> b
+    int nextSearchIndex -> c
+    int nextState -> a
+    void calcNext() -> a
+kotlin.text.Regex -> kotlin.text.Regex:
+    java.lang.String replaceFirst(java.lang.CharSequence,java.lang.String) -> a
+kotlin.text.Regex$Companion -> kotlin.text.Regex$a:
+kotlin.text.Regex$Serialized$Companion -> kotlin.text.Regex$Serialized$a:
+kotlin.text.StringsKt -> kotlin.text.e:
     boolean contains$default(java.lang.CharSequence,java.lang.CharSequence,boolean,int,java.lang.Object) -> a
+    boolean equals(java.lang.String,java.lang.String,boolean) -> a
     int indexOf$default(java.lang.CharSequence,char,int,boolean,int,java.lang.Object) -> a
     int indexOf$default(java.lang.CharSequence,java.lang.String,int,boolean,int,java.lang.Object) -> a
     boolean isBlank(java.lang.CharSequence) -> a
+    java.util.List split$default(java.lang.CharSequence,java.lang.String[],boolean,int,int,java.lang.Object) -> a
     boolean startsWith$default(java.lang.String,java.lang.String,boolean,int,java.lang.Object) -> a
     java.lang.String substringAfter$default(java.lang.String,java.lang.String,java.lang.String,int,java.lang.Object) -> a
     java.lang.String substringAfterLast$default(java.lang.String,char,java.lang.String,int,java.lang.Object) -> a
@@ -11842,24 +11912,26 @@ kotlin.text.StringsKt -> kotlin.t.d:
     java.lang.Long toLongOrNull(java.lang.String) -> b
     java.lang.CharSequence trim(java.lang.CharSequence) -> d
     char first(java.lang.CharSequence) -> e
-kotlin.text.StringsKt__AppendableKt -> kotlin.t.e:
-kotlin.text.StringsKt__IndentKt -> kotlin.t.f:
-kotlin.text.StringsKt__RegexExtensionsJVMKt -> kotlin.t.g:
-kotlin.text.StringsKt__RegexExtensionsKt -> kotlin.t.h:
-kotlin.text.StringsKt__StringBuilderJVMKt -> kotlin.t.i:
-kotlin.text.StringsKt__StringBuilderKt -> kotlin.t.j:
-kotlin.text.StringsKt__StringNumberConversionsJVMKt -> kotlin.t.k:
-kotlin.text.StringsKt__StringNumberConversionsKt -> kotlin.t.l:
+kotlin.text.StringsKt__AppendableKt -> kotlin.text.f:
+kotlin.text.StringsKt__IndentKt -> kotlin.text.g:
+kotlin.text.StringsKt__RegexExtensionsJVMKt -> kotlin.text.h:
+kotlin.text.StringsKt__RegexExtensionsKt -> kotlin.text.i:
+kotlin.text.StringsKt__StringBuilderJVMKt -> kotlin.text.j:
+kotlin.text.StringsKt__StringBuilderKt -> kotlin.text.k:
+kotlin.text.StringsKt__StringNumberConversionsJVMKt -> kotlin.text.l:
+kotlin.text.StringsKt__StringNumberConversionsKt -> kotlin.text.m:
     java.lang.Integer toIntOrNull(java.lang.String) -> a
     java.lang.Integer toIntOrNull(java.lang.String,int) -> a
     java.lang.Long toLongOrNull(java.lang.String) -> b
     java.lang.Long toLongOrNull(java.lang.String,int) -> b
-kotlin.text.StringsKt__StringsJVMKt -> kotlin.t.m:
+kotlin.text.StringsKt__StringsJVMKt -> kotlin.text.n:
+    boolean equals(java.lang.String,java.lang.String,boolean) -> a
     boolean isBlank(java.lang.CharSequence) -> a
     boolean regionMatches(java.lang.String,int,java.lang.String,int,int,boolean) -> a
-    boolean startsWith(java.lang.String,java.lang.String,boolean) -> a
     boolean startsWith$default(java.lang.String,java.lang.String,boolean,int,java.lang.Object) -> a
-kotlin.text.StringsKt__StringsKt -> kotlin.t.n:
+    boolean startsWith(java.lang.String,java.lang.String,boolean) -> b
+kotlin.text.StringsKt__StringsKt -> kotlin.text.StringsKt__StringsKt:
+    kotlin.Pair access$findAnyOf(java.lang.CharSequence,java.util.Collection,int,boolean,boolean) -> a
     boolean contains(java.lang.CharSequence,java.lang.CharSequence,boolean) -> a
     boolean contains$default(java.lang.CharSequence,java.lang.CharSequence,boolean,int,java.lang.Object) -> a
     int indexOf(java.lang.CharSequence,char,int,boolean) -> a
@@ -11869,11 +11941,18 @@ kotlin.text.StringsKt__StringsKt -> kotlin.t.n:
     int indexOf$default(java.lang.CharSequence,char,int,boolean,int,java.lang.Object) -> a
     int indexOf$default(java.lang.CharSequence,java.lang.String,int,boolean,int,java.lang.Object) -> a
     int indexOfAny(java.lang.CharSequence,char[],int,boolean) -> a
+    kotlin.sequences.Sequence rangesDelimitedBy$StringsKt__StringsKt(java.lang.CharSequence,java.lang.String[],int,boolean,int) -> a
+    kotlin.sequences.Sequence rangesDelimitedBy$StringsKt__StringsKt$default(java.lang.CharSequence,java.lang.String[],int,boolean,int,int,java.lang.Object) -> a
     boolean regionMatchesImpl(java.lang.CharSequence,int,java.lang.CharSequence,int,int,boolean) -> a
+    java.util.List split(java.lang.CharSequence,java.lang.String[],boolean,int) -> a
+    java.util.List split$StringsKt__StringsKt(java.lang.CharSequence,java.lang.String,boolean,int) -> a
+    java.util.List split$default(java.lang.CharSequence,java.lang.String[],boolean,int,int,java.lang.Object) -> a
+    java.lang.String substring(java.lang.CharSequence,kotlin.ranges.IntRange) -> a
     java.lang.String substringAfter(java.lang.String,java.lang.String,java.lang.String) -> a
     java.lang.String substringAfter$default(java.lang.String,java.lang.String,java.lang.String,int,java.lang.Object) -> a
     java.lang.String substringAfterLast(java.lang.String,char,java.lang.String) -> a
     java.lang.String substringAfterLast$default(java.lang.String,char,java.lang.String,int,java.lang.Object) -> a
+    kotlin.Pair findAnyOf$StringsKt__StringsKt(java.lang.CharSequence,java.util.Collection,int,boolean,boolean) -> b
     kotlin.ranges.IntRange getIndices(java.lang.CharSequence) -> b
     int lastIndexOf(java.lang.CharSequence,char,int,boolean) -> b
     int lastIndexOf(java.lang.CharSequence,java.lang.String,int,boolean) -> b
@@ -11886,27 +11965,30 @@ kotlin.text.StringsKt__StringsKt -> kotlin.t.n:
     java.lang.String substringBefore$default(java.lang.String,java.lang.String,java.lang.String,int,java.lang.Object) -> b
     int getLastIndex(java.lang.CharSequence) -> c
     java.lang.CharSequence trim(java.lang.CharSequence) -> d
-kotlin.text.StringsKt___StringsJvmKt -> kotlin.t.o:
-kotlin.text.StringsKt___StringsKt -> kotlin.t.p:
+kotlin.text.StringsKt__StringsKt$rangesDelimitedBy$4 -> kotlin.text.StringsKt__StringsKt$rangesDelimitedBy$4:
+    kotlin.Pair invoke(java.lang.CharSequence,int) -> a
+kotlin.text.StringsKt___StringsJvmKt -> kotlin.text.o:
+kotlin.text.StringsKt___StringsKt -> kotlin.text.p:
     char first(java.lang.CharSequence) -> e
 kotlinx.coroutines.AbstractCoroutine -> kotlinx.coroutines.a:
     kotlin.coroutines.CoroutineContext parentContext -> c
     kotlin.coroutines.CoroutineContext context -> b
     void onCancelled(java.lang.Throwable,boolean) -> a
     void start(kotlinx.coroutines.CoroutineStart,java.lang.Object,kotlin.jvm.functions.Function2) -> a
+    boolean isActive() -> b
     void onCompletionInternal(java.lang.Object) -> e
     void handleOnCompletionException$kotlinx_coroutines_core(java.lang.Throwable) -> f
     void onCompleted(java.lang.Object) -> f
     java.lang.String nameString$kotlinx_coroutines_core() -> g
     void onStartInternal$kotlinx_coroutines_core() -> h
-    int getDefaultResumeMode$kotlinx_coroutines_core() -> k
-    void initParentJob$kotlinx_coroutines_core() -> l
-    void onStart() -> m
+    int getDefaultResumeMode$kotlinx_coroutines_core() -> l
+    void initParentJob$kotlinx_coroutines_core() -> m
+    void onStart() -> n
 kotlinx.coroutines.Active -> kotlinx.coroutines.b:
     kotlinx.coroutines.Active INSTANCE -> a
 kotlinx.coroutines.BlockingEventLoop -> kotlinx.coroutines.c:
     java.lang.Thread thread -> f
-    java.lang.Thread getThread() -> r
+    java.lang.Thread getThread() -> s
 kotlinx.coroutines.BuildersKt -> kotlinx.coroutines.d:
     kotlinx.coroutines.Deferred async(kotlinx.coroutines.CoroutineScope,kotlin.coroutines.CoroutineContext,kotlinx.coroutines.CoroutineStart,kotlin.jvm.functions.Function2) -> a
     kotlinx.coroutines.Deferred async$default(kotlinx.coroutines.CoroutineScope,kotlin.coroutines.CoroutineContext,kotlinx.coroutines.CoroutineStart,kotlin.jvm.functions.Function2,int,java.lang.Object) -> a
@@ -11981,10 +12063,10 @@ kotlinx.coroutines.CommonPool -> kotlinx.coroutines.p:
     kotlinx.coroutines.CommonPool INSTANCE -> c
     int requestedParallelism -> a
     boolean isGoodCommonPool$kotlinx_coroutines_core(java.lang.Class,java.util.concurrent.ExecutorService) -> a
-    java.util.concurrent.ExecutorService createPlainPool() -> k
-    java.util.concurrent.ExecutorService createPool() -> m
-    java.util.concurrent.Executor getOrCreatePoolSync() -> p
-    int getParallelism() -> q
+    java.util.concurrent.ExecutorService createPlainPool() -> m
+    java.util.concurrent.ExecutorService createPool() -> p
+    java.util.concurrent.Executor getOrCreatePoolSync() -> q
+    int getParallelism() -> r
 kotlinx.coroutines.CommonPool$createPlainPool$1 -> kotlinx.coroutines.p$a:
     java.util.concurrent.atomic.AtomicInteger $threadId -> a
 kotlinx.coroutines.CommonPool$isGoodCommonPool$1 -> kotlinx.coroutines.p$b:
@@ -11996,7 +12078,7 @@ kotlinx.coroutines.CompletableDeferredImpl -> kotlinx.coroutines.CompletableDefe
     java.lang.Object await(kotlin.coroutines.Continuation) -> a
     boolean complete(java.lang.Object) -> a
     boolean completeExceptionally(java.lang.Throwable) -> a
-    boolean getOnCancelComplete$kotlinx_coroutines_core() -> b
+    boolean getOnCancelComplete$kotlinx_coroutines_core() -> c
 kotlinx.coroutines.CompletableDeferredKt -> kotlinx.coroutines.r:
     kotlinx.coroutines.CompletableDeferred CompletableDeferred(kotlinx.coroutines.Job) -> a
     kotlinx.coroutines.CompletableDeferred CompletableDeferred$default(kotlinx.coroutines.Job,int,java.lang.Object) -> a
@@ -12042,12 +12124,12 @@ kotlinx.coroutines.CoroutineId -> kotlinx.coroutines.d0:
     void restoreThreadContext(kotlin.coroutines.CoroutineContext,java.lang.String) -> a
     java.lang.Object updateThreadContext(kotlin.coroutines.CoroutineContext) -> a
     java.lang.String updateThreadContext(kotlin.coroutines.CoroutineContext) -> a
-    long getId() -> k
+    long getId() -> m
 kotlinx.coroutines.CoroutineId$Key -> kotlinx.coroutines.d0$a:
 kotlinx.coroutines.CoroutineName -> kotlinx.coroutines.e0:
     kotlinx.coroutines.CoroutineName$Key Key -> b
     java.lang.String name -> a
-    java.lang.String getName() -> k
+    java.lang.String getName() -> m
 kotlinx.coroutines.CoroutineName$Key -> kotlinx.coroutines.e0$a:
 kotlinx.coroutines.CoroutineScope -> kotlinx.coroutines.f0:
 kotlinx.coroutines.CoroutineScopeKt -> kotlinx.coroutines.g0:
@@ -12083,11 +12165,11 @@ kotlinx.coroutines.DebugStringsKt -> kotlinx.coroutines.j0:
 kotlinx.coroutines.DefaultExecutor -> kotlinx.coroutines.k0:
     long KEEP_ALIVE_NANOS -> f
     kotlinx.coroutines.DefaultExecutor INSTANCE -> g
-    boolean isShutdownRequested() -> A
-    boolean notifyStartup() -> B
-    java.lang.Thread getThread() -> r
-    void acknowledgeShutdownIfNeeded() -> y
-    java.lang.Thread createThreadSync() -> z
+    java.lang.Thread createThreadSync() -> A
+    boolean isShutdownRequested() -> B
+    boolean notifyStartup() -> C
+    java.lang.Thread getThread() -> s
+    void acknowledgeShutdownIfNeeded() -> z
 kotlinx.coroutines.DefaultExecutorKt -> kotlinx.coroutines.l0:
     kotlinx.coroutines.Delay DefaultDelay -> a
     kotlinx.coroutines.Delay getDefaultDelay() -> a
@@ -12112,10 +12194,10 @@ kotlinx.coroutines.DispatchedContinuation -> kotlinx.coroutines.p0:
 kotlinx.coroutines.DispatchedCoroutine -> kotlinx.coroutines.q0:
     java.util.concurrent.atomic.AtomicIntegerFieldUpdater _decision$FU -> e
     void afterCompletionInternal(java.lang.Object,int) -> a
-    int getDefaultResumeMode$kotlinx_coroutines_core() -> k
-    java.lang.Object getResult() -> o
-    boolean tryResume() -> p
-    boolean trySuspend() -> q
+    int getDefaultResumeMode$kotlinx_coroutines_core() -> l
+    java.lang.Object getResult() -> p
+    boolean tryResume() -> q
+    boolean trySuspend() -> r
 kotlinx.coroutines.DispatchedKt -> kotlinx.coroutines.r0:
     kotlinx.coroutines.internal.Symbol UNDEFINED -> a
     kotlinx.coroutines.internal.Symbol access$getUNDEFINED$p() -> a
@@ -12146,6 +12228,7 @@ kotlinx.coroutines.DisposeOnCancel -> kotlinx.coroutines.v0:
     void invoke(java.lang.Throwable) -> a
 kotlinx.coroutines.Empty -> kotlinx.coroutines.w0:
     boolean isActive -> a
+    boolean isActive() -> b
     kotlinx.coroutines.NodeList getList() -> c
 kotlinx.coroutines.EventLoop -> kotlinx.coroutines.x0:
     kotlinx.coroutines.internal.ArrayQueue unconfinedQueue -> c
@@ -12156,14 +12239,15 @@ kotlinx.coroutines.EventLoop -> kotlinx.coroutines.x0:
     void incrementUseCount$default(kotlinx.coroutines.EventLoop,boolean,int,java.lang.Object) -> a
     void incrementUseCount(boolean) -> b
     long delta(boolean) -> c
-    long getNextTime() -> k
-    boolean isUnconfinedLoopActive() -> m
-    boolean isUnconfinedQueueEmpty() -> p
-    boolean processUnconfinedEvent() -> q
+    long getNextTime() -> m
+    boolean isUnconfinedLoopActive() -> p
+    boolean isUnconfinedQueueEmpty() -> q
+    boolean processUnconfinedEvent() -> r
 kotlinx.coroutines.EventLoopImplBase -> kotlinx.coroutines.y0:
     java.util.concurrent.atomic.AtomicReferenceFieldUpdater _queue$FU -> d
     java.util.concurrent.atomic.AtomicReferenceFieldUpdater _delayed$FU -> e
-    void rescheduleAllDelayed() -> A
+    java.lang.Runnable dequeue() -> A
+    void rescheduleAllDelayed() -> B
     boolean access$isCompleted$p(kotlinx.coroutines.EventLoopImplBase) -> a
     void enqueue(java.lang.Runnable) -> a
     void scheduleResumeAfterDelay(long,kotlinx.coroutines.CancellableContinuation) -> a
@@ -12171,12 +12255,11 @@ kotlinx.coroutines.EventLoopImplBase -> kotlinx.coroutines.y0:
     boolean enqueueImpl(java.lang.Runnable) -> b
     void schedule(long,kotlinx.coroutines.EventLoopImplBase$DelayedTask) -> b
     int scheduleImpl(long,kotlinx.coroutines.EventLoopImplBase$DelayedTask) -> c
-    long getNextTime() -> k
-    boolean isEmpty() -> u
-    long processNextEvent() -> w
-    void resetAll() -> x
-    void closeQueue() -> y
-    java.lang.Runnable dequeue() -> z
+    long getNextTime() -> m
+    boolean isEmpty() -> w
+    long processNextEvent() -> x
+    void resetAll() -> y
+    void closeQueue() -> z
 kotlinx.coroutines.EventLoopImplBase$DelayedResumeTask -> kotlinx.coroutines.y0$a:
     kotlinx.coroutines.CancellableContinuation cont -> d
     kotlinx.coroutines.EventLoopImplBase this$0 -> e
@@ -12195,8 +12278,8 @@ kotlinx.coroutines.EventLoopImplBase$DelayedTaskQueue -> kotlinx.coroutines.y0$c
     long timeNow -> b
 kotlinx.coroutines.EventLoopImplPlatform -> kotlinx.coroutines.z0:
     void reschedule(long,kotlinx.coroutines.EventLoopImplBase$DelayedTask) -> a
-    java.lang.Thread getThread() -> r
-    void unpark() -> s
+    java.lang.Thread getThread() -> s
+    void unpark() -> u
 kotlinx.coroutines.EventLoopKt -> kotlinx.coroutines.a1:
     kotlinx.coroutines.EventLoop createEventLoop() -> a
 kotlinx.coroutines.EventLoop_commonKt -> kotlinx.coroutines.b1:
@@ -12210,8 +12293,10 @@ kotlinx.coroutines.GlobalScope -> kotlinx.coroutines.d1:
     kotlinx.coroutines.GlobalScope INSTANCE -> a
 kotlinx.coroutines.InactiveNodeList -> kotlinx.coroutines.e1:
     kotlinx.coroutines.NodeList list -> a
+    boolean isActive() -> b
     kotlinx.coroutines.NodeList getList() -> c
 kotlinx.coroutines.Incomplete -> kotlinx.coroutines.f1:
+    boolean isActive() -> b
     kotlinx.coroutines.NodeList getList() -> c
 kotlinx.coroutines.IncompleteStateBox -> kotlinx.coroutines.g1:
     kotlinx.coroutines.Incomplete state -> a
@@ -12231,7 +12316,8 @@ kotlinx.coroutines.Job -> kotlinx.coroutines.k1:
     void cancel(java.util.concurrent.CancellationException) -> a
     kotlinx.coroutines.DisposableHandle invokeOnCompletion(kotlin.jvm.functions.Function1) -> a
     kotlinx.coroutines.DisposableHandle invokeOnCompletion(boolean,boolean,kotlin.jvm.functions.Function1) -> a
-    java.util.concurrent.CancellationException getCancellationException() -> i
+    boolean isActive() -> b
+    java.util.concurrent.CancellationException getCancellationException() -> j
 kotlinx.coroutines.Job$DefaultImpls -> kotlinx.coroutines.k1$a:
     void cancel$default(kotlinx.coroutines.Job,java.util.concurrent.CancellationException,int,java.lang.Object) -> a
     java.lang.Object fold(kotlinx.coroutines.Job,java.lang.Object,kotlin.jvm.functions.Function2) -> a
@@ -12248,8 +12334,8 @@ kotlinx.coroutines.JobCancellingNode -> kotlinx.coroutines.l1:
 kotlinx.coroutines.JobImpl -> kotlinx.coroutines.m1:
     boolean handlesException -> b
     boolean getHandlesException$kotlinx_coroutines_core() -> a
-    boolean getOnCancelComplete$kotlinx_coroutines_core() -> b
-    boolean handlesException() -> k
+    boolean getOnCancelComplete$kotlinx_coroutines_core() -> c
+    boolean handlesException() -> l
 kotlinx.coroutines.JobKt -> kotlinx.coroutines.n1:
     kotlinx.coroutines.CompletableJob Job(kotlinx.coroutines.Job) -> a
     kotlinx.coroutines.CompletableJob Job$default(kotlinx.coroutines.Job,int,java.lang.Object) -> a
@@ -12262,6 +12348,7 @@ kotlinx.coroutines.JobKt__JobKt -> kotlinx.coroutines.o1:
     void cancel$default(kotlin.coroutines.CoroutineContext,java.util.concurrent.CancellationException,int,java.lang.Object) -> a
 kotlinx.coroutines.JobNode -> kotlinx.coroutines.p1:
     kotlinx.coroutines.Job job -> d
+    boolean isActive() -> b
     kotlinx.coroutines.NodeList getList() -> c
 kotlinx.coroutines.JobSupport -> kotlinx.coroutines.q1:
     java.util.concurrent.atomic.AtomicReferenceFieldUpdater _state$FU -> a
@@ -12291,8 +12378,8 @@ kotlinx.coroutines.JobSupport -> kotlinx.coroutines.q1:
     boolean tryMakeCancelling(kotlinx.coroutines.Incomplete,java.lang.Throwable) -> a
     int tryMakeCompleting(java.lang.Object,java.lang.Object,int) -> a
     java.lang.Object awaitInternal$kotlinx_coroutines_core(kotlin.coroutines.Continuation) -> b
-    boolean getOnCancelComplete$kotlinx_coroutines_core() -> b
     kotlinx.coroutines.NodeList getOrPromoteCancellingList(kotlinx.coroutines.Incomplete) -> b
+    boolean isActive() -> b
     boolean makeCompletingOnce$kotlinx_coroutines_core(java.lang.Object,int) -> b
     void notifyCompletion(kotlinx.coroutines.NodeList,java.lang.Throwable) -> b
     void promoteSingleToNodeList(kotlinx.coroutines.JobNode) -> b
@@ -12301,29 +12388,30 @@ kotlinx.coroutines.JobSupport -> kotlinx.coroutines.q1:
     java.lang.Object awaitSuspend(kotlin.coroutines.Continuation) -> c
     boolean cancelImpl$kotlinx_coroutines_core(java.lang.Object) -> c
     boolean cancelInternal(java.lang.Throwable) -> c
-    java.lang.Object getState$kotlinx_coroutines_core() -> c
+    boolean getOnCancelComplete$kotlinx_coroutines_core() -> c
     int tryMakeCompletingSlowPath(kotlinx.coroutines.Incomplete,java.lang.Object,int) -> c
     boolean childCancelled(java.lang.Throwable) -> d
-    boolean isCompleted() -> d
+    java.lang.Object getState$kotlinx_coroutines_core() -> d
     boolean makeCompleting$kotlinx_coroutines_core(java.lang.Object) -> d
     boolean handleJobException(java.lang.Throwable) -> e
-    boolean isScopedCoroutine() -> e
+    boolean isCompleted() -> e
     void onCompletionInternal(java.lang.Object) -> e
     boolean cancelMakeCompleting(java.lang.Object) -> f
-    java.util.concurrent.CancellationException getChildJobCancellationCause() -> f
     void handleOnCompletionException$kotlinx_coroutines_core(java.lang.Throwable) -> f
+    boolean isScopedCoroutine() -> f
     java.lang.Throwable createCauseException(java.lang.Object) -> g
     java.lang.String nameString$kotlinx_coroutines_core() -> g
     void onCancelling(java.lang.Throwable) -> g
     boolean cancelParent(java.lang.Throwable) -> h
     java.lang.Throwable getExceptionOrNull(java.lang.Object) -> h
     void onStartInternal$kotlinx_coroutines_core() -> h
-    java.util.concurrent.CancellationException getCancellationException() -> i
+    java.util.concurrent.CancellationException getChildJobCancellationCause() -> i
     boolean makeCancelling(java.lang.Object) -> i
+    java.util.concurrent.CancellationException getCancellationException() -> j
     int startInternal(java.lang.Object) -> j
-    java.lang.String toDebugString() -> j
-    kotlinx.coroutines.JobCancellationException createJobCancellationException() -> k
     java.lang.String stateString(java.lang.Object) -> k
+    java.lang.String toDebugString() -> k
+    kotlinx.coroutines.JobCancellationException createJobCancellationException() -> l
 kotlinx.coroutines.JobSupport$AwaitContinuation -> kotlinx.coroutines.q1$a:
     kotlinx.coroutines.JobSupport job -> h
     java.lang.Throwable getContinuationCancellationCause(kotlinx.coroutines.Job) -> a
@@ -12338,10 +12426,11 @@ kotlinx.coroutines.JobSupport$Finishing -> kotlinx.coroutines.q1$c:
     kotlinx.coroutines.NodeList list -> a
     void addExceptionLocked(java.lang.Throwable) -> a
     boolean isCancelling() -> a
-    boolean isSealed() -> b
+    boolean isActive() -> b
     java.util.List sealLocked(java.lang.Throwable) -> b
     kotlinx.coroutines.NodeList getList() -> c
-    java.util.ArrayList allocateList() -> d
+    boolean isSealed() -> d
+    java.util.ArrayList allocateList() -> e
 kotlinx.coroutines.JobSupport$addLastAtomic$$inlined$addLastIf$1 -> kotlinx.coroutines.q1$d:
     kotlinx.coroutines.JobSupport this$0 -> d
     java.lang.Object $expect$inlined -> e
@@ -12358,21 +12447,22 @@ kotlinx.coroutines.JobSupportKt -> kotlinx.coroutines.r1:
     kotlinx.coroutines.internal.Symbol access$getSEALED$p() -> c
 kotlinx.coroutines.LazyDeferredCoroutine -> kotlinx.coroutines.s1:
     kotlin.jvm.functions.Function2 block -> d
-    void onStart() -> m
+    void onStart() -> n
 kotlinx.coroutines.LazyStandaloneCoroutine -> kotlinx.coroutines.t1:
     kotlin.jvm.functions.Function2 block -> d
-    void onStart() -> m
+    void onStart() -> n
 kotlinx.coroutines.MainCoroutineDispatcher -> kotlinx.coroutines.u1:
-    kotlinx.coroutines.MainCoroutineDispatcher getImmediate() -> k
+    kotlinx.coroutines.MainCoroutineDispatcher getImmediate() -> m
 kotlinx.coroutines.NodeList -> kotlinx.coroutines.v1:
     java.lang.String getString(java.lang.String) -> a
+    boolean isActive() -> b
     kotlinx.coroutines.NodeList getList() -> c
 kotlinx.coroutines.NonDisposableHandle -> kotlinx.coroutines.w1:
     kotlinx.coroutines.NonDisposableHandle INSTANCE -> a
     boolean childCancelled(java.lang.Throwable) -> a
 kotlinx.coroutines.NotCompleted -> kotlinx.coroutines.x1:
 kotlinx.coroutines.ParentJob -> kotlinx.coroutines.y1:
-    java.util.concurrent.CancellationException getChildJobCancellationCause() -> f
+    java.util.concurrent.CancellationException getChildJobCancellationCause() -> i
 kotlinx.coroutines.ResumeAwaitOnCompletion -> kotlinx.coroutines.z1:
     kotlinx.coroutines.CancellableContinuationImpl continuation -> e
     void invoke(java.lang.Throwable) -> b
@@ -12419,7 +12509,7 @@ kotlinx.coroutines.TimeSourceKt -> kotlinx.coroutines.h2:
 kotlinx.coroutines.Unconfined -> kotlinx.coroutines.i2:
     kotlinx.coroutines.Unconfined INSTANCE -> a
 kotlinx.coroutines.UndispatchedCoroutine -> kotlinx.coroutines.j2:
-    int getDefaultResumeMode$kotlinx_coroutines_core() -> k
+    int getDefaultResumeMode$kotlinx_coroutines_core() -> l
 kotlinx.coroutines.YieldKt -> kotlinx.coroutines.k2:
     void checkCompletion(kotlin.coroutines.CoroutineContext) -> a
 kotlinx.coroutines.android.AndroidDispatcherFactory -> kotlinx.coroutines.android.AndroidDispatcherFactory:
@@ -12434,8 +12524,8 @@ kotlinx.coroutines.android.HandlerContext -> kotlinx.coroutines.android.HandlerC
     boolean invokeImmediately -> d
     android.os.Handler access$getHandler$p(kotlinx.coroutines.android.HandlerContext) -> a
     void scheduleResumeAfterDelay(long,kotlinx.coroutines.CancellableContinuation) -> a
-    kotlinx.coroutines.MainCoroutineDispatcher getImmediate() -> k
-    kotlinx.coroutines.android.HandlerContext getImmediate() -> k
+    kotlinx.coroutines.MainCoroutineDispatcher getImmediate() -> m
+    kotlinx.coroutines.android.HandlerContext getImmediate() -> m
 kotlinx.coroutines.android.HandlerContext$scheduleResumeAfterDelay$$inlined$Runnable$1 -> kotlinx.coroutines.android.HandlerContext$a:
     kotlinx.coroutines.CancellableContinuation $continuation$inlined -> b
     kotlinx.coroutines.android.HandlerContext this$0 -> a
@@ -12501,7 +12591,7 @@ kotlinx.coroutines.channels.AbstractSendChannel$SendBuffered -> kotlinx.coroutin
     java.lang.Object element -> d
     void completeResumeSend(java.lang.Object) -> b
     java.lang.Object tryResumeSend(java.lang.Object) -> c
-    java.lang.Object getPollResult() -> l
+    java.lang.Object getPollResult() -> m
 kotlinx.coroutines.channels.ArrayChannel -> kotlinx.coroutines.channels.d:
     java.lang.Object[] buffer -> d
     java.util.concurrent.locks.ReentrantLock lock -> c
@@ -12531,10 +12621,10 @@ kotlinx.coroutines.channels.Closed -> kotlinx.coroutines.channels.h:
     java.lang.Object tryResumeReceive(java.lang.Object,java.lang.Object) -> a
     void completeResumeSend(java.lang.Object) -> b
     java.lang.Object tryResumeSend(java.lang.Object) -> c
-    java.lang.Object getPollResult() -> l
-    kotlinx.coroutines.channels.Closed getPollResult() -> l
-    java.lang.Throwable getReceiveException() -> m
-    java.lang.Throwable getSendException() -> n
+    java.lang.Object getPollResult() -> m
+    kotlinx.coroutines.channels.Closed getPollResult() -> m
+    java.lang.Throwable getReceiveException() -> n
+    java.lang.Throwable getSendException() -> o
 kotlinx.coroutines.channels.ConflatedChannel -> kotlinx.coroutines.channels.i:
     void conflatePreviousSendBuffered(kotlinx.coroutines.channels.AbstractSendChannel$SendBuffered) -> a
     java.lang.Object offerInternal(java.lang.Object) -> a
@@ -12560,7 +12650,7 @@ kotlinx.coroutines.channels.RendezvousChannel -> kotlinx.coroutines.channels.n:
 kotlinx.coroutines.channels.Send -> kotlinx.coroutines.channels.o:
     void completeResumeSend(java.lang.Object) -> b
     java.lang.Object tryResumeSend(java.lang.Object) -> c
-    java.lang.Object getPollResult() -> l
+    java.lang.Object getPollResult() -> m
 kotlinx.coroutines.channels.SendChannel -> kotlinx.coroutines.channels.p:
 kotlinx.coroutines.flow.Flow -> kotlinx.coroutines.l2.a:
     java.lang.Object collect(kotlinx.coroutines.flow.FlowCollector,kotlin.coroutines.Continuation) -> a
@@ -12630,7 +12720,7 @@ kotlinx.coroutines.internal.FastServiceLoader -> kotlinx.coroutines.internal.f:
     java.util.List parseFile(java.io.BufferedReader) -> a
     java.util.List loadProviders$kotlinx_coroutines_core(java.lang.Class,java.lang.ClassLoader) -> b
 kotlinx.coroutines.internal.LockFreeLinkedListHead -> kotlinx.coroutines.internal.g:
-    boolean remove() -> k
+    boolean remove() -> l
 kotlinx.coroutines.internal.LockFreeLinkedListKt -> kotlinx.coroutines.internal.h:
     java.lang.Object CONDITION_FALSE -> a
     java.lang.Object getCONDITION_FALSE() -> a
@@ -12647,16 +12737,16 @@ kotlinx.coroutines.internal.LockFreeLinkedListNode -> kotlinx.coroutines.interna
     void finishAdd(kotlinx.coroutines.internal.LockFreeLinkedListNode) -> b
     void finishRemove(kotlinx.coroutines.internal.LockFreeLinkedListNode) -> c
     java.lang.Object getNext() -> d
-    kotlinx.coroutines.internal.LockFreeLinkedListNode getNextNode() -> e
-    java.lang.Object getPrev() -> f
-    kotlinx.coroutines.internal.LockFreeLinkedListNode getPrevNode() -> g
-    void helpDelete() -> h
-    void helpRemove() -> i
-    boolean isRemoved() -> j
-    boolean remove() -> k
-    kotlinx.coroutines.internal.LockFreeLinkedListNode findHead() -> l
-    kotlinx.coroutines.internal.LockFreeLinkedListNode markPrev() -> m
-    kotlinx.coroutines.internal.Removed removed() -> n
+    kotlinx.coroutines.internal.LockFreeLinkedListNode getNextNode() -> f
+    java.lang.Object getPrev() -> g
+    kotlinx.coroutines.internal.LockFreeLinkedListNode getPrevNode() -> h
+    void helpDelete() -> i
+    void helpRemove() -> j
+    boolean isRemoved() -> k
+    boolean remove() -> l
+    kotlinx.coroutines.internal.LockFreeLinkedListNode findHead() -> m
+    kotlinx.coroutines.internal.LockFreeLinkedListNode markPrev() -> n
+    kotlinx.coroutines.internal.Removed removed() -> o
 kotlinx.coroutines.internal.LockFreeLinkedListNode$CondAddOp -> kotlinx.coroutines.internal.i$a:
     kotlinx.coroutines.internal.LockFreeLinkedListNode newNode -> c
     kotlinx.coroutines.internal.LockFreeLinkedListNode oldNext -> b
@@ -12713,8 +12803,8 @@ kotlinx.coroutines.internal.MissingMainCoroutineDispatcher -> kotlinx.coroutines
     java.lang.String errorHint -> b
     java.lang.Void scheduleResumeAfterDelay(long,kotlinx.coroutines.CancellableContinuation) -> a
     void scheduleResumeAfterDelay(long,kotlinx.coroutines.CancellableContinuation) -> a
-    kotlinx.coroutines.MainCoroutineDispatcher getImmediate() -> k
-    java.lang.Void missing() -> m
+    kotlinx.coroutines.MainCoroutineDispatcher getImmediate() -> m
+    java.lang.Void missing() -> p
 kotlinx.coroutines.internal.OpDescriptor -> kotlinx.coroutines.internal.o:
     java.lang.Object perform(java.lang.Object) -> a
 kotlinx.coroutines.internal.Removed -> kotlinx.coroutines.internal.p:
@@ -12722,9 +12812,9 @@ kotlinx.coroutines.internal.Removed -> kotlinx.coroutines.internal.p:
 kotlinx.coroutines.internal.ScopeCoroutine -> kotlinx.coroutines.internal.q:
     kotlin.coroutines.Continuation uCont -> d
     void afterCompletionInternal(java.lang.Object,int) -> a
-    boolean isScopedCoroutine() -> e
-    int getDefaultResumeMode$kotlinx_coroutines_core() -> k
-    kotlinx.coroutines.Job getParent$kotlinx_coroutines_core() -> n
+    boolean isScopedCoroutine() -> f
+    int getDefaultResumeMode$kotlinx_coroutines_core() -> l
+    kotlinx.coroutines.Job getParent$kotlinx_coroutines_core() -> o
 kotlinx.coroutines.internal.ScopesKt -> kotlinx.coroutines.internal.r:
     java.lang.Throwable tryRecover(kotlinx.coroutines.AbstractCoroutine,java.lang.Throwable) -> a
 kotlinx.coroutines.internal.StackTraceRecoveryKt -> kotlinx.coroutines.internal.s:
@@ -12912,7 +13002,7 @@ kotlinx.coroutines.scheduling.CoroutineScheduler$WorkerState -> kotlinx.coroutin
 kotlinx.coroutines.scheduling.DefaultScheduler -> kotlinx.coroutines.scheduling.b:
     kotlinx.coroutines.CoroutineDispatcher IO -> f
     kotlinx.coroutines.scheduling.DefaultScheduler INSTANCE -> g
-    kotlinx.coroutines.CoroutineDispatcher getIO() -> k
+    kotlinx.coroutines.CoroutineDispatcher getIO() -> m
 kotlinx.coroutines.scheduling.ExperimentalCoroutineDispatcher -> kotlinx.coroutines.scheduling.c:
     kotlinx.coroutines.scheduling.CoroutineScheduler coroutineScheduler -> a
     long idleWorkerKeepAliveNs -> d
@@ -12921,7 +13011,7 @@ kotlinx.coroutines.scheduling.ExperimentalCoroutineDispatcher -> kotlinx.corouti
     java.lang.String schedulerName -> e
     kotlinx.coroutines.CoroutineDispatcher blocking(int) -> a
     void dispatchWithContext$kotlinx_coroutines_core(java.lang.Runnable,kotlinx.coroutines.scheduling.TaskContext,boolean) -> a
-    kotlinx.coroutines.scheduling.CoroutineScheduler createScheduler() -> k
+    kotlinx.coroutines.scheduling.CoroutineScheduler createScheduler() -> m
 kotlinx.coroutines.scheduling.GlobalQueue -> kotlinx.coroutines.scheduling.d:
     kotlinx.coroutines.scheduling.Task removeFirstWithModeOrNull(kotlinx.coroutines.scheduling.TaskMode) -> a
 kotlinx.coroutines.scheduling.LimitingDispatcher -> kotlinx.coroutines.scheduling.e:
@@ -12931,23 +13021,23 @@ kotlinx.coroutines.scheduling.LimitingDispatcher -> kotlinx.coroutines.schedulin
     java.util.concurrent.ConcurrentLinkedQueue queue -> a
     int parallelism -> c
     void dispatch(java.lang.Runnable,boolean) -> a
-    void afterTask() -> e
-    kotlinx.coroutines.scheduling.TaskMode getTaskMode() -> j
+    void afterTask() -> f
+    kotlinx.coroutines.scheduling.TaskMode getTaskMode() -> k
 kotlinx.coroutines.scheduling.NanoTimeSource -> kotlinx.coroutines.scheduling.f:
     kotlinx.coroutines.scheduling.NanoTimeSource INSTANCE -> a
     long nanoTime() -> a
 kotlinx.coroutines.scheduling.NonBlockingContext -> kotlinx.coroutines.scheduling.g:
     kotlinx.coroutines.scheduling.TaskMode taskMode -> a
     kotlinx.coroutines.scheduling.NonBlockingContext INSTANCE -> b
-    void afterTask() -> e
-    kotlinx.coroutines.scheduling.TaskMode getTaskMode() -> j
+    void afterTask() -> f
+    kotlinx.coroutines.scheduling.TaskMode getTaskMode() -> k
 kotlinx.coroutines.scheduling.Task -> kotlinx.coroutines.scheduling.h:
     long submissionTime -> a
     kotlinx.coroutines.scheduling.TaskContext taskContext -> b
     kotlinx.coroutines.scheduling.TaskMode getMode() -> a
 kotlinx.coroutines.scheduling.TaskContext -> kotlinx.coroutines.scheduling.i:
-    void afterTask() -> e
-    kotlinx.coroutines.scheduling.TaskMode getTaskMode() -> j
+    void afterTask() -> f
+    kotlinx.coroutines.scheduling.TaskMode getTaskMode() -> k
 kotlinx.coroutines.scheduling.TaskImpl -> kotlinx.coroutines.scheduling.j:
     java.lang.Runnable block -> c
 kotlinx.coroutines.scheduling.TaskMode -> kotlinx.coroutines.scheduling.TaskMode:
@@ -13080,78 +13170,54 @@ me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$dismissDialog$2 
     me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$dismissDialog$2 INSTANCE -> a
 me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$showDialog$2 -> me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$showDialog$2:
     me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel$UiLoadingChange$showDialog$2 INSTANCE -> a
-me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent -> me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent:
-    java.util.concurrent.atomic.AtomicBoolean mPending -> a
-    java.util.concurrent.atomic.AtomicBoolean access$getMPending$p(me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent) -> a
-me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent$observe$1 -> me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent$a:
-    androidx.lifecycle.Observer $observer -> b
-    me.hgj.jetpackmvvm.callback.livedata.SingleLiveEvent this$0 -> a
 me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData -> me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData:
-    void hook(androidx.lifecycle.Observer) -> a
-me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData -> me.hgj.jetpackmvvm.callback.livedata.UnPeekNotNullLiveData:
-    void hook(androidx.lifecycle.Observer) -> a
-me.hgj.jetpackmvvm.callback.livedata.event.Event -> me.hgj.jetpackmvvm.callback.livedata.event.a:
-    java.lang.Object content -> a
+    java.util.TimerTask mTask -> e
+    int DELAY_TO_CLEAR_EVENT -> f
+    boolean isCleaning -> a
     boolean hasHandled -> b
     boolean isDelaying -> c
-    void access$setContent$p(me.hgj.jetpackmvvm.callback.livedata.event.Event,java.lang.Object) -> a
-    void access$setDelaying$p(me.hgj.jetpackmvvm.callback.livedata.event.Event,boolean) -> a
-    java.lang.Object getContent() -> a
-me.hgj.jetpackmvvm.callback.livedata.event.Event$getContent$task$1 -> me.hgj.jetpackmvvm.callback.livedata.event.a$a:
-    me.hgj.jetpackmvvm.callback.livedata.event.Event this$0 -> a
-me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData -> me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData:
-    java.lang.Object NOT_SET -> j
-    me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$Companion Companion -> k
-    java.lang.Runnable mPostValueRunnable -> i
-    java.lang.Object mData -> d
-    java.lang.Object mPendingData -> e
-    androidx.arch.core.internal.SafeIterableMap mObservers -> b
-    int version -> f
-    boolean mDispatchingValue -> g
-    java.lang.Object mDataLock -> a
-    boolean mDispatchInvalidated -> h
-    int mActiveCount -> c
-    int access$getMActiveCount$p(me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData) -> a
-    void access$setMActiveCount$p(me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData,int) -> a
-    void dispatchingValue(me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$ObserverWrapper) -> a
-    java.lang.Object getMPendingData() -> a
-    void observe(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Observer) -> a
-    void postEvent(me.hgj.jetpackmvvm.callback.livedata.event.Event) -> a
-    void removeObserver(androidx.lifecycle.Observer) -> a
-    void setMPendingData(java.lang.Object) -> a
-    java.lang.Object access$getMDataLock$p(me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData) -> b
-    void considerNotify(me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$ObserverWrapper) -> b
-    void onActive() -> b
-    void setEvent(me.hgj.jetpackmvvm.callback.livedata.event.Event) -> b
-    void onInactive() -> c
-    java.lang.Object access$getNOT_SET$cp() -> d
-me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$Companion -> me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$a:
-    void assertMainThread(java.lang.String) -> a
-    java.lang.Object getNOT_SET() -> a
-me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$LifecycleBoundObserver -> me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$LifecycleBoundObserver:
-    androidx.lifecycle.LifecycleOwner mOwner -> e
-    me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData this$0 -> f
-    void detachObserver() -> a
-    boolean isAttachedTo(androidx.lifecycle.LifecycleOwner) -> a
-    boolean shouldBeActive() -> e
-me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$ObserverWrapper -> me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$b:
-    androidx.lifecycle.Observer mEventObserver -> a
-    boolean mActive -> b
-    int mLastVersion -> c
-    me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData this$0 -> d
-    void activeStateChanged(boolean) -> a
-    void detachObserver() -> a
-    boolean isAttachedTo(androidx.lifecycle.LifecycleOwner) -> a
-    void setMLastVersion(int) -> a
-    boolean getMActive() -> b
-    androidx.lifecycle.Observer getMEventObserver() -> c
-    int getMLastVersion() -> d
-    boolean shouldBeActive() -> e
-me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$mPostValueRunnable$1 -> me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData$c:
-    me.hgj.jetpackmvvm.callback.livedata.event.EventBaseLiveData this$0 -> a
-me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData -> me.hgj.jetpackmvvm.callback.livedata.event.b:
-    void postValue(java.lang.Object) -> b
-    void setValue(java.lang.Object) -> c
+    java.util.Timer mTimer -> d
+    void access$clear(me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData) -> a
+    void access$setCleaning$p(me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData,boolean) -> a
+    void clear() -> a
+    boolean access$getHasHandled$p(me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData) -> b
+    void access$setDelaying$p(me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData,boolean) -> b
+    boolean access$isCleaning$p(me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData) -> c
+    void access$setHasHandled$p(me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData,boolean) -> c
+    boolean access$isDelaying$p(me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData) -> d
+me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData$observe$1 -> me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData$a:
+    androidx.lifecycle.Observer $observer -> b
+    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData this$0 -> a
+me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData$observeForever$1 -> me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData$b:
+    androidx.lifecycle.Observer $observer -> b
+    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData this$0 -> a
+me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData$setValue$2 -> me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData$c:
+    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData this$0 -> a
+me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData -> me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData:
+    java.util.TimerTask mTask -> f
+    int DELAY_TO_CLEAR_EVENT -> d
+    boolean isAllowNullValue -> g
+    boolean isAllowToClear -> h
+    boolean isCleaning -> a
+    boolean hasHandled -> b
+    boolean isDelaying -> c
+    java.util.Timer mTimer -> e
+    void access$clear(me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData) -> a
+    void access$setCleaning$p(me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData,boolean) -> a
+    void clear() -> a
+    boolean access$getHasHandled$p(me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData) -> b
+    void access$setDelaying$p(me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData,boolean) -> b
+    boolean access$isCleaning$p(me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData) -> c
+    void access$setHasHandled$p(me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData,boolean) -> c
+    boolean access$isDelaying$p(me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData) -> d
+me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData$observe$1 -> me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData$a:
+    androidx.lifecycle.Observer $observer -> b
+    me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData this$0 -> a
+me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData$observeForever$1 -> me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData$b:
+    androidx.lifecycle.Observer $observer -> b
+    me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData this$0 -> a
+me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData$setValue$2 -> me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData$c:
+    me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData this$0 -> a
 me.hgj.jetpackmvvm.demo.DataBinderMapperImpl -> me.hgj.jetpackmvvm.demo.DataBinderMapperImpl:
     android.util.SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP -> a
 me.hgj.jetpackmvvm.demo.DataBinderMapperImpl$InnerBrLookup -> me.hgj.jetpackmvvm.demo.DataBinderMapperImpl$a:
@@ -13160,14 +13226,14 @@ me.hgj.jetpackmvvm.demo.DataBinderMapperImpl$InnerLayoutIdLookup -> me.hgj.jetpa
     java.util.HashMap sKeys -> a
 me.hgj.jetpackmvvm.demo.app.App$Companion -> me.hgj.jetpackmvvm.demo.app.App$a:
 me.hgj.jetpackmvvm.demo.app.base.BaseActivity -> me.hgj.jetpackmvvm.demo.app.base.BaseActivity:
-    kotlin.Lazy shareViewModel$delegate -> d
+    kotlin.Lazy appViewModel$delegate -> d
     void createObserver() -> a
     void showLoading(java.lang.String) -> a
     void dismissLoading() -> b
-    me.hgj.jetpackmvvm.demo.app.event.AppViewModel getShareViewModel() -> f
+    me.hgj.jetpackmvvm.demo.app.event.AppViewModel getAppViewModel() -> f
 me.hgj.jetpackmvvm.demo.app.base.BaseFragment -> me.hgj.jetpackmvvm.demo.app.base.BaseFragment:
     java.util.HashMap _$_findViewCache -> i
-    kotlin.Lazy shareViewModel$delegate -> g
+    kotlin.Lazy appViewModel$delegate -> g
     kotlin.Lazy eventViewModel$delegate -> h
     void showLoading(java.lang.String) -> a
     void _$_clearFindViewByIdCache() -> d
@@ -13175,14 +13241,14 @@ me.hgj.jetpackmvvm.demo.app.base.BaseFragment -> me.hgj.jetpackmvvm.demo.app.bas
     void dismissLoading() -> f
     void initData() -> i
     void lazyLoadData() -> k
-    me.hgj.jetpackmvvm.demo.app.event.EventViewModel getEventViewModel() -> m
-    me.hgj.jetpackmvvm.demo.app.event.AppViewModel getShareViewModel() -> n
+    me.hgj.jetpackmvvm.demo.app.event.AppViewModel getAppViewModel() -> m
+    me.hgj.jetpackmvvm.demo.app.event.EventViewModel getEventViewModel() -> n
 me.hgj.jetpackmvvm.demo.app.event.AppViewModel -> me.hgj.jetpackmvvm.demo.app.event.AppViewModel:
     me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData userinfo -> b
-    me.hgj.jetpackmvvm.callback.livedata.IntLiveData appAnimation -> d
-    me.hgj.jetpackmvvm.callback.livedata.IntLiveData appColor -> c
-    me.hgj.jetpackmvvm.callback.livedata.IntLiveData getAppAnimation() -> b
-    me.hgj.jetpackmvvm.callback.livedata.IntLiveData getAppColor() -> c
+    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData appAnimation -> d
+    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData appColor -> c
+    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData getAppAnimation() -> b
+    me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData getAppColor() -> c
     me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData getUserinfo() -> d
 me.hgj.jetpackmvvm.demo.app.event.EventViewModel -> me.hgj.jetpackmvvm.demo.app.event.EventViewModel:
     me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData shareArticleEvent -> c
@@ -13664,33 +13730,35 @@ me.hgj.jetpackmvvm.demo.databinding.FragmentListBindingImpl -> me.hgj.jetpackmvv
     me.hgj.jetpackmvvm.demo.databinding.IncludeListBinding mboundView0 -> a
     long mDirtyFlags -> c
 me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBinding -> me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBinding:
-    android.widget.EditText loginUsername -> f
-    android.widget.CheckBox loginKey -> c
-    android.widget.EditText loginPwd -> d
-    me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel mViewmodel -> g
-    android.widget.TextView loginGoregister -> b
-    android.widget.TextView loginSub -> e
-    android.widget.ImageView loginClear -> a
-    me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$ProxyClick mClick -> h
+    android.widget.TextView loginGoregister -> a
+    android.widget.TextView loginSub -> b
+    me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$ProxyClick mClick -> d
+    me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel mViewmodel -> c
     void setClick(me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$ProxyClick) -> a
     void setViewmodel(me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel) -> a
 me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBindingImpl -> me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBindingImpl:
+    android.widget.EditText mboundView1 -> f
+    androidx.databinding.InverseBindingListener mboundView1androidTextAttrChanged -> m
+    android.widget.EditText mboundView3 -> h
+    androidx.databinding.InverseBindingListener mboundView3androidTextAttrChanged -> n
+    android.widget.LinearLayout mboundView0 -> e
     android.view.View$OnClickListener mCallback8 -> j
-    androidx.databinding.InverseBindingListener loginPwdandroidTextAttrChanged -> m
     android.view.View$OnClickListener mCallback7 -> l
+    android.widget.ImageView mboundView2 -> g
     android.view.View$OnClickListener mCallback9 -> k
     android.util.SparseIntArray sViewsWithIds -> q
     androidx.databinding.ViewDataBinding$IncludedLayouts sIncludes -> p
-    androidx.databinding.InverseBindingListener loginUsernameandroidTextAttrChanged -> n
-    android.widget.LinearLayout mboundView0 -> i
+    android.widget.CheckBox mboundView4 -> i
     long mDirtyFlags -> o
     void _internalCallbackOnClick(int,android.view.View) -> a
+    android.widget.EditText access$000(me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBindingImpl) -> a
     boolean onChangeViewmodelIsShowPwd(me.hgj.jetpackmvvm.callback.databind.BooleanObservableField,int) -> a
     boolean onChangeViewmodelPassword(me.hgj.jetpackmvvm.callback.databind.StringObservableField,int) -> a
     boolean onChangeViewmodelUsername(me.hgj.jetpackmvvm.callback.livedata.StringLiveData,int) -> a
     void setClick(me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment$ProxyClick) -> a
     void setView(android.view.View) -> a
     void setViewmodel(me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel) -> a
+    android.widget.EditText access$100(me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBindingImpl) -> b
 me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBindingImpl$1 -> me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBindingImpl$a:
     me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBindingImpl this$0 -> a
 me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBindingImpl$2 -> me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBindingImpl$b:
@@ -14177,7 +14245,6 @@ me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment -> me.hgj.jetpackmvvm.demo
     android.view.View _$_findCachedViewById(int) -> a
     me.hgj.jetpackmvvm.demo.ui.adapter.AriticleAdapter access$getArticleAdapter$p(me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment) -> a
     void initView(android.os.Bundle) -> a
-    void onNetworkStateChanged(me.hgj.jetpackmvvm.network.manager.NetState) -> a
     me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView access$getFootView$p(me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment) -> b
     com.kingja.loadsir.core.LoadService access$getLoadsir$p(me.hgj.jetpackmvvm.demo.ui.fragment.home.HomeFragment) -> c
     void _$_clearFindViewByIdCache() -> d
@@ -14452,9 +14519,6 @@ me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$createObserver$1$1 -> me.hgj.j
 me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$createObserver$1$2 -> me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$createObserver$1$2:
     me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$createObserver$1$2 INSTANCE -> a
     void invoke(me.hgj.jetpackmvvm.network.AppException) -> a
-me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$createObserver$3 -> me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment$c:
-    me.hgj.jetpackmvvm.demo.ui.fragment.me.MeFragment this$0 -> a
-    void onChanged(java.lang.String) -> a
 me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment -> me.hgj.jetpackmvvm.demo.ui.fragment.project.ProjectChildFragment:
     me.hgj.jetpackmvvm.demo.app.weight.recyclerview.DefineLoadMoreView footView -> l
     boolean isNew -> m
@@ -15434,13 +15498,11 @@ me.hgj.jetpackmvvm.demo.viewmodel.state.MeViewModel -> me.hgj.jetpackmvvm.demo.v
     me.hgj.jetpackmvvm.callback.databind.IntObservableField integral -> c
     me.hgj.jetpackmvvm.callback.databind.StringObservableField imageUrl -> e
     me.hgj.jetpackmvvm.callback.databind.StringObservableField info -> d
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData testString -> f
     me.hgj.jetpackmvvm.callback.databind.StringObservableField name -> b
     me.hgj.jetpackmvvm.callback.databind.StringObservableField getImageUrl() -> b
     me.hgj.jetpackmvvm.callback.databind.StringObservableField getInfo() -> c
     me.hgj.jetpackmvvm.callback.databind.IntObservableField getIntegral() -> d
     me.hgj.jetpackmvvm.callback.databind.StringObservableField getName() -> e
-    me.hgj.jetpackmvvm.callback.livedata.StringLiveData getTestString() -> f
 me.hgj.jetpackmvvm.demo.viewmodel.state.TodoViewModel -> me.hgj.jetpackmvvm.demo.viewmodel.state.TodoViewModel:
     me.hgj.jetpackmvvm.callback.databind.StringObservableField todoLeve -> e
     me.hgj.jetpackmvvm.callback.databind.StringObservableField todoTime -> d
@@ -15598,10 +15660,12 @@ me.hgj.jetpackmvvm.ext.util.LEVEL -> me.hgj.jetpackmvvm.ext.util.LEVEL:
     me.hgj.jetpackmvvm.ext.util.LEVEL I -> c
     me.hgj.jetpackmvvm.ext.util.LEVEL E -> e
 me.hgj.jetpackmvvm.ext.util.LogExtKt -> me.hgj.jetpackmvvm.ext.util.c:
-    boolean showLog -> a
+    boolean jetpackMvvmLog -> a
+    boolean getJetpackMvvmLog() -> a
     void log(me.hgj.jetpackmvvm.ext.util.LEVEL,java.lang.String,java.lang.String) -> a
     void logd(java.lang.String,java.lang.String) -> a
     void logd$default(java.lang.String,java.lang.String,int,java.lang.Object) -> a
+    void setJetpackMvvmLog(boolean) -> a
     void loge(java.lang.String,java.lang.String) -> b
     void logi$default(java.lang.String,java.lang.String,int,java.lang.Object) -> b
     void logi(java.lang.String,java.lang.String) -> c
@@ -15703,33 +15767,45 @@ me.hgj.jetpackmvvm.network.interceptor.logging.DefaultFormatPrinter -> me.hgj.je
     java.lang.String LINE_SEPARATOR -> a
     java.lang.String DOUBLE_SEPARATOR -> b
     java.lang.String[] OMITTED_RESPONSE -> c
-    java.lang.String computeKey() -> a
-    java.lang.String dotHeaders(java.lang.String) -> a
-    java.lang.String[] getResponse(java.lang.String,long,int,boolean,java.util.List,java.lang.String) -> a
-    java.lang.String getTag(boolean) -> a
-    void logLines(java.lang.String,java.lang.String[],boolean) -> a
+    me.hgj.jetpackmvvm.network.interceptor.logging.DefaultFormatPrinter$Companion Companion -> g
+    java.lang.String[] access$getARMS$cp() -> a
     void printFileRequest(okhttp3.Request) -> a
     void printFileResponse(long,boolean,int,java.lang.String,java.util.List,java.lang.String,java.lang.String) -> a
     void printJsonRequest(okhttp3.Request,java.lang.String) -> a
     void printJsonResponse(long,boolean,int,java.lang.String,okhttp3.MediaType,java.lang.String,java.util.List,java.lang.String,java.lang.String) -> a
+    java.lang.String access$getDOUBLE_SEPARATOR$cp() -> b
+    java.lang.String access$getLINE_SEPARATOR$cp() -> c
+    java.lang.ThreadLocal access$getLast$cp() -> d
+me.hgj.jetpackmvvm.network.interceptor.logging.DefaultFormatPrinter$Companion -> me.hgj.jetpackmvvm.network.interceptor.logging.a$b:
+    java.lang.String[] access$getRequest(me.hgj.jetpackmvvm.network.interceptor.logging.DefaultFormatPrinter$Companion,okhttp3.Request) -> a
+    java.lang.String[] access$getResponse(me.hgj.jetpackmvvm.network.interceptor.logging.DefaultFormatPrinter$Companion,java.lang.String,long,int,boolean,java.util.List,java.lang.String) -> a
+    java.lang.String access$getTag(me.hgj.jetpackmvvm.network.interceptor.logging.DefaultFormatPrinter$Companion,boolean) -> a
+    void access$logLines(me.hgj.jetpackmvvm.network.interceptor.logging.DefaultFormatPrinter$Companion,java.lang.String,java.lang.String[],boolean) -> a
+    java.lang.String computeKey() -> a
+    java.lang.String dotHeaders(java.lang.String) -> a
+    java.lang.String[] getRequest(okhttp3.Request) -> a
+    java.lang.String[] getResponse(java.lang.String,long,int,boolean,java.util.List,java.lang.String) -> a
+    java.lang.String getTag(boolean) -> a
+    void logLines(java.lang.String,java.lang.String[],boolean) -> a
     java.lang.String slashSegments(java.util.List) -> a
-    java.lang.String[] getRequest(okhttp3.Request) -> b
     boolean isEmpty(java.lang.String) -> b
     java.lang.String resolveTag(java.lang.String) -> c
-me.hgj.jetpackmvvm.network.interceptor.logging.DefaultFormatPrinter$1 -> me.hgj.jetpackmvvm.network.interceptor.logging.a$a:
+me.hgj.jetpackmvvm.network.interceptor.logging.DefaultFormatPrinter$Companion$last$1 -> me.hgj.jetpackmvvm.network.interceptor.logging.a$a:
 me.hgj.jetpackmvvm.network.interceptor.logging.FormatPrinter -> me.hgj.jetpackmvvm.network.interceptor.logging.b:
     void printFileRequest(okhttp3.Request) -> a
     void printFileResponse(long,boolean,int,java.lang.String,java.util.List,java.lang.String,java.lang.String) -> a
     void printJsonRequest(okhttp3.Request,java.lang.String) -> a
     void printJsonResponse(long,boolean,int,java.lang.String,okhttp3.MediaType,java.lang.String,java.util.List,java.lang.String,java.lang.String) -> a
 me.hgj.jetpackmvvm.network.interceptor.logging.LogInterceptor -> me.hgj.jetpackmvvm.network.interceptor.logging.LogInterceptor:
+    me.hgj.jetpackmvvm.network.interceptor.logging.LogInterceptor$Companion Companion -> c
     me.hgj.jetpackmvvm.network.interceptor.logging.LogInterceptor$Level printLevel -> b
     me.hgj.jetpackmvvm.network.interceptor.logging.FormatPrinter mPrinter -> a
+    java.lang.String parseContent(okhttp3.ResponseBody,java.lang.String,okio.Buffer) -> a
+    java.lang.String printResult(okhttp3.Request,okhttp3.Response,boolean) -> a
+me.hgj.jetpackmvvm.network.interceptor.logging.LogInterceptor$Companion -> me.hgj.jetpackmvvm.network.interceptor.logging.LogInterceptor$a:
     java.lang.String convertCharset(java.nio.charset.Charset) -> a
     boolean isForm(okhttp3.MediaType) -> a
-    java.lang.String parseContent(okhttp3.ResponseBody,java.lang.String,okio.Buffer) -> a
     java.lang.String parseParams(okhttp3.Request) -> a
-    java.lang.String printResult(okhttp3.Request,okhttp3.Response,boolean) -> a
     boolean isHtml(okhttp3.MediaType) -> b
     boolean isJson(okhttp3.MediaType) -> c
     boolean isParseable(okhttp3.MediaType) -> d
@@ -15756,6 +15832,7 @@ me.hgj.jetpackmvvm.network.manager.NetworkStateManager$Companion -> me.hgj.jetpa
 me.hgj.jetpackmvvm.network.manager.NetworkStateManager$Companion$instance$2 -> me.hgj.jetpackmvvm.network.manager.NetworkStateManager$Companion$instance$2:
     me.hgj.jetpackmvvm.network.manager.NetworkStateManager$Companion$instance$2 INSTANCE -> a
 me.hgj.jetpackmvvm.network.manager.NetworkStateReceive -> me.hgj.jetpackmvvm.network.manager.b:
+    boolean isInit -> a
 me.hgj.jetpackmvvm.state.ResultState -> me.hgj.jetpackmvvm.a.a:
     me.hgj.jetpackmvvm.state.ResultState$Companion Companion -> a
 me.hgj.jetpackmvvm.state.ResultState$Companion -> me.hgj.jetpackmvvm.a.a$a:
@@ -15775,9 +15852,11 @@ me.hgj.jetpackmvvm.state.ResultStateKt -> me.hgj.jetpackmvvm.a.b:
     void paresException(androidx.lifecycle.MutableLiveData,java.lang.Throwable) -> a
     void paresResult(androidx.lifecycle.MutableLiveData,me.hgj.jetpackmvvm.network.BaseResponse) -> a
 me.hgj.jetpackmvvm.util.CharacterHandler -> me.hgj.jetpackmvvm.util.a:
+    me.hgj.jetpackmvvm.util.CharacterHandler$Companion Companion -> a
+me.hgj.jetpackmvvm.util.CharacterHandler$Companion -> me.hgj.jetpackmvvm.util.a$b:
     java.lang.String jsonFormat(java.lang.String) -> a
     java.lang.String xmlFormat(java.lang.String) -> b
-me.hgj.jetpackmvvm.util.CharacterHandler$1 -> me.hgj.jetpackmvvm.util.a$a:
+me.hgj.jetpackmvvm.util.CharacterHandler$Companion$EMOJI_FILTER$1 -> me.hgj.jetpackmvvm.util.a$a:
     java.util.regex.Pattern emoji -> a
 me.hgj.jetpackmvvm.util.GhostFragment -> me.hgj.jetpackmvvm.util.GhostFragment:
     android.content.Intent intent -> b
@@ -15786,12 +15865,17 @@ me.hgj.jetpackmvvm.util.GhostFragment -> me.hgj.jetpackmvvm.util.GhostFragment:
     kotlin.jvm.functions.Function1 callback -> c
     void _$_clearFindViewByIdCache() -> d
 me.hgj.jetpackmvvm.util.LogUtils -> me.hgj.jetpackmvvm.util.b:
+    me.hgj.jetpackmvvm.util.LogUtils INSTANCE -> b
     boolean isLog -> a
     void debugInfo(java.lang.String,java.lang.String) -> a
 me.hgj.jetpackmvvm.util.UrlEncoderUtils -> me.hgj.jetpackmvvm.util.c:
+    me.hgj.jetpackmvvm.util.UrlEncoderUtils$Companion Companion -> a
+me.hgj.jetpackmvvm.util.UrlEncoderUtils$Companion -> me.hgj.jetpackmvvm.util.c$a:
     boolean hasUrlEncoded(java.lang.String) -> a
     boolean isValidHexChar(char) -> a
 me.hgj.jetpackmvvm.util.ZipHelper -> me.hgj.jetpackmvvm.util.d:
+    me.hgj.jetpackmvvm.util.ZipHelper$Companion Companion -> a
+me.hgj.jetpackmvvm.util.ZipHelper$Companion -> me.hgj.jetpackmvvm.util.d$a:
     void closeQuietly(java.io.Closeable) -> a
     java.lang.String decompressForGzip(byte[],java.lang.String) -> a
     byte[] decompressForZlib(byte[]) -> a

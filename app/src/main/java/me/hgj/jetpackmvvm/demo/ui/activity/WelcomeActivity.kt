@@ -2,15 +2,15 @@ package me.hgj.jetpackmvvm.demo.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import com.blankj.utilcode.util.ConvertUtils
+import androidx.viewpager2.widget.ViewPager2
 import com.zhpan.bannerview.BannerViewPager
 import kotlinx.android.synthetic.main.activity_welcome.*
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseActivity
-import me.hgj.jetpackmvvm.demo.app.ext.setPageListener
 import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
+import me.hgj.jetpackmvvm.demo.app.weight.banner.WelcomeBannerAdapter
 import me.hgj.jetpackmvvm.demo.app.weight.banner.WelcomeBannerViewHolder
 import me.hgj.jetpackmvvm.demo.databinding.ActivityWelcomeBinding
 import me.hgj.jetpackmvvm.ext.view.gone
@@ -42,17 +42,21 @@ class WelcomeActivity : BaseActivity<BaseViewModel, ActivityWelcomeBinding>() {
         if (CacheUtil.isFirst()) {
             //是第一次打开App 显示引导页
             welcome_image.gone()
-            mViewPager.setHolderCreator {
-                WelcomeBannerViewHolder()
-            }.setIndicatorMargin(0, 0, 0, ConvertUtils.dp2px(24f))
-                .setPageListener {
-                    if (it == resList.size - 1) {
-                        welcomeJoin.visible()
-                    } else {
-                        welcomeJoin.gone()
+            mViewPager.apply {
+                adapter = WelcomeBannerAdapter()
+                setLifecycleRegistry(lifecycle)
+                registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                    override fun onPageSelected(position: Int) {
+                        super.onPageSelected(position)
+                        if (position == resList.size - 1) {
+                            welcomeJoin.visible()
+                        } else {
+                            welcomeJoin.gone()
+                        }
                     }
-                }
-            mViewPager.create(resList.toList())
+                })
+                create(resList.toList())
+            }
         } else {
             //不是第一次打开App 0.3秒后自动跳转到主页
             welcome_image.visible()

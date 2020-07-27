@@ -15,6 +15,5 @@
         app:bvp_indicator_gravity="center"
         app:bvp_indicator_normal_color="@color/backgrounGrey"
         app:bvp_indicator_slide_mode="worm"
-        app:bvp_indicator_style="circle"
-        app:bvp_transformer_style="accordion"/>
+        app:bvp_indicator_style="circle"/>
 </LinearLayout>

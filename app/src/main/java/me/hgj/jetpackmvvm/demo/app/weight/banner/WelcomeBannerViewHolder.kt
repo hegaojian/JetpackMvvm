@@ -8,16 +8,12 @@ package me.hgj.jetpackmvvm.demo.app.weight.banner
 
 import android.view.View
 import android.widget.TextView
-import com.zhpan.bannerview.holder.ViewHolder
+import com.zhpan.bannerview.BaseViewHolder
 import me.hgj.jetpackmvvm.demo.R
 
-class WelcomeBannerViewHolder : ViewHolder<String> {
-    override fun getLayoutId(): Int {
-        return R.layout.banner_itemwelcome
-    }
-
-    override fun onBind(itemView: View, data: String?, position: Int, size: Int) {
-        val textView = itemView.findViewById<TextView>(R.id.banner_text)
+class WelcomeBannerViewHolder(view: View) : BaseViewHolder<String>(view) {
+    override fun bindData(data: String?, position: Int, pageSize: Int) {
+        val textView = findView<TextView>(R.id.banner_text)
         textView.text = data
     }
 

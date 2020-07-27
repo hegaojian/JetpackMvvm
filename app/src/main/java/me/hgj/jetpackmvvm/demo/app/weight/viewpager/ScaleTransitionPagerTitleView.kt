@@ -10,6 +10,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorT
  * Created by hackware on 2016/6/26.
  */
 class ScaleTransitionPagerTitleView(context: Context) : ColorTransitionPagerTitleView(context) {
+
     var minScale = 0.7f
 
     override fun onEnter(index: Int, totalCount: Int, enterPercent: Float, leftToRight: Boolean) {

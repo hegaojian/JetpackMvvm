@@ -4,7 +4,6 @@ import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import com.google.gson.GsonBuilder
-import me.hgj.jetpackmvvm.demo.app.App
 import me.hgj.jetpackmvvm.base.appContext
 import me.hgj.jetpackmvvm.network.BaseNetworkApi
 import me.hgj.jetpackmvvm.network.CoroutineCallAdapterFactory
@@ -42,6 +41,7 @@ class NetworkApi : BaseNetworkApi() {
             NetworkApi()
         }
     }
+
     /**
      * 实现重写父类的setHttpClientBuilder方法，
      * 在这里可以添加拦截器，可以对 OkHttpClient.Builder 做任意操作

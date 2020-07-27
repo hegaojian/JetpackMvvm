@@ -85,7 +85,7 @@ class LookInfoFragment : BaseFragment<LookInfoViewModel, FragmentLookinfoBinding
                 nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {
                     putParcelable(
                         "ariticleData",
-                        articleAdapter.data[position - recyclerView.headerCount]
+                        articleAdapter.data[position - this@LookInfoFragment.recyclerView.headerCount]
                     )
                 })
             }

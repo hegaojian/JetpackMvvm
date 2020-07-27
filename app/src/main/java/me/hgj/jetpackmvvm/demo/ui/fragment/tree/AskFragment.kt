@@ -95,7 +95,7 @@ class AskFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
                             Bundle().apply {
                                 putInt(
                                     "id",
-                                    articleAdapter.data[position - recyclerView.headerCount].userId
+                                    articleAdapter.data[position - this@AskFragment.recyclerView.headerCount].userId
                                 )
                             })
                     }

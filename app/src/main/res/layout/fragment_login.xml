@@ -54,7 +54,6 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/loginUsername"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -70,7 +69,6 @@
                         android:textSize="15dp" />
 
                     <ImageView
-                        android:id="@+id/loginClear"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginRight="6dp"
@@ -88,7 +86,6 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/loginPwd"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -104,14 +101,13 @@
                         bind:showPwd="@{viewmodel.isShowPwd}" />
 
                     <CheckBox
-                        android:id="@+id/loginKey"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginRight="6dp"
                         android:button="@drawable/keyvisibily_selector"
                         android:checked="false"
-                        bind:checkChange="@{click.onCheckedChangeListener}"
-                        android:visibility="@{viewmodel.password.length()>0?view.VISIBLE:view.GONE}" />
+                        android:visibility="@{viewmodel.password.length()>0?view.VISIBLE:view.GONE}"
+                        bind:checkChange="@{click.onCheckedChangeListener}" />
                 </LinearLayout>
 
                 <TextView
@@ -122,8 +118,8 @@
                     android:layout_marginBottom="12dp"
                     android:background="@drawable/button_shap"
                     android:gravity="center"
-                    android:text="登录"
                     android:onClick="@{()->click.login()}"
+                    android:text="登录"
                     android:textColor="@color/white"
                     android:textSize="16dp" />
 
@@ -133,11 +129,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_marginBottom="12dp"
+                    android:onClick="@{()->click.goRegister()}"
                     android:paddingLeft="18dp"
                     android:paddingTop="18dp"
                     android:paddingBottom="18dp"
                     android:text="去注册"
-                    android:onClick="@{()->click.goRegister()}"
                     android:textColor="@color/colorPrimary"
                     android:textSize="15dp" />
             </LinearLayout>

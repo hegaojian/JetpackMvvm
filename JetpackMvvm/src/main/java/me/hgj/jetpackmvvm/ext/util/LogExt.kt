@@ -1,11 +1,13 @@
 package me.hgj.jetpackmvvm.ext.util
 
 import android.util.Log
-import me.hgj.jetpackmvvm.BuildConfig
 
 const val TAG = "JetpackMvvm"
 
-var showLog = BuildConfig.DEBUG
+/**
+ * 是否需要开启打印日志，默认关闭，关闭后会没有网络请求日志和该框架产生的打印
+ */
+var jetpackMvvmLog = false
 
 private enum class LEVEL {
     V, D, I, W, E
@@ -23,7 +25,7 @@ fun String.loge(tag: String = TAG) =
     log(LEVEL.E, tag, this)
 
 private fun log(level: LEVEL, tag: String, message: String) {
-    if (!showLog) return
+    if (!jetpackMvvmLog) return
     when (level) {
         LEVEL.V -> Log.v(tag, message)
         LEVEL.D -> Log.d(tag, message)
