@@ -95,17 +95,20 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
      */
     private fun onVisible() {
         if (lifecycle.currentState == Lifecycle.State.STARTED && isFirst) {
-            lazyLoadData()
-            //在Fragment中，只有懒加载过了才能开启网络变化监听
-            NetworkStateManager.instance.mNetworkStateCallback.observe(
-                viewLifecycleOwner,
-                Observer {
-                    //不是首次订阅时调用方法，防止数据第一次监听错误
-                    if (!isFirst) {
-                        onNetworkStateChanged(it)
-                    }
-                })
-            isFirst = false
+            //延迟加载0.12秒加载 避免fragment跳转动画和渲染ui同时进行，出现些微的小卡顿
+            view?.postDelayed({
+                lazyLoadData()
+                //在Fragment中，只有懒加载过了才能开启网络变化监听
+                NetworkStateManager.instance.mNetworkStateCallback.observe(
+                    viewLifecycleOwner,
+                    Observer {
+                        //不是首次订阅时调用方法，防止数据第一次监听错误
+                        if (!isFirst) {
+                            onNetworkStateChanged(it)
+                        }
+                    })
+                isFirst = false
+            }, 120)
         }
     }
 

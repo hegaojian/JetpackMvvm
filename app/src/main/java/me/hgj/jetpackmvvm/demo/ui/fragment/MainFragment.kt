@@ -40,6 +40,5 @@ class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>() {
         appViewModel.appColor.observe(viewLifecycleOwner, Observer {
             setUiTheme(it, mainBottom)
         })
-
     }
 }

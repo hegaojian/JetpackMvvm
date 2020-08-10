@@ -3,7 +3,10 @@ package me.hgj.jetpackmvvm.demo.ui.fragment.web
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.Window
 import android.widget.LinearLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
@@ -36,6 +39,8 @@ import me.hgj.jetpackmvvm.ext.nav
 class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
 
     private var mAgentWeb: AgentWeb? = null
+
+    private var preWeb: AgentWeb.PreAgentWeb? = null
 
     /** */
     private val requestCollectViewModel: RequestCollectViewModel by viewModels()
@@ -95,28 +100,28 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
                 }
             }
         }
-    }
-
-    override fun lazyLoadData() {
-        //加载网页
-        mAgentWeb = AgentWeb.with(this)
+        preWeb = AgentWeb.with(this)
             .setAgentWebParent(webcontent, LinearLayout.LayoutParams(-1, -1))
             .useDefaultIndicator()
             .createAgentWeb()
             .ready()
-            .go(mViewModel.url)
+    }
 
-        requireActivity().onBackPressedDispatcher.addCallback(this,object :OnBackPressedCallback(true){
-            override fun handleOnBackPressed() {
-                mAgentWeb?.let { web ->
-                    if (web.webCreator.webView.canGoBack()) {
-                        web.webCreator.webView.goBack()
-                    }else{
-                        nav().navigateUp()
+    override fun lazyLoadData() {
+        //加载网页
+        mAgentWeb = preWeb?.go(mViewModel.url)
+        requireActivity().onBackPressedDispatcher.addCallback(this,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    mAgentWeb?.let { web ->
+                        if (web.webCreator.webView.canGoBack()) {
+                            web.webCreator.webView.goBack()
+                        } else {
+                            nav().navigateUp()
+                        }
                     }
                 }
-            }
-        })
+            })
     }
 
     override fun createObserver() {
