@@ -48,7 +48,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
     //recyclerview的底部加载view 因为在首页要动态改变他的颜色，所以加了他这个字段
     private lateinit var footView: DefineLoadMoreView
 
-    //收藏viewmodel
+    //收藏viewModel
     private val requestCollectViewModel: RequestCollectViewModel by viewModels()
 
     //请求数据ViewModel

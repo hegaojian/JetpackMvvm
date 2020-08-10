@@ -63,7 +63,7 @@ publish {
     groupId = 'me.hegj'//路径 名等于“me.hegj.JetpackMvvm:1.0.0”中的   me.hegj，你也可以写com.xxx
     artifactId = 'JetpackMvvm'//项目名 等于“me.hegj.JetpackMvvm:1.0.0”中的  JetpackMvvm
     publishVersion = '1.1.8'//版本号 等于“me.hegj.JetpackMvvm:1.0.0”中的 1.0.0
-    desc = 'An Android Jetpack-MVVM framework,JetpackMvvm is nb'//说明，不重要的东西，随便写
+    desc = 'An Android Jetpack-MVVM framework,JetpackMvvm is nb?'//说明，不重要的东西，随便写
     website = 'https://github.com/hegaojian/JetpackMvvm'//项目主页，用GitHub地址
     licences = ['Apache-2.0']//协议
 }
