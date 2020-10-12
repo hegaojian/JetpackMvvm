@@ -42,6 +42,7 @@ class Ktx : ContentProvider() {
             mNetworkStateReceive,
             IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION)
         )
+
         if (watchActivityLife) application.registerActivityLifecycleCallbacks(KtxLifeCycleCallBack())
         if (watchAppLife) ProcessLifecycleOwner.get().lifecycle.addObserver(KtxAppLifeObserver)
     }

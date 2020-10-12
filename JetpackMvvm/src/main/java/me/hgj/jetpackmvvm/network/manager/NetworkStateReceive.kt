@@ -21,21 +21,21 @@ class NetworkStateReceive : BroadcastReceiver() {
                     NetworkStateManager.instance.mNetworkStateCallback.value?.let {
                         if(it.isSuccess){
                             //没网
-                            NetworkStateManager.instance.mNetworkStateCallback.postValue(NetState(isSuccess = false))
+                            NetworkStateManager.instance.mNetworkStateCallback.value = NetState(isSuccess = false)
                         }
                         return
                     }
-                    NetworkStateManager.instance.mNetworkStateCallback.postValue(NetState(isSuccess = false))
+                    NetworkStateManager.instance.mNetworkStateCallback.value = NetState(isSuccess = false)
                 }else{
                     //收到有网络时判断之前的值是不是没有网络，如果没有网络才提示通知 ，防止重复通知
                     NetworkStateManager.instance.mNetworkStateCallback.value?.let {
                         if(!it.isSuccess){
                             //有网络了
-                            NetworkStateManager.instance.mNetworkStateCallback.postValue(NetState(isSuccess = true))
+                            NetworkStateManager.instance.mNetworkStateCallback.value = NetState(isSuccess = true)
                         }
                         return
                     }
-                    NetworkStateManager.instance.mNetworkStateCallback.postValue(NetState(isSuccess = true))
+                    NetworkStateManager.instance.mNetworkStateCallback.value = NetState(isSuccess = true)
                 }
             }
             isInit = false

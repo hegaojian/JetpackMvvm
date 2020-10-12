@@ -117,11 +117,9 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
      */
     open fun initData() {}
 
-
     abstract fun showLoading(message: String = "请求网络中...")
 
     abstract fun dismissLoading()
-
 
     /**
      * 注册 UI 事件
@@ -134,4 +132,22 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
             dismissLoading()
         })
     }
+
+    /**
+     * 将非该Fragment绑定的ViewModel添加 loading回调 防止出现请求时不显示 loading 弹窗bug
+     * @param viewModels Array<out BaseViewModel>
+     */
+    protected fun addLoadingObserve(vararg viewModels: BaseViewModel){
+        viewModels.forEach {viewModel ->
+            //显示弹窗
+            viewModel.loadingChange.showDialog.observe(viewLifecycleOwner, Observer {
+                showLoading(it)
+            })
+            //关闭弹窗
+            viewModel.loadingChange.dismissDialog.observe(viewLifecycleOwner, Observer {
+                dismissLoading()
+            })
+        }
+    }
+
 }

@@ -1,4 +1,4 @@
-package me.hgj.jetpackmvvm.demo.data.bindadapter;
+package me.hgj.jetpackmvvm.util;
 
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;

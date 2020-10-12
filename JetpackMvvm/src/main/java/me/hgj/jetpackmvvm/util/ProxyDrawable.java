@@ -1,4 +1,5 @@
-package me.hgj.jetpackmvvm.demo.data.bindadapter;
+package me.hgj.jetpackmvvm.util;
+
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 
