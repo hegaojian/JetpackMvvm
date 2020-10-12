@@ -178,6 +178,7 @@ class TodoListFragment : BaseFragment<TodoViewModel, FragmentListBinding>() {
                 //有数据时，swipeRefresh 显示刷新状态
                 swipeRefresh.isRefreshing = true
             }
+            //请求数据
             requestViewModel.getTodoData(true)
         })
 

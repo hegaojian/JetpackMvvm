@@ -86,7 +86,7 @@ class SettingFragment : PreferenceFragmentCompat(),
                     //清空cookie
                     NetworkApi.INSTANCE.cookieJar.clear()
                     CacheUtil.setUser(null)
-                    shareViewModel.userinfo.postValue(null)
+                    shareViewModel.userinfo.value = null
                     nav().navigateUp()
                 })
             false
@@ -115,7 +115,7 @@ class SettingFragment : PreferenceFragmentCompat(),
                         SettingUtil.setListMode(index)
                         it.summary = text
                         //通知其他界面立马修改配置
-                        shareViewModel.appAnimation.postValue(index)
+                        shareViewModel.appAnimation.value = index
                     }
                     title(text = "设置列表动画")
                     positiveButton(R.string.confirm)
@@ -152,7 +152,7 @@ class SettingFragment : PreferenceFragmentCompat(),
                         findPreference<CheckBoxPreference>("top")?.setBottonColor()
                         toolbarView?.setBackgroundColor(color)
                         //通知其他界面立马修改配置
-                        shareViewModel.appColor.postValue(color)
+                        shareViewModel.appColor.value = color
                     }
                     getActionButton(WhichButton.POSITIVE).updateTextColor(
                         SettingUtil.getColor(

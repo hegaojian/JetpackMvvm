@@ -28,7 +28,7 @@ class RequestLookInfoViewModel : BaseViewModel() {
         request({ apiService.getShareByidData(id, pageNo) }, {
             //请求成功
             pageNo++
-            shareResponse.postValue(it)
+            shareResponse.value = it
             val listDataUiState =
                 ListDataUiState(
                     isSuccess = true,
@@ -38,7 +38,7 @@ class RequestLookInfoViewModel : BaseViewModel() {
                     isFirstEmpty = isRefresh && it.shareArticles.isEmpty(),
                     listData = it.shareArticles.datas
                 )
-            shareListDataUistate.postValue(listDataUiState)
+            shareListDataUistate.value = listDataUiState
         }, {
             //请求失败
             val listDataUiState =
@@ -48,7 +48,7 @@ class RequestLookInfoViewModel : BaseViewModel() {
                     isRefresh = isRefresh,
                     listData = arrayListOf<AriticleResponse>()
                 )
-            shareListDataUistate.postValue(listDataUiState)
+            shareListDataUistate.value = listDataUiState
         })
     }
 }

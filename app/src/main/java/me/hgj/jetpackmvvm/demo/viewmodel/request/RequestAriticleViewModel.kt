@@ -51,7 +51,7 @@ class RequestAriticleViewModel : BaseViewModel() {
                     isFirstEmpty = isRefresh && it.shareArticles.isEmpty(),
                     listData = it.shareArticles.datas
                 )
-            shareDataState.postValue(listDataUiState)
+            shareDataState.value = listDataUiState
         }, {
             //请求失败
             val listDataUiState =
@@ -61,18 +61,18 @@ class RequestAriticleViewModel : BaseViewModel() {
                     isRefresh = isRefresh,
                     listData = arrayListOf<AriticleResponse>()
                 )
-            shareDataState.postValue(listDataUiState)
+            shareDataState.value = listDataUiState
         })
     }
 
     fun deleteShareData(id: Int, position: Int) {
         request({ apiService.deleteShareData(id) }, {
             val updateUiState = UpdateUiState(isSuccess = true, data = position)
-            delDataState.postValue(updateUiState)
+            delDataState.value = updateUiState
         }, {
             val updateUiState =
                 UpdateUiState(isSuccess = false, data = position, errorMsg = it.errorMsg)
-            delDataState.postValue(updateUiState)
+            delDataState.value = updateUiState
         })
     }
 }

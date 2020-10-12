@@ -115,7 +115,7 @@ class PlazaFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 //收藏或取消收藏操作成功，发送全局收藏消息
-                eventViewModel.collectEvent.postValue(CollectBus(it.id, it.collect))
+                eventViewModel.collectEvent.value = CollectBus(it.id, it.collect)
             } else {
                 showMessage(it.errorMsg)
                 for (index in articleAdapter.data.indices) {

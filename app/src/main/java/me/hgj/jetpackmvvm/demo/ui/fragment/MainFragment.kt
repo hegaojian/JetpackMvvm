@@ -7,6 +7,7 @@ import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.init
 import me.hgj.jetpackmvvm.demo.app.ext.initMain
+import me.hgj.jetpackmvvm.demo.app.ext.interceptLongClick
 import me.hgj.jetpackmvvm.demo.app.ext.setUiTheme
 import me.hgj.jetpackmvvm.demo.databinding.FragmentMainBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.state.MainViewModel
@@ -16,7 +17,6 @@ import me.hgj.jetpackmvvm.demo.viewmodel.state.MainViewModel
  * 作者　: hegaojian
  * 描述　:项目主页Fragment
  */
-@Suppress("DEPRECATION")
 class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>() {
 
     override fun layoutId() = R.layout.fragment_main
@@ -24,7 +24,7 @@ class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>() {
     override fun initView(savedInstanceState: Bundle?) {
         //初始化viewpager2
         mainViewpager.initMain(this)
-        //初始化 bottombar
+        //初始化 bottomBar
         mainBottom.init{
             when (it) {
                 R.id.menu_main -> mainViewpager.setCurrentItem(0, false)
@@ -34,6 +34,7 @@ class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>() {
                 R.id.menu_me -> mainViewpager.setCurrentItem(4, false)
             }
         }
+        mainBottom.interceptLongClick(R.id.menu_main,R.id.menu_project,R.id.menu_system,R.id.menu_public,R.id.menu_me)
     }
 
     override fun createObserver() {

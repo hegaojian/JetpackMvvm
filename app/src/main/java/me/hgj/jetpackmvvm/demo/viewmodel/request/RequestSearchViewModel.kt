@@ -44,7 +44,7 @@ class RequestSearchViewModel : BaseViewModel() {
         launch({
             CacheUtil.getSearchHistoryData()
         }, {
-            historyData.postValue(it)
+            historyData.value = it
         }, {
             //获取本地历史数据出异常了
         })

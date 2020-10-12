@@ -50,7 +50,7 @@ class RequestHomeViewModel : BaseViewModel() {
                     isFirstEmpty = isRefresh && it.isEmpty(),
                     listData = it.datas
                 )
-            homeDataState.postValue(listDataUiState)
+            homeDataState.value = listDataUiState
         }, {
             //请求失败
             val listDataUiState =
@@ -60,7 +60,7 @@ class RequestHomeViewModel : BaseViewModel() {
                     isRefresh = isRefresh,
                     listData = arrayListOf<AriticleResponse>()
                 )
-            homeDataState.postValue(listDataUiState)
+            homeDataState.value = listDataUiState
         })
     }
 

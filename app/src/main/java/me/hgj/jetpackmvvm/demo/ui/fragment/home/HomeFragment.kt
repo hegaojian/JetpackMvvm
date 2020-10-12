@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.widget.ViewPager2
 import com.blankj.utilcode.util.ConvertUtils
 import com.kingja.loadsir.core.LoadService
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
 import com.zhpan.bannerview.BannerViewPager
+import kotlinx.android.synthetic.main.include_banner.*
 import kotlinx.android.synthetic.main.include_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
 import kotlinx.android.synthetic.main.include_toolbar.*
@@ -30,7 +30,7 @@ import me.hgj.jetpackmvvm.demo.viewmodel.state.HomeViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.navigateAction
 import me.hgj.jetpackmvvm.ext.parseState
-import me.hgj.jetpackmvvm.ext.util.jetpackMvvmLog
+import splitties.collections.forEachReversedByIndex
 
 /**
  * 作者　: hegaojian
@@ -56,6 +56,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
     override fun layoutId() = R.layout.fragment_home
 
+    private val resultData = ArrayList<String>()
     override fun initView(savedInstanceState: Bundle?) {
         //状态页配置
         loadsir = loadServiceInit(swipeRefresh) {
@@ -150,37 +151,25 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                 parseState(resultState, { data ->
                     //请求轮播图数据成功，添加轮播图到headview ，如果等于0说明没有添加过头部，添加一个
                     if (recyclerView.headerCount == 0) {
-                        val headview =
-                            LayoutInflater.from(context).inflate(R.layout.include_banner, null)
-                                .apply {
-                                    val bannerview =
-                                        findViewById<BannerViewPager<BannerResponse, HomeBannerViewHolder>>(
-                                            R.id.banner_view
-                                        )
-                                    bannerview.apply {
+                        val headview = LayoutInflater.from(context).inflate(R.layout.include_banner, null).apply {
+                                    findViewById<BannerViewPager<BannerResponse, HomeBannerViewHolder>>(R.id.banner_view).apply {
                                         adapter = HomeBannerAdapter()
                                         setLifecycleRegistry(lifecycle)
                                         setOnPageClickListener {
-                                            nav().navigateAction(R.id.action_to_webFragment,
-                                                Bundle().apply {
-                                                    putParcelable("bannerdata", data[it])
-                                                }
-                                            )
+                                            nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {putParcelable("bannerdata", data[it])})
                                         }
                                         create(data)
                                     }
                                 }
                         recyclerView.addHeaderView(headview)
                     }
-                }, {
-                    //这里是请求banner数据失败 失败了就不管他了。随他去吧
                 })
             })
         }
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 //收藏或取消收藏操作成功，发送全局收藏消息
-                eventViewModel.collectEvent.postValue(CollectBus(it.id, it.collect))
+                eventViewModel.collectEvent.value = CollectBus(it.id, it.collect)
             } else {
                 showMessage(it.errorMsg)
                 for (index in articleAdapter.data.indices) {

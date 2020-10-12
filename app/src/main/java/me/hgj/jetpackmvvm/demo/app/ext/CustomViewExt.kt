@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.InputMethodManager
@@ -17,7 +18,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -26,10 +26,8 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
-import com.zhpan.bannerview.BannerViewPager
-import me.hgj.jetpackmvvm.base.Ktx
-import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.base.appContext
+import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.EmptyCallback
@@ -246,8 +244,7 @@ fun MagicIndicator.bindViewPager2(
     viewPager: ViewPager2,
     mDataList: ArrayList<ClassifyResponse> = arrayListOf(),
     mStringList: ArrayList<String> = arrayListOf(),
-    action: (index: Int) -> Unit = {}
-) {
+    action: (index: Int) -> Unit = {}) {
     val commonNavigator = CommonNavigator(appContext)
     commonNavigator.adapter = object : CommonNavigatorAdapter() {
         override fun getCount(): Int {
@@ -257,7 +254,6 @@ fun MagicIndicator.bindViewPager2(
                 mStringList.size
             }
         }
-
         override fun getTitleView(context: Context, index: Int): IPagerTitleView {
             return ScaleTransitionPagerTitleView(appContext).apply {
                 text = if (mDataList.size != 0) {
@@ -274,7 +270,6 @@ fun MagicIndicator.bindViewPager2(
                 }
             }
         }
-
         override fun getIndicator(context: Context): IPagerIndicator {
             return LinePagerIndicator(context).apply {
                 mode = LinePagerIndicator.MODE_EXACTLY
@@ -377,6 +372,21 @@ fun BottomNavigationViewEx.init(navigationItemSelectedAction: (Int) -> Unit): Bo
     return this
 }
 
+
+/**
+ * 拦截BottomNavigation长按事件 防止长按时出现Toast ---- 追求完美的大屌群友提的bug
+ * @receiver BottomNavigationViewEx
+ * @param ids IntArray
+ */
+fun BottomNavigationViewEx.interceptLongClick(vararg ids:Int) {
+    val bottomNavigationMenuView: ViewGroup = (this.getChildAt(0) as ViewGroup)
+    for (index in ids.indices){
+        bottomNavigationMenuView.getChildAt(index).findViewById<View>(ids[index]).setOnLongClickListener {
+            true
+        }
+    }
+}
+
 /**
  * 隐藏软键盘
  */
@@ -405,7 +415,9 @@ fun <T> loadListData(
     swipeRefreshLayout: SwipeRefreshLayout
 ) {
     swipeRefreshLayout.isRefreshing = false
+
     recyclerView.loadMoreFinish(data.isEmpty, data.hasMore)
+
     if (data.isSuccess) {
         //成功
         when {

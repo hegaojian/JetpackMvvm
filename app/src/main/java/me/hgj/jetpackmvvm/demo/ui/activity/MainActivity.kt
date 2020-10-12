@@ -2,6 +2,7 @@ package me.hgj.jetpackmvvm.demo.ui.activity
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
@@ -26,6 +27,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
     override fun initView(savedInstanceState: Bundle?) {
         //进入首页检查更新
         Beta.checkUpgrade(false, true)
+
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 val nav = Navigation.findNavController(this@MainActivity, R.id.host_fragment)
@@ -42,8 +44,10 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
                     }
                 }
             }
-        })
-        appViewModel.appColor.value?.let { supportActionBar?.setBackgroundDrawable(ColorDrawable(it))
+            })
+        appViewModel.appColor.value?.let {
+            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+            supportActionBar?.setBackgroundDrawable(ColorDrawable(it))
             StatusBarUtil.setColor(this, it, 0) }
     }
 
@@ -65,4 +69,5 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
             Toast.makeText(applicationContext, "我特么怎么断网了!", Toast.LENGTH_SHORT).show()
         }
     }
+
 }

@@ -2,22 +2,13 @@ package me.hgj.jetpackmvvm.demo.app.base
 
 import android.content.res.Resources
 import android.os.Bundle
-import android.view.View
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.databinding.ViewDataBinding
-import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.customview.customView
-import com.afollestad.materialdialogs.customview.getCustomView
-import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
-import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity
-import me.hgj.jetpackmvvm.demo.R
+import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.app.event.AppViewModel
 import me.hgj.jetpackmvvm.demo.app.event.EventViewModel
 import me.hgj.jetpackmvvm.demo.app.ext.dismissLoadingExt
 import me.hgj.jetpackmvvm.demo.app.ext.showLoadingExt
-import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 import me.hgj.jetpackmvvm.ext.getAppViewModel
 import me.jessyan.autosize.AutoSizeCompat
 

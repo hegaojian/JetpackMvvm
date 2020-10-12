@@ -43,7 +43,7 @@ class RequestPublicNumberViewModel : BaseViewModel() {
                     isFirstEmpty = isRefresh && it.isEmpty(),
                     listData = it.datas
                 )
-            publicDataState.postValue(listDataUiState)
+            publicDataState.value = listDataUiState
         }, {
             //请求失败
             val listDataUiState =
@@ -53,7 +53,7 @@ class RequestPublicNumberViewModel : BaseViewModel() {
                     isRefresh = isRefresh,
                     listData = arrayListOf<AriticleResponse>()
                 )
-            publicDataState.postValue(listDataUiState)
+            publicDataState.value = listDataUiState
         })
     }
 }

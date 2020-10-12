@@ -145,7 +145,7 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
         })
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
-                eventViewModel.collectEvent.postValue(CollectBus(it.id, it.collect))
+                eventViewModel.collectEvent.value = CollectBus(it.id, it.collect)
             } else {
                 showMessage(it.errorMsg)
                 for (index in articleAdapter.data.indices) {

@@ -3,7 +3,6 @@ package me.hgj.jetpackmvvm.demo.viewmodel.state
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.callback.databind.IntObservableField
 import me.hgj.jetpackmvvm.callback.databind.StringObservableField
-import me.hgj.jetpackmvvm.callback.livedata.StringLiveData
 import me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData
 import me.hgj.jetpackmvvm.demo.app.util.ColorUtil
 

@@ -103,7 +103,7 @@ class AddAriticleFragment : BaseFragment<AriticleViewModel, FragmentShareAriticl
     override fun createObserver() {
         requestViewModel.addData.observe(viewLifecycleOwner, Observer { resultState ->
             parseState(resultState, {
-                eventViewModel.shareArticleEvent.postValue(true)
+                eventViewModel.shareArticleEvent.value = true
                 nav().navigateUp()
             }, {
                 showMessage(it.errorMsg)

@@ -34,6 +34,7 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
     override fun initView(savedInstanceState: Bundle?) {
 
         mDatabind.viewmodel = mViewModel
+
         mDatabind.click = ProxyClick()
 
 
@@ -54,7 +55,7 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
                     //登录成功 通知账户数据发生改变鸟
                     CacheUtil.setUser(it)
                     CacheUtil.setIsLogin(true)
-                    appViewModel.userinfo.postValue(it)
+                    appViewModel.userinfo.value = it
                     nav().navigateUp()
                 }, {
                     //登录失败

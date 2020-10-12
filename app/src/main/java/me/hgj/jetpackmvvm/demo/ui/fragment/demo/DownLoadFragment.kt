@@ -28,8 +28,6 @@ class DownLoadFragment : BaseFragment<DownloadViewModel, FragmentDownloadBinding
 
     override fun initView(savedInstanceState: Bundle?) {
         mDatabind.click = ProxyClick()
-        //第三方下载库
-        FileDownloader.setup(mActivity)
         toolbar.initClose("框架自带普通下载") {
             nav().navigateUp()
         }

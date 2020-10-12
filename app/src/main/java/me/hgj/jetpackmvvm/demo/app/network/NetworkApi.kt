@@ -29,7 +29,7 @@ import java.util.concurrent.TimeUnit
 val apiService: ApiService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
     NetworkApi.INSTANCE.getApi(ApiService::class.java, ApiService.SERVER_URL)
 }
-
+//测试的
 val apiService1: ApiService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
     NetworkApi.INSTANCE.getApi(ApiService::class.java, ApiService.SERVER_URL1)
 }
@@ -47,7 +47,6 @@ class NetworkApi : BaseNetworkApi() {
      * 在这里可以添加拦截器，可以对 OkHttpClient.Builder 做任意操作
      */
     override fun setHttpClientBuilder(builder: OkHttpClient.Builder): OkHttpClient.Builder {
-        "setHttpClientBuilder".logi("hgj")
         builder.apply {
             //设置缓存配置 缓存最大10M
             cache(Cache(File(appContext.cacheDir, "cxk_cache"), 10 * 1024 * 1024))

@@ -164,3 +164,32 @@ fun NavController.jumpByLogin(
 }
 
 
+fun List<*>?.isNull(): Boolean {
+    return this?.isEmpty() ?: true
+}
+
+fun List<*>?.isNotNull(): Boolean {
+    return this != null && this.isNotEmpty()
+}
+
+/**
+ * 根据索引获取集合的child值
+ * @receiver List<T>?
+ * @param position Int
+ * @return T?
+ */
+inline fun <reified T> List<T>?.getChild(position: Int): T? {
+    //如果List为null 返回null
+    return if (this == null) {
+        null
+    } else {
+        //如果position大于集合的size 返回null
+        if (position + 1 > this.size) {
+            null
+        } else {
+            //返回正常数据
+            this[position]
+        }
+    }
+}
+

@@ -4,6 +4,7 @@ import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.callback.databind.IntObservableField
 import me.hgj.jetpackmvvm.callback.databind.StringObservableField
 import me.hgj.jetpackmvvm.demo.data.model.enums.TodoType
+import me.hgj.jetpackmvvm.ext.launch
 
 /**
  * 作者　: hegaojian
@@ -30,4 +31,11 @@ class TodoViewModel : BaseViewModel() {
     var todoColor =
         IntObservableField(TodoType.TodoType1.color)
 
+    fun xx(): Unit {
+        launch({
+
+        },{
+
+        })
+    }
 }

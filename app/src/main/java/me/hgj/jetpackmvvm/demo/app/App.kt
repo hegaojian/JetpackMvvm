@@ -52,7 +52,7 @@ class App : BaseApp() {
         strategy.isUploadProcess = processName == null || processName == packageName
         // 初始化Bugly
         Bugly.init(context, if (BuildConfig.DEBUG) "xxx" else "a52f2b5ebb", BuildConfig.DEBUG)
-
+        
         jetpackMvvmLog = BuildConfig.DEBUG
 
         //防止项目崩溃，崩溃后打开错误界面
@@ -66,7 +66,6 @@ class App : BaseApp() {
             .minTimeBetweenCrashesMs(2000) //应用程序崩溃之间必须经过的时间 default: 3000
             .restartActivity(WelcomeActivity::class.java) // 重启的activity
             .errorActivity(ErrorActivity::class.java) //发生错误跳转的activity
-            .eventListener(null) //允许你指定事件侦听器，以便在库显示错误活动 default: null
             .apply()
     }
 

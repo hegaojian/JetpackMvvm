@@ -44,7 +44,7 @@ class RequestProjectViewModel : BaseViewModel() {
                     isFirstEmpty = isRefresh && it.isEmpty(),
                     listData = it.datas
                 )
-            projectDataState.postValue(listDataUiState)
+            projectDataState.value = listDataUiState
         }, {
             //请求失败
             val listDataUiState =
@@ -54,7 +54,7 @@ class RequestProjectViewModel : BaseViewModel() {
                     isRefresh = isRefresh,
                     listData = arrayListOf<AriticleResponse>()
                 )
-            projectDataState.postValue(listDataUiState)
+            projectDataState.value = listDataUiState
         })
     }
 }

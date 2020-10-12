@@ -15,7 +15,7 @@ import me.hgj.jetpackmvvm.ext.request
  * 描述　: 专门为了收藏而写的ViewModel
  */
 open class RequestCollectViewModel : BaseViewModel() {
-    
+
     private var pageNo = 0
 
     //收藏文章
@@ -38,11 +38,10 @@ open class RequestCollectViewModel : BaseViewModel() {
     fun collect(id: Int) {
         request({ apiService.collect(id) }, {
             val uiState = CollectUiState(isSuccess = true, collect = true, id = id)
-            collectUiState.postValue(uiState)
+            collectUiState.value = uiState
         }, {
-            val uiState =
-                CollectUiState(isSuccess = false, collect = false, errorMsg = it.errorMsg, id = id)
-            collectUiState.postValue(uiState)
+            val uiState = CollectUiState(isSuccess = false, collect = false, errorMsg = it.errorMsg, id = id)
+            collectUiState.value = uiState
         })
     }
 
@@ -54,11 +53,11 @@ open class RequestCollectViewModel : BaseViewModel() {
     fun uncollect(id: Int) {
         request({ apiService.uncollect(id) }, {
             val uiState = CollectUiState(isSuccess = true, collect = false, id = id)
-            collectUiState.postValue(uiState)
+            collectUiState.value = uiState
         }, {
             val uiState =
                 CollectUiState(isSuccess = false, collect = true, errorMsg = it.errorMsg, id = id)
-            collectUiState.postValue(uiState)
+            collectUiState.value = uiState
         })
     }
 
@@ -70,11 +69,11 @@ open class RequestCollectViewModel : BaseViewModel() {
     fun collectUrl(name: String, link: String) {
         request({ apiService.collectUrl(name, link) }, {
             val uiState = CollectUiState(isSuccess = true, collect = true, id = it.id)
-            collectUrlUiState.postValue(uiState)
+            collectUrlUiState.value = uiState
         }, {
             val uiState =
                 CollectUiState(isSuccess = false, collect = false, errorMsg = it.errorMsg, id = 0)
-            collectUrlUiState.postValue(uiState)
+            collectUrlUiState.value = uiState
         })
     }
 
@@ -86,11 +85,10 @@ open class RequestCollectViewModel : BaseViewModel() {
     fun uncollectUrl(id: Int) {
         request({ apiService.uncollect(id) }, {
             val uiState = CollectUiState(isSuccess = true, collect = false, id = id)
-            collectUrlUiState.postValue(uiState)
+            collectUrlUiState.value = uiState
         }, {
-            val uiState =
-                CollectUiState(isSuccess = false, collect = true, errorMsg = it.errorMsg, id = id)
-            collectUrlUiState.postValue(uiState)
+            val uiState = CollectUiState(isSuccess = false, collect = true, errorMsg = it.errorMsg, id = id)
+            collectUrlUiState.value = uiState
         })
     }
 
@@ -110,7 +108,7 @@ open class RequestCollectViewModel : BaseViewModel() {
                     isFirstEmpty = isRefresh && it.isEmpty(),
                     listData = it.datas
                 )
-            ariticleDataState.postValue(listDataUiState)
+            ariticleDataState.value = listDataUiState
         }, {
             //请求失败
             val listDataUiState =
@@ -120,13 +118,18 @@ open class RequestCollectViewModel : BaseViewModel() {
                     isRefresh = isRefresh,
                     listData = arrayListOf<CollectResponse>()
                 )
-            ariticleDataState.postValue(listDataUiState)
+            ariticleDataState.value = listDataUiState
         })
     }
 
     fun getCollectUrlData() {
         request({ apiService.getCollectUrlData() }, {
             //请求成功
+            it.map {
+                if(it.order==0){
+                    it.order = 1
+                }
+            }
             val listDataUiState =
                 ListDataUiState(
                     isRefresh = true,
@@ -135,7 +138,7 @@ open class RequestCollectViewModel : BaseViewModel() {
                     isEmpty = it.isEmpty(),
                     listData = it
                 )
-            urlDataState.postValue(listDataUiState)
+            urlDataState.value = listDataUiState
         }, {
             //请求失败
             val listDataUiState =
@@ -144,7 +147,7 @@ open class RequestCollectViewModel : BaseViewModel() {
                     errMessage = it.errorMsg,
                     listData = arrayListOf<CollectUrlResponse>()
                 )
-            urlDataState.postValue(listDataUiState)
+            urlDataState.value = listDataUiState
         })
     }
 

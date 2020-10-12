@@ -128,7 +128,7 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
                 mViewModel.collect = it.collect
-                eventViewModel.collectEvent.postValue(CollectBus(it.id, it.collect))
+                eventViewModel.collectEvent.value = CollectBus(it.id, it.collect)
                 //刷新一下menu
                 mActivity.window?.invalidatePanelMenu(Window.FEATURE_OPTIONS_PANEL)
                 mActivity.invalidateOptionsMenu()
@@ -138,7 +138,7 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
         })
         requestCollectViewModel.collectUrlUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
-                eventViewModel.collectEvent.postValue(CollectBus(it.id, it.collect))
+                eventViewModel.collectEvent.value = CollectBus(it.id, it.collect)
                 mViewModel.collect = it.collect
                 //刷新一下menu
                 mActivity.window?.invalidatePanelMenu(Window.FEATURE_OPTIONS_PANEL)

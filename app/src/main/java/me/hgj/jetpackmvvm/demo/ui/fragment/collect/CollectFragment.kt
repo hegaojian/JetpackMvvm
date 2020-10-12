@@ -12,6 +12,7 @@ import me.hgj.jetpackmvvm.demo.app.ext.init
 import me.hgj.jetpackmvvm.demo.app.ext.initClose
 import me.hgj.jetpackmvvm.demo.databinding.FragmentCollectBinding
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.util.logd
 
 /**
  * 作者　: hegaojian

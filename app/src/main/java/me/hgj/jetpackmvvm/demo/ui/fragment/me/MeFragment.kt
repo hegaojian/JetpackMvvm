@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.demo.ui.fragment.me
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -14,6 +15,7 @@ import me.hgj.jetpackmvvm.demo.app.ext.setUiTheme
 import me.hgj.jetpackmvvm.demo.data.model.bean.BannerResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.IntegralResponse
 import me.hgj.jetpackmvvm.demo.databinding.FragmentMeBinding
+import me.hgj.jetpackmvvm.demo.ui.activity.TestActivity
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestMeViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.MeViewModel
 import me.hgj.jetpackmvvm.ext.nav
@@ -53,6 +55,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
     }
 
     override fun createObserver() {
+
         requestMeViewModel.meData.observe(viewLifecycleOwner, Observer { resultState ->
             me_swipe.isRefreshing = false
             parseState(resultState, {
@@ -114,7 +117,6 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
             }
         }
 
-        /** Todo */
         fun todo() {
             nav().jumpByLogin {
                 it.navigateAction(R.id.action_mainfragment_to_todoListFragment)
@@ -148,5 +150,6 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
         fun demo() {
             nav().navigateAction(R.id.action_mainfragment_to_demoFragment)
         }
+
     }
 }

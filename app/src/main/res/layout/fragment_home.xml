@@ -12,7 +12,7 @@
 
         <include layout="@layout/include_toolbar" />
 
-      <include layout="@layout/include_list"/>
+        <include layout="@layout/include_list" />
 
     </LinearLayout>
 </layout>

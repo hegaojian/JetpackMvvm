@@ -1,6 +1,7 @@
 package me.hgj.jetpackmvvm.demo.ui.fragment.todo
 
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.afollestad.materialdialogs.MaterialDialog
@@ -18,10 +19,12 @@ import me.hgj.jetpackmvvm.demo.app.weight.customview.PriorityDialog
 import me.hgj.jetpackmvvm.demo.data.model.bean.TodoResponse
 import me.hgj.jetpackmvvm.demo.data.model.enums.TodoType
 import me.hgj.jetpackmvvm.demo.databinding.FragmentAddtodoBinding
+import me.hgj.jetpackmvvm.demo.generated.callback.OnClickListener
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestTodoViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.TodoViewModel
 import me.hgj.jetpackmvvm.ext.nav
 import me.hgj.jetpackmvvm.ext.util.notNull
+import java.lang.ref.WeakReference
 import java.util.*
 
 /**
@@ -60,6 +63,7 @@ class AddTodoFragment : BaseFragment<TodoViewModel, FragmentAddtodoBinding>() {
     override fun createObserver() {
         requestViewModel.updateDataState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {
+                //添加TODO成功 返回并发送消息回调
                 nav().navigateUp()
                 eventViewModel.todoEvent.setValue(false)
             } else {
@@ -117,7 +121,7 @@ class AddTodoFragment : BaseFragment<TodoViewModel, FragmentAddtodoBinding>() {
                     todoResponse.notNull({
                         showMessage("确认提交编辑吗？", positiveButtonText = "提交", positiveAction = {
                             requestViewModel.updateTodo(
-                                todoResponse!!.id,
+                                it.id,
                                 mViewModel.todoTitle.get(),
                                 mViewModel.todoContent.get(),
                                 mViewModel.todoTime.get(),
@@ -138,5 +142,4 @@ class AddTodoFragment : BaseFragment<TodoViewModel, FragmentAddtodoBinding>() {
             }
         }
     }
-
 }

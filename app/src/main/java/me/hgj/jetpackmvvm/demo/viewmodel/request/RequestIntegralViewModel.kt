@@ -39,7 +39,7 @@ class RequestIntegralViewModel : BaseViewModel() {
                     isFirstEmpty = isRefresh && it.isEmpty(),
                     listData = it.datas
                 )
-            integralDataState.postValue(listDataUiState)
+            integralDataState.value = listDataUiState
         }, {
             //请求失败
             val listDataUiState =
@@ -49,7 +49,7 @@ class RequestIntegralViewModel : BaseViewModel() {
                     isRefresh = isRefresh,
                     listData = arrayListOf<IntegralResponse>()
                 )
-            integralDataState.postValue(listDataUiState)
+            integralDataState.value = listDataUiState
         })
     }
 
@@ -69,7 +69,7 @@ class RequestIntegralViewModel : BaseViewModel() {
                     isFirstEmpty = isRefresh && it.isEmpty(),
                     listData = it.datas
                 )
-            integralHistoryDataState.postValue(listDataUiState)
+            integralHistoryDataState.value = listDataUiState
         }, {
             //请求失败
             val listDataUiState =
@@ -79,7 +79,7 @@ class RequestIntegralViewModel : BaseViewModel() {
                     isRefresh = isRefresh,
                     listData = arrayListOf<IntegralHistoryResponse>()
                 )
-            integralHistoryDataState.postValue(listDataUiState)
+            integralHistoryDataState.value = listDataUiState
         })
     }
 }

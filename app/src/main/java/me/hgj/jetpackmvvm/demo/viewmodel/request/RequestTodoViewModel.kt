@@ -46,7 +46,7 @@ class RequestTodoViewModel : BaseViewModel() {
                     isFirstEmpty = isRefresh && it.isEmpty(),
                     listData = it.datas
                 )
-            todoDataState.postValue(listDataUiState)
+            todoDataState.value = listDataUiState
         }, {
             //请求失败
             val listDataUiState =
@@ -56,27 +56,27 @@ class RequestTodoViewModel : BaseViewModel() {
                     isRefresh = isRefresh,
                     listData = arrayListOf<TodoResponse>()
                 )
-            todoDataState.postValue(listDataUiState)
+            todoDataState.value = listDataUiState
         })
     }
 
     fun delTodo(id: Int, position: Int) {
         request({ apiService.deleteTodo(id) }, {
             val uistate = UpdateUiState(isSuccess = true, data = position)
-            delDataState.postValue(uistate)
+            delDataState.value = uistate
         }, {
             val uistate = UpdateUiState(isSuccess = false, data = position, errorMsg = it.errorMsg)
-            delDataState.postValue(uistate)
+            delDataState.value = uistate
         }, isShowDialog = true)
     }
 
     fun doneTodo(id: Int, position: Int) {
         request({ apiService.doneTodo(id, 1) }, {
             val uistate = UpdateUiState(isSuccess = true, data = position)
-            doneDataState.postValue(uistate)
+            doneDataState.value = uistate
         }, {
             val uistate = UpdateUiState(isSuccess = false, data = position, errorMsg = it.errorMsg)
-            doneDataState.postValue(uistate)
+            doneDataState.value = uistate
         }, isShowDialog = true)
     }
 
@@ -85,10 +85,10 @@ class RequestTodoViewModel : BaseViewModel() {
             apiService.addTodo(todoTitle, todoContent, todoTime, 0, todoLeve)
         }, {
             val uistate = UpdateUiState(isSuccess = true, data = 0)
-            updateDataState.postValue(uistate)
+            updateDataState.value = uistate
         }, {
             val uistate = UpdateUiState(isSuccess = false, data = 0, errorMsg = it.errorMsg)
-            updateDataState.postValue(uistate)
+            updateDataState.value = uistate
         }, isShowDialog = true)
     }
 
@@ -103,10 +103,10 @@ class RequestTodoViewModel : BaseViewModel() {
             apiService.updateTodo(todoTitle, todoContent, todoTime, 0, todoLeve, id)
         }, {
             val uistate = UpdateUiState(isSuccess = true, data = 0)
-            updateDataState.postValue(uistate)
+            updateDataState.value = uistate
         }, {
             val uistate = UpdateUiState<Int>(isSuccess = false, errorMsg = it.errorMsg)
-            updateDataState.postValue(uistate)
+            updateDataState.value = uistate
 
         }, isShowDialog = true)
     }

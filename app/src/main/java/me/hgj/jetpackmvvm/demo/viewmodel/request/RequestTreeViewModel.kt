@@ -54,7 +54,7 @@ class RequestTreeViewModel : BaseViewModel() {
                     isFirstEmpty = isRefresh && it.isEmpty(),
                     listData = it.datas
                 )
-            plazaDataState.postValue(listDataUiState)
+            plazaDataState.value = listDataUiState
         }, {
             //请求失败
             val listDataUiState =
@@ -64,7 +64,7 @@ class RequestTreeViewModel : BaseViewModel() {
                     isRefresh = isRefresh,
                     listData = arrayListOf<AriticleResponse>()
                 )
-            plazaDataState.postValue(listDataUiState)
+            plazaDataState.value = listDataUiState
         })
     }
 
@@ -87,7 +87,7 @@ class RequestTreeViewModel : BaseViewModel() {
                     isFirstEmpty = isRefresh && it.isEmpty(),
                     listData = it.datas
                 )
-            askDataState.postValue(listDataUiState)
+            askDataState.value = listDataUiState
         }, {
             //请求失败
             val listDataUiState =
@@ -97,7 +97,7 @@ class RequestTreeViewModel : BaseViewModel() {
                     isRefresh = isRefresh,
                     listData = arrayListOf<AriticleResponse>()
                 )
-            askDataState.postValue(listDataUiState)
+            askDataState.value = listDataUiState
         })
     }
 
@@ -112,7 +112,7 @@ class RequestTreeViewModel : BaseViewModel() {
                     isSuccess = true,
                     listData = it
                 )
-            systemDataState.postValue(dataUiState)
+            systemDataState.value = dataUiState
         }, {
             //请求失败
             val dataUiState =
@@ -121,7 +121,7 @@ class RequestTreeViewModel : BaseViewModel() {
                     errMessage = it.errorMsg,
                     listData = arrayListOf<SystemResponse>()
                 )
-            systemDataState.postValue(dataUiState)
+            systemDataState.value = dataUiState
         })
     }
 
@@ -136,7 +136,7 @@ class RequestTreeViewModel : BaseViewModel() {
                     isSuccess = true,
                     listData = it
                 )
-            navigationDataState.postValue(dataUiState)
+            navigationDataState.value = dataUiState
         }, {
             //请求失败
             val dataUiState =
@@ -145,7 +145,7 @@ class RequestTreeViewModel : BaseViewModel() {
                     errMessage = it.errorMsg,
                     listData = arrayListOf<NavigationResponse>()
                 )
-            navigationDataState.postValue(dataUiState)
+            navigationDataState.value = dataUiState
         })
     }
 
@@ -168,7 +168,7 @@ class RequestTreeViewModel : BaseViewModel() {
                     isFirstEmpty = isRefresh && it.isEmpty(),
                     listData = it.datas
                 )
-            systemChildDataState.postValue(listDataUiState)
+            systemChildDataState.value = listDataUiState
         }, {
             //请求失败
             val listDataUiState =
@@ -178,7 +178,7 @@ class RequestTreeViewModel : BaseViewModel() {
                     isRefresh = isRefresh,
                     listData = arrayListOf<AriticleResponse>()
                 )
-            plazaDataState.postValue(listDataUiState)
+            plazaDataState.value = listDataUiState
         })
     }
 

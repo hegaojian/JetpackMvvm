@@ -79,7 +79,7 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
                     R.id.item_history_del -> {
                         requestSearchViewModel.historyData.value?.let {
                             it.removeAt(position)
-                            requestSearchViewModel.historyData.postValue(it)
+                            requestSearchViewModel.historyData.value= it
                         }
                     }
                 }
@@ -109,7 +109,7 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
                         negativeButton(text = "取消")
                         positiveButton(text = "清空") {
                             //清空
-                            requestSearchViewModel.historyData.postValue(arrayListOf())
+                            requestSearchViewModel.historyData.value = arrayListOf()
                         }
                         getActionButton(WhichButton.POSITIVE).updateTextColor(
                             SettingUtil.getColor(
@@ -203,7 +203,7 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
             }
             //添加新数据到第一条
             it.add(0, keyStr)
-            requestSearchViewModel.historyData.postValue(it)
+            requestSearchViewModel.historyData.value = it
         }
     }
 
