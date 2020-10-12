@@ -20,7 +20,7 @@
  
 #### APK下载：
 
-- [Github下载](https://github.com/hegaojian/JetpackMvvm/releases/download/1.1.6/app-release.apk)
+- [Github下载](https://github.com/hegaojian/JetpackMvvm/releases/download/1.1.8/app-release.apk)
 
 - [firm下载(推荐)](http://d.6short.com/v9q7)
 
@@ -47,7 +47,7 @@ allprojects {
 ```
 dependencies {
   ...
-  implementation 'me.hegj:JetpackMvvm:1.1.7'
+  implementation 'me.hegj:JetpackMvvm:1.1.8'
 }
 ```
 
