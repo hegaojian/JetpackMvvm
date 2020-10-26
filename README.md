@@ -54,12 +54,22 @@ dependencies {
 - **1.3 在app's build.gradle中，android 模块下开启DataBinding(如果你不想用DataBinding,请忽略这一步)**
 
 ```
+AndroidStudio 4.0 以下版本------>
 android {
     ...
     dataBinding {
         enabled = true 
     }
 }
+
+AndroidStudio 4.0及以上版本 ------>
+android {
+    ...
+   buildFeatures {
+        dataBinding = true
+    }
+}
+ 
 ```
 
 ## 2.继承基类
