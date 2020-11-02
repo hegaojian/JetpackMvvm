@@ -126,7 +126,11 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
      */
     private fun registorDefUIChange() {
         mViewModel.loadingChange.showDialog.observe(viewLifecycleOwner, Observer {
-            showLoading()
+            showLoading(
+                if (it.isEmpty()) {
+                    "请求网络中..."
+                } else it
+            )
         })
         mViewModel.loadingChange.dismissDialog.observe(viewLifecycleOwner, Observer {
             dismissLoading()
