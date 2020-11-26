@@ -122,7 +122,7 @@ class AriticleFragment : BaseFragment<AriticleViewModel, FragmentListBinding>() 
                 showMessage(it.errorMsg)
             }
         })
-        eventViewModel.shareArticleEvent.observe(viewLifecycleOwner, Observer {
+        eventViewModel.shareArticleEvent.observeInFragment(this, Observer {
             if (articleAdapter.data.size == 0) {
                 //界面没有数据时，变为加载中 增强一丢丢体验
                 loadsir.showLoading()

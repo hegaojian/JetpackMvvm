@@ -28,7 +28,7 @@ class PublicNumberFragment : BaseFragment<RequestPublicNumberViewModel, Fragment
     private var fragments: ArrayList<Fragment> = arrayListOf()
 
     //标题集合
-    private var mDataList: ArrayList<ClassifyResponse> = arrayListOf()
+    private var mDataList: ArrayList<String> = arrayListOf()
 
     override fun layoutId() = R.layout.fragment_viewpager
 
@@ -59,7 +59,7 @@ class PublicNumberFragment : BaseFragment<RequestPublicNumberViewModel, Fragment
     override fun createObserver() {
         mViewModel.titleData.observe(viewLifecycleOwner, Observer { data ->
             parseState(data, {
-                mDataList.addAll(it)
+                mDataList.addAll(it.map { it.name })
                 it.forEach { classify ->
                     fragments.add(PublicChildFragment.newInstance(classify.id))
                 }

@@ -1,6 +1,10 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.app.network.apiService
 import me.hgj.jetpackmvvm.demo.data.model.bean.UserInfo

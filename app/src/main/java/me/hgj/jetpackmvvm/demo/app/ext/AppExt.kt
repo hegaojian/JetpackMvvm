@@ -37,7 +37,7 @@ fun AppCompatActivity.showMessage(
     negativeAction: () -> Unit = {}
 ) {
     MaterialDialog(this)
-        .cancelable(false)
+        .cancelable(true)
         .lifecycleOwner(this)
         .show {
             title(text = title)
@@ -73,7 +73,7 @@ fun Fragment.showMessage(
 ) {
     activity?.let {
         MaterialDialog(it)
-            .cancelable(false)
+            .cancelable(true)
             .lifecycleOwner(viewLifecycleOwner)
             .show {
                 title(text = title)

@@ -56,7 +56,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
     override fun layoutId() = R.layout.fragment_home
 
-    private val resultData = ArrayList<String>()
     override fun initView(savedInstanceState: Bundle?) {
         //状态页配置
         loadsir = loadServiceInit(swipeRefresh) {
@@ -162,6 +161,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                                     }
                                 }
                         recyclerView.addHeaderView(headview)
+                        recyclerView.scrollToPosition(0)
                     }
                 })
             })
@@ -209,7 +209,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                 articleAdapter.setAdapterAnimation(it)
             })
             //监听全局的收藏信息 收藏的Id跟本列表的数据id匹配则需要更新
-            eventViewModel.collectEvent.observe(viewLifecycleOwner, Observer {
+            eventViewModel.collectEvent.observeInFragment(this@HomeFragment, Observer {
                 for (index in articleAdapter.data.indices) {
                     if (articleAdapter.data[index].id == it.id) {
                         articleAdapter.data[index].collect = it.collect

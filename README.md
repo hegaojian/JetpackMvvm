@@ -282,7 +282,7 @@ class RequestLoginViewModel: BaseViewModel {
   fun login(username: String, password: String){
    //1.在 Activity/Fragment的监听回调中拿到已脱壳的数据（项目有基类的可以用）
         request(
-            { HttpRequestManger.instance.login(username, password) }, //请求体
+            { HttpRequestCoroutine.login(username, password) }, //请求体
             loginResult,//请求的结果接收者，请求成功与否都会改变该值，在Activity或fragment中监听回调结果，具体可看loginActivity中的回调
             true,//是否显示等待框，，默认false不显示 可以默认不传
             "正在登录中..."//等待框内容，可以默认不填请求网络中...
@@ -290,7 +290,7 @@ class RequestLoginViewModel: BaseViewModel {
         
    //2.在Activity/Fragment中的监听拿到未脱壳的数据，你可以自己根据code做业务需求操作（项目没有基类的可以用）
         requestNoCheck(
-          {HttpRequestManger.instance.login(username,password)},
+          {HttpRequestCoroutine.login(username,password)},
           loginResult2,
           true,
           "正在登录中...") 
@@ -362,7 +362,7 @@ class RequestLoginViewModel : BaseViewModel() {
     
   fun login(username: String, password: String){
    //1.拿到已脱壳的数据（项目有基类的可以用）
-     request({HttpRequestManger.instance.login(username,password)},{
+     request({HttpRequestCoroutine.login(username,password)},{
              //请求成功 已自动处理了 请求结果是否正常
              it.username.logd()
          },{
@@ -371,7 +371,7 @@ class RequestLoginViewModel : BaseViewModel() {
          },true,"正在登录中...")
         
    //2.拿到未脱壳的数据，你可以自己根据code做业务需求操作（项目没有基类或者不想框架帮忙脱壳的可以用）
-       requestNoCheck({HttpRequestManger.instance.login(username,password)},{
+       requestNoCheck({HttpRequestCoroutine.login(username,password)},{
             //请求成功 自己拿到数据做业务需求操作
             if(it.errorCode==0){
                 //结果正确

@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import me.hgj.jetpackmvvm.ext.util.logd
-import me.hgj.jetpackmvvm.ext.util.loge
 
 /**
  * 作者　: hegaojian
@@ -17,7 +16,6 @@ class KtxLifeCycleCallBack : Application.ActivityLifecycleCallbacks {
         KtxActivityManger.pushActivity(activity)
         "onActivityCreated : ${activity.localClassName}".logd()
     }
-
     override fun onActivityStarted(activity: Activity) {
         "onActivityStarted : ${activity.localClassName}".logd()
     }
@@ -36,7 +34,7 @@ class KtxLifeCycleCallBack : Application.ActivityLifecycleCallbacks {
         KtxActivityManger.popActivity(activity)
     }
 
-    override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle?) {
+    override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
 
     }
 

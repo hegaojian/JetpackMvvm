@@ -53,7 +53,7 @@ class SystemArrFragment : BaseFragment<TreeViewModel, FragmentSystemBinding>() {
         //初始化viewpager2
         view_pager.init(this, fragments)
         //初始化 magic_indicator
-        magic_indicator.bindViewPager2(view_pager, data.children)
+        magic_indicator.bindViewPager2(view_pager, data.children.map { it.name })
 
         view_pager.offscreenPageLimit = fragments.size
 

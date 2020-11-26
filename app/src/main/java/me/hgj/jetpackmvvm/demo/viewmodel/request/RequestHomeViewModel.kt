@@ -1,6 +1,7 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.delay
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.app.network.apiService
 import me.hgj.jetpackmvvm.demo.app.network.stateCallback.ListDataUiState

@@ -159,7 +159,7 @@ class AskFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
             })
         }
         //监听全局的收藏信息 收藏的Id跟本列表的数据id匹配则需要更新
-        eventViewModel.collectEvent.observe(viewLifecycleOwner, Observer {
+        eventViewModel.collectEvent.observeInFragment(this, Observer {
             for (index in articleAdapter.data.indices) {
                 if (articleAdapter.data[index].id == it.id) {
                     articleAdapter.data[index].collect = it.collect

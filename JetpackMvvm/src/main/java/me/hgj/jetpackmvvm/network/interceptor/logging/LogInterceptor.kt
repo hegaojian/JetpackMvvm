@@ -16,11 +16,13 @@ import java.util.concurrent.TimeUnit
 
 class LogInterceptor : Interceptor {
     private val mPrinter: FormatPrinter = DefaultFormatPrinter()
-    private val printLevel =
-        Level.ALL
-
+    private val printLevel = Level.ALL
+    
     constructor() {}
-    constructor(printLevel: Level?) {}
+
+    constructor(printLevel: Level?) {
+
+    }
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -45,7 +47,9 @@ class LogInterceptor : Interceptor {
         originalResponse = try {
             chain.proceed(request)
         } catch (e: Exception) {
-            Log.d("Http Error: %s", e.message)
+            e.message?.let {
+                Log.d("Http Error: %s", it)
+            }
             throw e
         }
         val t2 = if (logResponse) System.nanoTime() else 0

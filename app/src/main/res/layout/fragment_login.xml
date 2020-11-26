@@ -118,8 +118,8 @@
                     android:layout_marginBottom="12dp"
                     android:background="@drawable/button_shap"
                     android:gravity="center"
-                    android:onClick="@{()->click.login()}"
                     android:text="登录"
+                    bind:noRepeatClick="@{()-> click.login()}"
                     android:textColor="@color/white"
                     android:textSize="16dp" />
 
@@ -129,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:layout_marginBottom="12dp"
-                    android:onClick="@{()->click.goRegister()}"
+                    android:onClick="@{()-> click.goRegister()}"
                     android:paddingLeft="18dp"
                     android:paddingTop="18dp"
                     android:paddingBottom="18dp"

@@ -16,6 +16,7 @@ import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.LoadingCallback
 import me.hgj.jetpackmvvm.demo.ui.activity.ErrorActivity
 import me.hgj.jetpackmvvm.demo.ui.activity.WelcomeActivity
 import me.hgj.jetpackmvvm.ext.util.jetpackMvvmLog
+import me.hgj.jetpackmvvm.ext.util.logd
 
 /**
  * 作者　: hegaojian
@@ -52,7 +53,7 @@ class App : BaseApp() {
         strategy.isUploadProcess = processName == null || processName == packageName
         // 初始化Bugly
         Bugly.init(context, if (BuildConfig.DEBUG) "xxx" else "a52f2b5ebb", BuildConfig.DEBUG)
-        
+        "".logd()
         jetpackMvvmLog = BuildConfig.DEBUG
 
         //防止项目崩溃，崩溃后打开错误界面

@@ -1,8 +1,10 @@
 package me.hgj.jetpackmvvm.demo.data.bindadapter
 
+import android.os.SystemClock
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
+import android.view.View
 import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.EditText
@@ -69,6 +71,7 @@ object CustomBindAdapter {
     fun EditText.afterTextChanged(action: (String) -> Unit) {
         addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
+
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -80,5 +83,19 @@ object CustomBindAdapter {
             }
         })
     }
+
+    @BindingAdapter("noRepeatClick")
+    @JvmStatic
+    fun setOnClick(view: View, clickListener: () -> Unit) {
+        val mHits = LongArray(2)
+        view.setOnClickListener {
+            System.arraycopy(mHits, 1, mHits, 0, mHits.size - 1)
+            mHits[mHits.size - 1] = SystemClock.uptimeMillis()
+            if (mHits[0] < SystemClock.uptimeMillis() - 500) {
+                clickListener.invoke()
+            }
+        }
+    }
+
 
 }

@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 import me.hgj.jetpackmvvm.base.activity.BaseVmActivity
-import me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity
 import me.hgj.jetpackmvvm.base.fragment.BaseVmFragment
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.ext.util.loge
@@ -20,36 +19,6 @@ import me.hgj.jetpackmvvm.state.paresResult
  * 时间　: 2020/4/8
  * 描述　:BaseViewModel请求协程封装
  */
-
-/**
- * 显示页面状态，这里有个技巧，成功回调在第一个，其后两个带默认值的回调可省
- * @param resultState 接口返回值
- * @param onLoading 加载中
- * @param onSuccess 成功回调
- * @param onError 失败回调
- *
- */
-fun <T> BaseVmDbActivity<*, *>.parseState(
-    resultState: ResultState<T>,
-    onSuccess: (T) -> Unit,
-    onError: ((AppException) -> Unit)? = null,
-    onLoading: (() -> Unit)? = null
-) {
-    when (resultState) {
-        is ResultState.Loading -> {
-            showLoading(resultState.loadingMessage)
-            onLoading?.run { this }
-        }
-        is ResultState.Success -> {
-            dismissLoading()
-            onSuccess(resultState.data)
-        }
-        is ResultState.Error -> {
-            dismissLoading()
-            onError?.run { this(resultState.error) }
-        }
-    }
-}
 
 /**
  * 显示页面状态，这里有个技巧，成功回调在第一个，其后两个带默认值的回调可省
@@ -110,27 +79,7 @@ fun <T> BaseVmFragment<*>.parseState(
         }
     }
 }
-fun <T> BaseVmFragment<*>.parseStateNull(
-    resultState: ResultState<T?>,
-    onSuccess: (T?) -> Unit,
-    onError: ((AppException) -> Unit)? = null,
-    onLoading: (() -> Unit)? = null
-) {
-    when (resultState) {
-        is ResultState.Loading -> {
-            showLoading(resultState.loadingMessage)
-            onLoading?.invoke()
-        }
-        is ResultState.Success -> {
-            dismissLoading()
-            onSuccess(resultState.data)
-        }
-        is ResultState.Error -> {
-            dismissLoading()
-            onError?.run { this(resultState.error) }
-        }
-    }
-}
+
 
 /**
  * net request 不校验请求结果数据是否是成功
@@ -199,14 +148,13 @@ fun <T> BaseViewModel.request(
     success: (T) -> Unit,
     error: (AppException) -> Unit = {},
     isShowDialog: Boolean = false,
-    loadingMessage: String = "请求网络中..."
+    loadingMessage: String = "请求网络中...",
+    onTokenOut: ((String) -> Unit)? = null
 ): Job {
     //如果需要弹窗 通知Activity/fragment弹窗
     return viewModelScope.launch {
         runCatching {
-            if (isShowDialog) {
-                loadingChange.showDialog.postValue(loadingMessage)
-            }
+            if (isShowDialog) loadingChange.showDialog.postValue(loadingMessage)
             //请求体
             block()
         }.onSuccess {
@@ -214,7 +162,8 @@ fun <T> BaseViewModel.request(
             loadingChange.dismissDialog.postValue(false)
             runCatching {
                 //校验请求结果码是否正确，不正确会抛出异常走下面的onFailure
-                executeResponse(it) { t -> success(t) }
+                executeResponse(it) { t -> success(t)
+                }
             }.onFailure { e ->
                 //打印错误消息
                 e.message?.loge()
@@ -277,12 +226,18 @@ suspend fun <T> executeResponse(
     success: suspend CoroutineScope.(T) -> Unit
 ) {
     coroutineScope {
-        if (response.isSucces()) success(response.getResponseData())
-        else throw AppException(
-            response.getResponseCode(),
-            response.getResponseMsg(),
-            response.getResponseMsg()
-        )
+        when {
+            response.isSucces() -> {
+                success(response.getResponseData())
+            }
+            else -> {
+                throw AppException(
+                    response.getResponseCode(),
+                    response.getResponseMsg(),
+                    response.getResponseMsg()
+                )
+            }
+        }
     }
 }
 

@@ -116,7 +116,7 @@ class CollectUrlFragment : BaseFragment<RequestCollectViewModel, IncludeListBind
         })
         eventViewModel.run {
             //监听全局的收藏信息 收藏的Id跟本列表的数据id匹配则 需要删除他 否则则请求最新收藏数据
-            collectEvent.observe(viewLifecycleOwner, Observer {
+            collectEvent.observeInFragment(this@CollectUrlFragment, Observer {
                 for (index in articleAdapter.data.indices) {
                     if (articleAdapter.data[index].id == it.id) {
                         articleAdapter.data.removeAt(index)

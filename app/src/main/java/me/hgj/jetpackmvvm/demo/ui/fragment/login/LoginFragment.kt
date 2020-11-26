@@ -37,7 +37,6 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
 
         mDatabind.click = ProxyClick()
 
-
         toolbar.initClose("登录") {
             nav().navigateUp()
         }

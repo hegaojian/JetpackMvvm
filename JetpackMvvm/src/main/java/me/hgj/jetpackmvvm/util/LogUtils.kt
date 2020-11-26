@@ -15,7 +15,7 @@ object LogUtils {
         if (!jetpackMvvmLog || TextUtils.isEmpty(msg)) {
             return
         }
-        Log.d(tag, msg)
+        Log.d(tag, msg!!)
     }
 
     fun debugInfo(msg: String?) {
@@ -29,7 +29,7 @@ object LogUtils {
         if (!jetpackMvvmLog || TextUtils.isEmpty(msg)) {
             return
         }
-        Log.w(tag, msg)
+        Log.w(tag, msg!!)
     }
 
     fun warnInfo(msg: String?) {

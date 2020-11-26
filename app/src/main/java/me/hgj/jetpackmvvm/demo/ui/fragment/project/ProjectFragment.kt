@@ -30,7 +30,7 @@ class ProjectFragment : BaseFragment<ProjectViewModel, FragmentViewpagerBinding>
     var fragments: ArrayList<Fragment> = arrayListOf()
 
     //标题集合
-    var mDataList: ArrayList<ClassifyResponse> = arrayListOf()
+    var mDataList: ArrayList<String> = arrayListOf()
 
     /** */
     private val requestProjectViewModel: RequestProjectViewModel by viewModels()
@@ -66,11 +66,8 @@ class ProjectFragment : BaseFragment<ProjectViewModel, FragmentViewpagerBinding>
             parseState(data, {
                 mDataList.clear()
                 fragments.clear()
-                mDataList.add(
-                    0,
-                    ClassifyResponse(name = "最新项目")
-                )
-                mDataList.addAll(it)
+                mDataList.add("最新项目")
+                mDataList.addAll(it.map { it.name })
                 fragments.add(ProjectChildFragment.newInstance(0, true))
                 it.forEach { classify ->
                     fragments.add(ProjectChildFragment.newInstance(classify.id, false))

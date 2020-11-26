@@ -20,14 +20,19 @@ sealed class ResultState<out T> {
     data class Error(val error: AppException) : ResultState<Nothing>()
 }
 
-
 /**
  * 处理返回值
  * @param result 请求结果
  */
 fun <T> MutableLiveData<ResultState<T>>.paresResult(result: BaseResponse<T>) {
-    value = if (result.isSucces()) ResultState.onAppSuccess(result.getResponseData()) else
-        ResultState.onAppError(AppException(result.getResponseCode(), result.getResponseMsg()))
+    value = when {
+        result.isSucces() -> {
+            ResultState.onAppSuccess(result.getResponseData())
+        }
+        else -> {
+            ResultState.onAppError(AppException(result.getResponseCode(), result.getResponseMsg()))
+        }
+    }
 }
 
 /**

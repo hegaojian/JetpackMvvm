@@ -38,20 +38,12 @@ class TestActivity : BaseActivity<BaseViewModel, ActivityTestBinding>() {
                 "海王收到了点击事件，并准备发一个红包".logd()
             }
         }
-        button.setOnClickListener {
-            viewModel.loginReq("123", "123456")
-        }
+
     }
 
     override fun createObserver() {
-        //测试在activity中 loading弹窗是否正确
-        viewModel.loginResult.observe(this, Observer {
-            parseState(it, {
-                showMessage(it.nickname)
-            }, {
-                showMessage(it.errorMsg)
-            })
-        })
+
+
     }
 }
 

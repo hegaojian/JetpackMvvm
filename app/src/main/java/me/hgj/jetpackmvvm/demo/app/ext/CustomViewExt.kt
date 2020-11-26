@@ -14,6 +14,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -242,28 +243,25 @@ fun BaseQuickAdapter<*, *>.setAdapterAnimation(mode: Int) {
 
 fun MagicIndicator.bindViewPager2(
     viewPager: ViewPager2,
-    mDataList: ArrayList<ClassifyResponse> = arrayListOf(),
-    mStringList: ArrayList<String> = arrayListOf(),
+    mStringList: List<String> = arrayListOf(),
     action: (index: Int) -> Unit = {}) {
     val commonNavigator = CommonNavigator(appContext)
     commonNavigator.adapter = object : CommonNavigatorAdapter() {
+
         override fun getCount(): Int {
-            return if (mDataList.size != 0) {
-                mDataList.size
-            } else {
-                mStringList.size
-            }
+            return  mStringList.size
         }
         override fun getTitleView(context: Context, index: Int): IPagerTitleView {
             return ScaleTransitionPagerTitleView(appContext).apply {
-                text = if (mDataList.size != 0) {
-                    mDataList[index].name.toHtml()
-                } else {
-                    mStringList[index].toHtml()
-                }
+                //设置文本
+                text = mStringList[index].toHtml()
+                //字体大小
                 textSize = 17f
+                //未选中颜色
                 normalColor = Color.WHITE
+                //选中颜色
                 selectedColor = Color.WHITE
+                //点击事件
                 setOnClickListener {
                     viewPager.currentItem = index
                     action.invoke(index)
@@ -415,9 +413,7 @@ fun <T> loadListData(
     swipeRefreshLayout: SwipeRefreshLayout
 ) {
     swipeRefreshLayout.isRefreshing = false
-
     recyclerView.loadMoreFinish(data.isEmpty, data.hasMore)
-
     if (data.isSuccess) {
         //成功
         when {

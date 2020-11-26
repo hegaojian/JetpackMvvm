@@ -42,4 +42,5 @@ class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>() {
             setUiTheme(it, mainBottom)
         })
     }
+
 }

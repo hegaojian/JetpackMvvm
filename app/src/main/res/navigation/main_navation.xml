@@ -113,6 +113,15 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/mainfragment" />
+
+        <action
+            android:id="@+id/action_registerFrgment_to_loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/loginFragment" />
+
         <action
             android:id="@+id/action_registerFrgment_to_searchResultFragment"
             app:enterAnim="@anim/slide_in_right"

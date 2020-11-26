@@ -73,11 +73,11 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
      */
     private fun registerUiChange() {
         //显示弹窗
-        mViewModel.loadingChange.showDialog.observe(this, Observer {
+        mViewModel.loadingChange.showDialog.observeInActivity(this, Observer {
             showLoading(it)
         })
         //关闭弹窗
-        mViewModel.loadingChange.dismissDialog.observe(this, Observer {
+        mViewModel.loadingChange.dismissDialog.observeInActivity(this, Observer {
             dismissLoading()
         })
     }
@@ -89,11 +89,11 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
     protected fun addLoadingObserve(vararg viewModels: BaseViewModel){
         viewModels.forEach {viewModel ->
             //显示弹窗
-            viewModel.loadingChange.showDialog.observe(this, Observer {
+            viewModel.loadingChange.showDialog.observeInActivity(this, Observer {
                 showLoading(it)
             })
             //关闭弹窗
-            viewModel.loadingChange.dismissDialog.observe(this, Observer {
+            viewModel.loadingChange.dismissDialog.observeInActivity(this, Observer {
                 dismissLoading()
             })
         }

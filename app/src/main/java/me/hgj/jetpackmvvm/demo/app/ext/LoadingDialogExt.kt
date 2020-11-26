@@ -9,10 +9,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
-import me.hgj.jetpackmvvm.base.appContext
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
-import me.hgj.jetpackmvvm.demo.app.util.ColorUtil
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
 
 /**
@@ -43,7 +40,6 @@ fun AppCompatActivity.showLoadingExt(message: String = "请求网络中") {
         loadingDialog?.show()
     }
 }
-
 
 /**
  * 打开等待框
