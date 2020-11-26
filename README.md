@@ -47,19 +47,29 @@ allprojects {
 ```
 dependencies {
   ...
-  implementation 'me.hegj:JetpackMvvm:1.1.8'
+  implementation 'me.hegj:JetpackMvvm:1.1.9'
 }
 ```
 
 - **1.3 在app's build.gradle中，android 模块下开启DataBinding(如果你不想用DataBinding,请忽略这一步)**
 
 ```
+AndroidStudio 4.0 以下版本------>
 android {
     ...
     dataBinding {
         enabled = true 
     }
 }
+
+AndroidStudio 4.0及以上版本 ------>
+android {
+    ...
+   buildFeatures {
+        dataBinding = true
+    }
+}
+ 
 ```
 
 ## 2.继承基类
@@ -351,9 +361,6 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
    } 
 }
 ```
-**4.4 开启打印日志开关
-
-设置全局jetpackMvvmLog变量 是否打开请求日志，默认false不打印，如需要打印日志功能，请设值为 true
 
 **2、 直接在当前ViewModel中拿到请求结果**
 
@@ -385,7 +392,18 @@ class RequestLoginViewModel : BaseViewModel() {
             it.errorMsg.logd()
         },true,"正在登录中...")
 }
+ 
 ```
+### 注意：使用该请求方式时需要注意，如果该ViewModel并不是跟Activity/Fragment绑定的泛型ViewModel，而是
+val mainViewModel:MainViewModel by viewModels()
+或者
+val mainViewModel：MainViewModel by activityViewModels()
+获取的
+如果请求时要弹出loading，你需要在Activity | Fragment中添加以下代码：
+### addLoadingObserve(viewModel)
+
+## 4.4 开启打印日志开关
+设置全局jetpackMvvmLog变量 是否打开请求日志，默认false不打印，如需要打印日志功能，请设值为 true
 
 ## 5.获取ViewModel
 - **5.1我们的activity/fragment会有多个ViewModel，按传统的写法感觉有点累**
