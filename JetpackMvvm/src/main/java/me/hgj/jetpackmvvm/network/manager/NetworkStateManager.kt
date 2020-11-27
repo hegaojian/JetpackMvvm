@@ -1,6 +1,6 @@
 package me.hgj.jetpackmvvm.network.manager
 
-import me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData
+import me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData
 
 /**
  * 作者　: hegaojian
@@ -9,7 +9,7 @@ import me.hgj.jetpackmvvm.callback.livedata.UnPeekLiveData
  */
 class NetworkStateManager private constructor() {
 
-    val mNetworkStateCallback = UnPeekLiveData<NetState>()
+    val mNetworkStateCallback = EventLiveData<NetState>()
 
     companion object {
         val instance: NetworkStateManager by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
