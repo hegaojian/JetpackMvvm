@@ -111,7 +111,7 @@ dependencies {
     //管理界面状态库
     implementation 'com.kingja.loadsir:loadsir:1.3.8'
     //指示器库
-    implementation 'com.github.hackware1993:MagicIndicator:1.6.0'
+    implementation 'com.github.hackware1993:MagicIndicator:1.7.0'
     //官方的
     implementation 'com.google.android:flexbox:2.0.1'
     //加载webview

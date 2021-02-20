@@ -62,19 +62,19 @@ class RegisterFrgment : BaseFragment<LoginRegisterViewModel, FragmentRegisterBin
     inner class ProxyClick {
         /**清空*/
         fun clear() {
-            mViewModel.username.value=""
+            mViewModel.username.set("")
         }
 
         /**注册*/
         fun register() {
             when {
-                mViewModel.username.value.isEmpty() -> showMessage("请填写账号")
+                mViewModel.username.get().isEmpty() -> showMessage("请填写账号")
                 mViewModel.password.get().isEmpty() -> showMessage("请填写密码")
                 mViewModel.password2.get().isEmpty() -> showMessage("请填写确认密码")
                 mViewModel.password.get().length < 6 -> showMessage("密码最少6位")
                 mViewModel.password.get() != mViewModel.password2.get() -> showMessage("密码不一致")
                 else -> requestLoginRegisterViewModel.registerAndlogin(
-                    mViewModel.username.value,
+                    mViewModel.username.get(),
                     mViewModel.password.get()
                 )
             }

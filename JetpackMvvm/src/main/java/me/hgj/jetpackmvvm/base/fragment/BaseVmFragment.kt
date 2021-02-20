@@ -2,6 +2,7 @@ package me.hgj.jetpackmvvm.base.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +21,10 @@ import me.hgj.jetpackmvvm.network.manager.NetworkStateManager
  * 时间　: 2019/12/12
  * 描述　: ViewModelFragment基类，自动把ViewModel注入Fragment
  */
+
 abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
+
+    private val handler = Handler()
 
     //是否第一次加载
     private var isFirst: Boolean = true
@@ -33,6 +37,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
      * 当前Fragment绑定的视图布局
      */
     abstract fun layoutId(): Int
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -94,8 +99,8 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
      */
     private fun onVisible() {
         if (lifecycle.currentState == Lifecycle.State.STARTED && isFirst) {
-            //等待view加载后触发懒加载
-            view?.post {
+            // 延迟加载 防止 切换动画还没执行完毕时数据就已经加载好了，这时页面会有渲染卡顿
+            handler.postDelayed( {
                 lazyLoadData()
                 //在Fragment中，只有懒加载过了才能开启网络变化监听
                 NetworkStateManager.instance.mNetworkStateCallback.observeInFragment(
@@ -107,7 +112,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
                         }
                     })
                 isFirst = false
-            }
+            },lazyLoadTime())
         }
     }
 
@@ -149,4 +154,13 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
         }
     }
 
+    /**
+     * 延迟加载 防止 切换动画还没执行完毕时数据就已经加载好了，这时页面会有渲染卡顿  bug
+     * 这里传入你想要延迟的时间，延迟时间可以设置比转场动画时间长一点 单位： 毫秒
+     * 不传默认 300毫秒
+     * @return Long
+     */
+    open fun lazyLoadTime(): Long {
+        return 300
+    }
 }

@@ -94,11 +94,11 @@ class SystemFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
 
         appViewModel.run {
             //监听全局的主题颜色改变
-            appColor.observe(viewLifecycleOwner, Observer {
+            appColor.observeInFragment(this@SystemFragment, Observer {
                 setUiTheme(it, floatbtn, swipeRefresh, loadsir)
             })
             //监听全局的列表动画改编
-            appAnimation.observe(viewLifecycleOwner, Observer {
+            appAnimation.observeInFragment(this@SystemFragment, Observer {
                 systemAdapter.setAdapterAnimation(it)
             })
         }

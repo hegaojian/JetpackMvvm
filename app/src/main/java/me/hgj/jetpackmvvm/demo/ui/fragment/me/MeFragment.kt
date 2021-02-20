@@ -1,6 +1,5 @@
 package me.hgj.jetpackmvvm.demo.ui.fragment.me
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -15,7 +14,6 @@ import me.hgj.jetpackmvvm.demo.app.ext.setUiTheme
 import me.hgj.jetpackmvvm.demo.data.model.bean.BannerResponse
 import me.hgj.jetpackmvvm.demo.data.model.bean.IntegralResponse
 import me.hgj.jetpackmvvm.demo.databinding.FragmentMeBinding
-import me.hgj.jetpackmvvm.demo.ui.activity.TestActivity
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestMeViewModel
 import me.hgj.jetpackmvvm.demo.viewmodel.state.MeViewModel
 import me.hgj.jetpackmvvm.ext.nav
@@ -68,10 +66,10 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
         })
 
         appViewModel.run {
-            appColor.observe(viewLifecycleOwner, Observer {
+            appColor.observeInFragment(this@MeFragment, Observer {
                 setUiTheme(it, me_linear, me_swipe, me_integral)
             })
-            userinfo.observe(viewLifecycleOwner, Observer {
+            userinfo.observeInFragment(this@MeFragment, Observer {
                 it.notNull({
                     me_swipe.isRefreshing = true
                     mViewModel.name.set(if (it.nickname.isEmpty()) it.username else it.nickname)
@@ -148,7 +146,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
         /**demo*/
         fun demo() {
-            nav().navigateAction(R.id.action_mainfragment_to_demoFragment)
+            nav().navigateAction(R.id.action_to_demoFragment)
         }
 
     }

@@ -9,10 +9,6 @@
             type="me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel" />
 
         <variable
-            name="view"
-            type="android.view.View" />
-
-        <variable
             name="click"
             type="me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment.ProxyClick" />
 
@@ -49,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="48dp"
-                    android:background="@drawable/edit_shap"
+                    android:background="@drawable/edit_shape"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -61,7 +57,7 @@
                         android:hint="账号"
                         android:inputType="text"
                         android:lines="1"
-                        android:maxLength="16"
+                        android:maxLength="20"
                         android:paddingLeft="12dp"
                         android:paddingRight="12dp"
                         android:text="@={viewmodel.username}"
@@ -74,14 +70,14 @@
                         android:layout_marginRight="6dp"
                         android:onClick="@{()->click.clear()}"
                         android:src="@drawable/ic_clear"
-                        android:visibility="@{viewmodel.username.length()>0?view.VISIBLE:view.GONE}" />
+                        android:visibility="@{viewmodel.clearVisible}" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/edit_shap"
+                    android:background="@drawable/edit_shape"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -106,7 +102,7 @@
                         android:layout_marginRight="6dp"
                         android:button="@drawable/keyvisibily_selector"
                         android:checked="false"
-                        android:visibility="@{viewmodel.password.length()>0?view.VISIBLE:view.GONE}"
+                        android:visibility="@{viewmodel.passwordVisible}"
                         bind:checkChange="@{click.onCheckedChangeListener}" />
                 </LinearLayout>
 

@@ -132,7 +132,7 @@ class AskFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
         })
         appViewModel.run {
             //监听账户信息是否改变 有值时(登录)将相关的数据设置为已收藏，为空时(退出登录)，将已收藏的数据变为未收藏
-            userinfo.observe(viewLifecycleOwner, Observer {
+            userinfo.observeInFragment(this@AskFragment, Observer {
                 if (it != null) {
                     it.collectIds.forEach { id ->
                         for (item in articleAdapter.data) {
@@ -150,11 +150,11 @@ class AskFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
                 articleAdapter.notifyDataSetChanged()
             })
             //监听全局的主题颜色改变
-            appColor.observe(viewLifecycleOwner, Observer {
+            appColor.observeInFragment(this@AskFragment, Observer {
                 setUiTheme(it, floatbtn, swipeRefresh, loadsir)
             })
             //监听全局的列表动画改编
-            appAnimation.observe(viewLifecycleOwner, Observer {
+            appAnimation.observeInFragment(this@AskFragment, Observer {
                 articleAdapter.setAdapterAnimation(it)
             })
         }

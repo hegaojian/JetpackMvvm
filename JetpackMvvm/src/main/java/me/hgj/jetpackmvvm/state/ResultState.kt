@@ -30,6 +30,7 @@ fun <T> MutableLiveData<ResultState<T>>.paresResult(result: BaseResponse<T>) {
             ResultState.onAppSuccess(result.getResponseData())
         }
         else -> {
+
             ResultState.onAppError(AppException(result.getResponseCode(), result.getResponseMsg()))
         }
     }

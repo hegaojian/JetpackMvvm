@@ -9,7 +9,6 @@ import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.ErrorCallback
-import me.hgj.jetpackmvvm.demo.data.model.bean.ClassifyResponse
 import me.hgj.jetpackmvvm.demo.databinding.FragmentViewpagerBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestPublicNumberViewModel
 import me.hgj.jetpackmvvm.ext.parseState
@@ -73,7 +72,7 @@ class PublicNumberFragment : BaseFragment<RequestPublicNumberViewModel, Fragment
                 loadsir.setErrorText(it.errorMsg)
             })
         })
-        appViewModel.appColor.observe(viewLifecycleOwner, Observer {
+        appViewModel.appColor.observeInFragment(this, Observer {
             setUiTheme(it, viewpager_linear,loadsir)
         })
     }

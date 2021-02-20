@@ -159,7 +159,7 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
         })
         appViewModel.run {
             //监听账户信息是否改变 有值时(登录)将相关的数据设置为已收藏，为空时(退出登录)，将已收藏的数据变为未收藏
-            userinfo.observe(viewLifecycleOwner, Observer {
+            userinfo.observeInFragment(this@SearchResultFragment, Observer {
                 if (it != null) {
                     it.collectIds.forEach { id ->
                         for (item in articleAdapter.data) {

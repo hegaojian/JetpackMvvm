@@ -82,7 +82,7 @@
     </fragment>
 
     <action
-        android:id="@+id/action_mainfragment_to_demoFragment"
+        android:id="@+id/action_to_demoFragment"
         app:destination="@id/demoFragment"
         app:enterAnim="@anim/slide_in_right"
         app:exitAnim="@anim/slide_out_left"

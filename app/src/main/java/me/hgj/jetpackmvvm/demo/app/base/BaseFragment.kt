@@ -1,22 +1,16 @@
 package me.hgj.jetpackmvvm.demo.app.base
 
 import android.os.Bundle
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.databinding.ViewDataBinding
-import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.customview.customView
-import com.afollestad.materialdialogs.customview.getCustomView
-import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
+import androidx.fragment.app.viewModels
 import me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
-import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.event.AppViewModel
 import me.hgj.jetpackmvvm.demo.app.event.EventViewModel
 import me.hgj.jetpackmvvm.demo.app.ext.dismissLoadingExt
 import me.hgj.jetpackmvvm.demo.app.ext.hideSoftKeyboard
 import me.hgj.jetpackmvvm.demo.app.ext.showLoadingExt
-import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
+import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
 import me.hgj.jetpackmvvm.ext.getAppViewModel
 
 /**
@@ -27,6 +21,8 @@ import me.hgj.jetpackmvvm.ext.getAppViewModel
  * abstract class BaseFragment<VM : BaseViewModel> : BaseVmFragment<VM>() {
  */
 abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDbFragment<VM, DB>() {
+
+    private val requestCollectViewModel: RequestCollectViewModel by viewModels()
 
     //Application全局的ViewModel，里面存放了一些账户信息，基本配置信息等
     val appViewModel: AppViewModel by lazy { getAppViewModel<AppViewModel>() }
@@ -76,5 +72,15 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
     override fun onPause() {
         super.onPause()
         hideSoftKeyboard(activity)
+    }
+
+    /**
+     * 延迟加载 防止 切换动画还没执行完毕时数据就已经加载好了，这时页面会有渲染卡顿  bug
+     * 这里传入你想要延迟的时间，延迟时间可以设置比转场动画时间长一点 单位： 毫秒
+     * 不传默认 300毫秒
+     * @return Long
+     */
+    override fun lazyLoadTime(): Long {
+        return 300
     }
 }

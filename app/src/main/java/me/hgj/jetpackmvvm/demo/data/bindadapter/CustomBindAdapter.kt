@@ -84,7 +84,7 @@ object CustomBindAdapter {
         })
     }
 
-    @BindingAdapter("noRepeatClick")
+    @BindingAdapter(value = ["noRepeatClick"])
     @JvmStatic
     fun setOnClick(view: View, clickListener: () -> Unit) {
         val mHits = LongArray(2)

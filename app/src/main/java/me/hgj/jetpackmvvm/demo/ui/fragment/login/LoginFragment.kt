@@ -49,6 +49,7 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
     }
 
     override fun createObserver() {
+
         requestLoginRegisterViewModel.loginResult.observe(viewLifecycleOwner,Observer { resultState ->
                 parseState(resultState, {
                     //登录成功 通知账户数据发生改变鸟
@@ -66,15 +67,15 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
     inner class ProxyClick {
 
         fun clear() {
-            mViewModel.username.value = ""
+            mViewModel.username.set("")
         }
 
         fun login() {
             when {
-                mViewModel.username.value.isEmpty() -> showMessage("请填写账号")
+                mViewModel.username.get().isEmpty() -> showMessage("请填写账号")
                 mViewModel.password.get().isEmpty() -> showMessage("请填写密码")
                 else -> requestLoginRegisterViewModel.loginReq(
-                    mViewModel.username.value,
+                    mViewModel.username.get(),
                     mViewModel.password.get()
                 )
             }

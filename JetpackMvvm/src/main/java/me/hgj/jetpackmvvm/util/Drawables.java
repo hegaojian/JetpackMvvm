@@ -32,7 +32,6 @@ public class Drawables {
     private static final int INVALID = 0;
     private static final int[] tmpPadding = new int[4];
 
-
     // normal, checked, checkable, enabled, focused, pressed, selected
     @BindingAdapter(value = {
             "drawable_shapeMode",
