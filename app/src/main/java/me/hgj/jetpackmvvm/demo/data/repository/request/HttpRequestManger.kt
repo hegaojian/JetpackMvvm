@@ -30,14 +30,14 @@ class HttpRequestManger {
     suspend fun getHomeData(pageNo: Int): ApiResponse<ApiPagerResponse<ArrayList<AriticleResponse>>> {
         //同时异步请求2个接口，请求完成后合并数据
         return withContext(Dispatchers.IO) {
-            val data = async { apiService.getAritrilList(pageNo) }
+            val listData = async { apiService.getAritrilList(pageNo) }
             //如果App配置打开了首页请求置顶文章，且是第一页
             if (CacheUtil.isNeedTop() && pageNo == 0) {
                 val topData = async { apiService.getTopAritrilList() }
-                data.await().data.datas.addAll(0, topData.await().data)
-                data.await()
+                listData.await().data.datas.addAll(0, topData.await().data)
+                listData.await()
             } else {
-                data.await()
+                listData.await()
             }
         }
     }

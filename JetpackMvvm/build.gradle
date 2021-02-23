@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 20
-        versionName "1.2.0"
+        versionCode 21
+        versionName "1.2.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -63,7 +63,7 @@ publish {
     repoName = 'cxk'//仓库名字 这个可以随便起,比如我觉得我比较菜，所以我取了个蔡徐坤
     groupId = 'me.hegj'//路径 名等于“me.hegj.JetpackMvvm:1.0.0”中的   me.hegj，你也可以写com.xxx
     artifactId = 'JetpackMvvm'//项目名 等于“me.hegj.JetpackMvvm:1.0.0”中的  JetpackMvvm
-    publishVersion = '1.2.0'//版本号 等于“me.hegj.JetpackMvvm:1.0.0”中的 1.0.0
+    publishVersion = '1.2.1'//版本号 等于“me.hegj.JetpackMvvm:1.0.0”中的 1.0.0
     desc = 'An Android Jetpack-MVVM framework,JetpackMvvm is nb?'//说明，不重要的东西，随便写
     website = 'https://github.com/hegaojian/JetpackMvvm'//项目主页，用GitHub地址
     licences = ['Apache-2.0']//协议
