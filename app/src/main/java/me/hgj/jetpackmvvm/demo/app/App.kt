@@ -58,6 +58,7 @@ class App : BaseApp() {
 
         //防止项目崩溃，崩溃后打开错误界面
         CaocConfig.Builder.create()
+
             .backgroundMode(CaocConfig.BACKGROUND_MODE_SILENT) //default: CaocConfig.BACKGROUND_MODE_SHOW_CUSTOM
             .enabled(true)//是否启用CustomActivityOnCrash崩溃拦截机制 必须启用！不然集成这个库干啥？？？
             .showErrorDetails(false) //是否必须显示包含错误详细信息的按钮 default: true
