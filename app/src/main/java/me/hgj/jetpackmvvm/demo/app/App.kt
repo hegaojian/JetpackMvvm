@@ -69,6 +69,9 @@ class App : BaseApp() {
         "".logd()
         jetpackMvvmLog = BuildConfig.DEBUG
 
+
+
+
         //防止项目崩溃，崩溃后打开错误界面
         CaocConfig.Builder.create()
             .backgroundMode(CaocConfig.BACKGROUND_MODE_SILENT) //default: CaocConfig.BACKGROUND_MODE_SHOW_CUSTOM
