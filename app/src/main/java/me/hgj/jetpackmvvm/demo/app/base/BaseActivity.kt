@@ -1,16 +1,11 @@
 package me.hgj.jetpackmvvm.demo.app.base
 
-import android.content.res.Resources
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
 import me.hgj.jetpackmvvm.base.activity.BaseVmDbActivity
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
-import me.hgj.jetpackmvvm.demo.app.event.AppViewModel
-import me.hgj.jetpackmvvm.demo.app.event.EventViewModel
 import me.hgj.jetpackmvvm.demo.app.ext.dismissLoadingExt
 import me.hgj.jetpackmvvm.demo.app.ext.showLoadingExt
-import me.hgj.jetpackmvvm.ext.getAppViewModel
-import me.jessyan.autosize.AutoSizeCompat
 
 /**
  * 时间　: 2019/12/21
@@ -20,12 +15,6 @@ import me.jessyan.autosize.AutoSizeCompat
  * abstract class BaseActivity<VM : BaseViewModel> : BaseVmActivity<VM>() {
  */
 abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDbActivity<VM, DB>() {
-
-    //Application全局的ViewModel，里面存放了一些账户信息，基本配置信息等
-    val appViewModel: AppViewModel by lazy { getAppViewModel<AppViewModel>()}
-
-    //Application全局的ViewModel，用于发送全局通知操作
-    val eventViewModel: EventViewModel by lazy { getAppViewModel<EventViewModel>() }
 
     abstract override fun layoutId(): Int
 

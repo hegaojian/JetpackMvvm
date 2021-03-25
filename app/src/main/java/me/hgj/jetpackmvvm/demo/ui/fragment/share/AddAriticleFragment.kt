@@ -12,7 +12,9 @@ import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
 import kotlinx.android.synthetic.main.fragment_share_ariticle.*
 import kotlinx.android.synthetic.main.include_toolbar.*
 import me.hgj.jetpackmvvm.demo.R
+import me.hgj.jetpackmvvm.demo.app.appViewModel
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
+import me.hgj.jetpackmvvm.demo.app.eventViewModel
 import me.hgj.jetpackmvvm.demo.app.ext.initClose
 import me.hgj.jetpackmvvm.demo.app.ext.showMessage
 import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
@@ -39,7 +41,7 @@ class AddAriticleFragment : BaseFragment<AriticleViewModel, FragmentShareAriticl
 
         mDatabind.vm = mViewModel
 
-        appViewModel.userinfo.value?.let {
+        appViewModel.userInfo.value?.let {
             if (it.nickname.isEmpty()) mViewModel.shareName.set(it.username) else mViewModel.shareName.set(
                 it.nickname
             )

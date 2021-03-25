@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.include_toolbar.*
 import me.hgj.jetpackmvvm.demo.R
+import me.hgj.jetpackmvvm.demo.app.appViewModel
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.initClose
 import me.hgj.jetpackmvvm.demo.app.ext.showMessage
@@ -50,7 +51,7 @@ class RegisterFrgment : BaseFragment<LoginRegisterViewModel, FragmentRegisterBin
                 parseState(resultState, {
                     CacheUtil.setIsLogin(true)
                     CacheUtil.setUser(it)
-                    appViewModel.userinfo.value = it
+                    appViewModel.userInfo.value = it
                     nav().navigateAction(R.id.action_registerFrgment_to_mainFragment)
                 }, {
                     showMessage(it.errorMsg)

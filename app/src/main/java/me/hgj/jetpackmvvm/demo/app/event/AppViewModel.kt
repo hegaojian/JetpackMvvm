@@ -1,5 +1,6 @@
 package me.hgj.jetpackmvvm.demo.app.event
 
+import com.kunminx.architecture.ui.callback.UnPeekLiveData
 import me.hgj.jetpackmvvm.base.appContext
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.callback.livedata.event.EventLiveData
@@ -16,7 +17,7 @@ import me.hgj.jetpackmvvm.demo.data.model.bean.UserInfo
 class AppViewModel : BaseViewModel() {
 
     //App的账户信息
-    var userinfo = com.kunminx.architecture.ui.callback.UnPeekLiveData.Builder<UserInfo>().setAllowNullValue(true).create()
+    var userInfo = UnPeekLiveData.Builder<UserInfo>().setAllowNullValue(true).create()
 
     //App主题颜色 中大型项目不推荐以这种方式改变主题颜色，比较繁琐耦合，且容易有遗漏某些控件没有设置主题色
     var appColor = EventLiveData<Int>()
@@ -26,7 +27,7 @@ class AppViewModel : BaseViewModel() {
 
     init {
         //默认值保存的账户信息，没有登陆过则为null
-        userinfo.value = CacheUtil.getUser()
+        userInfo.value = CacheUtil.getUser()
         //默认值颜色
         appColor.value = SettingUtil.getColor(appContext)
         //初始化列表动画

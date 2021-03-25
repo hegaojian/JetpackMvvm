@@ -86,7 +86,7 @@ class SettingFragment : PreferenceFragmentCompat(),
                     //清空cookie
                     NetworkApi.INSTANCE.cookieJar.clear()
                     CacheUtil.setUser(null)
-                    shareViewModel.userinfo.value = null
+                    shareViewModel.userInfo.value = null
                     nav().navigateUp()
                 })
             false

@@ -9,12 +9,15 @@ import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.mmkv.MMKV
 import me.hgj.jetpackmvvm.base.BaseApp
 import me.hgj.jetpackmvvm.demo.BuildConfig
+import me.hgj.jetpackmvvm.demo.app.event.AppViewModel
+import me.hgj.jetpackmvvm.demo.app.event.EventViewModel
 import me.hgj.jetpackmvvm.demo.app.ext.getProcessName
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.EmptyCallback
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.ErrorCallback
 import me.hgj.jetpackmvvm.demo.app.weight.loadCallBack.LoadingCallback
 import me.hgj.jetpackmvvm.demo.ui.activity.ErrorActivity
 import me.hgj.jetpackmvvm.demo.ui.activity.WelcomeActivity
+import me.hgj.jetpackmvvm.ext.getAppViewModel
 import me.hgj.jetpackmvvm.ext.util.jetpackMvvmLog
 import me.hgj.jetpackmvvm.ext.util.logd
 
@@ -24,17 +27,27 @@ import me.hgj.jetpackmvvm.ext.util.logd
  * 描述　:
  */
 
+//Application全局的ViewModel，里面存放了一些账户信息，基本配置信息等
+val appViewModel: AppViewModel by lazy { App.appViewModelInstance }
+
+//Application全局的ViewModel，用于发送全局通知操作
+val eventViewModel: EventViewModel by lazy { App.eventViewModelInstance }
+
 class App : BaseApp() {
 
     companion object {
         lateinit var instance: App
+        lateinit var eventViewModelInstance: EventViewModel
+        lateinit var appViewModelInstance: AppViewModel
     }
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
-        MultiDex.install(this)
         MMKV.initialize(this.filesDir.absolutePath + "/mmkv")
+        instance = this
+        eventViewModelInstance = getAppViewModelProvider().get(EventViewModel::class.java)
+        appViewModelInstance = getAppViewModelProvider().get(AppViewModel::class.java)
+        MultiDex.install(this)
         //界面加载管理 初始化
         LoadSir.beginBuilder()
             .addCallback(LoadingCallback())//加载

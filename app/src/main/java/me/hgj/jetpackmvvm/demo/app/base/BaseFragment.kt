@@ -2,16 +2,11 @@ package me.hgj.jetpackmvvm.demo.app.base
 
 import android.os.Bundle
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.viewModels
 import me.hgj.jetpackmvvm.base.fragment.BaseVmDbFragment
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
-import me.hgj.jetpackmvvm.demo.app.event.AppViewModel
-import me.hgj.jetpackmvvm.demo.app.event.EventViewModel
 import me.hgj.jetpackmvvm.demo.app.ext.dismissLoadingExt
 import me.hgj.jetpackmvvm.demo.app.ext.hideSoftKeyboard
 import me.hgj.jetpackmvvm.demo.app.ext.showLoadingExt
-import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
-import me.hgj.jetpackmvvm.ext.getAppViewModel
 
 /**
  * 作者　: hegaojian
@@ -21,14 +16,6 @@ import me.hgj.jetpackmvvm.ext.getAppViewModel
  * abstract class BaseFragment<VM : BaseViewModel> : BaseVmFragment<VM>() {
  */
 abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDbFragment<VM, DB>() {
-
-    private val requestCollectViewModel: RequestCollectViewModel by viewModels()
-
-    //Application全局的ViewModel，里面存放了一些账户信息，基本配置信息等
-    val appViewModel: AppViewModel by lazy { getAppViewModel<AppViewModel>() }
-
-    //Application全局的ViewModel，用于发送全局通知操作
-    val eventViewModel: EventViewModel by lazy { getAppViewModel<EventViewModel>() }
 
     /**
      * 当前Fragment绑定的视图布局

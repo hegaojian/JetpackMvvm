@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.include_toolbar.*
 import me.hgj.jetpackmvvm.demo.R
+import me.hgj.jetpackmvvm.demo.app.appViewModel
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.hideSoftKeyboard
 import me.hgj.jetpackmvvm.demo.app.ext.initClose
@@ -55,7 +56,7 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
                     //登录成功 通知账户数据发生改变鸟
                     CacheUtil.setUser(it)
                     CacheUtil.setIsLogin(true)
-                    appViewModel.userinfo.value = it
+                    appViewModel.userInfo.value = it
                     nav().navigateUp()
                 }, {
                     //登录失败
