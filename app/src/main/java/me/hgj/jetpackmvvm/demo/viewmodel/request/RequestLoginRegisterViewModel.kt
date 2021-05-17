@@ -1,17 +1,12 @@
 package me.hgj.jetpackmvvm.demo.viewmodel.request
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.asLiveData
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.app.network.apiService
 import me.hgj.jetpackmvvm.demo.data.model.bean.UserInfo
 import me.hgj.jetpackmvvm.demo.data.repository.request.HttpRequestCoroutine
 import me.hgj.jetpackmvvm.ext.request
 import me.hgj.jetpackmvvm.state.ResultState
-import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 
 /**
  * 作者　: hegaojian

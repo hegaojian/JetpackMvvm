@@ -33,7 +33,7 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
     override fun layoutId() = R.layout.fragment_login
 
     override fun initView(savedInstanceState: Bundle?) {
-
+        addLoadingObserve(requestLoginRegisterViewModel)
         mDatabind.viewmodel = mViewModel
 
         mDatabind.click = ProxyClick()

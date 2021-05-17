@@ -2,15 +2,16 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.github.panpf.bintray-publish'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.hegaojian'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 21
-        versionName "1.2.1"
+        versionCode 22
+        versionName "1.2.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -49,22 +50,11 @@ dependencies {
     api "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     api 'com.kunminx.archi:unpeek-livedata:4.4.1-beta1'
     //navigation
-    api 'androidx.navigation:navigation-runtime-ktx:2.3.1'
+    api 'androidx.navigation:navigation-runtime-ktx:2.3.2'
     //retrofit
     api "com.squareup.retrofit2:retrofit:2.9.0"
     api "com.squareup.retrofit2:converter-gson:2.9.0"
     api 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
     //动态替换BaseUrl库 使用可参考 https://github.com/JessYanCoding/RetrofitUrlManager
     api 'me.jessyan:retrofit-url-manager:1.4.0'
-}
-
-publish {
-    userOrg = 'hegaojian'//bintray网站中的用户名，网站链接：https://bintray.com/
-    repoName = 'cxk'//仓库名字 这个可以随便起,比如我觉得我比较菜，所以我取了个蔡徐坤
-    groupId = 'me.hegj'//路径 名等于“me.hegj.JetpackMvvm:1.0.0”中的   me.hegj，你也可以写com.xxx
-    artifactId = 'JetpackMvvm'//项目名 等于“me.hegj.JetpackMvvm:1.0.0”中的  JetpackMvvm
-    publishVersion = '1.2.1'//版本号 等于“me.hegj.JetpackMvvm:1.0.0”中的 1.0.0
-    desc = 'An Android Jetpack-MVVM framework,JetpackMvvm is nb?'//说明，不重要的东西，随便写
-    website = 'https://github.com/hegaojian/JetpackMvvm'//项目主页，用GitHub地址
-    licences = ['Apache-2.0']//协议
 }
