@@ -121,7 +121,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
      */
     open fun initData() {}
 
-    abstract fun showLoading(message: String = "请求网络中...")
+    abstract fun showLoading(message: String? = "请求网络中...")
 
     abstract fun dismissLoading()
 

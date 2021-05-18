@@ -45,7 +45,7 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
     /**
      * 打开等待框
      */
-    override fun showLoading(message: String) {
+    override fun showLoading(message: String?) {
         showLoadingExt(message)
     }
 

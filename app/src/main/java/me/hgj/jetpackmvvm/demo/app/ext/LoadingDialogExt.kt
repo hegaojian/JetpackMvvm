@@ -23,7 +23,7 @@ private var loadingDialog: MaterialDialog? = null
 /**
  * 打开等待框
  */
-fun AppCompatActivity.showLoadingExt(message: String = "请求网络中") {
+fun AppCompatActivity.showLoadingExt(message: String? = "请求网络中") {
     if (!this.isFinishing) {
         if (loadingDialog == null) {
             loadingDialog = MaterialDialog(this)
@@ -44,7 +44,7 @@ fun AppCompatActivity.showLoadingExt(message: String = "请求网络中") {
 /**
  * 打开等待框
  */
-fun Fragment.showLoadingExt(message: String = "请求网络中") {
+fun Fragment.showLoadingExt(message: String? = "请求网络中") {
     activity?.let {
         if (!it.isFinishing) {
             if (loadingDialog == null) {
