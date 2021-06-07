@@ -444,6 +444,20 @@ private val mainViewModel by lazy { getAppViewModel<MainViewModel>()}
  的包中看，反正你也可以自己写，按照自己的喜好与需求来
 ```
 
+## 7.混淆
+
+```
+-keep class me.hgj.jetpackmvvm.**{*;}
+-keep class com.google.android.material.** {*;}
+-keep class androidx.** {*;}
+-keep public class * extends androidx.**
+-keep interface androidx.** {*;}
+-dontwarn com.google.android.material.**
+-dontnote com.google.android.material.**
+-dontwarn androidx.**
+```
+
+
 ## 感谢
 - [Jetpack-MVVM-Best-Practice](https://github.com/KunMinX/Jetpack-MVVM-Best-Practice)
 - [重学安卓](https://xiaozhuanlan.com/kunminx?rel=8184827882)
