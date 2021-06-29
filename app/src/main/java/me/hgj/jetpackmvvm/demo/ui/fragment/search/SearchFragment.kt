@@ -208,12 +208,10 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
         }
     }
 
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
+    override fun onResume() {
+        super.onResume()
         //当该Fragment重新获得视图时，重新设置Menu，防止退出WebFragment ActionBar被清空后，导致该界面的ActionBar无法显示bug
-        if (!hidden) {
-            setMenu()
-        }
+        setMenu()
     }
 
     private fun setMenu() {

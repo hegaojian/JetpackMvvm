@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit
 class LogInterceptor : Interceptor {
     private val mPrinter: FormatPrinter = DefaultFormatPrinter()
     private val printLevel = Level.ALL
-    
+
     constructor() {}
 
     constructor(printLevel: Level?) {

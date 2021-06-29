@@ -13,6 +13,7 @@ import me.hgj.jetpackmvvm.demo.app.ext.setUiTheme
 import me.hgj.jetpackmvvm.demo.databinding.FragmentMainBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.state.MainViewModel
 import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.ext.util.loge
 
 /**
  * 时间　: 2019/12/27
@@ -45,4 +46,13 @@ class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>() {
         })
     }
 
+    override fun onPause() {
+        super.onPause()
+        "onPause".loge("hgj")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        "onResume".loge("hgj")
+    }
 }
