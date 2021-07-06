@@ -12,10 +12,11 @@ import me.hgj.jetpackmvvm.network.ExceptionHandle
 sealed class ResultState<out T> {
     companion object {
         fun <T> onAppSuccess(data: T): ResultState<T> = Success(data)
-        fun <T> onAppLoading(loadingMessage:String): ResultState<T> = Loading(loadingMessage)
+        fun <T> onAppLoading(loadingMessage: String): ResultState<T> = Loading(loadingMessage)
         fun <T> onAppError(error: AppException): ResultState<T> = Error(error)
     }
-    data class Loading(val loadingMessage:String) : ResultState<Nothing>()
+
+    data class Loading(val loadingMessage: String) : ResultState<Nothing>()
     data class Success<out T>(val data: T) : ResultState<T>()
     data class Error(val error: AppException) : ResultState<Nothing>()
 }
@@ -30,7 +31,6 @@ fun <T> MutableLiveData<ResultState<T>>.paresResult(result: BaseResponse<T>) {
             ResultState.onAppSuccess(result.getResponseData())
         }
         else -> {
-
             ResultState.onAppError(AppException(result.getResponseCode(), result.getResponseMsg()))
         }
     }

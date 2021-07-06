@@ -19,7 +19,7 @@ import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.blankj.utilcode.util.AppUtils
 import com.tencent.bugly.beta.Beta
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.app.event.AppViewModel
+import me.hgj.jetpackmvvm.demo.app.appViewModel
 import me.hgj.jetpackmvvm.demo.app.ext.initClose
 import me.hgj.jetpackmvvm.demo.app.ext.showMessage
 import me.hgj.jetpackmvvm.demo.app.network.NetworkApi
@@ -43,22 +43,19 @@ import me.hgj.jetpackmvvm.ext.navigateAction
 class SettingFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
 
-    //这里不能继承BaseFragment了，所以手动获取一下 AppViewModel
-    val shareViewModel: AppViewModel by lazy { getAppViewModel<AppViewModel>() }
-
     private var colorPreview: IconPreference? = null
 
     var toolbarView: View? = null
-
+    var containerView: FrameLayout? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //这里重写根据PreferenceFragmentCompat 的布局 ，往他的根布局插入了一个toolbar
-        val containerView = view.findViewById<FrameLayout>(android.R.id.list_container)
-        containerView.let {
+        containerView = view.findViewById<FrameLayout>(android.R.id.list_container)
+        containerView?.let {
             //转为线性布局
             val linearLayout = it.parent as? LinearLayout
             linearLayout?.run {
-                toolbarView =  LayoutInflater.from(activity).inflate(R.layout.include_toolbar, null)
+                toolbarView =  LayoutInflater.from(context).inflate(R.layout.include_toolbar, null)
                 toolbarView?.let {view ->
                     view.findViewById<Toolbar>(R.id.toolbar)?.initClose("设置") {
                         nav().navigateUp()
@@ -86,7 +83,7 @@ class SettingFragment : PreferenceFragmentCompat(),
                     //清空cookie
                     NetworkApi.INSTANCE.cookieJar.clear()
                     CacheUtil.setUser(null)
-                    shareViewModel.userInfo.value = null
+                    appViewModel.userInfo.value = null
                     nav().navigateUp()
                 })
             false
@@ -115,7 +112,7 @@ class SettingFragment : PreferenceFragmentCompat(),
                         SettingUtil.setListMode(index)
                         it.summary = text
                         //通知其他界面立马修改配置
-                        shareViewModel.appAnimation.value = index
+                        appViewModel.appAnimation.value = index
                     }
                     title(text = "设置列表动画")
                     positiveButton(R.string.confirm)
@@ -152,7 +149,7 @@ class SettingFragment : PreferenceFragmentCompat(),
                         findPreference<CheckBoxPreference>("top")?.setBottonColor()
                         toolbarView?.setBackgroundColor(color)
                         //通知其他界面立马修改配置
-                        shareViewModel.appColor.value = color
+                        appViewModel.appColor.value = color
                     }
                     getActionButton(WhichButton.POSITIVE).updateTextColor(
                         SettingUtil.getColor(
@@ -237,6 +234,12 @@ class SettingFragment : PreferenceFragmentCompat(),
         if (key == "top") {
             CacheUtil.setIsNeedTop(sharedPreferences.getBoolean("top", true))
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        containerView?.removeAllViews()
+        toolbarView = null
     }
 }
 
