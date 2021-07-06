@@ -55,7 +55,7 @@ allprojects {
 ```
 dependencies {
   ...
-  implementation 'com.github.hegaojian:JetpackMvvm:1.2.2'
+  implementation 'com.github.hegaojian:JetpackMvvm:1.2.3'
 }
 ```
 
