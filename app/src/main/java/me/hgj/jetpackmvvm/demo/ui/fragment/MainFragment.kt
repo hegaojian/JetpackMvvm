@@ -45,14 +45,4 @@ class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>() {
             setUiTheme(it, mainBottom)
         })
     }
-
-    override fun onPause() {
-        super.onPause()
-        "onPause".loge("hgj")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        "onResume".loge("hgj")
-    }
 }

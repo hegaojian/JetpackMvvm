@@ -13,8 +13,8 @@ android {
         applicationId "me.hgj.jetpackmvvm.demo"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 24
-        versionName "1.2.4"
+        versionCode 25
+        versionName "1.2.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
       /* ndk {
             // 设置支持的SO库架构 一般只设置这个就阔以设配所有的设备了，还可以减少apk的大小
@@ -72,6 +72,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.2'
     //test
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

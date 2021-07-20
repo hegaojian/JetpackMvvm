@@ -163,4 +163,9 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
     open fun lazyLoadTime(): Long {
         return 300
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacksAndMessages(null)
+    }
 }

@@ -28,14 +28,14 @@ fun BaseQuickAdapter<*, *>.setNbOnItemClickListener(interval: Long = 1000,action
 /**
  * 给adapter拓展的，防止重复点击item
  */
-var adapterchildlastClickTime = 0L
+var adapterChildLastClickTime = 0L
 fun BaseQuickAdapter<*, *>.setNbOnItemChildClickListener(interval: Long = 1000,action: (adapter: BaseQuickAdapter<*, *>, view: View, position: Int) -> Unit) {
     setOnItemChildClickListener { adapter, view, position ->
         val currentTime = System.currentTimeMillis()
-        if (adapterchildlastClickTime != 0L && (currentTime - adapterchildlastClickTime < interval)) {
+        if (adapterChildLastClickTime != 0L && (currentTime - adapterChildLastClickTime < interval)) {
             return@setOnItemChildClickListener
         }
-        adapterchildlastClickTime = currentTime
+        adapterChildLastClickTime = currentTime
         action(adapter,view,position)
     }
 }

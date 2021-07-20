@@ -62,12 +62,15 @@ fun <T> BaseVmFragment<*>.parseState(
     resultState: ResultState<T>,
     onSuccess: (T) -> Unit,
     onError: ((AppException) -> Unit)? = null,
-    onLoading: (() -> Unit)? = null
+    onLoading: ((message:String) -> Unit)? = null
 ) {
     when (resultState) {
         is ResultState.Loading -> {
-            showLoading(resultState.loadingMessage)
-            onLoading?.invoke()
+            if(onLoading==null){
+                showLoading(resultState.loadingMessage)
+            }else{
+                onLoading.invoke(resultState.loadingMessage)
+            }
         }
         is ResultState.Success -> {
             dismissLoading()
