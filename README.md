@@ -86,7 +86,7 @@ android {
 
 **Activity：**
 
-``` kotlin
+``` kotlin 
 abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDbActivity<VM, DB>() {
      /**
      * 当前Activity绑定的视图布局Id abstract修饰供子类实现
@@ -117,7 +117,7 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
        ...
     }
 }
-``` kotlin
+```
 **Fragment：**
 ``` kotlin
 abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFragment<VM,DB>() {
