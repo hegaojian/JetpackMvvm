@@ -33,7 +33,7 @@
 
 - **1.1 在root's build.gradle中加入Jitpack仓库**
 
-```
+``` gradle
 buildscript {
     repositories {
         ...
@@ -50,7 +50,7 @@ allprojects {
 
 - **1.2 在app's build.gradle中添加依赖**
 
-```
+``` gradle
 dependencies {
   ...
   implementation 'com.github.hegaojian:JetpackMvvm:1.2.5'
@@ -59,7 +59,7 @@ dependencies {
 
 - **1.3 在app's build.gradle中，android 模块下开启DataBinding(如果你不想用DataBinding,请忽略这一步)**
 
-```
+``` gradle
 AndroidStudio 4.0 以下版本------>
 android {
     ...
@@ -86,7 +86,7 @@ android {
 
 **Activity：**
 
-```
+``` kotlin
 abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDbActivity<VM, DB>() {
      /**
      * 当前Activity绑定的视图布局Id abstract修饰供子类实现
@@ -117,9 +117,9 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
        ...
     }
 }
-```
+``` kotlin
 **Fragment：**
-```
+``` kotlin
 abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFragment<VM,DB>() {
     /**
      * 当前Fragment绑定的视图布局Id abstract修饰供子类实现
@@ -164,7 +164,7 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
 ## 3.编写一个登录功能
 
 - **3.1 编写fragment_login.xml界面后转换成 databind 布局（鼠标停在根布局，Alt+Enter 点击提示 Convert to data binding layout即可）**
-```
+``` xml
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bind="http://schemas.android.com/tools">
     <data>
@@ -177,14 +177,14 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
 ```
 - **3.2 创建LoginViewModel类继承BaseViewModel**
 
-```
+``` xml
 class LoginViewModel : BaseViewModel() {
   
 }
 ```
 
 - **3.3 创建LoginFragment 继承基类传入相关泛型,第一个泛型为你创建的LoginViewModel,第二个泛型为ViewDataBind，保存fragment_login.xml后databinding会生成一个FragmentLoginBinding类。（如果没有生成，试着点击Build->Clean Project）**
-```
+``` kotlin
 class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
     
     /**
@@ -211,7 +211,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 ## 4.网络请求（Retrofit+协程）
 
 - **4.1 新建请求配置类继承 BaseNetworkApi 示例：**
-```
+``` kotlin
 class NetworkApi : BaseNetworkApi() {
 
    companion object {
@@ -257,7 +257,7 @@ class NetworkApi : BaseNetworkApi() {
 
 
 - **4.2如果你请求服务器返回的数据有基类（没有可忽略这一步）例如:**
-```
+``` kotlin
 {
     "data": ...,
     "errorCode": 0,
@@ -268,7 +268,7 @@ class NetworkApi : BaseNetworkApi() {
 作为开发者的角度来说，我们主要是想得到脱壳数据-data，且不想每次都判断errorCode==0请求是否成功或失败
 这时我们可以在服务器返回数据基类中继承BaseResponse，实现相关方法：
 
-```
+``` kotlin
 data class ApiResponse<T>(var errorCode: Int, var errorMsg: String, var data: T) : BaseResponse<T>() {
 
     // 这里是示例，wanandroid 网站返回的 错误码为 0 就代表请求成功，请你根据自己的业务需求来编写
@@ -286,7 +286,7 @@ data class ApiResponse<T>(var errorCode: Int, var errorMsg: String, var data: T)
 
 **1、将请求数据包装给ResultState，在Activity/Fragment中去监听ResultState拿到数据做处理**
 
-```
+``` kotlin
 class RequestLoginViewModel: BaseViewModel {
 
   //自动脱壳过滤处理请求结果，自动判断结果是否成功
@@ -370,7 +370,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 
 **2、 直接在当前ViewModel中拿到请求结果**
 
-```
+``` kotlin
 class RequestLoginViewModel : BaseViewModel() {
     
   fun login(username: String, password: String){
@@ -413,12 +413,12 @@ val mainViewModel：MainViewModel by activityViewModels()
 
 ## 5.获取ViewModel
 - **5.1我们的activity/fragment会有多个ViewModel，按传统的写法感觉有点累**
-```
+``` kotlin
  val mainViewModel = ViewModelProvider(this,
             ViewModelProvider.AndroidViewModelFactory(application)).get(MainViewModel::class.java)
 ```
 **现在官方Ktx有拓展函数可以轻松调用
-```
+``` kotlin
 //在activity中获取当前Activity级别作用域的ViewModel
  private val mainViewModel:MainViewModel by viewModels()
  
@@ -435,7 +435,7 @@ private val mainViewModel：MainViewModel by activityViewModels()
 private val mainViewModel by lazy { getAppViewModel<MainViewModel>()}
 ```
 ## 6.写了一些常用的拓展函数
-```
+``` kotlin
  算了不写了，这个不重要，想具体看的话可以在
  me.hgj.jetpackmvvm.ext.util
  me.hgj.jetpackmvvm.ext.view
@@ -444,7 +444,7 @@ private val mainViewModel by lazy { getAppViewModel<MainViewModel>()}
 
 ## 7.混淆
 
-```
+``` kotlin 
 -keep class me.hgj.jetpackmvvm.**{*;}
 -keep class com.google.android.material.** {*;}
 -keep class androidx.** {*;}
@@ -464,7 +464,7 @@ private val mainViewModel by lazy { getAppViewModel<MainViewModel>()}
 - QQ交流群：419581249
 
 ## License
-```
+``` license
  Copyright 2019, hegaojian(何高建)       
   
    Licensed under the Apache License, Version 2.0 (the "License");
