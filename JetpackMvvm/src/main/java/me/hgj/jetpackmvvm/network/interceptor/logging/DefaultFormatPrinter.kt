@@ -8,13 +8,18 @@ import me.hgj.jetpackmvvm.util.CharacterHandler.Companion.xmlFormat
 import me.hgj.jetpackmvvm.util.LogUtils
 import okhttp3.MediaType
 import okhttp3.Request
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 /**
  * 作者　: hegaojian
  * 时间　: 2020/3/26
  * 描述　:
  */
-class DefaultFormatPrinter : FormatPrinter{
+class DefaultFormatPrinter : FormatPrinter {
+
+    private var appendTag = ""
+
     /**
      * 打印网络请求信息, 当网络请求时 {[okhttp3.RequestBody]} 可以解析的情况
      *
@@ -25,6 +30,7 @@ class DefaultFormatPrinter : FormatPrinter{
         request: Request,
         bodyString: String
     ) {
+        appendTag = md5(URL_TAG + request.url())
         val requestBody =
             LINE_SEPARATOR + BODY_TAG + LINE_SEPARATOR + bodyString
         val tag = getTag(true)
@@ -53,6 +59,7 @@ class DefaultFormatPrinter : FormatPrinter{
      * @param request
      */
     override fun printFileRequest(request: Request) {
+        appendTag = md5(URL_TAG + request.url())
         val tag = getTag(true)
         LogUtils.debugInfo(tag, REQUEST_UP_LINE)
         logLines(
@@ -97,6 +104,7 @@ class DefaultFormatPrinter : FormatPrinter{
         message: String,
         responseUrl: String
     ) {
+        appendTag = md5(URL_TAG + responseUrl)
         var bodyString = bodyString
         bodyString =
             when {
@@ -155,6 +163,7 @@ class DefaultFormatPrinter : FormatPrinter{
         message: String,
         responseUrl: String
     ) {
+        appendTag = md5(URL_TAG + responseUrl)
         val tag = getTag(false)
         val urlLine = arrayOf<String?>(
             URL_TAG + responseUrl,
@@ -180,6 +189,14 @@ class DefaultFormatPrinter : FormatPrinter{
             true
         )
         LogUtils.debugInfo(tag, END_LINE)
+    }
+
+    private fun getTag(isRequest: Boolean): String {
+        return if (isRequest) {
+            "$TAG-Request-$appendTag"
+        } else {
+            "$TAG-Response-$appendTag"
+        }
     }
 
     companion object {
@@ -349,12 +366,30 @@ class DefaultFormatPrinter : FormatPrinter{
             return builder.toString()
         }
 
-        private fun getTag(isRequest: Boolean): String {
-            return if (isRequest) {
-                "$TAG-Request"
-            } else {
-                "$TAG-Response"
+        /**
+         * md5加密
+         */
+        private fun md5(string: String): String {
+            if (TextUtils.isEmpty(string)) {
+                return ""
             }
+            val md5: MessageDigest
+            try {
+                md5 = MessageDigest.getInstance("MD5")
+                val bytes = md5.digest(string.toByteArray())
+                val result = java.lang.StringBuilder()
+                for (b in bytes) {
+                    var temp = Integer.toHexString(b.toInt() and 0xff)
+                    if (temp.length == 1) {
+                        temp = "0$temp"
+                    }
+                    result.append(temp)
+                }
+                return result.toString()
+            } catch (e: NoSuchAlgorithmException) {
+                e.printStackTrace()
+            }
+            return ""
         }
     }
 }
