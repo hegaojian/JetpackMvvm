@@ -20,13 +20,13 @@
  
 #### APK下载：
 
-- [Github下载](https://github.com/hegaojian/JetpackMvvm/releases/download/1.1.8/app-release.apk)
+- [Github下载](https://github.com/hegaojian/JetpackMvvm/releases/download/1.2.6/app-release.apk)
 
 - [firm下载(推荐)](http://d.6short.com/v9q7)
 
 - 扫码下载(推荐)
 
-![](https://upload-images.jianshu.io/upload_images/9305757-4999111e26d5e93a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://upload-images.jianshu.io/upload_images/9305757-8ca8324f5690198e.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp)
   
   
 ## 1.如何集成
@@ -47,7 +47,7 @@ allprojects {
 ``` gradle
 dependencies {
   ...
-  implementation 'com.github.hegaojian:JetpackMvvm:1.2.5'
+  implementation 'com.github.hegaojian:JetpackMvvm:1.2.6'
 }
 ```
 
