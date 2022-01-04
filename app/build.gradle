@@ -13,8 +13,8 @@ android {
         applicationId "me.hgj.jetpackmvvm.demo"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 25
-        versionName "1.2.5"
+        versionCode 26
+        versionName "1.2.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
       /* ndk {
             // 设置支持的SO库架构 一般只设置这个就阔以设配所有的设备了，还可以减少apk的大小
@@ -129,9 +129,4 @@ dependencies {
     implementation 'me.jessyan:autosize:1.2.1'
     //防崩溃
     implementation 'cat.ereza:customactivityoncrash:2.3.0'
-    //下载
-    implementation("com.liulishuo.filedownloader:library:1.7.7") {
-        exclude group: "com.android.support"
-    }
-    implementation 'com.louiscad.splitties:splitties-collections:2.1.1'
 }

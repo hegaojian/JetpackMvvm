@@ -72,22 +72,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_mainfragment_to_pagerFragment"
-            app:destination="@id/pagerFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+
     </fragment>
 
-    <action
-        android:id="@+id/action_to_demoFragment"
-        app:destination="@id/demoFragment"
-        app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_left"
-        app:popEnterAnim="@anim/slide_in_left"
-        app:popExitAnim="@anim/slide_out_right" />
 
     <fragment
         android:id="@+id/loginFragment"
@@ -234,27 +221,6 @@
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.todo.AddTodoFragment"
         android:label="AddTodoFragment" />
 
-    <fragment
-        android:id="@+id/demoFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.demo.DemoFragment"
-        android:label="DemoFragment">
-
-        <action
-            android:id="@+id/action_demoFragment_to_downLoadFragment"
-            app:destination="@id/downLoadFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_demoFragment_to_downLoadLibraryFragment"
-            app:destination="@id/downLoadLibraryFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-    </fragment>
-
     <action
         android:id="@+id/action_to_webFragment"
         app:destination="@id/webFragment"
@@ -273,17 +239,5 @@
         android:id="@+id/settingFragment"
         android:name="me.hgj.jetpackmvvm.demo.ui.fragment.setting.SettingFragment"
         android:label="SettingFragment" />
-    <fragment
-        android:id="@+id/pagerFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.demo.PagerFragment"
-        android:label="PagerFragment" />
-    <fragment
-        android:id="@+id/downLoadFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.demo.DownLoadFragment"
-        android:label="DownLoadFragment" />
-    <fragment
-        android:id="@+id/downLoadLibraryFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.demo.DownLoadLibraryFragment"
-        android:label="DownLoadLibraryFragment" />
 
 </navigation>

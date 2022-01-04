@@ -2,16 +2,14 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.hegaojian'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 25
-        versionName "1.2.5"
+        versionCode 26
+        versionName "1.2.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }

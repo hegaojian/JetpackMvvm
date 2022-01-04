@@ -24,16 +24,21 @@ import me.hgj.jetpackmvvm.network.manager.NetworkStateManager
 abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmFragment<VM>() {
 
     //该类绑定的ViewDataBinding
-    lateinit var mDatabind: DB
+    private var _binding: DB? = null
+    val mDatabind: DB get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mDatabind = DataBindingUtil.inflate(inflater, layoutId(), container, false)
+        _binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
         mDatabind.lifecycleOwner = this
         return mDatabind.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

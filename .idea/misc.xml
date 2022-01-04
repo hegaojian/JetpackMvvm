@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/mySelf/JetpackMvvm/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/mySelf/JetpackMvvm/app/src/main/res/layout/fragment_demo.xml" value="0.1" />
+        <entry key="..\:/mySelf/JetpackMvvm/app/src/main/res/layout/fragment_download.xml" value="0.1" />
+        <entry key="..\:/mySelf/JetpackMvvm/app/src/main/res/layout/fragment_me.xml" value="0.36614583333333334" />
+        <entry key="..\:/mySelf/JetpackMvvm/app/src/main/res/layout/fragment_pager.xml" value="0.1" />
+        <entry key="..\:/mySelf/JetpackMvvm/app/src/main/res/layout/fragment_test.xml" value="0.1" />
+        <entry key="..\:/mySelf/JetpackMvvm/app/src/main/res/layout/fragment_viewpager.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

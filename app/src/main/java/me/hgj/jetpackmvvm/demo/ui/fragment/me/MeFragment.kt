@@ -145,10 +145,5 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
             nav().navigateAction(R.id.action_mainfragment_to_settingFragment)
         }
 
-        /**demo*/
-        fun demo() {
-            nav().navigateAction(R.id.action_to_demoFragment)
-        }
-
     }
 }
