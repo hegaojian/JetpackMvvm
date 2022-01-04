@@ -34,12 +34,6 @@
 - **1.1 在root's build.gradle中加入Jitpack仓库**
 
 ``` gradle
-buildscript {
-    repositories {
-        ...
-        maven { url 'https://jitpack.io' }
-    }
-}
 allprojects {
     repositories {
         ...
