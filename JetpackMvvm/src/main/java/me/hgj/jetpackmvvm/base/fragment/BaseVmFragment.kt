@@ -38,7 +38,6 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
      */
     abstract fun layoutId(): Int
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

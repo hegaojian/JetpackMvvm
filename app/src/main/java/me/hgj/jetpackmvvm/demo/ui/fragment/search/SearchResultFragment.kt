@@ -48,8 +48,6 @@ class SearchResultFragment : BaseFragment<SearchViewModel, FragmentListBinding>(
     /** */
     private val requestSearchViewModel: RequestSearchViewModel by viewModels()
 
-    override fun layoutId() = R.layout.fragment_list
-
     override fun initView(savedInstanceState: Bundle?) {
         arguments?.let { arguments -> arguments.getString("searchKey")?.let { searchKey = it } }
 

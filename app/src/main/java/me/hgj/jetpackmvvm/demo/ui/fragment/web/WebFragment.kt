@@ -46,8 +46,6 @@ class WebFragment : BaseFragment<WebViewModel, FragmentWebBinding>() {
     /** */
     private val requestCollectViewModel: RequestCollectViewModel by viewModels()
 
-    override fun layoutId() = R.layout.fragment_web
-
     override fun initView(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         arguments?.run {

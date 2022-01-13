@@ -34,8 +34,6 @@ class TreeArrFragment : BaseFragment<TreeViewModel, FragmentViewpagerBinding>() 
         fragments.add(NavigationFragment())
     }
 
-    override fun layoutId() = R.layout.fragment_viewpager
-
     override fun initView(savedInstanceState: Bundle?)  {
         //初始化时设置顶部主题颜色
         appViewModel.appColor.value?.let { setUiTheme(it, viewpager_linear) }

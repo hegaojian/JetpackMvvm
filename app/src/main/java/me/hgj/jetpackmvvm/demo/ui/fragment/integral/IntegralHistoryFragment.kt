@@ -36,8 +36,6 @@ class IntegralHistoryFragment : BaseFragment<IntegralViewModel, FragmentListBind
     //请求的ViewModel /** */
     private val requestIntegralViewModel: RequestIntegralViewModel by viewModels()
 
-    override fun layoutId() = R.layout.fragment_list
-
     override fun initView(savedInstanceState: Bundle?) {
         toolbar.initClose("积分记录") {
             nav().navigateUp()

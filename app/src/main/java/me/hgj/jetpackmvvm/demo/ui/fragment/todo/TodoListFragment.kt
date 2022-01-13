@@ -44,8 +44,6 @@ class TodoListFragment : BaseFragment<TodoViewModel, FragmentListBinding>() {
     //请求数据ViewModel
     private val requestViewModel: RequestTodoViewModel by viewModels()
 
-    override fun layoutId() = R.layout.fragment_list
-
     override fun initView(savedInstanceState: Bundle?) {
         toolbar.run {
             initClose("TODO") {

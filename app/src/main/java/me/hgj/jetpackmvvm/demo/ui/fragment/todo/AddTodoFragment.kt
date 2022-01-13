@@ -41,8 +41,6 @@ class AddTodoFragment : BaseFragment<TodoViewModel, FragmentAddtodoBinding>() {
     //请求数据ViewModel
     private val requestViewModel: RequestTodoViewModel by viewModels()
 
-    override fun layoutId() = R.layout.fragment_addtodo
-
     override fun initView(savedInstanceState: Bundle?) {
         mDatabind.vm = mViewModel
         mDatabind.click = ProxyClick()

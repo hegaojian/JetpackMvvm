@@ -50,8 +50,6 @@ class PublicChildFragment : BaseFragment<PublicNumberViewModel, IncludeListBindi
     //请求viewmodel
     private val requestPublicNumberViewModel: RequestPublicNumberViewModel by viewModels()
 
-    override fun layoutId() = R.layout.include_list
-
     override fun initView(savedInstanceState: Bundle?) {
         arguments?.let {
             cid = it.getInt("cid")

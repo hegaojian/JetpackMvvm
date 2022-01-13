@@ -49,8 +49,6 @@ class SystemChildFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
     /** 请求ViewModel */
     private val requestTreeViewModel: RequestTreeViewModel by viewModels()
 
-    override fun layoutId() = R.layout.include_list
-
     override fun initView(savedInstanceState: Bundle?) {
         arguments?.let {
             cid = it.getInt("cid")

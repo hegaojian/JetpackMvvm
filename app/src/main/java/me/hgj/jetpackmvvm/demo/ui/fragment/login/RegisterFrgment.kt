@@ -29,8 +29,6 @@ class RegisterFrgment : BaseFragment<LoginRegisterViewModel, FragmentRegisterBin
 
     private val requestLoginRegisterViewModel:RequestLoginRegisterViewModel by viewModels()
 
-    override fun layoutId() = R.layout.fragment_register
-
     override fun initView(savedInstanceState: Bundle?) {
         mDatabind.viewmodel = mViewModel
         mDatabind.click = ProxyClick()

@@ -30,8 +30,6 @@ class SystemArrFragment : BaseFragment<TreeViewModel, FragmentSystemBinding>() {
 
     private var fragments: ArrayList<Fragment> = arrayListOf()
 
-    override fun layoutId() = R.layout.fragment_system
-
     override fun initView(savedInstanceState: Bundle?)  {
         arguments?.let {
             data = it.getParcelable("data")!!

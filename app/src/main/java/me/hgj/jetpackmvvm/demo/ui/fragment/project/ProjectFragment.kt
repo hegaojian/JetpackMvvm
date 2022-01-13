@@ -35,8 +35,6 @@ class ProjectFragment : BaseFragment<ProjectViewModel, FragmentViewpagerBinding>
     /** */
     private val requestProjectViewModel: RequestProjectViewModel by viewModels()
 
-    override fun layoutId() = R.layout.fragment_viewpager
-
     override fun initView(savedInstanceState: Bundle?) {
         //状态页配置
         loadsir = loadServiceInit(view_pager) {

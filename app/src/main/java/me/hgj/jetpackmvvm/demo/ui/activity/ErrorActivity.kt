@@ -28,8 +28,6 @@ import me.hgj.jetpackmvvm.ext.view.clickNoRepeat
  */
 class ErrorActivity : BaseActivity<BaseViewModel, ActivityErrorBinding>() {
 
-    override fun layoutId() = R.layout.activity_error
-
     override fun initView(savedInstanceState: Bundle?)  {
         toolbar.init("发生错误")
         supportActionBar?.setBackgroundDrawable(ColorDrawable(SettingUtil.getColor(this)))

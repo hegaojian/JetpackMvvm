@@ -29,8 +29,6 @@ class CollectFragment:BaseFragment<RequestCollectViewModel,FragmentCollectBindin
         fragments.add(CollectAriticleFragment())
         fragments.add(CollectUrlFragment())
     }
-    override fun layoutId() = R.layout.fragment_collect
-
     override fun initView(savedInstanceState: Bundle?)  {
         //初始化时设置顶部主题颜色
         appViewModel.appColor.value?.let { collect_viewpager_linear.setBackgroundColor(it) }

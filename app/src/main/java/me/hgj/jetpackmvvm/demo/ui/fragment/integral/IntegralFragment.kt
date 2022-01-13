@@ -44,8 +44,6 @@ class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding
     //请求的ViewModel /** */
     private val requestIntegralViewModel: RequestIntegralViewModel by viewModels()
 
-    override fun layoutId() = R.layout.fragment_integral
-
     override fun initView(savedInstanceState: Bundle?) {
         mDatabind.vm = mViewModel
         rank = arguments?.getParcelable("rank")

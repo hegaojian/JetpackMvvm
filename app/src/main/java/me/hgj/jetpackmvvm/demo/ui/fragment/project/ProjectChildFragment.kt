@@ -53,8 +53,6 @@ class ProjectChildFragment : BaseFragment<ProjectViewModel, IncludeListBinding>(
     //请求的ViewModel
     private val requestProjectViewModel: RequestProjectViewModel by viewModels()
 
-    override fun layoutId() = R.layout.include_list
-
     override fun initView(savedInstanceState: Bundle?) {
         arguments?.let {
             isNew = it.getBoolean("isNew")

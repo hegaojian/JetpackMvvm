@@ -48,8 +48,6 @@ class LookInfoFragment : BaseFragment<LookInfoViewModel, FragmentLookinfoBinding
     //专门负责请求数据的ViewModel
     private val requestLookInfoViewModel: RequestLookInfoViewModel by viewModels()
 
-    override fun layoutId() = R.layout.fragment_lookinfo
-
     override fun initView(savedInstanceState: Bundle?) {
         arguments?.let {
             shareId = it.getInt("id")

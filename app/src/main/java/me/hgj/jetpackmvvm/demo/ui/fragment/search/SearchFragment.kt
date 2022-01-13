@@ -49,8 +49,6 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
 
     private val requestSearchViewModel: RequestSearchViewModel by viewModels()
 
-    override fun layoutId() = R.layout.fragment_search
-
     override fun initView(savedInstanceState: Bundle?) {
         setMenu()
         appViewModel.appColor.value?.let { setUiTheme(it, search_text1, search_text2) }

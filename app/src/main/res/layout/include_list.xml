@@ -12,7 +12,9 @@
         android:background="@color/windowBackground"
         android:orientation="vertical">
 
-        <include layout="@layout/include_recyclerview" />
+        <include
+            android:id="@+id/include_recyclerview"
+            layout="@layout/include_recyclerview" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatbtn"

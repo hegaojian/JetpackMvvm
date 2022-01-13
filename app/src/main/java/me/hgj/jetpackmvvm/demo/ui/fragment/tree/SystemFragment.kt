@@ -31,8 +31,6 @@ class SystemFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
     //界面状态管理者
     private lateinit var loadsir: LoadService<Any>
 
-    override fun layoutId() = R.layout.include_list
-
     private val systemAdapter: SystemAdapter by lazy { SystemAdapter(arrayListOf()) }
 
     /** */

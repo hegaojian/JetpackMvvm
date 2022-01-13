@@ -35,8 +35,6 @@ class AddAriticleFragment : BaseFragment<AriticleViewModel, FragmentShareAriticl
     /** */
     private val requestViewModel: RequestAriticleViewModel by viewModels()
 
-    override fun layoutId() = R.layout.fragment_share_ariticle
-
     override fun initView(savedInstanceState: Bundle?) {
 
         mDatabind.vm = mViewModel

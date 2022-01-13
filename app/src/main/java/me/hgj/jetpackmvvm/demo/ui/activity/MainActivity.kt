@@ -12,6 +12,7 @@ import com.tencent.bugly.beta.Beta
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.appViewModel
 import me.hgj.jetpackmvvm.demo.app.base.BaseActivity
+import me.hgj.jetpackmvvm.demo.app.base.BaseActivity1
 import me.hgj.jetpackmvvm.demo.app.util.StatusBarUtil
 import me.hgj.jetpackmvvm.demo.databinding.ActivityMainBinding
 import me.hgj.jetpackmvvm.demo.viewmodel.state.MainViewModel
@@ -20,15 +21,12 @@ import me.hgj.jetpackmvvm.network.manager.NetState
 /**
  * 项目主页Activity
  */
-class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
+class MainActivity : BaseActivity1<MainViewModel, ActivityMainBinding>() {
 
     var exitTime = 0L
-    override fun layoutId() = R.layout.activity_main
-
     override fun initView(savedInstanceState: Bundle?) {
         //进入首页检查更新
         Beta.checkUpgrade(false, true)
-
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 val nav = Navigation.findNavController(this@MainActivity, R.id.host_fragment)

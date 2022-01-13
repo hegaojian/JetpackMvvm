@@ -51,8 +51,6 @@ class AskFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
     //收藏viewmodel
     private val requestCollectViewModel: RequestCollectViewModel by viewModels()
 
-    override fun layoutId() = R.layout.include_list
-
     override fun initView(savedInstanceState: Bundle?) {
         //状态页配置
         loadsir = loadServiceInit(swipeRefresh) {

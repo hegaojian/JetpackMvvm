@@ -48,8 +48,6 @@ class PlazaFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
         AriticleAdapter(arrayListOf(), showTag = true)
     }
 
-    override fun layoutId() = R.layout.include_list
-
     override fun initView(savedInstanceState: Bundle?) {
         //状态页配置
         loadsir = loadServiceInit(swipeRefresh) {

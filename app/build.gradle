@@ -13,17 +13,19 @@ android {
         applicationId "me.hgj.jetpackmvvm.demo"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 26
-        versionName "1.2.6"
+        versionCode 27
+        versionName "1.2.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
       /* ndk {
-            // 设置支持的SO库架构 一般只设置这个就阔以设配所有的设备了，还可以减少apk的大小
+            // 设置支持的SO库架构
             abiFilters 'armeabi','armeabi-v7a'
         }*/
         multiDexEnabled true
     }
     buildFeatures {
+        //这2个为非必选，想用哪个就保留那个 用的话一定要加上项目中的 ViewBinding & DataBinding 混淆规则
         dataBinding = true
+        viewBinding = true
     }
 
     //使用Kotlin实验特性

@@ -16,8 +16,6 @@ import me.hgj.jetpackmvvm.demo.app.ext.showLoadingExt
  */
 abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDbActivity<VM, DB>() {
 
-    abstract override fun layoutId(): Int
-
     abstract override fun initView(savedInstanceState: Bundle?)
 
     /**

@@ -38,8 +38,6 @@ class AriticleFragment : BaseFragment<AriticleViewModel, FragmentListBinding>() 
     //记得要写泛型，虽然在 by lazy中 提示不用写，但是你不写就会报错
     private val requestViewModel: RequestAriticleViewModel by viewModels()
 
-    override fun layoutId() = R.layout.fragment_list
-
     override fun initView(savedInstanceState: Bundle?) {
         toolbar.run {
             initClose("我分享的文章") {

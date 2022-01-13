@@ -30,8 +30,6 @@ class NavigationFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
     //界面状态管理者
     private lateinit var loadsir: LoadService<Any>
 
-    override fun layoutId() = R.layout.include_list
-
     private val navigationAdapter: NavigationAdapter by lazy { NavigationAdapter(arrayListOf()) }
 
     /** */

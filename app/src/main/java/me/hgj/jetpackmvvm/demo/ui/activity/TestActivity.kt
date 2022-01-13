@@ -25,8 +25,6 @@ class TestActivity : BaseActivity<BaseViewModel, ActivityTestBinding>() {
 
     val adapter: TestAdapter by lazy { TestAdapter(arrayListOf()) }
 
-    override fun layoutId() = R.layout.activity_test
-
 
     override fun initView(savedInstanceState: Bundle?) {
 
