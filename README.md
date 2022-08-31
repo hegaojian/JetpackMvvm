@@ -427,11 +427,6 @@ private val mainViewModel by lazy { getAppViewModel<MainViewModel>()}
 }
 ```
 
-
-## 感谢
-- [Jetpack-MVVM-Best-Practice](https://github.com/KunMinX/Jetpack-MVVM-Best-Practice)
-- [重学安卓](https://xiaozhuanlan.com/kunminx?rel=8184827882)
-
 ## 联系
 - QQ交流群：419581249
 
