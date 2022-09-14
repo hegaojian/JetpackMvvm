@@ -33,12 +33,19 @@ abstract class BaseNetworkApi {
     /**
      * 配置http
      */
-    private val okHttpClient: OkHttpClient
-        get() {
-            var builder = RetrofitUrlManager.getInstance().with(OkHttpClient.Builder())
-            builder = setHttpClientBuilder(builder)
-            return builder.build()
-        }
+//     private val okHttpClient: OkHttpClient
+//         get() {
+//             var builder = RetrofitUrlManager.getInstance().with(OkHttpClient.Builder())
+//             builder = setHttpClientBuilder(builder)
+//             return builder.build()
+//         }
+    
+        private val okHttpClient by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+        var builder = RetrofitUrlManager.getInstance().with(OkHttpClient.Builder())
+        builder = setHttpClientBuilder(builder)
+        builder.build()
+    }
+    
 }
 
 
