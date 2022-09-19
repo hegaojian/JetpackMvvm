@@ -10,6 +10,7 @@ import me.hgj.jetpackmvvm.ext.getVmClazz
 import me.hgj.jetpackmvvm.ext.util.notNull
 import me.hgj.jetpackmvvm.network.manager.NetState
 import me.hgj.jetpackmvvm.network.manager.NetworkStateManager
+import androidx.lifecycle.ViewTreeLifecycleOwner
 
 /**
  * 作者　: hegaojian
@@ -30,6 +31,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ViewTreeLifecycleOwner.set(window.decorView, this)
         initDataBind().notNull({
             setContentView(it)
         }, {
