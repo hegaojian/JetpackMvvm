@@ -16,9 +16,10 @@
         android:orientation="vertical">
 
 
-        <include layout="@layout/include_toolbar" />
+        <include android:id="@+id/include_toolbar" layout="@layout/include_toolbar" />
 
         <include
+            android:id="@+id/includeList"
             layout="@layout/include_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"

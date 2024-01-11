@@ -14,15 +14,12 @@ import androidx.lifecycle.ViewModelStoreOwner
  * GetViewModelExt类的getAppViewModel方法
  */
 
-open class BaseApp : Application(), ViewModelStoreOwner {
+open class BaseApp() : Application(), ViewModelStoreOwner {
 
     private lateinit var mAppViewModelStore: ViewModelStore
 
     private var mFactory: ViewModelProvider.Factory? = null
 
-    override fun getViewModelStore(): ViewModelStore {
-        return mAppViewModelStore
-    }
 
     override fun onCreate() {
         super.onCreate()
@@ -42,4 +39,7 @@ open class BaseApp : Application(), ViewModelStoreOwner {
         }
         return mFactory as ViewModelProvider.Factory
     }
+
+    override val viewModelStore: ViewModelStore
+        get() = mAppViewModelStore
 }

@@ -1,25 +1,26 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'kotlin-android'
+}
 
-apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-android-extensions'
-
-apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdk 34
+    buildToolsVersion "34.0.0"
     defaultConfig {
         applicationId "me.hgj.jetpackmvvm.demo"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 34
         versionCode 27
         versionName "1.2.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-      /* ndk {
-            // 设置支持的SO库架构
-            abiFilters 'armeabi','armeabi-v7a'
-        }*/
+        /* ndk {
+              // 设置支持的SO库架构
+              abiFilters 'armeabi','armeabi-v7a'
+          }*/
         multiDexEnabled true
     }
     buildFeatures {
@@ -28,10 +29,6 @@ android {
         viewBinding = true
     }
 
-    //使用Kotlin实验特性
-    androidExtensions {
-        experimental = true
-    }
     buildTypes {
         debug {
             minifyEnabled false
@@ -72,23 +69,23 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.2'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.6'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.6'
     //test
-    testImplementation 'junit:junit:4.13.1'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'com.android.support:multidex:1.0.3'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.13'
     //androidx UI
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'com.google.android.material:material:1.3.0-alpha03'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-    implementation 'androidx.preference:preference-ktx:1.1.1'
+    implementation 'androidx.preference:preference-ktx:1.2.1'
     //dialog
     implementation "com.afollestad.material-dialogs:lifecycle:3.3.0"
     implementation "com.afollestad.material-dialogs:core:3.3.0"
@@ -96,20 +93,20 @@ dependencies {
     implementation "com.afollestad.material-dialogs:datetime:3.3.0"
     implementation "com.afollestad.material-dialogs:bottomsheets:3.3.0"
     //util
-    implementation 'com.blankj:utilcodex:1.26.0'
+    implementation 'com.blankj:utilcodex:1.31.1'
     //底部bottomBar
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
     //RevealLayout
     implementation 'com.github.goweii:RevealLayout:1.1.1'
     //微信开源项目，替代SP
-    implementation 'com.tencent:mmkv:1.0.22'
+    implementation 'com.tencent:mmkv:1.3.2'
     //项目核心框架
     implementation project(path: ':JetpackMvvm')
 //    implementation 'me.hegj:JetpackMvvm:1.2.0'
     //轮播图
     implementation 'com.github.zhpanvip:BannerViewPager:3.1.5'
     //BaseAdapter
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11'
     //第三方recyclerview
     implementation 'com.yanzhenjie.recyclerview:x:1.3.2'
     //管理界面状态库
@@ -126,7 +123,7 @@ dependencies {
     implementation 'com.tencent.bugly:crashreport_upgrade:1.4.5'
     implementation 'com.tencent.bugly:nativecrashreport:3.7.1'
     //glide
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
     //屏幕适配
     implementation 'me.jessyan:autosize:1.2.1'
     //防崩溃

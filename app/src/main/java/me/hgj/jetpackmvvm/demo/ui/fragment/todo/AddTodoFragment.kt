@@ -7,8 +7,6 @@ import androidx.lifecycle.Observer
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.datetime.datePicker
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
-import kotlinx.android.synthetic.main.fragment_addtodo.*
-import kotlinx.android.synthetic.main.include_toolbar.*
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.appViewModel
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
@@ -54,10 +52,10 @@ class AddTodoFragment : BaseFragment<TodoViewModel, FragmentAddtodoBinding>() {
                 mViewModel.todoColor.set(TodoType.byType(todo.priority).color)
             }
         }
-        toolbar.initClose(if (todoResponse == null) "添加TODO" else "修改TODO") {
+        mDatabind.includeToolbar.toolbar.initClose(if (todoResponse == null) "添加TODO" else "修改TODO") {
             nav().navigateUp()
         }
-        appViewModel.appColor.value?.let { SettingUtil.setShapColor(addtodoSubmit, it) }
+        appViewModel.appColor.value?.let { SettingUtil.setShapColor(mDatabind.addtodoSubmit, it) }
     }
 
     override fun createObserver() {

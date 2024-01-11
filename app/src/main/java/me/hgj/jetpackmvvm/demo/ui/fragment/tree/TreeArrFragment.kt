@@ -3,7 +3,6 @@ package me.hgj.jetpackmvvm.demo.ui.fragment.tree
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import kotlinx.android.synthetic.main.include_viewpager.*
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.appViewModel
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
@@ -36,8 +35,8 @@ class TreeArrFragment : BaseFragment<TreeViewModel, FragmentViewpagerBinding>() 
 
     override fun initView(savedInstanceState: Bundle?)  {
         //初始化时设置顶部主题颜色
-        appViewModel.appColor.value?.let { setUiTheme(it, viewpager_linear) }
-        include_viewpager_toolbar.run {
+        appViewModel.appColor.value?.let { setUiTheme(it, mDatabind.includeViewpager.viewpagerLinear) }
+        mDatabind.includeViewpager.includeViewpagerToolbar.run {
             inflateMenu(R.menu.todo_menu)
             setOnMenuItemClickListener {
                 when (it.itemId) {
@@ -56,14 +55,14 @@ class TreeArrFragment : BaseFragment<TreeViewModel, FragmentViewpagerBinding>() 
 
     override fun lazyLoadData() {
         //初始化viewpager2
-        view_pager.init(this, fragments).offscreenPageLimit = fragments.size
+        mDatabind.includeViewpager.viewPager.init(this, fragments).offscreenPageLimit = fragments.size
         //初始化 magic_indicator
-        magic_indicator.bindViewPager2(view_pager, mStringList = titleData) {
+        mDatabind.includeViewpager.magicIndicator.bindViewPager2(mDatabind.includeViewpager.viewPager, mStringList = titleData) {
             if (it != 0) {
-                include_viewpager_toolbar.menu.clear()
+                mDatabind.includeViewpager.includeViewpagerToolbar.menu.clear()
             } else {
-                include_viewpager_toolbar.menu.hasVisibleItems().let { flag ->
-                    if (!flag) include_viewpager_toolbar.inflateMenu(R.menu.todo_menu)
+                mDatabind.includeViewpager. includeViewpagerToolbar.menu.hasVisibleItems().let { flag ->
+                    if (!flag) mDatabind.includeViewpager.includeViewpagerToolbar.inflateMenu(R.menu.todo_menu)
                 }
             }
         }
@@ -71,7 +70,7 @@ class TreeArrFragment : BaseFragment<TreeViewModel, FragmentViewpagerBinding>() 
 
     override fun createObserver() {
         appViewModel.appColor.observeInFragment(this, Observer {
-            setUiTheme(it, viewpager_linear)
+            setUiTheme(it, mDatabind.includeViewpager.viewpagerLinear)
         })
     }
 

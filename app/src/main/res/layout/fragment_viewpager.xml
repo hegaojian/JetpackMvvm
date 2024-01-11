@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/include_viewpager" />
+        <include android:id="@+id/include_viewpager" layout="@layout/include_viewpager" />
 
     </LinearLayout>
 </layout>

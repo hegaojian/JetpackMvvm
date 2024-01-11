@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
 import com.zhpan.bannerview.BannerViewPager
-import kotlinx.android.synthetic.main.activity_welcome.*
 import me.hgj.jetpackmvvm.base.viewmodel.BaseViewModel
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseActivity
@@ -35,11 +34,11 @@ class WelcomeActivity : BaseActivity<BaseViewModel, ActivityWelcomeBinding>() {
             return
         }
         mDatabind.click = ProxyClick()
-        welcome_baseview.setBackgroundColor(SettingUtil.getColor(this))
+        mDatabind. welcomeBaseview.setBackgroundColor(SettingUtil.getColor(this))
         mViewPager = findViewById(R.id.banner_view)
         if (CacheUtil.isFirst()) {
             //是第一次打开App 显示引导页
-            welcome_image.gone()
+            mDatabind.  welcomeImage.gone()
             mViewPager.apply {
                 adapter = WelcomeBannerAdapter()
                 setLifecycleRegistry(lifecycle)
@@ -47,9 +46,9 @@ class WelcomeActivity : BaseActivity<BaseViewModel, ActivityWelcomeBinding>() {
                     override fun onPageSelected(position: Int) {
                         super.onPageSelected(position)
                         if (position == resList.size - 1) {
-                            welcomeJoin.visible()
+                            mDatabind. welcomeJoin.visible()
                         } else {
-                            welcomeJoin.gone()
+                            mDatabind.  welcomeJoin.gone()
                         }
                     }
                 })
@@ -57,7 +56,7 @@ class WelcomeActivity : BaseActivity<BaseViewModel, ActivityWelcomeBinding>() {
             }
         } else {
             //不是第一次打开App 0.3秒后自动跳转到主页
-            welcome_image.visible()
+            mDatabind. welcomeImage.visible()
             mViewPager.postDelayed({
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()

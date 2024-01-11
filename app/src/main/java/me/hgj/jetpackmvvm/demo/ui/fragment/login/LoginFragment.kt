@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.widget.CompoundButton
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.android.synthetic.main.include_toolbar.*
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.appViewModel
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
@@ -36,14 +34,14 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
 
         mDatabind.click = ProxyClick()
 
-        toolbar.initClose("登录") {
+        mDatabind.includeToolbar.toolbar.initClose("登录") {
             nav().navigateUp()
         }
         //设置颜色跟主题颜色一致
         appViewModel.appColor.value?.let {
-            SettingUtil.setShapColor(loginSub, it)
-            loginGoregister.setTextColor(it)
-            toolbar.setBackgroundColor(it)
+            SettingUtil.setShapColor(mDatabind.loginSub, it)
+            mDatabind.loginGoregister.setTextColor(it)
+            mDatabind.includeToolbar.toolbar.setBackgroundColor(it)
         }
     }
 

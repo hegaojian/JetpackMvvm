@@ -7,10 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
 import com.kingja.loadsir.core.LoadService
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
-import kotlinx.android.synthetic.main.fragment_lookinfo.*
-import kotlinx.android.synthetic.main.include_list.*
-import kotlinx.android.synthetic.main.include_recyclerview.*
-import kotlinx.android.synthetic.main.include_toolbar.*
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.appViewModel
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
@@ -54,23 +50,23 @@ class LookInfoFragment : BaseFragment<LookInfoViewModel, FragmentLookinfoBinding
         }
         mDatabind.vm = mViewModel
 
-        appViewModel.appColor.value?.let { share_layout.setBackgroundColor(it) }
+        appViewModel.appColor.value?.let { mDatabind.shareLayout.setBackgroundColor(it) }
 
-        toolbar.initClose("他的信息") {
+        mDatabind.includeToolbar. toolbar.initClose("他的信息") {
             nav().navigateUp()
         }
-        loadsir = loadServiceInit(share_linear) {
+        loadsir = loadServiceInit(mDatabind.shareLinear) {
             loadsir.showLoading()
             requestLookInfoViewModel.getLookinfo(shareId, true)
         }
-        recyclerView.init(LinearLayoutManager(context), articleAdapter).let {
+        mDatabind.includeList.includeRecyclerview.recyclerView.init(LinearLayoutManager(context), articleAdapter).let {
             it.addItemDecoration(SpaceItemDecoration(0, ConvertUtils.dp2px(8f)))
             it.initFooter(SwipeRecyclerView.LoadMoreListener {
                 requestLookInfoViewModel.getLookinfo(shareId, false)
             })
-            it.initFloatBtn(floatbtn)
+            it.initFloatBtn(mDatabind.includeList.floatbtn)
         }
-        swipeRefresh.init {
+        mDatabind.includeList.includeRecyclerview. swipeRefresh.init {
             requestLookInfoViewModel.getLookinfo(shareId, true)
         }
         articleAdapter.run {
@@ -85,7 +81,7 @@ class LookInfoFragment : BaseFragment<LookInfoViewModel, FragmentLookinfoBinding
                 nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {
                     putParcelable(
                         "ariticleData",
-                        articleAdapter.data[position - this@LookInfoFragment.recyclerView.headerCount]
+                        articleAdapter.data[position - this@LookInfoFragment.mDatabind.includeList.includeRecyclerview.recyclerView.headerCount]
                     )
                 })
             }
@@ -105,7 +101,7 @@ class LookInfoFragment : BaseFragment<LookInfoViewModel, FragmentLookinfoBinding
         })
         requestLookInfoViewModel.shareListDataUistate.observe(viewLifecycleOwner, Observer {
             //设值 新写了个拓展函数，搞死了这个恶心的重复代码
-            loadListData(it, articleAdapter, loadsir, recyclerView, swipeRefresh)
+            loadListData(it, articleAdapter, loadsir,mDatabind.includeList.includeRecyclerview. recyclerView, mDatabind.includeList.includeRecyclerview.swipeRefresh)
         })
         requestCollectViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {

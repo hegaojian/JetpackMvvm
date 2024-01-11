@@ -6,8 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
 import com.kingja.loadsir.core.LoadService
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
-import kotlinx.android.synthetic.main.include_list.*
-import kotlinx.android.synthetic.main.include_recyclerview.*
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.eventViewModel
@@ -32,24 +30,27 @@ class CollectAriticleFragment : BaseFragment<RequestCollectViewModel, IncludeLis
 
     private val articleAdapter: CollectAdapter by lazy { CollectAdapter(arrayListOf()) }
 
-    override fun initView(savedInstanceState: Bundle?)  {
+    override fun initView(savedInstanceState: Bundle?) {
         //状态页配置
-        loadsir = loadServiceInit(swipeRefresh) {
+        loadsir = loadServiceInit(mDatabind.includeRecyclerview.swipeRefresh) {
             //点击重试时触发的操作
             loadsir.showLoading()
             mViewModel.getCollectAriticleData(true)
         }
         //初始化recyclerView
-        recyclerView.init(LinearLayoutManager(context), articleAdapter).let {
+        mDatabind.includeRecyclerview.recyclerView.init(
+            LinearLayoutManager(context),
+            articleAdapter
+        ).let {
             it.addItemDecoration(SpaceItemDecoration(0, ConvertUtils.dp2px(8f)))
             it.initFooter(SwipeRecyclerView.LoadMoreListener {
                 mViewModel.getCollectAriticleData(false)
             })
             //初始化FloatingActionButton
-            it.initFloatBtn(floatbtn)
+            it.initFloatBtn(mDatabind.floatbtn)
         }
         //初始化 SwipeRefreshLayout
-        swipeRefresh.init {
+        mDatabind.includeRecyclerview.swipeRefresh.init {
             //触发刷新监听时请求数据
             mViewModel.getCollectAriticleData(true)
         }
@@ -63,8 +64,8 @@ class CollectAriticleFragment : BaseFragment<RequestCollectViewModel, IncludeLis
             }
             setOnItemClickListener { _, view, position ->
                 nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {
-                        putParcelable("collect", articleAdapter.data[position])
-                    })
+                    putParcelable("collect", articleAdapter.data[position])
+                })
             }
         }
     }
@@ -77,7 +78,13 @@ class CollectAriticleFragment : BaseFragment<RequestCollectViewModel, IncludeLis
     override fun createObserver() {
         mViewModel.ariticleDataState.observe(viewLifecycleOwner, Observer {
             //设值 新写了个拓展函数，搞死了这个恶心的重复代码
-            loadListData(it, articleAdapter, loadsir, recyclerView,swipeRefresh)
+            loadListData(
+                it,
+                articleAdapter,
+                loadsir,
+                mDatabind.includeRecyclerview.recyclerView,
+                mDatabind.includeRecyclerview.swipeRefresh
+            )
         })
         mViewModel.collectUiState.observe(viewLifecycleOwner, Observer {
             if (it.isSuccess) {

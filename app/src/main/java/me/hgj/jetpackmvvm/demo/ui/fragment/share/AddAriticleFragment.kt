@@ -9,8 +9,6 @@ import com.afollestad.materialdialogs.actions.getActionButton
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
-import kotlinx.android.synthetic.main.fragment_share_ariticle.*
-import kotlinx.android.synthetic.main.include_toolbar.*
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.appViewModel
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
@@ -44,9 +42,9 @@ class AddAriticleFragment : BaseFragment<AriticleViewModel, FragmentShareAriticl
                 it.nickname
             )
         }
-        appViewModel.appColor.value?.let { SettingUtil.setShapColor(share_submit, it) }
+        appViewModel.appColor.value?.let { SettingUtil.setShapColor(mDatabind.shareSubmit, it) }
 
-        toolbar.run {
+        mDatabind.includeToolbar.toolbar.run {
             initClose("分享文章") {
                 nav().navigateUp()
             }
@@ -80,7 +78,7 @@ class AddAriticleFragment : BaseFragment<AriticleViewModel, FragmentShareAriticl
                 true
             }
         }
-        share_submit.clickNoRepeat {
+        mDatabind.shareSubmit.clickNoRepeat {
             when {
                 mViewModel.shareTitle.get().isEmpty() -> {
                     showMessage("请填写文章标题")

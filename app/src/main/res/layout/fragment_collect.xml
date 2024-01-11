@@ -12,6 +12,7 @@
         android:layout_height="match_parent">
 
         <include
+            android:id="@+id/include_toolbar"
             layout="@layout/include_toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

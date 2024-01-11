@@ -5,8 +5,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
 import com.kingja.loadsir.core.LoadService
-import kotlinx.android.synthetic.main.include_list.*
-import kotlinx.android.synthetic.main.include_recyclerview.*
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.eventViewModel
@@ -32,20 +30,20 @@ class CollectUrlFragment : BaseFragment<RequestCollectViewModel, IncludeListBind
 
     override fun initView(savedInstanceState: Bundle?) {
         //状态页配置
-        loadsir = loadServiceInit(swipeRefresh) {
+        loadsir = loadServiceInit(mDatabind.includeRecyclerview.swipeRefresh) {
             //点击重试时触发的操作
             loadsir.showLoading()
             mViewModel.getCollectUrlData()
 
         }
         //初始化recyclerView
-        recyclerView.init(LinearLayoutManager(context), articleAdapter).let {
+        mDatabind.includeRecyclerview. recyclerView.init(LinearLayoutManager(context), articleAdapter).let {
             it.addItemDecoration(SpaceItemDecoration(0, ConvertUtils.dp2px(8f)))
             //初始化FloatingActionButton
-            it.initFloatBtn(floatbtn)
+            it.initFloatBtn(mDatabind.floatbtn)
         }
         //初始化 SwipeRefreshLayout
-        swipeRefresh.init {
+        mDatabind.includeRecyclerview.swipeRefresh.init {
             //触发刷新监听时请求数据
             mViewModel.getCollectUrlData()
         }
@@ -73,8 +71,8 @@ class CollectUrlFragment : BaseFragment<RequestCollectViewModel, IncludeListBind
 
     override fun createObserver() {
         mViewModel.urlDataState.observe(viewLifecycleOwner, Observer {
-            swipeRefresh.isRefreshing = false
-            recyclerView.loadMoreFinish(it.isEmpty, it.hasMore)
+            mDatabind.includeRecyclerview.swipeRefresh.isRefreshing = false
+            mDatabind.includeRecyclerview.recyclerView.loadMoreFinish(it.isEmpty, it.hasMore)
             if (it.isSuccess) {
                 //成功
                 when {

@@ -6,8 +6,6 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ConvertUtils
 import com.kingja.loadsir.core.LoadService
-import kotlinx.android.synthetic.main.include_list.*
-import kotlinx.android.synthetic.main.include_recyclerview.*
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.appViewModel
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
@@ -38,18 +36,18 @@ class SystemFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         //状态页配置
-        loadsir = loadServiceInit(swipeRefresh) {
+        loadsir = loadServiceInit(mDatabind.includeRecyclerview.swipeRefresh) {
             //点击重试时触发的操作
             loadsir.showLoading()
             requestTreeViewModel.getSystemData()
         }
         //初始化recyclerView
-        recyclerView.init(LinearLayoutManager(context), systemAdapter).let {
+        mDatabind.includeRecyclerview.recyclerView.init(LinearLayoutManager(context), systemAdapter).let {
             it.addItemDecoration(SpaceItemDecoration(0, ConvertUtils.dp2px(8f)))
-            it.initFloatBtn(floatbtn)
+            it.initFloatBtn(mDatabind.floatbtn)
         }
         //初始化 SwipeRefreshLayout
-        swipeRefresh.init {
+        mDatabind.includeRecyclerview. swipeRefresh.init {
             //触发刷新监听时请求数据
             requestTreeViewModel.getSystemData()
         }
@@ -82,7 +80,7 @@ class SystemFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
 
     override fun createObserver() {
         requestTreeViewModel.systemDataState.observe(viewLifecycleOwner, Observer {
-            swipeRefresh.isRefreshing = false
+            mDatabind.includeRecyclerview.swipeRefresh.isRefreshing = false
             if (it.isSuccess) {
                 loadsir.showSuccess()
                 systemAdapter.setList(it.listData)
@@ -94,7 +92,7 @@ class SystemFragment : BaseFragment<TreeViewModel, IncludeListBinding>() {
         appViewModel.run {
             //监听全局的主题颜色改变
             appColor.observeInFragment(this@SystemFragment, Observer {
-                setUiTheme(it, floatbtn, swipeRefresh, loadsir)
+                setUiTheme(it, mDatabind.floatbtn, mDatabind.includeRecyclerview.swipeRefresh, loadsir)
             })
             //监听全局的列表动画改编
             appAnimation.observeInFragment(this@SystemFragment, Observer {

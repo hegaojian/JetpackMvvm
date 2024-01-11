@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.kingja.loadsir.core.LoadService
-import kotlinx.android.synthetic.main.include_viewpager.*
-import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.appViewModel
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.app.ext.*
@@ -32,16 +30,16 @@ class PublicNumberFragment : BaseFragment<RequestPublicNumberViewModel, Fragment
 
     override fun initView(savedInstanceState: Bundle?)  {
         //状态页配置
-        loadsir = loadServiceInit(view_pager) {
+        loadsir = loadServiceInit(mDatabind.includeViewpager.viewPager) {
             //点击重试时触发的操作
             loadsir.showLoading()
             mViewModel.getPublicTitleData()
         }
         //初始化viewpager2
-        view_pager.init(this,fragments)
+        mDatabind.includeViewpager.viewPager.init(this,fragments)
         //初始化 magic_indicator
-        magic_indicator.bindViewPager2(view_pager,mDataList)
-        appViewModel.appColor.value?.let { setUiTheme(it, viewpager_linear,loadsir) }
+        mDatabind.includeViewpager.magicIndicator.bindViewPager2(mDatabind.includeViewpager.viewPager,mDataList)
+        appViewModel.appColor.value?.let { setUiTheme(it, mDatabind.includeViewpager.viewpagerLinear,loadsir) }
     }
 
     /**
@@ -61,9 +59,9 @@ class PublicNumberFragment : BaseFragment<RequestPublicNumberViewModel, Fragment
                 it.forEach { classify ->
                     fragments.add(PublicChildFragment.newInstance(classify.id))
                 }
-                magic_indicator.navigator.notifyDataSetChanged()
-                view_pager.adapter?.notifyDataSetChanged()
-                view_pager.offscreenPageLimit = fragments.size
+                mDatabind.includeViewpager. magicIndicator.navigator.notifyDataSetChanged()
+                mDatabind.includeViewpager.viewPager.adapter?.notifyDataSetChanged()
+                mDatabind.includeViewpager.viewPager.offscreenPageLimit = fragments.size
                 loadsir.showSuccess()
             }, {
                 //请求项目标题失败
@@ -72,7 +70,7 @@ class PublicNumberFragment : BaseFragment<RequestPublicNumberViewModel, Fragment
             })
         })
         appViewModel.appColor.observeInFragment(this, Observer {
-            setUiTheme(it, viewpager_linear,loadsir)
+            setUiTheme(it,mDatabind.includeViewpager. viewpagerLinear,loadsir)
         })
     }
 }

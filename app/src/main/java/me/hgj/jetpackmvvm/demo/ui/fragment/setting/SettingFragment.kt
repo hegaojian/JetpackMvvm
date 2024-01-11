@@ -55,8 +55,8 @@ class SettingFragment : PreferenceFragmentCompat(),
             //转为线性布局
             val linearLayout = it.parent as? LinearLayout
             linearLayout?.run {
-                toolbarView =  LayoutInflater.from(context).inflate(R.layout.include_toolbar, null)
-                toolbarView?.let {view ->
+                toolbarView = LayoutInflater.from(context).inflate(R.layout.include_toolbar, null)
+                toolbarView?.let { view ->
                     view.findViewById<Toolbar>(R.id.toolbar)?.initClose("设置") {
                         nav().navigateUp()
                     }
@@ -209,7 +209,8 @@ class SettingFragment : PreferenceFragmentCompat(),
             findPreference<Preference>("clearCache")?.summary =
                 CacheDataManager.getTotalCacheSize(it)
 
-            findPreference<Preference>("version")?.summary = "当前版本 " + AppUtils.getAppVersionName()
+            findPreference<Preference>("version")?.summary =
+                "当前版本 " + AppUtils.getAppVersionName()
 
             val modes = it.resources.getStringArray(R.array.setting_modes)
             findPreference<Preference>("mode")?.summary =
@@ -219,15 +220,18 @@ class SettingFragment : PreferenceFragmentCompat(),
 
     override fun onResume() {
         super.onResume()
-        preferenceScreen.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+        preferenceScreen.sharedPreferences?.registerOnSharedPreferenceChangeListener(this)
     }
 
     override fun onPause() {
         super.onPause()
-        preferenceScreen.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+        preferenceScreen.sharedPreferences?.unregisterOnSharedPreferenceChangeListener(this)
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
+        if (key == null) {
+            return
+        }
         if (key == "color") {
             colorPreview?.setView()
         }
@@ -241,5 +245,6 @@ class SettingFragment : PreferenceFragmentCompat(),
         containerView?.removeAllViews()
         toolbarView = null
     }
+
 }
 

@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.blankj.utilcode.util.ToastUtils
-import kotlinx.android.synthetic.main.fragment_me.*
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.appViewModel
 import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
@@ -37,16 +36,22 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
     override fun initView(savedInstanceState: Bundle?) {
         mDatabind.vm = mViewModel
         mDatabind.click = ProxyClick()
-        appViewModel.appColor.value?.let { setUiTheme(it, me_linear, me_integral) }
+        appViewModel.appColor.value?.let {
+            setUiTheme(
+                it,
+                mDatabind.meLinear,
+                mDatabind.meIntegral
+            )
+        }
         appViewModel.userInfo.value?.let { mViewModel.name.set(if (it.nickname.isEmpty()) it.username else it.nickname) }
-        me_swipe.init {
+        mDatabind.meSwipe.init {
             requestMeViewModel.getIntegral()
         }
     }
 
     override fun lazyLoadData() {
         appViewModel.userInfo.value?.run {
-            me_swipe.isRefreshing = true
+            mDatabind.meSwipe.isRefreshing = true
             requestMeViewModel.getIntegral()
         }
     }
@@ -54,7 +59,7 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
     override fun createObserver() {
 
         requestMeViewModel.meData.observe(viewLifecycleOwner, Observer { resultState ->
-            me_swipe.isRefreshing = false
+            mDatabind.meSwipe.isRefreshing = false
             parseState(resultState, {
                 rank = it
                 mViewModel.info.set("id：${it.userId}　排名：${it.rank}")
@@ -66,11 +71,11 @@ class MeFragment : BaseFragment<MeViewModel, FragmentMeBinding>() {
 
         appViewModel.run {
             appColor.observeInFragment(this@MeFragment, Observer {
-                setUiTheme(it, me_linear, me_swipe, me_integral)
+                setUiTheme(it, mDatabind.meLinear, mDatabind.meSwipe, mDatabind.meIntegral)
             })
             userInfo.observeInFragment(this@MeFragment, Observer {
                 it.notNull({
-                    me_swipe.isRefreshing = true
+                    mDatabind.meSwipe.isRefreshing = true
                     mViewModel.name.set(if (it.nickname.isEmpty()) it.username else it.nickname)
                     requestMeViewModel.getIntegral()
                 }, {
