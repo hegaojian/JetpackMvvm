@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import me.hgj.jetpackmvvm.core.appContext
 import me.hgj.jetpackmvvm.demo.R
 import me.hgj.jetpackmvvm.demo.app.core.util.SettingUtil
@@ -69,28 +68,6 @@ fun Toolbar.initClose(
     setNavigationIcon(backImg)
     setNavigationOnClickListener { onBack.invoke(this) }
     return this
-}
-
-/**
- * 根据控件的类型设置主题，注意，控件具有优先级， 基本类型的控件建议放到最后，像 Textview，FragmentLayout，不然会出现问题，
- * 列如下面的BottomNavigationViewEx他的顶级父控件为FragmentLayout，如果先 is Fragmentlayout判断在 is BottomNavigationViewEx上面
- * 那么就会直接去执行 is FragmentLayout的代码块 跳过 is BottomNavigationViewEx的代码块了
- */
-fun setUiTheme(color: Int, vararg anyList: Any?) {
-    anyList.forEach { view ->
-        view?.let {
-            when (it) {
-                is FloatingActionButton -> it.backgroundTintList =
-                    SettingUtil.getOneColorStateList(color)
-                is SwipeRefreshLayout -> it.setColorSchemeColors(color)
-                is Toolbar -> it.setBackgroundColor(color)
-                is TextView -> it.setTextColor(color)
-                is LinearLayout -> it.setBackgroundColor(color)
-                is ConstraintLayout -> it.setBackgroundColor(color)
-                is FrameLayout -> it.setBackgroundColor(color)
-            }
-        }
-    }
 }
 
 fun MagicIndicator.bindViewPager2(

@@ -2,7 +2,6 @@
 agentweb = "4.1.3"
 agp = "8.10.0"
 autosize = "1.2.1"
-baserecyclerviewadapterhelperVersion = "3.0.11"
 customactivityoncrash = "2.4.0"
 downloader = "4.1.3"
 flexbox = "2.0.1"
@@ -11,7 +10,7 @@ kotlin = "2.2.0"
 coreKtx = "1.17.0"
 appcompat = "1.7.1"
 magicindicator = "1.7.0"
-material = "1.13.0"
+material = "1.11.0"
 activity = "1.10.1"
 constraintlayout = "2.2.1"
 fragment = "1.8.9"
@@ -55,7 +54,6 @@ androidx-preference-ktx = { module = "androidx.preference:preference-ktx", versi
 androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
 autosize = { module = "me.jessyan:autosize", version.ref = "autosize" }
 customactivityoncrash = { module = "cat.ereza:customactivityoncrash", version.ref = "customactivityoncrash" }
-cymchad-baserecyclerviewadapterhelper = { module = "com.github.CymChad:BaseRecyclerViewAdapterHelper", version.ref = "baserecyclerviewadapterhelperVersion" }
 downloader = { module = "com.download.library:Downloader", version.ref = "downloader" }
 filechooser = { module = "com.just.agentweb:filechooser", version.ref = "agentweb" }
 flexbox = { module = "com.google.android:flexbox", version.ref = "flexbox" }
@@ -77,12 +75,10 @@ refresh-header-classics = { module = "io.github.scwang90:refresh-header-classics
 refresh-layout-kernel = { module = "io.github.scwang90:refresh-layout-kernel", version.ref = "refreshLayout" }
 reveallayout = { module = "com.github.goweii:RevealLayout", version.ref = "reveallayout" }
 rxhttp = { module = "com.github.liujingxing.rxhttp:rxhttp", version.ref = "rxhttp" }
-net = { module = "'com.github.liangjingkanji:Net", version.ref = "net" }
 rxhttp-compiler = { module = "com.github.liujingxing.rxhttp:rxhttp-compiler", version.ref = "rxhttp" }
 toaster = { module = "com.github.getActivity:Toaster", version.ref = "toaster" }
 unpeek-livedata = { module = "com.kunminx.arch:unpeek-livedata", version.ref = "unpeekLivedata" }
 backgroundlibrary-library = { module = "com.github.JavaNoober.BackgroundLibrary:library", version.ref = "backgroundlibrary" }
-baserecyclerviewadapterhelper = { module = "io.github.cymchad:BaseRecyclerViewAdapterHelper", version.ref = "baserecyclerviewadapterhelper" }
 brv = { module = "com.github.liangjingkanji:BRV", version.ref = "brv" }
 log = { module = "com.github.zhaokaiqiang.klog:library", version.ref = "log" }
 dialog = { module = "com.afollestad.material-dialogs:core", version.ref = "dialog" }

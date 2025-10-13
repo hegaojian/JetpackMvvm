@@ -5,7 +5,7 @@ import me.hgj.jetpackmvvm.core.data.obs
 import me.hgj.jetpackmvvm.demo.app.core.base.BaseActivity
 import me.hgj.jetpackmvvm.demo.app.core.util.UserManager
 import me.hgj.jetpackmvvm.demo.data.vm.UserViewModel
-import me.hgj.jetpackmvvm.demo.databinding.FragmentLoginBinding
+import me.hgj.jetpackmvvm.demo.databinding.ActivityLoginBinding
 import me.hgj.jetpackmvvm.ext.util.clickNoRepeat
 import me.hgj.jetpackmvvm.ext.util.intent.openActivity
 import me.hgj.jetpackmvvm.ext.view.afterTextChange
@@ -19,7 +19,7 @@ import me.hgj.jetpackmvvm.ext.view.visibleOrInvisible
  * 时间　：2025/10/10
  * 说明　：
  */
-class LoginActivity : BaseActivity<UserViewModel, FragmentLoginBinding>() {
+class LoginActivity : BaseActivity<UserViewModel, ActivityLoginBinding>() {
 
     override val showTitle = true
 

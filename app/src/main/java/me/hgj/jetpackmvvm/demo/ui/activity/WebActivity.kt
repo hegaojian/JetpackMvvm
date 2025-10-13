@@ -26,7 +26,7 @@ import me.hgj.jetpackmvvm.demo.data.model.entity.CollectUrlResponse
 import me.hgj.jetpackmvvm.demo.data.model.enums.CollectType
 import me.hgj.jetpackmvvm.demo.data.vm.CollectViewModel
 import me.hgj.jetpackmvvm.demo.data.vm.WebViewModel
-import me.hgj.jetpackmvvm.demo.databinding.FragmentWebBinding
+import me.hgj.jetpackmvvm.demo.databinding.ActivityWebBinding
 import me.hgj.jetpackmvvm.ext.lifecycle.getViewModel
 import me.hgj.jetpackmvvm.ext.util.currentActivity
 import me.hgj.jetpackmvvm.ext.util.getDrawableExt
@@ -39,7 +39,7 @@ import me.hgj.jetpackmvvm.ext.util.intent.openActivity
  * 时间　: 2020/3/3
  * 描述　:
  */
-class WebActivity : BaseActivity<WebViewModel, FragmentWebBinding>() {
+class WebActivity : BaseActivity<WebViewModel, ActivityWebBinding>() {
 
     override val showTitle = true
 

@@ -117,7 +117,6 @@ abstract class BaseVmActivity<VM : BaseViewModel> : AppCompatActivity(), BaseIVi
     abstract fun initView(savedInstanceState: Bundle?)
 
 
-
     /**
      * 初始化沉浸式
      * Init immersion bar.
