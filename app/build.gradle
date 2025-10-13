@@ -39,9 +39,9 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled true //关闭混淆
-            shrinkResources true
-            zipAlignEnabled true
+            minifyEnabled false //关闭混淆
+            shrinkResources false
+            zipAlignEnabled false
             // 签名信息配置
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
