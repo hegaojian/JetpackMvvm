@@ -51,7 +51,6 @@ class ApiResultObserver<T> {
  *     }
  * }
  * ```
- *
  * 也可以
  *
  * ```

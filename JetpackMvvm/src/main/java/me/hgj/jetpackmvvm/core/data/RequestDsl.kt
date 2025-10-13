@@ -72,9 +72,7 @@ fun <T> BaseViewModel.request(requestParameterDslClass: RequestParameterDsl<T>.(
  * 内部方法，执行 RequestParameterDsl 封装的请求逻辑。
  * 根据请求结果自动更新 resultLiveData 并处理 loading 状态。
  */
-private fun <T> BaseViewModel.executeRequestWithResult(
-    requestParameterDsl: RequestParameterDsl<T>
-): Job {
+private fun <T> BaseViewModel.executeRequestWithResult(requestParameterDsl: RequestParameterDsl<T>): Job {
     return viewModelScope.launch(Dispatchers.IO) {
         supervisorScope {
             try {
@@ -87,8 +85,7 @@ private fun <T> BaseViewModel.executeRequestWithResult(
                         coroutineScope = this
                     )
                 }
-
-                // ========== 发起请求 ==========
+                // ========== 在子线程中发起请求 ==========
                 val result = requestParameterDsl.onRequest.invoke(this)
 
                 // ========== 成功处理 ==========
@@ -111,7 +108,6 @@ private fun <T> BaseViewModel.executeRequestWithResult(
                 // ========== 统一错误捕获 ==========
                 e.printStackTrace()
                 "抱歉！出错了----> ${e.message}".logE()
-
                 if (requestParameterDsl.loadingType != LoadingType.LOADING_NULL) {
                     loadingChange.loading.postValue = LoadingEntity(
                         loadingType = requestParameterDsl.loadingType,
@@ -125,11 +121,10 @@ private fun <T> BaseViewModel.executeRequestWithResult(
                     throwable = e,
                     loadingType = requestParameterDsl.loadingType
                 )
-
                 if (loadStatus.loadingType == LoadingType.LOADING_XML) {
                     loadingChange.showError.postValue = loadStatus
                 }
-
+                //发射错误
                 requestParameterDsl.resultLiveData?.postValue = ApiResult.Error(loadStatus)
             }
         }
@@ -146,7 +141,8 @@ class RequestParameterDsl<T> {
     var resultLiveData: MutableLiveData<ApiResult<T>>? = null
 
     /**
-     * 协程请求方法体，可执行各种同步或异步操作。
+     * 协程请求方法体,执行在子线程中，可执行各种同步或异步操作。注意，这里面是子线程！！！子线程！！！子线程！！！不要在该方法中直接操作UI
+     * 或者比如使用liveData.value = xxx，得用 postValue。或者你切换到主线程再操作
      * 在协程作用域（CoroutineScope）中运行，最终返回类型为 T 的结果。
      * 所以在这里面你可以随便去拿数据，不管是本地数据还是网络数据，最后返回最终结果就行了
      * 使用示例：
