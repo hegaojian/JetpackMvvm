@@ -6,10 +6,10 @@ plugins {
 
 android {
     namespace "me.hgj.jetpackmvvm"
-    compileSdkVersion  32
+    compileSdkVersion  36
     defaultConfig {
         minSdk  21
-        targetSdk  32
+        targetSdk  36
         versionCode 23
         versionName "2.0.0"
 
