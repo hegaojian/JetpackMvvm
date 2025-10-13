@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<me.hgj.jetpackmvvm.widget.alpha.UILinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:background="@color/helperColorWhite"
+    android:orientation="horizontal">
+
+    <ProgressBar
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:indeterminate="true"
+        style="?android:attr/progressBarStyleLarge" />
+
+    <TextView
+        android:id="@+id/loadingMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="14sp"
+        android:textColor="@color/helperColorBlackGray6"
+        android:text="@string/helper_loading_tip" />
+</me.hgj.jetpackmvvm.widget.alpha.UILinearLayout>

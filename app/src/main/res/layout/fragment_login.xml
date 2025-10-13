@@ -1,138 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/tools">
 
-    <data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-        <variable
-            name="viewmodel"
-            type="me.hgj.jetpackmvvm.demo.viewmodel.state.LoginRegisterViewModel" />
-
-        <variable
-            name="click"
-            type="me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment.ProxyClick" />
-
-    </data>
-
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:orientation="vertical">
+        android:fadeScrollbars="true">
 
-        <include layout="@layout/include_toolbar" />
-
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fadeScrollbars="true">
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="18dp"
+            android:orientation="vertical">
+
+            <me.hgj.jetpackmvvm.widget.alpha.UIImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:ui_radius="999dp"
+                app:ui_shadowAlpha="1"
+                android:scaleType="centerCrop"
+                app:ui_shadowElevation="12dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="48dp"
+                android:src="@drawable/cxk" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
-                android:orientation="vertical">
+                android:layout_height="48dp"
+                android:layout_marginTop="48dp"
+                android:background="@drawable/edit_shape"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="48dp"
-                    android:src="@mipmap/ic_launcher" />
+                <EditText
+                    android:id="@+id/userName"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="账号"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLength="20"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="48dp"
-                    android:background="@drawable/edit_shape"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:hint="账号"
-                        android:inputType="text"
-                        android:lines="1"
-                        android:maxLength="20"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="12dp"
-                        android:text="@={viewmodel.username}"
-                        android:textColor="@color/black"
-                        android:textSize="15dp" />
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginRight="6dp"
-                        android:onClick="@{()->click.clear()}"
-                        android:src="@drawable/ic_clear"
-                        android:visibility="@{viewmodel.clearVisible}" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/edit_shape"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:hint="密码"
-                        android:inputType="textPassword"
-                        android:lines="1"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="12dp"
-                        android:text="@={viewmodel.password}"
-                        android:textColor="@color/black"
-                        android:textSize="15dp"
-                        bind:showPwd="@{viewmodel.isShowPwd}" />
-
-                    <CheckBox
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginRight="6dp"
-                        android:button="@drawable/keyvisibily_selector"
-                        android:checked="false"
-                        android:visibility="@{viewmodel.passwordVisible}"
-                        bind:checkChange="@{click.onCheckedChangeListener}" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/loginSub"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="12dp"
-                    android:background="@drawable/button_shap"
-                    android:gravity="center"
-                    android:text="登录"
-                    bind:noRepeatClick="@{()-> click.login()}"
-                    android:textColor="@color/white"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:id="@+id/loginGoregister"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginBottom="12dp"
-                    android:onClick="@{()-> click.goRegister()}"
-                    android:paddingLeft="18dp"
-                    android:paddingTop="18dp"
-                    android:paddingBottom="18dp"
-                    android:text="去注册"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="15dp" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/clearImg"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="6dp"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
+                    android:src="@drawable/ic_clear" />
             </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
-</layout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edit_shape"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/password"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="密码"
+                    android:inputType="textPassword"
+                    android:lines="1"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"/>
+                
+                <com.noober.background.view.BLCheckBox
+                    android:id="@+id/pwdVisible"
+                    android:layout_width="24dp"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="6dp"
+                    app:bl_checked_button_drawable="@drawable/ic_password_see_on"
+                    app:bl_unChecked_button_drawable="@drawable/ic_password_see"
+                    android:checked="false" />
+
+            </LinearLayout>
+
+            <com.noober.background.view.BLButton
+                android:id="@+id/loginSub"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="12dp"
+                app:bl_solid_color="@color/colorPrimary"
+                app:bl_corners_radius="4dp"
+                android:gravity="center"
+                android:text="登录"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/toRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginBottom="12dp"
+                android:paddingStart="18dp"
+                android:paddingTop="18dp"
+                android:paddingBottom="18dp"
+                android:text="去注册"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

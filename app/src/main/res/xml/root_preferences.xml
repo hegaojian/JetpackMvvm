@@ -2,12 +2,12 @@
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <me.hgj.jetpackmvvm.demo.app.weight.preference.PreferenceCategory
+    <androidx.preference.PreferenceCategory
         android:key="base"
         android:title="@string/setting_base">
-        <me.hgj.jetpackmvvm.demo.app.weight.preference.CheckBoxPreference
+        <androidx.preference.CheckBoxPreference
             android:key="top"
-            android:summary="@string/setting_toptip"
+            android:summary="@string/setting_top_tip"
             android:title="@string/setting_top" />
         <Preference
             android:key="clearCache"
@@ -17,23 +17,9 @@
             android:summary="退出登录"
             android:title="@string/setting_exit" />
 
-    </me.hgj.jetpackmvvm.demo.app.weight.preference.PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 
-    <me.hgj.jetpackmvvm.demo.app.weight.preference.PreferenceCategory
-        android:key="other"
-        android:title="@string/setting_other">
-        <Preference
-            android:key="mode"
-            android:summary="@string/setting_modetip"
-            android:title="@string/setting_mode" />
-        <me.hgj.jetpackmvvm.demo.app.weight.preference.IconPreference
-            android:key="color"
-            android:summary="@string/choose_theme_color_summary"
-            android:title="@string/choose_theme_color" />
-
-    </me.hgj.jetpackmvvm.demo.app.weight.preference.PreferenceCategory>
-
-    <me.hgj.jetpackmvvm.demo.app.weight.preference.PreferenceCategory
+    <androidx.preference.PreferenceCategory
         android:key="about"
         android:title="@string/setting_about">
         <Preference
@@ -50,11 +36,10 @@
         <Preference
             android:key="open"
             android:summary="@string/open_project_tips"
-            app:isPreferenceVisible="false"
             android:title="@string/open_project" />
         <Preference
             android:key="copyRight"
             android:summary="@string/copyright_summary"
             android:title="@string/copyright" />
-    </me.hgj.jetpackmvvm.demo.app.weight.preference.PreferenceCategory>
+    </androidx.preference.PreferenceCategory>
 </androidx.preference.PreferenceScreen>

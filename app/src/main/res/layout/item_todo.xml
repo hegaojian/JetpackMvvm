@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/item_todo_tag"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -39,7 +39,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/item_todo_title"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -56,7 +56,7 @@
                     android:textSize="16dp"
                     tools:text="今天晚上一起来开黑啊" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/item_todo_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
                     android:textSize="12dp"
                     tools:text="2019-09-04" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/item_todo_setting"
                     android:layout_width="36dp"
                     android:layout_height="50dp"
@@ -81,9 +81,9 @@
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:background="@color/backgrounGrey" />
+                android:background="@color/backgroundGrey" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_todo_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
                 tools:text="来一起打王者啊？我关羽6双鞋，跑的贼鸡儿快" />
         </LinearLayout>
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/item_todo_status"
             android:layout_width="48dp"
             android:layout_height="48dp"

@@ -318,7 +318,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
                     it.username.logd()
                 }, {
                     //登录失败(网络连接问题，服务器的结果码不正确...异常都会走在这里)
-                    showMessage(it.errorMsg)
+                    showDialogMessageit.errorMsg)
                 })
             })
     
@@ -330,11 +330,11 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
                        it.data.username.logd()
                    }else{
                        //登录失败
-                       showMessage(it.errorMsg)
+                       showDialogMessageit.errorMsg)
                    }
                },{
                    //请求发生了异常
-                   showMessage(it.errorMsg)
+                   showDialogMessageit.errorMsg)
                })
            })
    } 

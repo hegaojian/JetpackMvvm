@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment"
+        android:label="HomeFragment">
+
+        <action
+            android:id="@+id/toSearchFragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/toSystemArrFragment"
+            app:destination="@id/systemArrFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+
+            <argument
+                android:name="data"
+                app:argType="me.hgj.jetpackmvvm.demo.data.model.entity.SystemResponse"
+                />
+            <argument
+                android:name="index"
+                app:argType="integer"
+                />
+        </action>
+        <action
+            android:id="@+id/toLookInfoFragment"
+            app:destination="@id/lookInfoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="shareId"
+                app:argType="string" />
+            <argument
+                android:name="shareName"
+                app:argType="string" />
+        </action>
+        <action
+            android:id="@+id/toIntegralFragment"
+            app:destination="@id/integralFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="rank"
+                app:argType="me.hgj.jetpackmvvm.demo.data.model.entity.IntegralResponse"
+                app:nullable="true" />
+        </action>
+        <action
+            android:id="@+id/toCollectFragment"
+            app:destination="@id/collectFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/toAddArticleFragment"
+            app:destination="@id/addArticleFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/toArticleFragment"
+            app:destination="@id/articleFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchFragment"
+        android:label="SearchFragment">
+        <action
+            android:id="@+id/toSearchResultFragment"
+            app:destination="@id/searchResultFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" >
+
+            <argument android:name="searchKey" app:argType="string"/>
+
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchResultFragment"
+        android:label="SearchResultFragment"/>
+
+    <fragment
+        android:id="@+id/systemArrFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemArrFragment"
+        android:label="SystemArrFragment"
+        app:destination="@id/systemArrFragment"/>
+    <fragment
+        android:id="@+id/lookInfoFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.lookinfo.LookInfoFragment"
+        android:label="LookInfoFragment" />
+    <fragment
+        android:id="@+id/integralFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralFragment"
+        android:label="IntegralFragment">
+        <action
+            android:id="@+id/toIntegralHistoryFragment"
+            app:destination="@id/integralHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/integralHistoryFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralHistoryFragment"
+        android:label="IntegralHistoryFragment" />
+
+    <fragment
+        android:id="@+id/collectFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectFragment"
+        android:label="CollectFragment" />
+
+    <fragment
+        android:id="@+id/addArticleFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.share.AddArticleFragment"
+        android:label="AddAriticleFragment" />
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.share.ArticleFragment"
+        android:label="ArticleFragment">
+        <action
+            android:id="@+id/toAddArticleFragment"
+            app:destination="@id/addArticleFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <action
+        android:id="@+id/toLookInfoFragment"
+        app:destination="@id/lookInfoFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right">
+        <argument
+            android:name="shareId"
+            app:argType="string" />
+        <argument
+            android:name="shareName"
+            app:argType="string" />
+    </action>
+
+
+</navigation>

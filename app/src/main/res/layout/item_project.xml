@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<me.hgj.jetpackmvvm.widget.alpha.UILinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_project_root"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:foreground="?android:attr/selectableItemBackground"
-    app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="4dp"
-    app:cardElevation="4dp">
+    android:layout_marginHorizontal="12dp"
+    app:ui_shadowElevation="4dp"
+    android:background="@color/white"
+    app:ui_radius="4dp"
+    app:ui_shadowAlpha="0.85"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +26,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_project_author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -34,7 +35,7 @@
                 android:textSize="13dp"
                 tools:text="有何高见" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_project_top"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,7 +47,7 @@
                 android:textSize="10dp"
                 android:text="置顶" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_project_new"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,7 +59,7 @@
                 android:textSize="10dp"
                 android:text="新" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_project_type1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,7 +76,7 @@
                 android:layout_height="1dp"
                 android:layout_weight="1" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_project_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/item_project_imageview"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -101,7 +102,7 @@
                 android:scaleType="centerCrop"
                 tools:srcCompat="@drawable/default_project_img" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_project_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -115,7 +116,7 @@
                 android:textStyle="bold"
                 tools:text="这是一个菜的扣jio的人写的项目" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_project_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -139,7 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_project_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -152,7 +153,7 @@
                 android:textSize="13dp"
                 tools:text="分类·项目" />
 
-            <me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView
+            <me.hgj.jetpackmvvm.demo.app.core.widget.customview.CollectView
                 android:id="@+id/item_project_collect"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
@@ -161,6 +162,6 @@
                 android:layout_marginEnd="8dp" />
         </RelativeLayout>
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</me.hgj.jetpackmvvm.widget.alpha.UILinearLayout>
 
 

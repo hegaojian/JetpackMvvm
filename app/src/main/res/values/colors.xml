@@ -5,16 +5,17 @@
     <color name="colorAccent">#2196F3</color>
     <color name="textHint">#999999</color>
     <color name="white">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
     <color name="black">#000000</color>
     <color name="colorGray">#333</color>
     <color name="colorBlack666">#666</color>
     <color name="colorBlack333">#333</color>
     <color name="windowBackground">#F5F5F5</color>
     <color name="background">#d8d8d8</color>
-    <color name="backgroundeee">#eeeeee</color>
-    <color name="backgrounGrey">#CCCCCC</color>
-    <color name="texttipColor">#a0a0a0</color>
-    <color name="diverColoe">#cecece</color>
+    <color name="backgroundEee">#eeeeee</color>
+    <color name="backgroundGrey">#CCCCCC</color>
+    <color name="textTipColor">#a0a0a0</color>
+    <color name="diverColor">#cecece</color>
     <color name="accent">#E91E63</color>
     <color name="chinaHoliDay">#e10015</color>
 

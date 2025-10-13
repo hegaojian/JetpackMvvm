@@ -6,50 +6,93 @@ import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.view.View
 import android.widget.ImageView
-import org.jetbrains.annotations.NotNull
 
 /**
- * 设置view显示
+ * 作者　: hegaojian
+ * 时间　: 2020/11/18
+ * 描述　:
  */
-fun View.visible() {
-    visibility = View.VISIBLE
-}
-
 
 /**
- * 设置view占位隐藏
+ * View显示
  */
-fun View.invisible() {
-    visibility = View.INVISIBLE
+fun View?.visible() {
+    this?.visibility = View.VISIBLE
 }
 
 /**
- * 根据条件设置view显示隐藏 为true 显示，为false 隐藏
+ * View隐藏
  */
-fun View.visibleOrGone(flag:Boolean) {
-    visibility = if(flag){
-        View.VISIBLE
-    }else{
-        View.GONE
+fun View?.gone() {
+    this?.visibility = View.GONE
+}
+
+/**
+ * View占位隐藏
+ */
+fun View?.inVisible() {
+    this?.visibility = View.INVISIBLE
+}
+
+/**
+ * View是否显示
+ */
+fun View?.isVisible(): Boolean {
+    return this?.visibility == View.VISIBLE
+}
+
+/**
+ * View是否隐藏
+ */
+fun View?.isGone(): Boolean {
+    return this?.visibility == View.GONE
+}
+
+/**
+ * View是否占位隐藏
+ */
+fun View?.isInVisible(): Boolean {
+    return this?.visibility == View.INVISIBLE
+}
+
+/**
+ * @param visible 如果为true 该View显示 否则隐藏
+ */
+fun View?.visibleOrGone(visible: Boolean) {
+    if (visible) {
+        this.visible()
+    } else {
+        this.gone()
     }
 }
 
 /**
- * 根据条件设置view显示隐藏 为true 显示，为false 隐藏
+ * @param visible 如果为true 该View显示 否则占位隐藏
  */
-fun View.visibleOrInvisible(flag:Boolean) {
-    visibility = if(flag){
-        View.VISIBLE
-    }else{
-        View.INVISIBLE
+fun View?.visibleOrInvisible(visible: Boolean) {
+    if (visible) {
+        this.visible()
+    } else {
+        this.inVisible()
     }
 }
 
 /**
- * 设置view隐藏
+ * 显示传入的view集合
  */
-fun View.gone() {
-    visibility = View.GONE
+fun visibleViews(vararg views: View?) {
+    views.forEach {
+        it?.visible()
+    }
+}
+
+/**
+ * 隐藏传入的view集合
+ */
+fun goneViews(vararg views: View?) {
+    views.forEach {
+        it?.gone()
+    }
 }
 
 /**
@@ -81,7 +124,7 @@ fun View.toBitmap(scale: Float = 1f, config: Bitmap.Config = Bitmap.Config.ARGB_
     return bitmap
 }
 
-fun createBitmapSafely(width: Int, height: Int, config: Bitmap.Config, retryCount: Int): Bitmap? {
+private fun createBitmapSafely(width: Int, height: Int, config: Bitmap.Config, retryCount: Int): Bitmap? {
     try {
         return Bitmap.createBitmap(width, height, config)
     } catch (e: OutOfMemoryError) {
@@ -95,28 +138,4 @@ fun createBitmapSafely(width: Int, height: Int, config: Bitmap.Config, retryCoun
 }
 
 
-/**
- * 防止重复点击事件 默认0.5秒内不可重复点击
- * @param interval 时间间隔 默认0.5秒
- * @param action 执行方法
- */
-var lastClickTime = 0L
-fun View.clickNoRepeat(interval: Long = 500, action: (view: View) -> Unit) {
-    setOnClickListener {
-        val currentTime = System.currentTimeMillis()
-        if (lastClickTime != 0L && (currentTime - lastClickTime < interval)) {
-            return@setOnClickListener
-        }
-        lastClickTime = currentTime
-        action(it)
-    }
-}
 
-
-fun Any?.notNull(notNullAction:(value:Any) ->Unit,nullAction1:() ->Unit){
-    if(this!=null){
-        notNullAction.invoke(this)
-    }else{
-        nullAction1.invoke()
-    }
-}

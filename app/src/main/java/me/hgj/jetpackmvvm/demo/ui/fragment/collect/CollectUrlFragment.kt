@@ -1,134 +1,96 @@
 package me.hgj.jetpackmvvm.demo.ui.fragment.collect
 
-import android.os.Bundle
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.blankj.utilcode.util.ConvertUtils
-import com.kingja.loadsir.core.LoadService
-import kotlinx.android.synthetic.main.include_list.*
-import kotlinx.android.synthetic.main.include_recyclerview.*
+import androidx.lifecycle.LiveData
+import androidx.recyclerview.widget.RecyclerView
+import com.drake.brv.utils.bindingAdapter
+import com.drake.brv.utils.setup
+import me.hgj.jetpackmvvm.core.data.ApiResult
+import me.hgj.jetpackmvvm.core.data.obs
+import me.hgj.jetpackmvvm.demo.MainNavigationDirections
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
-import me.hgj.jetpackmvvm.demo.app.eventViewModel
-import me.hgj.jetpackmvvm.demo.app.ext.*
-import me.hgj.jetpackmvvm.demo.app.weight.recyclerview.SpaceItemDecoration
-import me.hgj.jetpackmvvm.demo.databinding.IncludeListBinding
-import me.hgj.jetpackmvvm.demo.ui.adapter.CollectUrlAdapter
-import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestCollectViewModel
-import me.hgj.jetpackmvvm.ext.nav
-import me.hgj.jetpackmvvm.ext.navigateAction
+import me.hgj.jetpackmvvm.demo.app.core.base.BaseListFragment
+import me.hgj.jetpackmvvm.demo.app.event.EventViewModel
+import me.hgj.jetpackmvvm.demo.app.core.ext.nav
+import me.hgj.jetpackmvvm.demo.app.core.widget.customview.CollectView
+import me.hgj.jetpackmvvm.demo.data.model.entity.CollectUrlResponse
+import me.hgj.jetpackmvvm.demo.databinding.ItemCollecturlBinding
+import me.hgj.jetpackmvvm.demo.data.vm.CollectViewModel
+import me.hgj.jetpackmvvm.demo.ui.activity.WebActivity
+import me.hgj.jetpackmvvm.ext.util.toast
+import me.hgj.jetpackmvvm.ext.view.divider
+import me.hgj.jetpackmvvm.ext.view.vertical
+import me.hgj.jetpackmvvm.util.decoration.DividerOrientation
 
 /**
  * 作者　: hegaojian
  * 时间　: 2020/3/10
- * 描述　: 收藏的网址集合Fragment
+ * 描述　: 收藏的文章集合Fragment
  */
-class CollectUrlFragment : BaseFragment<RequestCollectViewModel, IncludeListBinding>() {
+class CollectUrlFragment : BaseListFragment<CollectViewModel, CollectUrlResponse>() {
 
-    //界面状态管理者
-    private lateinit var loadsir: LoadService<Any>
-
-    private val articleAdapter: CollectUrlAdapter by lazy { CollectUrlAdapter(arrayListOf()) }
-
-    override fun initView(savedInstanceState: Bundle?) {
-        //状态页配置
-        loadsir = loadServiceInit(swipeRefresh) {
-            //点击重试时触发的操作
-            loadsir.showLoading()
-            mViewModel.getCollectUrlData()
-
-        }
-        //初始化recyclerView
-        recyclerView.init(LinearLayoutManager(context), articleAdapter).let {
-            it.addItemDecoration(SpaceItemDecoration(0, ConvertUtils.dp2px(8f)))
-            //初始化FloatingActionButton
-            it.initFloatBtn(floatbtn)
-        }
-        //初始化 SwipeRefreshLayout
-        swipeRefresh.init {
-            //触发刷新监听时请求数据
-            mViewModel.getCollectUrlData()
-        }
-        articleAdapter.run {
-            setCollectClick { item, v, position ->
-                if (v.isChecked) {
-                    mViewModel.uncollectUrl(item.id)
-                } else {
-                    mViewModel.collectUrl(item.name, item.link)
-                }
-            }
-            setOnItemClickListener { _, view, position ->
-                nav().navigateAction(R.id.action_to_webFragment, Bundle().apply {
-                    putParcelable("collectUrl", articleAdapter.data[position])
-                })
-            }
-        }
+    override fun provideRequest(
+        isRefresh: Boolean,
+        loadingXml: Boolean
+    ): LiveData<ApiResult<ArrayList<CollectUrlResponse>>> {
+        return mViewModel.getCollectUrlData(refresh = isRefresh, loadingXml = loadingXml)
     }
 
-    override fun lazyLoadData() {
-        //设置界面 加载中
-        loadsir.showLoading()
-        mViewModel.getCollectUrlData()
+    override fun setupAdapter(rv: RecyclerView) {
+        rv.vertical().divider {
+            includeVisible = true
+            setDivider(8, true)
+            orientation = DividerOrientation.VERTICAL
+        }.setup {
+            onCreate {
+                //在这里设置view的监听方法
+                getBindingOrNull<ItemCollecturlBinding>()?.run {
+                    itemCollectUrlCollect.setOnCollectViewClickListener(object :
+                        CollectView.OnCollectViewClickListener {
+                        override fun onClick(v: CollectView) {
+                            val model = getModel<CollectUrlResponse>()
+                            mViewModel.unCollectUrl(model.id).obs(this@CollectUrlFragment){
+                                onSuccess {
+                                    this@setup.mutable.removeAt(modelPosition)
+                                    this@setup.notifyItemRemoved(modelPosition)
+                                    if(this@setup.mutable.isEmpty()) {
+                                        onLoadRetry()
+                                    }
+                                }
+                                onError {
+                                    v.isChecked = true
+                                    it.msg.toast()
+                                }
+                            }
+                        }
+                    })
+                }
+            }
+            addType<CollectUrlResponse>(R.layout.item_collecturl)
+            onBind {
+                val model = getModel<CollectUrlResponse>()
+                val binding = getBinding<ItemCollecturlBinding>()
+                binding.itemCollectUrlName.text = model.name
+                binding.itemCollectUrlLink.text = model.link
+                binding.itemCollectUrlCollect.isChecked = true
+            }
+            onClick(R.id.item_collect_url_root) {
+                WebActivity.start(collectUrl = getModel<CollectUrlResponse>())
+            }
+        }
     }
 
     override fun createObserver() {
-        mViewModel.urlDataState.observe(viewLifecycleOwner, Observer {
-            swipeRefresh.isRefreshing = false
-            recyclerView.loadMoreFinish(it.isEmpty, it.hasMore)
-            if (it.isSuccess) {
-                //成功
-                when {
-                    //第一页并没有数据 显示空布局界面
-                    it.isEmpty -> {
-                        loadsir.showEmpty()
-                    }
-                    else -> {
-                        loadsir.showSuccess()
-                        articleAdapter.setList(it.listData)
-                    }
-                }
-            } else {
-                //失败
-                loadsir.showError(it.errMessage)
-            }
-        })
-        mViewModel.collectUrlUiState.observe(viewLifecycleOwner, Observer {
-            if (it.isSuccess) {
-                for (index in articleAdapter.data.indices) {
-                    if (articleAdapter.data[index].id == it.id) {
-                        articleAdapter.remove(index)
-                        if (articleAdapter.data.size == 0) {
-                            loadsir.showEmpty()
-                        }
-                        return@Observer
-                    }
-                }
-            } else {
-                showMessage(it.errorMsg)
-                for (index in articleAdapter.data.indices) {
-                    if (articleAdapter.data[index].id == it.id) {
-                        articleAdapter.notifyItemChanged(index)
-                        break
+        EventViewModel.collectEvent.observe(viewLifecycleOwner) {
+            val models = mBind.rv.bindingAdapter.models
+            models?.forEachIndexed { index, item ->
+                if (item is CollectUrlResponse && item.id == it.id) {
+                    if (!it.collect) {
+                        mBind.rv.bindingAdapter.notifyItemChanged(index)
+                        return@observe
                     }
                 }
             }
-        })
-        eventViewModel.run {
-            //监听全局的收藏信息 收藏的Id跟本列表的数据id匹配则 需要删除他 否则则请求最新收藏数据
-            collectEvent.observeInFragment(this@CollectUrlFragment, Observer {
-                for (index in articleAdapter.data.indices) {
-                    if (articleAdapter.data[index].id == it.id) {
-                        articleAdapter.data.removeAt(index)
-                        articleAdapter.notifyItemChanged(index)
-                        if (articleAdapter.data.size == 0) {
-                            loadsir.showEmpty()
-                        }
-                        return@Observer
-                    }
-                }
-                mViewModel.getCollectUrlData()
-            })
+            onLoadRetry()
         }
     }
-
 }

@@ -2,10 +2,5 @@
     package="me.hgj.jetpackmvvm">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <application>
-        <provider
-            android:authorities="${applicationId}.KtxInstaller"
-            android:name="me.hgj.jetpackmvvm.base.Ktx"
-            android:exported="false"/>
-    </application>
+
 </manifest>

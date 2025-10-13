@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.MainActivity">
 
-    <LinearLayout
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/mainViewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ui.activity.MainActivity">
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:id="@+id/mainViewpager"
-            />
-        <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
-            android:id="@+id/mainBottom"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/white"
-            app:menu="@menu/menu_navigation"
-            app:itemIconTint="@color/bottom_selector"
-            app:itemTextColor="@color/bottom_selector"
-            app:itemIconSize="20dp"
-            />
-    </LinearLayout>
-</layout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/mainNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="5dp"
+        app:itemIconSize="16dp"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@drawable/bottom_selector"
+        app:itemTextAppearanceActive="@style/bottom_tab_title_active"
+        app:itemTextAppearanceInactive="@style/bottom_tab_title_inactive"
+        app:itemTextColor="@drawable/bottom_selector"
+        app:menu="@menu/menu_navigation" />
+</LinearLayout>

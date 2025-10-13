@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="helperColorWhite">#FFFFFFFF</color>
+    <color name="helperColorBlack">#000000</color>
+    <color name="helperColorBlackGray3">#333333</color>
+    <color name="helperColorBlackGray6">#666666</color>
+    <color name="helperColorBlack80">#80000000</color>
+    <color name="config_color_separator">#f2f2f2</color>
+    <color name="default_shadow_color">#2a000000</color>
+    <color name="default_shadow_back_color">#FFFFFF</color>
+</resources>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="me.hgj.jetpackmvvm.demo">
+    package="me.hgj.jetpackmvvm.demo"
+    tools:ignore="DiscouragedApi">
 
     <uses-sdk tools:overrideLibrary="me.hgj.jetpackmvvm" />
 
@@ -16,9 +17,10 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning,LockedOrientationActivity">
         <activity
-            android:name=".ui.activity.WelcomeActivity"
+            android:name=".ui.activity.SplashActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/FullscreenThemse">
+            android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -27,21 +29,33 @@
         <activity
             android:name=".ui.activity.MainActivity"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustResize"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.activity.ErrorActivity"
             android:label="错误界面"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.TestActivity"
+            android:name=".ui.activity.LoginActivity"
+            android:label="登录"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.tencent.bugly.beta.ui.BetaActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|locale"
-            android:theme="@android:style/Theme.Translucent" />
+            android:name=".ui.activity.SettingActivity"
+            android:label="设置"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.RegisterActivity"
+            android:label="注册"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.WebActivity"
+            android:label="网页"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
 
         <!-- Arms 配置 -->
         <meta-data

@@ -16,10 +16,6 @@
 -optimizations !code/simplification/artithmetic,!field/*,!class/merging/*
 
 
--keep class me.hgj.jetpackmvvm.demo.data.**{*;}
-
-################common###############
-
  #实体类不参与混淆
 -keep class * implements android.os.Parcelable {
   public static final android.os.Parcelable$Creator *;
@@ -101,13 +97,9 @@
     ImageView mGoButton;
 }
 
+#实体类
+-keep class me.hgj.jetpackmvvm.demo.data.model.**{*;}
 
-################ ViewBinding & DataBinding ###############
--keepclassmembers class * implements androidx.viewbinding.ViewBinding {
-  public static * inflate(android.view.LayoutInflater);
-  public static * inflate(android.view.LayoutInflater, android.view.ViewGroup, boolean);
-  public static * bind(android.view.View);
-}
 
 
 

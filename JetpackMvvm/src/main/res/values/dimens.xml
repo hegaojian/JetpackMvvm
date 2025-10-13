@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingDefaultResource">
+
+    <dimen name="helper.dp.0">0dp</dimen>
+    <dimen name="helper.dp.4">4dp</dimen>
+    <dimen name="helper.dp.12">12dp</dimen>
+    <dimen name="helper.dp.13">13dp</dimen>
+    <dimen name="helper.dp.14">14dp</dimen>
+    <dimen name="helper.dp.24">24dp</dimen>
+    <dimen name="helper.dp.64">64dp</dimen>
+    <dimen name="helper.dp.80">80dp</dimen>
+
+</resources>

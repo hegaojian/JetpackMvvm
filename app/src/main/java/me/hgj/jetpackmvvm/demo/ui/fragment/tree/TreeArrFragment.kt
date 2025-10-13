@@ -2,19 +2,18 @@ package me.hgj.jetpackmvvm.demo.ui.fragment.tree
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import kotlinx.android.synthetic.main.include_viewpager.*
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.app.appViewModel
-import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
-import me.hgj.jetpackmvvm.demo.app.ext.bindViewPager2
-import me.hgj.jetpackmvvm.demo.app.ext.init
-import me.hgj.jetpackmvvm.demo.app.ext.setUiTheme
-import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
+import me.hgj.jetpackmvvm.demo.app.core.base.BaseFragment
+import me.hgj.jetpackmvvm.demo.app.core.ext.bindViewPager2
+import me.hgj.jetpackmvvm.demo.app.core.ext.init
+import me.hgj.jetpackmvvm.demo.app.core.ext.nav
+import me.hgj.jetpackmvvm.demo.app.core.util.UserManager
 import me.hgj.jetpackmvvm.demo.databinding.FragmentViewpagerBinding
-import me.hgj.jetpackmvvm.demo.viewmodel.state.TreeViewModel
-import me.hgj.jetpackmvvm.ext.nav
-import me.hgj.jetpackmvvm.ext.navigateAction
+import me.hgj.jetpackmvvm.demo.ui.fragment.MainFragmentDirections
+import me.hgj.jetpackmvvm.demo.data.vm.TreeViewModel
+import me.hgj.jetpackmvvm.demo.ui.activity.LoginActivity
+import me.hgj.jetpackmvvm.ext.util.intent.openActivity
+import me.hgj.jetpackmvvm.ext.util.statusPadding
 
 /**
  * 作者　: hegaojian
@@ -22,6 +21,15 @@ import me.hgj.jetpackmvvm.ext.navigateAction
  * 描述　: 广场模块父Fragment管理四个子fragment
  */
 class TreeArrFragment : BaseFragment<TreeViewModel, FragmentViewpagerBinding>() {
+
+    companion object{
+        fun newInstance(): TreeArrFragment{
+            val args = Bundle()
+            val fragment = TreeArrFragment()
+            fragment.arguments = args
+            return fragment
+        }
+    }
 
     var titleData = arrayListOf("广场", "每日一问", "体系", "导航")
 
@@ -35,44 +43,34 @@ class TreeArrFragment : BaseFragment<TreeViewModel, FragmentViewpagerBinding>() 
     }
 
     override fun initView(savedInstanceState: Bundle?)  {
-        //初始化时设置顶部主题颜色
-        appViewModel.appColor.value?.let { setUiTheme(it, viewpager_linear) }
-        include_viewpager_toolbar.run {
+        mBind.includeLayout.viewpagerLinear.statusPadding()
+        mBind.includeLayout.includeViewpagerToolbar.run {
             inflateMenu(R.menu.todo_menu)
             setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.todo_add -> {
-                        if(CacheUtil.isLogin()){
-                           nav().navigateAction(R.id.action_mainfragment_to_addAriticleFragment)
+                        if(UserManager.isLoggedIn){
+                           nav().navigate(MainFragmentDirections.toAddArticleFragment())
                         }else{
-                            nav().navigateAction(R.id.action_to_loginFragment)
+                            openActivity<LoginActivity>()
                         }
                     }
                 }
                 true
             }
         }
-    }
-
-    override fun lazyLoadData() {
-        //初始化viewpager2
-        view_pager.init(this, fragments).offscreenPageLimit = fragments.size
+        //初始化viewpager
+        mBind.includeLayout.viewPager.init(this, fragments).offscreenPageLimit = fragments.size
         //初始化 magic_indicator
-        magic_indicator.bindViewPager2(view_pager, mStringList = titleData) {
+        mBind.includeLayout.magicIndicator.bindViewPager2(mBind.includeLayout.viewPager, mStringList = titleData) {
             if (it != 0) {
-                include_viewpager_toolbar.menu.clear()
+                mBind.includeLayout.includeViewpagerToolbar.menu.clear()
             } else {
-                include_viewpager_toolbar.menu.hasVisibleItems().let { flag ->
-                    if (!flag) include_viewpager_toolbar.inflateMenu(R.menu.todo_menu)
+                mBind.includeLayout.includeViewpagerToolbar.menu.hasVisibleItems().let { flag ->
+                    if (!flag) mBind.includeLayout.includeViewpagerToolbar.inflateMenu(R.menu.todo_menu)
                 }
             }
         }
-    }
-
-    override fun createObserver() {
-        appViewModel.appColor.observeInFragment(this, Observer {
-            setUiTheme(it, viewpager_linear)
-        })
     }
 
 }

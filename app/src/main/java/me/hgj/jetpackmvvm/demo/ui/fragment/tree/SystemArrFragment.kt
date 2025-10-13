@@ -2,20 +2,17 @@ package me.hgj.jetpackmvvm.demo.ui.fragment.tree
 
 import android.os.Bundle
 import android.view.Gravity
-import android.widget.FrameLayout
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.include_toolbar.*
-import kotlinx.android.synthetic.main.include_viewpager.*
-import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.app.appViewModel
-import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
-import me.hgj.jetpackmvvm.demo.app.ext.bindViewPager2
-import me.hgj.jetpackmvvm.demo.app.ext.init
-import me.hgj.jetpackmvvm.demo.app.ext.initClose
-import me.hgj.jetpackmvvm.demo.data.model.bean.SystemResponse
+import me.hgj.jetpackmvvm.demo.app.core.base.BaseFragment
+import me.hgj.jetpackmvvm.demo.app.core.ext.bindViewPager2
+import me.hgj.jetpackmvvm.demo.app.core.ext.init
+import me.hgj.jetpackmvvm.demo.app.core.ext.initClose
+import me.hgj.jetpackmvvm.demo.app.core.ext.nav
+import me.hgj.jetpackmvvm.demo.data.model.entity.SystemResponse
 import me.hgj.jetpackmvvm.demo.databinding.FragmentSystemBinding
-import me.hgj.jetpackmvvm.demo.viewmodel.state.TreeViewModel
-import me.hgj.jetpackmvvm.ext.nav
+import me.hgj.jetpackmvvm.demo.data.vm.TreeViewModel
+import me.hgj.jetpackmvvm.ext.util.intent.bundle
 
 /**
  * 作者　: hegaojian
@@ -24,24 +21,20 @@ import me.hgj.jetpackmvvm.ext.nav
  */
 class SystemArrFragment : BaseFragment<TreeViewModel, FragmentSystemBinding>() {
 
-    lateinit var data: SystemResponse
+    override val showTitle = true
 
-    var index = 0
+    val data: SystemResponse by bundle()
+
+    val index by bundle(0)
 
     private var fragments: ArrayList<Fragment> = arrayListOf()
 
     override fun initView(savedInstanceState: Bundle?)  {
-        arguments?.let {
-            data = it.getParcelable("data")!!
-            index = it.getInt("index")
-        }
-        toolbar.initClose(data.name) {
+        baseBinding.includeToolbar.toolbar.initClose(data.name) {
             nav().navigateUp()
         }
-        //初始化时设置顶部主题颜色
-        appViewModel.appColor.value?.let { viewpager_linear.setBackgroundColor(it) }
         //设置栏目标题居左显示
-        (magic_indicator.layoutParams as FrameLayout.LayoutParams).gravity = Gravity.LEFT
+        (mBind.includeLayout.viewPager.layoutParams as LinearLayout.LayoutParams).gravity = Gravity.START
 
     }
 
@@ -50,20 +43,10 @@ class SystemArrFragment : BaseFragment<TreeViewModel, FragmentSystemBinding>() {
             fragments.add(SystemChildFragment.newInstance(it.id))
         }
         //初始化viewpager2
-        view_pager.init(this, fragments)
+        mBind.includeLayout.viewPager.init(this, fragments)
         //初始化 magic_indicator
-        magic_indicator.bindViewPager2(view_pager, data.children.map { it.name })
-
-        view_pager.offscreenPageLimit = fragments.size
-
-        view_pager.postDelayed({
-            view_pager.currentItem = index
-        },100)
-
-    }
-
-    override fun createObserver() {
-
+        mBind.includeLayout.magicIndicator.bindViewPager2(mBind.includeLayout.viewPager, data.children.map { it.name })
+        mBind.includeLayout.viewPager.setCurrentItem(index,false)
     }
 
 }

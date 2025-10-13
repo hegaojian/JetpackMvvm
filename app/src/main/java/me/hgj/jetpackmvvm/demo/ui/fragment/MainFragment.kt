@@ -1,46 +1,36 @@
 package me.hgj.jetpackmvvm.demo.ui.fragment
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
-import kotlinx.android.synthetic.main.fragment_main.*
+import me.hgj.jetpackmvvm.base.vm.BaseViewModel
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.app.appViewModel
-import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
-import me.hgj.jetpackmvvm.demo.app.ext.init
-import me.hgj.jetpackmvvm.demo.app.ext.initMain
-import me.hgj.jetpackmvvm.demo.app.ext.interceptLongClick
-import me.hgj.jetpackmvvm.demo.app.ext.setUiTheme
+import me.hgj.jetpackmvvm.demo.app.core.base.BaseFragment
 import me.hgj.jetpackmvvm.demo.databinding.FragmentMainBinding
-import me.hgj.jetpackmvvm.demo.viewmodel.state.MainViewModel
-import me.hgj.jetpackmvvm.ext.nav
-import me.hgj.jetpackmvvm.ext.util.loge
+import me.hgj.jetpackmvvm.demo.ui.adapter.MainAdapter
 
 /**
  * 时间　: 2019/12/27
  * 作者　: hegaojian
- * 描述　:项目主页Fragment
+ * 描述　: 项目主页Fragment
  */
-class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>() {
+class MainFragment : BaseFragment<BaseViewModel, FragmentMainBinding>() {
 
     override fun initView(savedInstanceState: Bundle?) {
-        //初始化viewpager2
-        mainViewpager.initMain(this)
-        //初始化 bottomBar
-        mainBottom.init{
-            when (it) {
-                R.id.menu_main -> mainViewpager.setCurrentItem(0, false)
-                R.id.menu_project -> mainViewpager.setCurrentItem(1, false)
-                R.id.menu_system -> mainViewpager.setCurrentItem(2, false)
-                R.id.menu_public -> mainViewpager.setCurrentItem(3, false)
-                R.id.menu_me -> mainViewpager.setCurrentItem(4, false)
+        //设置适配器
+        mBind.mainViewPager.adapter = MainAdapter(this)
+        //设置缓存页面数量
+        mBind.mainViewPager.offscreenPageLimit = mBind.mainViewPager.adapter!!.itemCount
+        //禁止滑动
+        mBind.mainViewPager.isUserInputEnabled = false
+        //设置底部导航栏选择事件
+        mBind.mainNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.menu_main -> mBind.mainViewPager.setCurrentItem(0, false)
+                R.id.menu_project -> mBind.mainViewPager.setCurrentItem(1, false)
+                R.id.menu_system -> mBind.mainViewPager.setCurrentItem(2, false)
+                R.id.menu_public -> mBind.mainViewPager.setCurrentItem(3, false)
+                R.id.menu_me -> mBind.mainViewPager.setCurrentItem(4, false)
             }
+            true
         }
-        mainBottom.interceptLongClick(R.id.menu_main,R.id.menu_project,R.id.menu_system,R.id.menu_public,R.id.menu_me)
-    }
-
-    override fun createObserver() {
-        appViewModel.appColor.observeInFragment(this, Observer {
-            setUiTheme(it, mainBottom)
-        })
     }
 }

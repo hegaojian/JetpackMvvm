@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/history_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
@@ -9,7 +10,7 @@
     android:orientation="horizontal"
     android:padding="12dp">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/item_history_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -18,7 +19,7 @@
         android:textSize="15dp"
         tools:text="反编译" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/item_history_del"
         android:layout_width="16dp"
         android:layout_height="16dp"

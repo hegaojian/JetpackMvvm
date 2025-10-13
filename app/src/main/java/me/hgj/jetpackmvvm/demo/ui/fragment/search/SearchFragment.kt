@@ -3,37 +3,28 @@ package me.hgj.jetpackmvvm.demo.ui.fragment.search
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.WhichButton
-import com.afollestad.materialdialogs.actions.getActionButton
-import com.afollestad.materialdialogs.lifecycle.lifecycleOwner
-import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexboxLayoutManager
-import com.google.android.flexbox.JustifyContent
-import kotlinx.android.synthetic.main.fragment_search.*
-import kotlinx.android.synthetic.main.include_toolbar.*
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
+import com.drake.brv.utils.bindingAdapter
+import com.drake.brv.utils.setup
+import me.hgj.jetpackmvvm.core.data.obs
 import me.hgj.jetpackmvvm.demo.R
-import me.hgj.jetpackmvvm.demo.app.appViewModel
-import me.hgj.jetpackmvvm.demo.app.base.BaseFragment
-import me.hgj.jetpackmvvm.demo.app.ext.init
-import me.hgj.jetpackmvvm.demo.app.ext.initClose
-import me.hgj.jetpackmvvm.demo.app.ext.setUiTheme
-import me.hgj.jetpackmvvm.demo.app.util.CacheUtil
-import me.hgj.jetpackmvvm.demo.app.util.SettingUtil
+import me.hgj.jetpackmvvm.demo.app.core.base.BaseFragment
+import me.hgj.jetpackmvvm.demo.app.core.ext.initClose
+import me.hgj.jetpackmvvm.demo.app.core.ext.nav
+import me.hgj.jetpackmvvm.demo.app.core.util.LocalDataUtil
+import me.hgj.jetpackmvvm.demo.data.model.entity.SearchResponse
+import me.hgj.jetpackmvvm.demo.databinding.FlowLayoutBinding
 import me.hgj.jetpackmvvm.demo.databinding.FragmentSearchBinding
-import me.hgj.jetpackmvvm.demo.ui.adapter.SearcHistoryAdapter
-import me.hgj.jetpackmvvm.demo.ui.adapter.SearcHotAdapter
-import me.hgj.jetpackmvvm.demo.viewmodel.request.RequestSearchViewModel
-import me.hgj.jetpackmvvm.demo.viewmodel.state.SearchViewModel
-import me.hgj.jetpackmvvm.ext.nav
-import me.hgj.jetpackmvvm.ext.navigateAction
-import me.hgj.jetpackmvvm.ext.parseState
-import me.hgj.jetpackmvvm.ext.util.toJson
+import me.hgj.jetpackmvvm.demo.databinding.ItemHistoryBinding
+import me.hgj.jetpackmvvm.demo.data.vm.SearchViewModel
+import me.hgj.jetpackmvvm.ext.util.clickNoRepeat
+import me.hgj.jetpackmvvm.ext.view.flex
+import me.hgj.jetpackmvvm.ext.view.showDialogMessage
+import me.hgj.jetpackmvvm.ext.view.vertical
 
 /**
  * 作者　: hegaojian
@@ -43,148 +34,88 @@ import me.hgj.jetpackmvvm.ext.util.toJson
 
 class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
 
-    private val historyAdapter: SearcHistoryAdapter by lazy { SearcHistoryAdapter(arrayListOf()) }
-
-    private val hotAdapter: SearcHotAdapter by lazy { SearcHotAdapter(arrayListOf()) }
-
-    private val requestSearchViewModel: RequestSearchViewModel by viewModels()
+    override val showTitle = true
 
     override fun initView(savedInstanceState: Bundle?) {
-        setMenu()
-        appViewModel.appColor.value?.let { setUiTheme(it, search_text1, search_text2) }
-        //初始化搜搜历史Recyclerview
-        search_historyRv.init(LinearLayoutManager(context), historyAdapter, false)
-        //初始化热门Recyclerview
-        val layoutManager = FlexboxLayoutManager(context)
-        //方向 主轴为水平方向，起点在左端
-        layoutManager.flexDirection = FlexDirection.ROW
-        //左对齐
-        layoutManager.justifyContent = JustifyContent.FLEX_START
-        search_hotRv.init(layoutManager, hotAdapter, false)
+        initToolbar()
+        setupMenu()
+        initHot()
+        initHistory()
+    }
 
-        historyAdapter.run {
-            setOnItemClickListener { adapter, view, position ->
-                val queryStr = historyAdapter.data[position]
-                updateKey(queryStr)
-                nav().navigateAction(R.id.action_searchFragment_to_searchResultFragment,
-                    Bundle().apply {
-                        putString("searchKey", queryStr)
-                    }
-                )
-            }
-            addChildClickViewIds(R.id.item_history_del)
-            setOnItemChildClickListener { adapter, view, position ->
-                when (view.id) {
-                    R.id.item_history_del -> {
-                        requestSearchViewModel.historyData.value?.let {
-                            it.removeAt(position)
-                            requestSearchViewModel.historyData.value= it
-                        }
-                    }
+    override fun onBindViewClick() {
+        mBind.searchClear.clickNoRepeat {
+            showDialogMessage(
+                "确定清空历史搜索吗?",
+                positiveButtonText = "清空",
+                negativeButtonText = "取消",
+                positiveAction = {
+                    mViewModel.historyCacheData.clear()
+                    mViewModel.updateHistoryCache()
+                    mBind.searchHistoryRv.bindingAdapter.models = arrayListOf()
                 }
-            }
-        }
-
-        hotAdapter.run {
-            setOnItemClickListener { adapter, view, position ->
-                val queryStr = hotAdapter.data[position].name
-                updateKey(queryStr)
-                nav().navigateAction(R.id.action_searchFragment_to_searchResultFragment,
-                    Bundle().apply {
-                        putString("searchKey", queryStr)
-                    }
-                )
-            }
-        }
-
-        search_clear.setOnClickListener {
-            activity?.let {
-                MaterialDialog(it)
-                    .cancelable(false)
-                    .lifecycleOwner(this)
-                    .show {
-                        title(text = "温馨提示")
-                        message(text = "确定清空吗?")
-                        negativeButton(text = "取消")
-                        positiveButton(text = "清空") {
-                            //清空
-                            requestSearchViewModel.historyData.value = arrayListOf()
-                        }
-                        getActionButton(WhichButton.POSITIVE).updateTextColor(
-                            SettingUtil.getColor(
-                                it
-                            )
-                        )
-                        getActionButton(WhichButton.NEGATIVE).updateTextColor(
-                            SettingUtil.getColor(
-                                it
-                            )
-                        )
-                    }
-            }
+            )
         }
     }
 
-    override fun createObserver() {
-        requestSearchViewModel.run {
-            //监听热门数据变化
-            hotData.observe(viewLifecycleOwner, Observer {resultState->
-                parseState(resultState, {
-                    hotAdapter.setList(it)
-                })
-            })
-            //监听历史数据变化
-            historyData.observe(viewLifecycleOwner, Observer {
-                historyAdapter.data = it
-                historyAdapter.notifyDataSetChanged()
-                CacheUtil.setSearchHistoryData(it.toJson())
+    private fun initHistory() {
+        mBind.searchHistoryRv.vertical().setup {
+            addType<String>(R.layout.item_history)
+            onBind {
+                val model = getModel<String>()
+                val binding = getBinding<ItemHistoryBinding>()
+                binding.itemHistoryText.text = model
+            }
+            R.id.item_history_del.onClick {
+                this@setup.notifyItemRemoved(modelPosition)
+                mViewModel.historyCacheData.remove(getModel())
+                mViewModel.updateHistoryCache()
+            }
+            R.id.history_root.onClick {
+                val key = getModel<String>()
+                updateKey(key)
+                nav().navigate(SearchFragmentDirections.toSearchResultFragment(key))
+            }
+        }.models = mViewModel.historyCacheData
+    }
 
-            })
+    private fun initHot() {
+        mBind.searchHotRv.flex().setup {
+            addType<SearchResponse>(R.layout.flow_layout)
+            onBind {
+                val model = getModel<SearchResponse>()
+                val binding = getBinding<FlowLayoutBinding>()
+                binding.flowTag.text = model.name
+                binding.flowTag.setTextColor(LocalDataUtil.randomColor())
+            }
+            R.id.flow_tag.onClick {
+                val key = getModel<SearchResponse>().name
+                updateKey(key)
+                nav().navigate(SearchFragmentDirections.toSearchResultFragment(key))
+            }
         }
     }
 
     override fun lazyLoadData() {
-        //获取历史搜索词数据
-        requestSearchViewModel.getHistoryData()
-        //获取热门数据
-        requestSearchViewModel.getHotData()
+        onLoadRetry()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_search, menu)
-        val searchView = menu.findItem(R.id.action_search)?.actionView as SearchView
-        searchView.run {
-            maxWidth = Integer.MAX_VALUE
-            onActionViewExpanded()
-            queryHint = "输入关键字搜索"
-            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                //searchview的监听
-                override fun onQueryTextSubmit(query: String?): Boolean {
-                    //当点击搜索时 输入法的搜索，和右边的搜索都会触发
-                    query?.let { queryStr ->
-                        updateKey(queryStr)
-                        nav().navigateAction(R.id.action_searchFragment_to_searchResultFragment,
-                            Bundle().apply {
-                                putString("searchKey", queryStr)
-                            }
-                        )
-                    }
-                    return false
-                }
-
-                override fun onQueryTextChange(newText: String?): Boolean {
-                    return false
-                }
-            })
-            isSubmitButtonEnabled = true //右边是否展示搜索图标
-            val field = javaClass.getDeclaredField("mGoButton")
-            field.run {
-                isAccessible = true
-                val mGoButton = get(searchView) as ImageView
-                mGoButton.setImageResource(R.drawable.ic_search)
+    override fun onLoadRetry() {
+        mViewModel.getHotSearchData().obs(viewLifecycleOwner) {
+            onSuccess {
+                mBind.searchHotRv.bindingAdapter.models = it
             }
         }
-        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    /**
+     * 初始化 Toolbar
+     */
+    private fun initToolbar() {
+        baseBinding.includeToolbar.toolbar.run {
+            mActivity.setSupportActionBar(this)
+            initClose { nav().navigateUp() }
+        }
     }
 
 
@@ -192,7 +123,7 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
      * 更新搜索词
      */
     fun updateKey(keyStr: String) {
-        requestSearchViewModel.historyData.value?.let {
+        mViewModel.historyCacheData.let {
             if (it.contains(keyStr)) {
                 //当搜索历史中包含该数据时 删除
                 it.remove(keyStr)
@@ -202,29 +133,53 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
             }
             //添加新数据到第一条
             it.add(0, keyStr)
-            requestSearchViewModel.historyData.value = it
+            mViewModel.updateHistoryCache()
+            mBind.searchHistoryRv.bindingAdapter.notifyItemRangeChanged(0,it.size)
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        //当该Fragment重新获得视图时，重新设置Menu，防止退出WebFragment ActionBar被清空后，导致该界面的ActionBar无法显示bug
-        setMenu()
-    }
+    private fun setupMenu() {
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.menu_search, menu)
 
-    private fun setMenu() {
-        setHasOptionsMenu(true)
-        toolbar.run {
-            //设置menu 关键代码
-            mActivity.setSupportActionBar(this)
-            initClose {
-                nav().navigateUp()
+                val searchItem = menu.findItem(R.id.action_search)
+                val searchView = searchItem?.actionView as? SearchView ?: return
+
+                searchView.apply {
+                    maxWidth = Int.MAX_VALUE
+                    onActionViewExpanded()
+                    queryHint = "输入关键字搜索"
+                    setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                        override fun onQueryTextSubmit(query: String?): Boolean {
+                            query?.takeIf { it.isNotBlank() }?.let { queryStr ->
+                                updateKey(queryStr)
+                                nav().navigate(SearchFragmentDirections.toSearchResultFragment(queryStr))
+                            }
+                            clearFocus()
+                            return true
+                        }
+
+                        override fun onQueryTextChange(newText: String?): Boolean = false
+                    })
+
+                    isSubmitButtonEnabled = true
+                    this.findViewById<ImageView>(androidx.appcompat.R.id.search_go_btn)?.setImageResource(R.drawable.ic_search)
+                }
             }
-        }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                // 可以在这里处理菜单点击
+                return false
+            }
+        }, viewLifecycleOwner) // 生命周期感知
     }
 
     override fun onDestroy() {
         super.onDestroy()
         mActivity.setSupportActionBar(null)
     }
+
+    override fun getLoadingView() = mBind.searchHotRv
 }
