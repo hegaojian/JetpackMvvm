@@ -58,7 +58,7 @@
 
 | 模块 | 说明 |
 |------|------|
-| [快速开始](./Getting-Started) | 一步步构建第一个 基于JetpackMvvm的应用 |
+| [快速开始](https://github.com/hegaojian/JetpackMvvm/wiki/Getting‐Started) | 一步步构建第一个 基于JetpackMvvm的应用 |
 | [架构设计](./Architecture) | 框架架构图与核心思路 |
 | [核心模块说明](./Core-Modules) | Base、Core、Ext、NetWork 等模块介绍 |
 | [扩展功能](./Advanced) | 协程封装、状态切换、全局配置等 |
