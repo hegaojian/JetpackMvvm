@@ -56,7 +56,7 @@ class LoginActivity : BaseActivity<UserViewModel, ActivityLoginBinding>() {
                             finish()
                         }
                         onError {
-                            //请求失败 onError 可以不写的，不写就默认走 ac/fr 的 onRequestError 方法，里面默认是吐司错误消息，RegisterFragment我就是没写的
+                            //请求失败 onError 可以不写的，不写就走默认处理
                             showDialogMessage(it.msg)
                         }
                     }

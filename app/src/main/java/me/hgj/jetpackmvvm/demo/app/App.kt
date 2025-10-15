@@ -17,12 +17,6 @@ import me.hgj.jetpackmvvm.ext.util.isMainProcess
  */
 
 class App : Application() {
-
-    override fun attachBaseContext(base: Context?) {
-        super.attachBaseContext(base)
-        MultiDex.install(this)
-    }
-
     override fun onCreate() {
         super.onCreate()
         if (isMainProcess()){
@@ -35,7 +29,5 @@ class App : Application() {
                 .register(WidgetTask())
                 .execute(this)
         }
-
     }
-
 }

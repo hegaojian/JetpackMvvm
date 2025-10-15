@@ -17,7 +17,7 @@ import me.hgj.jetpackmvvm.demo.databinding.IncludeToolbarBinding
  * 描述　: 你项目中的Activity基类，在这里实现显示弹窗，吐司，还有加入自己的需求操作，可以参考 BaseIView
  *
  */
-abstract class BaseActivity<VM : BaseViewModel, DB : ViewBinding> : BaseVbActivity<VM, DB>() {
+abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : BaseVbActivity<VM, VB>() {
 
     lateinit var mToolbar: Toolbar
 

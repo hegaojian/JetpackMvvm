@@ -21,7 +21,6 @@ import me.hgj.jetpackmvvm.demo.ui.fragment.MainFragmentDirections
 import me.hgj.jetpackmvvm.ext.lifecycle.getViewModel
 import me.hgj.jetpackmvvm.ext.util.clickNoRepeat
 import me.hgj.jetpackmvvm.ext.util.intent.openActivity
-import me.hgj.jetpackmvvm.ext.util.load
 import me.hgj.jetpackmvvm.ext.util.loadCircle
 import me.hgj.jetpackmvvm.ext.util.statusPadding
 

@@ -43,6 +43,7 @@ fun SmartRefreshLayout.loadMore(loadMoreAction: () -> Unit = {}): SmartRefreshLa
  * 加载列表成功
  * @param baseListNetEntity 列表数据
  * @param smartRefreshLayout 智能刷新布局
+ * @param bindingAdapter BindingAdapter
  * @param uiHost ui宿主，可不传，类型传 BaseVmActivity 或者 BaseVmFragment ，
  */
 fun <T> loadListSuccess(

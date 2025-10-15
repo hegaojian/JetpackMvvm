@@ -24,6 +24,7 @@ banner = "3.5.17"
 mmkv = "2.2.3"
 multidex = "2.0.1"
 lottie = "6.6.7"
+jetpackmvvm = "2.0.0"
 navigation = "2.9.4"
 okhttp = "5.1.0"
 preferenceKtx = "1.2.1"
@@ -68,6 +69,7 @@ gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 banner = { module = "com.github.zhpanvip:bannerviewpager", version.ref = "banner" }
 mmkv = { module = "com.tencent:mmkv" ,version.ref = "mmkv" }
 lottie = { module = "com.airbnb.android:lottie" ,version.ref = "lottie" }
+jetpackmvvm = { module = "com.github.hegaojian:JetpackMvvm", version.ref = "jetpackmvvm" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 refresh-header-classics = { module = "io.github.scwang90:refresh-header-classics", version.ref = "refreshLayout" }
 refresh-layout-kernel = { module = "io.github.scwang90:refresh-layout-kernel", version.ref = "refreshLayout" }
