@@ -62,7 +62,7 @@ dependencies {
 
 | 模块 | 说明 |
 |------|------|
-| [快速开始WIK必看](https://github.com/hegaojian/JetpackMvvm/wiki/1.%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B) | 一步步构建第一个 基于JetpackMvvm的应用 |
+| [快速开始Wiki必看](https://github.com/hegaojian/JetpackMvvm/wiki/1.%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B) | 一步步构建第一个 基于JetpackMvvm的应用 |
 | [架构设计](https://github.com/hegaojian/JetpackMvvm/wiki/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1) | 框架架构图与核心思路 |
 | [常见问题](https://github.com/hegaojian/JetpackMvvm/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98) | 常见使用问题与解决方案 |
 
