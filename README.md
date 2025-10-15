@@ -50,21 +50,21 @@
 ### 📱 扫码下载（推荐）
 
 <p align="left">
-  <img src="https://github.com/user-attachments/assets/288a73f1-2e10-404a-8fc5-2acb9b1799ed" width="150" height="150" alt="JetpackMvvm Demo 二维码"/>
+  <img src="https://github.com/user-attachments/assets/288a73f1-2e10-404a-8fc5-2acb9b1799ed" width="300" height="300" alt="JetpackMvvm Demo 二维码"/>
 </p>
 
-
-## 📖 目录导航（补全中）
+```gradle
+dependencies {
+    implementation 'com.github.hegaojian:JetpackMvvm:2.0.0'
+}
+```
+## 📖 目录导航
 
 | 模块 | 说明 |
 |------|------|
-| [快速开始](https://github.com/hegaojian/JetpackMvvm/wiki/Getting‐Started) | 一步步构建第一个 基于JetpackMvvm的应用 |
-| [架构设计](./Architecture) | 框架架构图与核心思路 |
-| [核心模块说明](./Core-Modules) | Base、Core、Ext、NetWork 等模块介绍 |
-| [扩展功能](./Advanced) | 协程封装、状态切换、全局配置等 |
-| [常见问题](./FAQ) | 常见使用问题与解决方案 |
-| [贡献指南](./Contributing) | 如何参与贡献与提交 PR |
-| [版本变更记录](./Changelog) | 更新历史与版本说明 |
+| [快速开始Wiki必看](https://github.com/hegaojian/JetpackMvvm/wiki/1.%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B) | 一步步构建第一个 基于JetpackMvvm的应用 |
+| [架构设计](https://github.com/hegaojian/JetpackMvvm/wiki/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1) | 框架架构图与核心思路 |
+| [常见问题](https://github.com/hegaojian/JetpackMvvm/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98) | 常见使用问题与解决方案 |
 
 ---
 
